@@ -34,3 +34,4 @@
 | Roslyn semantic facts require an actual resolved Roslyn symbol before they are marked proven. | Syntax evidence alone must not be presented as semantic resolution. |
 | Roslyn identities use fully qualified symbols, while matching Tree-sitter controller/action nodes requires same-file evidence. | This prevents namespace collisions without duplicating equivalent syntax and semantic findings. |
 | A type becomes a DTO only when an action return or parameter references it. | The scanner must not misclassify every C# type as a model. |
+| Return-type and property-owner graph labels are selected from the proven fact for the fully qualified identity. | A graph edge must not promote ordinary types, such as `System.String`, to DTOs. |

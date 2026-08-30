@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 3B.1 — Roslyn semantic correctness repair; real SDK validation pending.
+Step 3B.2 — Roslyn graph-label correction; real SDK validation pending.
 
 ## Step 1 Result
 
@@ -38,9 +38,9 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 On a machine with the .NET SDK, build `tools/Polaris.RoslynAnalyzer/Polaris.RoslynAnalyzer.csproj` and run the SDK-gated semantic fixture analysis. Do not begin Step 4 until this real semantic validation passes.
 
-## Step 3B.1 Result
+## Step 3B.2 Result
 
-Roslyn enrichment is opt-in through `--enable-roslyn`. The helper now uses `SemanticModel`, `GetDeclaredSymbol`, `GetSymbolInfo`, and type-symbol results to emit namespaces, controller/action, type/DTO, property, endpoint, authorization, invocation, and type-reference facts. Fully qualified symbol identities prevent namespace collisions; graph relationships are added only from proven evidence. Python fixture tests pass, but this machine has no `dotnet` executable, so the required real helper build and integration test are pending. LSP remains a documented future interactive boundary, not an implemented analysis provider.
+Roslyn enrichment is opt-in through `--enable-roslyn`. The helper uses `SemanticModel`, `GetDeclaredSymbol`, `GetSymbolInfo`, and type-symbol results to emit namespaces, controller/action, type/DTO, property, endpoint, authorization, invocation, and type-reference facts. Fully qualified symbol identities prevent namespace collisions; graph relationships are added only from proven evidence. `RETURNS_TYPE` and `HAS_PROPERTY` now choose `DTO` only when that identity has a proven DTO fact, otherwise `Type`, without duplicate nodes. Python fixture tests pass, but this machine has no `dotnet` executable, so the required real helper build and integration test are pending. LSP remains a documented future interactive boundary, not an implemented analysis provider.
 
 ## Step 3A Result
 

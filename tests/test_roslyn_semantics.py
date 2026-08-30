@@ -26,11 +26,13 @@ def fact(kind, name, identity, **properties):
 def test_semantic_graph_relationships_are_project_scoped():
     controller = "global::Sample.Shipments.ShipmentGatewayController"
     action = "global::Sample.Shipments.ShipmentGatewayController.Fetch(string)"
+    status = "global::Sample.Shipments.ShipmentGatewayController.Status()"
     dto = "global::Sample.Shipments.ShipmentSummary"
     graph = {"nodes": [], "edges": [], "warnings": []}
     merge_roslyn(graph, [
         fact("controller", "ShipmentGatewayController", controller),
         fact("action", "Fetch", action, owner_identity=controller, return_type_identity=dto),
+        fact("action", "Status", status, owner_identity=controller, return_type_identity="global::System.String"),
         fact("dto", "ShipmentSummary", dto),
         fact("endpoint", "Fetch GET", f"{action}:GET:api/shipments/{{trackingCode}}", owner_identity=action, route_template="api/shipments/{trackingCode}", verb="GET"),
         fact("authorization_policy", "AuthorizeAttribute", f"{action}:auth", owner_identity=action, owner_kind="action", policy="shipments.read"),
@@ -39,6 +41,11 @@ def test_semantic_graph_relationships_are_project_scoped():
         fact("invocation", "BuildSummary", f"{action}:invoke", owner_identity=action, target_identity=f"{controller}.BuildSummary(string)"),
     ], "semantic-demo")
     assert {edge["type"] for edge in graph["edges"]} >= {"DECLARES", "EXPOSES", "RETURNS_TYPE", "HAS_PROPERTY", "INVOKES", "PROTECTED_BY"}
+    labels_by_id = {node["id"]: node["label"] for node in graph["nodes"]}
+    returned_by_action = {edge["source"]: labels_by_id[edge["target"]] for edge in graph["edges"] if edge["type"] == "RETURNS_TYPE"}
+    action_nodes = {node["name"]: node["id"] for node in graph["nodes"] if node["label"] == "Action"}
+    assert returned_by_action[action_nodes["Fetch"]] == "DTO"
+    assert returned_by_action[action_nodes["Status"]] == "Type"
     assert all(node["project_id"] == "semantic-demo" for node in graph["nodes"])
     assert all(edge["project_id"] == "semantic-demo" for edge in graph["edges"])
 
@@ -64,3 +71,8 @@ def test_roslyn_fixture_produces_evidence_backed_graph(tmp_path):
     assert {"namespace", "controller", "action", "dto", "property", "endpoint", "authorization_policy", "invocation"} <= kinds
     assert {"DECLARES", "EXPOSES", "RETURNS_TYPE", "HAS_PROPERTY", "INVOKES", "PROTECTED_BY"} <= edges
     assert any(item["properties"].get("route_template") == "api/shipments/{trackingCode}" for item in roslyn["facts"] if item["kind"] == "endpoint")
+    labels_by_id = {node["id"]: node["label"] for node in result["graph"]["nodes"]}
+    action_nodes = {node["name"]: node["id"] for node in result["graph"]["nodes"] if node["label"] == "Action"}
+    returned_by_action = {edge["source"]: labels_by_id[edge["target"]] for edge in result["graph"]["edges"] if edge["type"] == "RETURNS_TYPE"}
+    assert returned_by_action[action_nodes["Fetch"]] == "DTO"
+    assert returned_by_action[action_nodes["Status"]] == "Type"

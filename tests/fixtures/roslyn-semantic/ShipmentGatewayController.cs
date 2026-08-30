@@ -24,6 +24,9 @@ public class ShipmentGatewayController : ControllerBase
     [HttpGet("{trackingCode}")]
     public ShipmentSummary Fetch(string trackingCode) => BuildSummary(trackingCode);
 
+    [HttpGet("status")]
+    public string Status() => "ready";
+
     private ShipmentSummary BuildSummary(string trackingCode) => new() { TrackingCode = trackingCode, Status = "ready" };
 }
 

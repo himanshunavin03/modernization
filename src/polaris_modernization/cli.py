@@ -26,6 +26,17 @@ ROSLYN_LABELS = {
 def merge_roslyn(graph: dict, facts: list[dict], project_id: str) -> None:
     nodes = {node["id"]: node for node in graph["nodes"]}
     edges = {(edge["type"], edge["source"], edge["target"]): edge for edge in graph["edges"]}
+    semantic_labels: dict[str, str] = {}
+    for fact in facts:
+        evidence = fact.get("evidence", {})
+        properties = fact.get("properties", {})
+        label = ROSLYN_LABELS.get(fact.get("kind"))
+        if fact.get("project_id") != project_id or evidence.get("resolution_status") != "proven" or not label:
+            continue
+        identity = str(properties.get("identity") or fact["name"])
+        # A proven DTO fact is more specific than a generic type fact for the same symbol.
+        if identity not in semantic_labels or label == "DTO":
+            semantic_labels[identity] = label
 
     def node(label: str, name: str, evidence: dict, properties: dict, *, merge_tree_sitter: bool = False) -> str:
         if merge_tree_sitter:
@@ -60,13 +71,15 @@ def merge_roslyn(graph: dict, facts: list[dict], project_id: str) -> None:
             continue
         if label:
             identity = str(properties.get("identity") or fact["name"])
+            label = semantic_labels.get(identity, label)
             semantic_nodes[identity] = node(label, fact["name"], evidence, properties, merge_tree_sitter=fact["kind"] in {"controller", "action"})
 
     def reference(label: str, identity: object, evidence: dict) -> str | None:
         if identity is None:
             return None
         key = str(identity)
-        return semantic_nodes.get(key) or node(label, key.rsplit(".", 1)[-1], evidence, {"identity": key})
+        resolved_label = semantic_labels.get(key, label)
+        return semantic_nodes.get(key) or node(resolved_label, key.rsplit(".", 1)[-1], evidence, {"identity": key})
 
     for fact in facts:
         evidence = fact.get("evidence", {})
@@ -78,7 +91,7 @@ def merge_roslyn(graph: dict, facts: list[dict], project_id: str) -> None:
         kind = fact.get("kind")
         if kind == "action" and subject:
             owner = reference("Controller", properties.get("owner_identity"), evidence)
-            returned = reference("DTO", properties.get("return_type_identity"), evidence)
+            returned = reference("Type", properties.get("return_type_identity"), evidence)
             if owner:
                 edge("DECLARES", owner, subject, evidence)
             if returned:
@@ -88,7 +101,7 @@ def merge_roslyn(graph: dict, facts: list[dict], project_id: str) -> None:
             if owner:
                 edge("EXPOSES", owner, subject, evidence)
         elif kind == "property" and subject:
-            owner = reference("DTO", properties.get("owner_identity"), evidence)
+            owner = reference("Type", properties.get("owner_identity"), evidence)
             if owner:
                 edge("HAS_PROPERTY", owner, subject, evidence)
         elif kind == "invocation":
