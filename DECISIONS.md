@@ -20,3 +20,6 @@
 | A target architecture assessment, diagram, ADR, Nx boundaries, and migration plan precede Angular generation. | Architecture must be reviewable before code changes are generated. |
 | Target architecture is evidence-based and rule-driven, not LLM-only. | Standard Angular, Nx modular monolith, microfrontend, SSR/hydration, BFF, Signals, typed forms, security, and testing need deterministic decision inputs. |
 | Angular 22 Nx modular monolith remains the likely POC default but architecture assessment is configurable. | The default supports the POC while allowing evidence to justify a different target architecture. |
+| Source projects are local runtime inputs and are not committed. | The customized solution must support multiple read-only customer/reference repositories without embedding them in its Git history. |
+| Scanner outputs and graph namespace are isolated by project ID. | Project-specific artifacts, future Neo4j nodes, Graphiti memory, decisions, backlog, Figma mappings, and generated output must not mix. |
+| HealthClinic Dashboard is a YAML sample profile, not hardcoded application logic. | The deterministic scanner must remain reusable for arbitrary future source roots. |

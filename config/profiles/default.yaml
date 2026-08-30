@@ -1,0 +1,18 @@
+supported_extensions:
+  .cs: csharp
+  .cshtml: html
+  .razor: html
+  .html: html
+  .js: javascript
+  .ts: typescript
+  .css: css
+  .json: json
+  .csproj: dotnet-project
+  .sln: dotnet-solution
+excluded_directories:
+  - .git
+  - node_modules
+  - bin
+  - obj
+  - __pycache__
+include_paths: []

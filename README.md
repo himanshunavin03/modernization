@@ -1,6 +1,6 @@
 # Polaris Modernization POC
 
-This repository contains the deterministic Step 2 source extractor for the Polaris modernization POC. It analyzes only configured legacy source paths and produces evidence-backed JSON; it does not generate Angular code or call an LLM/API.
+This repository contains a project-agnostic deterministic source scanner. Any local source project can be selected with `--source-root`, `--project-id`, and a profile; source projects are read-only runtime inputs.
 
 ## Prerequisites
 
@@ -11,7 +11,7 @@ This repository contains the deterministic Step 2 source extractor for the Polar
 ## Setup
 
 ```powershell
-python -m pip install --user -e .
+python -m pip install -e ".[dev]"
 ```
 
 The source root is supplied at runtime. The extractor never assumes an absolute location and never writes into it.
@@ -21,19 +21,26 @@ The source root is supplied at runtime. The extractor never assumes an absolute 
 From the repository root:
 
 ```powershell
-python -m polaris_modernization.cli analyze --source-root "source\HealthClinic.biz" --scope dashboard --output "artifacts"
+python -m polaris_modernization.cli analyze --source-root "<any-project-path>" --project-id "<unique-project-id>" --profile "default" --output "artifacts"
 ```
 
 Expected artifacts:
 
-- `artifacts/source-inventory.json`
-- `artifacts/dashboard-facts.json`
-- `artifacts/dashboard-graph.json`
-- `artifacts/dashboard-analysis-summary.md`
+- `artifacts/<project-id>/source-inventory.json`
+- `artifacts/<project-id>/framework-detection.json`
+- `artifacts/<project-id>/facts.json`
+- `artifacts/<project-id>/knowledge-graph.json`
+- `artifacts/<project-id>/analysis-summary.md`
+
+HealthClinic Dashboard example:
+
+```powershell
+python -m polaris_modernization.cli analyze --source-root "source\HealthClinic.biz" --project-id "healthclinic-dashboard" --profile "healthclinic-dashboard" --output "artifacts"
+```
 
 ## Deterministic Boundary
 
-Step 2 uses Tree-sitter AST parsing for JavaScript, HTML/Razor host markup, and C#. Facts contain source paths, line ranges, source hashes, and `confidence: 1.0`. No LLM, LangChain, LangGraph, Graphiti, OpenAI, Copilot, or AI API is used.
+The scanner uses Tree-sitter AST parsing for JavaScript, HTML/Razor host markup, and C#. Facts contain project IDs, source paths, line ranges, source hashes, and `confidence: 1.0`. No LLM, LangChain, LangGraph, Graphiti, OpenAI, Copilot, or AI API is used. Future graph loading and controlled LLM work are outside Step 2.1.
 
 Later steps may use the normalized graph for Neo4j loading, Roslyn/LSP enrichment, target-architecture assessment, and controlled LLM workflows. Those capabilities are intentionally not implemented here.
 

@@ -7,6 +7,7 @@ from dataclasses import asdict, dataclass, field
 
 @dataclass(frozen=True)
 class Evidence:
+    project_id: str
     source_path: str
     line_start: int
     line_end: int

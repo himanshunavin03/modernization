@@ -45,7 +45,7 @@ def _literal_or_expression(node, source: bytes) -> str:
     return unquote(node_text(node, source))
 
 
-def extract(path: Path, source_root: Path, digest: str) -> list[Fact]:
+def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list[Fact]:
     source = path.read_bytes()
     root = parser_for(tree_sitter_javascript.language()).parse(source).root_node
     facts: list[Fact] = []
@@ -61,18 +61,18 @@ def extract(path: Path, source_root: Path, digest: str) -> list[Fact]:
         if node.type == "import_statement":
             source_node = node.child_by_field_name("source")
             if source_node:
-                facts.append(Fact("import", unquote(node_text(source_node, source)), evidence(path, source_root, node, digest)))
+                facts.append(Fact("import", unquote(node_text(source_node, source)), evidence(path, source_root, node, digest, project_id)))
 
         if node.type == "class_declaration":
             name = node.child_by_field_name("name")
             if name:
                 class_name = node_text(name, source)
                 kind = "angular_service" if "service" in path.name.lower() else "angular_controller" if "controller" in path.name.lower() else "angular_directive"
-                facts.append(Fact(kind, class_name, evidence(path, source_root, node, digest)))
+                facts.append(Fact(kind, class_name, evidence(path, source_root, node, digest, project_id)))
 
         if node.type != "call_expression":
             continue
-        node_evidence = evidence(path, source_root, node, digest)
+        node_evidence = evidence(path, source_root, node, digest, project_id)
         property_name = _call_property(node, source)
         arguments = _arguments(node)
         if _call_object(node, source, "angular.module") and arguments:

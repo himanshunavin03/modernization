@@ -27,8 +27,9 @@ def descendant_texts(node: Node, source: bytes, node_type: str) -> list[str]:
     return [node_text(item, source) for item in walk(node) if item.type == node_type]
 
 
-def evidence(path: Path, source_root: Path, node: Node, digest: str) -> Evidence:
+def evidence(path: Path, source_root: Path, node: Node, digest: str, project_id: str) -> Evidence:
     return Evidence(
+        project_id=project_id,
         source_path=path.relative_to(source_root).as_posix(),
         line_start=node.start_point.row + 1,
         line_end=node.end_point.row + 1,

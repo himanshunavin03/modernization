@@ -1,0 +1,1 @@
+var app = angular.module('sample', []); app.config(function($stateProvider) { $stateProvider.state('dashboard', { url: '/dashboard', templateUrl: '/dashboard.html', controller: 'dashboardController' }); });

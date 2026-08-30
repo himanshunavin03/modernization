@@ -28,28 +28,28 @@ KIND_TO_LABEL = {
 }
 
 
-def normalize(inventory: list[dict[str, str]], facts: list[Fact]) -> dict:
+def normalize(project_id: str, inventory: list[dict], facts: list[Fact]) -> dict:
     nodes: dict[str, dict] = {}
     edges: dict[tuple[str, str, str], dict] = {}
 
     def add_node(label: str, name: str, evidence: dict, properties: dict | None = None) -> str:
-        node_id = f"{label}:{name}"
+        node_id = f"{project_id}:{label}:{name}"
         if node_id not in nodes:
-            nodes[node_id] = {"id": node_id, "label": label, "name": name, "properties": properties or {}, "evidence": []}
+            nodes[node_id] = {"id": node_id, "project_id": project_id, "label": label, "name": name, "properties": properties or {}, "evidence": []}
         nodes[node_id]["evidence"].append(evidence)
         return node_id
 
     def add_edge(edge_type: str, source: str, target: str, evidence: dict) -> None:
         key = (edge_type, source, target)
         if key not in edges:
-            edges[key] = {"type": edge_type, "source": source, "target": target, "evidence": []}
+            edges[key] = {"project_id": project_id, "type": edge_type, "source": source, "target": target, "evidence": []}
         edges[key]["evidence"].append(evidence)
 
-    application_evidence = {"source_path": "", "line_start": 0, "line_end": 0, "extraction_method": "tree-sitter", "confidence": 1.0, "source_hash": ""}
-    application = add_node("Application", "HealthClinic.biz", application_evidence)
+    application_evidence = {"project_id": project_id, "source_path": "", "line_start": 0, "line_end": 0, "extraction_method": "tree-sitter", "confidence": 1.0, "source_hash": ""}
+    application = add_node("Project", project_id, application_evidence)
     file_nodes: dict[str, str] = {}
     for file_entry in inventory:
-        evidence = {
+        evidence = {"project_id": project_id,
             "source_path": file_entry["source_path"],
             "line_start": 1,
             "line_end": 1,
@@ -94,7 +94,7 @@ def normalize(inventory: list[dict[str, str]], facts: list[Fact]) -> dict:
         if fact.kind == "route":
             pending_routes.append((node, fact))
         if fact.kind == "api_call":
-            source = next((item for item in nodes if item.startswith("AngularService:")), file_node)
+            source = next((item for item in nodes if ":AngularService:" in item), file_node)
             add_edge("CALLS_API", source, node, evidence)
 
     for action_node, action_fact in pending_actions:

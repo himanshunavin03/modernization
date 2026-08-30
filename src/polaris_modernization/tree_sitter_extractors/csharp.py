@@ -20,7 +20,7 @@ def _first_identifier(node, source: bytes) -> str | None:
     return None
 
 
-def extract(path: Path, source_root: Path, digest: str) -> list[Fact]:
+def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list[Fact]:
     source = path.read_bytes()
     root = parser_for(tree_sitter_c_sharp.language()).parse(source).root_node
     facts: list[Fact] = []
@@ -29,7 +29,7 @@ def extract(path: Path, source_root: Path, digest: str) -> list[Fact]:
         class_name = _first_identifier(class_node, source)
         if not class_name:
             continue
-        class_evidence = evidence(path, source_root, class_node, digest)
+        class_evidence = evidence(path, source_root, class_node, digest, project_id)
         facts.append(Fact("controller", class_name, class_evidence))
         attributes = [node_text(node, source) for node in walk(class_node) if node.type == "attribute"]
         for attribute in attributes:
@@ -40,7 +40,7 @@ def extract(path: Path, source_root: Path, digest: str) -> list[Fact]:
             method_name = _first_identifier(method_node, source)
             if not method_name:
                 continue
-            method_evidence = evidence(path, source_root, method_node, digest)
+            method_evidence = evidence(path, source_root, method_node, digest, project_id)
             facts.append(Fact("action", method_name, method_evidence, {"controller": class_name}))
             returns_view = any(
                 node.type == "return_statement" and "View" in node_text(node, source)

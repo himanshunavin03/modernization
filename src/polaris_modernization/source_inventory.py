@@ -10,24 +10,21 @@ def source_hash(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def build_inventory(source_root: Path, configured_paths: list[str]) -> list[dict[str, str]]:
+def build_inventory(source_root: Path, profile: dict) -> tuple[list[dict], list[str]]:
     source_root = source_root.resolve()
     if not source_root.is_dir():
         raise ValueError(f"Source root does not exist: {source_root}")
 
-    files: dict[str, dict[str, str]] = {}
-    for configured_path in configured_paths:
-        candidate = (source_root / configured_path).resolve()
-        if source_root not in candidate.parents and candidate != source_root:
-            raise ValueError(f"Configured path escapes source root: {configured_path}")
-        if not candidate.exists():
-            continue
-        candidates = candidate.rglob("*") if candidate.is_dir() else [candidate]
-        for file_path in candidates:
-            if file_path.is_file():
-                relative_path = file_path.relative_to(source_root).as_posix()
-                files[relative_path] = {
-                    "source_path": relative_path,
-                    "source_hash": source_hash(file_path),
-                }
-    return [files[path] for path in sorted(files)]
+    from polaris_modernization.project_discovery import discover_files
+    extensions = profile.get("supported_extensions", {})
+    includes = [item.rstrip("/") for item in profile.get("include_paths", [])]
+    warnings = []
+    for include in includes:
+        if not (source_root / include).exists(): warnings.append(f"Configured path not found: {include}")
+    files = []
+    for file_path in discover_files(source_root, set(profile.get("excluded_directories", []))):
+        relative_path = file_path.relative_to(source_root).as_posix()
+        selected = not includes or any(relative_path == item or relative_path.startswith(f"{item}/") for item in includes)
+        files.append({"source_path": relative_path, "source_hash": source_hash(file_path), "language": extensions.get(file_path.suffix.lower()), "supported": file_path.suffix.lower() in extensions, "selected_for_extraction": selected})
+    if not any(item["supported"] for item in files): raise ValueError("No supported source files found")
+    return files, warnings

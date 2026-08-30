@@ -39,7 +39,7 @@ def _attribute_names(element, source: bytes) -> set[str]:
     return names
 
 
-def extract(path: Path, source_root: Path, digest: str) -> list[Fact]:
+def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list[Fact]:
     source = path.read_bytes()
     root = parser_for(tree_sitter_html.language()).parse(source).root_node
     facts: list[Fact] = []
@@ -47,7 +47,7 @@ def extract(path: Path, source_root: Path, digest: str) -> list[Fact]:
 
     if path.suffix == ".cshtml":
         kind = "layout" if path.name.startswith("_Layout") else "partial_view" if path.name.startswith("_") else "razor_view"
-        facts.append(Fact(kind, relative_path, evidence(path, source_root, root, digest)))
+        facts.append(Fact(kind, relative_path, evidence(path, source_root, root, digest, project_id)))
 
     for node in walk(root):
         if node.type not in {"element", "self_closing_element", "self_closing_tag"}:
@@ -55,7 +55,7 @@ def extract(path: Path, source_root: Path, digest: str) -> list[Fact]:
         tag_name = _tag_name(node, source)
         if not tag_name:
             continue
-        node_evidence = evidence(path, source_root, node, digest)
+        node_evidence = evidence(path, source_root, node, digest, project_id)
         if tag_name in HOST_ELEMENTS:
             facts.append(Fact("client_component", tag_name, node_evidence))
         if tag_name in CONTROL_ELEMENTS:

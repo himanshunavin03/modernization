@@ -1,0 +1,10 @@
+include_paths:
+  - src/MyHealth.Web/Views/Dashboard
+  - src/MyHealth.Web/Views/Shared
+  - src/MyHealth.Web/Controllers/DashboardController.cs
+  - src/MyHealth.Web/Controllers/AccountController.cs
+  - src/MyHealth.Web/content/app/app.module.js
+  - src/MyHealth.Web/content/app/components/dashboard
+  - src/MyHealth.Web/content/app/components/shared/directives/headerBar
+  - src/MyHealth.Web/content/app/components/shared/directives/leftMenu
+  - src/MyHealth.Web/content/app/components/shared/shared.module.js

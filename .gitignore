@@ -2,3 +2,10 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
+.venv/
+venv/
+artifacts/*
+!artifacts/.gitkeep
+source/*
+!source/.gitkeep
+!source/README.md

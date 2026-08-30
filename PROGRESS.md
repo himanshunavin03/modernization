@@ -1,11 +1,11 @@
 # Progress
 
-- Status: Step 2 complete — deterministic Tree-sitter extraction and evidence graph JSON created.
-- Current step: Step 2 - Deterministic Tree-sitter source extraction
+- Status: Step 2.1 complete — reusable deterministic scanner and repository hygiene validated.
+- Current step: Step 2.1 - Reusable deterministic source scanner
 - Completed work: Project memory initialized; Dashboard source discovery completed; deterministic scoped inventory, facts, normalized graph JSON, summary, CLI, and tests created.
-- Next action: Step 3 - load normalized graph JSON into Neo4j and add the Roslyn/LSP semantic enrichment adapter.
+- Next action: Step 3 — load project-scoped knowledge graph JSON into Neo4j and add a Roslyn/LSP semantic enrichment adapter.
 - Blockers: Razor directives are not semantically modeled because Step 2 uses only the HTML grammar; dynamic JavaScript URL expressions are retained as source expressions rather than resolved endpoints.
-- Exact next action when resumed: Read the durable memory files and `docs/prompts/002-deterministic-tree-sitter-extractor.md`, then begin only the authorized Step 3 work.
+- Exact next action when resumed: Read the durable memory files and `docs/prompts/003-step-2-1-reusable-scanner-correction.md`, then begin only the authorized Step 3 work.
 
 ## Resume Command
 

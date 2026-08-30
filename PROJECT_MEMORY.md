@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 2 complete — deterministic Tree-sitter extraction and evidence graph JSON created.
+Step 2.1 complete — reusable deterministic scanner and repository hygiene validated.
 
 ## Step 1 Result
 
@@ -36,7 +36,11 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Step 3 - load normalized graph JSON into Neo4j and add the Roslyn/LSP semantic enrichment adapter.
+Step 3 — load project-scoped knowledge graph JSON into Neo4j and add a Roslyn/LSP semantic enrichment adapter.
+
+## Project Isolation
+
+The solution is project-agnostic. Every source project is selected by `--source-root` and `--project-id`; artifacts, graph namespace, future Graphiti memory, future Neo4j nodes, architecture decisions, Agile backlog, Figma mappings, and generated outputs must remain isolated by project ID. HealthClinic Dashboard is a sample profile, not hardcoded application logic. Source projects are local runtime inputs and are not committed.
 
 ## Recovery Instruction
 
