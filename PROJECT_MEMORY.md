@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 3C.3 — HealthClinic Dashboard demo graph warning review.
+Step 3C.4 — HealthClinic Dashboard Neo4j visual-demo preparation.
 
 ## Step 1 Result
 
@@ -36,7 +36,7 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Review the isolated Dashboard HTML parser warning in `docs/validation/healthclinic-dashboard-graph-demo.md`. Do not load Neo4j or begin Step 4 until the graph has zero extraction warnings or the warning is explicitly approved for the demo.
+Install/start Docker Neo4j and load only `healthclinic-dashboard-clean-demo` for the visual demo. Use the clean profile graph validated in `docs/validation/healthclinic-dashboard-clean-graph.md`; do not begin Step 4.
 
 ## Step 3B.2 Result
 
@@ -62,6 +62,10 @@ Each native Tree-sitter extraction now runs in an isolated child Python process 
 
 The scoped `source/HealthClinic.biz/src/MyHealth.Web` Dashboard demo graph run completed as `succeeded_with_warnings`: 326 files, 321 facts, 518 nodes, 604 edges, 120 total warnings, and 1 extraction warning. Framework detection identified ASP.NET MVC/Razor. Dashboard controller/action, authorization, route, UI-control, and dashboard API-call relationships were proven. `Views/Home/Index.cshtml` caused one isolated HTML worker abnormal exit (`3221225477`) and was skipped without source modification; the 326-file source hash remained unchanged. Neo4j was not loaded and the graph is not ready for visual demo until warning review.
 
+## Step 3C.4 Result
+
+The reusable `healthclinic-dashboard` YAML profile was run from the HealthClinic repository root. Its selected paths exclude `src/MyHealth.Web/Views/Home/Index.cshtml`, so the known failing HTML file was not selected for extraction. The clean project graph completed successfully with 2,384 inventoried files, 6,967 facts, 4,597 nodes, 4,095 edges, 2,055 total warnings, and 0 extraction warnings. Dashboard controller/action, authorization, UI-control, AngularJS route, and dashboard API-call relationships were proven. The full 2,395-file source-tree SHA-256 fingerprint was unchanged. The graph is ready for Neo4j visual-demo loading only after Docker Neo4j is installed and started; do not begin Step 4.
+
 ## Step 2.2 Result
 
 Project-to-file graph edges use `CONTAINS`; `CONTAINS_CONTROL` is reserved for file-hosted UI controls/components. MVC `RETURNS` edges are emitted only for explicit static `View("Name")` calls with a matching discovered Razor view. Implicit `View()` calls are review warnings. API calls are owned only by a unique Angular owner declared in the same file; otherwise the File owns the edge with unresolved metadata.
@@ -72,4 +76,4 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before doing any work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 013 under `docs/prompts/`, and `docs/validation/healthclinic-dashboard-graph-demo.md`. Continue only from the Current Step.
+Before doing any work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 014 under `docs/prompts/`, and `docs/validation/healthclinic-dashboard-clean-graph.md`. Continue only from the Current Step.
