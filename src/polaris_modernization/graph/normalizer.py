@@ -28,7 +28,7 @@ KIND_TO_LABEL = {
 }
 
 
-def normalize(project_id: str, inventory: list[dict], facts: list[Fact]) -> dict:
+def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadata: dict | None = None) -> dict:
     nodes: dict[str, dict] = {}
     edges: dict[tuple[str, str, str], dict] = {}
 
@@ -139,4 +139,5 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact]) -> dict
         "nodes": sorted(nodes.values(), key=lambda item: item["id"]),
         "edges": sorted(edges.values(), key=lambda item: (item["type"], item["source"], item["target"])),
         "warnings": warnings,
+        "metadata": metadata or {},
     }

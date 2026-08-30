@@ -1,3 +1,7 @@
+scope_id: full-application
+scope_name: Full application analysis
+scope_description: Complete discovered application inventory and graph.
+scope_type: full_application
 supported_extensions:
   .cs: csharp
   .cshtml: html

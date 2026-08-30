@@ -133,7 +133,7 @@ def test_partial_run_writes_artifacts_and_preserves_fixture(monkeypatch, tmp_pat
     assert result["overall_status"] == "succeeded_with_warnings"
     assert status["counts"]["extraction_warning_count"] == 1
     assert status["neo4j"]["status"] == "blocked"
-    assert any(item["extraction_status"] == "failed_isolated" for item in inventory["files"])
+    assert any(item["extraction_status"] == "in_scope_failed_isolated" for item in inventory["files"])
     assert (tmp_path / "partial-run" / "knowledge-graph.json").exists()
     assert "Extraction warnings: 1" in (tmp_path / "partial-run" / "analysis-summary.md").read_text(encoding="utf-8")
     assert "Extraction warnings: 1" in (tmp_path / "partial-run" / "graph-run-summary.md").read_text(encoding="utf-8")

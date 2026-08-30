@@ -26,6 +26,6 @@ def build_inventory(source_root: Path, profile: dict) -> tuple[list[dict], list[
         relative_path = file_path.relative_to(source_root).as_posix()
         selected = not includes or any(relative_path == item or relative_path.startswith(f"{item}/") for item in includes)
         supported = file_path.suffix.lower() in extensions
-        files.append({"source_path": relative_path, "source_hash": source_hash(file_path), "language": extensions.get(file_path.suffix.lower()), "supported": supported, "selected_for_extraction": selected, "extraction_status": "pending" if selected and supported else "unsupported"})
+        files.append({"source_path": relative_path, "source_hash": source_hash(file_path), "language": extensions.get(file_path.suffix.lower()), "supported": supported, "selected_for_extraction": selected, "extraction_status": "in_scope_unsupported" if selected else "out_of_scope"})
     if not any(item["supported"] for item in files): raise ValueError("No supported source files found")
     return files, warnings

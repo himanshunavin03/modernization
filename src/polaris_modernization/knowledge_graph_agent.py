@@ -58,6 +58,8 @@ def _summary(status: dict[str, Any]) -> str:
         f"- Edges: {status['counts']['edge_count']}",
         f"- Warnings: {status['counts']['warning_count']}",
         f"- Extraction warnings: {status['counts'].get('extraction_warning_count', 0)}",
+        f"- Scope: `{status['scope']['scope_name']}`",
+        f"- Coverage: `{status['scope']['coverage_status']}`",
         f"- Roslyn: `{status['roslyn']['status']}`",
         f"- Neo4j: `{status['neo4j']['status']}`",
         "",
@@ -102,6 +104,7 @@ def create_knowledge_graph(
         "overall_status": "failed",
         "stages": [],
         "counts": {"file_count": 0, "fact_count": 0, "node_count": 0, "edge_count": 0, "warning_count": 0},
+        "scope": {"scope_name": "not evaluated", "coverage_status": "not evaluated"},
         "roslyn": {"status": "skipped", "enabled": enable_roslyn},
         "neo4j": {"status": "skipped", "requested": load_neo4j},
         "artifact_paths": {},
@@ -140,6 +143,7 @@ def create_knowledge_graph(
             "source_inventory": str(result["output"] / "source-inventory.json"),
             "facts": str(result["output"] / "facts.json"),
         })
+        status["scope"] = graph["metadata"]
         roslyn_warnings = result["roslyn"]["warnings"]
         if enable_roslyn and not roslyn_warnings:
             status["roslyn"] = {"status": "succeeded", "enabled": True}

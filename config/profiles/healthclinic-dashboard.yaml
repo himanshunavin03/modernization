@@ -1,3 +1,7 @@
+scope_id: healthclinic-dashboard-modernization-flow
+scope_name: HealthClinic Dashboard modernization flow
+scope_description: Customer-approved Dashboard MVC shell, shared dashboard UI, AngularJS route/service, and supporting controller scope for modernization review.
+scope_type: selected_modernization_flow
 include_paths:
   - src/MyHealth.Web/Views/Dashboard
   - src/MyHealth.Web/Views/Shared

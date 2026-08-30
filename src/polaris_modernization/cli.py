@@ -26,7 +26,8 @@ ROSLYN_LABELS = {
 }
 
 
-def merge_roslyn(graph: dict, facts: list[dict], project_id: str) -> None:
+def merge_roslyn(graph: dict, facts: list[dict], project_id: str, out_of_scope_symbols: dict[str, str] | None = None) -> None:
+    out_of_scope_symbols = out_of_scope_symbols or {}
     nodes = {node["id"]: node for node in graph["nodes"]}
     edges = {(edge["type"], edge["source"], edge["target"]): edge for edge in graph["edges"]}
     semantic_labels: dict[str, str] = {}
@@ -81,6 +82,12 @@ def merge_roslyn(graph: dict, facts: list[dict], project_id: str) -> None:
         if identity is None:
             return None
         key = str(identity)
+        if key in out_of_scope_symbols:
+            return node("OutOfScopeReference", key, evidence, {
+                "identity": key,
+                "source_path": out_of_scope_symbols[key],
+                "reason": "Referenced by an in-scope semantic fact.",
+            })
         resolved_label = semantic_labels.get(key, label)
         return semantic_nodes.get(key) or node(resolved_label, key.rsplit(".", 1)[-1], evidence, {"identity": key})
 
@@ -117,6 +124,10 @@ def merge_roslyn(graph: dict, facts: list[dict], project_id: str) -> None:
             owner = reference(owner_label, properties.get("owner_identity"), evidence)
             if owner:
                 edge("PROTECTED_BY", owner, subject, evidence)
+    for item in list(edges.values()):
+        target = nodes.get(item["target"])
+        if target and target["label"] == "OutOfScopeReference":
+            edge("DEPENDS_ON_OUT_OF_SCOPE", item["source"], item["target"], item["evidence"][0])
     graph["nodes"] = sorted(nodes.values(), key=lambda item: item["id"])
     graph["edges"] = sorted(edges.values(), key=lambda item: (item["type"], item["source"], item["target"]))
 
@@ -126,13 +137,16 @@ def analyze(source_root: Path, project_id: str, profile_name: str, output: Path,
     inventory, warnings = build_inventory(source_root, profile)
     facts: list[Fact] = []
     source_root = source_root.resolve()
+    scope_type = profile.get("scope_type", "full_application")
+    if scope_type not in {"full_application", "selected_modernization_flow"}:
+        raise ValueError("scope_type must be full_application or selected_modernization_flow")
     extractable_entries = []
     for entry in inventory:
         source_path = source_root / entry["source_path"]
         if not entry["selected_for_extraction"]:
-            entry["extraction_status"] = "skipped"
+            entry["extraction_status"] = "out_of_scope"
         elif extractor_for(source_path) is None:
-            entry["extraction_status"] = "unsupported"
+            entry["extraction_status"] = "in_scope_unsupported"
         else:
             extractable_entries.append(entry)
 
@@ -152,28 +166,67 @@ def analyze(source_root: Path, project_id: str, profile_name: str, output: Path,
     successful_extractions = 0
     for entry, result in zip(extractable_entries, results):
         if result.warning:
-            entry["extraction_status"] = "failed_isolated"
+            entry["extraction_status"] = "in_scope_failed_isolated"
             extraction_warnings.append(result.warning)
         else:
-            entry["extraction_status"] = "succeeded"
+            entry["extraction_status"] = "in_scope_succeeded"
             successful_extractions += 1
             facts.extend(result.facts)
 
-    graph = normalize(project_id, inventory, facts)
+    in_scope_entries = [entry for entry in inventory if entry["selected_for_extraction"]]
+    graph_inventory = inventory if scope_type == "full_application" else in_scope_entries
+    graph_metadata = {
+        "scope_id": profile.get("scope_id", "full-application"),
+        "scope_name": profile.get("scope_name", "Full application analysis"),
+        "scope_description": profile.get("scope_description", "Complete discovered application inventory and graph."),
+        "scope_type": scope_type,
+        "selected_file_count": len(in_scope_entries),
+        "out_of_scope_file_count": len(inventory) - len(in_scope_entries),
+        "extraction_warning_count": len(extraction_warnings),
+        "review_warning_count": 0,
+        "coverage_status": "pending",
+    }
+    graph = normalize(project_id, graph_inventory, facts, graph_metadata)
     run_output = output / project_id
     run_output.mkdir(parents=True, exist_ok=True)
-    roslyn = enrich(source_root, project_id, run_output / "roslyn-semantic.json") if enable_roslyn else {"project_id":project_id,"facts":[],"warnings":[]}
-    if enable_roslyn and not (run_output / "roslyn-semantic.json").exists(): write_json(run_output / "roslyn-semantic.json", roslyn)
+    roslyn_all = enrich(source_root, project_id, run_output / "roslyn-semantic-all.json") if enable_roslyn else {"project_id":project_id,"facts":[],"warnings":[]}
+    in_scope_paths = {entry["source_path"] for entry in in_scope_entries}
+    roslyn_facts = roslyn_all["facts"] if scope_type == "full_application" else [fact for fact in roslyn_all["facts"] if fact.get("evidence", {}).get("source_path") in in_scope_paths]
+    declaration_kinds = {"namespace", "controller", "type", "dto", "property", "method", "action"}
+    in_scope_symbols = {
+        str(fact.get("properties", {}).get("identity"))
+        for fact in roslyn_all["facts"]
+        if fact.get("evidence", {}).get("source_path") in in_scope_paths
+        and fact.get("kind") in declaration_kinds
+        and fact.get("properties", {}).get("identity")
+    }
+    out_of_scope_symbols = {
+        str(fact.get("properties", {}).get("identity")): str(fact.get("evidence", {}).get("source_path"))
+        for fact in roslyn_all["facts"]
+        if fact.get("evidence", {}).get("source_path") not in in_scope_paths
+        and fact.get("kind") in declaration_kinds
+        and fact.get("properties", {}).get("identity")
+        and str(fact["properties"]["identity"]) not in in_scope_symbols
+    } if scope_type == "selected_modernization_flow" else {}
+    roslyn = {"project_id": project_id, "facts": roslyn_facts, "warnings": roslyn_all["warnings"]}
+    write_json(run_output / "roslyn-semantic.json", roslyn)
     graph["warnings"].extend(roslyn["warnings"])
     graph["warnings"].extend(extraction_warnings)
-    merge_roslyn(graph, roslyn["facts"], project_id)
-    write_json(run_output / "source-inventory.json", {"project_id": project_id, "files": inventory, "warnings": warnings, "extraction_warnings": extraction_warnings})
-    write_json(run_output / "framework-detection.json", {"project_id": project_id, "frameworks": detect_frameworks(source_root, inventory)})
+    merge_roslyn(graph, roslyn["facts"], project_id, out_of_scope_symbols)
+    graph["metadata"]["review_warning_count"] = len(graph["warnings"]) - len(extraction_warnings)
+    graph["metadata"]["coverage_status"] = (
+        "complete_application" if scope_type == "full_application" and not extraction_warnings
+        else "partial_application_with_extraction_failures" if scope_type == "full_application"
+        else "scope_complete" if not extraction_warnings
+        else "scope_partial_with_extraction_failures"
+    )
+    write_json(run_output / "source-inventory.json", {"project_id": project_id, "scope": graph["metadata"], "files": inventory, "warnings": warnings, "extraction_warnings": extraction_warnings})
+    write_json(run_output / "framework-detection.json", {"project_id": project_id, "scope": graph["metadata"], "frameworks": detect_frameworks(source_root, graph_inventory)})
     write_json(run_output / "facts.json", {"project_id": project_id, "facts": [fact.to_dict() for fact in facts]})
     write_json(run_output / "knowledge-graph.json", graph)
     write_summary(run_output / "analysis-summary.md", inventory, facts, graph, extraction_warnings)
     analysis_status = "failed" if not extractable_entries or successful_extractions == 0 else "succeeded_with_warnings" if extraction_warnings else "succeeded"
-    return {"inventory": inventory, "facts": facts, "graph": graph, "warnings": warnings, "extraction_warnings": extraction_warnings, "output": run_output, "roslyn": roslyn, "analysis_status": analysis_status, "extractable_file_count": len(extractable_entries), "successful_extraction_count": successful_extractions}
+    return {"inventory": inventory, "graph_inventory": graph_inventory, "facts": facts, "graph": graph, "warnings": warnings, "extraction_warnings": extraction_warnings, "output": run_output, "roslyn": roslyn, "analysis_status": analysis_status, "extractable_file_count": len(extractable_entries), "successful_extraction_count": successful_extractions}
 
 
 def main() -> None:

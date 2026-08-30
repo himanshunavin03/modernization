@@ -23,6 +23,8 @@ def write_summary(path: Path, inventory: list[dict[str, str]], facts: list[Fact]
         f"- Graph edges: {len(graph['edges'])}",
         f"- Extraction warnings: {len(extraction_warnings)}",
         f"- Total graph warnings: {len(graph['warnings'])}",
+        f"- Scope: {graph.get('metadata', {}).get('scope_name', 'not specified')}",
+        f"- Coverage status: {graph.get('metadata', {}).get('coverage_status', 'not specified')}",
         "- Parser: Tree-sitter JavaScript, HTML, and C# only.",
         "",
         "## Needs Review",

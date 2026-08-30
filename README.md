@@ -96,6 +96,12 @@ Open Neo4j Browser manually: [http://localhost:7474](http://localhost:7474).
 
 Run a read-only graph query from `docs/neo4j-demo-queries.cypher` in Neo4j Browser.
 
+## Scope Boundaries
+
+Profiles declare an explicit scope contract: `scope_id`, `scope_name`, `scope_description`, `scope_type`, and `include_paths`. The `default` profile is `full_application`, so every discovered file appears in the graph. A `selected_modernization_flow` profile keeps a complete audit inventory but places only selected files in `knowledge-graph.json`.
+
+Every audit record is classified as `in_scope_succeeded`, `in_scope_failed_isolated`, `in_scope_unsupported`, or `out_of_scope`. Graph metadata reports selected and out-of-scope file counts, extraction and review warnings, and coverage status. A selected-flow graph is eligible for Neo4j loading only when its coverage is `scope_complete` and extraction-warning count is zero. Proven references from selected code to an excluded source symbol are represented by `OutOfScopeReference` nodes and `DEPENDS_ON_OUT_OF_SCOPE` edges instead of silently adding the excluded source to the graph.
+
 ## Recovery
 
 Before resuming work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, `AGENTS.md`, and the latest prompt under `docs/prompts/`.
