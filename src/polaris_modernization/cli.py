@@ -15,6 +15,7 @@ from polaris_modernization.source_inventory import build_inventory
 from polaris_modernization.tree_sitter_extractors.registry import extractor_for
 from polaris_modernization.graph.neo4j_loader import Neo4jLoader, connect, read_graph
 from polaris_modernization.roslyn_bridge import enrich
+from polaris_modernization.knowledge_graph_agent import create_knowledge_graph
 
 ROSLYN_LABELS = {
     "namespace": "Namespace", "controller": "Controller", "action": "Action",
@@ -154,6 +155,15 @@ def main() -> None:
     analyze_parser.add_argument("--profile", required=True)
     analyze_parser.add_argument("--output", required=True, type=Path)
     analyze_parser.add_argument("--enable-roslyn", action="store_true")
+    workflow_parser = subparsers.add_parser("create-knowledge-graph", help="Run the deterministic project-scoped graph workflow")
+    workflow_parser.add_argument("--source-root", required=True, type=Path)
+    workflow_parser.add_argument("--project-id", required=True)
+    workflow_parser.add_argument("--profile", required=True)
+    workflow_parser.add_argument("--output", required=True, type=Path)
+    workflow_parser.add_argument("--enable-roslyn", action="store_true")
+    neo4j_group = workflow_parser.add_mutually_exclusive_group()
+    neo4j_group.add_argument("--load-neo4j", action="store_true")
+    neo4j_group.add_argument("--skip-neo4j", action="store_true")
     load_parser = subparsers.add_parser("load-neo4j")
     load_parser.add_argument("--graph", required=True, type=Path)
     load_parser.add_argument("--project-id", required=True)
@@ -165,6 +175,20 @@ def main() -> None:
     if args.command == "analyze":
         result = analyze(args.source_root, args.project_id, args.profile, args.output, args.enable_roslyn)
         print(f"Analyzed {len(result['inventory'])} files into {result['output']}")
+    elif args.command == "create-knowledge-graph":
+        result = create_knowledge_graph(
+            args.source_root,
+            args.project_id,
+            args.profile,
+            args.output,
+            enable_roslyn=args.enable_roslyn,
+            load_neo4j=args.load_neo4j,
+        )
+        print(f"Create Knowledge Graph {result['overall_status']} for {result['project_id']}")
+        if result["artifact_paths"].get("graph_run_summary"):
+            print(result["artifact_paths"]["graph_run_summary"])
+        if result["overall_status"] == "failed":
+            raise SystemExit(1)
     elif args.command in {"load-neo4j", "clear-neo4j-project"}:
         driver = connect(os.getenv("NEO4J_URI", "bolt://localhost:7687"), os.getenv("NEO4J_USERNAME", "neo4j"), os.getenv("NEO4J_PASSWORD", "change-me"))
         loader = Neo4jLoader(driver)

@@ -64,7 +64,6 @@ Copy `.env.example` to `.env`, replace the password locally, then run:
 
 ```powershell
 docker compose up -d
-Start-Process http://localhost:7474
 docker compose down
 ```
 
@@ -76,6 +75,26 @@ python -m polaris_modernization.cli clear-neo4j-project --project-id "<project-i
 ```
 
 The clear command deletes only data with the confirmed project ID. Read-only customer demo queries are in `docs/neo4j-demo-queries.cypher`.
+
+## Create Knowledge Graph Demo
+
+Start Neo4j manually when a graph load is needed:
+
+```powershell
+docker compose up -d
+```
+
+Run the agent on a project:
+
+```powershell
+python -m polaris_modernization.cli create-knowledge-graph --source-root "<path-to-any-project>" --project-id "<unique-project-id>" --profile "default" --output "artifacts" --skip-neo4j
+```
+
+Add `--enable-roslyn` for optional semantic enrichment. Replace `--skip-neo4j` with `--load-neo4j` only after setting `NEO4J_URI`, `NEO4J_USERNAME`, and `NEO4J_PASSWORD` locally. The agent never starts Docker or opens a browser.
+
+Open Neo4j Browser manually: [http://localhost:7474](http://localhost:7474).
+
+Run a read-only graph query from `docs/neo4j-demo-queries.cypher` in Neo4j Browser.
 
 ## Recovery
 

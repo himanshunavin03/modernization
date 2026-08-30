@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 3C — Create Knowledge Graph agent command and customer-facing graph run status.
+Step 4 — Graph-backed business feature, epic, user-story, and acceptance-criteria workflow.
 
 ## Step 1 Result
 
@@ -36,7 +36,7 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Create the Step 3C Knowledge Graph agent command and customer-facing run status on top of the validated deterministic plus Roslyn graph pipeline. Do not begin Step 4 until Step 3C completes.
+Implement Step 4 only after reading the durable memory files and `docs/prompts/010-step-3c-create-knowledge-graph-agent.md`. Use the project-isolated knowledge graph as evidence for graph-backed business features, epics, user stories, and acceptance criteria.
 
 ## Step 3B.2 Result
 
@@ -50,6 +50,10 @@ Local validation on .NET SDK `8.0.424` built `tools/Polaris.RoslynAnalyzer/Polar
 
 The CLI loads normalized JSON into Neo4j with parameterized, idempotent `MERGE` operations. Graph nodes, generic relationships, warnings, evidence, and project IDs persist as project-scoped data. Clearing requires repeated project-ID confirmation and cannot issue a database-wide delete.
 
+## Step 3C Result
+
+`python -m polaris_modernization.cli create-knowledge-graph` is the executable deterministic Create Knowledge Graph workflow. It validates a safe project ID and source directory, runs Tree-sitter analysis with optional Roslyn enrichment, validates project-scoped graph records, optionally loads only that graph into Neo4j, and writes ignored customer-facing `graph-run-status.json` plus `graph-run-summary.md` under `artifacts/<project-id>/`. It defaults to graph-only mode and reports Neo4j configuration or connection failures as a controlled failed stage without any delete operation. Local validation against `tests/fixtures/roslyn-semantic` with `--enable-roslyn --skip-neo4j` succeeded with 1 file, 32 facts, 26 nodes, 23 edges, and 0 warnings; source hashes remained unchanged. Docker was unavailable locally, so optional Neo4j end-to-end validation was not run.
+
 ## Step 2.2 Result
 
 Project-to-file graph edges use `CONTAINS`; `CONTAINS_CONTROL` is reserved for file-hosted UI controls/components. MVC `RETURNS` edges are emitted only for explicit static `View("Name")` calls with a matching discovered Razor view. Implicit `View()` calls are review warnings. API calls are owned only by a unique Angular owner declared in the same file; otherwise the File owns the edge with unresolved metadata.
@@ -60,4 +64,4 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before doing any work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, and the latest file in `docs/prompts/`. Continue only from the Current Step.
+Before doing any work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, and `docs/prompts/010-step-3c-create-knowledge-graph-agent.md`. Continue only from the Current Step.
