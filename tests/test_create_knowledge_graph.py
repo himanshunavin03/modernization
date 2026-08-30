@@ -53,9 +53,22 @@ def test_status_artifact_has_required_customer_fields(tmp_path):
     status = json.loads(Path(result["artifact_paths"]["graph_run_status"]).read_text(encoding="utf-8"))
 
     assert {"project_id", "source_root", "started_at", "ended_at", "overall_status", "stages", "counts", "roslyn", "neo4j", "artifact_paths", "neo4j_browser_url", "next_actions"} <= status.keys()
-    assert {"file_count", "fact_count", "node_count", "edge_count", "warning_count"} <= status["counts"].keys()
+    assert {"file_count", "fact_count", "node_count", "edge_count", "warning_count", "extraction_warning_count", "review_warning_count"} <= status["counts"].keys()
     assert status["neo4j_browser_url"] == "http://localhost:7474"
     assert "local-only" not in Path(result["artifact_paths"]["graph_run_status"]).read_text(encoding="utf-8")
+
+
+def test_status_warning_and_scope_counts_match_graph_metadata(tmp_path):
+    result = agent.create_knowledge_graph(FIXTURE, "status-consistency", "default", tmp_path)
+    status = json.loads(Path(result["artifact_paths"]["graph_run_status"]).read_text(encoding="utf-8"))
+    graph = json.loads(Path(result["artifact_paths"]["knowledge_graph"]).read_text(encoding="utf-8"))
+
+    assert status["counts"]["warning_count"] == len(graph["warnings"])
+    assert status["counts"]["extraction_warning_count"] == graph["metadata"]["extraction_warning_count"]
+    assert status["counts"]["review_warning_count"] == graph["metadata"]["review_warning_count"]
+    assert status["counts"]["warning_count"] == status["counts"]["extraction_warning_count"] + status["counts"]["review_warning_count"]
+    assert status["scope"]["selected_file_count"] == graph["metadata"]["selected_file_count"]
+    assert status["scope"]["selected_file_count"] == sum(node["label"] == "File" for node in graph["nodes"])
 
 
 def test_neo4j_load_failure_is_controlled_without_any_delete(monkeypatch, tmp_path):

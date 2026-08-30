@@ -135,8 +135,9 @@ def create_knowledge_graph(
             "fact_count": len(result["facts"]) + len(result["roslyn"]["facts"]),
             "node_count": len(graph["nodes"]),
             "edge_count": len(graph["edges"]),
-            "warning_count": len(result["warnings"]) + len(graph["warnings"]),
-            "extraction_warning_count": len(result["extraction_warnings"]),
+            "warning_count": len(graph["warnings"]),
+            "extraction_warning_count": graph["metadata"]["extraction_warning_count"],
+            "review_warning_count": graph["metadata"]["review_warning_count"],
         }
         status["artifact_paths"].update({
             "knowledge_graph": str(result["output"] / "knowledge-graph.json"),

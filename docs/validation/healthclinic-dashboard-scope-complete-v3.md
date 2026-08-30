@@ -12,6 +12,7 @@
 
 ## Counts
 
+- Source of truth: `artifacts/healthclinic-dashboard-scope-demo-v3/graph-run-status.json` and `knowledge-graph.json` agree.
 - Audited files: 2,384
 - Facts: 88
 - Nodes: 119
