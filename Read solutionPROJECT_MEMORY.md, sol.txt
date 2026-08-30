@@ -1,0 +1,1 @@
+Read solution/PROJECT_MEMORY.md, solution/PROGRESS.md, solution/DECISIONS.md, and the latest file in solution/docs/prompts/. Continue from the current step. Do not modify source/HealthClinic.biz.
