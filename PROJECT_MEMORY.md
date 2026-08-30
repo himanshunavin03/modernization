@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 3C.6 — HealthClinic Dashboard Neo4j visual demo completed; awaiting review and commit approval.
+Step 3C.6 follow-up — read-only HealthClinic UI technology discovery completed; awaiting scope decision and commit approval.
 
 ## Step 1 Result
 
@@ -36,7 +36,7 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Close and reopen the VS Code terminal so the installed Docker Desktop CLI is added to `PATH`. Then verify `docker version` and `docker compose version`, and load only `healthclinic-dashboard-scope-demo-v3` for the visual demo. Use the scope-complete profile graph validated in `docs/validation/healthclinic-dashboard-scope-complete-v3.md`; do not begin Step 4.
+Review the read-only HealthClinic technology discovery and choose the exact target modernization scope. The recommended two-to-three-day POC boundary is the hybrid Dashboard flow: Legacy ASP.NET MVC/Razor shell plus Legacy AngularJS 1.x Dashboard route/service, rebuilt as a Target Angular 22 application. Do not change graphs, profiles, or source until that scope decision is approved.
 
 ## Step 3B.2 Result
 
@@ -73,6 +73,10 @@ Profiles now declare reusable evidence-backed scope fields: `scope_id`, `scope_n
 ## Step 3C.6 Result
 
 Docker Desktop `4.88.1` and Docker Compose `v5.4.0` started the local `neo4j:5-community` service successfully. The Roslyn-enabled Create Knowledge Graph workflow loaded only `healthclinic-dashboard-scope-demo-v3` into Neo4j with status `succeeded`; the load stage succeeded, scope coverage remained `scope_complete`, and the persisted counts match `knowledge-graph.json`: 123 nodes, 169 edges, and 27 warning records. The scope retains 2,384 audited files, 24 selected File nodes, 2,360 out-of-scope audited files, zero extraction warnings, and 27 visible review warnings. Neo4j contains project-scoped records only for that project ID. The 2,395-file source fingerprint was unchanged before and after: `0b92e1701cdd2374e259ea4fed9811b7e20e4719ff8ea70e4a8aa5023cacf2b4`. See `docs/validation/healthclinic-dashboard-neo4j-visual-demo.md`; do not begin Step 4 without user direction.
+
+## HealthClinic UI Technology Discovery
+
+Read-only discovery confirms `src/MyHealth.Web` is a Legacy ASP.NET MVC/Razor UI with embedded Legacy AngularJS 1.x client-side code: Razor layouts load `/app/app.js`, Dashboard content hosts `ui-view`, and `bower.json` declares Angular `~1.4.5` with AngularJS UI Router. No `angular.json`, `@angular/core`, React, or Vue dependency proof was found. The repository also contains a separate ASP.NET API/backend, data/model/integration libraries, a Node/Express clinic web application, Cordova, and native/mobile projects. The existing `healthclinic-dashboard` profile is a complete legacy UI-flow demo, not a pure Razor-only demo. See `docs/validation/healthclinic-ui-technology-discovery.md`.
 
 ## Step 2.2 Result
 
