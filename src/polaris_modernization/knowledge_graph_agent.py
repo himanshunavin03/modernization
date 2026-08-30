@@ -57,6 +57,7 @@ def _summary(status: dict[str, Any]) -> str:
         f"- Nodes: {status['counts']['node_count']}",
         f"- Edges: {status['counts']['edge_count']}",
         f"- Warnings: {status['counts']['warning_count']}",
+        f"- Extraction warnings: {status['counts'].get('extraction_warning_count', 0)}",
         f"- Roslyn: `{status['roslyn']['status']}`",
         f"- Neo4j: `{status['neo4j']['status']}`",
         "",
@@ -132,6 +133,7 @@ def create_knowledge_graph(
             "node_count": len(graph["nodes"]),
             "edge_count": len(graph["edges"]),
             "warning_count": len(result["warnings"]) + len(graph["warnings"]),
+            "extraction_warning_count": len(result["extraction_warnings"]),
         }
         status["artifact_paths"].update({
             "knowledge_graph": str(result["output"] / "knowledge-graph.json"),
@@ -143,7 +145,17 @@ def create_knowledge_graph(
             status["roslyn"] = {"status": "succeeded", "enabled": True}
         elif enable_roslyn:
             status["roslyn"] = {"status": "warning", "enabled": True, "warning_count": len(roslyn_warnings)}
-        status["stages"].append(_stage("analyze_source", "succeeded", "Deterministic analysis completed."))
+        analysis_status = result["analysis_status"]
+        if analysis_status == "failed":
+            status["stages"].append(_stage("analyze_source", "failed", "Every selected extractable file failed in isolated extraction."))
+            status["next_actions"] = ["Review extraction warnings and retry after the affected parser boundary is repaired."]
+            status["ended_at"] = _timestamp()
+            _write_status(status, run_output)
+            return status
+        if analysis_status == "succeeded_with_warnings":
+            status["stages"].append(_stage("analyze_source", "warning", "Analysis completed with isolated file extraction warnings."))
+        else:
+            status["stages"].append(_stage("analyze_source", "succeeded", "Deterministic analysis completed."))
     except Exception as error:
         status["stages"].append(_stage("analyze_source", "failed", f"Analysis failed: {error}"))
         status["next_actions"] = ["Correct the source or selected profile, then run the command again."]
@@ -162,7 +174,12 @@ def create_knowledge_graph(
         _write_status(status, run_output)
         return status
 
-    if not load_neo4j:
+    has_extraction_warnings = bool(result["extraction_warnings"])
+    if has_extraction_warnings and load_neo4j:
+        status["stages"].append(_stage("load_neo4j", "warning", "Neo4j load blocked because isolated extraction warnings require review."))
+        status["neo4j"] = {"status": "blocked", "requested": True}
+        status["next_actions"] = ["Review skipped-file extraction warnings before any future Neo4j load approval."]
+    elif not load_neo4j:
         status["stages"].append(_stage("load_neo4j", "warning", "Neo4j load skipped by --skip-neo4j or default graph-only mode."))
         status["neo4j"] = {"status": "skipped", "requested": False}
         status["next_actions"] = [
@@ -193,7 +210,7 @@ def create_knowledge_graph(
                 if driver is not None:
                     driver.close()
 
-    status["overall_status"] = "failed" if any(item["status"] == "failed" for item in status["stages"]) else "succeeded"
+    status["overall_status"] = "failed" if any(item["status"] == "failed" for item in status["stages"]) else "succeeded_with_warnings" if any(item["status"] == "warning" for item in status["stages"] if item["name"] == "analyze_source") else "succeeded"
     status["ended_at"] = _timestamp()
     status["stages"].append(_stage("produce_run_status", "succeeded", "Customer-facing run status artifacts were created."))
     _write_status(status, run_output)

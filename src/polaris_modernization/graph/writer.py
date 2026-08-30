@@ -12,7 +12,8 @@ def write_json(path: Path, payload: object) -> None:
     path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def write_summary(path: Path, inventory: list[dict[str, str]], facts: list[Fact], graph: dict) -> None:
+def write_summary(path: Path, inventory: list[dict[str, str]], facts: list[Fact], graph: dict, extraction_warnings: list[dict] | None = None) -> None:
+    extraction_warnings = extraction_warnings or []
     lines = [
         "# Dashboard Deterministic Extraction Summary",
         "",
@@ -20,6 +21,8 @@ def write_summary(path: Path, inventory: list[dict[str, str]], facts: list[Fact]
         f"- Deterministic facts: {len(facts)}",
         f"- Graph nodes: {len(graph['nodes'])}",
         f"- Graph edges: {len(graph['edges'])}",
+        f"- Extraction warnings: {len(extraction_warnings)}",
+        f"- Total graph warnings: {len(graph['warnings'])}",
         "- Parser: Tree-sitter JavaScript, HTML, and C# only.",
         "",
         "## Needs Review",

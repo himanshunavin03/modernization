@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 import os
 from pathlib import Path
 
@@ -15,6 +16,7 @@ from polaris_modernization.source_inventory import build_inventory
 from polaris_modernization.tree_sitter_extractors.registry import extractor_for
 from polaris_modernization.graph.neo4j_loader import Neo4jLoader, connect, read_graph
 from polaris_modernization.roslyn_bridge import enrich
+from polaris_modernization.isolated_extraction import extract_file
 from polaris_modernization.knowledge_graph_agent import create_knowledge_graph
 
 ROSLYN_LABELS = {
@@ -124,12 +126,38 @@ def analyze(source_root: Path, project_id: str, profile_name: str, output: Path,
     inventory, warnings = build_inventory(source_root, profile)
     facts: list[Fact] = []
     source_root = source_root.resolve()
+    extractable_entries = []
     for entry in inventory:
-        if not entry["selected_for_extraction"]: continue
         source_path = source_root / entry["source_path"]
-        digest = entry["source_hash"]
-        extractor = extractor_for(source_path)
-        if extractor: facts.extend(extractor.extract(source_path, source_root, digest, project_id))
+        if not entry["selected_for_extraction"]:
+            entry["extraction_status"] = "skipped"
+        elif extractor_for(source_path) is None:
+            entry["extraction_status"] = "unsupported"
+        else:
+            extractable_entries.append(entry)
+
+    def request(entry: dict) -> dict[str, str]:
+        return {
+            "source_root": str(source_root),
+            "source_path": entry["source_path"],
+            "source_hash": entry["source_hash"],
+            "project_id": project_id,
+            "language": str(entry.get("language") or "unknown"),
+        }
+
+    extraction_warnings: list[dict] = []
+    # Native grammars run outside the parent so a parser fault skips only its source file.
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        results = list(executor.map(extract_file, (request(entry) for entry in extractable_entries)))
+    successful_extractions = 0
+    for entry, result in zip(extractable_entries, results):
+        if result.warning:
+            entry["extraction_status"] = "failed_isolated"
+            extraction_warnings.append(result.warning)
+        else:
+            entry["extraction_status"] = "succeeded"
+            successful_extractions += 1
+            facts.extend(result.facts)
 
     graph = normalize(project_id, inventory, facts)
     run_output = output / project_id
@@ -137,13 +165,15 @@ def analyze(source_root: Path, project_id: str, profile_name: str, output: Path,
     roslyn = enrich(source_root, project_id, run_output / "roslyn-semantic.json") if enable_roslyn else {"project_id":project_id,"facts":[],"warnings":[]}
     if enable_roslyn and not (run_output / "roslyn-semantic.json").exists(): write_json(run_output / "roslyn-semantic.json", roslyn)
     graph["warnings"].extend(roslyn["warnings"])
+    graph["warnings"].extend(extraction_warnings)
     merge_roslyn(graph, roslyn["facts"], project_id)
-    write_json(run_output / "source-inventory.json", {"project_id": project_id, "files": inventory, "warnings": warnings})
+    write_json(run_output / "source-inventory.json", {"project_id": project_id, "files": inventory, "warnings": warnings, "extraction_warnings": extraction_warnings})
     write_json(run_output / "framework-detection.json", {"project_id": project_id, "frameworks": detect_frameworks(source_root, inventory)})
     write_json(run_output / "facts.json", {"project_id": project_id, "facts": [fact.to_dict() for fact in facts]})
     write_json(run_output / "knowledge-graph.json", graph)
-    write_summary(run_output / "analysis-summary.md", inventory, facts, graph)
-    return {"inventory": inventory, "facts": facts, "graph": graph, "warnings": warnings, "output": run_output, "roslyn": roslyn}
+    write_summary(run_output / "analysis-summary.md", inventory, facts, graph, extraction_warnings)
+    analysis_status = "failed" if not extractable_entries or successful_extractions == 0 else "succeeded_with_warnings" if extraction_warnings else "succeeded"
+    return {"inventory": inventory, "facts": facts, "graph": graph, "warnings": warnings, "extraction_warnings": extraction_warnings, "output": run_output, "roslyn": roslyn, "analysis_status": analysis_status, "extractable_file_count": len(extractable_entries), "successful_extraction_count": successful_extractions}
 
 
 def main() -> None:
