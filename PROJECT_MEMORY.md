@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 3C.6 — HealthClinic Dashboard Neo4j visual-demo preflight.
+Step 3C.6 — HealthClinic Dashboard Neo4j visual demo completed; awaiting review and commit approval.
 
 ## Step 1 Result
 
@@ -36,7 +36,7 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Install and start Docker Desktop so the `docker` CLI is available in this PowerShell session, then load only `healthclinic-dashboard-scope-demo-v3` for the visual demo. Use the scope-complete profile graph validated in `docs/validation/healthclinic-dashboard-scope-complete-v3.md`; do not begin Step 4.
+Close and reopen the VS Code terminal so the installed Docker Desktop CLI is added to `PATH`. Then verify `docker version` and `docker compose version`, and load only `healthclinic-dashboard-scope-demo-v3` for the visual demo. Use the scope-complete profile graph validated in `docs/validation/healthclinic-dashboard-scope-complete-v3.md`; do not begin Step 4.
 
 ## Step 3B.2 Result
 
@@ -72,7 +72,7 @@ Profiles now declare reusable evidence-backed scope fields: `scope_id`, `scope_n
 
 ## Step 3C.6 Result
 
-Neo4j visual-demo preflight was blocked before any `.env`, Docker Compose, graph workflow, or database operation. Both `docker version` and `docker compose version` failed because PowerShell could not resolve `docker`. No Neo4j load is claimed. Install and start Docker Desktop so `docker` is available in this PowerShell session, then resume prompt 016 and load only `healthclinic-dashboard-scope-demo-v3`. The blocked-preflight evidence is in `docs/validation/healthclinic-dashboard-neo4j-visual-demo.md`.
+Docker Desktop `4.88.1` and Docker Compose `v5.4.0` started the local `neo4j:5-community` service successfully. The Roslyn-enabled Create Knowledge Graph workflow loaded only `healthclinic-dashboard-scope-demo-v3` into Neo4j with status `succeeded`; the load stage succeeded, scope coverage remained `scope_complete`, and the persisted counts match `knowledge-graph.json`: 123 nodes, 169 edges, and 27 warning records. The scope retains 2,384 audited files, 24 selected File nodes, 2,360 out-of-scope audited files, zero extraction warnings, and 27 visible review warnings. Neo4j contains project-scoped records only for that project ID. The 2,395-file source fingerprint was unchanged before and after: `0b92e1701cdd2374e259ea4fed9811b7e20e4719ff8ea70e4a8aa5023cacf2b4`. See `docs/validation/healthclinic-dashboard-neo4j-visual-demo.md`; do not begin Step 4 without user direction.
 
 ## Step 2.2 Result
 
@@ -84,4 +84,4 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before doing any work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 016 under `docs/prompts/`, `docs/agents/create-knowledge-graph.md`, and `docs/validation/healthclinic-dashboard-neo4j-visual-demo.md`. Continue only from the Current Step.
+Before doing any further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 017 under `docs/prompts/`, `docs/agents/create-knowledge-graph.md`, and `docs/validation/healthclinic-dashboard-neo4j-visual-demo.md`. Await user review and commit approval; do not begin Step 4 automatically.

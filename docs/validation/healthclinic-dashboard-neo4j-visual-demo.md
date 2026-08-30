@@ -1,37 +1,51 @@
-# HealthClinic Dashboard Neo4j Visual Demo Preflight
+# HealthClinic Dashboard Neo4j Visual Demo
+
+## Result
+
+- Workflow status: `succeeded`
+- Neo4j load stage: `succeeded`
+- Project ID: `healthclinic-dashboard-scope-demo-v3`
+- Neo4j Browser: [http://localhost:7474](http://localhost:7474)
+- Docker Compose service: `modernization-neo4j-1` is running with ports 7474 and 7687 published.
 
 ## Commands Run
 
 ```powershell
 docker version
 docker compose version
+docker compose up -d
+docker compose ps
+python -m polaris_modernization.cli create-knowledge-graph --source-root "source\HealthClinic.biz" --project-id "healthclinic-dashboard-scope-demo-v3" --profile "healthclinic-dashboard" --output "artifacts" --enable-roslyn --load-neo4j
+python -m pytest -q
 ```
 
-Both commands failed because PowerShell could not resolve the `docker` command.
+The Neo4j environment variables were set in the session from the ignored local `.env`; no password is included in this report.
 
-## Verification Result
+## Verified Counts
 
-- Neo4j load: not attempted.
-- Docker Compose start: not attempted.
-- `.env`: not created or modified.
-- Neo4j Browser: [http://localhost:7474](http://localhost:7474) is not reachable for this demo until Docker Desktop is available.
-- Required action: install and start Docker Desktop so `docker` is available in this PowerShell session, then resume from prompt 016.
-
-## Validated Graph Baseline
-
-- Project ID: `healthclinic-dashboard-scope-demo-v3`
-- Audit files: 2,384
+- Audited files: 2,384
 - Selected File nodes: 24
-- Graph nodes: 119
-- Graph edges: 167
-- Total warnings: 11
+- Out-of-scope audited files: 2,360
+- Generated and persisted GraphNode records: 123
+- Generated and persisted GRAPH_REL relationships: 169
+- Generated and persisted GraphWarning records: 27
+- Facts: 115
 - Extraction warnings: 0
-- Review warnings: 11
-- Coverage: `scope_complete`
+- Review warnings: 27
+- Scope coverage: `scope_complete`
+- Roslyn: `succeeded`
+
+Neo4j project-scoped records contain only `healthclinic-dashboard-scope-demo-v3`: 123 `GraphNode` records and 27 `GraphWarning` records. Generated `knowledge-graph.json` node and edge counts match Neo4j exactly.
+
+## Source Integrity
+
+- Files checked before and after: 2,395
+- Per-file aggregate source-tree SHA-256 before and after: `0b92e1701cdd2374e259ea4fed9811b7e20e4719ff8ea70e4a8aa5023cacf2b4`
+- Result: unchanged
 
 ## Customer Demo Queries
 
-Set `$project_id` to `healthclinic-dashboard-scope-demo-v3` before running these read-only queries.
+Set `$project_id` to `healthclinic-dashboard-scope-demo-v3` in Neo4j Browser parameters before running these read-only queries.
 
 ```cypher
 MATCH (n:GraphNode {project_id: $project_id})
@@ -41,18 +55,29 @@ RETURN $project_id AS project_id, node_count, count(r) AS edge_count;
 ```
 
 ```cypher
-MATCH (p:GraphNode {project_id: $project_id, label: 'Project'})-[:GRAPH_REL {type: 'CONTAINS'}]->(f:GraphNode)
-OPTIONAL MATCH (f)-[:GRAPH_REL {type: 'CONTAINS_CONTROL'}]->(control:GraphNode)
-RETURN f.name, collect(control.name) AS controls;
+MATCH (module:GraphNode {project_id: $project_id, label: 'AngularModule'})-[:GRAPH_REL {project_id: $project_id, type: 'CONFIGURES_ROUTE'}]->(route:GraphNode)
+OPTIONAL MATCH (route)-[:GRAPH_REL {project_id: $project_id, type: 'USES_TEMPLATE'}]->(template:GraphNode)
+RETURN module.name, route.name, template.name
+ORDER BY route.name;
 ```
 
 ```cypher
-MATCH (file:GraphNode {project_id: $project_id, label: 'File'})-[r:GRAPH_REL {type: 'CALLS_API'}]->(api:GraphNode)
-RETURN file.name, api.name, r.properties_json;
+MATCH (file:GraphNode {project_id: $project_id, label: 'File'})-[r:GRAPH_REL {project_id: $project_id, type: 'CALLS_API'}]->(api:GraphNode)
+RETURN file.name, api.name, r.properties_json
+ORDER BY file.name, api.name;
 ```
 
-## Source Integrity
+## Review Warnings
 
-- No command in this preflight writes to `source/`.
-- No source analysis or Neo4j load was run after the Docker preflight failed.
-- The prior scope-complete validation source-tree fingerprint remains `c8b0e9f1be7724d5a15bb0a6a4ccda73920c653ff65181cc39ba96adbdc795d5`.
+- 9 unresolved Roslyn invocation targets
+- 3 unresolved Roslyn method declarations or return types
+- 2 unresolved Roslyn property declarations or property types
+- 3 unresolved Roslyn return types
+- 6 API calls with owner not uniquely proven, attached to their File node
+- 4 implicit MVC `View()` calls that cannot be matched deterministically
+
+These are review warnings, not extraction failures; all selected files were successfully analyzed.
+
+## Validation
+
+`python -m pytest -q` completed with `34 passed, 2 skipped`.
