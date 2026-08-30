@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 3C.5 — Scope-complete HealthClinic Dashboard Neo4j visual-demo preparation.
+Step 3C.6 — HealthClinic Dashboard Neo4j visual-demo preflight.
 
 ## Step 1 Result
 
@@ -36,7 +36,7 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Install/start Docker Neo4j and load only `healthclinic-dashboard-scope-demo-v3` for the visual demo. Use the scope-complete profile graph validated in `docs/validation/healthclinic-dashboard-scope-complete-v3.md`; do not begin Step 4.
+Install and start Docker Desktop so the `docker` CLI is available in this PowerShell session, then load only `healthclinic-dashboard-scope-demo-v3` for the visual demo. Use the scope-complete profile graph validated in `docs/validation/healthclinic-dashboard-scope-complete-v3.md`; do not begin Step 4.
 
 ## Step 3B.2 Result
 
@@ -70,6 +70,10 @@ The reusable `healthclinic-dashboard` YAML profile was run from the HealthClinic
 
 Profiles now declare reusable evidence-backed scope fields: `scope_id`, `scope_name`, `scope_description`, `scope_type`, and `include_paths`. The `full_application` profile graphs every audited file. A `selected_modernization_flow` profile retains a complete inventory with `in_scope_succeeded`, `in_scope_failed_isolated`, `in_scope_unsupported`, and `out_of_scope` states, while File nodes and normal Roslyn facts are limited to selected paths. Proven cross-scope semantic dependencies are represented honestly by `OutOfScopeReference` nodes and `DEPENDS_ON_OUT_OF_SCOPE` edges. The regenerated v3 HealthClinic root run succeeded with 2,384 audited files, 24 selected graph files, 88 facts, 119 nodes, 167 edges, 11 total warnings, 11 review warnings, and zero extraction warnings. Its coverage is `scope_complete`; no cross-scope dependency was proven. The 2,395-file per-file aggregate source-tree SHA-256 was unchanged at `c8b0e9f1be7724d5a15bb0a6a4ccda73920c653ff65181cc39ba96adbdc795d5`. The graph is ready for the Neo4j Dashboard modernization-flow visual demo; load only `healthclinic-dashboard-scope-demo-v3` after Docker Neo4j is available.
 
+## Step 3C.6 Result
+
+Neo4j visual-demo preflight was blocked before any `.env`, Docker Compose, graph workflow, or database operation. Both `docker version` and `docker compose version` failed because PowerShell could not resolve `docker`. No Neo4j load is claimed. Install and start Docker Desktop so `docker` is available in this PowerShell session, then resume prompt 016 and load only `healthclinic-dashboard-scope-demo-v3`. The blocked-preflight evidence is in `docs/validation/healthclinic-dashboard-neo4j-visual-demo.md`.
+
 ## Step 2.2 Result
 
 Project-to-file graph edges use `CONTAINS`; `CONTAINS_CONTROL` is reserved for file-hosted UI controls/components. MVC `RETURNS` edges are emitted only for explicit static `View("Name")` calls with a matching discovered Razor view. Implicit `View()` calls are review warnings. API calls are owned only by a unique Angular owner declared in the same file; otherwise the File owns the edge with unresolved metadata.
@@ -80,4 +84,4 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before doing any work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 015 under `docs/prompts/`, `docs/agents/create-knowledge-graph.md`, and `docs/validation/healthclinic-dashboard-scope-complete-v3.md`. Continue only from the Current Step.
+Before doing any work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 016 under `docs/prompts/`, `docs/agents/create-knowledge-graph.md`, and `docs/validation/healthclinic-dashboard-neo4j-visual-demo.md`. Continue only from the Current Step.
