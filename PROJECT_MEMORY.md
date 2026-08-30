@@ -15,11 +15,28 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 1 - Dashboard source discovery is complete. Step 2 has not started.
+Step 2 complete — deterministic Tree-sitter extraction and evidence graph JSON created.
 
 ## Step 1 Result
 
 The Dashboard MVC view is a protected Razor shell. It composes Dashboard partials and delegates feature content/navigation to client-side components and an AngularJS `ui-view`. The detailed evidence and unproven areas are recorded in `docs/dashboard-analysis.md`.
+
+## Step 2 Result
+
+The current Git repository root is the solution root. A Python 3.11 deterministic extractor uses Tree-sitter JavaScript, HTML, and C# grammars to inventory the approved Dashboard scope and write evidence-bearing inventory, facts, graph, and summary artifacts under `artifacts/`. It does not call an LLM or modify the reference source.
+
+## Approved Future Capabilities
+
+- Transform the knowledge graph into PRDs, epics, features, user stories, acceptance criteria, and traceability links for business approval before code generation.
+- Accept customer Figma designs as optional target-design input for target look and design tokens; retain the knowledge graph as evidence for existing behavior and APIs.
+- Discover and reuse approved Angular shared components and design systems before generating duplicate components.
+- Create a target architecture assessment, architecture diagram, ADR, Nx boundaries, and migration plan before Angular generation.
+- Select standard Angular, Nx modular monolith, or microfrontend architecture through evidence-based, rule-driven assessment of shared libraries, SSR/hydration, BFF, Signals, typed forms, security, and testing.
+- Keep Angular 22 Nx modular monolith as the likely POC default while making the architecture assessment configurable.
+
+## Next Step
+
+Step 3 - load normalized graph JSON into Neo4j and add the Roslyn/LSP semantic enrichment adapter.
 
 ## Recovery Instruction
 

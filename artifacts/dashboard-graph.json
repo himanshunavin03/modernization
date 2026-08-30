@@ -1,0 +1,4572 @@
+{
+  "edges": [
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 54,
+          "line_start": 48,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        }
+      ],
+      "source": "AngularService:dashboardService",
+      "target": "ApiCall:'/api/reports/expenses/' + year",
+      "type": "CALLS_API"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 78,
+          "line_start": 72,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        }
+      ],
+      "source": "AngularService:dashboardService",
+      "target": "ApiCall:'/api/reports/patients/' + year",
+      "type": "CALLS_API"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 30,
+          "line_start": 24,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        }
+      ],
+      "source": "AngularService:dashboardService",
+      "target": "ApiCall:/api/reports/clinicsummary",
+      "type": "CALLS_API"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 21,
+          "line_start": 18,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 45,
+          "line_start": 42,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 69,
+          "line_start": 66,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        }
+      ],
+      "source": "AngularService:dashboardService",
+      "target": "ApiCall:/api/users/current/tenant",
+      "type": "CALLS_API"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 81,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "AngularModule:moduleName",
+      "target": "Route:clinic",
+      "type": "CONFIGURES_ROUTE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 76,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "AngularModule:moduleName",
+      "target": "Route:clinics",
+      "type": "CONFIGURES_ROUTE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 61,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "AngularModule:moduleName",
+      "target": "Route:dailyReport",
+      "type": "CONFIGURES_ROUTE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 41,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "AngularModule:moduleName",
+      "target": "Route:dashboard",
+      "type": "CONFIGURES_ROUTE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 36,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "AngularModule:moduleName",
+      "target": "Route:default",
+      "type": "CONFIGURES_ROUTE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 51,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "AngularModule:moduleName",
+      "target": "Route:doctor",
+      "type": "CONFIGURES_ROUTE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 46,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "AngularModule:moduleName",
+      "target": "Route:doctors",
+      "type": "CONFIGURES_ROUTE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 85,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "AngularModule:moduleName",
+      "target": "Route:error",
+      "type": "CONFIGURES_ROUTE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 56,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "AngularModule:moduleName",
+      "target": "Route:patients",
+      "type": "CONFIGURES_ROUTE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 71,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "AngularModule:moduleName",
+      "target": "Route:user",
+      "type": "CONFIGURES_ROUTE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 66,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "AngularModule:moduleName",
+      "target": "Route:users",
+      "type": "CONFIGURES_ROUTE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+          "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/Controllers/AccountController.cs",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+          "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/Controllers/DashboardController.cs",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "598a28c3d61170d15ec3f9ca3dafb048ffd1eea94ccf3ff7baf1315d5a34368d",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "1ca16a900c319263ebcae1b8fd1d6515fbb4daf76618bff6088efcc13affb97a",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "5ea069f9b58f01d7daada2535e57668e8be0c68a71a5840c7ee8bd27b96ebe06",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/Views/Dashboard/_Header.cshtml",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "ed2a4e94e2c64f14b61b2825d12830db9a288a99fae86b4c02c0b1b0619d4e53",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "5be7cfa85fcf4c29ff622cab2feeb6061bc212cdd6dd846c8ff60929e5c25065",
+          "source_path": "src/MyHealth.Web/Views/Shared/Error.cshtml"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/Views/Shared/Error.cshtml",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "1ca16a900c319263ebcae1b8fd1d6515fbb4daf76618bff6088efcc13affb97a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Footer.cshtml"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/Views/Shared/_Footer.cshtml",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "db59cda7291242c240e634189eef7e3caa314767087fbe3b7029bfa0bc063f79",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Layout.cshtml"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/Views/Shared/_Layout.cshtml",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "78a06f717a5babe20b0834a272a5786f025b8e85ae43920755381a5e0990997a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "e4cbdd1734e6d19228d821acce97caa9840523252221f427199b064446c4eada",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "25168cb8c1fdd42f88913b5bc0bc861e8e379e453e6918163fece2dd453865fc",
+          "source_path": "src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/content/app/app.module.js",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "13fec6b1663ec25e2ce9170fc2202ad5fd73b8fc39fb437d5e95f023bf5774cf",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "0cffc73511fd01e81cae0477368c6865f266bbdc8073c56da4cd13a6c75976ad",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "3812a6498a1b7c55d2aa801fb64cbd7ad378dc9ab44d3e4ad99345b82506efb8",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarTemplate.html"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarTemplate.html",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "24efbf80440f17ff0d4cfe4cf47ffd0d2e233c625c7a54281207359aec10796c",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "e5bb24002d225b2c9c5e3318addee0b121379b268b2d206bad3acf571fccac74",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "Application:HealthClinic.biz",
+      "target": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "type": "CONTAINS_CONTROL"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 25,
+          "line_start": 22,
+          "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+          "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 47,
+          "line_start": 27,
+          "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+          "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+        }
+      ],
+      "source": "Controller:AccountController",
+      "target": "Action:Login",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 59,
+          "line_start": 49,
+          "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+          "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+        }
+      ],
+      "source": "Controller:AccountController",
+      "target": "Action:RedirectToLocal",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 12,
+          "line_start": 9,
+          "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+          "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+        }
+      ],
+      "source": "Controller:DashboardController",
+      "target": "Action:Index",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 25,
+          "line_start": 22,
+          "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+          "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 47,
+          "line_start": 27,
+          "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+          "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Controllers/AccountController.cs",
+      "target": "Action:Login",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 59,
+          "line_start": 49,
+          "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+          "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Controllers/AccountController.cs",
+      "target": "Action:RedirectToLocal",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 60,
+          "line_start": 9,
+          "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+          "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Controllers/AccountController.cs",
+      "target": "Controller:AccountController",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 12,
+          "line_start": 9,
+          "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+          "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Controllers/DashboardController.cs",
+      "target": "Action:Index",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 6,
+          "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+          "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Controllers/DashboardController.cs",
+      "target": "AuthorizationPolicy:Authorize",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 6,
+          "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+          "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Controllers/DashboardController.cs",
+      "target": "Controller:DashboardController",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 1,
+          "source_hash": "598a28c3d61170d15ec3f9ca3dafb048ffd1eea94ccf3ff7baf1315d5a34368d",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+      "target": "RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 12,
+          "line_start": 1,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "target": "PartialView:src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 12,
+          "line_start": 9,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 11,
+          "line_start": 11,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "target": "UIControl:loading-overlay",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 7,
+          "line_start": 7,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "target": "UIControl:toaster-container",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 5,
+          "line_start": 1,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 4,
+          "line_start": 2,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 3,
+          "line_start": 3,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "target": "UIControl:ui-view",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 16,
+          "line_start": 1,
+          "source_hash": "1ca16a900c319263ebcae1b8fd1d6515fbb4daf76618bff6088efcc13affb97a",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+      "target": "PartialView:src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 2,
+          "line_start": 2,
+          "source_hash": "5ea069f9b58f01d7daada2535e57668e8be0c68a71a5840c7ee8bd27b96ebe06",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_Header.cshtml",
+      "target": "ClientComponent:header-bar",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 3,
+          "line_start": 1,
+          "source_hash": "5ea069f9b58f01d7daada2535e57668e8be0c68a71a5840c7ee8bd27b96ebe06",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_Header.cshtml",
+      "target": "PartialView:src/MyHealth.Web/Views/Dashboard/_Header.cshtml",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 9,
+          "line_start": 9,
+          "source_hash": "ed2a4e94e2c64f14b61b2825d12830db9a288a99fae86b4c02c0b1b0619d4e53",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml",
+      "target": "ClientComponent:left-menu",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 11,
+          "line_start": 1,
+          "source_hash": "ed2a4e94e2c64f14b61b2825d12830db9a288a99fae86b4c02c0b1b0619d4e53",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml",
+      "target": "PartialView:src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 9,
+          "line_start": 1,
+          "source_hash": "5be7cfa85fcf4c29ff622cab2feeb6061bc212cdd6dd846c8ff60929e5c25065",
+          "source_path": "src/MyHealth.Web/Views/Shared/Error.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/Error.cshtml",
+      "target": "RazorView:src/MyHealth.Web/Views/Shared/Error.cshtml",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 16,
+          "line_start": 1,
+          "source_hash": "1ca16a900c319263ebcae1b8fd1d6515fbb4daf76618bff6088efcc13affb97a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Footer.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_Footer.cshtml",
+      "target": "PartialView:src/MyHealth.Web/Views/Shared/_Footer.cshtml",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 36,
+          "line_start": 1,
+          "source_hash": "db59cda7291242c240e634189eef7e3caa314767087fbe3b7029bfa0bc063f79",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Layout.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_Layout.cshtml",
+      "target": "Layout:src/MyHealth.Web/Views/Shared/_Layout.cshtml",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 14,
+          "line_start": 14,
+          "source_hash": "db59cda7291242c240e634189eef7e3caa314767087fbe3b7029bfa0bc063f79",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Layout.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_Layout.cshtml",
+      "target": "StyleAsset:href=\"~/css/public-site.css\"",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 17,
+          "line_start": 17,
+          "source_hash": "db59cda7291242c240e634189eef7e3caa314767087fbe3b7029bfa0bc063f79",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Layout.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_Layout.cshtml",
+      "target": "StyleAsset:href=\"~/css/public-site.min.css\"",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 26,
+          "line_start": 1,
+          "source_hash": "78a06f717a5babe20b0834a272a5786f025b8e85ae43920755381a5e0990997a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml",
+      "target": "Layout:src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 13,
+          "source_hash": "78a06f717a5babe20b0834a272a5786f025b8e85ae43920755381a5e0990997a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml",
+      "target": "StyleAsset:href=\"~/css/appointments-site.css\"",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 16,
+          "line_start": 16,
+          "source_hash": "78a06f717a5babe20b0834a272a5786f025b8e85ae43920755381a5e0990997a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml",
+      "target": "StyleAsset:href=\"~/css/appointments-site.min.css\"",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 34,
+          "line_start": 1,
+          "source_hash": "e4cbdd1734e6d19228d821acce97caa9840523252221f427199b064446c4eada",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml",
+      "target": "Layout:src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 10,
+          "line_start": 10,
+          "source_hash": "e4cbdd1734e6d19228d821acce97caa9840523252221f427199b064446c4eada",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml",
+      "target": "StyleAsset:href=\"~/css/private-site.css\"",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 13,
+          "source_hash": "e4cbdd1734e6d19228d821acce97caa9840523252221f427199b064446c4eada",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml",
+      "target": "StyleAsset:href=\"~/css/private-site.min.css\"",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 15,
+          "line_start": 1,
+          "source_hash": "25168cb8c1fdd42f88913b5bc0bc861e8e379e453e6918163fece2dd453865fc",
+          "source_path": "src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "target": "PartialView:src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 11,
+          "line_start": 11,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "AngularModule:moduleName",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 81,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "Route:clinic",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 76,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "Route:clinics",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 61,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "Route:dailyReport",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 41,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "Route:dashboard",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 36,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "Route:default",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 51,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "Route:doctor",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 46,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "Route:doctors",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 85,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "Route:error",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 56,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "Route:patients",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 71,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "Route:user",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 66,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "Route:users",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 141,
+          "line_start": 1,
+          "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js",
+      "target": "AngularController:DashboardController",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 9,
+          "line_start": 7,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js",
+      "target": "AngularController:dashboardController",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 8,
+          "line_start": 7,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js",
+      "target": "AngularDirective:chart",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 7,
+          "line_start": 7,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js",
+      "target": "AngularModule:moduleName",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 10,
+          "line_start": 7,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js",
+      "target": "AngularService:dashboardService",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 8,
+          "line_start": 7,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js",
+      "target": "Chart:chart",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 150,
+          "line_start": 3,
+          "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js",
+      "target": "AngularDirective:MHChart",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 54,
+          "line_start": 48,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "target": "ApiCall:'/api/reports/expenses/' + year",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 78,
+          "line_start": 72,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "target": "ApiCall:'/api/reports/patients/' + year",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 30,
+          "line_start": 24,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "target": "ApiCall:/api/reports/clinicsummary",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 21,
+          "line_start": 18,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 45,
+          "line_start": 42,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 69,
+          "line_start": 66,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "target": "ApiCall:/api/users/current/tenant",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 29,
+          "line_start": 1,
+          "source_hash": "0cffc73511fd01e81cae0477368c6865f266bbdc8073c56da4cd13a6c75976ad",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js",
+      "target": "AngularDirective:HeaderBar",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 1,
+          "source_hash": "24efbf80440f17ff0d4cfe4cf47ffd0d2e233c625c7a54281207359aec10796c",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js",
+      "target": "AngularDirective:LeftMenu",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 15,
+          "line_start": 12,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "target": "AngularController:headerController",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 14,
+          "line_start": 12,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "target": "AngularDirective:headerBar",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 12,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "target": "AngularDirective:leftMenu",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 12,
+          "line_start": 12,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "target": "AngularModule:moduleName",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 18,
+          "line_start": 12,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "target": "AngularService:initialPageService",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 17,
+          "line_start": 12,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "target": "AngularService:modalService",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 16,
+          "line_start": 12,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "target": "AngularService:toasterService",
+      "type": "DECLARES"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 81,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:clinic",
+      "target": "AngularController:clinicDetailController",
+      "type": "DEPENDS_ON"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 76,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:clinics",
+      "target": "AngularController:clinicsController",
+      "type": "DEPENDS_ON"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 61,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:dailyReport",
+      "target": "AngularController:dailyReportController",
+      "type": "DEPENDS_ON"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 41,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:dashboard",
+      "target": "AngularController:dashboardController",
+      "type": "DEPENDS_ON"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 51,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:doctor",
+      "target": "AngularController:doctorDetailController",
+      "type": "DEPENDS_ON"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 46,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:doctors",
+      "target": "AngularController:doctorsController",
+      "type": "DEPENDS_ON"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 56,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:patients",
+      "target": "AngularController:patientsController",
+      "type": "DEPENDS_ON"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 71,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:user",
+      "target": "AngularController:userDetailController",
+      "type": "DEPENDS_ON"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 66,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:users",
+      "target": "AngularController:usersController",
+      "type": "DEPENDS_ON"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 1,
+          "source_hash": "598a28c3d61170d15ec3f9ca3dafb048ffd1eea94ccf3ff7baf1315d5a34368d",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+      "target": "RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 12,
+          "line_start": 1,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "target": "PartialView:src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 12,
+          "line_start": 9,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 11,
+          "line_start": 11,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "target": "UIControl:loading-overlay",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 7,
+          "line_start": 7,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "target": "UIControl:toaster-container",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 5,
+          "line_start": 1,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 4,
+          "line_start": 2,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 3,
+          "line_start": 3,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "target": "UIControl:ui-view",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 16,
+          "line_start": 1,
+          "source_hash": "1ca16a900c319263ebcae1b8fd1d6515fbb4daf76618bff6088efcc13affb97a",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+      "target": "PartialView:src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 2,
+          "line_start": 2,
+          "source_hash": "5ea069f9b58f01d7daada2535e57668e8be0c68a71a5840c7ee8bd27b96ebe06",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_Header.cshtml",
+      "target": "ClientComponent:header-bar",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 3,
+          "line_start": 1,
+          "source_hash": "5ea069f9b58f01d7daada2535e57668e8be0c68a71a5840c7ee8bd27b96ebe06",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_Header.cshtml",
+      "target": "PartialView:src/MyHealth.Web/Views/Dashboard/_Header.cshtml",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 9,
+          "line_start": 9,
+          "source_hash": "ed2a4e94e2c64f14b61b2825d12830db9a288a99fae86b4c02c0b1b0619d4e53",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml",
+      "target": "ClientComponent:left-menu",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 11,
+          "line_start": 1,
+          "source_hash": "ed2a4e94e2c64f14b61b2825d12830db9a288a99fae86b4c02c0b1b0619d4e53",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml",
+      "target": "PartialView:src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 9,
+          "line_start": 1,
+          "source_hash": "5be7cfa85fcf4c29ff622cab2feeb6061bc212cdd6dd846c8ff60929e5c25065",
+          "source_path": "src/MyHealth.Web/Views/Shared/Error.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/Error.cshtml",
+      "target": "RazorView:src/MyHealth.Web/Views/Shared/Error.cshtml",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 16,
+          "line_start": 1,
+          "source_hash": "1ca16a900c319263ebcae1b8fd1d6515fbb4daf76618bff6088efcc13affb97a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Footer.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_Footer.cshtml",
+      "target": "PartialView:src/MyHealth.Web/Views/Shared/_Footer.cshtml",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 36,
+          "line_start": 1,
+          "source_hash": "db59cda7291242c240e634189eef7e3caa314767087fbe3b7029bfa0bc063f79",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Layout.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_Layout.cshtml",
+      "target": "Layout:src/MyHealth.Web/Views/Shared/_Layout.cshtml",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 14,
+          "line_start": 14,
+          "source_hash": "db59cda7291242c240e634189eef7e3caa314767087fbe3b7029bfa0bc063f79",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Layout.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_Layout.cshtml",
+      "target": "StyleAsset:href=\"~/css/public-site.css\"",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 17,
+          "line_start": 17,
+          "source_hash": "db59cda7291242c240e634189eef7e3caa314767087fbe3b7029bfa0bc063f79",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Layout.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_Layout.cshtml",
+      "target": "StyleAsset:href=\"~/css/public-site.min.css\"",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 26,
+          "line_start": 1,
+          "source_hash": "78a06f717a5babe20b0834a272a5786f025b8e85ae43920755381a5e0990997a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml",
+      "target": "Layout:src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 13,
+          "source_hash": "78a06f717a5babe20b0834a272a5786f025b8e85ae43920755381a5e0990997a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml",
+      "target": "StyleAsset:href=\"~/css/appointments-site.css\"",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 16,
+          "line_start": 16,
+          "source_hash": "78a06f717a5babe20b0834a272a5786f025b8e85ae43920755381a5e0990997a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml",
+      "target": "StyleAsset:href=\"~/css/appointments-site.min.css\"",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 34,
+          "line_start": 1,
+          "source_hash": "e4cbdd1734e6d19228d821acce97caa9840523252221f427199b064446c4eada",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml",
+      "target": "Layout:src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 10,
+          "line_start": 10,
+          "source_hash": "e4cbdd1734e6d19228d821acce97caa9840523252221f427199b064446c4eada",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml",
+      "target": "StyleAsset:href=\"~/css/private-site.css\"",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 13,
+          "source_hash": "e4cbdd1734e6d19228d821acce97caa9840523252221f427199b064446c4eada",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml",
+      "target": "StyleAsset:href=\"~/css/private-site.min.css\"",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 15,
+          "line_start": 1,
+          "source_hash": "25168cb8c1fdd42f88913b5bc0bc861e8e379e453e6918163fece2dd453865fc",
+          "source_path": "src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "target": "PartialView:src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "type": "HOSTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 9,
+          "line_start": 9,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "ExternalReference:./components/clinics/clinics.module",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 7,
+          "line_start": 7,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "ExternalReference:./components/dailyReport/dailyReport.module",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 4,
+          "line_start": 4,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "ExternalReference:./components/dashboard/dashboard.module",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 5,
+          "line_start": 5,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "ExternalReference:./components/doctors/doctors.module",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 6,
+          "line_start": 6,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "ExternalReference:./components/patients/patients.module",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 3,
+          "line_start": 3,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "ExternalReference:./components/shared/shared.module",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 8,
+          "line_start": 8,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/app.module.js",
+      "target": "ExternalReference:./components/users/users.module",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 3,
+          "line_start": 3,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js",
+      "target": "ExternalReference:./controllers/dashboardController",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 5,
+          "line_start": 5,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js",
+      "target": "ExternalReference:./directives/MHChartDirective",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 4,
+          "line_start": 4,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js",
+      "target": "ExternalReference:./services/dashboardService",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 5,
+          "line_start": 5,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "target": "ExternalReference:./controllers/headerController",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 4,
+          "line_start": 4,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "target": "ExternalReference:./directives/headerBar/headerBarDirective",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 3,
+          "line_start": 3,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "target": "ExternalReference:./directives/leftMenu/leftMenuDirective",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 10,
+          "line_start": 10,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "target": "ExternalReference:./filters/camelCaseFilter",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 9,
+          "line_start": 9,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "target": "ExternalReference:./services/exceptionHandler",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 8,
+          "line_start": 8,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "target": "ExternalReference:./services/initialPageService",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 7,
+          "line_start": 7,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "target": "ExternalReference:./services/modalService",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 6,
+          "line_start": 6,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "source": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "target": "ExternalReference:./services/toasterService",
+      "type": "IMPORTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 6,
+          "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+          "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+        }
+      ],
+      "source": "AuthorizationPolicy:Authorize",
+      "target": "Controller:DashboardController",
+      "type": "PROTECTS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 12,
+          "line_start": 9,
+          "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+          "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+        }
+      ],
+      "source": "Action:Index",
+      "target": "RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+      "type": "RETURNS"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 81,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:clinic",
+      "target": "Template:/app/components/clinics/views/detail.html",
+      "type": "USES_TEMPLATE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 76,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:clinics",
+      "target": "Template:/app/components/clinics/views/main.html",
+      "type": "USES_TEMPLATE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 61,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:dailyReport",
+      "target": "Template:/app/components/dailyReport/views/main.html",
+      "type": "USES_TEMPLATE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 41,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:dashboard",
+      "target": "Template:/app/components/dashboard/views/main.html",
+      "type": "USES_TEMPLATE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 51,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:doctor",
+      "target": "Template:/app/components/doctors/views/detail.html",
+      "type": "USES_TEMPLATE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 46,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:doctors",
+      "target": "Template:/app/components/doctors/views/main.html",
+      "type": "USES_TEMPLATE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 85,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:error",
+      "target": "Template:/app/components/shared/views/error.html",
+      "type": "USES_TEMPLATE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 56,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:patients",
+      "target": "Template:/app/components/patients/views/main.html",
+      "type": "USES_TEMPLATE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 71,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:user",
+      "target": "Template:/app/components/users/views/detail.html",
+      "type": "USES_TEMPLATE"
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 66,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "source": "Route:users",
+      "target": "Template:/app/components/users/views/main.html",
+      "type": "USES_TEMPLATE"
+    }
+  ],
+  "nodes": [
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 12,
+          "line_start": 9,
+          "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+          "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+        }
+      ],
+      "id": "Action:Index",
+      "label": "Action",
+      "name": "Index",
+      "properties": {
+        "controller": "DashboardController"
+      }
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 25,
+          "line_start": 22,
+          "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+          "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 47,
+          "line_start": 27,
+          "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+          "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+        }
+      ],
+      "id": "Action:Login",
+      "label": "Action",
+      "name": "Login",
+      "properties": {
+        "controller": "AccountController"
+      }
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 59,
+          "line_start": 49,
+          "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+          "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+        }
+      ],
+      "id": "Action:RedirectToLocal",
+      "label": "Action",
+      "name": "RedirectToLocal",
+      "properties": {
+        "controller": "AccountController"
+      }
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 141,
+          "line_start": 1,
+          "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+        }
+      ],
+      "id": "AngularController:DashboardController",
+      "label": "AngularController",
+      "name": "DashboardController",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 81,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "AngularController:clinicDetailController",
+      "label": "AngularController",
+      "name": "clinicDetailController",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 76,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "AngularController:clinicsController",
+      "label": "AngularController",
+      "name": "clinicsController",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 61,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "AngularController:dailyReportController",
+      "label": "AngularController",
+      "name": "dailyReportController",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 9,
+          "line_start": 7,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 41,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "AngularController:dashboardController",
+      "label": "AngularController",
+      "name": "dashboardController",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 51,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "AngularController:doctorDetailController",
+      "label": "AngularController",
+      "name": "doctorDetailController",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 46,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "AngularController:doctorsController",
+      "label": "AngularController",
+      "name": "doctorsController",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 15,
+          "line_start": 12,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "AngularController:headerController",
+      "label": "AngularController",
+      "name": "headerController",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 56,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "AngularController:patientsController",
+      "label": "AngularController",
+      "name": "patientsController",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 71,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "AngularController:userDetailController",
+      "label": "AngularController",
+      "name": "userDetailController",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 66,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "AngularController:usersController",
+      "label": "AngularController",
+      "name": "usersController",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 29,
+          "line_start": 1,
+          "source_hash": "0cffc73511fd01e81cae0477368c6865f266bbdc8073c56da4cd13a6c75976ad",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js"
+        }
+      ],
+      "id": "AngularDirective:HeaderBar",
+      "label": "AngularDirective",
+      "name": "HeaderBar",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 1,
+          "source_hash": "24efbf80440f17ff0d4cfe4cf47ffd0d2e233c625c7a54281207359aec10796c",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js"
+        }
+      ],
+      "id": "AngularDirective:LeftMenu",
+      "label": "AngularDirective",
+      "name": "LeftMenu",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 150,
+          "line_start": 3,
+          "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+        }
+      ],
+      "id": "AngularDirective:MHChart",
+      "label": "AngularDirective",
+      "name": "MHChart",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 8,
+          "line_start": 7,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "id": "AngularDirective:chart",
+      "label": "AngularDirective",
+      "name": "chart",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 14,
+          "line_start": 12,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "AngularDirective:headerBar",
+      "label": "AngularDirective",
+      "name": "headerBar",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 12,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "AngularDirective:leftMenu",
+      "label": "AngularDirective",
+      "name": "leftMenu",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 11,
+          "line_start": 11,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 7,
+          "line_start": 7,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 12,
+          "line_start": 12,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "AngularModule:moduleName",
+      "label": "AngularModule",
+      "name": "moduleName",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 10,
+          "line_start": 7,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "id": "AngularService:dashboardService",
+      "label": "AngularService",
+      "name": "dashboardService",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 18,
+          "line_start": 12,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "AngularService:initialPageService",
+      "label": "AngularService",
+      "name": "initialPageService",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 17,
+          "line_start": 12,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "AngularService:modalService",
+      "label": "AngularService",
+      "name": "modalService",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 16,
+          "line_start": 12,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "AngularService:toasterService",
+      "label": "AngularService",
+      "name": "toasterService",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 54,
+          "line_start": 48,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        }
+      ],
+      "id": "ApiCall:'/api/reports/expenses/' + year",
+      "label": "ApiCall",
+      "name": "'/api/reports/expenses/' + year",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 78,
+          "line_start": 72,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        }
+      ],
+      "id": "ApiCall:'/api/reports/patients/' + year",
+      "label": "ApiCall",
+      "name": "'/api/reports/patients/' + year",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 30,
+          "line_start": 24,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        }
+      ],
+      "id": "ApiCall:/api/reports/clinicsummary",
+      "label": "ApiCall",
+      "name": "/api/reports/clinicsummary",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 21,
+          "line_start": 18,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 45,
+          "line_start": 42,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 69,
+          "line_start": 66,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        }
+      ],
+      "id": "ApiCall:/api/users/current/tenant",
+      "label": "ApiCall",
+      "name": "/api/users/current/tenant",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 0,
+          "line_start": 0,
+          "source_hash": "",
+          "source_path": ""
+        }
+      ],
+      "id": "Application:HealthClinic.biz",
+      "label": "Application",
+      "name": "HealthClinic.biz",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 6,
+          "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+          "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+        }
+      ],
+      "id": "AuthorizationPolicy:Authorize",
+      "label": "AuthorizationPolicy",
+      "name": "Authorize",
+      "properties": {
+        "controller": "DashboardController"
+      }
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 8,
+          "line_start": 7,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "id": "Chart:chart",
+      "label": "Chart",
+      "name": "chart",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 2,
+          "line_start": 2,
+          "source_hash": "5ea069f9b58f01d7daada2535e57668e8be0c68a71a5840c7ee8bd27b96ebe06",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml"
+        }
+      ],
+      "id": "ClientComponent:header-bar",
+      "label": "ClientComponent",
+      "name": "header-bar",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 9,
+          "line_start": 9,
+          "source_hash": "ed2a4e94e2c64f14b61b2825d12830db9a288a99fae86b4c02c0b1b0619d4e53",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml"
+        }
+      ],
+      "id": "ClientComponent:left-menu",
+      "label": "ClientComponent",
+      "name": "left-menu",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 60,
+          "line_start": 9,
+          "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+          "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+        }
+      ],
+      "id": "Controller:AccountController",
+      "label": "Controller",
+      "name": "AccountController",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 6,
+          "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+          "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+        }
+      ],
+      "id": "Controller:DashboardController",
+      "label": "Controller",
+      "name": "DashboardController",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 9,
+          "line_start": 9,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "ExternalReference:./components/clinics/clinics.module",
+      "label": "ExternalReference",
+      "name": "./components/clinics/clinics.module",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 7,
+          "line_start": 7,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "ExternalReference:./components/dailyReport/dailyReport.module",
+      "label": "ExternalReference",
+      "name": "./components/dailyReport/dailyReport.module",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 4,
+          "line_start": 4,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "ExternalReference:./components/dashboard/dashboard.module",
+      "label": "ExternalReference",
+      "name": "./components/dashboard/dashboard.module",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 5,
+          "line_start": 5,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "ExternalReference:./components/doctors/doctors.module",
+      "label": "ExternalReference",
+      "name": "./components/doctors/doctors.module",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 6,
+          "line_start": 6,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "ExternalReference:./components/patients/patients.module",
+      "label": "ExternalReference",
+      "name": "./components/patients/patients.module",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 3,
+          "line_start": 3,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "ExternalReference:./components/shared/shared.module",
+      "label": "ExternalReference",
+      "name": "./components/shared/shared.module",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 8,
+          "line_start": 8,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "ExternalReference:./components/users/users.module",
+      "label": "ExternalReference",
+      "name": "./components/users/users.module",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 3,
+          "line_start": 3,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "id": "ExternalReference:./controllers/dashboardController",
+      "label": "ExternalReference",
+      "name": "./controllers/dashboardController",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 5,
+          "line_start": 5,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "ExternalReference:./controllers/headerController",
+      "label": "ExternalReference",
+      "name": "./controllers/headerController",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 5,
+          "line_start": 5,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "id": "ExternalReference:./directives/MHChartDirective",
+      "label": "ExternalReference",
+      "name": "./directives/MHChartDirective",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 4,
+          "line_start": 4,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "ExternalReference:./directives/headerBar/headerBarDirective",
+      "label": "ExternalReference",
+      "name": "./directives/headerBar/headerBarDirective",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 3,
+          "line_start": 3,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "ExternalReference:./directives/leftMenu/leftMenuDirective",
+      "label": "ExternalReference",
+      "name": "./directives/leftMenu/leftMenuDirective",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 10,
+          "line_start": 10,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "ExternalReference:./filters/camelCaseFilter",
+      "label": "ExternalReference",
+      "name": "./filters/camelCaseFilter",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 4,
+          "line_start": 4,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "id": "ExternalReference:./services/dashboardService",
+      "label": "ExternalReference",
+      "name": "./services/dashboardService",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 9,
+          "line_start": 9,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "ExternalReference:./services/exceptionHandler",
+      "label": "ExternalReference",
+      "name": "./services/exceptionHandler",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 8,
+          "line_start": 8,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "ExternalReference:./services/initialPageService",
+      "label": "ExternalReference",
+      "name": "./services/initialPageService",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 7,
+          "line_start": 7,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "ExternalReference:./services/modalService",
+      "label": "ExternalReference",
+      "name": "./services/modalService",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 6,
+          "line_start": 6,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "ExternalReference:./services/toasterService",
+      "label": "ExternalReference",
+      "name": "./services/toasterService",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+          "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/Controllers/AccountController.cs",
+      "label": "File",
+      "name": "src/MyHealth.Web/Controllers/AccountController.cs",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+          "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/Controllers/DashboardController.cs",
+      "label": "File",
+      "name": "src/MyHealth.Web/Controllers/DashboardController.cs",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "598a28c3d61170d15ec3f9ca3dafb048ffd1eea94ccf3ff7baf1315d5a34368d",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+      "label": "File",
+      "name": "src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "label": "File",
+      "name": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "1ca16a900c319263ebcae1b8fd1d6515fbb4daf76618bff6088efcc13affb97a",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+      "label": "File",
+      "name": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "5ea069f9b58f01d7daada2535e57668e8be0c68a71a5840c7ee8bd27b96ebe06",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/Views/Dashboard/_Header.cshtml",
+      "label": "File",
+      "name": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "ed2a4e94e2c64f14b61b2825d12830db9a288a99fae86b4c02c0b1b0619d4e53",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml",
+      "label": "File",
+      "name": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "5be7cfa85fcf4c29ff622cab2feeb6061bc212cdd6dd846c8ff60929e5c25065",
+          "source_path": "src/MyHealth.Web/Views/Shared/Error.cshtml"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/Views/Shared/Error.cshtml",
+      "label": "File",
+      "name": "src/MyHealth.Web/Views/Shared/Error.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "1ca16a900c319263ebcae1b8fd1d6515fbb4daf76618bff6088efcc13affb97a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Footer.cshtml"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/Views/Shared/_Footer.cshtml",
+      "label": "File",
+      "name": "src/MyHealth.Web/Views/Shared/_Footer.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "db59cda7291242c240e634189eef7e3caa314767087fbe3b7029bfa0bc063f79",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Layout.cshtml"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/Views/Shared/_Layout.cshtml",
+      "label": "File",
+      "name": "src/MyHealth.Web/Views/Shared/_Layout.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "78a06f717a5babe20b0834a272a5786f025b8e85ae43920755381a5e0990997a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml",
+      "label": "File",
+      "name": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "e4cbdd1734e6d19228d821acce97caa9840523252221f427199b064446c4eada",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml",
+      "label": "File",
+      "name": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "25168cb8c1fdd42f88913b5bc0bc861e8e379e453e6918163fece2dd453865fc",
+          "source_path": "src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "label": "File",
+      "name": "src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/content/app/app.module.js",
+      "label": "File",
+      "name": "src/MyHealth.Web/content/app/app.module.js",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js",
+      "label": "File",
+      "name": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js",
+      "label": "File",
+      "name": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js",
+      "label": "File",
+      "name": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "label": "File",
+      "name": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "13fec6b1663ec25e2ce9170fc2202ad5fd73b8fc39fb437d5e95f023bf5774cf",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "label": "File",
+      "name": "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "0cffc73511fd01e81cae0477368c6865f266bbdc8073c56da4cd13a6c75976ad",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js",
+      "label": "File",
+      "name": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "3812a6498a1b7c55d2aa801fb64cbd7ad378dc9ab44d3e4ad99345b82506efb8",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarTemplate.html"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarTemplate.html",
+      "label": "File",
+      "name": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarTemplate.html",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "24efbf80440f17ff0d4cfe4cf47ffd0d2e233c625c7a54281207359aec10796c",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js",
+      "label": "File",
+      "name": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "e5bb24002d225b2c9c5e3318addee0b121379b268b2d206bad3acf571fccac74",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html",
+      "label": "File",
+      "name": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 1,
+          "line_start": 1,
+          "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+          "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+        }
+      ],
+      "id": "File:src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "label": "File",
+      "name": "src/MyHealth.Web/content/app/components/shared/shared.module.js",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 36,
+          "line_start": 1,
+          "source_hash": "db59cda7291242c240e634189eef7e3caa314767087fbe3b7029bfa0bc063f79",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Layout.cshtml"
+        }
+      ],
+      "id": "Layout:src/MyHealth.Web/Views/Shared/_Layout.cshtml",
+      "label": "Layout",
+      "name": "src/MyHealth.Web/Views/Shared/_Layout.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 26,
+          "line_start": 1,
+          "source_hash": "78a06f717a5babe20b0834a272a5786f025b8e85ae43920755381a5e0990997a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml"
+        }
+      ],
+      "id": "Layout:src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml",
+      "label": "Layout",
+      "name": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 34,
+          "line_start": 1,
+          "source_hash": "e4cbdd1734e6d19228d821acce97caa9840523252221f427199b064446c4eada",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml"
+        }
+      ],
+      "id": "Layout:src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml",
+      "label": "Layout",
+      "name": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 12,
+          "line_start": 1,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        }
+      ],
+      "id": "PartialView:src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "label": "PartialView",
+      "name": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 16,
+          "line_start": 1,
+          "source_hash": "1ca16a900c319263ebcae1b8fd1d6515fbb4daf76618bff6088efcc13affb97a",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml"
+        }
+      ],
+      "id": "PartialView:src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+      "label": "PartialView",
+      "name": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 3,
+          "line_start": 1,
+          "source_hash": "5ea069f9b58f01d7daada2535e57668e8be0c68a71a5840c7ee8bd27b96ebe06",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml"
+        }
+      ],
+      "id": "PartialView:src/MyHealth.Web/Views/Dashboard/_Header.cshtml",
+      "label": "PartialView",
+      "name": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 11,
+          "line_start": 1,
+          "source_hash": "ed2a4e94e2c64f14b61b2825d12830db9a288a99fae86b4c02c0b1b0619d4e53",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml"
+        }
+      ],
+      "id": "PartialView:src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml",
+      "label": "PartialView",
+      "name": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 16,
+          "line_start": 1,
+          "source_hash": "1ca16a900c319263ebcae1b8fd1d6515fbb4daf76618bff6088efcc13affb97a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Footer.cshtml"
+        }
+      ],
+      "id": "PartialView:src/MyHealth.Web/Views/Shared/_Footer.cshtml",
+      "label": "PartialView",
+      "name": "src/MyHealth.Web/Views/Shared/_Footer.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 15,
+          "line_start": 1,
+          "source_hash": "25168cb8c1fdd42f88913b5bc0bc861e8e379e453e6918163fece2dd453865fc",
+          "source_path": "src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml"
+        }
+      ],
+      "id": "PartialView:src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "label": "PartialView",
+      "name": "src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 1,
+          "source_hash": "598a28c3d61170d15ec3f9ca3dafb048ffd1eea94ccf3ff7baf1315d5a34368d",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+        }
+      ],
+      "id": "RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+      "label": "RazorView",
+      "name": "src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 9,
+          "line_start": 1,
+          "source_hash": "5be7cfa85fcf4c29ff622cab2feeb6061bc212cdd6dd846c8ff60929e5c25065",
+          "source_path": "src/MyHealth.Web/Views/Shared/Error.cshtml"
+        }
+      ],
+      "id": "RazorView:src/MyHealth.Web/Views/Shared/Error.cshtml",
+      "label": "RazorView",
+      "name": "src/MyHealth.Web/Views/Shared/Error.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 81,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Route:clinic",
+      "label": "Route",
+      "name": "clinic",
+      "properties": {
+        "controller": "clinicDetailController",
+        "template": "/app/components/clinics/views/detail.html",
+        "url": "/clinic?id"
+      }
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 76,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Route:clinics",
+      "label": "Route",
+      "name": "clinics",
+      "properties": {
+        "controller": "clinicsController",
+        "template": "/app/components/clinics/views/main.html",
+        "url": "/clinics"
+      }
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 61,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Route:dailyReport",
+      "label": "Route",
+      "name": "dailyReport",
+      "properties": {
+        "controller": "dailyReportController",
+        "template": "/app/components/dailyReport/views/main.html",
+        "url": "/dailyreport"
+      }
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 41,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Route:dashboard",
+      "label": "Route",
+      "name": "dashboard",
+      "properties": {
+        "controller": "dashboardController",
+        "template": "/app/components/dashboard/views/main.html",
+        "url": "/dashboard"
+      }
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 36,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Route:default",
+      "label": "Route",
+      "name": "default",
+      "properties": {
+        "url": "/"
+      }
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 51,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Route:doctor",
+      "label": "Route",
+      "name": "doctor",
+      "properties": {
+        "controller": "doctorDetailController",
+        "template": "/app/components/doctors/views/detail.html",
+        "url": "/doctor?id"
+      }
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 46,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Route:doctors",
+      "label": "Route",
+      "name": "doctors",
+      "properties": {
+        "controller": "doctorsController",
+        "template": "/app/components/doctors/views/main.html",
+        "url": "/doctors"
+      }
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 85,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Route:error",
+      "label": "Route",
+      "name": "error",
+      "properties": {
+        "template": "/app/components/shared/views/error.html",
+        "url": "/404"
+      }
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 56,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Route:patients",
+      "label": "Route",
+      "name": "patients",
+      "properties": {
+        "controller": "patientsController",
+        "template": "/app/components/patients/views/main.html",
+        "url": "/patients"
+      }
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 71,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Route:user",
+      "label": "Route",
+      "name": "user",
+      "properties": {
+        "controller": "userDetailController",
+        "template": "/app/components/users/views/detail.html",
+        "url": "/user?username"
+      }
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 66,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Route:users",
+      "label": "Route",
+      "name": "users",
+      "properties": {
+        "controller": "usersController",
+        "template": "/app/components/users/views/main.html",
+        "url": "/users"
+      }
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 13,
+          "source_hash": "78a06f717a5babe20b0834a272a5786f025b8e85ae43920755381a5e0990997a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml"
+        }
+      ],
+      "id": "StyleAsset:href=\"~/css/appointments-site.css\"",
+      "label": "StyleAsset",
+      "name": "href=\"~/css/appointments-site.css\"",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 16,
+          "line_start": 16,
+          "source_hash": "78a06f717a5babe20b0834a272a5786f025b8e85ae43920755381a5e0990997a",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml"
+        }
+      ],
+      "id": "StyleAsset:href=\"~/css/appointments-site.min.css\"",
+      "label": "StyleAsset",
+      "name": "href=\"~/css/appointments-site.min.css\"",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 10,
+          "line_start": 10,
+          "source_hash": "e4cbdd1734e6d19228d821acce97caa9840523252221f427199b064446c4eada",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml"
+        }
+      ],
+      "id": "StyleAsset:href=\"~/css/private-site.css\"",
+      "label": "StyleAsset",
+      "name": "href=\"~/css/private-site.css\"",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 13,
+          "line_start": 13,
+          "source_hash": "e4cbdd1734e6d19228d821acce97caa9840523252221f427199b064446c4eada",
+          "source_path": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml"
+        }
+      ],
+      "id": "StyleAsset:href=\"~/css/private-site.min.css\"",
+      "label": "StyleAsset",
+      "name": "href=\"~/css/private-site.min.css\"",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 14,
+          "line_start": 14,
+          "source_hash": "db59cda7291242c240e634189eef7e3caa314767087fbe3b7029bfa0bc063f79",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Layout.cshtml"
+        }
+      ],
+      "id": "StyleAsset:href=\"~/css/public-site.css\"",
+      "label": "StyleAsset",
+      "name": "href=\"~/css/public-site.css\"",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 17,
+          "line_start": 17,
+          "source_hash": "db59cda7291242c240e634189eef7e3caa314767087fbe3b7029bfa0bc063f79",
+          "source_path": "src/MyHealth.Web/Views/Shared/_Layout.cshtml"
+        }
+      ],
+      "id": "StyleAsset:href=\"~/css/public-site.min.css\"",
+      "label": "StyleAsset",
+      "name": "href=\"~/css/public-site.min.css\"",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 81,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Template:/app/components/clinics/views/detail.html",
+      "label": "Template",
+      "name": "/app/components/clinics/views/detail.html",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 76,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Template:/app/components/clinics/views/main.html",
+      "label": "Template",
+      "name": "/app/components/clinics/views/main.html",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 61,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Template:/app/components/dailyReport/views/main.html",
+      "label": "Template",
+      "name": "/app/components/dailyReport/views/main.html",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 41,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Template:/app/components/dashboard/views/main.html",
+      "label": "Template",
+      "name": "/app/components/dashboard/views/main.html",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 51,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Template:/app/components/doctors/views/detail.html",
+      "label": "Template",
+      "name": "/app/components/doctors/views/detail.html",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 46,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Template:/app/components/doctors/views/main.html",
+      "label": "Template",
+      "name": "/app/components/doctors/views/main.html",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 56,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Template:/app/components/patients/views/main.html",
+      "label": "Template",
+      "name": "/app/components/patients/views/main.html",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 85,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Template:/app/components/shared/views/error.html",
+      "label": "Template",
+      "name": "/app/components/shared/views/error.html",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 71,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Template:/app/components/users/views/detail.html",
+      "label": "Template",
+      "name": "/app/components/users/views/detail.html",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 66,
+          "line_start": 32,
+          "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js"
+        }
+      ],
+      "id": "Template:/app/components/users/views/main.html",
+      "label": "Template",
+      "name": "/app/components/users/views/main.html",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 12,
+          "line_start": 9,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 11,
+          "line_start": 11,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        }
+      ],
+      "id": "UIControl:loading-overlay",
+      "label": "UIControl",
+      "name": "loading-overlay",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 7,
+          "line_start": 7,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        }
+      ],
+      "id": "UIControl:toaster-container",
+      "label": "UIControl",
+      "name": "toaster-container",
+      "properties": {}
+    },
+    {
+      "evidence": [
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 5,
+          "line_start": 1,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 4,
+          "line_start": 2,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        },
+        {
+          "confidence": 1.0,
+          "extraction_method": "tree-sitter",
+          "line_end": 3,
+          "line_start": 3,
+          "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+        }
+      ],
+      "id": "UIControl:ui-view",
+      "label": "UIControl",
+      "name": "ui-view",
+      "properties": {}
+    }
+  ]
+}

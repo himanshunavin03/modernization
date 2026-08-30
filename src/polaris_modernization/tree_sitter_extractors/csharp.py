@@ -11,6 +11,9 @@ from polaris_modernization.tree_sitter_extractors.common import evidence, node_t
 
 
 def _first_identifier(node, source: bytes) -> str | None:
+    name = node.child_by_field_name("name")
+    if name is not None:
+        return node_text(name, source)
     for child in walk(node):
         if child.type == "identifier":
             return node_text(child, source)
