@@ -31,3 +31,6 @@
 | Project clearing requires matching repeated confirmation and label-scoped deletes. | A project operation must never become a database-wide delete. |
 | Roslyn is an opt-in semantic provider; Tree-sitter remains the default syntax provider. | C# semantic analysis should enrich deterministic facts without requiring a legacy project build. |
 | LSP is a future interactive boundary, not a batch-analysis dependency. | Batch analysis must not require an IDE or language server. |
+| Roslyn semantic facts require an actual resolved Roslyn symbol before they are marked proven. | Syntax evidence alone must not be presented as semantic resolution. |
+| Roslyn identities use fully qualified symbols, while matching Tree-sitter controller/action nodes requires same-file evidence. | This prevents namespace collisions without duplicating equivalent syntax and semantic findings. |
+| A type becomes a DTO only when an action return or parameter references it. | The scanner must not misclassify every C# type as a model. |

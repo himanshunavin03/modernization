@@ -54,6 +54,8 @@ python -m polaris_modernization.cli analyze --source-root "<path>" --project-id 
 
 If `dotnet` is unavailable, the command succeeds with `roslyn-semantic.json` containing a warning and no Roslyn facts.
 
+Roslyn facts use `SemanticModel`, declared-symbol, symbol-info, and type-symbol results. A fact is marked `resolution_status: proven` only when Roslyn resolved the underlying symbol; unresolved facts retain a diagnostic. Step 3B is not complete until the SDK-gated semantic fixture test and helper build pass on a machine with the .NET SDK.
+
 Later steps may use the normalized graph for Neo4j loading, Roslyn/LSP enrichment, target-architecture assessment, and controlled LLM workflows. Those capabilities are intentionally not implemented here.
 
 ## Neo4j Development

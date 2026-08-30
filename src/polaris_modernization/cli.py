@@ -16,27 +16,93 @@ from polaris_modernization.tree_sitter_extractors.registry import extractor_for
 from polaris_modernization.graph.neo4j_loader import Neo4jLoader, connect, read_graph
 from polaris_modernization.roslyn_bridge import enrich
 
-ROSLYN_LABELS = {"type":"DTO", "action":"Action", "method":"Method", "endpoint":"Endpoint", "authorization_policy":"AuthorizationPolicy"}
+ROSLYN_LABELS = {
+    "namespace": "Namespace", "controller": "Controller", "action": "Action",
+    "type": "Type", "dto": "DTO", "property": "Property", "method": "Method",
+    "endpoint": "Endpoint", "authorization_policy": "AuthorizationPolicy",
+}
+
+
 def merge_roslyn(graph: dict, facts: list[dict], project_id: str) -> None:
     nodes = {node["id"]: node for node in graph["nodes"]}
-    edges = {(edge["type"],edge["source"],edge["target"]):edge for edge in graph["edges"]}
-    def node(label,name,evidence,properties):
-        identity=f"{project_id}:{label}:{name}"; item=nodes.get(identity)
+    edges = {(edge["type"], edge["source"], edge["target"]): edge for edge in graph["edges"]}
+
+    def node(label: str, name: str, evidence: dict, properties: dict, *, merge_tree_sitter: bool = False) -> str:
+        if merge_tree_sitter:
+            for candidate in nodes.values():
+                if candidate["label"] == label and candidate["name"] == name and any(item.get("source_path") == evidence.get("source_path") for item in candidate["evidence"]):
+                    candidate["evidence"].append(evidence)
+                    return candidate["id"]
+        identity = f"{project_id}:{label}:{properties.get('identity') or name}"
+        item = nodes.get(identity)
         if item is None:
-            item={"id":identity,"project_id":project_id,"label":label,"name":name,"properties":properties,"evidence":[]}; nodes[identity]=item
-        item["evidence"].append(evidence); return identity
-    def edge(kind,source,target,evidence):
-        key=(kind,source,target); item=edges.get(key)
-        if item is None: item={"project_id":project_id,"type":kind,"source":source,"target":target,"properties":{},"evidence":[]}; edges[key]=item
+            item = {"id": identity, "project_id": project_id, "label": label, "name": name, "properties": properties, "evidence": []}
+            nodes[identity] = item
         item["evidence"].append(evidence)
+        return identity
+
+    def edge(kind: str, source: str, target: str, evidence: dict) -> None:
+        key = (kind, source, target)
+        item = edges.get(key)
+        if item is None:
+            item = {"project_id": project_id, "type": kind, "source": source, "target": target, "properties": {}, "evidence": []}
+            edges[key] = item
+        item["evidence"].append(evidence)
+
+    semantic_nodes: dict[str, str] = {}
     for fact in facts:
-        label=ROSLYN_LABELS.get(fact.get("kind")); evidence=fact.get("evidence",{}); properties=fact.get("properties",{})
-        if not label or evidence.get("resolution_status")!="proven": continue
-        target=node(label,fact["name"],evidence,properties); owner=properties.get("owner")
-        if fact["kind"]=="action" and owner: edge("DECLARES",node("Controller",owner,evidence,{}),target,evidence)
-        if fact["kind"]=="endpoint" and owner: edge("EXPOSES",node("Action",owner,evidence,{}),target,evidence)
-        if fact["kind"]=="authorization_policy" and owner: edge("PROTECTED_BY",node("Action",owner,evidence,{}),target,evidence)
-    graph["nodes"]=sorted(nodes.values(),key=lambda item:item["id"]); graph["edges"]=sorted(edges.values(),key=lambda item:(item["type"],item["source"],item["target"]))
+        label = ROSLYN_LABELS.get(fact.get("kind"))
+        evidence = fact.get("evidence", {})
+        properties = fact.get("properties", {})
+        if fact.get("project_id") != project_id or evidence.get("resolution_status") != "proven":
+            if evidence.get("diagnostic"):
+                graph["warnings"].append({"source_path": evidence.get("source_path", ""), "message": evidence["diagnostic"]})
+            continue
+        if label:
+            identity = str(properties.get("identity") or fact["name"])
+            semantic_nodes[identity] = node(label, fact["name"], evidence, properties, merge_tree_sitter=fact["kind"] in {"controller", "action"})
+
+    def reference(label: str, identity: object, evidence: dict) -> str | None:
+        if identity is None:
+            return None
+        key = str(identity)
+        return semantic_nodes.get(key) or node(label, key.rsplit(".", 1)[-1], evidence, {"identity": key})
+
+    for fact in facts:
+        evidence = fact.get("evidence", {})
+        properties = fact.get("properties", {})
+        if fact.get("project_id") != project_id or evidence.get("resolution_status") != "proven":
+            continue
+        identity = str(properties.get("identity") or fact.get("name"))
+        subject = semantic_nodes.get(identity)
+        kind = fact.get("kind")
+        if kind == "action" and subject:
+            owner = reference("Controller", properties.get("owner_identity"), evidence)
+            returned = reference("DTO", properties.get("return_type_identity"), evidence)
+            if owner:
+                edge("DECLARES", owner, subject, evidence)
+            if returned:
+                edge("RETURNS_TYPE", subject, returned, evidence)
+        elif kind == "endpoint" and subject:
+            owner = reference("Action", properties.get("owner_identity"), evidence)
+            if owner:
+                edge("EXPOSES", owner, subject, evidence)
+        elif kind == "property" and subject:
+            owner = reference("DTO", properties.get("owner_identity"), evidence)
+            if owner:
+                edge("HAS_PROPERTY", owner, subject, evidence)
+        elif kind == "invocation":
+            owner = reference("Method", properties.get("owner_identity"), evidence)
+            target = reference("Method", properties.get("target_identity"), evidence)
+            if owner and target:
+                edge("INVOKES", owner, target, evidence)
+        elif kind == "authorization_policy" and subject:
+            owner_label = "Controller" if properties.get("owner_kind") == "controller" else "Action"
+            owner = reference(owner_label, properties.get("owner_identity"), evidence)
+            if owner:
+                edge("PROTECTED_BY", owner, subject, evidence)
+    graph["nodes"] = sorted(nodes.values(), key=lambda item: item["id"])
+    graph["edges"] = sorted(edges.values(), key=lambda item: (item["type"], item["source"], item["target"]))
 
 
 def analyze(source_root: Path, project_id: str, profile_name: str, output: Path, enable_roslyn: bool = False) -> dict:
