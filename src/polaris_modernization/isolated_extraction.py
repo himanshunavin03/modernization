@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -12,6 +13,8 @@ from typing import Any
 from polaris_modernization.models import Evidence, Fact
 
 WORKER_TIMEOUT_SECONDS = 30
+LOCAL_SOURCE_DIRECTORY = Path(__file__).resolve().parents[1]
+REPOSITORY_ROOT = LOCAL_SOURCE_DIRECTORY.parent
 
 
 @dataclass(frozen=True)
@@ -40,6 +43,21 @@ def _fact(payload: dict[str, Any]) -> Fact:
     )
 
 
+def _worker_environment() -> dict[str, str]:
+    environment = os.environ.copy()
+    existing_pythonpath = environment.get("PYTHONPATH")
+    environment["PYTHONPATH"] = str(LOCAL_SOURCE_DIRECTORY) if not existing_pythonpath else f"{LOCAL_SOURCE_DIRECTORY}{os.pathsep}{existing_pythonpath}"
+    return environment
+
+
+def _worker_cwd() -> str | None:
+    return str(REPOSITORY_ROOT) if (REPOSITORY_ROOT / "pyproject.toml").is_file() else None
+
+
+def _is_import_failure(stderr: str) -> bool:
+    return "polaris_modernization" in stderr and ("ModuleNotFoundError" in stderr or "No module named" in stderr)
+
+
 def extract_file(request: dict[str, str], timeout: int = WORKER_TIMEOUT_SECONDS) -> ExtractionResult:
     """Run one extractor in a child process and return only validated fact data."""
     try:
@@ -50,6 +68,8 @@ def extract_file(request: dict[str, str], timeout: int = WORKER_TIMEOUT_SECONDS)
             capture_output=True,
             timeout=timeout,
             check=False,
+            env=_worker_environment(),
+            cwd=_worker_cwd(),
         )
     except subprocess.TimeoutExpired:
         return _warning(request, "timeout", "Extraction worker exceeded the allowed time.")
@@ -57,6 +77,8 @@ def extract_file(request: dict[str, str], timeout: int = WORKER_TIMEOUT_SECONDS)
         return _warning(request, "worker_start_failed", "Extraction worker could not be started.")
 
     if completed.returncode != 0:
+        if _is_import_failure(completed.stderr):
+            return _warning(request, "worker_startup_failed", "Extraction worker could not import the analyzer package.")
         return _warning(request, "abnormal_exit", f"Extraction worker exited with code {completed.returncode}.")
     try:
         payload = json.loads(completed.stdout)

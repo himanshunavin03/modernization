@@ -7,7 +7,7 @@ import pytest
 
 from polaris_modernization import cli
 from polaris_modernization import knowledge_graph_agent as agent
-from polaris_modernization.isolated_extraction import ExtractionResult, extract_file
+from polaris_modernization.isolated_extraction import ExtractionResult, LOCAL_SOURCE_DIRECTORY, extract_file
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -45,6 +45,23 @@ def fact_payload() -> dict:
     }
 
 
+def test_worker_bootstrap_extracts_normal_fixture_without_parent_pythonpath(monkeypatch):
+    source_path = FIXTURE / "services" / "alpha.js"
+    monkeypatch.delenv("PYTHONPATH", raising=False)
+
+    result = extract_file({
+        "source_root": str(FIXTURE),
+        "source_path": "services/alpha.js",
+        "source_hash": hashlib.sha256(source_path.read_bytes()).hexdigest(),
+        "project_id": "clean-checkout",
+        "language": "javascript",
+    })
+
+    assert result.warning is None
+    assert result.facts
+    assert LOCAL_SOURCE_DIRECTORY.joinpath("polaris_modernization").is_dir()
+
+
 def test_worker_abnormal_exit_isolated_while_another_file_succeeds(monkeypatch):
     def run_worker(*args, **kwargs):
         source_path = json.loads(kwargs["input"])["source_path"]
@@ -61,6 +78,19 @@ def test_worker_abnormal_exit_isolated_while_another_file_succeeds(monkeypatch):
     assert not failed.facts
     assert succeeded.warning is None
     assert succeeded.facts[0].name == "/api/test"
+
+
+def test_worker_import_failure_has_distinct_safe_category(monkeypatch):
+    monkeypatch.setattr(
+        "polaris_modernization.isolated_extraction.subprocess.run",
+        lambda *args, **kwargs: subprocess.CompletedProcess(args[0], 1, "", "ModuleNotFoundError: No module named 'polaris_modernization'"),
+    )
+
+    result = extract_file(request())
+
+    assert result.warning
+    assert result.warning["failure_category"] == "worker_startup_failed"
+    assert result.warning["diagnostic"] == "Extraction worker could not import the analyzer package."
 
 
 @pytest.mark.parametrize("worker", [

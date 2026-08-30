@@ -36,7 +36,7 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Implement Step 4 only after reading the durable memory files, `docs/prompts/010-step-3c-create-knowledge-graph-agent.md`, and `docs/prompts/011-step-3c-1-tree-sitter-fault-isolation.md`. Use the project-isolated knowledge graph as evidence for graph-backed business features, epics, user stories, and acceptance criteria.
+Implement Step 4 only after reading the durable memory files and prompts 010, 011, and `docs/prompts/012-step-3c-2-isolated-worker-bootstrap-fix.md`. Use the project-isolated knowledge graph as evidence for graph-backed business features, epics, user stories, and acceptance criteria.
 
 ## Step 3B.2 Result
 
@@ -56,7 +56,7 @@ The CLI loads normalized JSON into Neo4j with parameterized, idempotent `MERGE` 
 
 ## Step 3C.1 Result
 
-Each native Tree-sitter extraction now runs in an isolated child Python process through structured JSON input and argument-array invocation. The parent detects abnormal worker exits, timeouts, invalid worker output, and Python extraction errors without recording source content or worker tracebacks. Failed files receive `failed_isolated` inventory status and a structured `skipped` extraction warning; no facts are invented. Partial runs write all artifacts and return `succeeded_with_warnings`, while all-files-failed runs return `failed`; Neo4j loading is blocked when isolated extraction warnings exist. The real `source/HealthClinic.biz` graph-only retry completed as `succeeded_with_warnings` with 2,384 files, 8,262 facts, 5,309 nodes, 5,975 edges, and 47 extraction warnings. `MobileServices.Web.js` was safely isolated after exit code `3221225477`, and the 2,395-file source-tree SHA-256 fingerprint was unchanged before and after the run.
+Each native Tree-sitter extraction now runs in an isolated child Python process through structured JSON input and argument-array invocation. The worker derives the local `src` directory from its module location, prepends it to a copied `PYTHONPATH`, and uses the repository root as its explicit working directory when available, so it works from uninstalled source checkouts, editable installs, and normal package installs. The parent detects startup/import failures separately from abnormal parser exits, timeouts, invalid worker output, and Python extraction errors without recording source content or worker tracebacks. Failed files receive `failed_isolated` inventory status and a structured `skipped` extraction warning; no facts are invented. Partial runs write all artifacts and return `succeeded_with_warnings`, while all-files-failed runs return `failed`; Neo4j loading is blocked when isolated extraction warnings exist. The verified `source/HealthClinic.biz` graph-only retry completed as `succeeded_with_warnings` with 2,384 files, 8,262 facts, 5,309 nodes, 5,975 edges, and 47 extraction warnings. `MobileServices.Web.js` was safely isolated exactly once after exit code `3221225477`, and the 2,395-file source-tree SHA-256 fingerprint was unchanged before and after the run.
 
 ## Step 2.2 Result
 
@@ -68,4 +68,4 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before doing any work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, `docs/prompts/010-step-3c-create-knowledge-graph-agent.md`, and `docs/prompts/011-step-3c-1-tree-sitter-fault-isolation.md`. Continue only from the Current Step.
+Before doing any work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, and prompts 010, 011, and 012 under `docs/prompts/`. Continue only from the Current Step.
