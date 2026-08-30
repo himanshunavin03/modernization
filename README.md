@@ -45,6 +45,25 @@ The scanner uses Tree-sitter AST parsing for JavaScript, HTML/Razor host markup,
 
 Later steps may use the normalized graph for Neo4j loading, Roslyn/LSP enrichment, target-architecture assessment, and controlled LLM workflows. Those capabilities are intentionally not implemented here.
 
+## Neo4j Development
+
+Copy `.env.example` to `.env`, replace the password locally, then run:
+
+```powershell
+docker compose up -d
+Start-Process http://localhost:7474
+docker compose down
+```
+
+Neo4j Browser is `http://localhost:7474`; Bolt is `bolt://localhost:7687`.
+
+```powershell
+python -m polaris_modernization.cli load-neo4j --graph "artifacts\<project-id>\knowledge-graph.json" --project-id "<project-id>"
+python -m polaris_modernization.cli clear-neo4j-project --project-id "<project-id>" --confirm-project-id "<project-id>"
+```
+
+The clear command deletes only data with the confirmed project ID. Read-only customer demo queries are in `docs/neo4j-demo-queries.cypher`.
+
 ## Recovery
 
 Before resuming work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, `AGENTS.md`, and the latest prompt under `docs/prompts/`.

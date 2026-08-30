@@ -26,3 +26,6 @@
 | Project-to-file edges use `CONTAINS`; `CONTAINS_CONTROL` is reserved for file-hosted controls and components. | Graph edge semantics must distinguish repository structure from UI composition. |
 | MVC view relationships require a static explicit view name and matching discovered Razor view. | Implicit MVC conventions cannot be connected deterministically without project-specific guessing. |
 | API calls are owned only by a unique Angular owner in the same source file. | File-local ownership prevents incorrect cross-service API relationships. |
+| Neo4j persists generic graph records keyed by project ID and graph ID. | Project-scoped idempotency prevents duplicate loads and cross-project collisions. |
+| Neo4j relationships use the stable `GRAPH_REL` type with a queryable `type` property. | Relationship semantics remain preserved without dynamically constructing Cypher relationship types. |
+| Project clearing requires matching repeated confirmation and label-scoped deletes. | A project operation must never become a database-wide delete. |

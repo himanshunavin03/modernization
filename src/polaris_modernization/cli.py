@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 from pathlib import Path
 
 from polaris_modernization.framework_detection import detect_frameworks
@@ -12,6 +13,7 @@ from polaris_modernization.models import Fact
 from polaris_modernization.profiles import load_profile, merge_profiles
 from polaris_modernization.source_inventory import build_inventory
 from polaris_modernization.tree_sitter_extractors.registry import extractor_for
+from polaris_modernization.graph.neo4j_loader import Neo4jLoader, connect, read_graph
 
 
 def analyze(source_root: Path, project_id: str, profile_name: str, output: Path) -> dict:
@@ -45,11 +47,29 @@ def main() -> None:
     analyze_parser.add_argument("--project-id", required=True)
     analyze_parser.add_argument("--profile", required=True)
     analyze_parser.add_argument("--output", required=True, type=Path)
+    load_parser = subparsers.add_parser("load-neo4j")
+    load_parser.add_argument("--graph", required=True, type=Path)
+    load_parser.add_argument("--project-id", required=True)
+    clear_parser = subparsers.add_parser("clear-neo4j-project")
+    clear_parser.add_argument("--project-id", required=True)
+    clear_parser.add_argument("--confirm-project-id", required=True)
     args = parser.parse_args()
 
     if args.command == "analyze":
         result = analyze(args.source_root, args.project_id, args.profile, args.output)
         print(f"Analyzed {len(result['inventory'])} files into {result['output']}")
+    elif args.command in {"load-neo4j", "clear-neo4j-project"}:
+        driver = connect(os.getenv("NEO4J_URI", "bolt://localhost:7687"), os.getenv("NEO4J_USERNAME", "neo4j"), os.getenv("NEO4J_PASSWORD", "change-me"))
+        loader = Neo4jLoader(driver)
+        try:
+            if args.command == "load-neo4j":
+                graph = read_graph(args.graph, args.project_id)
+                print(loader.load(graph, args.project_id))
+            else:
+                loader.clear_project(args.project_id, args.confirm_project_id)
+                print(f"Cleared project {args.project_id}")
+        finally:
+            driver.close()
 
 
 if __name__ == "__main__":

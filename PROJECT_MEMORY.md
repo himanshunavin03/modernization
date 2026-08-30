@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 2.2 complete — generic graph correctness validated before Neo4j persistence.
+Step 3A complete — project-scoped Neo4j persistence implemented and unit-validated.
 
 ## Step 1 Result
 
@@ -36,7 +36,11 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Step 3 — load project-scoped knowledge graph JSON into Neo4j and add a Roslyn/LSP semantic enrichment adapter.
+Step 3B — Roslyn/LSP semantic enrichment for C# symbol and endpoint resolution.
+
+## Step 3A Result
+
+The CLI loads normalized JSON into Neo4j with parameterized, idempotent `MERGE` operations. Graph nodes, generic relationships, warnings, evidence, and project IDs persist as project-scoped data. Clearing requires repeated project-ID confirmation and cannot issue a database-wide delete.
 
 ## Step 2.2 Result
 
