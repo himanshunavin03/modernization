@@ -29,3 +29,5 @@
 | Neo4j persists generic graph records keyed by project ID and graph ID. | Project-scoped idempotency prevents duplicate loads and cross-project collisions. |
 | Neo4j relationships use the stable `GRAPH_REL` type with a queryable `type` property. | Relationship semantics remain preserved without dynamically constructing Cypher relationship types. |
 | Project clearing requires matching repeated confirmation and label-scoped deletes. | A project operation must never become a database-wide delete. |
+| Roslyn is an opt-in semantic provider; Tree-sitter remains the default syntax provider. | C# semantic analysis should enrich deterministic facts without requiring a legacy project build. |
+| LSP is a future interactive boundary, not a batch-analysis dependency. | Batch analysis must not require an IDE or language server. |

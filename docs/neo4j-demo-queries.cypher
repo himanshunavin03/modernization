@@ -7,6 +7,11 @@ MATCH (controller:GraphNode {project_id: $project_id, label: 'Controller'})-[:GR
 OPTIONAL MATCH (action)-[:GRAPH_REL {type: 'RETURNS'}]->(view:GraphNode)
 RETURN controller.name, action.name, view.name;
 
+MATCH (controller:GraphNode {project_id: $project_id, label: 'Controller'})-[:GRAPH_REL {type: 'DECLARES'}]->(action:GraphNode)
+OPTIONAL MATCH (action)-[:GRAPH_REL {type: 'EXPOSES'}]->(endpoint:GraphNode)
+OPTIONAL MATCH (action)-[:GRAPH_REL {type: 'RETURNS_TYPE'}]->(dto:GraphNode)
+RETURN controller.name, action.name, endpoint.name, dto.name;
+
 MATCH (service:GraphNode {project_id: $project_id, label: 'AngularService'})-[r:GRAPH_REL {type: 'CALLS_API'}]->(api:GraphNode)
 RETURN service.name, api.name, r.properties_json;
 

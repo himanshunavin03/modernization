@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 3A complete — project-scoped Neo4j persistence implemented and unit-validated.
+Step 3B complete — optional Roslyn semantic enrichment with graceful fallback implemented.
 
 ## Step 1 Result
 
@@ -36,7 +36,11 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Step 3B — Roslyn/LSP semantic enrichment for C# symbol and endpoint resolution.
+Step 4 — Business feature, epic, user-story, and acceptance-criteria generation from approved graph evidence.
+
+## Step 3B Result
+
+Roslyn enrichment is opt-in through `--enable-roslyn`. Its helper analyzes C# files independently and emits `roslyn-semantic.json`; Python preserves it as additional graph evidence. Without a .NET SDK, the analyzer completes with an explicit warning. LSP remains a documented future interactive boundary, not an implemented analysis provider.
 
 ## Step 3A Result
 

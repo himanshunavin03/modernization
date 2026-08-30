@@ -43,6 +43,17 @@ python -m polaris_modernization.cli analyze --source-root "source\HealthClinic.b
 
 The scanner uses Tree-sitter AST parsing for JavaScript, HTML/Razor host markup, and C#. Facts contain project IDs, source paths, line ranges, source hashes, and `confidence: 1.0`. No LLM, LangChain, LangGraph, Graphiti, OpenAI, Copilot, or AI API is used. Future graph loading and controlled LLM work are outside Step 2.1.
 
+## Semantic Enrichment
+
+Tree-sitter performs batch syntax extraction. Optional Roslyn enrichment adds C# semantic facts without building or changing the input project. Future LSP support is an interactive IDE boundary only and is not implemented.
+
+```powershell
+dotnet build tools\Polaris.RoslynAnalyzer\Polaris.RoslynAnalyzer.csproj
+python -m polaris_modernization.cli analyze --source-root "<path>" --project-id "<id>" --profile "default" --output "artifacts" --enable-roslyn
+```
+
+If `dotnet` is unavailable, the command succeeds with `roslyn-semantic.json` containing a warning and no Roslyn facts.
+
 Later steps may use the normalized graph for Neo4j loading, Roslyn/LSP enrichment, target-architecture assessment, and controlled LLM workflows. Those capabilities are intentionally not implemented here.
 
 ## Neo4j Development
