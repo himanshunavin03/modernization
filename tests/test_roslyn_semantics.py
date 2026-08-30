@@ -66,10 +66,15 @@ def test_roslyn_fixture_produces_evidence_backed_graph(tmp_path):
     after = {path: hashlib.sha256(path.read_bytes()).hexdigest() for path in FIXTURE.rglob("*.cs")}
     kinds = {item["kind"] for item in roslyn["facts"]}
     edges = {item["type"] for item in result["graph"]["edges"]}
+    actions = {item["name"]: item for item in roslyn["facts"] if item["kind"] == "action"}
     assert roslyn["project_id"] == "semantic-fixture"
     assert before == after
     assert {"namespace", "controller", "action", "dto", "property", "endpoint", "authorization_policy", "invocation"} <= kinds
     assert {"DECLARES", "EXPOSES", "RETURNS_TYPE", "HAS_PROPERTY", "INVOKES", "PROTECTED_BY"} <= edges
+    assert actions["Fetch"]["properties"]["identity"] == "global::Sample.Shipments.ShipmentGatewayController.Fetch(global::System.String)"
+    assert actions["Fetch"]["properties"]["return_type_identity"] == "global::Sample.Shipments.ShipmentSummary"
+    assert actions["Status"]["properties"]["identity"] == "global::Sample.Shipments.ShipmentGatewayController.Status()"
+    assert actions["Status"]["properties"]["return_type_identity"] == "global::System.String"
     assert any(item["properties"].get("route_template") == "api/shipments/{trackingCode}" for item in roslyn["facts"] if item["kind"] == "endpoint")
     labels_by_id = {node["id"]: node["label"] for node in result["graph"]["nodes"]}
     action_nodes = {node["name"]: node["id"] for node in result["graph"]["nodes"] if node["label"] == "Action"}

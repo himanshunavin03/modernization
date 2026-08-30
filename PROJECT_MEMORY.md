@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 3B.2 — Roslyn graph-label correction; real SDK validation pending.
+Step 3C — Create Knowledge Graph agent command and customer-facing graph run status.
 
 ## Step 1 Result
 
@@ -36,11 +36,15 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-On a machine with the .NET SDK, build `tools/Polaris.RoslynAnalyzer/Polaris.RoslynAnalyzer.csproj` and run the SDK-gated semantic fixture analysis. Do not begin Step 4 until this real semantic validation passes.
+Create the Step 3C Knowledge Graph agent command and customer-facing run status on top of the validated deterministic plus Roslyn graph pipeline. Do not begin Step 4 until Step 3C completes.
 
 ## Step 3B.2 Result
 
-Roslyn enrichment is opt-in through `--enable-roslyn`. The helper uses `SemanticModel`, `GetDeclaredSymbol`, `GetSymbolInfo`, and type-symbol results to emit namespaces, controller/action, type/DTO, property, endpoint, authorization, invocation, and type-reference facts. Fully qualified symbol identities prevent namespace collisions; graph relationships are added only from proven evidence. `RETURNS_TYPE` and `HAS_PROPERTY` now choose `DTO` only when that identity has a proven DTO fact, otherwise `Type`, without duplicate nodes. Python fixture tests pass, but this machine has no `dotnet` executable, so the required real helper build and integration test are pending. LSP remains a documented future interactive boundary, not an implemented analysis provider.
+Roslyn enrichment is opt-in through `--enable-roslyn`. The helper uses `SemanticModel`, `GetDeclaredSymbol`, `GetSymbolInfo`, and type-symbol results to emit namespaces, controller/action, type/DTO, property, endpoint, authorization, invocation, and type-reference facts. `RETURNS_TYPE` and `HAS_PROPERTY` choose `DTO` only when that identity has a proven DTO fact, otherwise `Type`, without duplicate nodes. LSP remains a documented future interactive boundary, not an implemented analysis provider.
+
+## Step 3B.3 Result
+
+Local validation on .NET SDK `8.0.424` built `tools/Polaris.RoslynAnalyzer/Polaris.RoslynAnalyzer.csproj`, passed `python -m pytest -q` with `13 passed, 1 skipped`, and ran `python -m polaris_modernization.cli analyze --source-root tests\fixtures\roslyn-semantic --project-id semantic-fixture --profile default --output artifacts --enable-roslyn` successfully. The helper now emits fully qualified CLR symbol identities, including framework types such as `global::System.String`, and the semantic fixture produced `artifacts/semantic-fixture/roslyn-semantic.json` plus `knowledge-graph.json` with proven `DECLARES`, `EXPOSES`, `RETURNS_TYPE`, `HAS_PROPERTY`, `INVOKES`, and `PROTECTED_BY` edges. `Fetch` returns `ShipmentSummary` as `DTO`, `Status` returns `global::System.String` as `Type`, and the semantic fixture source hash remained unchanged.
 
 ## Step 3A Result
 

@@ -35,3 +35,5 @@
 | Roslyn identities use fully qualified symbols, while matching Tree-sitter controller/action nodes requires same-file evidence. | This prevents namespace collisions without duplicating equivalent syntax and semantic findings. |
 | A type becomes a DTO only when an action return or parameter references it. | The scanner must not misclassify every C# type as a model. |
 | Return-type and property-owner graph labels are selected from the proven fact for the fully qualified identity. | A graph edge must not promote ordinary types, such as `System.String`, to DTOs. |
+| Roslyn semantic identities use fully qualified CLR symbol names without C# keyword aliases. | Real local SDK validation must distinguish framework types such as `global::System.String` and keep graph nodes collision-free across namespaces and member owners. |
+| Step 3B completes only after a real helper build and Roslyn-enabled fixture run on a local .NET SDK. | Python-only tests do not prove the local batch semantic path or the actual helper/compiler integration. |

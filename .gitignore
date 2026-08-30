@@ -10,3 +10,5 @@ artifacts/*
 source/*
 !source/.gitkeep
 !source/README.md
+tools/Polaris.RoslynAnalyzer/bin/
+tools/Polaris.RoslynAnalyzer/obj/

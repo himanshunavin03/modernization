@@ -1,3 +1,4 @@
+#nullable enable
 using System.Security.Cryptography;
 using System.Text.Json;
 using Microsoft.CodeAnalysis;
@@ -12,7 +13,7 @@ var inputs = Directory.EnumerateFiles(sourceRoot, "*.cs", SearchOption.AllDirect
     .Select(path => new SourceInput(path, Path.GetRelativePath(sourceRoot, path).Replace('\\', '/'), File.ReadAllText(path)))
     .ToList();
 var trees = inputs.Select(input => CSharpSyntaxTree.ParseText(input.Text, path: input.Path)).ToList();
-var references = ((string?)AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES"))?.Split(Path.PathSeparator).Select(MetadataReference.CreateFromFile).ToList() ?? [];
+var references = ((string?)AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES"))?.Split(Path.PathSeparator).Select(path => MetadataReference.CreateFromFile(path)).ToList() ?? [];
 var compilation = CSharpCompilation.Create("PolarisSemantic", trees, references, new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
 var facts = new List<Fact>();
 var actionTypeIds = new HashSet<string>();
@@ -116,7 +117,13 @@ File.WriteAllText(outputPath, JsonSerializer.Serialize(new { project_id = projec
 
 static Dictionary<string, string> ParseArguments(string[] args) => Enumerable.Range(0, args.Length / 2).ToDictionary(index => args[index * 2], index => args[index * 2 + 1]);
 static string Required(Dictionary<string, string> values, string key) => values.TryGetValue(key, out var value) ? value : throw new ArgumentException($"Missing {key}.");
-static string SymbolId(ISymbol symbol) => symbol.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
+static string SymbolId(ISymbol symbol) => symbol.ToDisplayString(new SymbolDisplayFormat(
+    globalNamespaceStyle: SymbolDisplayGlobalNamespaceStyle.Included,
+    typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypesAndNamespaces,
+    genericsOptions: SymbolDisplayGenericsOptions.IncludeTypeParameters,
+    memberOptions: SymbolDisplayMemberOptions.IncludeContainingType | SymbolDisplayMemberOptions.IncludeParameters,
+    parameterOptions: SymbolDisplayParameterOptions.IncludeType,
+    miscellaneousOptions: SymbolDisplayMiscellaneousOptions.EscapeKeywordIdentifiers));
 static bool IsController(INamedTypeSymbol symbol) => symbol.Name.EndsWith("Controller", StringComparison.Ordinal) || InheritsController(symbol);
 static bool InheritsController(INamedTypeSymbol symbol) => symbol.BaseType is not null && (symbol.BaseType.Name.EndsWith("Controller", StringComparison.Ordinal) || InheritsController(symbol.BaseType));
 static bool IsAttribute(AttributeInfo attribute, string name) => attribute.Symbol?.ContainingType.Name.Equals(name, StringComparison.Ordinal) == true;
