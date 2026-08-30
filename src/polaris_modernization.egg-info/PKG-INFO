@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: polaris-modernization
+Version: 0.1.0
+Summary: Deterministic Tree-sitter source extractor for the Polaris modernization POC
+Requires-Python: >=3.11
+Requires-Dist: tree-sitter==0.26.0
+Requires-Dist: tree-sitter-c-sharp==0.23.5
+Requires-Dist: tree-sitter-html==0.23.2
+Requires-Dist: tree-sitter-javascript==0.25.0

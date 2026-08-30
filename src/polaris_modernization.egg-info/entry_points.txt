@@ -1,0 +1,2 @@
+[console_scripts]
+polaris-modernization = polaris_modernization.cli:main
