@@ -12,6 +12,7 @@ This repository contains a project-agnostic deterministic source scanner. Any lo
 
 ```powershell
 python -m pip install -e ".[dev]"
+python -m pytest -q
 ```
 
 The source root is supplied at runtime. The extractor never assumes an absolute location and never writes into it.

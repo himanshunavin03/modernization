@@ -42,10 +42,15 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
                 continue
             method_evidence = evidence(path, source_root, method_node, digest, project_id)
             facts.append(Fact("action", method_name, method_evidence, {"controller": class_name}))
-            returns_view = any(
-                node.type == "return_statement" and "View" in node_text(node, source)
-                for node in walk(method_node)
-            )
-            if returns_view:
-                facts.append(Fact("returns_view", method_name, method_evidence, {"controller": class_name}))
+            for return_node in (node for node in walk(method_node) if node.type == "return_statement"):
+                invocation = next((node for node in walk(return_node) if node.type == "invocation_expression"), None)
+                if invocation is None or _first_identifier(invocation, source) != "View":
+                    continue
+                properties = {"controller": class_name}
+                literal = next((node for node in walk(invocation) if node.type == "string_literal"), None)
+                if literal is not None:
+                    properties["view_name"] = node_text(literal, source)[1:-1]
+                else:
+                    properties["unresolved"] = "implicit View() cannot be matched deterministically"
+                facts.append(Fact("returns_view", method_name, evidence(path, source_root, return_node, digest, project_id), properties))
     return facts

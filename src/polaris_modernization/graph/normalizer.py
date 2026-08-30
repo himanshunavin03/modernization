@@ -39,10 +39,10 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact]) -> dict
         nodes[node_id]["evidence"].append(evidence)
         return node_id
 
-    def add_edge(edge_type: str, source: str, target: str, evidence: dict) -> None:
+    def add_edge(edge_type: str, source: str, target: str, evidence: dict, properties: dict | None = None) -> None:
         key = (edge_type, source, target)
         if key not in edges:
-            edges[key] = {"project_id": project_id, "type": edge_type, "source": source, "target": target, "evidence": []}
+            edges[key] = {"project_id": project_id, "type": edge_type, "source": source, "target": target, "properties": properties or {}, "evidence": []}
         edges[key]["evidence"].append(evidence)
 
     application_evidence = {"project_id": project_id, "source_path": "", "line_start": 0, "line_end": 0, "extraction_method": "tree-sitter", "confidence": 1.0, "source_hash": ""}
@@ -58,17 +58,23 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact]) -> dict
             "source_hash": file_entry["source_hash"],
         }
         file_nodes[file_entry["source_path"]] = add_node("File", file_entry["source_path"], evidence)
-        add_edge("CONTAINS_CONTROL", application, file_nodes[file_entry["source_path"]], evidence)
+        add_edge("CONTAINS", application, file_nodes[file_entry["source_path"]], evidence)
 
     controllers: dict[str, str] = {}
     modules_by_file: dict[str, str] = {}
     views_by_stem: dict[str, str] = {}
     pending_routes: list[tuple[str, Fact]] = []
     pending_actions: list[tuple[str, Fact]] = []
+    pending_returns: list[Fact] = []
+    owners_by_file: dict[str, list[str]] = defaultdict(list)
+    warnings: list[dict] = []
 
     for fact in facts:
         evidence = fact.evidence.to_dict()
         file_node = file_nodes[evidence["source_path"]]
+        if fact.kind == "returns_view":
+            pending_returns.append(fact)
+            continue
         label = KIND_TO_LABEL.get(fact.kind)
         if label is None:
             if fact.kind == "import":
@@ -79,6 +85,8 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact]) -> dict
         add_edge("DECLARES", file_node, node, evidence)
         if fact.kind in {"razor_view", "layout", "partial_view", "script_asset", "style_asset", "client_component", "ui_control"}:
             add_edge("HOSTS", file_node, node, evidence)
+        if fact.kind in {"client_component", "ui_control"}:
+            add_edge("CONTAINS_CONTROL", file_node, node, evidence)
         if fact.kind == "controller":
             controllers[fact.name] = node
         if fact.kind == "angular_module":
@@ -91,20 +99,28 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact]) -> dict
                 add_edge("PROTECTS", node, controller, evidence)
         if fact.kind == "action":
             pending_actions.append((node, fact))
+        if fact.kind in {"angular_service", "angular_controller", "angular_directive"}:
+            owners_by_file[evidence["source_path"]].append(node)
         if fact.kind == "route":
             pending_routes.append((node, fact))
         if fact.kind == "api_call":
-            source = next((item for item in nodes if ":AngularService:" in item), file_node)
-            add_edge("CALLS_API", source, node, evidence)
+            owners = owners_by_file[evidence["source_path"]]
+            source = owners[0] if len(owners) == 1 else file_node
+            add_edge("CALLS_API", source, node, evidence, {"ownership": "proven" if len(owners) == 1 else "unresolved"})
+            if len(owners) != 1:
+                warnings.append({"source_path": evidence["source_path"], "message": "API call owner was not uniquely proven; attached to File."})
 
     for action_node, action_fact in pending_actions:
         controller = controllers.get(str(action_fact.properties.get("controller")))
         if controller:
             add_edge("DECLARES", controller, action_node, action_fact.evidence.to_dict())
-        if action_fact.name == "Index" and str(action_fact.properties.get("controller")) == "DashboardController":
-            dashboard_view = views_by_stem.get("Index")
-            if dashboard_view:
-                add_edge("RETURNS", action_node, dashboard_view, action_fact.evidence.to_dict())
+    for return_fact in pending_returns:
+        action = next((item for item, fact in pending_actions if fact.name == return_fact.name and fact.properties.get("controller") == return_fact.properties.get("controller")), None)
+        view_name = return_fact.properties.get("view_name")
+        if action and isinstance(view_name, str) and view_name in views_by_stem:
+            add_edge("RETURNS", action, views_by_stem[view_name], return_fact.evidence.to_dict())
+        elif return_fact.properties.get("unresolved"):
+            warnings.append({"source_path": return_fact.evidence.source_path, "message": return_fact.properties["unresolved"]})
 
     for route_node, route_fact in pending_routes:
         module = modules_by_file.get(route_fact.evidence.source_path)
@@ -122,4 +138,5 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact]) -> dict
     return {
         "nodes": sorted(nodes.values(), key=lambda item: item["id"]),
         "edges": sorted(edges.values(), key=lambda item: (item["type"], item["source"], item["target"])),
+        "warnings": warnings,
     }

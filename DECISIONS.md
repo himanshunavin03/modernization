@@ -23,3 +23,6 @@
 | Source projects are local runtime inputs and are not committed. | The customized solution must support multiple read-only customer/reference repositories without embedding them in its Git history. |
 | Scanner outputs and graph namespace are isolated by project ID. | Project-specific artifacts, future Neo4j nodes, Graphiti memory, decisions, backlog, Figma mappings, and generated output must not mix. |
 | HealthClinic Dashboard is a YAML sample profile, not hardcoded application logic. | The deterministic scanner must remain reusable for arbitrary future source roots. |
+| Project-to-file edges use `CONTAINS`; `CONTAINS_CONTROL` is reserved for file-hosted controls and components. | Graph edge semantics must distinguish repository structure from UI composition. |
+| MVC view relationships require a static explicit view name and matching discovered Razor view. | Implicit MVC conventions cannot be connected deterministically without project-specific guessing. |
+| API calls are owned only by a unique Angular owner in the same source file. | File-local ownership prevents incorrect cross-service API relationships. |

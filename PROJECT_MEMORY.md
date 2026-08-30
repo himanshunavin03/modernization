@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 2.1 complete — reusable deterministic scanner and repository hygiene validated.
+Step 2.2 complete — generic graph correctness validated before Neo4j persistence.
 
 ## Step 1 Result
 
@@ -37,6 +37,10 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 ## Next Step
 
 Step 3 — load project-scoped knowledge graph JSON into Neo4j and add a Roslyn/LSP semantic enrichment adapter.
+
+## Step 2.2 Result
+
+Project-to-file graph edges use `CONTAINS`; `CONTAINS_CONTROL` is reserved for file-hosted UI controls/components. MVC `RETURNS` edges are emitted only for explicit static `View("Name")` calls with a matching discovered Razor view. Implicit `View()` calls are review warnings. API calls are owned only by a unique Angular owner declared in the same file; otherwise the File owns the edge with unresolved metadata.
 
 ## Project Isolation
 
