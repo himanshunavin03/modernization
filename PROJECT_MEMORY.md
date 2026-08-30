@@ -88,4 +88,4 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before doing any further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 017 under `docs/prompts/`, `docs/agents/create-knowledge-graph.md`, and `docs/validation/healthclinic-dashboard-neo4j-visual-demo.md`. Await user review and commit approval; do not begin Step 4 automatically.
+Before doing any further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 019 under `docs/prompts/`, `docs/agents/create-knowledge-graph.md`, and `docs/validation/healthclinic-ui-technology-discovery.md`. Neo4j loading is complete. Await approval or rejection of the recommended hybrid Legacy ASP.NET MVC/Razor plus Legacy AngularJS 1.x to Target Angular 22 Dashboard POC scope. Do not begin graph-label correction, Understand Anything visualization, or Step 4 until the user approves that scope.
