@@ -1,0 +1,3 @@
+# Prompt 029: Correct Complete Application Failure Disposition
+
+Repair full-application Tree-sitter worker failures without treating first-party source as opaque. Preserve process isolation. On a native worker access violation, use only a deterministic, conservative fallback for first-party source; permit `OpaqueSource` only with objective generated, minified/tooling, third-party path, or upstream license-header evidence. Record an explicit coverage status of `partial_application_with_first_party_extraction_failures`, `complete_application`, or `complete_with_opaque_dependencies`. Do not modify customer source, use LLM analysis, load Neo4j, or export a viewer until source inventory, source fingerprint, tests, and extraction gates pass.

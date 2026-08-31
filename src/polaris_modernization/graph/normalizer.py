@@ -26,6 +26,7 @@ KIND_TO_LABEL = {
     "ui_control": "UIControl",
     "api_call": "ApiCall",
     "opaque_source": "OpaqueSource",
+    "conservative_source": "ConservativeSource",
 }
 
 

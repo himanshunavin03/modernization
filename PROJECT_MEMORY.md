@@ -19,7 +19,7 @@ Step 3C.8 — Dashboard end-to-end context graph completed and loaded into Neo4j
 
 ## Complete Application Baseline
 
-The new generic full-application run `legacy-dashboard-complete-application-demo-v1` audited 2,384 files with Roslyn enabled and produced 3,298 nodes and 4,500 edges, but has 47 isolated extraction warnings and `partial_application_with_extraction_failures`. It is not eligible for Neo4j loading or viewer export. See `docs/validation/legacy-dashboard-complete-application-knowledge-graph.md`.
+The full-application repair now retains native worker isolation while distinguishing first-party conservative fallback records from proven opaque dependencies. A dry run of `legacy-dashboard-complete-application-demo-v1` inventoried 2,384 files with zero extraction warnings and `complete_with_opaque_dependencies`; Neo4j load and viewer export are still pending their final validation gates. Recovery reading includes prompts 010 through 030 and `docs/validation/complete-application-failure-disposition.md`.
 
 ## Step 1 Result
 

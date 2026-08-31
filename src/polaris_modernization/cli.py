@@ -218,8 +218,11 @@ def analyze(source_root: Path, project_id: str, profile_name: str, output: Path,
         add_context_flow(graph, profile, project_id)
         graph["metadata"].update({"modernization_scope": "end_to_end_context", "transform_boundary": "ui_only", "backend_preservation_boundary": "api_domain_data"})
     graph["metadata"]["review_warning_count"] = len(graph["warnings"]) - len(extraction_warnings)
+    opaque_dependency_count = sum(1 for fact in facts if fact.kind == "opaque_source")
+    graph["metadata"]["opaque_dependency_count"] = opaque_dependency_count
     graph["metadata"]["coverage_status"] = (
-        "complete_application" if scope_type == "full_application" and not extraction_warnings
+        "complete_with_opaque_dependencies" if scope_type == "full_application" and not extraction_warnings and opaque_dependency_count
+        else "complete_application" if scope_type == "full_application" and not extraction_warnings
         else "partial_application_with_extraction_failures" if scope_type == "full_application"
         else "scope_complete" if not extraction_warnings
         else "scope_partial_with_extraction_failures"
