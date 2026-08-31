@@ -26,8 +26,10 @@ def test_graph_only_success_writes_customer_status_without_changing_source(tmp_p
     assert (tmp_path / "semantic-agent" / "graph-run-summary.md").exists()
     assert result["neo4j"]["status"] == "skipped"
     assert [stage["name"] for stage in result["stages"]] == [
-        "validate_input", "analyze_source", "validate_graph", "load_neo4j", "produce_run_status"
+        "validate_input", "analyze_source", "validate_graph", "load_neo4j", "produce_run_status", "preserve_review_artifacts"
     ]
+    assert (tmp_path / "knowledge-graph" / "latest" / "knowledge-graph.json").exists()
+    assert (tmp_path / "knowledge-graph" / "latest" / "knowledge-graph-validation.json").exists()
 
 
 def test_missing_source_path_returns_failed_status_artifact(tmp_path):

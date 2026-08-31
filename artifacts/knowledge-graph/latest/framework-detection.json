@@ -1,0 +1,35 @@
+{
+  "frameworks": [
+    {
+      "confidence": 1.0,
+      "framework": "ASP.NET MVC/Razor",
+      "method": "deterministic-file-evidence",
+      "source_path": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml"
+    },
+    {
+      "confidence": 1.0,
+      "framework": ".NET API",
+      "method": "deterministic-file-evidence",
+      "source_path": "src/MyHealth.SugarTracker/SugarTracker/SugarTracker.csproj"
+    },
+    {
+      "confidence": 1.0,
+      "framework": "TypeScript",
+      "method": "deterministic-file-evidence",
+      "source_path": "src/MyHealth.Web.Clinics/typings/express/express.d.ts"
+    }
+  ],
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "scope": {
+    "coverage_status": "complete_with_opaque_dependencies",
+    "extraction_warning_count": 0,
+    "opaque_dependency_count": 44,
+    "out_of_scope_file_count": 0,
+    "review_warning_count": 2082,
+    "scope_description": "Complete discovered application inventory and graph.",
+    "scope_id": "full-application",
+    "scope_name": "Full application analysis",
+    "scope_type": "full_application",
+    "selected_file_count": 2384
+  }
+}

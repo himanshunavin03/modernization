@@ -219,4 +219,14 @@ def create_knowledge_graph(
     status["ended_at"] = _timestamp()
     status["stages"].append(_stage("produce_run_status", "succeeded", "Customer-facing run status artifacts were created."))
     _write_status(status, run_output)
+    if status["overall_status"] == "succeeded":
+        try:
+            from polaris_modernization.review_artifacts import preserve_completed_run
+            archive = preserve_completed_run(run_output, project_id, enable_roslyn=enable_roslyn, archive_root=Path(output) / "knowledge-graph")
+            status["artifact_paths"]["review_archive"] = archive["path"]
+            status["stages"].append(_stage("preserve_review_artifacts", "succeeded", f"Validated raw output preserved as {archive['run_id']}."))
+        except Exception as error:
+            status["overall_status"] = "failed"
+            status["stages"].append(_stage("preserve_review_artifacts", "failed", f"Review artifact preservation failed: {error}"))
+        _write_status(status, run_output)
     return status
