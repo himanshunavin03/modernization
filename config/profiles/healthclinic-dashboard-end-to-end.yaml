@@ -34,3 +34,25 @@ endpoint_routes:
     source_path: src/MyHealth.API/Controllers/UsersController.cs
     action_name: GetCurrentTenantAsync
     action_identity: global::MyHealth.API.Controllers.UsersController.GetCurrentTenantAsync()
+data_flows:
+  - action_name: GetClinicSummaryAsync
+    action_path: src/MyHealth.API/Controllers/ReportsController.cs
+    repository_method: GetClinicSummaryAsync
+    repository_path: src/MyHealth.Data/Repositories/ReportsRepository.cs
+    model: ClinicSummary
+    model_path: src/MyHealth.Model/ClinicSummary.cs
+    query_lines: [21, 24]
+  - action_name: GetExpensesSummaryAsync
+    action_path: src/MyHealth.API/Controllers/ReportsController.cs
+    repository_method: GetExpensesSummaryAsync
+    repository_path: src/MyHealth.Data/Repositories/ReportsRepository.cs
+    model: ExpensesSummary
+    model_path: src/MyHealth.Model/ExpensesSummary.cs
+    query_lines: [29, 32]
+  - action_name: GetPatientsSummaryAsync
+    action_path: src/MyHealth.API/Controllers/ReportsController.cs
+    repository_method: GetPatientsSummaryAsync
+    repository_path: src/MyHealth.Data/Repositories/ReportsRepository.cs
+    model: PatientsSummary
+    model_path: src/MyHealth.Model/PatientsSummary.cs
+    query_lines: [37, 40]

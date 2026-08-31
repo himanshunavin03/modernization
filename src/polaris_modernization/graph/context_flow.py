@@ -40,6 +40,26 @@ def add_context_flow(graph: dict, profile: dict, project_id: str) -> None:
         if call["id"] not in resolved_calls:
             graph["warnings"].append({"source_path": call["evidence"][0].get("source_path", ""), "message": f"Dashboard API call remains unresolved or dynamic: {call['name']}."})
 
+    for flow in profile.get("data_flows", []):
+        action_candidates = [node for node in nodes.values() if node["label"] == "Action" and node["name"] == flow["action_name"] and any(item.get("source_path") == flow["action_path"] for item in node["evidence"])]
+        model_candidates = [node for node in nodes.values() if node["name"] == flow["model"] and any(item.get("source_path") == flow["model_path"] for item in node["evidence"])]
+        if len(action_candidates) != 1 or len(model_candidates) != 1:
+            graph["warnings"].append({"source_path": flow["repository_path"], "message": f"Dashboard repository flow could not be uniquely proven: {flow['repository_method']}."})
+            continue
+        action, model = action_candidates[0], model_candidates[0]
+        inventory_file = next(node for node in nodes.values() if node["label"] == "File" and node["name"] == flow["repository_path"])
+        evidence = {"project_id": project_id, "source_path": flow["repository_path"], "line_start": flow["query_lines"][0], "line_end": flow["query_lines"][1], "extraction_method": "tree-sitter", "confidence": 1.0, "source_hash": inventory_file["evidence"][0]["source_hash"]}
+        repository_id = f"{project_id}:RepositoryMethod:{flow['repository_method']}"
+        nodes[repository_id] = {"id": repository_id, "project_id": project_id, "label": "RepositoryMethod", "name": flow["repository_method"], "properties": {"modernization_role": "preserve_domain_data", "eligible_for_angular_generation": False}, "evidence": [evidence]}
+        query_id = f"{project_id}:DataQuery:{flow['repository_method']}"
+        nodes[query_id] = {"id": query_id, "project_id": project_id, "label": "DataQuery", "name": f"EF/LINQ query: {flow['repository_method']}", "properties": {"data_access": "EF/LINQ query", "modernization_role": "preserve_domain_data", "eligible_for_angular_generation": False}, "evidence": [evidence]}
+        context = next((node for node in nodes.values() if node["name"] == "MyHealthContext" and any(item.get("source_path") == "src/MyHealth.Data/MyHealthContext.cs" for item in node["evidence"])), None)
+        add_edge("INVOKES", action["id"], repository_id, evidence)
+        add_edge("EXECUTES_QUERY", repository_id, query_id, evidence, {"data_access": "EF/LINQ query"})
+        add_edge("RETURNS_TYPE", repository_id, model["id"], evidence)
+        add_edge("USES_MODEL", query_id, model["id"], evidence)
+        if context: add_edge("DEPENDS_ON", repository_id, context["id"], evidence)
+
     roles = profile.get("selection_roles", {})
     for node in nodes.values():
         paths = [item.get("source_path", "") for item in node.get("evidence", [])]

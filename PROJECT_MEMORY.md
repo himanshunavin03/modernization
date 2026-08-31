@@ -91,6 +91,8 @@ The one-time `tools/install_understand_anything_viewer.ps1` installs the officia
 
 `end_to_end_context_flow` adds explicit `transform_ui`, `preserve_backend`, and `preserve_domain_data` roles to selected records and rejects backend records as Angular-generation candidates. The new isolated `healthclinic-dashboard-end-to-end-demo-v1` graph selected 24 UI files, 2 API controller files, and 6 domain/data files, completed with zero extraction warnings, and kept all 2,384 saved source-inventory hashes unchanged. The current terminal cannot resolve `dotnet`, so Roslyn enrichment was skipped; it also cannot resolve `docker`, so Neo4j loading was not attempted. No end-to-end backend relationship or new viewer export is claimed until both tools are available. See `docs/validation/healthclinic-dashboard-end-to-end-context-graph.md`.
 
+The graph now also projects the proven Reports controller-to-repository-to-EF/LINQ-to-model-to-`MyHealthContext` paths as read-only context. No raw SQL was found or inferred; dynamic client routes remain warnings.
+
 ## Step 2.2 Result
 
 Project-to-file graph edges use `CONTAINS`; `CONTAINS_CONTROL` is reserved for file-hosted UI controls/components. MVC `RETURNS` edges are emitted only for explicit static `View("Name")` calls with a matching discovered Razor view. Implicit `View()` calls are review warnings. API calls are owned only by a unique Angular owner declared in the same file; otherwise the File owns the edge with unresolved metadata.

@@ -33,3 +33,9 @@ Only `transform_ui` records are eligible for Angular generation. API, domain, an
 ## Customer Explanation
 
 This graph preserves the Legacy ASP.NET MVC/Razor and Legacy AngularJS 1.x Dashboard modernization boundary while showing only verified read-only backend context. It will not represent API/domain/data code as Angular work. The backend path must be rerun with Roslyn and Neo4j available before it can be used as an end-to-end customer graph.
+
+## Repository and Data Flow Update
+
+The selected Reports flow now exposes three source-backed read-only paths: `GetClinicSummaryAsync`, `GetExpensesSummaryAsync`, and `GetPatientsSummaryAsync`. Each controller action invokes a distinct `RepositoryMethod` record, which executes an `EF/LINQ query` record in `ReportsRepository`, returns its selected model (`ClinicSummary`, `ExpensesSummary`, or `PatientsSummary`), and depends on `MyHealthContext`. Source evidence is `Where` plus `OrderBy` and `FirstOrDefaultAsync` or `ToListAsync`; no literal raw SQL or SQL execution evidence was found, so no SQL node is shown.
+
+The regenerated graph has 156 nodes, 232 edges, 17 warnings, `scope_complete` coverage, and zero extraction warnings. The read-only visualization export was regenerated. Neo4j reload remains blocked by the previously recorded local authentication failure; no load claim is made.

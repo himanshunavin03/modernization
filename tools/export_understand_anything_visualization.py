@@ -13,6 +13,11 @@ DISCLAIMER = (
     "legacy client-side code; Target Angular 22 is the modernization target."
 )
 LAYER_DEFINITIONS = (
+    ("legacy-ui-modernization", "Legacy UI modernization scope", "Legacy Razor and AngularJS records eligible for UI modernization."),
+    ("backend-api-contract", "Backend API and contract", "Read-only API controllers, actions, endpoints, and contracts."),
+    ("repository-data-access", "Repository and data-access flow", "Read-only repositories and proven EF/LINQ operations."),
+    ("domain-dto-model", "Domain DTO/entity model", "Read-only DTO and domain model records."),
+    ("dbcontext-dependency", "DbContext/database dependency", "Read-only DbContext dependency records."),
     ("legacy-razor-mvc-shell", "Legacy ASP.NET MVC/Razor shell", "Proven MVC controllers, Razor views, layouts, partials, and UI controls."),
     ("legacy-angularjs-client-flow", "Legacy AngularJS 1.x client-side flow", "Proven AngularJS modules, controllers, routes, templates, directives, and services."),
     ("api-integration-flow", "API and integration flow", "Proven API-call and external integration records."),
@@ -97,6 +102,13 @@ def layer_id_for(node: dict, relationship_types: set[str]) -> str:
     """Classify each canonical node once using only labels, paths, and graph edges."""
     label = node["label"]
     path = source_path(node).replace("\\", "/").lower()
+
+    if path.startswith("src/myhealth.api/") or node.get("properties", {}).get("modernization_role") == "preserve_backend":
+        return "backend-api-contract"
+    if "repositories/" in path or label == "DataQuery": return "repository-data-access"
+    if path.startswith("src/myhealth.model/"): return "domain-dto-model"
+    if path.endswith("myhealthcontext.cs"): return "dbcontext-dependency"
+    if node.get("properties", {}).get("modernization_role") == "transform_ui": return "legacy-ui-modernization"
 
     if label == "ApiCall" or (label == "ExternalReference" and "CALLS_API" in relationship_types):
         return "api-integration-flow"
