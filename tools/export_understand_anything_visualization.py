@@ -8,9 +8,9 @@ from pathlib import Path
 
 PROJECT_ID = "healthclinic-dashboard-scope-demo-v3"
 DISCLAIMER = (
-    "Evidence-backed legacy modernization graph. Tree-sitter/Roslyn source of truth. "
-    "Review warnings remain visible. No LLM inference. Legacy AngularJS 1.x is the "
-    "legacy client-side code; Target Angular 22 is the modernization target."
+    "Evidence-backed modernization graph. Tree-sitter/Roslyn source of truth. "
+    "Review warnings remain visible. No LLM inference. Legacy AngularJS 1.x client-side code; "
+    "Target Angular 22 application."
 )
 LAYER_DEFINITIONS = (
     ("legacy-ui-modernization", "Legacy UI modernization scope", "Legacy Razor and AngularJS records eligible for UI modernization."),
@@ -93,7 +93,7 @@ def node_summary(node: dict, review_warnings: list[dict]) -> str:
     evidence_text = "; ".join(dict.fromkeys(locations)) or "No source-path evidence recorded."
     warning_text = "; ".join(warning.get("message", "") for warning in review_warnings) or "None."
     return (
-        f"Evidence-backed Polaris node. Original label: {node['label']}. "
+        f"Evidence-backed node. Original label: {node['label']}. "
         f"Evidence: {evidence_text}. Review warnings: {warning_text}"
     )
 
@@ -188,11 +188,9 @@ def export(graph: dict, output_root: Path, project_id: str = PROJECT_ID) -> Path
                 "no-llm-inference",
             ],
             "complexity": "moderate",
-            "polarisProjectId": project_id,
-            "polarisLabel": node["label"],
-            "polarisEvidence": node.get("evidence", []),
-            "polarisProperties": node.get("properties", {}),
-            "polarisReviewWarnings": review_warnings,
+            "projectId": project_id, "originalLabel": node["label"],
+            "sourceEvidence": node.get("evidence", []), "properties": node.get("properties", {}),
+            "reviewWarnings": review_warnings,
         })
 
     edges = [{
@@ -201,17 +199,15 @@ def export(graph: dict, output_root: Path, project_id: str = PROJECT_ID) -> Path
         "type": viewer_edge_type(edge["type"]),
         "direction": "forward",
         "weight": 1,
-        "polarisProjectId": project_id,
-        "polarisRelationshipType": edge["type"],
-        "polarisEvidence": edge.get("evidence", []),
-        "polarisProperties": edge.get("properties", {}),
+        "projectId": project_id, "originalRelationshipType": edge["type"],
+        "sourceEvidence": edge.get("evidence", []), "properties": edge.get("properties", {}),
     } for edge in graph["edges"]]
 
     visualization = {
         "version": "1.0.0",
         "kind": "codebase",
         "project": {
-            "name": "Polaris HealthClinic Dashboard modernization POC",
+            "name": "Legacy Dashboard POC",
             "description": DISCLAIMER,
             "languages": ["C#", "Razor", "JavaScript"],
             "frameworks": ["Legacy ASP.NET MVC/Razor UI", "Legacy AngularJS 1.x client-side code", "Target Angular 22 application"],
@@ -222,12 +218,12 @@ def export(graph: dict, output_root: Path, project_id: str = PROJECT_ID) -> Path
         "edges": edges,
         "layers": build_layers(graph, relationship_types_by_node),
         "tour": build_tour(graph),
-        "polarisVisualization": {
+        "visualizationMetadata": {
             "disclaimer": DISCLAIMER,
             "project_id": project_id,
             "canonical_counts": {"nodes": len(graph["nodes"]), "edges": len(graph["edges"]), "warnings": len(graph.get("warnings", []))},
             "review_warnings": graph.get("warnings", []),
-            "source_of_truth": "Tree-sitter/Roslyn canonical knowledge-graph.json and project-scoped Neo4j data.",
+            "source_of_truth": "Tree-sitter/Roslyn source of truth.",
         },
     }
     target = output_root / ".ua" / "knowledge-graph.json"

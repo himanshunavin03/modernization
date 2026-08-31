@@ -87,6 +87,10 @@ The official Understand Anything Windows installer created Codex skill junctions
 Use `docs/runbooks/understand-anything-viewer.md` and `tools/launch_understand_anything_viewer.ps1` to export and launch any approved project-scoped canonical graph locally. The helper requires an explicit project ID, unused port, and caller-supplied local token, writes only ignored visualization output, and must never be replaced with an Understand Anything analyzer command.
 The one-time `tools/install_understand_anything_viewer.ps1` installs the official pinned MIT `understand-anything-viewer` v2.9.0 package under ignored `tools/vendor/`; normal launches use only that local executable and make no runtime package request.
 
+## Customer Branding
+
+Customer-visible graph and viewer branding uses `Legacy Dashboard POC`; internal project IDs, paths, and the `polaris_modernization` package remain technical identifiers. See `docs/validation/customer-facing-branding-audit.md`.
+
 ## Step 3C.8 Result
 
 `end_to_end_context_flow` adds explicit `transform_ui`, `preserve_backend`, and `preserve_domain_data` roles to selected records and rejects backend records as Angular-generation candidates. The new isolated `healthclinic-dashboard-end-to-end-demo-v1` graph selected 24 UI files, 2 API controller files, and 6 domain/data files, completed with zero extraction warnings, and kept all 2,384 saved source-inventory hashes unchanged. The current terminal cannot resolve `dotnet`, so Roslyn enrichment was skipped; it also cannot resolve `docker`, so Neo4j loading was not attempted. No end-to-end backend relationship or new viewer export is claimed until both tools are available. See `docs/validation/healthclinic-dashboard-end-to-end-context-graph.md`.

@@ -23,14 +23,15 @@ def test_export_preserves_canonical_counts_and_evidence(tmp_path):
     assert target == tmp_path / ".ua" / "knowledge-graph.json"
     assert len(result["nodes"]) == 1
     assert len(result["edges"]) == 1
-    assert result["nodes"][0]["polarisLabel"] == "File"
-    assert result["nodes"][0]["polarisEvidence"][0]["source_path"] == "src/dashboard.js"
-    assert result["nodes"][0]["polarisReviewWarnings"][0]["message"] == "review only"
+    assert result["nodes"][0]["originalLabel"] == "File"
+    assert result["nodes"][0]["sourceEvidence"][0]["source_path"] == "src/dashboard.js"
+    assert result["nodes"][0]["reviewWarnings"][0]["message"] == "review only"
     assert "src/dashboard.js:L1" in result["nodes"][0]["summary"]
     assert "review only" in result["nodes"][0]["summary"]
     assert "polaris-relationship:CALLS_API" in result["nodes"][0]["tags"]
-    assert result["polarisVisualization"]["canonical_counts"] == {"nodes": 1, "edges": 1, "warnings": 1}
-    assert "No LLM inference" in result["polarisVisualization"]["disclaimer"]
+    assert result["visualizationMetadata"]["canonical_counts"] == {"nodes": 1, "edges": 1, "warnings": 1}
+    assert result["project"]["name"] == "Legacy Dashboard POC"
+    assert "Polaris" not in json.dumps(result) and "HealthClinic" not in json.dumps(result)
     assert result["layers"]
     assert result["layers"][0]["nodeIds"] == [f"{PROJECT_ID}:File:dashboard.js"]
 
@@ -68,7 +69,7 @@ def test_approved_canonical_graph_counts_and_tour_are_preserved(tmp_path):
     result = json.loads(export(graph, tmp_path).read_text(encoding="utf-8"))
 
     assert (len(result["nodes"]), len(result["edges"])) == (123, 169)
-    assert result["polarisVisualization"]["canonical_counts"] == {"nodes": 123, "edges": 169, "warnings": 27}
+    assert result["visualizationMetadata"]["canonical_counts"] == {"nodes": 123, "edges": 169, "warnings": 27}
     layer_node_ids = [node_id for layer in result["layers"] for node_id in layer["nodeIds"]]
     assert len(layer_node_ids) == 123
     assert len(set(layer_node_ids)) == 123
