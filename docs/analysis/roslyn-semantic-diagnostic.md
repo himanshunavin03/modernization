@@ -44,3 +44,9 @@ The generic offline fixtures now prove the outstanding project-aware semantic-en
 - Focused project-aware, API mapping, and readiness tests pass: `11 passed`. The full regression suite remains required before a complete-application regeneration is authorized.
 
 Fixture-level result: **SAFE TO REGENERATE** once the full regression suite also passes. This conclusion proves the engine behavior only; it does not claim a new application extraction, Neo4j load, or viewer export.
+
+## Complete Regression Authorization
+
+On the post-`1438bf7` baseline, the complete Python suite was collected with `python -m pytest --collect-only -q`: 68 tests spanning inventory, framework detection, isolated Tree-sitter extraction, facts/graph normalization and validation, project-aware Roslyn semantics, multi-project and fallback fixtures, API mapping, readiness, CLI/agent orchestration, artifact validation, and viewer launch/export safety. `& 'C:\Program Files\dotnet\dotnet.exe' build tools\Polaris.RoslynAnalyzer\Polaris.RoslynAnalyzer.csproj` succeeded with zero warnings and zero errors. `python -m pytest -q` completed with `66 passed, 2 skipped, 0 failed, 0 errors` in `17.06s`.
+
+No failure was discovered, classified, or fixed. The four focused gates remain PASS, the complete regression suite is PASS, and there are zero known generic analyzer defects and zero unknown blockers in the verified fixture/test scope. This test-only task did not run an application create-knowledge-graph workflow, change `artifacts/knowledge-graph/latest/`, create an immutable complete-application run, or load Neo4j. **SAFE TO REGENERATE** is now authorized only for a separately approved task.

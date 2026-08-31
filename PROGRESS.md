@@ -24,3 +24,11 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Completed: solution-first workspace loading avoids duplicate project opens; declared extension-method identities are retained; partial compilation facts are visibly lower-confidence and classify unresolved items as `COMPILATION_ERROR` rather than `UNKNOWN`.
 - Not performed: no complete-application graph regeneration, Neo4j load, viewer export, or source modification.
 - Next action: run the full regression suite. If it passes, the generic engine gates permit a separately approved complete-application regeneration. Recovery reading includes prompts 010 through 034 and `docs/analysis/roslyn-semantic-diagnostic.md`.
+
+## Complete Regression Authorization Gate
+
+- Commands: `& 'C:\Program Files\dotnet\dotnet.exe' build tools\Polaris.RoslynAnalyzer\Polaris.RoslynAnalyzer.csproj` and `python -m pytest -q` from the repository root. The Python suite collects all 68 repository tests through `pyproject.toml` (`testpaths = ["tests"]`); no separate .NET test project or JavaScript test runner exists.
+- Results: analyzer build succeeded with `0` warnings and `0` errors. Pytest completed `66 passed, 2 skipped, 0 failed, 0 errors` in `17.06s`. No test failure occurred, so no production code or assertion changed during this validation.
+- Gates: `MULTI_PROJECT_ROSLYN`, `SAFE_FALLBACK`, `API_MAPPING`, `READINESS_GATE`, and `COMPLETE_REGRESSION_SUITE` are PASS. There are `0` known generic analyzer defects and `0` unknown blockers in the verified fixture/test scope.
+- Confirmation: no application `/create-knowledge-graph` command ran, `artifacts/knowledge-graph/latest/` is unchanged, no immutable complete-application run was created, and no Neo4j application load occurred.
+- Authorization: SAFE TO REGENERATE in a separately approved follow-up task only.
