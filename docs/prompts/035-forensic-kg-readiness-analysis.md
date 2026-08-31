@@ -1,0 +1,3 @@
+# Prompt 035: Forensic Knowledge-Graph Readiness Analysis
+
+Perform a read-only forensic analysis of an immutable knowledge-graph run. Read canonical graph, facts, Roslyn, inventory, validation, framework, warning, and run-status artifacts directly; do not regenerate, alter JSON, load Neo4j, or infer relationships. Reconcile unresolved semantics, provenance coverage, project hotspots, workspace warnings, invocation candidates, API mapping, graph integrity, and the previous-run delta. Write only an evidence-backed readiness report and necessary progress record, then commit and push those Markdown files.
