@@ -27,6 +27,10 @@ KIND_TO_LABEL = {
     "api_call": "ApiCall",
     "opaque_source": "OpaqueSource",
     "conservative_source": "ConservativeSource",
+    "type": "Type",
+    "property": "Property",
+    "method": "Method",
+    "function": "Function",
 }
 
 

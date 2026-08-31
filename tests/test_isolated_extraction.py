@@ -121,6 +121,40 @@ def test_native_crash_uses_opaque_only_for_generated_or_dependency_content(monke
     assert result.facts[0].properties["semantic_understanding"] is False
 
 
+@pytest.mark.parametrize(("filename", "language", "content", "expected"), [
+    ("client.cs", "csharp", "public class Appointment : IComparable {\n public string Name { get; set; }\n public void Save() {}\n}", {"type", "property", "method"}),
+    ("client.js", "javascript", "function refresh() {} angular.module('legacy').controller('HomeCtrl', function() {}); var url = '/api/dashboard';", {"function", "angular_module", "angular_controller", "api_call"}),
+    ("view.cshtml", "html", "@{ Layout = \"_Layout\"; }<link href=\"site.css\"><script src=\"app.js\"></script><form><button>Go</button></form>", {"razor_view", "style_asset", "script_asset", "ui_control"}),
+])
+def test_native_crash_first_party_fallback_has_meaningful_literal_facts(monkeypatch, tmp_path, filename, language, content, expected):
+    (tmp_path / filename).write_text(content, encoding="utf-8")
+    monkeypatch.setattr(
+        "polaris_modernization.isolated_extraction.subprocess.run",
+        lambda *args, **kwargs: subprocess.CompletedProcess(args[0], 3221225477, "", ""),
+    )
+
+    result = extract_file({**request(filename), "source_root": str(tmp_path), "language": language})
+
+    kinds = {fact.kind for fact in result.facts}
+    assert result.warning is None
+    assert "conservative_source" in kinds
+    assert expected <= kinds
+    assert "opaque_source" not in kinds
+
+
+def test_native_crash_first_party_without_literal_facts_stays_visible(monkeypatch, tmp_path):
+    (tmp_path / "empty.js").write_text("// intentionally empty", encoding="utf-8")
+    monkeypatch.setattr(
+        "polaris_modernization.isolated_extraction.subprocess.run",
+        lambda *args, **kwargs: subprocess.CompletedProcess(args[0], 3221225477, "", ""),
+    )
+
+    result = extract_file({**request("empty.js"), "source_root": str(tmp_path)})
+
+    assert result.facts == []
+    assert result.warning["failure_category"] == "native_parser_crash_no_meaningful_fallback"
+
+
 @pytest.mark.parametrize("worker", [
     lambda *args, **kwargs: (_ for _ in ()).throw(subprocess.TimeoutExpired(args[0], 30)),
     lambda *args, **kwargs: subprocess.CompletedProcess(args[0], 0, "not-json", ""),

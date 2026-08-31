@@ -19,7 +19,7 @@ Step 3C.8 — Dashboard end-to-end context graph completed and loaded into Neo4j
 
 ## Complete Application Baseline
 
-The full-application repair now retains native worker isolation while distinguishing first-party conservative fallback records from proven opaque dependencies. A dry run of `legacy-dashboard-complete-application-demo-v1` inventoried 2,384 files with zero extraction warnings and `complete_with_opaque_dependencies`; Neo4j load and viewer export are still pending their final validation gates. Recovery reading includes prompts 010 through 030 and `docs/validation/complete-application-failure-disposition.md`.
+The full-application repair retains native worker isolation and now emits literal deterministic C#/JavaScript/Razor facts for first-party worker crashes, rather than allowing a provenance-only record. The latest full analysis produced 2,384 files, 3,386 nodes, 4,593 edges, 38 review warnings, 44 proven opaque dependencies, zero extraction warnings, and `complete_with_opaque_dependencies`. Neo4j loading is pending local credential configuration, so full viewer export remains blocked. Recovery reading includes prompts 010 through 031 plus `docs/validation/complete-application-failure-disposition.md` and `docs/validation/complete-application-final-validation.md`.
 
 ## Step 1 Result
 

@@ -2,7 +2,7 @@
 
 - Status: Step 3C.8 completed. Roslyn succeeded and the end-to-end project loaded into Neo4j after local password correction.
 - Current step: Review the neutral customer-facing visualization and documentation changes.
-- Complete application correction: the isolated native-crash fallback now distinguishes first-party conservative extraction from proven opaque dependencies. The latest dry run inventoried 2,384 files with zero extraction warnings, 45 opaque dependencies, and `complete_with_opaque_dependencies`; Neo4j loading and viewer export remain pending gated verification.
+- Complete application correction: deterministic first-party native-crash fallback now emits literal C#/JavaScript/Razor facts alongside provenance. Final analysis: 2,384 files, 3,386 nodes, 4,593 edges, 38 review warnings, zero extraction warnings, 44 opaque dependencies, and `complete_with_opaque_dependencies`. The attempted Neo4j load is blocked solely by unavailable local Neo4j environment configuration; full viewer export remains gated on that load.
 - Failure inventory: 42 JavaScript, 3 C#, and 2 HTML Tree-sitter workers exit with `3221225477`; all are supported-language parser defects requiring a generic repair. See `docs/validation/complete-application-extraction-failure-inventory.md`.
 - Viewer runbook: `docs/runbooks/understand-anything-viewer.md` documents the validated UI-only command and `tools/launch_understand_anything_viewer.ps1` safely exports and launches any approved project-scoped graph with a caller-supplied local token.
 - Viewer runtime: `tools/install_understand_anything_viewer.ps1` performs the one-time pinned v2.9.0 installation under ignored `tools/vendor/`; normal viewer launch has no package-network access.

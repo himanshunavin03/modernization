@@ -113,22 +113,47 @@ def _fallback_facts(request: dict[str, str]) -> ExtractionResult:
         {"classification": "first_party_native_parser_fallback", "semantic_understanding": False, "worker_exit_code": 3221225477},
     )]
     suffix = Path(request["source_path"]).suffix.lower()
+    def match_evidence(match: re.Match[str], confidence: float = 0.8) -> Evidence:
+        line = text.count("\n", 0, match.start()) + 1
+        return Evidence(request["project_id"], request["source_path"], line, line, "deterministic-crash-fallback", confidence, request["source_hash"])
+
     if suffix in {".js", ".ts"}:
         for match in re.finditer(r"angular\.module\(\s*['\"]([^'\"]+)['\"]", text):
-            facts.append(Fact("angular_module", match.group(1), Evidence(request["project_id"], request["source_path"], text[:match.start()].count("\n") + 1, text[:match.end()].count("\n") + 1, "deterministic-crash-fallback", 0.8, request["source_hash"])))
+            facts.append(Fact("angular_module", match.group(1), match_evidence(match)))
         for kind, pattern in (("angular_controller", r"\.controller\(\s*['\"]([^'\"]+)['\"]"), ("angular_service", r"\.(?:service|factory)\(\s*['\"]([^'\"]+)['\"]"), ("angular_directive", r"\.directive\(\s*['\"]([^'\"]+)['\"]")):
             for match in re.finditer(pattern, text):
-                facts.append(Fact(kind, match.group(1), Evidence(request["project_id"], request["source_path"], text[:match.start()].count("\n") + 1, text[:match.end()].count("\n") + 1, "deterministic-crash-fallback", 0.8, request["source_hash"])))
+                facts.append(Fact(kind, match.group(1), match_evidence(match)))
+        for match in re.finditer(r"\.(?:state|when)\(\s*['\"]([^'\"]+)['\"]", text):
+            facts.append(Fact("route", match.group(1), match_evidence(match), {"fallback": "literal_route_declaration"}))
+        for match in re.finditer(r"(?:function\s+([A-Za-z_$][\w$]*)|([A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*)?)\s*=\s*function)\s*\(", text):
+            facts.append(Fact("function", match.group(1) or match.group(2), match_evidence(match), {"fallback": "literal_function_declaration"}))
+        for match in re.finditer(r"['\"]((?:https?://[^'\"]+|/api/[^'\"]+))['\"]", text):
+            facts.append(Fact("api_call", match.group(1), match_evidence(match), {"fallback": "literal_api_url"}))
     elif suffix == ".cs":
+        for match in re.finditer(r"\b(class|interface|enum)\s+([A-Za-z_]\w*)(?:\s*:\s*([^\{\r\n]+))?", text):
+            declaration_kind, name, bases = match.groups()
+            facts.append(Fact("type", name, match_evidence(match), {"declaration_kind": declaration_kind, "inherits": [item.strip() for item in (bases or "").split(",") if item.strip()], "fallback": "literal_type_declaration"}))
+        for match in re.finditer(r"(?m)^\s*(?:public|protected|internal|private)\s+(?:static\s+)?[\w<>,\[\]?.]+\s+([A-Za-z_]\w*)\s*\{\s*(?:get|set|init)\b", text):
+            facts.append(Fact("property", match.group(1), match_evidence(match), {"fallback": "literal_property_declaration"}))
+        for match in re.finditer(r"(?m)^\s*(?:public|protected|internal|private)\s+(?:static\s+|async\s+|virtual\s+|override\s+|sealed\s+)*[\w<>,\[\]?.]+\s+([A-Za-z_]\w*)\s*\([^;{}]*\)\s*(?:\{|=>)", text):
+            facts.append(Fact("method", match.group(1), match_evidence(match), {"fallback": "literal_method_declaration"}))
         for match in re.finditer(r"\bclass\s+([A-Za-z_]\w*)", text):
             name = match.group(1)
             if name.endswith("Controller"):
-                facts.append(Fact("controller", name, evidence, {"fallback": "literal_class_declaration"}))
+                facts.append(Fact("controller", name, match_evidence(match), {"fallback": "literal_class_declaration"}))
     elif suffix in {".html", ".htm", ".cshtml"}:
         if suffix == ".cshtml":
             facts.append(Fact("razor_view", request["source_path"], evidence, {"fallback": "razor_file_extension"}))
         for match in re.finditer(r"<script[^>]+src\s*=\s*['\"]([^'\"]+)['\"]", text, flags=re.IGNORECASE):
             facts.append(Fact("script_asset", match.group(1), evidence, {"fallback": "literal_script_src"}))
+        for match in re.finditer(r"<link[^>]+href\s*=\s*['\"]([^'\"]+)['\"]", text, flags=re.IGNORECASE):
+            facts.append(Fact("style_asset", match.group(1), match_evidence(match), {"fallback": "literal_style_href"}))
+        for match in re.finditer(r"<(form|button|input|select|textarea|ui-view)\b", text, flags=re.IGNORECASE):
+            facts.append(Fact("ui_control", match.group(1).lower(), match_evidence(match), {"fallback": "literal_ui_control"}))
+        for match in re.finditer(r"['\"]((?:https?://[^'\"]+|/api/[^'\"]+))['\"]", text):
+            facts.append(Fact("api_call", match.group(1), match_evidence(match), {"fallback": "literal_api_url"}))
+    if len(facts) == 1:
+        return _warning(request, "native_parser_crash_no_meaningful_fallback", "Native parser crashed and the conservative fallback found no supported literal facts.")
     return ExtractionResult(facts)
 
 

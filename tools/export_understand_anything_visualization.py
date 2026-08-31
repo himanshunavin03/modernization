@@ -16,6 +16,7 @@ LAYER_DEFINITIONS = (
     ("legacy-ui-modernization", "Legacy UI modernization scope", "Legacy Razor and AngularJS records eligible for UI modernization."),
     ("backend-api-contract", "Backend API and contract", "Read-only API controllers, actions, endpoints, and contracts."),
     ("repository-data-access", "Repository and data-access flow", "Read-only repositories and proven EF/LINQ operations."),
+    ("services", "Services", "Read-only service and integration records."),
     ("domain-dto-model", "Domain DTO/entity model", "Read-only DTO and domain model records."),
     ("dbcontext-dependency", "DbContext/database dependency", "Read-only DbContext dependency records."),
     ("legacy-razor-mvc-shell", "Legacy ASP.NET MVC/Razor shell", "Proven MVC controllers, Razor views, layouts, partials, and UI controls."),
@@ -23,6 +24,7 @@ LAYER_DEFINITIONS = (
     ("api-integration-flow", "API and integration flow", "Proven API-call and external integration records."),
     ("csharp-domain-semantic-model", "C# domain and semantic model", "Proven C# namespaces, types, methods, and related source records."),
     ("project-supporting-records", "Project/supporting graph records", "Project, support, and remaining evidence-backed graph records."),
+    ("opaque-dependencies", "Opaque dependency", "Generated, minified, tooling, or third-party dependency records without claimed semantic understanding."),
 )
 
 
@@ -31,8 +33,8 @@ def read_graph(path: Path, project_id: str = PROJECT_ID) -> dict:
     metadata = graph.get("metadata", {})
     nodes = graph.get("nodes", [])
     edges = graph.get("edges", [])
-    if metadata.get("coverage_status") != "scope_complete":
-        raise ValueError("Visualization requires scope_complete coverage.")
+    if metadata.get("coverage_status") not in {"scope_complete", "complete_application", "complete_with_opaque_dependencies"}:
+        raise ValueError("Visualization requires complete scope or application coverage.")
     if metadata.get("extraction_warning_count") != 0:
         raise ValueError("Visualization requires zero extraction warnings.")
     if not project_id or any(item.get("project_id") != project_id for item in [*nodes, *edges]):
@@ -105,6 +107,8 @@ def layer_id_for(node: dict, relationship_types: set[str]) -> str:
 
     if path.startswith("src/myhealth.api/") or node.get("properties", {}).get("modernization_role") == "preserve_backend":
         return "backend-api-contract"
+    if label == "OpaqueSource": return "opaque-dependencies"
+    if "/services/" in path or "/service/" in path: return "services"
     if "repositories/" in path or label == "DataQuery": return "repository-data-access"
     if path.startswith("src/myhealth.model/"): return "domain-dto-model"
     if path.endswith("myhealthcontext.cs"): return "dbcontext-dependency"
