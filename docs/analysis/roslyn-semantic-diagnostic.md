@@ -25,3 +25,11 @@ No complete graph was regenerated for this diagnostic task. The new classifier h
 The Roslyn output now includes `source_ownership` with `PROJECT_OWNED` or `UNOWNED` records, `semantic_coverage` counts for project compilation, synthetic fallback, and structural-only files, and `unresolved_analysis` with total occurrences, unique stable diagnostic IDs, classification totals, and per-occurrence evidence. Classification uses project/fallback mode and Roslyn candidate evidence; unresolved entries without supporting compiler or workspace evidence remain `UNKNOWN` rather than being relabeled.
 
 The new contract is compiled and covered by the existing regression suite, but multi-project project-reference, failed-project fallback, API route-mapping, and readiness-gate fixtures remain required before a complete application regeneration is safe.
+
+## Deterministic API and Readiness Proofs
+
+Generic route normalization and matching now prove `GET /api/customers/123` maps only to a unique `GET /api/customers/{id}` endpoint, retaining frontend and backend evidence. Query strings, base URLs, trailing slashes, route-template formatting, HTTP verb mismatches, and ambiguous endpoints are handled deterministically; ambiguous or mismatched routes produce no mapping.
+
+The readiness model now separates pipeline execution from graph readiness. A successful pipeline is `READY` only with valid integrity and no analyzer-defect or unknown blockers; known explained limitations produce `READY_WITH_EXPLAINED_LIMITATIONS`; failed execution, integrity failures, analyzer defects, or unknowns produce `NOT_READY`.
+
+These focused proofs pass. Multi-project project-reference and failed-project workspace/fallback fixtures are still required, so the overall pre-regeneration decision remains **NOT SAFE TO REGENERATE**.
