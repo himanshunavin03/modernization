@@ -4,6 +4,8 @@ using System.Text.Json;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.MSBuild;
+using Microsoft.Build.Locator;
 
 var options = ParseArguments(args);
 var sourceRoot = Path.GetFullPath(Required(options, "--source-root"));
@@ -12,18 +14,46 @@ var outputPath = Required(options, "--output");
 var inputs = Directory.EnumerateFiles(sourceRoot, "*.cs", SearchOption.AllDirectories)
     .Select(path => new SourceInput(path, Path.GetRelativePath(sourceRoot, path).Replace('\\', '/'), File.ReadAllText(path)))
     .ToList();
-var trees = inputs.Select(input => CSharpSyntaxTree.ParseText(input.Text, path: input.Path)).ToList();
-var references = ((string?)AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES"))?.Split(Path.PathSeparator).Select(path => MetadataReference.CreateFromFile(path)).ToList() ?? [];
-var compilation = CSharpCompilation.Create("PolarisSemantic", trees, references, new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
 var facts = new List<Fact>();
 var actionTypeIds = new HashSet<string>();
+var warnings = new List<object>();
+var contexts = new Dictionary<string, SemanticContext>(StringComparer.OrdinalIgnoreCase);
+if (!MSBuildLocator.IsRegistered) MSBuildLocator.RegisterDefaults();
+using var workspace = MSBuildWorkspace.Create();
+workspace.WorkspaceFailed += (_, eventArgs) => warnings.Add(new { category = "PROJECT_LOAD_FAILURE", message = eventArgs.Diagnostic.Message });
+foreach (var projectPath in Directory.EnumerateFiles(sourceRoot, "*.csproj", SearchOption.AllDirectories))
+{
+    try
+    {
+        var project = await workspace.OpenProjectAsync(projectPath);
+        var compilation = await project.GetCompilationAsync();
+        if (compilation is null)
+        {
+            warnings.Add(new { category = "COMPILATION_ERROR", project = projectPath, message = "Roslyn did not produce a compilation." });
+            continue;
+        }
+        foreach (var document in project.Documents.Where(document => document.FilePath?.EndsWith(".cs", StringComparison.OrdinalIgnoreCase) == true))
+        {
+            var tree = await document.GetSyntaxTreeAsync();
+            if (tree is not null) contexts.TryAdd(Path.GetFullPath(document.FilePath!), new SemanticContext(tree, compilation.GetSemanticModel(tree), project.FilePath ?? project.Name));
+        }
+    }
+    catch (Exception error)
+    {
+        warnings.Add(new { category = "PROJECT_LOAD_FAILURE", project = projectPath, message = error.Message });
+    }
+}
 
 foreach (var input in inputs)
 {
-    var tree = trees.Single(tree => tree.FilePath == input.Path);
-    var model = compilation.GetSemanticModel(tree);
-    var root = tree.GetRoot();
-    var context = new FileContext(projectId, input);
+    if (!contexts.TryGetValue(Path.GetFullPath(input.Path), out var semantic))
+    {
+        warnings.Add(new { category = "SOURCE_NOT_PRESENT", source_path = input.Relative, message = "No loaded project compilation owns this source file; no synthetic semantic fallback was used." });
+        continue;
+    }
+    var model = semantic.Model;
+    var root = semantic.Tree.GetRoot();
+    var context = new FileContext(projectId, input, semantic.ProjectIdentity);
     foreach (var declaration in root.DescendantNodes().OfType<BaseNamespaceDeclarationSyntax>())
     {
         var symbol = model.GetDeclaredSymbol(declaration);
@@ -113,7 +143,7 @@ foreach (var input in inputs)
 foreach (var fact in facts.Where(fact => fact.Kind == "type" && fact.Properties.TryGetValue("identity", out var identity) && identity is string typeId && actionTypeIds.Contains(typeId))) fact.Kind = "dto";
 
 Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(outputPath))!);
-File.WriteAllText(outputPath, JsonSerializer.Serialize(new { project_id = projectId, facts, warnings = Array.Empty<object>() }, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower }));
+File.WriteAllText(outputPath, JsonSerializer.Serialize(new { project_id = projectId, facts, warnings }, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower }));
 
 static Dictionary<string, string> ParseArguments(string[] args) => Enumerable.Range(0, args.Length / 2).ToDictionary(index => args[index * 2], index => args[index * 2 + 1]);
 static string Required(Dictionary<string, string> values, string key) => values.TryGetValue(key, out var value) ? value : throw new ArgumentException($"Missing {key}.");
@@ -138,6 +168,7 @@ static Fact AuthorizationFact(FileContext context, AttributeInfo attribute, ISym
 static string? NamedString(AttributeSyntax attribute, string name) => attribute.ArgumentList?.Arguments.FirstOrDefault(argument => argument.NameEquals?.Name.Identifier.Text == name)?.Expression is LiteralExpressionSyntax literal && literal.IsKind(SyntaxKind.StringLiteralExpression) ? literal.Token.ValueText : null;
 
 sealed record SourceInput(string Path, string Relative, string Text);
+sealed record SemanticContext(SyntaxTree Tree, SemanticModel Model, string ProjectIdentity);
 sealed record AttributeInfo(AttributeSyntax Syntax, ISymbol? Symbol, bool Resolved);
 sealed class Fact(string kind, string name, string projectId, Evidence evidence, Dictionary<string, object?> properties)
 {
@@ -148,11 +179,12 @@ sealed class Fact(string kind, string name, string projectId, Evidence evidence,
     public Dictionary<string, object?> Properties { get; } = properties;
 }
 sealed record Evidence(string ProjectId, string SourcePath, int LineStart, int LineEnd, int ColumnStart, int ColumnEnd, string SourceHash, string Extractor, double Confidence, string ResolutionStatus, string? Diagnostic);
-sealed class FileContext(string projectId, SourceInput input)
+sealed class FileContext(string projectId, SourceInput input, string semanticProjectIdentity)
 {
     private readonly string _hash = Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(input.Path))).ToLowerInvariant();
     public Fact CreateFact(string kind, string name, SyntaxNode node, Dictionary<string, object?> properties, bool resolved, string? diagnostic)
     {
+        properties["semantic_project_identity"] = semanticProjectIdentity;
         var span = node.GetLocation().GetLineSpan();
         var evidence = new Evidence(projectId, input.Relative, span.StartLinePosition.Line + 1, span.EndLinePosition.Line + 1, span.StartLinePosition.Character + 1, span.EndLinePosition.Character + 1, _hash, "roslyn", resolved ? 1.0 : 0.0, resolved ? "proven" : "unresolved", diagnostic);
         return new Fact(kind, name, projectId, evidence, properties);
