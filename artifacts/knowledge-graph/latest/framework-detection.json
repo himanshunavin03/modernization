@@ -4,28 +4,28 @@
       "confidence": 1.0,
       "framework": "ASP.NET MVC/Razor",
       "method": "deterministic-file-evidence",
-      "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+      "source_path": "src/MyHealth.Web/Views/Home/Index.cshtml"
     },
     {
       "confidence": 1.0,
       "framework": ".NET API",
       "method": "deterministic-file-evidence",
-      "source_path": "src/MyHealth.MobileApp/MyHealth.MobileApp.csproj"
+      "source_path": "src/MyHealth.Client.Core/MyHealth.Client.Core.csproj"
     },
     {
       "confidence": 1.0,
       "framework": "TypeScript",
       "method": "deterministic-file-evidence",
-      "source_path": "src/MyHealth.Client.Cordova/content/app/modules/shared/models/Doctor.ts"
+      "source_path": "src/MyHealth.Web.Clinics/public/app/services/dataService.ts"
     }
   ],
-  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "project_id": "healthclinic-biz",
   "scope": {
     "coverage_status": "complete_with_opaque_dependencies",
     "extraction_warning_count": 0,
     "opaque_dependency_count": 44,
     "out_of_scope_file_count": 0,
-    "review_warning_count": 2082,
+    "review_warning_count": 3639,
     "scope_description": "Complete discovered application inventory and graph.",
     "scope_id": "full-application",
     "scope_name": "Full application analysis",

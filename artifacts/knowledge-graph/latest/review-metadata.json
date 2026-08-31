@@ -1,9 +1,9 @@
 {
-  "application_project_id": "legacy-dashboard-complete-application-demo-v1",
-  "generation_timestamp_utc": "2026-08-31T17:16:53.834033Z",
+  "application_project_id": "healthclinic-biz",
+  "generation_timestamp_utc": "2026-08-31T17:38:33.610592Z",
   "lsp_analysis_completed": false,
   "roslyn_semantic_completed": true,
-  "run_id": "legacy-dashboard-complete-application-demo-v1-2026-08-31-171653",
+  "run_id": "healthclinic-biz-2026-08-31-173833",
   "tree_sitter_completed": true,
   "validation": {
     "expected_artifacts": [
@@ -49,8 +49,8 @@
         "Type",
         "UIControl"
       ],
-      "nodes": 5430,
-      "nodes_with_review_warnings": 184,
+      "nodes": 4136,
+      "nodes_with_review_warnings": 335,
       "nodes_without_evidence": [],
       "relationship_types": [
         "CALLS_API",
@@ -64,15 +64,14 @@
         "IMPORTS",
         "INVOKES",
         "PROTECTS",
-        "RETURNS_TYPE",
         "USES_TEMPLATE"
       ],
-      "relationships": 5524,
+      "relationships": 4369,
       "relationships_without_evidence": [],
-      "unresolved_invocation_targets": 1527,
-      "unresolved_parameter_types": 11,
+      "unresolved_invocation_targets": 1304,
+      "unresolved_parameter_types": 32,
       "unresolved_return_types": 0,
-      "unresolved_roslyn_symbols": 2045
+      "unresolved_roslyn_symbols": 3472
     },
     "json_errors": [],
     "missing_artifacts": [],

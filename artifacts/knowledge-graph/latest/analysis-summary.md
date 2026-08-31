@@ -2,10 +2,10 @@
 
 - Inventory files: 2384
 - Deterministic facts: 1474
-- Graph nodes: 5430
-- Graph edges: 5524
+- Graph nodes: 4136
+- Graph edges: 4369
 - Extraction warnings: 0
-- Total graph warnings: 2082
+- Total graph warnings: 3639
 - Scope: Full application analysis
 - Coverage status: complete_with_opaque_dependencies
 - Parser: Tree-sitter JavaScript, HTML, and C# only.

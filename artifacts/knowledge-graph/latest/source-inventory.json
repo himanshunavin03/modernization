@@ -21458,13 +21458,13 @@
       "supported": false
     }
   ],
-  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "project_id": "healthclinic-biz",
   "scope": {
     "coverage_status": "complete_with_opaque_dependencies",
     "extraction_warning_count": 0,
     "opaque_dependency_count": 44,
     "out_of_scope_file_count": 0,
-    "review_warning_count": 2082,
+    "review_warning_count": 3639,
     "scope_description": "Complete discovered application inventory and graph.",
     "scope_id": "full-application",
     "scope_name": "Full application analysis",
