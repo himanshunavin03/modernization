@@ -254,6 +254,12 @@ def main() -> None:
     neo4j_group = workflow_parser.add_mutually_exclusive_group()
     neo4j_group.add_argument("--load-neo4j", action="store_true")
     neo4j_group.add_argument("--skip-neo4j", action="store_true")
+    agent_parser = subparsers.add_parser("agent-create-knowledge-graph", help="Thin agent adapter over create-knowledge-graph")
+    agent_parser.add_argument("source_root", nargs="?", type=Path)
+    agent_parser.add_argument("--project-id")
+    agent_parser.add_argument("--profile", default="default")
+    agent_parser.add_argument("--output", type=Path, default=Path("artifacts"))
+    agent_parser.add_argument("--load-neo4j", action="store_true")
     load_parser = subparsers.add_parser("load-neo4j")
     load_parser.add_argument("--graph", required=True, type=Path)
     load_parser.add_argument("--project-id", required=True)
@@ -279,6 +285,11 @@ def main() -> None:
             print(result["artifact_paths"]["graph_run_summary"])
         if result["overall_status"] == "failed":
             raise SystemExit(1)
+    elif args.command == "agent-create-knowledge-graph":
+        from polaris_modernization.agent_commands import create_knowledge_graph_command
+        result = create_knowledge_graph_command(args.source_root, project_id=args.project_id, profile=args.profile, output=args.output, load_neo4j=args.load_neo4j)
+        print(f"Create Knowledge Graph {result['overall_status']} for {result['project_id']}")
+        if result["overall_status"] == "failed": raise SystemExit(1)
     elif args.command in {"load-neo4j", "clear-neo4j-project"}:
         driver = connect(os.getenv("NEO4J_URI", "bolt://localhost:7687"), os.getenv("NEO4J_USERNAME", "neo4j"), os.getenv("NEO4J_PASSWORD", "change-me"))
         loader = Neo4jLoader(driver)

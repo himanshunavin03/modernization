@@ -17,6 +17,10 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 Step 3C.8 — Dashboard end-to-end context graph completed and loaded into Neo4j after local credential correction.
 
+## Agent Command
+
+`/create-knowledge-graph` is registered as a repository-local agent instruction at `docs/agents/commands/create-knowledge-graph.md`. It is a thin wrapper over `python -m polaris_modernization.cli agent-create-knowledge-graph`; deterministic source analysis, validation, and artifact publishing remain the only graph source of truth.
+
 ## Complete Application Baseline
 
 The full-application repair retains native worker isolation and now emits literal deterministic C#/JavaScript/Razor facts for first-party worker crashes, rather than allowing a provenance-only record. The latest full analysis produced 2,384 files, 3,386 nodes, 4,593 edges, 38 review warnings, 44 proven opaque dependencies, zero extraction warnings, and `complete_with_opaque_dependencies`. Neo4j loading is pending local credential configuration, so full viewer export remains blocked. Recovery reading includes prompts 010 through 031 plus `docs/validation/complete-application-failure-disposition.md` and `docs/validation/complete-application-final-validation.md`.

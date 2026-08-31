@@ -19,7 +19,15 @@ var actionTypeIds = new HashSet<string>();
 var warnings = new List<object>();
 var contexts = new Dictionary<string, SemanticContext>(StringComparer.OrdinalIgnoreCase);
 if (!MSBuildLocator.IsRegistered) MSBuildLocator.RegisterDefaults();
-using var workspace = MSBuildWorkspace.Create();
+var workspaceProperties = new Dictionary<string, string>
+{
+    ["DesignTimeBuild"] = "true",
+    ["BuildProjectReferences"] = "false",
+    ["SkipCompilerExecution"] = "true",
+    // Project loading must not create obj/bin content in the read-only source root.
+    ["BaseIntermediateOutputPath"] = Path.Combine(Path.GetTempPath(), "polaris-roslyn-workspace") + Path.DirectorySeparatorChar,
+};
+using var workspace = MSBuildWorkspace.Create(workspaceProperties);
 workspace.WorkspaceFailed += (_, eventArgs) => warnings.Add(new { category = "PROJECT_LOAD_FAILURE", message = eventArgs.Diagnostic.Message });
 foreach (var projectPath in Directory.EnumerateFiles(sourceRoot, "*.csproj", SearchOption.AllDirectories))
 {
