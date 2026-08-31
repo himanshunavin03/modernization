@@ -4,7 +4,7 @@
       "confidence": 1.0,
       "framework": "ASP.NET MVC/Razor",
       "method": "deterministic-file-evidence",
-      "source_path": "src/MyHealth.Web/Views/Home/Index.cshtml"
+      "source_path": "src/MyHealth.Web/Views/Appointments/Index.cshtml"
     },
     {
       "confidence": 1.0,
@@ -16,10 +16,10 @@
       "confidence": 1.0,
       "framework": "TypeScript",
       "method": "deterministic-file-evidence",
-      "source_path": "src/MyHealth.Web.Clinics/public/app/services/dataService.ts"
+      "source_path": "src/MyHealth.Client.Cordova/content/app/typings/cordova/plugins/Globalization.d.ts"
     }
   ],
-  "project_id": "healthclinic-biz",
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
   "scope": {
     "coverage_status": "complete_with_opaque_dependencies",
     "extraction_warning_count": 0,

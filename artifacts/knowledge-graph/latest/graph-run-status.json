@@ -1,10 +1,10 @@
 {
   "artifact_paths": {
-    "facts": "artifacts\\healthclinic-biz\\facts.json",
-    "graph_run_status": "artifacts\\healthclinic-biz\\graph-run-status.json",
-    "graph_run_summary": "artifacts\\healthclinic-biz\\graph-run-summary.md",
-    "knowledge_graph": "artifacts\\healthclinic-biz\\knowledge-graph.json",
-    "source_inventory": "artifacts\\healthclinic-biz\\source-inventory.json"
+    "facts": "artifacts\\legacy-dashboard-complete-application-demo-v1\\facts.json",
+    "graph_run_status": "artifacts\\legacy-dashboard-complete-application-demo-v1\\graph-run-status.json",
+    "graph_run_summary": "artifacts\\legacy-dashboard-complete-application-demo-v1\\graph-run-summary.md",
+    "knowledge_graph": "artifacts\\legacy-dashboard-complete-application-demo-v1\\knowledge-graph.json",
+    "source_inventory": "artifacts\\legacy-dashboard-complete-application-demo-v1\\source-inventory.json"
   },
   "counts": {
     "edge_count": 4369,
@@ -15,20 +15,22 @@
     "review_warning_count": 3639,
     "warning_count": 3639
   },
-  "ended_at": "2026-08-31T17:38:31.472873Z",
+  "ended_at": "2026-08-31T18:03:39.730741Z",
   "neo4j": {
-    "requested": false,
-    "status": "skipped"
+    "loaded": {
+      "edges": 4369,
+      "nodes": 4136,
+      "warnings": 3639
+    },
+    "requested": true,
+    "status": "succeeded"
   },
   "neo4j_browser_url": "http://localhost:7474",
   "next_actions": [
-    "Review knowledge-graph.json locally.",
-    "Start Neo4j with `docker compose up -d` when ready; this command does not start Docker.",
-    "Rerun with --load-neo4j after setting NEO4J_URI, NEO4J_USERNAME, and NEO4J_PASSWORD.",
-    "Open Neo4j Browser manually at http://localhost:7474."
+    "Open Neo4j Browser manually at http://localhost:7474 and run a read-only demo query."
   ],
   "overall_status": "succeeded",
-  "project_id": "healthclinic-biz",
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
   "roslyn": {
     "enabled": true,
     "status": "warning",
@@ -64,9 +66,9 @@
       "status": "succeeded"
     },
     {
-      "message": "Neo4j load skipped by --skip-neo4j or default graph-only mode.",
+      "message": "Loaded only this project graph into Neo4j.",
       "name": "load_neo4j",
-      "status": "warning"
+      "status": "succeeded"
     },
     {
       "message": "Customer-facing run status artifacts were created.",
@@ -74,5 +76,5 @@
       "status": "succeeded"
     }
   ],
-  "started_at": "2026-08-31T17:37:52.689352Z"
+  "started_at": "2026-08-31T18:02:51.544758Z"
 }

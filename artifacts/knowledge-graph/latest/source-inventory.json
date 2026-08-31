@@ -21458,7 +21458,7 @@
       "supported": false
     }
   ],
-  "project_id": "healthclinic-biz",
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
   "scope": {
     "coverage_status": "complete_with_opaque_dependencies",
     "extraction_warning_count": 0,
