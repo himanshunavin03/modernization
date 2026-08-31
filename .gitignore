@@ -12,3 +12,6 @@ source/*
 !source/README.md
 **/[Bb]in/
 **/[Oo]bj/
+tools/vendor/understand-anything-viewer/
+tools/vendor/.npm-cache/
+tools/vendor/package-lock.json

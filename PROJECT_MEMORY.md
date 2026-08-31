@@ -85,6 +85,7 @@ The official Understand Anything Windows installer created Codex skill junctions
 ## Viewer Runbook
 
 Use `docs/runbooks/understand-anything-viewer.md` and `tools/launch_understand_anything_viewer.ps1` to export and launch any approved project-scoped canonical graph locally. The helper requires an explicit project ID, unused port, and caller-supplied local token, writes only ignored visualization output, and must never be replaced with an Understand Anything analyzer command.
+The one-time `tools/install_understand_anything_viewer.ps1` installs the official pinned MIT `understand-anything-viewer` v2.9.0 package under ignored `tools/vendor/`; normal launches use only that local executable and make no runtime package request.
 
 ## Step 3C.8 Result
 
