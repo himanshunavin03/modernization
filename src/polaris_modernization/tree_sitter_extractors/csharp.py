@@ -30,7 +30,10 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
         if not class_name:
             continue
         class_evidence = evidence(path, source_root, class_node, digest, project_id)
-        facts.append(Fact("controller", class_name, class_evidence))
+        # Syntax can prove a class declaration, but only controller naming or
+        # Roslyn inheritance evidence can classify it as an MVC/API controller.
+        is_controller = class_name.endswith("Controller")
+        facts.append(Fact("controller" if is_controller else "type", class_name, class_evidence))
         attributes = [node_text(node, source) for node in walk(class_node) if node.type == "attribute"]
         for attribute in attributes:
             if attribute == "Authorize":
@@ -41,7 +44,7 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
             if not method_name:
                 continue
             method_evidence = evidence(path, source_root, method_node, digest, project_id)
-            facts.append(Fact("action", method_name, method_evidence, {"controller": class_name}))
+            facts.append(Fact("action" if is_controller else "method", method_name, method_evidence, {"controller": class_name}))
             for return_node in (node for node in walk(method_node) if node.type == "return_statement"):
                 invocation = next((node for node in walk(return_node) if node.type == "invocation_expression"), None)
                 if invocation is None or _first_identifier(invocation, source) != "View":
