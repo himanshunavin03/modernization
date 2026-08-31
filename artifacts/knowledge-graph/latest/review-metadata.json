@@ -1,9 +1,9 @@
 {
   "application_project_id": "legacy-dashboard-complete-application-demo-v1",
-  "generation_timestamp_utc": "2026-08-31T18:08:14.406834Z",
+  "generation_timestamp_utc": "2026-08-31T18:44:36.476128Z",
   "lsp_analysis_completed": false,
   "roslyn_semantic_completed": true,
-  "run_id": "legacy-dashboard-complete-application-demo-v1-2026-08-31-180814",
+  "run_id": "legacy-dashboard-complete-application-demo-v1-2026-08-31-184436",
   "tree_sitter_completed": true,
   "validation": {
     "expected_artifacts": [
@@ -49,8 +49,8 @@
         "Type",
         "UIControl"
       ],
-      "nodes": 4831,
-      "nodes_with_review_warnings": 277,
+      "nodes": 4868,
+      "nodes_with_review_warnings": 278,
       "nodes_without_evidence": [],
       "relationship_types": [
         "CALLS_API",
@@ -67,12 +67,12 @@
         "RETURNS_TYPE",
         "USES_TEMPLATE"
       ],
-      "relationships": 5031,
+      "relationships": 5124,
       "relationships_without_evidence": [],
-      "unresolved_invocation_targets": 1784,
+      "unresolved_invocation_targets": 2098,
       "unresolved_parameter_types": 39,
       "unresolved_return_types": 0,
-      "unresolved_roslyn_symbols": 4030
+      "unresolved_roslyn_symbols": 4344
     },
     "json_errors": [],
     "missing_artifacts": [],

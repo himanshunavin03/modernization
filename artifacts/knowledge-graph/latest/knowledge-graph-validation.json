@@ -42,8 +42,8 @@
       "Type",
       "UIControl"
     ],
-    "nodes": 4831,
-    "nodes_with_review_warnings": 277,
+    "nodes": 4868,
+    "nodes_with_review_warnings": 278,
     "nodes_without_evidence": [],
     "relationship_types": [
       "CALLS_API",
@@ -60,12 +60,12 @@
       "RETURNS_TYPE",
       "USES_TEMPLATE"
     ],
-    "relationships": 5031,
+    "relationships": 5124,
     "relationships_without_evidence": [],
-    "unresolved_invocation_targets": 1784,
+    "unresolved_invocation_targets": 2098,
     "unresolved_parameter_types": 39,
     "unresolved_return_types": 0,
-    "unresolved_roslyn_symbols": 4030
+    "unresolved_roslyn_symbols": 4344
   },
   "json_errors": [],
   "missing_artifacts": [],

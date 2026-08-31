@@ -21464,7 +21464,7 @@
     "extraction_warning_count": 0,
     "opaque_dependency_count": 44,
     "out_of_scope_file_count": 0,
-    "review_warning_count": 4090,
+    "review_warning_count": 4453,
     "scope_description": "Complete discovered application inventory and graph.",
     "scope_id": "full-application",
     "scope_name": "Full application analysis",
