@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 3C.6 follow-up — read-only HealthClinic UI technology discovery completed; awaiting scope decision and commit approval.
+Step 3C.7 — Understand Anything read-only customer visualization completed; awaiting review and commit approval.
 
 ## Step 1 Result
 
@@ -36,7 +36,7 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Review the read-only HealthClinic technology discovery and choose the exact target modernization scope. The recommended two-to-three-day POC boundary is the hybrid Dashboard flow: Legacy ASP.NET MVC/Razor shell plus Legacy AngularJS 1.x Dashboard route/service, rebuilt as a Target Angular 22 application. Do not change graphs, profiles, or source until that scope decision is approved.
+Review the Step 3C.7 read-only visualization evidence and approve or decline the prepared documentation and adapter changes. The approved POC scope is the hybrid Dashboard flow: Legacy ASP.NET MVC/Razor shell plus Legacy AngularJS 1.x Dashboard route/service, rebuilt as a Target Angular 22 application. Do not begin Step 4 automatically.
 
 ## Step 3B.2 Result
 
@@ -78,6 +78,10 @@ Docker Desktop `4.88.1` and Docker Compose `v5.4.0` started the local `neo4j:5-c
 
 Read-only discovery confirms `src/MyHealth.Web` is a Legacy ASP.NET MVC/Razor UI with embedded Legacy AngularJS 1.x client-side code: Razor layouts load `/app/app.js`, Dashboard content hosts `ui-view`, and `bower.json` declares Angular `~1.4.5` with AngularJS UI Router. No `angular.json`, `@angular/core`, React, or Vue dependency proof was found. The repository also contains a separate ASP.NET API/backend, data/model/integration libraries, a Node/Express clinic web application, Cordova, and native/mobile projects. The existing `healthclinic-dashboard` profile is a complete legacy UI-flow demo, not a pure Razor-only demo. See `docs/validation/healthclinic-ui-technology-discovery.md`.
 
+## Step 3C.7 Result
+
+The official Understand Anything Windows installer created Codex skill junctions and a local upstream MIT checkout at commit `ba450c43425f3de6d43daf76526950ad8ca93536`; VS Code/Codex must restart to discover those skills, which were not invoked. A deterministic adapter exported only the validated canonical graph to ignored `artifacts/healthclinic-dashboard-scope-demo-v3/visualization/.ua/knowledge-graph.json`. It rejects non-approved, incomplete, or extraction-warning inputs, retains canonical labels, relationship types, evidence, and review warnings, and uses no LLM/API calls. The official standalone viewer served the export locally with matching 123-node, 169-edge, and 27-warning counts. Source remained unchanged at the 2,395-file fingerprint `0b92e1701cdd2374e259ea4fed9811b7e20e4719ff8ea70e4a8aa5023cacf2b4`. See `docs/validation/understand-anything-readonly-visualization.md`.
+
 ## Step 2.2 Result
 
 Project-to-file graph edges use `CONTAINS`; `CONTAINS_CONTROL` is reserved for file-hosted UI controls/components. MVC `RETURNS` edges are emitted only for explicit static `View("Name")` calls with a matching discovered Razor view. Implicit `View()` calls are review warnings. API calls are owned only by a unique Angular owner declared in the same file; otherwise the File owns the edge with unresolved metadata.
@@ -88,4 +92,4 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before doing any further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 019 under `docs/prompts/`, `docs/agents/create-knowledge-graph.md`, and `docs/validation/healthclinic-ui-technology-discovery.md`. Neo4j loading is complete. Await approval or rejection of the recommended hybrid Legacy ASP.NET MVC/Razor plus Legacy AngularJS 1.x to Target Angular 22 Dashboard POC scope. Do not begin graph-label correction, Understand Anything visualization, or Step 4 until the user approves that scope.
+Before doing any further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 020 under `docs/prompts/`, `docs/agents/create-knowledge-graph.md`, `docs/validation/healthclinic-ui-technology-discovery.md`, and `docs/validation/understand-anything-readonly-visualization.md`. Neo4j loading and the read-only visualization are complete. The approved POC scope is Legacy ASP.NET MVC/Razor plus Legacy AngularJS 1.x to Target Angular 22. Await user review and commit approval; do not begin Step 4 automatically.
