@@ -43,7 +43,7 @@ foreach (var projectPath in Directory.EnumerateFiles(sourceRoot, "*.csproj", Sea
         foreach (var document in project.Documents.Where(document => document.FilePath?.EndsWith(".cs", StringComparison.OrdinalIgnoreCase) == true))
         {
             var tree = await document.GetSyntaxTreeAsync();
-            if (tree is not null) contexts.TryAdd(Path.GetFullPath(document.FilePath!), new SemanticContext(tree, compilation.GetSemanticModel(tree), project.FilePath ?? project.Name));
+            if (tree is not null) contexts.TryAdd(Path.GetFullPath(document.FilePath!), new SemanticContext(tree, compilation.GetSemanticModel(tree), project.FilePath ?? project.Name, "PROJECT_COMPILATION"));
         }
     }
     catch (Exception error)
@@ -52,16 +52,23 @@ foreach (var projectPath in Directory.EnumerateFiles(sourceRoot, "*.csproj", Sea
     }
 }
 
+var fallbackInputs = inputs.Where(input => !contexts.ContainsKey(Path.GetFullPath(input.Path))).ToList();
+if (fallbackInputs.Count > 0)
+{
+    var fallbackTrees = fallbackInputs.Select(input => CSharpSyntaxTree.ParseText(input.Text, path: input.Path)).ToList();
+    var references = ((string?)AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES"))?.Split(Path.PathSeparator).Select(path => MetadataReference.CreateFromFile(path)).ToList() ?? [];
+    var fallbackCompilation = CSharpCompilation.Create("PolarisSyntheticFallback", fallbackTrees, references, new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+    foreach (var tree in fallbackTrees)
+        contexts[Path.GetFullPath(tree.FilePath)] = new SemanticContext(tree, fallbackCompilation.GetSemanticModel(tree), "synthetic-fallback", "SYNTHETIC_FALLBACK");
+    warnings.Add(new { category = "SYNTHETIC_FALLBACK", source_file_count = fallbackInputs.Count, message = "Files outside a loaded project compilation were analyzed with lower-confidence synthetic Roslyn fallback." });
+}
+
 foreach (var input in inputs)
 {
-    if (!contexts.TryGetValue(Path.GetFullPath(input.Path), out var semantic))
-    {
-        warnings.Add(new { category = "SOURCE_NOT_PRESENT", source_path = input.Relative, message = "No loaded project compilation owns this source file; no synthetic semantic fallback was used." });
-        continue;
-    }
+    if (!contexts.TryGetValue(Path.GetFullPath(input.Path), out var semantic)) continue;
     var model = semantic.Model;
     var root = semantic.Tree.GetRoot();
-    var context = new FileContext(projectId, input, semantic.ProjectIdentity);
+    var context = new FileContext(projectId, input, semantic.ProjectIdentity, semantic.AnalysisMode);
     foreach (var declaration in root.DescendantNodes().OfType<BaseNamespaceDeclarationSyntax>())
     {
         var symbol = model.GetDeclaredSymbol(declaration);
@@ -176,7 +183,7 @@ static Fact AuthorizationFact(FileContext context, AttributeInfo attribute, ISym
 static string? NamedString(AttributeSyntax attribute, string name) => attribute.ArgumentList?.Arguments.FirstOrDefault(argument => argument.NameEquals?.Name.Identifier.Text == name)?.Expression is LiteralExpressionSyntax literal && literal.IsKind(SyntaxKind.StringLiteralExpression) ? literal.Token.ValueText : null;
 
 sealed record SourceInput(string Path, string Relative, string Text);
-sealed record SemanticContext(SyntaxTree Tree, SemanticModel Model, string ProjectIdentity);
+sealed record SemanticContext(SyntaxTree Tree, SemanticModel Model, string ProjectIdentity, string AnalysisMode);
 sealed record AttributeInfo(AttributeSyntax Syntax, ISymbol? Symbol, bool Resolved);
 sealed class Fact(string kind, string name, string projectId, Evidence evidence, Dictionary<string, object?> properties)
 {
@@ -187,14 +194,16 @@ sealed class Fact(string kind, string name, string projectId, Evidence evidence,
     public Dictionary<string, object?> Properties { get; } = properties;
 }
 sealed record Evidence(string ProjectId, string SourcePath, int LineStart, int LineEnd, int ColumnStart, int ColumnEnd, string SourceHash, string Extractor, double Confidence, string ResolutionStatus, string? Diagnostic);
-sealed class FileContext(string projectId, SourceInput input, string semanticProjectIdentity)
+sealed class FileContext(string projectId, SourceInput input, string semanticProjectIdentity, string analysisMode)
 {
     private readonly string _hash = Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(input.Path))).ToLowerInvariant();
     public Fact CreateFact(string kind, string name, SyntaxNode node, Dictionary<string, object?> properties, bool resolved, string? diagnostic)
     {
         properties["semantic_project_identity"] = semanticProjectIdentity;
+        properties["analysis_mode"] = analysisMode;
         var span = node.GetLocation().GetLineSpan();
-        var evidence = new Evidence(projectId, input.Relative, span.StartLinePosition.Line + 1, span.EndLinePosition.Line + 1, span.StartLinePosition.Character + 1, span.EndLinePosition.Character + 1, _hash, "roslyn", resolved ? 1.0 : 0.0, resolved ? "proven" : "unresolved", diagnostic);
+        var confidence = resolved ? (analysisMode == "PROJECT_COMPILATION" ? 1.0 : 0.6) : 0.0;
+        var evidence = new Evidence(projectId, input.Relative, span.StartLinePosition.Line + 1, span.EndLinePosition.Line + 1, span.StartLinePosition.Character + 1, span.EndLinePosition.Character + 1, _hash, "roslyn", confidence, resolved ? "proven" : "unresolved", diagnostic);
         return new Fact(kind, name, projectId, evidence, properties);
     }
 }
