@@ -28,10 +28,11 @@ def test_export_preserves_canonical_counts_and_evidence(tmp_path):
     assert result["nodes"][0]["reviewWarnings"][0]["message"] == "review only"
     assert "src/dashboard.js:L1" in result["nodes"][0]["summary"]
     assert "review only" in result["nodes"][0]["summary"]
-    assert "polaris-relationship:CALLS_API" in result["nodes"][0]["tags"]
+    assert "relationship:CALLS_API" in result["nodes"][0]["tags"]
     assert result["visualizationMetadata"]["canonical_counts"] == {"nodes": 1, "edges": 1, "warnings": 1}
     assert result["project"]["name"] == "Legacy Dashboard POC"
     assert "Polaris" not in json.dumps(result) and "HealthClinic" not in json.dumps(result)
+    assert all(not tag.startswith("polaris-") for tag in result["nodes"][0]["tags"])
     assert result["layers"]
     assert result["layers"][0]["nodeIds"] == [f"{PROJECT_ID}:File:dashboard.js"]
 

@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 3C.8 — Dashboard end-to-end context graph implementation completed; Roslyn and Neo4j verification blocked by unavailable `dotnet` and `docker` CLIs in the current terminal.
+Step 3C.8 — Dashboard end-to-end context graph completed and loaded into Neo4j after local credential correction.
 
 ## Step 1 Result
 
@@ -93,7 +93,7 @@ Customer-visible graph and viewer branding uses `Legacy Dashboard POC`; internal
 
 ## Step 3C.8 Result
 
-`end_to_end_context_flow` adds explicit `transform_ui`, `preserve_backend`, and `preserve_domain_data` roles to selected records and rejects backend records as Angular-generation candidates. The new isolated `healthclinic-dashboard-end-to-end-demo-v1` graph selected 24 UI files, 2 API controller files, and 6 domain/data files, completed with zero extraction warnings, and kept all 2,384 saved source-inventory hashes unchanged. The current terminal cannot resolve `dotnet`, so Roslyn enrichment was skipped; it also cannot resolve `docker`, so Neo4j loading was not attempted. No end-to-end backend relationship or new viewer export is claimed until both tools are available. See `docs/validation/healthclinic-dashboard-end-to-end-context-graph.md`.
+`end_to_end_context_flow` adds explicit `transform_ui`, `preserve_backend`, and `preserve_domain_data` roles to selected records and rejects backend records as Angular-generation candidates. Initial local CLI and Neo4j authentication failures were resolved: Roslyn succeeded and the isolated `healthclinic-dashboard-end-to-end-demo-v1` graph was loaded into Neo4j after the local password was corrected. See `docs/validation/healthclinic-dashboard-end-to-end-context-graph.md`.
 
 The graph now also projects the proven Reports controller-to-repository-to-EF/LINQ-to-model-to-`MyHealthContext` paths as read-only context. No raw SQL was found or inferred; dynamic client routes remain warnings.
 

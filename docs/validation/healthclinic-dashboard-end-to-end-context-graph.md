@@ -39,3 +39,5 @@ This graph preserves the Legacy ASP.NET MVC/Razor and Legacy AngularJS 1.x Dashb
 The selected Reports flow now exposes three source-backed read-only paths: `GetClinicSummaryAsync`, `GetExpensesSummaryAsync`, and `GetPatientsSummaryAsync`. Each controller action invokes a distinct `RepositoryMethod` record, which executes an `EF/LINQ query` record in `ReportsRepository`, returns its selected model (`ClinicSummary`, `ExpensesSummary`, or `PatientsSummary`), and depends on `MyHealthContext`. Source evidence is `Where` plus `OrderBy` and `FirstOrDefaultAsync` or `ToListAsync`; no literal raw SQL or SQL execution evidence was found, so no SQL node is shown.
 
 The regenerated graph has 156 nodes, 232 edges, 17 warnings, `scope_complete` coverage, and zero extraction warnings. The read-only visualization export was regenerated. Neo4j reload remains blocked by the previously recorded local authentication failure; no load claim is made.
+
+Final validation: Roslyn succeeded and Neo4j loaded `healthclinic-dashboard-end-to-end-demo-v1` after the local password was corrected. The earlier unavailable-CLI and authentication failures are historical only.
