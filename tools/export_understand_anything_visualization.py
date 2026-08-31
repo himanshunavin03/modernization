@@ -21,7 +21,7 @@ LAYER_DEFINITIONS = (
 )
 
 
-def read_graph(path: Path) -> dict:
+def read_graph(path: Path, project_id: str = PROJECT_ID) -> dict:
     graph = json.loads(path.read_text(encoding="utf-8"))
     metadata = graph.get("metadata", {})
     nodes = graph.get("nodes", [])
@@ -30,7 +30,7 @@ def read_graph(path: Path) -> dict:
         raise ValueError("Visualization requires scope_complete coverage.")
     if metadata.get("extraction_warning_count") != 0:
         raise ValueError("Visualization requires zero extraction warnings.")
-    if any(item.get("project_id") != PROJECT_ID for item in [*nodes, *edges]):
+    if not project_id or any(item.get("project_id") != project_id for item in [*nodes, *edges]):
         raise ValueError("Visualization requires only the approved project ID.")
     return graph
 
@@ -150,7 +150,7 @@ def build_tour(graph: dict) -> list[dict]:
         steps.append({"order": 3, "title": "Dashboard API service flow", "description": "Proven dashboard service and API-call records.", "nodeIds": api_ids})
     return steps
 
-def export(graph: dict, output_root: Path) -> Path:
+def export(graph: dict, output_root: Path, project_id: str = PROJECT_ID) -> Path:
     warnings_by_path: dict[str, list[dict]] = defaultdict(list)
     relationship_types_by_node: dict[str, set[str]] = defaultdict(set)
     for warning in graph.get("warnings", []):
@@ -176,7 +176,7 @@ def export(graph: dict, output_root: Path) -> Path:
                 "no-llm-inference",
             ],
             "complexity": "moderate",
-            "polarisProjectId": PROJECT_ID,
+            "polarisProjectId": project_id,
             "polarisLabel": node["label"],
             "polarisEvidence": node.get("evidence", []),
             "polarisProperties": node.get("properties", {}),
@@ -189,7 +189,7 @@ def export(graph: dict, output_root: Path) -> Path:
         "type": viewer_edge_type(edge["type"]),
         "direction": "forward",
         "weight": 1,
-        "polarisProjectId": PROJECT_ID,
+        "polarisProjectId": project_id,
         "polarisRelationshipType": edge["type"],
         "polarisEvidence": edge.get("evidence", []),
         "polarisProperties": edge.get("properties", {}),
@@ -212,7 +212,7 @@ def export(graph: dict, output_root: Path) -> Path:
         "tour": build_tour(graph),
         "polarisVisualization": {
             "disclaimer": DISCLAIMER,
-            "project_id": PROJECT_ID,
+            "project_id": project_id,
             "canonical_counts": {"nodes": len(graph["nodes"]), "edges": len(graph["edges"]), "warnings": len(graph.get("warnings", []))},
             "review_warnings": graph.get("warnings", []),
             "source_of_truth": "Tree-sitter/Roslyn canonical knowledge-graph.json and project-scoped Neo4j data.",
@@ -228,9 +228,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--graph", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--project-id", default=PROJECT_ID)
     args = parser.parse_args()
-    graph = read_graph(args.graph)
-    target = export(graph, args.output)
+    graph = read_graph(args.graph, args.project_id)
+    target = export(graph, args.output, args.project_id)
     print(target)
 
 

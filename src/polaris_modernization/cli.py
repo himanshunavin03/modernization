@@ -18,6 +18,7 @@ from polaris_modernization.graph.neo4j_loader import Neo4jLoader, connect, read_
 from polaris_modernization.roslyn_bridge import enrich
 from polaris_modernization.isolated_extraction import extract_file
 from polaris_modernization.knowledge_graph_agent import create_knowledge_graph
+from polaris_modernization.graph.context_flow import add_context_flow
 
 ROSLYN_LABELS = {
     "namespace": "Namespace", "controller": "Controller", "action": "Action",
@@ -138,8 +139,8 @@ def analyze(source_root: Path, project_id: str, profile_name: str, output: Path,
     facts: list[Fact] = []
     source_root = source_root.resolve()
     scope_type = profile.get("scope_type", "full_application")
-    if scope_type not in {"full_application", "selected_modernization_flow"}:
-        raise ValueError("scope_type must be full_application or selected_modernization_flow")
+    if scope_type not in {"full_application", "selected_modernization_flow", "end_to_end_context_flow"}:
+        raise ValueError("scope_type must be full_application, selected_modernization_flow, or end_to_end_context_flow")
     extractable_entries = []
     for entry in inventory:
         source_path = source_root / entry["source_path"]
@@ -213,6 +214,9 @@ def analyze(source_root: Path, project_id: str, profile_name: str, output: Path,
     graph["warnings"].extend(roslyn["warnings"])
     graph["warnings"].extend(extraction_warnings)
     merge_roslyn(graph, roslyn["facts"], project_id, out_of_scope_symbols)
+    if scope_type == "end_to_end_context_flow":
+        add_context_flow(graph, profile, project_id)
+        graph["metadata"].update({"modernization_scope": "end_to_end_context", "transform_boundary": "ui_only", "backend_preservation_boundary": "api_domain_data"})
     graph["metadata"]["review_warning_count"] = len(graph["warnings"]) - len(extraction_warnings)
     graph["metadata"]["coverage_status"] = (
         "complete_application" if scope_type == "full_application" and not extraction_warnings

@@ -1,0 +1,36 @@
+scope_id: healthclinic-dashboard-end-to-end-context
+scope_name: HealthClinic Dashboard end-to-end context flow
+scope_description: UI transformation scope with proven read-only API, domain, and data context.
+scope_type: end_to_end_context_flow
+include_paths:
+  - src/MyHealth.Web/Views/Dashboard
+  - src/MyHealth.Web/Views/Shared
+  - src/MyHealth.Web/Controllers/DashboardController.cs
+  - src/MyHealth.Web/Controllers/AccountController.cs
+  - src/MyHealth.Web/content/app/app.module.js
+  - src/MyHealth.Web/content/app/components/dashboard
+  - src/MyHealth.Web/content/app/components/shared/directives/headerBar
+  - src/MyHealth.Web/content/app/components/shared/directives/leftMenu
+  - src/MyHealth.Web/content/app/components/shared/shared.module.js
+  - src/MyHealth.API/Controllers/ReportsController.cs
+  - src/MyHealth.API/Controllers/UsersController.cs
+  - src/MyHealth.Data/Repositories/ReportsRepository.cs
+  - src/MyHealth.Data/MyHealthContext.cs
+  - src/MyHealth.Model/ClinicSummary.cs
+  - src/MyHealth.Model/ExpensesSummary.cs
+  - src/MyHealth.Model/PatientsSummary.cs
+  - src/MyHealth.Model/ApplicationUser.cs
+selection_roles:
+  src/MyHealth.Web: transform_ui
+  src/MyHealth.API: preserve_backend
+  src/MyHealth.Data: preserve_domain_data
+  src/MyHealth.Model: preserve_domain_data
+endpoint_routes:
+  - path: /api/reports/clinicsummary
+    source_path: src/MyHealth.API/Controllers/ReportsController.cs
+    action_name: GetClinicSummaryAsync
+    action_identity: global::MyHealth.API.Controllers.ReportsController.GetClinicSummaryAsync()
+  - path: /api/users/current/tenant
+    source_path: src/MyHealth.API/Controllers/UsersController.cs
+    action_name: GetCurrentTenantAsync
+    action_identity: global::MyHealth.API.Controllers.UsersController.GetCurrentTenantAsync()

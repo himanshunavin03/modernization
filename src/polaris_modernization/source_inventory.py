@@ -18,6 +18,12 @@ def build_inventory(source_root: Path, profile: dict) -> tuple[list[dict], list[
     from polaris_modernization.project_discovery import discover_files
     extensions = profile.get("supported_extensions", {})
     includes = [item.rstrip("/") for item in profile.get("include_paths", [])]
+    role_paths = profile.get("selection_roles", {})
+
+    def role_for(relative_path: str) -> str:
+        matches = [(prefix.rstrip("/"), role) for prefix, role in role_paths.items()
+                   if relative_path == prefix.rstrip("/") or relative_path.startswith(prefix.rstrip("/") + "/")]
+        return max(matches, key=lambda item: len(item[0]))[1] if matches else "review_required"
     warnings = []
     for include in includes:
         if not (source_root / include).exists(): warnings.append(f"Configured path not found: {include}")
@@ -26,6 +32,6 @@ def build_inventory(source_root: Path, profile: dict) -> tuple[list[dict], list[
         relative_path = file_path.relative_to(source_root).as_posix()
         selected = not includes or any(relative_path == item or relative_path.startswith(f"{item}/") for item in includes)
         supported = file_path.suffix.lower() in extensions
-        files.append({"source_path": relative_path, "source_hash": source_hash(file_path), "language": extensions.get(file_path.suffix.lower()), "supported": supported, "selected_for_extraction": selected, "extraction_status": "in_scope_unsupported" if selected else "out_of_scope"})
+        files.append({"source_path": relative_path, "source_hash": source_hash(file_path), "language": extensions.get(file_path.suffix.lower()), "supported": supported, "selected_for_extraction": selected, "modernization_role": role_for(relative_path) if selected else None, "extraction_status": "in_scope_unsupported" if selected else "out_of_scope"})
     if not any(item["supported"] for item in files): raise ValueError("No supported source files found")
     return files, warnings

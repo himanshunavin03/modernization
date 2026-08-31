@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 3C.7 — Understand Anything read-only customer visualization layout corrected; awaiting review and commit approval.
+Step 3C.8 — Dashboard end-to-end context graph implementation completed; Roslyn and Neo4j verification blocked by unavailable `dotnet` and `docker` CLIs in the current terminal.
 
 ## Step 1 Result
 
@@ -81,6 +81,10 @@ Read-only discovery confirms `src/MyHealth.Web` is a Legacy ASP.NET MVC/Razor UI
 ## Step 3C.7 Result
 
 The official Understand Anything Windows installer created Codex skill junctions and a local upstream MIT checkout at commit `ba450c43425f3de6d43daf76526950ad8ca93536`; VS Code/Codex must restart to discover those skills. A deterministic adapter exported only the validated canonical graph to ignored `artifacts/healthclinic-dashboard-scope-demo-v3/visualization/.ua/knowledge-graph.json`. It rejects non-approved, incomplete, or extraction-warning inputs, retains canonical labels, relationship types, evidence, and review warnings, and uses no LLM/API calls. The v2.9.0 viewer requires non-empty layers for structural canvas rendering, so the adapter now assigns every canonical node exactly once to five evidence-derived layers and creates a three-step tour of existing Dashboard records. The corrected export retains 123 nodes, 169 edges, and 27 warnings, and is served locally on port 5175. Source remained unchanged at the 2,395-file fingerprint `0b92e1701cdd2374e259ea4fed9811b7e20e4719ff8ea70e4a8aa5023cacf2b4`. See `docs/validation/understand-anything-readonly-visualization.md`.
+
+## Step 3C.8 Result
+
+`end_to_end_context_flow` adds explicit `transform_ui`, `preserve_backend`, and `preserve_domain_data` roles to selected records and rejects backend records as Angular-generation candidates. The new isolated `healthclinic-dashboard-end-to-end-demo-v1` graph selected 24 UI files, 2 API controller files, and 6 domain/data files, completed with zero extraction warnings, and kept all 2,384 saved source-inventory hashes unchanged. The current terminal cannot resolve `dotnet`, so Roslyn enrichment was skipped; it also cannot resolve `docker`, so Neo4j loading was not attempted. No end-to-end backend relationship or new viewer export is claimed until both tools are available. See `docs/validation/healthclinic-dashboard-end-to-end-context-graph.md`.
 
 ## Step 2.2 Result
 
