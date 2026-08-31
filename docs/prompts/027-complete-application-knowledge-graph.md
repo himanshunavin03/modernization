@@ -1,0 +1,3 @@
+# Complete Application Knowledge Graph
+
+Build `legacy-dashboard-complete-application-demo-v1` as a generic, project-scoped full-application graph using deterministic Tree-sitter and Roslyn evidence only. Include every supported source file under the selected root; preserve UI-only Angular generation eligibility and mark all backend, service, repository, domain, and data context non-transformable. Do not modify source, existing graphs, or infer SQL, routes, database tables, or write paths. Add generic evidence-based data-access relationships and neutral viewer layers/projections, validate tests, load only the new project into Neo4j after gates pass, export the read-only viewer, and update recovery documentation through prompt 027 without auto-committing.

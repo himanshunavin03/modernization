@@ -17,6 +17,10 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 Step 3C.8 — Dashboard end-to-end context graph completed and loaded into Neo4j after local credential correction.
 
+## Complete Application Baseline
+
+The new generic full-application run `legacy-dashboard-complete-application-demo-v1` audited 2,384 files with Roslyn enabled and produced 3,298 nodes and 4,500 edges, but has 47 isolated extraction warnings and `partial_application_with_extraction_failures`. It is not eligible for Neo4j loading or viewer export. See `docs/validation/legacy-dashboard-complete-application-knowledge-graph.md`.
+
 ## Step 1 Result
 
 The Dashboard MVC view is a protected Razor shell. It composes Dashboard partials and delegates feature content/navigation to client-side components and an AngularJS `ui-view`. The detailed evidence and unproven areas are recorded in `docs/dashboard-analysis.md`.

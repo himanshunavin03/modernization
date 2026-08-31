@@ -2,6 +2,7 @@
 
 - Status: Step 3C.8 completed. Roslyn succeeded and the end-to-end project loaded into Neo4j after local password correction.
 - Current step: Review the neutral customer-facing visualization and documentation changes.
+- Complete application baseline: `legacy-dashboard-complete-application-demo-v1` ran with Roslyn over all 2,384 files but has 47 extraction warnings; do not load or export it until coverage is complete.
 - Viewer runbook: `docs/runbooks/understand-anything-viewer.md` documents the validated UI-only command and `tools/launch_understand_anything_viewer.ps1` safely exports and launches any approved project-scoped graph with a caller-supplied local token.
 - Viewer runtime: `tools/install_understand_anything_viewer.ps1` performs the one-time pinned v2.9.0 installation under ignored `tools/vendor/`; normal viewer launch has no package-network access.
 - Customer-facing viewer branding is neutralized as `Legacy Dashboard POC`; audit: `docs/validation/customer-facing-branding-audit.md`.
