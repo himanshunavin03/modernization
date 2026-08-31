@@ -176,7 +176,16 @@ var unresolved = facts.Where(fact => fact.Evidence.ResolutionStatus == "unresolv
     reason = fact.Evidence.Diagnostic, analyzer_mode = fact.Properties.GetValueOrDefault("analysis_mode"),
     evidence = fact.Evidence,
 }).ToList();
-File.WriteAllText(outputPath, JsonSerializer.Serialize(new { project_id = projectId, facts, warnings, unresolved_analysis = new { totals = unresolved.GroupBy(item => item.classification).ToDictionary(group => group.Key, group => group.Count()), items = unresolved } }, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower }));
+var ownership = inputs.Select(input => contexts.TryGetValue(Path.GetFullPath(input.Path), out var context)
+    ? new { source_file = input.Relative, ownership = context.AnalysisMode == "PROJECT_COMPILATION" ? "PROJECT_OWNED" : "UNOWNED", analysis_mode = context.AnalysisMode, project = context.ProjectIdentity }
+    : new { source_file = input.Relative, ownership = "UNOWNED", analysis_mode = "STRUCTURAL_ONLY", project = "" }).ToList();
+File.WriteAllText(outputPath, JsonSerializer.Serialize(new
+{
+    project_id = projectId, facts, warnings,
+    source_ownership = new { total_csharp_files = ownership.Count, totals = ownership.GroupBy(item => item.ownership).ToDictionary(group => group.Key, group => group.Count()), items = ownership },
+    semantic_coverage = new { compiler_proven_files = ownership.Count(item => item.analysis_mode == "PROJECT_COMPILATION"), synthetic_fallback_files = ownership.Count(item => item.analysis_mode == "SYNTHETIC_FALLBACK"), structural_only_files = ownership.Count(item => item.analysis_mode == "STRUCTURAL_ONLY") },
+    unresolved_analysis = new { total_unresolved_occurrences = unresolved.Count, unique_unresolved_diagnostics = unresolved.Select(item => item.unresolved_id).Distinct().Count(), totals = unresolved.GroupBy(item => item.classification).ToDictionary(group => group.Key, group => group.Count()), items = unresolved }
+}, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower }));
 
 static Dictionary<string, string> ParseArguments(string[] args) => Enumerable.Range(0, args.Length / 2).ToDictionary(index => args[index * 2], index => args[index * 2 + 1]);
 static string Required(Dictionary<string, string> values, string key) => values.TryGetValue(key, out var value) ? value : throw new ArgumentException($"Missing {key}.");

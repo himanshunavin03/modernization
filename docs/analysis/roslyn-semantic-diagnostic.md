@@ -19,3 +19,9 @@ The verified baseline had 4,030 unresolved semantic facts, 1,784 unresolved invo
 ## Readiness
 
 No complete graph was regenerated for this diagnostic task. The new classifier has not yet been exercised on a full run, so the exact classification totals, duplicate/unique count, ownership coverage, API mapping, and remaining `UNKNOWN` count cannot be claimed. The current decision is **NOT SAFE TO REGENERATE** until those gates and dedicated project-aware regression fixtures pass.
+
+## Quality-Gate Output Contract
+
+The Roslyn output now includes `source_ownership` with `PROJECT_OWNED` or `UNOWNED` records, `semantic_coverage` counts for project compilation, synthetic fallback, and structural-only files, and `unresolved_analysis` with total occurrences, unique stable diagnostic IDs, classification totals, and per-occurrence evidence. Classification uses project/fallback mode and Roslyn candidate evidence; unresolved entries without supporting compiler or workspace evidence remain `UNKNOWN` rather than being relabeled.
+
+The new contract is compiled and covered by the existing regression suite, but multi-project project-reference, failed-project fallback, API route-mapping, and readiness-gate fixtures remain required before a complete application regeneration is safe.
