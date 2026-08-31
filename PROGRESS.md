@@ -17,3 +17,10 @@
 ## Resume Command
 
 Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021 under `docs/prompts/`, `docs/agents/create-knowledge-graph.md`, `docs/validation/healthclinic-ui-technology-discovery.md`, and `docs/validation/understand-anything-readonly-visualization.md`. Neo4j loading and read-only visualization are complete. Manually confirm the corrected port-5175 canvas; do not begin Step 4 automatically.
+
+## Project-Aware Roslyn Engine Proof
+
+- Completed: generic multi-project and safe-fallback fixtures, helper repair, and tests. The focused suite passed `11` tests, proving compiler-backed `Web -> Business -> Data` semantics with no fallback and a narrowly scoped fallback only for a C# file not owned by any project.
+- Completed: solution-first workspace loading avoids duplicate project opens; declared extension-method identities are retained; partial compilation facts are visibly lower-confidence and classify unresolved items as `COMPILATION_ERROR` rather than `UNKNOWN`.
+- Not performed: no complete-application graph regeneration, Neo4j load, viewer export, or source modification.
+- Next action: run the full regression suite. If it passes, the generic engine gates permit a separately approved complete-application regeneration. Recovery reading includes prompts 010 through 034 and `docs/analysis/roslyn-semantic-diagnostic.md`.

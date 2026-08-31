@@ -33,3 +33,14 @@ Generic route normalization and matching now prove `GET /api/customers/123` maps
 The readiness model now separates pipeline execution from graph readiness. A successful pipeline is `READY` only with valid integrity and no analyzer-defect or unknown blockers; known explained limitations produce `READY_WITH_EXPLAINED_LIMITATIONS`; failed execution, integrity failures, analyzer defects, or unknowns produce `NOT_READY`.
 
 These focused proofs pass. Multi-project project-reference and failed-project workspace/fallback fixtures are still required, so the overall pre-regeneration decision remains **NOT SAFE TO REGENERATE**.
+
+## FINAL ENGINE PROOF
+
+The generic offline fixtures now prove the outstanding project-aware semantic-engine gates without regenerating an application graph.
+
+- `roslyn-multiproject` opens a solution containing `Fixture.Web -> Fixture.Business -> Fixture.Data`; all three C# files are `PROJECT_COMPILATION` with confidence `1.0` and no synthetic fallback. It proves declarations, interface dispatch (`IStore.Read`), base-method invocation (`BaseService.Format`), cross-project construction (`Service(IStore)` and `Store()`), overload selection (`Service.Load(int)`), generic extension resolution (`StoreExtensions.Identity<T>`), and parameter/return type references. Stable declaration identities are unique.
+- `roslyn-fallback` retains two project-owned files. The broken referenced project is explicitly `PARTIAL_PROJECT_COMPILATION`, preserving conservative compiler facts at confidence `0.8`; its unresolved item is classified `COMPILATION_ERROR`. The single C# file outside any project receives the only `SYNTHETIC_FALLBACK`, with confidence at most `0.6` and a source-backed `PROJECT_LOAD_FAILURE` unresolved diagnostic. No missing invocation target is marked proven or guessed.
+- The helper opens solutions before individual projects, preventing duplicate-project workspace failures and preserving real cross-project compilation contexts. Reduced extension symbols are normalized to their declared extension method, so relationship identities retain the defining type rather than only the receiver type.
+- Focused project-aware, API mapping, and readiness tests pass: `11 passed`. The full regression suite remains required before a complete-application regeneration is authorized.
+
+Fixture-level result: **SAFE TO REGENERATE** once the full regression suite also passes. This conclusion proves the engine behavior only; it does not claim a new application extraction, Neo4j load, or viewer export.

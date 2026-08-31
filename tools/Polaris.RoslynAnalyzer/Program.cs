@@ -29,21 +29,31 @@ var workspaceProperties = new Dictionary<string, string>
 };
 using var workspace = MSBuildWorkspace.Create(workspaceProperties);
 workspace.WorkspaceFailed += (_, eventArgs) => warnings.Add(new { category = "PROJECT_LOAD_FAILURE", message = eventArgs.Diagnostic.Message });
+foreach (var solutionPath in Directory.EnumerateFiles(sourceRoot, "*.sln", SearchOption.AllDirectories))
+{
+    try { await workspace.OpenSolutionAsync(solutionPath); }
+    catch (Exception error) { warnings.Add(new { category = "PROJECT_LOAD_FAILURE", solution = solutionPath, message = error.Message }); }
+}
 foreach (var projectPath in Directory.EnumerateFiles(sourceRoot, "*.csproj", SearchOption.AllDirectories))
 {
     try
     {
-        var project = await workspace.OpenProjectAsync(projectPath);
+        var fullProjectPath = Path.GetFullPath(projectPath);
+        var project = workspace.CurrentSolution.Projects.FirstOrDefault(item => item.FilePath is not null && string.Equals(Path.GetFullPath(item.FilePath), fullProjectPath, StringComparison.OrdinalIgnoreCase))
+            ?? await workspace.OpenProjectAsync(projectPath);
         var compilation = await project.GetCompilationAsync();
         if (compilation is null)
         {
             warnings.Add(new { category = "COMPILATION_ERROR", project = projectPath, message = "Roslyn did not produce a compilation." });
             continue;
         }
+        var analysisMode = compilation.GetDiagnostics().Any(diagnostic => diagnostic.Severity == DiagnosticSeverity.Error)
+            ? "PARTIAL_PROJECT_COMPILATION"
+            : "PROJECT_COMPILATION";
         foreach (var document in project.Documents.Where(document => document.FilePath?.EndsWith(".cs", StringComparison.OrdinalIgnoreCase) == true))
         {
             var tree = await document.GetSyntaxTreeAsync();
-            if (tree is not null) contexts.TryAdd(Path.GetFullPath(document.FilePath!), new SemanticContext(tree, compilation.GetSemanticModel(tree), project.FilePath ?? project.Name, "PROJECT_COMPILATION"));
+            if (tree is not null) contexts.TryAdd(Path.GetFullPath(document.FilePath!), new SemanticContext(tree, compilation.GetSemanticModel(tree), project.FilePath ?? project.Name, analysisMode));
         }
     }
     catch (Exception error)
@@ -148,7 +158,9 @@ foreach (var input in inputs)
             {
                 var symbolInfo = model.GetSymbolInfo(invocation);
                 var target = symbolInfo.Symbol as IMethodSymbol;
-                var invocationProperties = new Dictionary<string, object?> { ["owner_identity"] = methodId, ["target_identity"] = target is null ? invocation.Expression.ToString() : SymbolId(target), ["target_name"] = target?.ToDisplayString() ?? invocation.Expression.ToString() };
+                // Reduced extension-method symbols identify the receiver type; retain the declared extension method instead.
+                var declaredTarget = target?.ReducedFrom ?? target;
+                var invocationProperties = new Dictionary<string, object?> { ["owner_identity"] = methodId, ["target_identity"] = declaredTarget is null ? invocation.Expression.ToString() : SymbolId(declaredTarget), ["target_name"] = declaredTarget?.ToDisplayString() ?? invocation.Expression.ToString() };
                 if (target is null && symbolInfo.CandidateSymbols.Length > 0)
                 {
                     invocationProperties["candidate_reason"] = symbolInfo.CandidateReason.ToString();
@@ -158,6 +170,13 @@ foreach (var input in inputs)
                 facts.Add(context.CreateFact("invocation", target?.Name ?? invocation.Expression.ToString(), invocation,
                     invocationProperties,
                     target is not null, target is null ? "Roslyn could not resolve the invocation target." : null));
+            }
+            foreach (var creation in method.DescendantNodes().OfType<ObjectCreationExpressionSyntax>())
+            {
+                var constructor = model.GetSymbolInfo(creation).Symbol as IMethodSymbol;
+                facts.Add(context.CreateFact("invocation", constructor?.Name ?? creation.Type.ToString(), creation,
+                    new() { ["owner_identity"] = methodId, ["target_identity"] = constructor is null ? creation.Type.ToString() : SymbolId(constructor), ["target_name"] = constructor?.ToDisplayString() ?? creation.Type.ToString(), ["invocation_kind"] = "constructor" },
+                    constructor is not null, constructor is null ? "Roslyn could not resolve the constructor target." : null));
             }
         }
     }
@@ -177,13 +196,13 @@ var unresolved = facts.Where(fact => fact.Evidence.ResolutionStatus == "unresolv
     evidence = fact.Evidence,
 }).ToList();
 var ownership = inputs.Select(input => contexts.TryGetValue(Path.GetFullPath(input.Path), out var context)
-    ? new { source_file = input.Relative, ownership = context.AnalysisMode == "PROJECT_COMPILATION" ? "PROJECT_OWNED" : "UNOWNED", analysis_mode = context.AnalysisMode, project = context.ProjectIdentity }
+    ? new { source_file = input.Relative, ownership = context.AnalysisMode is "PROJECT_COMPILATION" or "PARTIAL_PROJECT_COMPILATION" ? "PROJECT_OWNED" : "UNOWNED", analysis_mode = context.AnalysisMode, project = context.ProjectIdentity }
     : new { source_file = input.Relative, ownership = "UNOWNED", analysis_mode = "STRUCTURAL_ONLY", project = "" }).ToList();
 File.WriteAllText(outputPath, JsonSerializer.Serialize(new
 {
     project_id = projectId, facts, warnings,
     source_ownership = new { total_csharp_files = ownership.Count, totals = ownership.GroupBy(item => item.ownership).ToDictionary(group => group.Key, group => group.Count()), items = ownership },
-    semantic_coverage = new { compiler_proven_files = ownership.Count(item => item.analysis_mode == "PROJECT_COMPILATION"), synthetic_fallback_files = ownership.Count(item => item.analysis_mode == "SYNTHETIC_FALLBACK"), structural_only_files = ownership.Count(item => item.analysis_mode == "STRUCTURAL_ONLY") },
+    semantic_coverage = new { compiler_proven_files = ownership.Count(item => item.analysis_mode is "PROJECT_COMPILATION" or "PARTIAL_PROJECT_COMPILATION"), synthetic_fallback_files = ownership.Count(item => item.analysis_mode == "SYNTHETIC_FALLBACK"), structural_only_files = ownership.Count(item => item.analysis_mode == "STRUCTURAL_ONLY") },
     unresolved_analysis = new { total_unresolved_occurrences = unresolved.Count, unique_unresolved_diagnostics = unresolved.Select(item => item.unresolved_id).Distinct().Count(), totals = unresolved.GroupBy(item => item.classification).ToDictionary(group => group.Key, group => group.Count()), items = unresolved }
 }, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower }));
 
@@ -228,9 +247,19 @@ sealed class FileContext(string projectId, SourceInput input, string semanticPro
     {
         properties["semantic_project_identity"] = semanticProjectIdentity;
         properties["analysis_mode"] = analysisMode;
-        if (!resolved && !properties.ContainsKey("unresolved_classification")) properties["unresolved_classification"] = analysisMode == "SYNTHETIC_FALLBACK" ? "PROJECT_LOAD_FAILURE" : "UNKNOWN";
+        if (!resolved && !properties.ContainsKey("unresolved_classification")) properties["unresolved_classification"] = analysisMode switch
+        {
+            "SYNTHETIC_FALLBACK" => "PROJECT_LOAD_FAILURE",
+            "PARTIAL_PROJECT_COMPILATION" => "COMPILATION_ERROR",
+            _ => "UNKNOWN",
+        };
         var span = node.GetLocation().GetLineSpan();
-        var confidence = resolved ? (analysisMode == "PROJECT_COMPILATION" ? 1.0 : 0.6) : 0.0;
+        var confidence = resolved ? analysisMode switch
+        {
+            "PROJECT_COMPILATION" => 1.0,
+            "PARTIAL_PROJECT_COMPILATION" => 0.8,
+            _ => 0.6,
+        } : 0.0;
         var evidence = new Evidence(projectId, input.Relative, span.StartLinePosition.Line + 1, span.EndLinePosition.Line + 1, span.StartLinePosition.Character + 1, span.EndLinePosition.Character + 1, _hash, "roslyn", confidence, resolved ? "proven" : "unresolved", diagnostic);
         return new Fact(kind, name, projectId, evidence, properties);
     }

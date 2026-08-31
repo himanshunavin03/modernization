@@ -116,3 +116,7 @@ The solution is project-agnostic. Every source project is selected by `--source-
 ## Recovery Instruction
 
 Before doing any further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021 under `docs/prompts/`, `docs/agents/create-knowledge-graph.md`, `docs/validation/healthclinic-ui-technology-discovery.md`, and `docs/validation/understand-anything-readonly-visualization.md`. Neo4j loading and the read-only visualization are complete. The approved POC scope is Legacy ASP.NET MVC/Razor plus Legacy AngularJS 1.x to Target Angular 22. Await user review and commit approval; do not begin Step 4 automatically.
+
+## Project-Aware Roslyn Engine Proof
+
+Generic offline fixtures now prove solution-first, cross-project Roslyn semantic extraction and narrow fallback behavior. `Fixture.Web -> Fixture.Business -> Fixture.Data` is compiler-proven with no fallback; it resolves interface, inheritance, constructor, overload, generic extension, parameter, return, and invocation relationships. A deliberately broken project remains project-owned with explicit `PARTIAL_PROJECT_COMPILATION` and `COMPILATION_ERROR`; only a source file outside all projects uses lower-confidence `SYNTHETIC_FALLBACK` with `PROJECT_LOAD_FAILURE`. No targets are guessed. The focused engine/API/readiness suite passed `11`; no application graph, Neo4j data, or viewer output was regenerated. Recovery reading now includes prompts 010 through 034 and `docs/analysis/roslyn-semantic-diagnostic.md`.
