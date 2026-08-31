@@ -25,6 +25,7 @@ KIND_TO_LABEL = {
     "chart": "Chart",
     "ui_control": "UIControl",
     "api_call": "ApiCall",
+    "opaque_source": "OpaqueSource",
 }
 
 
