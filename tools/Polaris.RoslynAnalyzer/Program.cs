@@ -146,9 +146,17 @@ foreach (var input in inputs)
             }
             foreach (var invocation in method.DescendantNodes().OfType<InvocationExpressionSyntax>())
             {
-                var target = model.GetSymbolInfo(invocation).Symbol as IMethodSymbol;
+                var symbolInfo = model.GetSymbolInfo(invocation);
+                var target = symbolInfo.Symbol as IMethodSymbol;
+                var invocationProperties = new Dictionary<string, object?> { ["owner_identity"] = methodId, ["target_identity"] = target is null ? invocation.Expression.ToString() : SymbolId(target), ["target_name"] = target?.ToDisplayString() ?? invocation.Expression.ToString() };
+                if (target is null && symbolInfo.CandidateSymbols.Length > 0)
+                {
+                    invocationProperties["candidate_reason"] = symbolInfo.CandidateReason.ToString();
+                    invocationProperties["candidate_symbols"] = symbolInfo.CandidateSymbols.Select(SymbolId).ToArray();
+                    invocationProperties["unresolved_classification"] = symbolInfo.CandidateReason == CandidateReason.OverloadResolutionFailure ? "OVERLOAD_RESOLUTION" : "UNKNOWN";
+                }
                 facts.Add(context.CreateFact("invocation", target?.Name ?? invocation.Expression.ToString(), invocation,
-                    new() { ["owner_identity"] = methodId, ["target_identity"] = target is null ? invocation.Expression.ToString() : SymbolId(target), ["target_name"] = target?.ToDisplayString() ?? invocation.Expression.ToString() },
+                    invocationProperties,
                     target is not null, target is null ? "Roslyn could not resolve the invocation target." : null));
             }
         }
@@ -158,7 +166,17 @@ foreach (var input in inputs)
 foreach (var fact in facts.Where(fact => fact.Kind == "type" && fact.Properties.TryGetValue("identity", out var identity) && identity is string typeId && actionTypeIds.Contains(typeId))) fact.Kind = "dto";
 
 Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(outputPath))!);
-File.WriteAllText(outputPath, JsonSerializer.Serialize(new { project_id = projectId, facts, warnings }, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower }));
+var unresolved = facts.Where(fact => fact.Evidence.ResolutionStatus == "unresolved").Select(fact => new
+{
+    unresolved_id = Convert.ToHexString(SHA256.HashData(System.Text.Encoding.UTF8.GetBytes($"{fact.Evidence.SourcePath}|{fact.Evidence.LineStart}|{fact.Evidence.ColumnStart}|{fact.Kind}|{fact.Name}|{fact.Properties.GetValueOrDefault("unresolved_classification", "UNKNOWN")}"))).ToLowerInvariant(),
+    source_file = fact.Evidence.SourcePath, line_start = fact.Evidence.LineStart, line_end = fact.Evidence.LineEnd,
+    project = fact.Properties.GetValueOrDefault("semantic_project_identity"), semantic_operation = fact.Kind,
+    attempted_symbol = fact.Properties.GetValueOrDefault("target_name", fact.Name),
+    classification = Convert.ToString(fact.Properties.GetValueOrDefault("unresolved_classification", "UNKNOWN")) ?? "UNKNOWN",
+    reason = fact.Evidence.Diagnostic, analyzer_mode = fact.Properties.GetValueOrDefault("analysis_mode"),
+    evidence = fact.Evidence,
+}).ToList();
+File.WriteAllText(outputPath, JsonSerializer.Serialize(new { project_id = projectId, facts, warnings, unresolved_analysis = new { totals = unresolved.GroupBy(item => item.classification).ToDictionary(group => group.Key, group => group.Count()), items = unresolved } }, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower }));
 
 static Dictionary<string, string> ParseArguments(string[] args) => Enumerable.Range(0, args.Length / 2).ToDictionary(index => args[index * 2], index => args[index * 2 + 1]);
 static string Required(Dictionary<string, string> values, string key) => values.TryGetValue(key, out var value) ? value : throw new ArgumentException($"Missing {key}.");
@@ -201,6 +219,7 @@ sealed class FileContext(string projectId, SourceInput input, string semanticPro
     {
         properties["semantic_project_identity"] = semanticProjectIdentity;
         properties["analysis_mode"] = analysisMode;
+        if (!resolved && !properties.ContainsKey("unresolved_classification")) properties["unresolved_classification"] = analysisMode == "SYNTHETIC_FALLBACK" ? "PROJECT_LOAD_FAILURE" : "UNKNOWN";
         var span = node.GetLocation().GetLineSpan();
         var confidence = resolved ? (analysisMode == "PROJECT_COMPILATION" ? 1.0 : 0.6) : 0.0;
         var evidence = new Evidence(projectId, input.Relative, span.StartLinePosition.Line + 1, span.EndLinePosition.Line + 1, span.StartLinePosition.Character + 1, span.EndLinePosition.Character + 1, _hash, "roslyn", confidence, resolved ? "proven" : "unresolved", diagnostic);
