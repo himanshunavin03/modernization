@@ -32,3 +32,10 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Gates: `MULTI_PROJECT_ROSLYN`, `SAFE_FALLBACK`, `API_MAPPING`, `READINESS_GATE`, and `COMPLETE_REGRESSION_SUITE` are PASS. There are `0` known generic analyzer defects and `0` unknown blockers in the verified fixture/test scope.
 - Confirmation: no application `/create-knowledge-graph` command ran, `artifacts/knowledge-graph/latest/` is unchanged, no immutable complete-application run was created, and no Neo4j application load occurred.
 - Authorization: SAFE TO REGENERATE in a separately approved follow-up task only.
+
+## Forensic KG Readiness Analysis
+
+- Completed read-only analysis of immutable run `legacy-dashboard-complete-application-demo-v1-2026-08-31-184436` at `922529974b5eb084945933befbf80faca3681e61`; report: `artifacts/knowledge-graph/latest/kg-readiness-analysis.md`.
+- Result: `READY_WITH_EXPLAINED_LIMITATIONS`. The graph has valid JSON, complete 2,384-file inventory, zero Tree-sitter warnings, zero evidence gaps, no duplicate/broken records, no C#-as-Angular conflicts, and zero analyzer defects. Of 4,344 unresolved semantics, 4,342 are explicitly partial-compilation, fallback, or overload limitations; two source-backed inaccessible-member candidates remain `UNKNOWN`.
+- The 314 invocation increase is fully reconciled against an unchanged prior inventory: 306 newly represented partial-compilation attempts and 8 fallback attempts, not source loss or an analyzer regression. API endpoint mapping remains absent (33 frontend API calls, zero endpoint facts/mappings), so Phase 2 must retain this as a visible limitation.
+- Not performed: graph regeneration, graph/fact JSON edits, Neo4j load, analyzer changes, or Phase 2 work.
