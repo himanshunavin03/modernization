@@ -7,19 +7,19 @@
     "source_inventory": "artifacts\\legacy-dashboard-complete-application-demo-v1\\source-inventory.json"
   },
   "counts": {
-    "edge_count": 6068,
+    "edge_count": 5524,
     "extraction_warning_count": 0,
     "fact_count": 8353,
     "file_count": 2384,
-    "node_count": 5397,
+    "node_count": 5430,
     "review_warning_count": 2082,
     "warning_count": 2082
   },
-  "ended_at": "2026-08-31T04:35:32.203670Z",
+  "ended_at": "2026-08-31T17:16:49.495829Z",
   "neo4j": {
     "loaded": {
-      "edges": 6068,
-      "nodes": 5397,
+      "edges": 5524,
+      "nodes": 5430,
       "warnings": 2082
     },
     "requested": true,
@@ -75,5 +75,5 @@
       "status": "succeeded"
     }
   ],
-  "started_at": "2026-08-31T04:34:55.161832Z"
+  "started_at": "2026-08-31T17:14:58.005208Z"
 }

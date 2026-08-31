@@ -42,7 +42,7 @@
       "Type",
       "UIControl"
     ],
-    "nodes": 5397,
+    "nodes": 5430,
     "nodes_with_review_warnings": 184,
     "nodes_without_evidence": [],
     "relationship_types": [
@@ -60,7 +60,7 @@
       "RETURNS_TYPE",
       "USES_TEMPLATE"
     ],
-    "relationships": 6068,
+    "relationships": 5524,
     "relationships_without_evidence": [],
     "unresolved_invocation_targets": 1527,
     "unresolved_parameter_types": 11,

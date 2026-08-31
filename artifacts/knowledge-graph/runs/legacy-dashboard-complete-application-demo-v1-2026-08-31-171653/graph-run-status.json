@@ -1,0 +1,79 @@
+{
+  "artifact_paths": {
+    "facts": "artifacts\\legacy-dashboard-complete-application-demo-v1\\facts.json",
+    "graph_run_status": "artifacts\\legacy-dashboard-complete-application-demo-v1\\graph-run-status.json",
+    "graph_run_summary": "artifacts\\legacy-dashboard-complete-application-demo-v1\\graph-run-summary.md",
+    "knowledge_graph": "artifacts\\legacy-dashboard-complete-application-demo-v1\\knowledge-graph.json",
+    "source_inventory": "artifacts\\legacy-dashboard-complete-application-demo-v1\\source-inventory.json"
+  },
+  "counts": {
+    "edge_count": 5524,
+    "extraction_warning_count": 0,
+    "fact_count": 8353,
+    "file_count": 2384,
+    "node_count": 5430,
+    "review_warning_count": 2082,
+    "warning_count": 2082
+  },
+  "ended_at": "2026-08-31T17:16:49.495829Z",
+  "neo4j": {
+    "loaded": {
+      "edges": 5524,
+      "nodes": 5430,
+      "warnings": 2082
+    },
+    "requested": true,
+    "status": "succeeded"
+  },
+  "neo4j_browser_url": "http://localhost:7474",
+  "next_actions": [
+    "Open Neo4j Browser manually at http://localhost:7474 and run a read-only demo query."
+  ],
+  "overall_status": "succeeded",
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "roslyn": {
+    "enabled": true,
+    "status": "succeeded"
+  },
+  "scope": {
+    "coverage_status": "complete_with_opaque_dependencies",
+    "extraction_warning_count": 0,
+    "opaque_dependency_count": 44,
+    "out_of_scope_file_count": 0,
+    "review_warning_count": 2082,
+    "scope_description": "Complete discovered application inventory and graph.",
+    "scope_id": "full-application",
+    "scope_name": "Full application analysis",
+    "scope_type": "full_application",
+    "selected_file_count": 2384
+  },
+  "source_root": "C:\\Users\\himan\\OneDrive\\Documents\\polaris-modernization-poc\\modernization\\modernization\\source\\HealthClinic.biz",
+  "stages": [
+    {
+      "message": "Source root and project ID are valid.",
+      "name": "validate_input",
+      "status": "succeeded"
+    },
+    {
+      "message": "Deterministic analysis completed.",
+      "name": "analyze_source",
+      "status": "succeeded"
+    },
+    {
+      "message": "Knowledge graph is project-scoped and valid.",
+      "name": "validate_graph",
+      "status": "succeeded"
+    },
+    {
+      "message": "Loaded only this project graph into Neo4j.",
+      "name": "load_neo4j",
+      "status": "succeeded"
+    },
+    {
+      "message": "Customer-facing run status artifacts were created.",
+      "name": "produce_run_status",
+      "status": "succeeded"
+    }
+  ],
+  "started_at": "2026-08-31T17:14:58.005208Z"
+}

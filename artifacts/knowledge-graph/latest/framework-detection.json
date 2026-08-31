@@ -4,19 +4,19 @@
       "confidence": 1.0,
       "framework": "ASP.NET MVC/Razor",
       "method": "deterministic-file-evidence",
-      "source_path": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml"
+      "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
     },
     {
       "confidence": 1.0,
       "framework": ".NET API",
       "method": "deterministic-file-evidence",
-      "source_path": "src/MyHealth.SugarTracker/SugarTracker/SugarTracker.csproj"
+      "source_path": "src/MyHealth.MobileApp/MyHealth.MobileApp.csproj"
     },
     {
       "confidence": 1.0,
       "framework": "TypeScript",
       "method": "deterministic-file-evidence",
-      "source_path": "src/MyHealth.Web.Clinics/typings/express/express.d.ts"
+      "source_path": "src/MyHealth.Client.Cordova/content/app/modules/shared/models/Doctor.ts"
     }
   ],
   "project_id": "legacy-dashboard-complete-application-demo-v1",
