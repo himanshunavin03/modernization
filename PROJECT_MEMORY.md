@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 3C.7 — Understand Anything read-only customer visualization completed; awaiting review and commit approval.
+Step 3C.7 — Understand Anything read-only customer visualization layout corrected; awaiting review and commit approval.
 
 ## Step 1 Result
 
@@ -80,7 +80,7 @@ Read-only discovery confirms `src/MyHealth.Web` is a Legacy ASP.NET MVC/Razor UI
 
 ## Step 3C.7 Result
 
-The official Understand Anything Windows installer created Codex skill junctions and a local upstream MIT checkout at commit `ba450c43425f3de6d43daf76526950ad8ca93536`; VS Code/Codex must restart to discover those skills, which were not invoked. A deterministic adapter exported only the validated canonical graph to ignored `artifacts/healthclinic-dashboard-scope-demo-v3/visualization/.ua/knowledge-graph.json`. It rejects non-approved, incomplete, or extraction-warning inputs, retains canonical labels, relationship types, evidence, and review warnings, and uses no LLM/API calls. The official standalone viewer served the export locally with matching 123-node, 169-edge, and 27-warning counts. Source remained unchanged at the 2,395-file fingerprint `0b92e1701cdd2374e259ea4fed9811b7e20e4719ff8ea70e4a8aa5023cacf2b4`. See `docs/validation/understand-anything-readonly-visualization.md`.
+The official Understand Anything Windows installer created Codex skill junctions and a local upstream MIT checkout at commit `ba450c43425f3de6d43daf76526950ad8ca93536`; VS Code/Codex must restart to discover those skills. A deterministic adapter exported only the validated canonical graph to ignored `artifacts/healthclinic-dashboard-scope-demo-v3/visualization/.ua/knowledge-graph.json`. It rejects non-approved, incomplete, or extraction-warning inputs, retains canonical labels, relationship types, evidence, and review warnings, and uses no LLM/API calls. The v2.9.0 viewer requires non-empty layers for structural canvas rendering, so the adapter now assigns every canonical node exactly once to five evidence-derived layers and creates a three-step tour of existing Dashboard records. The corrected export retains 123 nodes, 169 edges, and 27 warnings, and is served locally on port 5175. Source remained unchanged at the 2,395-file fingerprint `0b92e1701cdd2374e259ea4fed9811b7e20e4719ff8ea70e4a8aa5023cacf2b4`. See `docs/validation/understand-anything-readonly-visualization.md`.
 
 ## Step 2.2 Result
 
@@ -92,4 +92,4 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before doing any further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 020 under `docs/prompts/`, `docs/agents/create-knowledge-graph.md`, `docs/validation/healthclinic-ui-technology-discovery.md`, and `docs/validation/understand-anything-readonly-visualization.md`. Neo4j loading and the read-only visualization are complete. The approved POC scope is Legacy ASP.NET MVC/Razor plus Legacy AngularJS 1.x to Target Angular 22. Await user review and commit approval; do not begin Step 4 automatically.
+Before doing any further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021 under `docs/prompts/`, `docs/agents/create-knowledge-graph.md`, `docs/validation/healthclinic-ui-technology-discovery.md`, and `docs/validation/understand-anything-readonly-visualization.md`. Neo4j loading and the read-only visualization are complete. The approved POC scope is Legacy ASP.NET MVC/Razor plus Legacy AngularJS 1.x to Target Angular 22. Await user review and commit approval; do not begin Step 4 automatically.

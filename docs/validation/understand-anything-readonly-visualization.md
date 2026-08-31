@@ -2,7 +2,7 @@
 
 ## Result
 
-Understand Anything is installed only as a local, read-only customer viewer for the already validated `healthclinic-dashboard-scope-demo-v3` graph. Tree-sitter/Roslyn `knowledge-graph.json` and the existing project-scoped Neo4j data remain the source of truth. No Understand Anything analyzer or skill was invoked.
+Understand Anything is installed only as a local, read-only customer viewer for the already validated `healthclinic-dashboard-scope-demo-v3` graph. Tree-sitter/Roslyn `knowledge-graph.json` and the existing project-scoped Neo4j data remain the source of truth. No Understand Anything analyzer was invoked.
 
 ## Upstream Attribution and Installation
 
@@ -18,13 +18,15 @@ The installed `2.9.4` plugin has no matching standalone viewer release asset. Th
 
 ## Viewer Schema Mapping
 
-The standalone viewer requires a project directory containing `.ua/knowledge-graph.json` with `project`, `nodes`, `edges`, `layers`, and `tour` fields.
+The standalone v2.9.0 viewer requires a project directory containing `.ua/knowledge-graph.json` with `project`, `nodes`, `edges`, `layers`, and `tour` fields. Its `GraphView` derives the interactive structural topology from `graph.layers`; an empty `layers` array therefore left the canvas blank even though the side panel found files.
 
 - Canonical node `id`, `name`, evidence, properties, and project ID are copied.
 - Canonical `label` is retained as `polarisLabel` and a visible `polaris-label:<label>` tag. A required viewer `type` is deterministically mapped without changing the canonical label.
 - Canonical relationship `type` is retained as `polarisRelationshipType` and visible `polaris-relationship:<type>` node tags. A required viewer edge type is mapped deterministically for layout.
 - Source path, source line evidence, and review warnings are included in the visible deterministic node summary and retained as metadata.
 - The Project Overview displays: `Evidence-backed legacy modernization graph. Tree-sitter/Roslyn source of truth. Review warnings remain visible. No LLM inference.` It also distinguishes Legacy AngularJS 1.x from the Target Angular 22 application.
+- Every node is assigned to exactly one non-empty viewer layer, determined only from canonical label, evidence source path, and proven relationship type. No canonical labels or relationships are changed.
+- The export includes a deterministic three-step tour only for existing canonical records: Razor/MVC Dashboard shell; Legacy AngularJS 1.x Dashboard route/ui-view; and Dashboard API service flow.
 
 ## Generated Read-Only Data
 
@@ -32,23 +34,24 @@ The standalone viewer requires a project directory containing `.ua/knowledge-gra
 - Input: `artifacts/healthclinic-dashboard-scope-demo-v3/knowledge-graph.json`
 - Export: `artifacts/healthclinic-dashboard-scope-demo-v3/visualization/.ua/knowledge-graph.json`
 - Input eligibility gate: project ID must be `healthclinic-dashboard-scope-demo-v3`, coverage must be `scope_complete`, and extraction warnings must be zero.
+- Layers: Legacy ASP.NET MVC/Razor shell (41 nodes); Legacy AngularJS 1.x client-side flow (73); API and integration flow (4); C# domain and semantic model (4); Project/supporting graph records (1).
 
 ## Verification
 
 - Canonical, exported, and served counts match: 123 nodes, 169 edges, and 27 review warnings.
 - Exported graph records contain only project ID `healthclinic-dashboard-scope-demo-v3`.
-- The full 2,395-file source fingerprint remains `0b92e1701cdd2374e259ea4fed9811b7e20e4719ff8ea70e4a8aa5023cacf2b4`; no `.ua` or `.understand-anything` directory exists under `source/`.
+- All 2,384 paths in the saved source inventory match their recorded SHA-256 values; no `.ua` or `.understand-anything` directory exists under `source/`.
 - No `$understand`, `/understand`, analyzer, LLM call, API key, or token was used by the adapter or viewer workflow.
-- The standalone viewer returned HTTP 200 from localhost and served the exported graph successfully.
+- The standalone viewer returned HTTP 200 from localhost and served the exported graph successfully. HTTP validation cannot verify browser canvas pixels; refresh the URL below, select a layer, and confirm its graph renders before a customer demo.
 
 ## Launch
 
 ```powershell
-$env:UNDERSTAND_ACCESS_TOKEN = 'polaris-local-readonly'
-npx --yes https://github.com/Egonex-AI/Understand-Anything/releases/download/v2.9.0/understand-anything-viewer.tgz artifacts\healthclinic-dashboard-scope-demo-v3\visualization --port 5174 --no-open
+$env:UNDERSTAND_ACCESS_TOKEN = 'polaris-layout-readonly'
+npx --yes https://github.com/Egonex-AI/Understand-Anything/releases/download/v2.9.0/understand-anything-viewer.tgz artifacts\healthclinic-dashboard-scope-demo-v3\visualization --port 5175 --no-open
 ```
 
-Open [http://127.0.0.1:5174/?token=polaris-local-readonly](http://127.0.0.1:5174/?token=polaris-local-readonly).
+Open [http://127.0.0.1:5175/?token=polaris-layout-readonly](http://127.0.0.1:5175/?token=polaris-layout-readonly). If the prior export is cached, use a hard refresh. Confirm that the Overview shows five layers, then select `Legacy ASP.NET MVC/Razor shell` and confirm visible nodes and relationships on the canvas.
 
 ## Customer Demo Interactions
 
@@ -58,5 +61,5 @@ Open [http://127.0.0.1:5174/?token=polaris-local-readonly](http://127.0.0.1:5174
 
 ## Tests
 
-- `python -m pytest -q tests\test_understand_anything_visualization.py`: `4 passed`
-- `python -m pytest -q`: `38 passed, 2 skipped`
+- `python -m pytest -q tests\test_understand_anything_visualization.py`: `6 passed`
+- `python -m pytest -q`: `40 passed, 2 skipped`

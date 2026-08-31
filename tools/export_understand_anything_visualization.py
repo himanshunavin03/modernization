@@ -12,6 +12,13 @@ DISCLAIMER = (
     "Review warnings remain visible. No LLM inference. Legacy AngularJS 1.x is the "
     "legacy client-side code; Target Angular 22 is the modernization target."
 )
+LAYER_DEFINITIONS = (
+    ("legacy-razor-mvc-shell", "Legacy ASP.NET MVC/Razor shell", "Proven MVC controllers, Razor views, layouts, partials, and UI controls."),
+    ("legacy-angularjs-client-flow", "Legacy AngularJS 1.x client-side flow", "Proven AngularJS modules, controllers, routes, templates, directives, and services."),
+    ("api-integration-flow", "API and integration flow", "Proven API-call and external integration records."),
+    ("csharp-domain-semantic-model", "C# domain and semantic model", "Proven C# namespaces, types, methods, and related source records."),
+    ("project-supporting-records", "Project/supporting graph records", "Project, support, and remaining evidence-backed graph records."),
+)
 
 
 def read_graph(path: Path) -> dict:
@@ -85,6 +92,64 @@ def node_summary(node: dict, review_warnings: list[dict]) -> str:
         f"Evidence: {evidence_text}. Review warnings: {warning_text}"
     )
 
+
+def layer_id_for(node: dict, relationship_types: set[str]) -> str:
+    """Classify each canonical node once using only labels, paths, and graph edges."""
+    label = node["label"]
+    path = source_path(node).replace("\\", "/").lower()
+
+    if label == "ApiCall" or (label == "ExternalReference" and "CALLS_API" in relationship_types):
+        return "api-integration-flow"
+    if (
+        path.startswith("src/myhealth.web/content/app/")
+        or label in {"AngularModule", "AngularController", "AngularService", "AngularDirective", "Route", "Template"}
+    ):
+        return "legacy-angularjs-client-flow"
+    if label in {"Namespace", "Type", "Method"}:
+        return "csharp-domain-semantic-model"
+    if (
+        path.startswith("src/myhealth.web/views/")
+        or path.startswith("src/myhealth.web/controllers/")
+        or label in {"RazorView", "PartialView", "Layout", "UIControl", "ClientComponent", "Controller", "Action", "AuthorizationPolicy"}
+    ):
+        return "legacy-razor-mvc-shell"
+    if path.endswith(".cs"):
+        return "csharp-domain-semantic-model"
+    return "project-supporting-records"
+
+
+def build_layers(graph: dict, relationship_types_by_node: dict[str, set[str]]) -> list[dict]:
+    nodes_by_layer = {layer_id: [] for layer_id, _, _ in LAYER_DEFINITIONS}
+    for node in graph["nodes"]:
+        nodes_by_layer[layer_id_for(node, relationship_types_by_node[node["id"]])].append(node["id"])
+    return [
+        {"id": layer_id, "name": name, "description": description, "nodeIds": node_ids}
+        for layer_id, name, description in LAYER_DEFINITIONS
+        if (node_ids := sorted(nodes_by_layer[layer_id]))
+    ]
+
+
+def build_tour(graph: dict) -> list[dict]:
+    """Return only tour steps whose existing canonical nodes can be demonstrated."""
+    nodes = graph["nodes"]
+
+    def ids_for(predicate) -> list[str]:
+        return sorted(node["id"] for node in nodes if predicate(node))
+
+    steps = []
+    shell_ids = ids_for(lambda node: node["label"] in {"Controller", "RazorView"} and "Dashboard" in node["name"])
+    if shell_ids:
+        steps.append({"order": 1, "title": "Razor/MVC Dashboard shell", "description": "Proven Dashboard MVC controller and Razor-view records.", "nodeIds": shell_ids})
+
+    angular_ids = ids_for(lambda node: node["label"] in {"AngularModule", "Route", "UIControl"} and node["name"] in {"moduleName", "dashboard", "ui-view"})
+    if angular_ids:
+        steps.append({"order": 2, "title": "Legacy AngularJS 1.x Dashboard route/ui-view", "description": "Proven Legacy AngularJS 1.x route, module, and ui-view records.", "nodeIds": angular_ids})
+
+    api_ids = ids_for(lambda node: node["label"] in {"AngularService", "ApiCall"} and (node["name"] == "dashboardService" or node["label"] == "ApiCall"))
+    if api_ids:
+        steps.append({"order": 3, "title": "Dashboard API service flow", "description": "Proven dashboard service and API-call records.", "nodeIds": api_ids})
+    return steps
+
 def export(graph: dict, output_root: Path) -> Path:
     warnings_by_path: dict[str, list[dict]] = defaultdict(list)
     relationship_types_by_node: dict[str, set[str]] = defaultdict(set)
@@ -143,8 +208,8 @@ def export(graph: dict, output_root: Path) -> Path:
         },
         "nodes": nodes,
         "edges": edges,
-        "layers": [],
-        "tour": [],
+        "layers": build_layers(graph, relationship_types_by_node),
+        "tour": build_tour(graph),
         "polarisVisualization": {
             "disclaimer": DISCLAIMER,
             "project_id": PROJECT_ID,
