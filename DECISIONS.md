@@ -95,3 +95,4 @@
 | Story statements use `user of the existing application` with low actor confidence when no persona is approved. | Jira syntax must not manufacture healthcare roles; persona refinement remains a stakeholder decision. |
 | Acceptance Criteria are immutable Story-scoped preservation contracts and preserve uncertainty. | Testability cannot justify invented preconditions, outcomes, rules, errors, NFRs, or API upgrades. |
 | Optional Figma target-design analysis occurs only after Acceptance Criteria and before or with Target Architecture. | Target design may guide future UX but cannot silently redefine evidence-backed existing behavior. |
+| One consolidated Feature Specification per approved Feature is the primary human review and forward-modernization artifact. | Machine-readable JSON remains the downstream automation/trust contract, while Markdown is the human validation contract; both preserve identical approved Feature, Story, AC, and lineage identity. |

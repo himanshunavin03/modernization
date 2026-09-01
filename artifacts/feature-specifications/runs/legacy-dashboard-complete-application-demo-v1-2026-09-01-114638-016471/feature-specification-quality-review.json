@@ -1,0 +1,7 @@
+{
+  "business_analyst_review_quality": "PASS",
+  "modernization_engineer_review_quality": "PASS",
+  "product_owner_review_quality": "PASS",
+  "qa_review_quality": "PASS",
+  "solution_architect_review_quality": "PASS"
+}

@@ -19,6 +19,8 @@ artifacts/*
 !artifacts/stories/**
 !artifacts/acceptance-criteria/
 !artifacts/acceptance-criteria/**
+!artifacts/feature-specifications/
+!artifacts/feature-specifications/**
 source/*
 !source/.gitkeep
 !source/README.md

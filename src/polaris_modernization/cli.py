@@ -286,6 +286,11 @@ def main() -> None:
     ac_parser.add_argument("--story-root", required=True, type=Path)
     ac_parser.add_argument("--output", type=Path, default=Path("artifacts/acceptance-criteria"))
     ac_parser.add_argument("--agent-result", type=Path)
+    spec_parser = subparsers.add_parser("generate-feature-specifications", help="Consolidate approved Feature specifications")
+    spec_parser.add_argument("--business-feature-root", required=True, type=Path)
+    spec_parser.add_argument("--story-root", required=True, type=Path)
+    spec_parser.add_argument("--acceptance-root", required=True, type=Path)
+    spec_parser.add_argument("--output", type=Path, default=Path("artifacts/feature-specifications"))
     load_parser = subparsers.add_parser("load-neo4j")
     load_parser.add_argument("--graph", required=True, type=Path)
     load_parser.add_argument("--project-id", required=True)
@@ -355,6 +360,10 @@ def main() -> None:
     elif args.command == "generate-acceptance-criteria":
         from polaris_modernization.acceptance_criteria.workflow import prepare_acceptance_criteria, validate_and_persist_acceptance_criteria
         result = validate_and_persist_acceptance_criteria(args.story_root, args.output, args.agent_result) if args.agent_result else prepare_acceptance_criteria(args.story_root, args.output)
+        print(result["path"])
+    elif args.command == "generate-feature-specifications":
+        from polaris_modernization.feature_specifications.workflow import generate_feature_specifications
+        result = generate_feature_specifications(args.business_feature_root, args.story_root, args.acceptance_root, args.output)
         print(result["path"])
     elif args.command in {"load-neo4j", "clear-neo4j-project"}:
         driver = connect(os.getenv("NEO4J_URI", "bolt://localhost:7687"), os.getenv("NEO4J_USERNAME", "neo4j"), os.getenv("NEO4J_PASSWORD", "change-me"))

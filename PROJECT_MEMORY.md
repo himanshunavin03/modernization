@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Evidence-backed Acceptance Criteria generation is complete and validated against Story run `legacy-dashboard-complete-application-demo-v1-2026-09-01-105453-078418`. The next authorized action is `ANALYZE_OPTIONAL_TARGET_DESIGN_OR_RECOMMEND_TARGET_ARCHITECTURE`; do not execute either path until explicitly requested.
+Consolidated Feature Specifications are complete and validated against Acceptance Criteria run `legacy-dashboard-complete-application-demo-v1-2026-09-01-112024-635713`. The next authorized action remains `ANALYZE_OPTIONAL_TARGET_DESIGN_OR_RECOMMEND_TARGET_ARCHITECTURE`; do not execute either path until explicitly requested.
 
 ## Agent Command
 
@@ -115,7 +115,7 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 048 under `docs/prompts/`, approved upstream artifacts, and `artifacts/acceptance-criteria/latest/`. AC run `legacy-dashboard-complete-application-demo-v1-2026-09-01-112024-635713` is `ACCEPTANCE_CRITERIA_READY_WITH_LIMITATIONS`. Await explicit selection of optional target-design analysis or Target Architecture; do not analyze Figma, recommend architecture, generate Angular, or change source automatically.
+Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 049 under `docs/prompts/`, approved upstream artifacts, and `artifacts/feature-specifications/latest/`. Feature Specification run `legacy-dashboard-complete-application-demo-v1-2026-09-01-114638-016471` is `FEATURE_SPECIFICATIONS_READY_WITH_LIMITATIONS`. Await explicit selection of optional target-design analysis or Target Architecture; do not analyze Figma, recommend architecture, generate Angular, or change source automatically.
 
 ## Project-Aware Roslyn Engine Proof
 
@@ -150,6 +150,12 @@ All Stories use the evidence-safe actor `user of the existing application` at lo
 AC run `legacy-dashboard-complete-application-demo-v1-2026-09-01-112024-635713` binds 12 Story-scoped evidence packages to the immutable Story run. Fourteen criteria cover all 12 Stories: 8 proven and 6 supported with limitations. The two extra criteria define POC modernization preservation contracts without architecture or implementation detail. API truth remains 8 AC with proven, 2 with unresolved, 1 with dynamic, and none with external relationships. Eight open questions remain unanswered; nine AC require stakeholder validation. No persona, assumption, NFR, validation rule, error behavior, contradiction, duplicate, or untraceable criterion was introduced.
 
 Polaris supports an optional target-design input such as Figma after Acceptance Criteria and before or fused into Target Architecture. Figma describes target UX/design and must not silently redefine evidence-backed existing behavior. No design analysis occurred in this phase. Readiness is `ACCEPTANCE_CRITERIA_READY_WITH_LIMITATIONS`; next action requires explicit selection between optional design analysis and Target Architecture.
+
+## Consolidated Feature Specifications
+
+Feature Specification run `legacy-dashboard-complete-application-demo-v1-2026-09-01-114638-016471` provides exactly five paired Markdown/JSON contracts, one per approved Feature. All 12 Stories and 14 Acceptance Criteria appear exactly once under their approved parents. Markdown is the primary human validation contract; JSON retains the exact lineage and machine traceability contract for downstream automation. Internal analyzer diagnostics are excluded from primary Markdown while useful legacy surface, integration, data, constraint, decision, and preservation context remains available for architecture review.
+
+The Dashboard specification contains all three Feature Stories and all five Feature AC, including the approved two-Story/four-AC POC subset. Target design is `NOT_YET_ANALYZED`, Target Architecture is pending, and modernization is not started. No Feature, Story, AC, persona, rule, NFR, security requirement, target UX, Figma reference, or architecture decision was invented. Readiness is `FEATURE_SPECIFICATIONS_READY_WITH_LIMITATIONS`; next action remains explicit selection of optional target-design analysis or Target Architecture.
 
 ## Provider And Developer Experience
 

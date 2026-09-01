@@ -1,8 +1,8 @@
 # Progress
 
-- Status: Acceptance Criteria validated as `ACCEPTANCE_CRITERIA_READY_WITH_LIMITATIONS` from approved Story run `legacy-dashboard-complete-application-demo-v1-2026-09-01-105453-078418`.
+- Status: Consolidated Feature Specifications validated as `FEATURE_SPECIFICATIONS_READY_WITH_LIMITATIONS` from approved Acceptance Criteria run `legacy-dashboard-complete-application-demo-v1-2026-09-01-112024-635713`.
 - Agent command: `/create-knowledge-graph` is documented at `docs/agents/commands/create-knowledge-graph.md` and delegates to the deterministic `agent-create-knowledge-graph` CLI adapter. It derives a safe project ID from the selected source root, enables project-aware Roslyn only when .NET project evidence exists, keeps Neo4j opt-in, and does not use an LLM.
-- Current step: Acceptance Criteria generation is complete; await explicit authorization for optional target-design analysis or Target Architecture.
+- Current step: Feature Specification consolidation is complete; await explicit authorization for optional target-design analysis or Target Architecture.
 - Complete application correction: deterministic first-party native-crash fallback now emits literal C#/JavaScript/Razor facts alongside provenance. Final analysis: 2,384 files, 3,386 nodes, 4,593 edges, 38 review warnings, zero extraction warnings, 44 opaque dependencies, and `complete_with_opaque_dependencies`. The attempted Neo4j load is blocked solely by unavailable local Neo4j environment configuration; full viewer export remains gated on that load.
 - Failure inventory: 42 JavaScript, 3 C#, and 2 HTML Tree-sitter workers exit with `3221225477`; all are supported-language parser defects requiring a generic repair. See `docs/validation/complete-application-extraction-failure-inventory.md`.
 - Viewer runbook: `docs/runbooks/understand-anything-viewer.md` documents the validated UI-only command and `tools/launch_understand_anything_viewer.ps1` safely exports and launches any approved project-scoped graph with a caller-supplied local token.
@@ -12,7 +12,7 @@
 - Completed work: Project memory initialized; Dashboard source discovery completed; deterministic scoped inventory, facts, normalized graph JSON, summary, CLI, and tests created; Roslyn graph-label correction validated on a real .NET 8 SDK; Create Knowledge Graph now validates input, analyzes source, validates the project-scoped graph, optionally loads only that project into Neo4j, and writes customer-facing run status artifacts. Native Tree-sitter extraction is isolated per file; child workers bootstrap the repository-local `src` directory through a copied `PYTHONPATH`, and abnormal exits, timeouts, invalid worker output, startup/import errors, and Python extraction errors produce safe structured warnings while remaining files continue. Profiles now carry explicit scope metadata, audit every discovered file, limit selected-flow graph File nodes and normal Roslyn facts to the approved scope, and expose proven cross-scope semantic references without silently widening the graph. Step 3C.6 loaded only `healthclinic-dashboard-scope-demo-v3` with 123 Neo4j nodes, 169 relationships, 27 warnings, and `scope_complete` coverage. Step 3C.7 now assigns all 123 exported viewer nodes exactly once across five deterministic evidence-derived layers, preserving 169 edges and 27 warnings; the port-5175 viewer returned HTTP 200 for both the page and graph endpoint.
 - Next action: `ANALYZE_OPTIONAL_TARGET_DESIGN_OR_RECOMMEND_TARGET_ARCHITECTURE` only when explicitly requested. Do not analyze Figma, recommend architecture, generate Angular, or modify source automatically.
 - Blockers: None for Step 3C.6. Known review warnings remain visible: unresolved API-call ownership, implicit MVC `View()` matching, and Roslyn symbols that could not be resolved against the legacy source context.
-- Exact next action when resumed: Read prompts through 048, approved lineage, and `artifacts/acceptance-criteria/latest/`. Await explicit path selection.
+- Exact next action when resumed: Read prompts through 049, approved lineage, and `artifacts/feature-specifications/latest/`. Await explicit path selection.
 
 ## Resume Command
 
@@ -103,6 +103,17 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Tests: focused AC/Story/Business Feature suite `22 passed`; complete suite `117 passed, 2 skipped, 0 failed, 0 errors` in `26.06s`.
 - Optional-design boundary: a future supplied Figma target may inform design understanding/gap analysis before or with Target Architecture, but cannot redefine existing evidence-backed behavior.
 - Readiness: `ACCEPTANCE_CRITERIA_READY_WITH_LIMITATIONS`; next action is `ANALYZE_OPTIONAL_TARGET_DESIGN_OR_RECOMMEND_TARGET_ARCHITECTURE` only after explicit authorization.
+
+## Consolidated Feature Specifications
+
+- Final run: `legacy-dashboard-complete-application-demo-v1-2026-09-01-114638-016471`, bound to the exact approved KG/AU/Feature/Business Feature/Story/AC lineage; external LLM API calls are zero.
+- Output: exactly 5 Markdown and 5 JSON Feature contracts, plus human/machine index, validation, five-perspective quality review, provenance, and token metadata.
+- Coverage: all 5 Feature IDs/names, 12 Stories, and 14 AC are represented exactly once under approved parents; missing and duplicated records are zero.
+- Human/machine policy: Markdown omits analyzer diagnostics and presents business behavior, Stories, AC, integrations, data, constraints, decisions, readiness, and sign-off professionally. JSON retains complete approved objects and exact traceability.
+- POC: the Dashboard contract contains all 3 Feature Stories and 5 Feature AC, including the selected 2-Story/4-AC POC preservation subset and Razor/AngularJS/integration context.
+- Safety: no invented Feature, Story, AC, persona, rule, NFR, security requirement, target UX, Figma reference, or architecture decision. Target design is not analyzed, architecture is pending, and modernization is not started.
+- Validation: focused Feature Specification/AC suite `13 passed`; complete suite `120 passed, 2 skipped, 0 failed, 0 errors` in `28.82s`.
+- Readiness: `FEATURE_SPECIFICATIONS_READY_WITH_LIMITATIONS`; next action remains explicit optional target-design analysis or Target Architecture selection.
 
 ## Provider And Developer Experience
 
