@@ -66,3 +66,8 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Actual validation: Codex prepared and reasoned only over 64 evidence packages, then Polaris accepted and persisted `legacy-dashboard-complete-application-demo-v1-2026-09-01-010758-025370` as `COMPLETE`. The result has 88 modules, one agent capability, 16 workflows, 94 UI surfaces, no business rules/domain concepts/dependencies, and zero rejected claims. It uses zero external API calls.
 - Demo traceability: `src/MyHealth.Web/Views/Dashboard/Index.cshtml` has the `Dashboard Razor shell modernization candidate`; `DashboardController` has the `Legacy AngularJS Dashboard controller modernization candidate`; both retain the `Dashboard route workflow` with `BACKEND_MAPPING=UNRESOLVED`.
 - Next action: `VALIDATE_APPLICATION_UNDERSTANDING`. Do not proceed to features, stories, architecture recommendation, or Angular generation.
+
+## Application Understanding Validation
+
+- Read-only validation passed for the published `COMPLETE` application-understanding artifact against immutable KG run `legacy-dashboard-complete-application-demo-v1-2026-08-31-184436`: application schema, agent-submission schema, exact package-scoped KG evidence, and all 64 package hashes match. The validation metadata records zero rejected claims, `BACKEND_MAPPING=UNRESOLVED`, and zero external LLM API calls. Source remained unchanged.
+- Recovery observation: the mutable `artifacts/knowledge-graph/latest/` directory currently lacks `kg-readiness-analysis.md`, so it cannot independently satisfy the approved-KG gate. Do not retarget or regenerate Phase 2 from that mutable pointer until its review artifact is restored or an approved immutable run is explicitly selected.
