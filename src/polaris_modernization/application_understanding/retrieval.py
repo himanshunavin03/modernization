@@ -15,9 +15,17 @@ def load_approved_graph(kg_root: Path) -> dict:
     graph = json.loads((kg_root / "knowledge-graph.json").read_text(encoding="utf-8"))
     validation = json.loads((kg_root / "knowledge-graph-validation.json").read_text(encoding="utf-8"))
     readiness = (kg_root / "kg-readiness-analysis.md").read_text(encoding="utf-8")
-    if not validation.get("valid") or status.get("scope", {}).get("extraction_warning_count") or "KG_READINESS_STATUS: READY_WITH_EXPLAINED_LIMITATIONS" not in readiness:
+    readiness_json = json.loads((kg_root / "kg-readiness-analysis.json").read_text(encoding="utf-8")) if (kg_root / "kg-readiness-analysis.json").is_file() else {}
+    review = json.loads((kg_root / "review-metadata.json").read_text(encoding="utf-8")) if (kg_root / "review-metadata.json").is_file() else {}
+    readiness_state = readiness_json.get("readiness") or readiness_json.get("kg_readiness_status")
+    approved = readiness_state in {"READY", "READY_WITH_EXPLAINED_LIMITATIONS"} or "KG_READINESS_STATUS: READY_WITH_EXPLAINED_LIMITATIONS" in readiness
+    kg_run_id = readiness_json.get("run_id") or review.get("run_id") or "LEGACY_TEST_RUN"
+    if readiness_json.get("run_id") and review.get("run_id") and readiness_json["run_id"] != review["run_id"]:
+        raise ValueError("Knowledge Graph readiness and review metadata identify different runs.")
+    if not validation.get("valid") or status.get("scope", {}).get("extraction_warning_count") or not approved:
         raise ValueError("Knowledge Graph is not approved for application understanding.")
-    return {"graph": graph, "status": status, "validation": validation, "readiness": readiness}
+    api_forensics = json.loads((kg_root / "api-mapping-forensics.json").read_text(encoding="utf-8")) if (kg_root / "api-mapping-forensics.json").is_file() else {}
+    return {"graph": graph, "status": status, "validation": validation, "readiness": readiness, "readiness_json": readiness_json, "kg_run_id": kg_run_id, "api_forensics": api_forensics}
 
 
 def _provenance(evidence: dict) -> str:
@@ -48,7 +56,12 @@ def _confidence(refs: list[EvidenceReference]) -> ConfidenceAssessment:
 
 
 def _category(node: dict) -> str | None:
-    return {"RazorView": "RAZOR", "PartialView": "RAZOR", "Layout": "RAZOR", "AngularController": "ANGULAR", "AngularService": "ANGULAR", "AngularDirective": "ANGULAR", "AngularModule": "ANGULAR", "Route": "ROUTE"}.get(node["label"])
+    return {
+        "RazorView": "RAZOR", "PartialView": "RAZOR", "Layout": "RAZOR",
+        "AngularController": "ANGULAR", "AngularService": "ANGULAR", "AngularDirective": "ANGULAR", "AngularModule": "ANGULAR",
+        "Route": "ROUTE", "ApiCall": "API", "Endpoint": "API",
+        "Controller": "BACKEND", "Action": "BACKEND", "DTO": "DOMAIN",
+    }.get(node["label"])
 
 
 def build_evidence_packages(graph: dict) -> list[EvidencePackage]:
@@ -64,10 +77,18 @@ def build_evidence_packages(graph: dict) -> list[EvidencePackage]:
         anchor_ids = {node["id"] for node in anchors}
         related = [node for node in graph["nodes"] if any(e.get("source_path") == path for e in node.get("evidence", []))]
         related = sorted(related, key=lambda node: node["id"])[:24]
-        ids = {node["id"] for node in related} | anchor_ids
+        neighbor_ids = {
+            node_id
+            for edge in graph["edges"] if edge["type"] == "IMPLEMENTED_BY" and (edge["source"] in anchor_ids or edge["target"] in anchor_ids)
+            for node_id in (edge["source"], edge["target"])
+        }
+        neighbors = [node for node in graph["nodes"] if node["id"] in neighbor_ids]
+        related = sorted({node["id"]: node for node in [*related, *neighbors]}.values(), key=lambda node: node["id"])
+        ids = {node["id"] for node in related} | anchor_ids | neighbor_ids
         relationships = [edge for edge in graph["edges"] if edge["source"] in ids and edge["target"] in ids]
         refs = _references(related)
-        unresolved = ["BACKEND_MAPPING=UNRESOLVED" for node in related if node["label"] == "ApiCall"]
+        proven_calls = {edge["source"] for edge in relationships if edge["type"] == "IMPLEMENTED_BY"}
+        unresolved = ["BACKEND_MAPPING=UNRESOLVED" for node in related if node["label"] == "ApiCall" and node["id"] not in proven_calls]
         payload = {"category": category, "path": path, "node_ids": sorted(ids), "relationships": [(edge["type"], edge["source"], edge["target"]) for edge in relationships]}
         digest = sha256(json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
         packages.append(EvidencePackage(package_id=f"{category.lower()}:{path}", package_hash=digest, cluster_type=category, title=path, node_ids=sorted(ids), relationships=relationships, evidence=refs, unresolved_relationships=sorted(set(unresolved)), confidence=_confidence(refs)))

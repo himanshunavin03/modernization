@@ -1,4 +1,5 @@
 import inspect
+from hashlib import sha256
 import json
 
 import pytest
@@ -23,7 +24,11 @@ def kg(tmp_path, ready=True):
         {"id": "p:AngularController:DashboardController", "label": "AngularController", "name": "DashboardController", "evidence": [{"source_path": "src/Web/content/app/components/dashboard/controller.js", "line_start": 1, "line_end": 2, "extraction_method": "tree-sitter", "confidence": 1}]},
         {"id": "p:Route:dashboard", "label": "Route", "name": "dashboard", "evidence": [{"source_path": "src/Web/content/app/app.js", "line_start": 1, "line_end": 2, "extraction_method": "tree-sitter", "confidence": 1}]},
         {"id": "p:ApiCall:/api/x", "label": "ApiCall", "name": "/api/x", "evidence": [{"source_path": "src/Web/content/app/components/dashboard/service.js", "line_start": 1, "line_end": 2, "extraction_method": "tree-sitter", "confidence": 1}]},
-    ], "edges": [{"source": "p:Route:dashboard", "target": "p:AngularController:DashboardController", "type": "DEPENDS_ON", "evidence": [{}]}]}
+        {"id": "p:Endpoint:GET /api/x", "label": "Endpoint", "name": "GET /api/x", "evidence": [{"source_path": "src/Api/XController.cs", "line_start": 10, "line_end": 12, "extraction_method": "framework-analyzer", "confidence": 1}]},
+    ], "edges": [
+        {"source": "p:Route:dashboard", "target": "p:AngularController:DashboardController", "type": "DEPENDS_ON", "evidence": [{}]},
+        {"source": "p:ApiCall:/api/x", "target": "p:Endpoint:GET /api/x", "type": "IMPLEMENTED_BY", "evidence": [{}]},
+    ]}
     (root / "knowledge-graph.json").write_text(json.dumps(graph))
     (root / "knowledge-graph-validation.json").write_text(json.dumps({"valid": True}))
     (root / "graph-run-status.json").write_text(json.dumps({"project_id": "p", "scope": {"extraction_warning_count": 0}}))
@@ -43,7 +48,16 @@ def valid_submission(packages):
     purpose = agent_item(razor, "Dashboard-oriented web application")
     workflow = {**agent_item(route, "Dashboard route workflow"), "ui_surface": "dashboard", "backend_mapping": "UNRESOLVED"}
     return {
+        "kg_run_id": "LEGACY_TEST_RUN",
+        "evidence_package_manifest_hash": sha256(json.dumps(
+            {item.package_id: item.package_hash for item in packages},
+            sort_keys=True, separators=(",", ":"),
+        ).encode("utf-8")).hexdigest(),
         "application_purpose": purpose,
+        "primary_application_type": "Hybrid server-rendered and client-side web application",
+        "technical_composition": ["ASP.NET MVC/Razor", "AngularJS 1.x", "ASP.NET Web API"],
+        "major_user_facing_areas": ["Dashboard"],
+        "major_backend_areas": ["API"],
         "business_modules": [agent_item(razor, "Dashboard module")],
         "business_capabilities": [agent_item(angular, "Dashboard client interaction")],
         "user_workflows": [workflow],
@@ -91,6 +105,40 @@ def test_valid_agent_submission_is_validated_and_persisted(tmp_path):
     assert result["understanding"].user_workflows[-1].backend_mapping == "UNRESOLVED"
     assert (tmp_path / "out/latest/application-understanding.json").is_file()
     assert json.loads((tmp_path / "out/latest/agent-reasoning-validation.json").read_text())["valid"] is True
+    assert result["understanding"].kg_run_id == "LEGACY_TEST_RUN"
+    assert result["understanding"].business_modules[0].evidence_package_ids
+    assert all(item.evidence_package_ids for item in result["understanding"].ui_surfaces)
+
+
+def test_proven_api_workflow_requires_implemented_by_evidence(tmp_path):
+    root = kg(tmp_path)
+    packages = build_evidence_packages(load_approved_graph(root)["graph"])
+    payload = valid_submission(packages)
+    references = [reference.model_dump(mode="json") for package in packages if package.cluster_type == "API" for reference in package.evidence]
+    call = next(reference for reference in references if reference["node_id"] == "p:ApiCall:/api/x")
+    endpoint = next(reference for reference in references if reference["node_id"] == "p:Endpoint:GET /api/x")
+    payload["user_workflows"][0]["evidence"] = [call, endpoint]
+    payload["user_workflows"][0]["backend_mapping"] = "PROVEN"
+    path = tmp_path / "proven.json"
+    path.write_text(json.dumps(payload))
+    result = validate_and_persist_application_understanding(root, tmp_path / "out", path)
+    assert result["understanding"].user_workflows[-1].backend_mapping == "PROVEN"
+    payload = valid_submission(packages)
+    payload["user_workflows"][0]["backend_mapping"] = "PROVEN"
+    path.write_text(json.dumps(payload))
+    with pytest.raises(UnsupportedAgentClaimsError, match="IMPLEMENTED_BY"):
+        validate_and_persist_application_understanding(root, tmp_path / "out", path)
+
+
+def test_stale_package_hashes_are_rejected(tmp_path):
+    root = kg(tmp_path)
+    packages = build_evidence_packages(load_approved_graph(root)["graph"])
+    payload = valid_submission(packages)
+    payload["evidence_package_manifest_hash"] = "stale"
+    path = tmp_path / "stale.json"
+    path.write_text(json.dumps(payload))
+    with pytest.raises(UnsupportedAgentClaimsError, match="manifest hash"):
+        validate_and_persist_application_understanding(root, tmp_path / "out", path)
 
 
 def test_malformed_agent_submission_is_rejected(tmp_path):

@@ -1,0 +1,3 @@
+# Prompt 044: Rerun Application Understanding Against Approved KG
+
+Run the provider-free interactive Application Understanding workflow against immutable KG run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`. Bind evidence packages and agent submission to the exact KG run and stable package hashes; include deterministic API, backend, and DTO/domain evidence; validate proven API workflows only against existing `IMPLEMENTED_BY` relationships; preserve unresolved, dynamic, and external API states; and publish a fresh immutable validated understanding. Use zero external LLM API calls, keep all claims package-evidence-backed, and stop before features, stories, architecture, or Angular generation.

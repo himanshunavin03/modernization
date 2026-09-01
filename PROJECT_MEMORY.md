@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Step 3C.8 — Dashboard end-to-end context graph completed and loaded into Neo4j after local credential correction.
+Phase 2 Application Understanding is validated against approved immutable KG run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`. The next authorized action is `GENERATE_FEATURES`; do not generate features until explicitly requested.
 
 ## Agent Command
 
@@ -44,7 +44,7 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Review the Step 3C.7 read-only visualization evidence and approve or decline the prepared documentation and adapter changes. The approved POC scope is the hybrid Dashboard flow: Legacy ASP.NET MVC/Razor shell plus Legacy AngularJS 1.x Dashboard route/service, rebuilt as a Target Angular 22 application. Do not begin Step 4 automatically.
+Await explicit authorization to generate evidence-backed Features from the validated Application Understanding. Do not generate stories, architecture, Angular 22 code, or modify legacy source.
 
 ## Step 3B.2 Result
 
@@ -115,7 +115,7 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before doing any further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021 under `docs/prompts/`, `docs/agents/create-knowledge-graph.md`, `docs/validation/healthclinic-ui-technology-discovery.md`, and `docs/validation/understand-anything-readonly-visualization.md`. Neo4j loading and the read-only visualization are complete. The approved POC scope is Legacy ASP.NET MVC/Razor plus Legacy AngularJS 1.x to Target Angular 22. Await user review and commit approval; do not begin Step 4 automatically.
+Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 044 under `docs/prompts/`, approved KG readiness artifacts for `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`, and `artifacts/application-understanding/latest/`. Application Understanding run `legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694` is validated and ready with explained limitations. The next action is `GENERATE_FEATURES` only after explicit user authorization; do not start stories, architecture, Angular generation, or source changes.
 
 ## Project-Aware Roslyn Engine Proof
 
@@ -123,7 +123,9 @@ Generic offline fixtures now prove solution-first, cross-project Roslyn semantic
 
 ## Phase 2 Application Understanding
 
-Phase 2 is implemented as a separate LangGraph workflow over the approved immutable KG. It gates on `READY_WITH_EXPLAINED_LIMITATIONS`, builds deterministic compact evidence packages, retains source/provenance confidence, validates all provider claims against KG node evidence, and writes only separate `artifacts/application-understanding/` outputs. The verified initial run is `FRAMEWORK_ONLY`: provider `NONE`, 64 packages, zero LLM calls/tokens, 8 Razor views, 26 AngularJS controllers, and explicitly unresolved backend mappings for 33 frontend API calls because the KG has zero endpoint facts. Future Graphiti-style project memory is a protocol boundary; Archon remains a future SDLC/governance boundary and does not replace KG/Roslyn/Tree-sitter/LangGraph/LangChain. Recovery reading includes prompt 036 and the latest application-understanding artifacts.
+Phase 2 remains a separate provider-free LangGraph workflow over an approved immutable KG. Fresh run `legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694` is bound to KG `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128` and a deterministic manifest of all 139 evidence-package hashes. Validation passed for KG identity, manifest hash, package references, source provenance, claim evidence, and every `PROVEN` workflow's existing `IMPLEMENTED_BY` edge; external LLM API calls and unsupported accepted claims are zero.
+
+The validated result is `APPLICATION_UNDERSTANDING_READY_WITH_LIMITATIONS`: healthcare operations application; 6 meaningful modules, 6 business capabilities, 28 workflows (15 deterministic routes plus 13 interpreted workflows), 92 UI surfaces, 6 domain concepts, 2 observed behavioral rules, and 5 dependencies. It incorporates 58 backend endpoints, 44 frontend API calls, and 10 proven mappings while retaining 32 unresolved structural calls, 22 dynamic URL relationships, 1 external API relationship, and 1 call without a backend route. The Dashboard Razor view and legacy AngularJS `DashboardController` remain the evidence-backed POC candidates. The earlier 64-package, zero-endpoint run is historical and superseded.
 
 ## Provider And Developer Experience
 

@@ -27,7 +27,7 @@ class ConfidenceAssessment(BaseModel):
 class EvidencePackage(BaseModel):
     package_id: str
     package_hash: str
-    cluster_type: Literal["RAZOR", "ANGULAR", "ROUTE"]
+    cluster_type: Literal["RAZOR", "ANGULAR", "ROUTE", "API", "BACKEND", "DOMAIN"]
     title: str
     node_ids: list[str]
     relationships: list[dict]
@@ -38,13 +38,16 @@ class EvidencePackage(BaseModel):
 
 class EvidenceBackedItem(BaseModel):
     name: str
+    description: str = ""
+    related_items: list[str] = Field(default_factory=list)
+    evidence_package_ids: list[str] = Field(default_factory=list)
     evidence: list[EvidenceReference]
     confidence: ConfidenceAssessment
     origin: InterpretationOrigin = "DETERMINISTIC_FACT"
 
 
 class BusinessModule(EvidenceBackedItem):
-    pass
+    module_type: Literal["FUNCTIONAL", "ARCHITECTURAL", "INTEGRATION"] = "FUNCTIONAL"
 
 
 class BusinessCapability(EvidenceBackedItem):
@@ -65,7 +68,7 @@ class Dependency(EvidenceBackedItem):
 
 class UserWorkflow(EvidenceBackedItem):
     ui_surface: str
-    backend_mapping: Literal["UNRESOLVED", "NOT_APPLICABLE"]
+    backend_mapping: Literal["PROVEN", "UNRESOLVED", "DYNAMIC", "EXTERNAL", "NOT_APPLICABLE"]
 
 
 class UISurface(EvidenceBackedItem):
@@ -75,7 +78,13 @@ class UISurface(EvidenceBackedItem):
 class AgentReasoningSubmission(BaseModel):
     """Provider-neutral payload authored by the active Codex or Copilot chat agent."""
     model_config = ConfigDict(extra="forbid")
+    kg_run_id: str
+    evidence_package_manifest_hash: str
     application_purpose: BusinessCapability
+    primary_application_type: str
+    technical_composition: list[str]
+    major_user_facing_areas: list[str]
+    major_backend_areas: list[str]
     business_modules: list[BusinessModule] = Field(default_factory=list)
     business_capabilities: list[BusinessCapability] = Field(default_factory=list)
     user_workflows: list[UserWorkflow] = Field(default_factory=list)
@@ -93,10 +102,17 @@ class AgentReasoningSubmission(BaseModel):
 
 class ApplicationUnderstanding(BaseModel):
     project_id: str
+    kg_run_id: str
     status: Literal["COMPLETE"]
     application_purpose: str
+    primary_application_type: str
+    technical_composition: list[str]
+    major_user_facing_areas: list[str]
+    major_backend_areas: list[str]
     kg_metrics: dict[str, int]
     limitations: list[str]
+    api_mapping_summary: dict[str, int]
+    readiness: Literal["APPLICATION_UNDERSTANDING_READY", "APPLICATION_UNDERSTANDING_READY_WITH_LIMITATIONS", "APPLICATION_UNDERSTANDING_NOT_READY"]
     business_modules: list[BusinessModule]
     business_capabilities: list[BusinessCapability]
     user_workflows: list[UserWorkflow]
