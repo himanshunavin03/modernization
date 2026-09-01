@@ -124,3 +124,7 @@ Generic offline fixtures now prove solution-first, cross-project Roslyn semantic
 ## Phase 2 Application Understanding
 
 Phase 2 is implemented as a separate LangGraph workflow over the approved immutable KG. It gates on `READY_WITH_EXPLAINED_LIMITATIONS`, builds deterministic compact evidence packages, retains source/provenance confidence, validates all provider claims against KG node evidence, and writes only separate `artifacts/application-understanding/` outputs. The verified initial run is `FRAMEWORK_ONLY`: provider `NONE`, 64 packages, zero LLM calls/tokens, 8 Razor views, 26 AngularJS controllers, and explicitly unresolved backend mappings for 33 frontend API calls because the KG has zero endpoint facts. Future Graphiti-style project memory is a protocol boundary; Archon remains a future SDLC/governance boundary and does not replace KG/Roslyn/Tree-sitter/LangGraph/LangChain. Recovery reading includes prompt 036 and the latest application-understanding artifacts.
+
+## Provider And Developer Experience
+
+Provider selection is environment-driven and lazy: Azure OpenAI requires `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`, and `AZURE_OPENAI_DEPLOYMENT`; Bedrock requires `AWS_REGION` and `POLARIS_BEDROCK_MODEL_ID`. No real provider is configured locally, so the latest Phase-2 execution is `WAITING_FOR_PROVIDER_CONFIGURATION` with no token use. Codex capability guides and GitHub Copilot prompt files both invoke the shared CLI; repository-defined slash-command discovery is not claimed for Codex. See `docs/developer-experience.md` and prompt 037.

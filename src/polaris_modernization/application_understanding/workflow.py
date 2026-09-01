@@ -24,6 +24,7 @@ class UnderstandingState(TypedDict, total=False):
     token_usage: dict
     provider: ReasoningProvider | None
     cache_root: str
+    waiting_for_provider: bool
 
 
 def _facts(state: UnderstandingState) -> UnderstandingState:
@@ -64,7 +65,8 @@ def _understanding(state: UnderstandingState) -> UnderstandingState:
     claims=[] if result is None else result.claims
     valid_ids={node['id'] for node in nodes}
     if any(any(reference.node_id not in valid_ids for reference in claim.evidence) for claim in claims): raise ValueError("Unsupported AI claim without KG evidence.")
-    state["understanding"] = ApplicationUnderstanding(project_id=state["approved"]["status"]["project_id"], status="COMPLETE" if provider else "FRAMEWORK_ONLY", application_purpose="Evidence-backed technical application understanding from the approved Knowledge Graph.", kg_metrics={"total_kg_nodes": len(nodes), "total_kg_relationships": len(graph["edges"])}, limitations=["BACKEND_MAPPING=UNRESOLVED: 33 frontend API-call facts have zero backend endpoint facts.", "AI interpretation is absent because no configured provider was used."], business_modules=modules, business_capabilities=[], business_rules=[], user_workflows=workflows, ui_surfaces=surfaces, domain_concepts=[], dependencies=sorted({node['name'] for node in nodes if node['label']=='ExternalReference'}), best_razor_demo_candidate=best_razor, best_angular_demo_candidate=best_angular, ai_interpretations=claims)
+    status="COMPLETE" if provider else "WAITING_FOR_PROVIDER_CONFIGURATION" if state.get("waiting_for_provider") else "FRAMEWORK_ONLY"
+    state["understanding"] = ApplicationUnderstanding(project_id=state["approved"]["status"]["project_id"], status=status, application_purpose="Evidence-backed technical application understanding from the approved Knowledge Graph.", kg_metrics={"total_kg_nodes": len(nodes), "total_kg_relationships": len(graph["edges"])}, limitations=["BACKEND_MAPPING=UNRESOLVED: 33 frontend API-call facts have zero backend endpoint facts.", "AI interpretation is absent because no configured provider was used."], business_modules=modules, business_capabilities=[], business_rules=[], user_workflows=workflows, ui_surfaces=surfaces, domain_concepts=[], dependencies=sorted({node['name'] for node in nodes if node['label']=='ExternalReference'}), best_razor_demo_candidate=best_razor, best_angular_demo_candidate=best_angular, ai_interpretations=claims)
     state["token_usage"]={"total_kg_nodes":len(nodes),"total_kg_relationships":len(graph["edges"]),"evidence_packages_created":len(packages),"llm_provider_used":provider.name if provider else "NONE","llm_calls":0 if result is None or cache_hit else 1,"cache_hit":cache_hit,"approx_input_tokens":0 if result is None else result.input_tokens,"approx_output_tokens":0 if result is None else result.output_tokens,"average_input_tokens_per_package":0 if result is None or not packages else result.input_tokens // len(packages)}
     return state
 
@@ -73,8 +75,8 @@ def compiled_workflow():
     graph=StateGraph(UnderstandingState); graph.add_node("load_approved_kg",_facts); graph.add_node("build_evidence_packages",_packages); graph.add_node("reason_and_validate",_understanding); graph.add_edge(START,"load_approved_kg"); graph.add_edge("load_approved_kg","build_evidence_packages"); graph.add_edge("build_evidence_packages","reason_and_validate"); graph.add_edge("reason_and_validate",END); return graph.compile()
 
 
-def run_application_understanding(kg_root: Path, output_root: Path, provider: ReasoningProvider | None = None) -> dict:
-    result=compiled_workflow().invoke({"kg_root":str(kg_root),"provider":provider,"cache_root":str(output_root/'cache')})
+def run_application_understanding(kg_root: Path, output_root: Path, provider: ReasoningProvider | None = None, *, waiting_for_provider: bool = False) -> dict:
+    result=compiled_workflow().invoke({"kg_root":str(kg_root),"provider":provider,"cache_root":str(output_root/'cache'),"waiting_for_provider":waiting_for_provider})
     timestamp=datetime.now(timezone.utc).strftime("%Y-%m-%d-%H%M%S-%f"); run_id=f"{result['understanding'].project_id}-{timestamp}"; runs=output_root/'runs'; destination=runs/run_id; destination.mkdir(parents=True,exist_ok=False)
     def write(path, value): path.write_text(json.dumps(value,indent=2,sort_keys=True),encoding='utf-8')
     write(destination/'application-understanding.json',result['understanding'].model_dump(mode='json')); write(destination/'evidence-packages.json',[item.model_dump(mode='json') for item in result['packages']]); write(destination/'token-usage.json',result['token_usage'])

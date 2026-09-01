@@ -47,3 +47,10 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Actual output: `artifacts/application-understanding/latest/` is `FRAMEWORK_ONLY` with `NONE` provider, 64 evidence packages, 0 LLM calls, 0 input/output tokens, 4,868 KG nodes, 5,124 KG relationships, 8 Razor views, 15 partials, 4 layouts, 26 AngularJS controllers, 10 services, and 14 directives. The Dashboard Razor view and `DashboardController` are the best evidence-backed demo candidates.
 - Limitation preserved: 33 frontend API-call facts have zero backend endpoint facts, so all Phase-2 user workflows retain `BACKEND_MAPPING=UNRESOLVED`. No AI-derived business capability or rule was fabricated.
 - Next action: `VALIDATE_APPLICATION_UNDERSTANDING`; do not proceed to features, stories, architecture recommendation, or Angular generation.
+
+## Provider And Developer Experience
+
+- Real provider discovery found no Azure OpenAI or AWS Bedrock configuration. `understand-application --provider auto` now produces `WAITING_FOR_PROVIDER_CONFIGURATION` with zero LLM calls/tokens; Azure requires `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`, and `AZURE_OPENAI_DEPLOYMENT`, while Bedrock requires `AWS_REGION` and `POLARIS_BEDROCK_MODEL_ID` plus standard AWS credentials.
+- Codex uses `AGENTS.md` plus `docs/agents/commands/` and does not claim repository-defined slash-menu discovery. GitHub Copilot uses supported `.github/copilot-instructions.md` and `.github/prompts/*.prompt.md` prompt files. Both delegate to the same CLI; see `docs/developer-experience.md`.
+- Validation: `python -m pytest -q` returned `74 passed, 2 skipped`. No KG regeneration, Phase-1 change, Neo4j load, feature/story generation, architecture recommendation, or Angular generation occurred.
+- Next action: `CONFIGURE_LLM_PROVIDER`.

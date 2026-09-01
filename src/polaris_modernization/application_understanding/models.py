@@ -71,7 +71,7 @@ class UISurface(BaseModel):
 
 class ApplicationUnderstanding(BaseModel):
     project_id: str
-    status: Literal["COMPLETE", "FRAMEWORK_ONLY"]
+    status: Literal["COMPLETE", "FRAMEWORK_ONLY", "WAITING_FOR_PROVIDER_CONFIGURATION"]
     application_purpose: str
     kg_metrics: dict[str, int]
     limitations: list[str]

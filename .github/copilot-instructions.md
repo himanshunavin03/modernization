@@ -9,3 +9,7 @@
 7. Never claim something was analyzed, generated, tested, or working unless it is proven.
 8. If blocked, document the blocker and the exact next action in `PROGRESS.md`.
 9. Keep scanner behavior project-agnostic; select projects through `--source-root`, `--project-id`, and profiles.
+
+## Developer capabilities
+
+Use `.github/prompts/create-knowledge-graph.prompt.md` and `.github/prompts/understand-application.prompt.md` in supported Copilot prompt-file surfaces. Both are thin instructions over the shared Polaris CLI. `understand-application` requires KG readiness, configured providers only, and unresolved backend mappings remain unresolved.

@@ -1,0 +1,11 @@
+{
+  "approx_input_tokens": 0,
+  "approx_output_tokens": 0,
+  "average_input_tokens_per_package": 0,
+  "cache_hit": false,
+  "evidence_packages_created": 64,
+  "llm_calls": 0,
+  "llm_provider_used": "NONE",
+  "total_kg_nodes": 4868,
+  "total_kg_relationships": 5124
+}

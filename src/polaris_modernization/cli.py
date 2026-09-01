@@ -263,7 +263,7 @@ def main() -> None:
     understand_parser = subparsers.add_parser("understand-application", help="Run Phase 2 over an approved immutable KG")
     understand_parser.add_argument("--kg-root", required=True, type=Path)
     understand_parser.add_argument("--output", type=Path, default=Path("artifacts/application-understanding"))
-    understand_parser.add_argument("--provider", choices=("none", "mock"), default="none")
+    understand_parser.add_argument("--provider", choices=("auto", "none", "mock"), default="auto")
     load_parser = subparsers.add_parser("load-neo4j")
     load_parser.add_argument("--graph", required=True, type=Path)
     load_parser.add_argument("--project-id", required=True)
@@ -295,9 +295,10 @@ def main() -> None:
         print(f"Create Knowledge Graph {result['overall_status']} for {result['project_id']}")
         if result["overall_status"] == "failed": raise SystemExit(1)
     elif args.command == "understand-application":
-        from polaris_modernization.application_understanding.providers import MockReasoningProvider
+        from polaris_modernization.application_understanding.providers import MockReasoningProvider, provider_from_environment
         from polaris_modernization.application_understanding.workflow import run_application_understanding
-        result = run_application_understanding(args.kg_root, args.output, MockReasoningProvider() if args.provider == "mock" else None)
+        provider = MockReasoningProvider() if args.provider == "mock" else provider_from_environment() if args.provider == "auto" else None
+        result = run_application_understanding(args.kg_root, args.output, provider, waiting_for_provider=args.provider == "auto" and provider is None)
         print(f"Application understanding {result['understanding'].status} for {result['understanding'].project_id}")
         print(result["path"])
     elif args.command in {"load-neo4j", "clear-neo4j-project"}:

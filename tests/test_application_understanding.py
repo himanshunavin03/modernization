@@ -4,6 +4,7 @@ from pathlib import Path
 import pytest
 
 from polaris_modernization.application_understanding.providers import MockReasoningProvider
+from polaris_modernization.application_understanding.providers import provider_from_environment
 from polaris_modernization.application_understanding.models import BusinessCapability, ConfidenceAssessment, EvidenceReference, ReasoningResult
 from polaris_modernization.application_understanding.retrieval import build_evidence_packages, load_approved_graph
 from polaris_modernization.application_understanding.workflow import run_application_understanding
@@ -44,6 +45,15 @@ def test_none_provider_is_framework_only_and_records_tokens(tmp_path):
     assert result['understanding'].status == 'FRAMEWORK_ONLY'
     assert result['token_usage']['llm_calls'] == 0
     assert result['token_usage']['approx_input_tokens'] == 0
+
+
+def test_auto_provider_without_credentials_waits_without_llm(monkeypatch, tmp_path):
+    for name in ("AZURE_OPENAI_ENDPOINT", "AZURE_OPENAI_API_KEY", "AZURE_OPENAI_DEPLOYMENT", "AWS_REGION", "POLARIS_BEDROCK_MODEL_ID"):
+        monkeypatch.delenv(name, raising=False)
+    assert provider_from_environment() is None
+    result=run_application_understanding(kg(tmp_path),tmp_path/'out',waiting_for_provider=True)
+    assert result['understanding'].status == 'WAITING_FOR_PROVIDER_CONFIGURATION'
+    assert result['token_usage']['llm_calls'] == 0
 
 
 def test_unsupported_ai_claim_without_package_evidence_is_rejected(tmp_path):
