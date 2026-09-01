@@ -1,0 +1,22 @@
+{
+  "run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-013227",
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "backend_endpoint_facts": 4,
+  "frontend_api_call_facts": 44,
+  "proven_api_mappings": 0,
+  "ambiguous_api_mappings": 0,
+  "dynamic_api_url_warnings": 22,
+  "external_api_calls": 1,
+  "no_backend_route_calls": 1,
+  "unresolved_api_calls": 42,
+  "known_matching_literal_calls_blocked_by_endpoint_catalog_defect": 10,
+  "endpoint_catalog_source_evidence": {
+    "controllers_with_literal_api_controller_route": 12,
+    "http_method_attributes": 55,
+    "generic_defects": [
+      "Class attribute matching stops at the bracket inside the literal [controller] token.",
+      "The conventional /Api/ path fallback is case-sensitive and misses MyHealth.API paths."
+    ]
+  },
+  "status": "NOT_READY"
+}

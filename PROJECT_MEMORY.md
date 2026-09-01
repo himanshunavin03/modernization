@@ -142,3 +142,11 @@ The validated interactive run `legacy-dashboard-complete-application-demo-v1-202
 ## Framework API Contract Analyzer
 
 The framework-analyzer registry now runs inside normal deterministic KG generation and adds evidence-backed ASP.NET endpoint, Razor contract, and AngularJS API-call facts. The regenerated run `legacy-dashboard-complete-application-demo-v1-2026-09-01-013227` is structurally valid but not readiness-approved until a new readiness analysis is calculated. Its 64 evidence packages differ from the prior application-understanding packages in 8 hashes, so Application Understanding is stale and must not be treated as current. Recovery reading includes prompt 040.
+
+## Forensic Readiness Gate
+
+The immutable `legacy-dashboard-complete-application-demo-v1-2026-09-01-013227` run passes structural and evidence integrity: 4,878 nodes, 5,148 relationships, and zero broken references, duplicate IDs/relationships, or evidence gaps. The complete regression suite passed with 79 tests passed and 2 skipped.
+
+This run is `NOT_READY` for Phase 2. The generic ASP.NET attribute-route analyzer terminates class-attribute matching at the `]` in the literal `[controller]` and has a case-sensitive `/Api/` fallback. It emits 4 endpoints and 0 proven mappings even though source evidence shows 12 attribute-routed controllers, 55 HTTP method attributes, and 10 matching literal AngularJS calls to `UsersController` routes. Roslyn contributes 4,344 unresolved occurrences: 4,342 explained limitations and 2 `UNKNOWN` items.
+
+Application Understanding remains `STALE`; do not run it or begin Phase 2. The required next action is `TARGETED_ANALYZER_FIX`, followed by a new immutable graph run and a new forensic gate. Read `artifacts/knowledge-graph/latest/kg-readiness-analysis.md` on recovery.
