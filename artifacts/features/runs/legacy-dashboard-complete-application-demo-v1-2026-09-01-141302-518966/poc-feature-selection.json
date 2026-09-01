@@ -1,0 +1,10 @@
+{
+  "angularjs_feature_id": "feature-operational-dashboard-insights",
+  "angularjs_surface": "DashboardController",
+  "feature_ids": [
+    "feature-operational-dashboard-insights"
+  ],
+  "rationale": "Both approved legacy surfaces implement the same dashboard outcome and provide the smallest end-to-end modernization slice with preserved tenant/report contracts.",
+  "razor_feature_id": "feature-operational-dashboard-insights",
+  "razor_surface": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+}

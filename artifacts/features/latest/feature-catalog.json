@@ -1,0 +1,608 @@
+{
+  "application_understanding_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694",
+  "feature_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-141302-518966",
+  "features": [
+    {
+      "actors_personas": [],
+      "api_contracts": [
+        {
+          "status": "PROVEN",
+          "workflow": "Dashboard summary loads current tenant"
+        },
+        {
+          "status": "PROVEN",
+          "workflow": "Dashboard expenses load current tenant"
+        },
+        {
+          "status": "PROVEN",
+          "workflow": "Dashboard patient report loads current tenant"
+        },
+        {
+          "status": "UNRESOLVED",
+          "workflow": "Dashboard requests clinic summary"
+        },
+        {
+          "status": "DYNAMIC",
+          "workflow": "Dashboard requests yearly expenses"
+        },
+        {
+          "status": "DYNAMIC",
+          "workflow": "Dashboard requests yearly patient report"
+        }
+      ],
+      "application_understanding_evidence": [
+        {
+          "name": "Dashboard and reporting",
+          "object_type": "module"
+        },
+        {
+          "name": "Dashboard visualization",
+          "object_type": "capability"
+        },
+        {
+          "name": "Clinic summary reporting",
+          "object_type": "capability"
+        },
+        {
+          "name": "Dashboard summary loads current tenant",
+          "object_type": "workflow"
+        },
+        {
+          "name": "Dashboard requests clinic summary",
+          "object_type": "workflow"
+        }
+      ],
+      "business_capabilities": [
+        "Dashboard visualization",
+        "Clinic summary reporting"
+      ],
+      "business_outcome": "Clinic users can view dashboard summaries and year-based operational reporting while retaining the existing API contracts.",
+      "business_rules": [],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Both approved UI candidates, dashboard workflows, and report/tenant contracts are present; unresolved and dynamic mappings remain explicit."
+      },
+      "dependencies": [
+        "Dashboard depends on tenant context API",
+        "Dashboard depends on reports API contract"
+      ],
+      "description": "Modernize the Razor-hosted and AngularJS Dashboard experience as one cohesive frontend feature, preserving tenant-context and reporting integrations.",
+      "domain_concepts": [],
+      "evidence_package_ids": [
+        "feature-module:dashboard-and-reporting"
+      ],
+      "feature_id": "feature-operational-dashboard-insights",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary"
+      ],
+      "limitations": [
+        "Clinic-summary mapping is unresolved upstream.",
+        "Year-based expense and patient report URLs are dynamic upstream."
+      ],
+      "modernization_priority": "HIGH",
+      "modernization_rationale": "This is the approved customer POC, covers both legacy UI technologies, and demonstrates preservation of existing API contracts.",
+      "modernization_scope": [
+        "UI_MODERNIZATION",
+        "FRONTEND_WORKFLOW_MODERNIZATION",
+        "SHARED_REUSABLE_UI",
+        "API_INTEGRATION_PRESERVATION"
+      ],
+      "module": "Dashboard and reporting",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 13,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+        },
+        {
+          "line_end": 141,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+        },
+        {
+          "line_end": 23,
+          "line_start": 23,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
+        }
+      ],
+      "title": "Operational Dashboard Insights",
+      "ui_surfaces": [
+        "src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+        "DashboardController",
+        "dashboardService",
+        "dashboard"
+      ],
+      "workflows": [
+        "Route dashboard",
+        "Dashboard summary loads current tenant",
+        "Dashboard expenses load current tenant",
+        "Dashboard patient report loads current tenant",
+        "Dashboard requests clinic summary",
+        "Dashboard requests yearly expenses",
+        "Dashboard requests yearly patient report"
+      ]
+    },
+    {
+      "actors_personas": [],
+      "api_contracts": [
+        {
+          "status": "PROVEN",
+          "workflow": "Doctors load current tenant"
+        }
+      ],
+      "application_understanding_evidence": [
+        {
+          "name": "Doctor management",
+          "object_type": "module"
+        },
+        {
+          "name": "Manage doctors",
+          "object_type": "capability"
+        },
+        {
+          "name": "Doctors load current tenant",
+          "object_type": "workflow"
+        },
+        {
+          "name": "Doctor",
+          "object_type": "domain_concept"
+        }
+      ],
+      "business_capabilities": [
+        "Manage doctors"
+      ],
+      "business_outcome": "Clinic users can navigate and manage doctor information through a modernized frontend while preserving doctor APIs.",
+      "business_rules": [],
+      "confidence": {
+        "level": "MEDIUM",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Doctor UI, domain, routes, and tenant context are evidenced; non-tenant doctor API calls remain unresolved upstream."
+      },
+      "dependencies": [
+        "Doctor UI depends on doctor API contract"
+      ],
+      "description": "Modernize doctor list/detail workflows and retain the existing tenant and doctor integration boundary.",
+      "domain_concepts": [
+        "Doctor"
+      ],
+      "evidence_package_ids": [
+        "feature-module:doctor-management"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor"
+      ],
+      "limitations": [
+        "Only the tenant-context call is proven end to end; other doctor API operations remain unresolved upstream."
+      ],
+      "modernization_priority": "MEDIUM",
+      "modernization_rationale": "A meaningful operational area with reusable list/detail patterns, but less suitable than Dashboard for the first POC.",
+      "modernization_scope": [
+        "UI_MODERNIZATION",
+        "FRONTEND_WORKFLOW_MODERNIZATION",
+        "API_INTEGRATION_PRESERVATION"
+      ],
+      "module": "Doctor management",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 100,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js"
+        },
+        {
+          "line_end": 59,
+          "line_start": 10,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Model/Doctor.cs"
+        }
+      ],
+      "title": "Doctor Directory Management",
+      "ui_surfaces": [
+        "DoctorsController",
+        "doctorsService",
+        "doctor",
+        "doctors"
+      ],
+      "workflows": [
+        "Route doctor",
+        "Route doctors",
+        "Doctors load current tenant"
+      ]
+    },
+    {
+      "actors_personas": [],
+      "api_contracts": [
+        {
+          "status": "PROVEN",
+          "workflow": "Patients load current tenant"
+        }
+      ],
+      "application_understanding_evidence": [
+        {
+          "name": "Patient management",
+          "object_type": "module"
+        },
+        {
+          "name": "Manage patients",
+          "object_type": "capability"
+        },
+        {
+          "name": "Patients load current tenant",
+          "object_type": "workflow"
+        },
+        {
+          "name": "Patient",
+          "object_type": "domain_concept"
+        }
+      ],
+      "business_capabilities": [
+        "Manage patients"
+      ],
+      "business_outcome": "Clinic users can navigate and manage patient information through a modernized frontend while preserving patient APIs.",
+      "business_rules": [],
+      "confidence": {
+        "level": "MEDIUM",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Patient UI, domain, route, and tenant context are evidenced; non-tenant patient API calls remain unresolved upstream."
+      },
+      "dependencies": [
+        "Patient UI depends on patient API contract"
+      ],
+      "description": "Modernize patient list/detail workflows and retain the existing tenant and patient integration boundary.",
+      "domain_concepts": [
+        "Patient"
+      ],
+      "evidence_package_ids": [
+        "feature-module:patient-management"
+      ],
+      "feature_id": "feature-patient-directory-management",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:PatientsController",
+        "legacy-dashboard-complete-application-demo-v1:Type:Patient"
+      ],
+      "limitations": [
+        "Only the tenant-context call is proven end to end; other patient API operations remain unresolved upstream."
+      ],
+      "modernization_priority": "MEDIUM",
+      "modernization_rationale": "A central operational area with reusable list/detail patterns after the Dashboard POC.",
+      "modernization_scope": [
+        "UI_MODERNIZATION",
+        "FRONTEND_WORKFLOW_MODERNIZATION",
+        "API_INTEGRATION_PRESERVATION"
+      ],
+      "module": "Patient management",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 99,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:PatientsController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/patients/controllers/patientsController.js"
+        },
+        {
+          "line_end": 60,
+          "line_start": 8,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Type:Patient",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Model/Patient.cs"
+        }
+      ],
+      "title": "Patient Directory Management",
+      "ui_surfaces": [
+        "PatientsController",
+        "patientsService",
+        "patients"
+      ],
+      "workflows": [
+        "Route patients",
+        "Patients load current tenant"
+      ]
+    },
+    {
+      "actors_personas": [],
+      "api_contracts": [
+        {
+          "status": "PROVEN",
+          "workflow": "Clinics load current tenant"
+        }
+      ],
+      "application_understanding_evidence": [
+        {
+          "name": "Appointment management",
+          "object_type": "module"
+        },
+        {
+          "name": "Manage clinic appointments",
+          "object_type": "capability"
+        },
+        {
+          "name": "Clinics load current tenant",
+          "object_type": "workflow"
+        },
+        {
+          "name": "Clinic appointment",
+          "object_type": "domain_concept"
+        }
+      ],
+      "business_capabilities": [
+        "Manage clinic appointments"
+      ],
+      "business_outcome": "Users can access a modernized clinic appointment experience while the existing appointment contracts remain preserved.",
+      "business_rules": [],
+      "confidence": {
+        "level": "LOW",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Appointment capability, UI, and domain evidence exist, but AU lacks a complete appointment-operation workflow and proven appointment API mapping."
+      },
+      "dependencies": [],
+      "description": "Modernize the existing appointment and clinic navigation surfaces without claiming an unproven complete appointment transaction flow.",
+      "domain_concepts": [
+        "Clinic appointment",
+        "Home appointment"
+      ],
+      "evidence_package_ids": [
+        "feature-module:appointment-management"
+      ],
+      "feature_id": "feature-clinic-appointment-experience",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.ClinicAppointment",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant"
+      ],
+      "limitations": [
+        "The approved AU does not contain a complete appointment operation workflow.",
+        "The proven API relationship is tenant context, not an appointment transaction."
+      ],
+      "modernization_priority": "LOW",
+      "modernization_rationale": "Retain in the complete catalog, but defer until appointment workflow/API traceability is stronger.",
+      "modernization_scope": [
+        "UI_MODERNIZATION",
+        "FRONTEND_WORKFLOW_MODERNIZATION",
+        "API_INTEGRATION_PRESERVATION"
+      ],
+      "module": "Appointment management",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 8,
+          "line_start": 4,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.ClinicAppointment",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Model/ClinicAppointment.cs"
+        },
+        {
+          "line_end": 146,
+          "line_start": 146,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        }
+      ],
+      "title": "Clinic Appointment Experience",
+      "ui_surfaces": [
+        "src/MyHealth.Web/Views/Appointments/Index.cshtml",
+        "ClinicsController",
+        "clinic",
+        "clinics"
+      ],
+      "workflows": [
+        "Route clinic",
+        "Route clinics",
+        "Clinics load current tenant"
+      ]
+    },
+    {
+      "actors_personas": [],
+      "api_contracts": [
+        {
+          "status": "PROVEN",
+          "workflow": "Users load current tenant"
+        },
+        {
+          "status": "PROVEN",
+          "workflow": "Header loads current user"
+        },
+        {
+          "status": "PROVEN",
+          "workflow": "Header loads current claims"
+        },
+        {
+          "status": "PROVEN",
+          "workflow": "Initial page loads current claims"
+        }
+      ],
+      "application_understanding_evidence": [
+        {
+          "name": "User access and tenant context",
+          "object_type": "module"
+        },
+        {
+          "name": "Resolve current user context",
+          "object_type": "capability"
+        },
+        {
+          "name": "Header loads current user",
+          "object_type": "workflow"
+        },
+        {
+          "name": "Tenant-scoped client flows resolve current tenant context",
+          "object_type": "business_rule"
+        }
+      ],
+      "business_capabilities": [
+        "Resolve current user context"
+      ],
+      "business_outcome": "Frontend experiences consistently obtain current user identity, authorization claims, and tenant context from preserved APIs.",
+      "business_rules": [
+        "Tenant-scoped client flows resolve current tenant context"
+      ],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Current user, claims, and tenant workflows all retain proven upstream mappings."
+      },
+      "dependencies": [
+        "Header depends on current-user API"
+      ],
+      "description": "Modernize shared user-context behavior used across feature areas while retaining current-user and current-tenant contracts.",
+      "domain_concepts": [
+        "Application user request",
+        "Tenant request"
+      ],
+      "evidence_package_ids": [
+        "feature-module:user-access-and-tenant-context"
+      ],
+      "feature_id": "feature-user-access-context",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant"
+      ],
+      "limitations": [
+        "Authorization semantics beyond the observed claims-loading behavior are not inferred."
+      ],
+      "modernization_priority": "HIGH",
+      "modernization_rationale": "Shared user and tenant context is reusable across modernized frontend features and is supported by proven API mappings.",
+      "modernization_scope": [
+        "SHARED_REUSABLE_UI",
+        "API_INTEGRATION_PRESERVATION",
+        "CROSS_CUTTING_FUNCTIONALITY"
+      ],
+      "module": "User access and tenant context",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 124,
+          "line_start": 124,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 133,
+          "line_start": 133,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 146,
+          "line_start": 146,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        }
+      ],
+      "title": "User Access and Tenant Context",
+      "ui_surfaces": [
+        "UsersController",
+        "usersService",
+        "user",
+        "users"
+      ],
+      "workflows": [
+        "Route user",
+        "Route users",
+        "Users load current tenant",
+        "Header loads current user",
+        "Header loads current claims",
+        "Initial page loads current claims"
+      ]
+    }
+  ],
+  "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-034128",
+  "limitations": [
+    "Unresolved, dynamic, external, and no-backend-route API limitations are inherited unchanged from the approved Application Understanding.",
+    "7 upstream workflows are not promoted into business Features and remain explicitly uncovered."
+  ],
+  "next_action": "GENERATE_STORIES",
+  "poc_selection": {
+    "angularjs_feature_id": "feature-operational-dashboard-insights",
+    "angularjs_surface": "DashboardController",
+    "feature_ids": [
+      "feature-operational-dashboard-insights"
+    ],
+    "rationale": "Both approved legacy surfaces implement the same dashboard outcome and provide the smallest end-to-end modernization slice with preserved tenant/report contracts.",
+    "razor_feature_id": "feature-operational-dashboard-insights",
+    "razor_surface": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+  },
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "quality_review": {
+    "capabilities_covered": [
+      "Clinic summary reporting",
+      "Dashboard visualization",
+      "Manage clinic appointments",
+      "Manage doctors",
+      "Manage patients",
+      "Resolve current user context"
+    ],
+    "duplicate_features": 0,
+    "feature_validation": "PASS",
+    "overly_broad_features": [],
+    "overly_granular_features": [],
+    "package_hash_validation": "PASS",
+    "provenance_validation": "PASS",
+    "technical_feature_titles": [],
+    "uncovered_capabilities": [],
+    "uncovered_workflows": [
+      "Route app",
+      "Route calendar",
+      "Route calendar.daily",
+      "Route calendar.monthly",
+      "Route dailyReport",
+      "Route default",
+      "Route error"
+    ],
+    "unsupported_feature_claims_rejected": 0,
+    "untraceable_features": 0,
+    "workflows_covered": [
+      "Clinics load current tenant",
+      "Dashboard expenses load current tenant",
+      "Dashboard patient report loads current tenant",
+      "Dashboard requests clinic summary",
+      "Dashboard requests yearly expenses",
+      "Dashboard requests yearly patient report",
+      "Dashboard summary loads current tenant",
+      "Doctors load current tenant",
+      "Header loads current claims",
+      "Header loads current user",
+      "Initial page loads current claims",
+      "Patients load current tenant",
+      "Route clinic",
+      "Route clinics",
+      "Route dashboard",
+      "Route doctor",
+      "Route doctors",
+      "Route patients",
+      "Route user",
+      "Route users",
+      "Users load current tenant"
+    ]
+  },
+  "readiness": "FEATURES_READY_WITH_LIMITATIONS"
+}

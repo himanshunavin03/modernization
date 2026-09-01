@@ -11,6 +11,8 @@ artifacts/*
 !artifacts/knowledge-graph/**
 !artifacts/application-understanding/
 !artifacts/application-understanding/**
+!artifacts/features/
+!artifacts/features/**
 source/*
 !source/.gitkeep
 !source/README.md

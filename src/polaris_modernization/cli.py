@@ -270,6 +270,10 @@ def main() -> None:
     understand_parser.add_argument("--kg-root", required=True, type=Path)
     understand_parser.add_argument("--output", type=Path, default=Path("artifacts/application-understanding"))
     understand_parser.add_argument("--agent-result", type=Path, help="Structured result supplied by the active Codex or Copilot chat agent.")
+    feature_parser = subparsers.add_parser("generate-features", help="Prepare or validate evidence-backed modernization Features")
+    feature_parser.add_argument("--application-understanding-root", required=True, type=Path)
+    feature_parser.add_argument("--output", type=Path, default=Path("artifacts/features"))
+    feature_parser.add_argument("--agent-result", type=Path, help="Structured Feature result supplied by the active Codex or Copilot chat agent.")
     load_parser = subparsers.add_parser("load-neo4j")
     load_parser.add_argument("--graph", required=True, type=Path)
     load_parser.add_argument("--project-id", required=True)
@@ -308,6 +312,15 @@ def main() -> None:
         else:
             result = prepare_application_understanding(args.kg_root, args.output)
             print(f"Application understanding prepared for active-agent reasoning for {result['approved']['status']['project_id']}")
+        print(result["path"])
+    elif args.command == "generate-features":
+        from polaris_modernization.feature_generation.workflow import prepare_feature_generation, validate_and_persist_features
+        if args.agent_result:
+            result = validate_and_persist_features(args.application_understanding_root, args.output, args.agent_result)
+            print(f"Feature generation {result['catalog'].readiness} for {result['catalog'].project_id}")
+        else:
+            result = prepare_feature_generation(args.application_understanding_root, args.output)
+            print(f"Feature generation prepared for active-agent reasoning for {result['approved']['understanding']['project_id']}")
         print(result["path"])
     elif args.command in {"load-neo4j", "clear-neo4j-project"}:
         driver = connect(os.getenv("NEO4J_URI", "bolt://localhost:7687"), os.getenv("NEO4J_USERNAME", "neo4j"), os.getenv("NEO4J_PASSWORD", "change-me"))

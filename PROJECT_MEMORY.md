@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Phase 2 Application Understanding is validated against approved immutable KG run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`. The next authorized action is `GENERATE_FEATURES`; do not generate features until explicitly requested.
+Evidence-backed Feature generation is complete and validated against Application Understanding run `legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694` and KG run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`. The next authorized action is `GENERATE_STORIES`; do not generate Stories until explicitly requested.
 
 ## Agent Command
 
@@ -44,7 +44,7 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Await explicit authorization to generate evidence-backed Features from the validated Application Understanding. Do not generate stories, architecture, Angular 22 code, or modify legacy source.
+Await explicit authorization to generate Stories from the validated Feature catalog. Do not generate acceptance criteria, architecture, Angular 22 code, or modify legacy source.
 
 ## Step 3B.2 Result
 
@@ -115,7 +115,7 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 044 under `docs/prompts/`, approved KG readiness artifacts for `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`, and `artifacts/application-understanding/latest/`. Application Understanding run `legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694` is validated and ready with explained limitations. The next action is `GENERATE_FEATURES` only after explicit user authorization; do not start stories, architecture, Angular generation, or source changes.
+Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 045 under `docs/prompts/`, approved KG/AU artifacts, and `artifacts/features/latest/`. Feature run `legacy-dashboard-complete-application-demo-v1-2026-09-01-141302-518966` is `FEATURES_READY_WITH_LIMITATIONS`. The next action is `GENERATE_STORIES` only after explicit user authorization; do not start acceptance criteria, architecture, Angular generation, or source changes.
 
 ## Project-Aware Roslyn Engine Proof
 
@@ -126,6 +126,12 @@ Generic offline fixtures now prove solution-first, cross-project Roslyn semantic
 Phase 2 remains a separate provider-free LangGraph workflow over an approved immutable KG. Fresh run `legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694` is bound to KG `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128` and a deterministic manifest of all 139 evidence-package hashes. Validation passed for KG identity, manifest hash, package references, source provenance, claim evidence, and every `PROVEN` workflow's existing `IMPLEMENTED_BY` edge; external LLM API calls and unsupported accepted claims are zero.
 
 The validated result is `APPLICATION_UNDERSTANDING_READY_WITH_LIMITATIONS`: healthcare operations application; 6 meaningful modules, 6 business capabilities, 28 workflows (15 deterministic routes plus 13 interpreted workflows), 92 UI surfaces, 6 domain concepts, 2 observed behavioral rules, and 5 dependencies. It incorporates 58 backend endpoints, 44 frontend API calls, and 10 proven mappings while retaining 32 unresolved structural calls, 22 dynamic URL relationships, 1 external API relationship, and 1 call without a backend route. The Dashboard Razor view and legacy AngularJS `DashboardController` remain the evidence-backed POC candidates. The earlier 64-package, zero-endpoint run is historical and superseded.
+
+## Evidence-Backed Features
+
+Feature run `legacy-dashboard-complete-application-demo-v1-2026-09-01-141302-518966` is bound to the approved AU and KG through six deterministic module evidence packages and manifest hash `0e7c8f01696e783f574ed3f4ea4ca35618f8d4d62d765ae7c6b9b84caf42ffb2`. It contains five business Features covering all six approved capabilities and 21 of 28 workflows: Operational Dashboard Insights, Doctor Directory Management, Patient Directory Management, Clinic Appointment Experience, and User Access and Tenant Context. Seven generic/error/calendar/report route records remain explicitly uncovered rather than being forced into unsupported business Features.
+
+The POC selects only `feature-operational-dashboard-insights`; its Razor surface is `src/MyHealth.Web/Views/Dashboard/Index.cshtml` and its AngularJS surface is `DashboardController`. All five Features retain at least one proven API relationship; the Dashboard Feature also retains one unresolved and two dynamic report relationships. The appointment Feature is low confidence because the AU lacks a complete appointment-operation workflow. Readiness is `FEATURES_READY_WITH_LIMITATIONS`; next action is `GENERATE_STORIES` only after approval.
 
 ## Provider And Developer Experience
 

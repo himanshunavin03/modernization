@@ -1,8 +1,8 @@
 # Progress
 
-- Status: Phase 2 Application Understanding validated against approved immutable KG run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`.
+- Status: Feature catalog validated as `FEATURES_READY_WITH_LIMITATIONS` from approved AU run `legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694` and KG run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`.
 - Agent command: `/create-knowledge-graph` is documented at `docs/agents/commands/create-knowledge-graph.md` and delegates to the deterministic `agent-create-knowledge-graph` CLI adapter. It derives a safe project ID from the selected source root, enables project-aware Roslyn only when .NET project evidence exists, keeps Neo4j opt-in, and does not use an LLM.
-- Current step: Application Understanding is `APPLICATION_UNDERSTANDING_READY_WITH_LIMITATIONS`; await explicit authorization for `GENERATE_FEATURES`.
+- Current step: Feature generation is complete; await explicit authorization for `GENERATE_STORIES`.
 - Complete application correction: deterministic first-party native-crash fallback now emits literal C#/JavaScript/Razor facts alongside provenance. Final analysis: 2,384 files, 3,386 nodes, 4,593 edges, 38 review warnings, zero extraction warnings, 44 opaque dependencies, and `complete_with_opaque_dependencies`. The attempted Neo4j load is blocked solely by unavailable local Neo4j environment configuration; full viewer export remains gated on that load.
 - Failure inventory: 42 JavaScript, 3 C#, and 2 HTML Tree-sitter workers exit with `3221225477`; all are supported-language parser defects requiring a generic repair. See `docs/validation/complete-application-extraction-failure-inventory.md`.
 - Viewer runbook: `docs/runbooks/understand-anything-viewer.md` documents the validated UI-only command and `tools/launch_understand_anything_viewer.ps1` safely exports and launches any approved project-scoped graph with a caller-supplied local token.
@@ -10,9 +10,9 @@
 - Customer-facing viewer branding is neutralized as `Legacy Dashboard POC`; audit: `docs/validation/customer-facing-branding-audit.md`.
 - End-to-end data context: the isolated graph now shows the proven Reports controller to repository, EF/LINQ query, selected model, and `MyHealthContext` flow; raw SQL is not represented because no literal SQL evidence exists.
 - Completed work: Project memory initialized; Dashboard source discovery completed; deterministic scoped inventory, facts, normalized graph JSON, summary, CLI, and tests created; Roslyn graph-label correction validated on a real .NET 8 SDK; Create Knowledge Graph now validates input, analyzes source, validates the project-scoped graph, optionally loads only that project into Neo4j, and writes customer-facing run status artifacts. Native Tree-sitter extraction is isolated per file; child workers bootstrap the repository-local `src` directory through a copied `PYTHONPATH`, and abnormal exits, timeouts, invalid worker output, startup/import errors, and Python extraction errors produce safe structured warnings while remaining files continue. Profiles now carry explicit scope metadata, audit every discovered file, limit selected-flow graph File nodes and normal Roslyn facts to the approved scope, and expose proven cross-scope semantic references without silently widening the graph. Step 3C.6 loaded only `healthclinic-dashboard-scope-demo-v3` with 123 Neo4j nodes, 169 relationships, 27 warnings, and `scope_complete` coverage. Step 3C.7 now assigns all 123 exported viewer nodes exactly once across five deterministic evidence-derived layers, preserving 169 edges and 27 warnings; the port-5175 viewer returned HTTP 200 for both the page and graph endpoint.
-- Next action: `GENERATE_FEATURES` only when explicitly requested. Do not begin stories, architecture, Angular generation, or source modification.
+- Next action: `GENERATE_STORIES` only when explicitly requested. Do not begin acceptance criteria, architecture, Angular generation, or source modification.
 - Blockers: None for Step 3C.6. Known review warnings remain visible: unresolved API-call ownership, implicit MVC `View()` matching, and Roslyn symbols that could not be resolved against the legacy source context.
-- Exact next action when resumed: Read prompts through 044, approved KG run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`, and `artifacts/application-understanding/latest/`. Await explicit authorization for `GENERATE_FEATURES`.
+- Exact next action when resumed: Read prompts through 045, approved KG/AU runs, and `artifacts/features/latest/`. Await explicit authorization for `GENERATE_STORIES`.
 
 ## Resume Command
 
@@ -58,6 +58,16 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Previous-run comparison: the historical `010758-025370` result mechanically produced 88 folder-oriented modules, 1 capability, 16 workflows, 94 UI surfaces, and no domains/rules/dependencies against a KG with no endpoints. The fresh result uses functional grouping and the approved API/domain evidence rather than optimizing counts.
 - Tests: focused application-understanding/API/framework suite `25 passed`; final complete repository suite `90 passed, 2 skipped, 0 failed, 0 errors` in `20.57s`.
 - Readiness: `APPLICATION_UNDERSTANDING_READY_WITH_LIMITATIONS`. Remaining API and approved Roslyn/opaque-dependency limitations stay explicit. Next action is `GENERATE_FEATURES` only after user authorization.
+
+## Evidence-Backed Feature Generation
+
+- Approved inputs: KG `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128` and Application Understanding `legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694`; neither upstream artifact nor `source/` was modified or regenerated.
+- Final run: `legacy-dashboard-complete-application-demo-v1-2026-09-01-141302-518966`, using 6 module-scoped Feature evidence packages and manifest hash `0e7c8f01696e783f574ed3f4ea4ca35618f8d4d62d765ae7c6b9b84caf42ffb2`; external LLM API calls are zero.
+- Catalog: 5 business Features cover all 6 capabilities and 21 of 28 workflows. Priorities are 2 high, 2 medium, and 1 low. All 5 Features use proven API evidence; the Dashboard Feature also retains unresolved and dynamic mappings. No Feature uses an external API relationship.
+- Quality: 0 duplicate Features, 0 untraceable Features, 0 technical-artifact titles, 0 unsupported accepted claims. Uncovered workflows are `Route app`, `Route calendar`, `Route calendar.daily`, `Route calendar.monthly`, `Route dailyReport`, `Route default`, and `Route error`; they were not forced into business Features.
+- POC: only `feature-operational-dashboard-insights`, containing both `src/MyHealth.Web/Views/Dashboard/Index.cshtml` and `DashboardController`. This preserves one cohesive Dashboard outcome rather than manufacturing two unrelated Features.
+- Limitations: Dashboard clinic-summary mapping remains unresolved; two year-based report mappings remain dynamic; appointment management lacks a complete operation workflow and is low confidence.
+- Validation: focused Feature/AU/API tests passed `19`; final complete suite collected 97 tests and returned `95 passed, 2 skipped, 0 failed, 0 errors` in `23.80s`. Readiness is `FEATURES_READY_WITH_LIMITATIONS`; next action is `GENERATE_STORIES` only after explicit authorization.
 
 ## Provider And Developer Experience
 

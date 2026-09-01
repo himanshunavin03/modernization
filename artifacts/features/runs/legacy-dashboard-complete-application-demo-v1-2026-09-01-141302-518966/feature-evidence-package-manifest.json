@@ -1,0 +1,14 @@
+{
+  "application_understanding_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694",
+  "hash_validation": "PASS",
+  "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-034128",
+  "manifest_hash": "0e7c8f01696e783f574ed3f4ea4ca35618f8d4d62d765ae7c6b9b84caf42ffb2",
+  "packages": {
+    "feature-module:appointment-management": "e5c4ca3d07f1666d42c1e1d13d02aa5e54e03e9ff49a6a3aa3e525dfdc59f5d4",
+    "feature-module:clinic-management": "a4da9efce44ce3202d1c48c944a0d7769bf312bac322c2fff6b397d14b7446fe",
+    "feature-module:dashboard-and-reporting": "d134dff653a7b6be72f5a51be9362ee7adbf85cbab8756edd0f9d979b27f8aa0",
+    "feature-module:doctor-management": "cdda17b5b2aa6f4511d27435321b44d17f92fce36122c43640366b87f849a43a",
+    "feature-module:patient-management": "c801c2dbb02eee62f92b6161563d880e3d3c6169ccd0a24bcf571a3170b811c5",
+    "feature-module:user-access-and-tenant-context": "5fc8d3f73204d2a049f72d4bcddca5ab81e14fbe87bd6bc8cba73d0de044b550"
+  }
+}
