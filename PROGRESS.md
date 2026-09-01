@@ -1,8 +1,8 @@
 # Progress
 
-- Status: Consolidated Feature Specifications validated as `FEATURE_SPECIFICATIONS_READY_WITH_LIMITATIONS` from approved Acceptance Criteria run `legacy-dashboard-complete-application-demo-v1-2026-09-01-112024-635713`.
+- Status: Human-facing Feature Specifications refined and validated as `FEATURE_PRESENTATION_READY_WITH_LIMITATIONS` without changing approved machine contracts.
 - Agent command: `/create-knowledge-graph` is documented at `docs/agents/commands/create-knowledge-graph.md` and delegates to the deterministic `agent-create-knowledge-graph` CLI adapter. It derives a safe project ID from the selected source root, enables project-aware Roslyn only when .NET project evidence exists, keeps Neo4j opt-in, and does not use an LLM.
-- Current step: Feature Specification consolidation is complete; await explicit authorization for optional target-design analysis or Target Architecture.
+- Current step: Feature presentation refinement is complete; await explicit authorization for optional target-design analysis or Target Architecture.
 - Complete application correction: deterministic first-party native-crash fallback now emits literal C#/JavaScript/Razor facts alongside provenance. Final analysis: 2,384 files, 3,386 nodes, 4,593 edges, 38 review warnings, zero extraction warnings, 44 opaque dependencies, and `complete_with_opaque_dependencies`. The attempted Neo4j load is blocked solely by unavailable local Neo4j environment configuration; full viewer export remains gated on that load.
 - Failure inventory: 42 JavaScript, 3 C#, and 2 HTML Tree-sitter workers exit with `3221225477`; all are supported-language parser defects requiring a generic repair. See `docs/validation/complete-application-extraction-failure-inventory.md`.
 - Viewer runbook: `docs/runbooks/understand-anything-viewer.md` documents the validated UI-only command and `tools/launch_understand_anything_viewer.ps1` safely exports and launches any approved project-scoped graph with a caller-supplied local token.
@@ -12,7 +12,7 @@
 - Completed work: Project memory initialized; Dashboard source discovery completed; deterministic scoped inventory, facts, normalized graph JSON, summary, CLI, and tests created; Roslyn graph-label correction validated on a real .NET 8 SDK; Create Knowledge Graph now validates input, analyzes source, validates the project-scoped graph, optionally loads only that project into Neo4j, and writes customer-facing run status artifacts. Native Tree-sitter extraction is isolated per file; child workers bootstrap the repository-local `src` directory through a copied `PYTHONPATH`, and abnormal exits, timeouts, invalid worker output, startup/import errors, and Python extraction errors produce safe structured warnings while remaining files continue. Profiles now carry explicit scope metadata, audit every discovered file, limit selected-flow graph File nodes and normal Roslyn facts to the approved scope, and expose proven cross-scope semantic references without silently widening the graph. Step 3C.6 loaded only `healthclinic-dashboard-scope-demo-v3` with 123 Neo4j nodes, 169 relationships, 27 warnings, and `scope_complete` coverage. Step 3C.7 now assigns all 123 exported viewer nodes exactly once across five deterministic evidence-derived layers, preserving 169 edges and 27 warnings; the port-5175 viewer returned HTTP 200 for both the page and graph endpoint.
 - Next action: `ANALYZE_OPTIONAL_TARGET_DESIGN_OR_RECOMMEND_TARGET_ARCHITECTURE` only when explicitly requested. Do not analyze Figma, recommend architecture, generate Angular, or modify source automatically.
 - Blockers: None for Step 3C.6. Known review warnings remain visible: unresolved API-call ownership, implicit MVC `View()` matching, and Roslyn symbols that could not be resolved against the legacy source context.
-- Exact next action when resumed: Read prompts through 049, approved lineage, and `artifacts/feature-specifications/latest/`. Await explicit path selection.
+- Exact next action when resumed: Read prompts through 050, approved lineage, and `artifacts/feature-specifications/latest/`. Await explicit path selection.
 
 ## Resume Command
 
@@ -114,6 +114,16 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Safety: no invented Feature, Story, AC, persona, rule, NFR, security requirement, target UX, Figma reference, or architecture decision. Target design is not analyzed, architecture is pending, and modernization is not started.
 - Validation: focused Feature Specification/AC suite `13 passed`; complete suite `120 passed, 2 skipped, 0 failed, 0 errors` in `28.82s`.
 - Readiness: `FEATURE_SPECIFICATIONS_READY_WITH_LIMITATIONS`; next action remains explicit optional target-design analysis or Target Architecture selection.
+
+## Professional Feature Presentation
+
+- Source contract: immutable Feature Specification run `legacy-dashboard-complete-application-demo-v1-2026-09-01-114638-016471`; refined run: `legacy-dashboard-complete-application-demo-v1-2026-09-01-121011-515356`.
+- The five Feature JSON contracts remain byte-identical. Refined Markdown is a separate human contract with 47 auditable semantic mappings: 21 workflows, 12 Stories, and 14 AC.
+- Story, AC, and workflow semantic-equivalence gates pass. Internal diagnostic noise, rendering defects, duplicate presentation content, and invented requirements are zero.
+- Every one of 22 Feature/role quality dimensions scores at least 9.0 for every Feature using a documented ten-check content rubric; minimum overall score is 9.0.
+- The Dashboard POC document was inspected for all 3 Feature Stories, 5 Feature AC, stakeholder summary, Razor/AngularJS context, integration clarification, Figma pending, architecture pending, and clean traceability.
+- Validation: focused presentation/specification suite `6 passed`; complete suite `123 passed, 2 skipped, 0 failed, 0 errors` in `29.69s`.
+- Readiness: `FEATURE_PRESENTATION_READY_WITH_LIMITATIONS`; next action remains explicit optional target-design analysis or Target Architecture selection.
 
 ## Provider And Developer Experience
 
