@@ -3,8 +3,8 @@
 - Overall status: `succeeded`
 - Project ID: `legacy-dashboard-complete-application-demo-v1`
 - Source root: `C:\Users\himan\OneDrive\Documents\polaris-modernization-poc\modernization\modernization\source\HealthClinic.biz`
-- Started: `2026-09-01T01:31:34.787953Z`
-- Ended: `2026-09-01T01:32:21.097534Z`
+- Started: `2026-09-01T03:25:30.178118Z`
+- Ended: `2026-09-01T03:26:19.447562Z`
 - Neo4j Browser: http://localhost:7474
 
 ## Workflow Stages
@@ -18,9 +18,9 @@
 ## Results
 
 - Files: 2384
-- Facts: 8865
-- Nodes: 4878
-- Edges: 5148
+- Facts: 8929
+- Nodes: 4931
+- Edges: 5205
 - Warnings: 4483
 - Extraction warnings: 0
 - Scope: `Full application analysis`

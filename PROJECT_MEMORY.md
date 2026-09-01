@@ -150,3 +150,11 @@ The immutable `legacy-dashboard-complete-application-demo-v1-2026-09-01-013227` 
 This run is `NOT_READY` for Phase 2. The generic ASP.NET attribute-route analyzer terminates class-attribute matching at the `]` in the literal `[controller]` and has a case-sensitive `/Api/` fallback. It emits 4 endpoints and 0 proven mappings even though source evidence shows 12 attribute-routed controllers, 55 HTTP method attributes, and 10 matching literal AngularJS calls to `UsersController` routes. Roslyn contributes 4,344 unresolved occurrences: 4,342 explained limitations and 2 `UNKNOWN` items.
 
 Application Understanding remains `STALE`; do not run it or begin Phase 2. The required next action is `TARGETED_ANALYZER_FIX`, followed by a new immutable graph run and a new forensic gate. Read `artifacts/knowledge-graph/latest/kg-readiness-analysis.md` on recovery.
+
+## Targeted ASP.NET Route Repair
+
+The generic route repair is complete. A deterministic balanced attribute scanner now preserves quoted route attributes containing bracket tokens, records source route templates and token resolution, supports `Route`, `RoutePrefix`, HTTP verb attributes, `AcceptVerbs`, and `ActionName`, and handles API path segments case-insensitively. It contains no application-specific conditions.
+
+The new immutable run `legacy-dashboard-complete-application-demo-v1-2026-09-01-032625` has 58 backend endpoint facts and 10 proven frontend mappings, compared with 4 and 0 in `013227`. The real source retains 55 endpoint facts across 12 controllers with `api/[controller]` class templates. Focused framework tests passed 11 and the complete suite passed 87 with 2 skipped. Source inventory/hash data is unchanged, and graph/evidence integrity pass.
+
+The new forensic gate remains `NOT_READY`, not because either targeted defect remains, but because Roslyn still has two `UNKNOWN` unresolved invocations in the iOS client. Application Understanding remains `STALE`; do not begin Phase 2. Next action: `ADDITIONAL_DIAGNOSIS`. Recovery reading includes prompt 041 and `artifacts/knowledge-graph/latest/kg-readiness-analysis.md`.

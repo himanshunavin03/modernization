@@ -43,7 +43,7 @@
       "Type",
       "UIControl"
     ],
-    "nodes": 4878,
+    "nodes": 4931,
     "nodes_with_review_warnings": 278,
     "nodes_without_evidence": [],
     "relationship_types": [
@@ -55,6 +55,7 @@
       "DEPENDS_ON",
       "HAS_PROPERTY",
       "HOSTS",
+      "IMPLEMENTED_BY",
       "IMPORTS",
       "INVOKES",
       "PROTECTS",
@@ -62,7 +63,7 @@
       "USES_TEMPLATE",
       "USES_VIEW_MODEL"
     ],
-    "relationships": 5148,
+    "relationships": 5205,
     "relationships_without_evidence": [],
     "unresolved_invocation_targets": 2098,
     "unresolved_parameter_types": 39,

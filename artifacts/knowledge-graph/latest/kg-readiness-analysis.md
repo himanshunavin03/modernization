@@ -1,21 +1,19 @@
 # Knowledge Graph Readiness Analysis
 
-## Scope and identity
+## Run identity and scope
 
-- Run ID: `legacy-dashboard-complete-application-demo-v1-2026-09-01-013227`
+- Run ID: `legacy-dashboard-complete-application-demo-v1-2026-09-01-032625`
 - Project ID: `legacy-dashboard-complete-application-demo-v1`
-- Analysis date: 2026-08-31
-- Canonical artifacts examined: `knowledge-graph.json`, `facts.json`, `roslyn-semantic-all.json`, `source-inventory.json`, `framework-detection.json`, `graph-run-status.json`, and `review-metadata.json`.
-- All JSON artifacts parsed. Every project-bearing artifact has the expected project ID. `artifacts/knowledge-graph/latest/` is byte-identical to this run for every JSON artifact.
-- This is a read-only forensic gate. No source file, canonical graph artifact, Neo4j data, or analyzer code was changed.
+- Previous run: `legacy-dashboard-complete-application-demo-v1-2026-09-01-013227`
+- This report was calculated from the new immutable run only. `artifacts/knowledge-graph/latest/` is byte-identical to the canonical JSON files in this run.
+- No Neo4j load occurred. No Application Understanding work occurred. Source inventory paths and hashes are identical to the previous run (2,384 files).
 
-## Graph and evidence integrity
+## Integrity and provenance
 
 | Check | Result |
 | --- | ---: |
-| Nodes | 4,878 |
-| Relationships | 5,148 |
-| Review warnings | 4,483 |
+| Nodes | 4,931 |
+| Relationships | 5,205 |
 | Broken relationship endpoints | 0 |
 | Duplicate node IDs | 0 |
 | Duplicate relationships (`type`, `source`, `target`) | 0 |
@@ -23,72 +21,70 @@
 | Relationships without evidence | 0 |
 | Invalid evidence paths, hashes, or line ranges | 0 |
 | Orphan nodes | 377 |
-| C# nodes classified as Angular/AngularJS | 0 |
+| C# records classified as Angular/AngularJS | 0 |
 | JSON validity | PASS |
+| Source inventory/fingerprint change | None |
 
-The orphan count is reported for review only. These nodes have valid evidence and are not broken relationship endpoints. The graph's own validation reports zero evidence gaps and the source inventory is complete: 2,384 selected files, zero extraction warnings, 44 explicit opaque dependencies, and `complete_with_opaque_dependencies` coverage.
+The 377 orphan nodes are valid evidence-bearing records with no incident relationship. They are not broken references. Extraction coverage is `complete_with_opaque_dependencies`: 2,384 selected files, zero extraction warnings, and 44 explicitly opaque dependency records.
 
-## Roslyn semantic resolution
+## Targeted defect verification
 
-| Measure | Count |
+`DEFECT_1_ROUTE_ATTRIBUTE_BRACKET_PARSING_FIXED: YES`
+
+The deterministic attribute scanner now tracks balanced brackets while inside and outside quoted strings. It preserves `route_template`, `controller_route_template`, `method_route_template`, and `route_token_resolution`. The real-source run has 55 endpoint facts across 12 controllers retaining `controller_route_template = api/[controller]`; it no longer loses the class prefix at the bracket token.
+
+`DEFECT_2_CASE_INSENSITIVE_API_PATH_FIXED: YES`
+
+API path fallback now evaluates complete path segments case-insensitively and recognizes `api`, `.api`, and mixed-case equivalents without matching arbitrary strings containing `api`. Regression tests cover `Product.API`, `Product.Api`, and `Product.api` paths. The real source under `src/MyHealth.API/...` now yields normalized API routes.
+
+## Before and after framework facts
+
+| Measure | Previous | New | Difference | Explanation |
+| --- | ---: | ---: | ---: | --- |
+| Backend endpoint facts | 4 | 58 | +54 | Balanced class attributes retain `api/[controller]`; async actions are also recognized. |
+| Frontend API-call facts | 44 | 44 | 0 | Existing source facts are preserved. |
+| Proven API mappings | 0 | 10 | +10 | Literal `GET /api/users/current/{tenant,user,claims}` calls now uniquely match endpoint facts. |
+| Graph nodes | 4,878 | 4,931 | +53 | Endpoint and mapping records normalized into the graph. |
+| Graph relationships | 5,148 | 5,205 | +57 | Additional endpoint declarations and unique `IMPLEMENTED_BY` relationships. |
+| Review warnings | 4,483 | 4,483 | 0 | No warning was suppressed. |
+
+The 10 mapping facts collapse to three unique `IMPLEMENTED_BY` graph edges because multiple source call sites target the same API-call and endpoint nodes. This is graph deduplication, not lost evidence.
+
+## API mapping and contracts
+
+| Classification | Count |
 | --- | ---: |
-| Total Roslyn facts | 7,373 |
-| Compiler-proven occurrences | 3,029 |
-| Total unresolved occurrences | 4,344 |
-| Unique unresolved diagnostics | 6 |
-| `COMPILATION_ERROR` | 3,701 |
-| `PROJECT_LOAD_FAILURE` | 534 |
-| `OVERLOAD_RESOLUTION` | 107 |
-| `UNKNOWN` | 2 |
-| Roslyn analyzer defects proven by these diagnostics | 0 |
-| Explained limitations | 4,342 |
-| Roslyn runtime warnings | 0 |
-| Roslyn analyzer-defect warnings | 0 |
-| Roslyn explained warnings | 72 |
-| Roslyn unknown warnings | 0 |
+| Proven | 10 |
+| Ambiguous | 0 |
+| Dynamic URL warnings | 22 |
+| External API | 1 |
+| No backend route | 1 |
+| Unresolved structural calls | 32 |
 
-The 72 Roslyn warnings are 71 `PROJECT_LOAD_FAILURE` warnings for legacy project formats/dependencies and one `SYNTHETIC_FALLBACK` warning. The 3,701 compilation-error occurrences, 534 project-load failures, and 107 overload-resolution occurrences are explained limitations of the available legacy build context; they are not silently accepted as resolved. The two `UNKNOWN` unresolved occurrences remain a readiness concern.
+The 44 API-call facts reconcile as 10 proven, one literal no-backend-route call, one external placeholder URL, and 32 structural calls that lack a framework-proven HTTP method and therefore cannot be mapped safely. Dynamic URLs are separate warnings and are not counted as API-call facts. Remaining non-proven calls are explained by dynamic URL construction, an external placeholder URL, an unmatched literal route, or unsupported structural call syntax without a deterministically proven verb; none is converted to a mapping.
 
-Coverage modes, counted from the Roslyn semantic artifact, are 1,004 compiler-proven facts under partial project compilation, 3,778 partial-project occurrences, 2,591 synthetic-fallback occurrences, and 0 structural-only Roslyn occurrences. The separate canonical fact artifact has 1,383 structural facts, 91 deterministic crash-fallback facts, and 18 framework-proven facts.
+The endpoint catalog contains 49 parameter-bearing endpoint signatures and 38 distinct response-type values. These are source/structural contract fields, not inferred DTOs. The catalog remains subject to the documented Roslyn limitations below.
 
-## Framework and API mapping forensics
+## Razor and Roslyn
 
-Framework detection has source evidence for ASP.NET MVC/Razor, .NET API, AngularJS, and TypeScript. No C# graph record is classified as Angular or AngularJS.
+There are three evidence-backed Razor view-model facts and two unique `USES_VIEW_MODEL` edges. There are no static supported Razor action-link calls, so Razor action mappings remain zero without indicating an analyzer defect.
 
-| Measure | Count |
-| --- | ---: |
-| Backend endpoint facts | 4 |
-| Frontend API-call facts | 44 |
-| Proven API mappings | 0 |
-| Ambiguous API mappings | 0 |
-| Dynamic API URL warnings | 22 |
-| External API calls | 1 |
-| No-backend-route calls | 1 |
-| Unresolved API calls | 42 |
-
-The 44 API-call facts reconcile as 32 structural Tree-sitter calls without a proven HTTP-method/route pair, 10 framework-proven literal calls to `GET /api/users/current/{tenant,user,claims}` that cannot map because the endpoint catalog is incomplete, one literal `GET /clinics` with no proven backend route, and one external placeholder URL. Dynamic URLs are represented by 22 review warnings rather than API-call facts and therefore are not added to the 44-fact total.
-
-The zero proven mappings are an analyzer defect, not evidence that the application has no frontend-to-backend contracts. The run contains only four endpoint facts: two incorrectly normalized `UsersController` routes without their `api/users` class prefix and two `BandController` routes. Direct source evidence finds 12 controllers with `[Route("api/[controller]")]` and 55 `[Http...]` method attributes. For example, `src/MyHealth.API/Controllers/UsersController.cs` proves `[Route("api/[controller]")]`, `[HttpGet("current/user")]`, `[HttpGet("current/claims")]`, and `[HttpGet("current/tenant")]`; the frontend has ten literal calls to those normalized routes.
-
-The generic cause is the current class-attribute regular expression: `[^\]]+` ends at the `]` inside the literal `[controller]`, so it does not retain the class route attribute. In addition, the conventional `/Api/` path fallback is case-sensitive and does not recognize `src/MyHealth.API/...`. These generic defects prevent complete endpoint discovery and contract mapping. They must be fixed and regression-tested before a new run is eligible for Phase 2.
-
-API contracts currently present are incomplete but evidence-backed: four endpoint response contracts (`FileContentResult`, `JsonResult`, `RootObject`, and `void`) and one explicit request-parameter contract (`value` on `POST /api/Band/{value}`). No request or response contract must be inferred for endpoints omitted by the faulty catalog.
-
-## Razor validation
-
-Three Razor `@model` facts are present, with two corresponding `USES_VIEW_MODEL` graph relationships: `LoginViewModel`, `IEnumerable<ClinicAppointment>`, and `AppState`. There are zero Razor action-link facts and zero `CALLS_ACTION` relationships. A repository-wide search found zero static `Html.Action`, `Html.ActionLink`, or `Url.Action` invocations matching the supported literal two-argument pattern. Therefore, the zero Razor-action count is an evidenced source limitation for this rule, not an analyzer defect.
+Roslyn remains unchanged from the prior run: 7,373 semantic facts, 3,029 proven occurrences, and 4,344 unresolved occurrences. Of the unresolved occurrences, 3,701 are `COMPILATION_ERROR`, 534 are `PROJECT_LOAD_FAILURE`, 107 are `OVERLOAD_RESOLUTION`, and 2 are `UNKNOWN`. The first three categories are documented environment/source limitations; the two unknown unresolved invocations are in `src/MyHealth.Client.iOS/Views/HomeView.cs` and require further diagnosis. Roslyn warnings remain 71 `PROJECT_LOAD_FAILURE` plus one `SYNTHETIC_FALLBACK` warning.
 
 ## Readiness decision
 
+`GENERIC_ANALYZER_DEFECT_REMAINING: NO` for the two targeted ASP.NET route defects.
+
 `KG_READINESS_STATUS: NOT_READY`
 
-`ANALYZER_FIX_REQUIRED: YES`
+`APPLICATION_UNDERSTANDING_STATUS: STALE`
 
-`NEXT_ACTION: TARGETED_ANALYZER_FIX`
+`NEXT_ACTION: ADDITIONAL_DIAGNOSIS`
 
-The graph is structurally valid and has complete evidence provenance, but it is not semantically trustworthy enough for Phase 2 because a generic route-attribute parser defect suppresses the endpoint catalog and all proven frontend-to-backend mappings. Application Understanding remains `STALE`; it must not be rerun or treated as current until the generic route analyzer is repaired, the KG is regenerated into a new immutable run, and this forensic gate passes on that new run.
+The targeted route defects are fixed and graph/evidence integrity pass. The graph is still not readiness-approved because two Roslyn unresolved occurrences remain classified `UNKNOWN`. Application Understanding must not be rerun until those are classified or repaired through a separate evidence-backed gate.
 
-## Test result
+## Test evidence
 
-`python -m pytest -q`: **79 passed, 2 skipped, 0 failed, 0 errors**.
+- `python -m pytest tests/test_framework_analyzers.py -q`: **11 passed**
+- `python -m pytest -q`: **87 passed, 2 skipped, 0 failed, 0 errors**
 

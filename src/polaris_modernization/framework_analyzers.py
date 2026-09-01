@@ -4,7 +4,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 import re
 from pathlib import Path
-from typing import Protocol
+from typing import Iterable, Protocol
+from urllib.parse import urlparse
 
 from polaris_modernization.graph.api_mapping import normalize_route
 from polaris_modernization.models import Evidence, Fact
@@ -31,16 +32,95 @@ def _literal(value: str) -> str | None:
     return match.group(1) if match else None
 
 
-def _route(prefix: str, controller: str, suffix: str) -> str:
-    value = "/".join(part.strip("/") for part in (prefix, suffix) if part.strip("/"))
-    value = value.replace("[controller]", controller.removesuffix("Controller"))
-    return normalize_route(value)
+def _route(prefix: str, controller: str, action: str, suffix: str) -> tuple[str, str, dict[str, str]]:
+    """Compose an ASP.NET route while retaining the source template and token evidence."""
+    template = "/".join(part.strip("/") for part in (prefix, suffix) if part.strip("/"))
+    tokens: dict[str, str] = {}
+    if "[controller]" in template:
+        tokens["controller"] = controller.removesuffix("Controller").lower()
+    if "[action]" in template:
+        tokens["action"] = action
+    normalized = template
+    for token, value in tokens.items():
+        normalized = normalized.replace(f"[{token}]", value)
+    return template, normalize_route(normalized), tokens
+
+
+def _attribute_blocks(text: str) -> list[tuple[int, int, str]]:
+    """Return balanced C# attribute blocks without treating brackets in strings as delimiters."""
+    blocks: list[tuple[int, int, str]] = []
+    start: int | None = None
+    depth = 0
+    quote: str | None = None
+    escaped = False
+    for index, char in enumerate(text):
+        if quote:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == quote:
+                quote = None
+            continue
+        if char in {"'", '"'}:
+            quote = char
+        elif char == "[":
+            if depth == 0:
+                start = index
+            depth += 1
+        elif char == "]" and depth:
+            depth -= 1
+            if depth == 0 and start is not None:
+                blocks.append((start, index + 1, text[start + 1:index]))
+                start = None
+    return blocks
+
+
+def _split_top_level(value: str) -> Iterable[str]:
+    start = 0
+    depth = 0
+    quote: str | None = None
+    escaped = False
+    for index, char in enumerate(value):
+        if quote:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == quote:
+                quote = None
+            continue
+        if char in {"'", '"'}:
+            quote = char
+        elif char == "(":
+            depth += 1
+        elif char == ")" and depth:
+            depth -= 1
+        elif char == "," and depth == 0:
+            yield value[start:index].strip()
+            start = index + 1
+    yield value[start:].strip()
+
+
+def _attribute(name: str, attributes: list[str]) -> list[str]:
+    pattern = re.compile(rf"^\s*{re.escape(name)}(?:Attribute)?\s*(?:\((?P<args>.*)\))?\s*$", re.S)
+    return [match.group("args") or "" for item in attributes if (match := pattern.match(item))]
+
+
+def _first_string(arguments: str) -> str | None:
+    match = re.search(r"['\"]((?:\\.|[^'\"])*)['\"]", arguments, re.S)
+    return bytes(match.group(1), "utf-8").decode("unicode_escape") if match else None
+
+
+def _api_path_hint(source_path: str) -> bool:
+    parts = re.split(r"[\\/]", source_path)
+    return any(part.casefold() == "api" or part.casefold().endswith(".api") for part in parts)
 
 
 class AspNetRouteAnalyzer:
     """Attribute-route and conventional-controller endpoint discovery without source-specific rules."""
-    _class = re.compile(r"(?P<attrs>(?:\s*\[[^\]]+\]\s*)*)\s*(?:public\s+)?class\s+(?P<name>\w+Controller)\b")
-    _method = re.compile(r"(?P<attrs>(?:\s*\[[^\]]+\]\s*)*)\s*public\s+(?P<return>[\w<>?.]+)\s+(?P<name>\w+)\s*\((?P<params>[^)]*)\)")
+    _class = re.compile(r"\b(?:(?:public|internal|protected)\s+)?(?:(?:abstract|sealed|partial)\s+)*class\s+(?P<name>\w+Controller)\b")
+    _method = re.compile(r"\bpublic\s+(?:(?:static|virtual|override|async)\s+)*(?P<return>[\w<>?,.\[\]]+)\s+(?P<name>\w+)\s*\((?P<params>[^)]*)\)")
 
     def supports(self, detections: list[dict]) -> bool:
         return any(item["framework"] in {"ASP.NET MVC/Razor", ".NET API"} for item in detections)
@@ -51,38 +131,57 @@ class AspNetRouteAnalyzer:
             if not entry["selected_for_extraction"] or not entry["source_path"].endswith(".cs"):
                 continue
             text = (source_root / entry["source_path"]).read_text(encoding="utf-8", errors="replace")
-            controller_match = self._class.search(text)
-            if not controller_match:
-                continue
-            controller = controller_match.group("name")
-            attrs = controller_match.group("attrs")
-            prefix_match = re.search(r"(?:RoutePrefix|Route)\s*\(\s*['\"]([^'\"]+)['\"]", attrs)
-            prefix = prefix_match.group(1) if prefix_match else "api/[controller]" if "/Api/" in entry["source_path"] or "\\Api\\" in entry["source_path"] else ""
-            for method in self._method.finditer(text, controller_match.end()):
-                method_attrs = method.group("attrs")
-                verb_match = re.search(r"Http(Get|Post|Put|Patch|Delete)\s*(?:\(\s*['\"]([^'\"]+)['\"]\s*\))?", method_attrs)
-                accept = re.search(r"AcceptVerbs\s*\(([^)]*)\)", method_attrs)
-                route_match = re.search(r"Route\s*\(\s*['\"]([^'\"]+)['\"]", method_attrs)
-                if verb_match:
-                    verbs = [verb_match.group(1).upper()]
-                    suffix = verb_match.group(2) or (route_match.group(1) if route_match else "")
-                elif accept:
-                    verbs = re.findall(r"['\"](GET|POST|PUT|PATCH|DELETE)['\"]", accept.group(1), re.I)
-                    suffix = route_match.group(1) if route_match else ""
-                elif prefix:
-                    verbs, suffix = ["GET"], route_match.group(1) if route_match else method.group("name")
-                else:
-                    continue
-                line = text.count("\n", 0, method.start()) + 1
-                response = method.group("return")
-                params = [part.strip().split()[-1] for part in method.group("params").split(",") if part.strip()]
-                for verb in verbs:
-                    route = _route(prefix, controller, suffix)
-                    result.facts.append(Fact("endpoint", f"{verb} {route}", _evidence(entry, project_id, line), {
-                        "http_method": verb, "normalized_route": route, "route_template": route,
-                        "controller": controller, "action": method.group("name"), "response_type": response,
-                        "parameters": params, "framework": "ASP.NET", "provenance": "FRAMEWORK_PROVEN",
-                    }))
+            blocks = _attribute_blocks(text)
+            def attrs_before(start: int) -> list[str]:
+                result: list[str] = []
+                cursor = start
+                for block_start, block_end, body in reversed(blocks):
+                    if block_end > cursor:
+                        continue
+                    if text[block_end:cursor].strip():
+                        break
+                    result.extend(reversed(list(_split_top_level(body))))
+                    cursor = block_start
+                return list(reversed(result))
+            classes = list(self._class.finditer(text))
+            for class_index, controller_match in enumerate(classes):
+                controller = controller_match.group("name")
+                controller_attrs = attrs_before(controller_match.start())
+                prefix_args = _attribute("RoutePrefix", controller_attrs) or _attribute("Route", controller_attrs)
+                prefix = _first_string(prefix_args[0]) if prefix_args else None
+                if prefix is None and _api_path_hint(entry["source_path"]):
+                    prefix = "api/[controller]"
+                class_end = classes[class_index + 1].start() if class_index + 1 < len(classes) else len(text)
+                for method in self._method.finditer(text, controller_match.end(), class_end):
+                    method_attrs = attrs_before(method.start())
+                    http = [(verb.upper(), _first_string(args)) for verb in ("Get", "Post", "Put", "Patch", "Delete") for args in _attribute(f"Http{verb}", method_attrs)]
+                    accept = [value.upper() for args in _attribute("AcceptVerbs", method_attrs) for value in re.findall(r"(?:HttpVerbs\.)?(GET|POST|PUT|PATCH|DELETE)\b", args, re.I)]
+                    route_args = _attribute("Route", method_attrs)
+                    suffix = _first_string(route_args[0]) if route_args else ""
+                    action_args = _attribute("ActionName", method_attrs)
+                    action = _first_string(action_args[0]) if action_args else method.group("name")
+                    if http:
+                        verbs = [verb for verb, _ in http]
+                        suffix = next((route for _, route in http if route is not None), suffix)
+                    elif accept:
+                        verbs = accept
+                    elif prefix:
+                        verbs = ["GET"]
+                        suffix = suffix or method.group("name")
+                    else:
+                        continue
+                    line = text.count("\n", 0, method.start()) + 1
+                    response = method.group("return")
+                    params = [part.strip().split()[-1] for part in method.group("params").split(",") if part.strip()]
+                    for verb in dict.fromkeys(verbs):
+                        template, route, tokens = _route(prefix or "", controller, action, suffix or "")
+                        result.facts.append(Fact("endpoint", f"{verb} {route}", _evidence(entry, project_id, line), {
+                            "http_method": verb, "normalized_route": route, "route_template": template,
+                            "controller_route_template": prefix or "", "method_route_template": suffix or "",
+                            "route_token_resolution": tokens, "controller": controller, "action": action,
+                            "response_type": response, "parameters": params, "framework": "ASP.NET",
+                            "provenance": "FRAMEWORK_PROVEN",
+                        }))
         return result
 
 
@@ -129,7 +228,12 @@ class AngularJsApiAnalyzer:
                     result.warnings.append({"source_path": entry["source_path"], "message": "Dynamic AngularJS API URL remains unresolved."})
                     continue
                 route = normalize_route(url)
-                result.facts.append(Fact("api_call", f"{verb} {route}", _evidence(entry, project_id, line), {"http_method": verb, "normalized_route": route, "url": url, "match_status": "UNRESOLVED", "framework": "AngularJS", "provenance": "FRAMEWORK_PROVEN"}))
+                external = bool(urlparse(url).scheme and urlparse(url).netloc)
+                result.facts.append(Fact("api_call", f"{verb} {route}", _evidence(entry, project_id, line), {
+                    "http_method": verb, "normalized_route": route, "url": url,
+                    "match_status": "EXTERNAL_API" if external else "UNRESOLVED",
+                    "framework": "AngularJS", "provenance": "FRAMEWORK_PROVEN", "external": external,
+                }))
         return result
 
 
@@ -146,9 +250,15 @@ class FrameworkAnalyzerRegistry:
                 result.warnings.extend(facts.warnings)
         endpoints = [fact for fact in result.facts if fact.kind == "endpoint"]
         for call in (fact for fact in result.facts if fact.kind == "api_call"):
+            if call.properties.get("external"):
+                continue
             candidates = [endpoint for endpoint in endpoints if endpoint.properties["http_method"] == call.properties["http_method"] and endpoint.properties["normalized_route"] == call.properties["normalized_route"]]
             if len(candidates) == 1:
+                call.properties["match_status"] = "PROVEN"
                 result.facts.append(Fact("api_mapping", call.name, call.evidence, {"endpoint": candidates[0].name, "status": "PROVEN"}))
             elif len(candidates) > 1:
+                call.properties["match_status"] = "AMBIGUOUS"
                 result.warnings.append({"source_path": call.evidence.source_path, "message": "AngularJS API call has ambiguous backend endpoint candidates."})
+            else:
+                call.properties["match_status"] = "NO_BACKEND_ROUTE"
         return result

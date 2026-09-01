@@ -22502,72 +22502,254 @@
       "evidence": {
         "confidence": 1.0,
         "extraction_method": "framework-analyzer",
-        "line_end": 115,
-        "line_start": 115,
+        "line_end": 22,
+        "line_start": 22,
         "project_id": "legacy-dashboard-complete-application-demo-v1",
-        "source_hash": "0fa0321514da328ece373f44bef326bde408d078bd676ec052d2ae2c39ae4c30",
-        "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        "source_hash": "941921dad837b3cf501f85eef180e3b9645b84ec330743b316d631be89cf09f3",
+        "source_path": "src/MyHealth.API/Controllers/ClinicAppointmentsController.cs"
       },
       "kind": "endpoint",
-      "name": "GET /current/avatar",
+      "name": "GET /api/clinicappointments/{id}",
       "properties": {
-        "action": "GetCurrentUserAvatar",
-        "controller": "UsersController",
+        "action": "GetAsync",
+        "controller": "ClinicAppointmentsController",
+        "controller_route_template": "api/[controller]",
         "framework": "ASP.NET",
         "http_method": "GET",
-        "normalized_route": "/current/avatar",
-        "parameters": [],
+        "method_route_template": "{id}",
+        "normalized_route": "/api/clinicappointments/{id}",
+        "parameters": [
+          "id"
+        ],
         "provenance": "FRAMEWORK_PROVEN",
-        "response_type": "FileContentResult",
-        "route_template": "/current/avatar"
+        "response_type": "Task<ClinicAppointment>",
+        "route_template": "api/[controller]/{id}",
+        "route_token_resolution": {
+          "controller": "clinicappointments"
+        }
       }
     },
     {
       "evidence": {
         "confidence": 1.0,
         "extraction_method": "framework-analyzer",
-        "line_end": 130,
-        "line_start": 130,
+        "line_end": 28,
+        "line_start": 28,
         "project_id": "legacy-dashboard-complete-application-demo-v1",
-        "source_hash": "0fa0321514da328ece373f44bef326bde408d078bd676ec052d2ae2c39ae4c30",
-        "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        "source_hash": "941921dad837b3cf501f85eef180e3b9645b84ec330743b316d631be89cf09f3",
+        "source_path": "src/MyHealth.API/Controllers/ClinicAppointmentsController.cs"
       },
       "kind": "endpoint",
-      "name": "GET /current/claims",
+      "name": "GET /api/clinicappointments/clinic/next",
       "properties": {
-        "action": "GetCurrentClaimsAsync",
-        "controller": "UsersController",
+        "action": "GetClinicAppointmentsAsync",
+        "controller": "ClinicAppointmentsController",
+        "controller_route_template": "api/[controller]",
         "framework": "ASP.NET",
         "http_method": "GET",
-        "normalized_route": "/current/claims",
-        "parameters": [],
+        "method_route_template": "clinic/next",
+        "normalized_route": "/api/clinicappointments/clinic/next",
+        "parameters": [
+          "count"
+        ],
         "provenance": "FRAMEWORK_PROVEN",
-        "response_type": "JsonResult",
-        "route_template": "/current/claims"
+        "response_type": "Task<IEnumerable<ClinicAppointment>>",
+        "route_template": "api/[controller]/clinic/next",
+        "route_token_resolution": {
+          "controller": "clinicappointments"
+        }
       }
     },
     {
       "evidence": {
         "confidence": 1.0,
         "extraction_method": "framework-analyzer",
-        "line_end": 21,
-        "line_start": 21,
+        "line_end": 34,
+        "line_start": 34,
         "project_id": "legacy-dashboard-complete-application-demo-v1",
-        "source_hash": "2a2370157b8e312da83f79a002236872c659a6d07828ef242541fa68459321d9",
-        "source_path": "src/MyHealth.Web.Stress/Api/Controllers/BandController.cs"
+        "source_hash": "941921dad837b3cf501f85eef180e3b9645b84ec330743b316d631be89cf09f3",
+        "source_path": "src/MyHealth.API/Controllers/ClinicAppointmentsController.cs"
       },
       "kind": "endpoint",
-      "name": "GET /api/Band",
+      "name": "GET /api/clinicappointments/patient/next/{patientId}",
       "properties": {
-        "action": "Get",
-        "controller": "BandController",
+        "action": "GetPatientAppointmentsAsync",
+        "controller": "ClinicAppointmentsController",
+        "controller_route_template": "api/[controller]",
         "framework": "ASP.NET",
         "http_method": "GET",
-        "normalized_route": "/api/Band",
-        "parameters": [],
+        "method_route_template": "patient/next/{patientId}",
+        "normalized_route": "/api/clinicappointments/patient/next/{patientId}",
+        "parameters": [
+          "patientId",
+          "count"
+        ],
         "provenance": "FRAMEWORK_PROVEN",
-        "response_type": "RootObject",
-        "route_template": "/api/Band"
+        "response_type": "Task<IEnumerable<ClinicAppointment>>",
+        "route_template": "api/[controller]/patient/next/{patientId}",
+        "route_token_resolution": {
+          "controller": "clinicappointments"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 40,
+        "line_start": 40,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "941921dad837b3cf501f85eef180e3b9645b84ec330743b316d631be89cf09f3",
+        "source_path": "src/MyHealth.API/Controllers/ClinicAppointmentsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "POST /api/clinicappointments",
+      "properties": {
+        "action": "AddAsync",
+        "controller": "ClinicAppointmentsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "POST",
+        "method_route_template": "",
+        "normalized_route": "/api/clinicappointments",
+        "parameters": [
+          "appointment"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<int>",
+        "route_template": "api/[controller]",
+        "route_token_resolution": {
+          "controller": "clinicappointments"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 23,
+        "line_start": 23,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "690cacfdc8921237c5241d051880ee28c7a64ebe38580b3cebad73243413b453",
+        "source_path": "src/MyHealth.API/Controllers/DoctorsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/doctors/{id}",
+      "properties": {
+        "action": "GetAsync",
+        "controller": "DoctorsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "{id}",
+        "normalized_route": "/api/doctors/{id}",
+        "parameters": [
+          "id"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<Doctor>",
+        "route_template": "api/[controller]/{id}",
+        "route_token_resolution": {
+          "controller": "doctors"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 29,
+        "line_start": 29,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "690cacfdc8921237c5241d051880ee28c7a64ebe38580b3cebad73243413b453",
+        "source_path": "src/MyHealth.API/Controllers/DoctorsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/doctors",
+      "properties": {
+        "action": "GetAsync",
+        "controller": "DoctorsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "",
+        "normalized_route": "/api/doctors",
+        "parameters": [
+          "pageSize",
+          "pageCount"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<Doctor>>",
+        "route_template": "api/[controller]",
+        "route_token_resolution": {
+          "controller": "doctors"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 35,
+        "line_start": 35,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "690cacfdc8921237c5241d051880ee28c7a64ebe38580b3cebad73243413b453",
+        "source_path": "src/MyHealth.API/Controllers/DoctorsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/doctors/speciality/{speciality}",
+      "properties": {
+        "action": "GetBySpecialityAsync",
+        "controller": "DoctorsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "speciality/{speciality}",
+        "normalized_route": "/api/doctors/speciality/{speciality}",
+        "parameters": [
+          "speciality",
+          "count"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<Doctor>>",
+        "route_template": "api/[controller]/speciality/{speciality}",
+        "route_token_resolution": {
+          "controller": "doctors"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 41,
+        "line_start": 41,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "690cacfdc8921237c5241d051880ee28c7a64ebe38580b3cebad73243413b453",
+        "source_path": "src/MyHealth.API/Controllers/DoctorsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/doctors/availability/hours/{doctorId}",
+      "properties": {
+        "action": "GetAvailableHoursAsync",
+        "controller": "DoctorsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "availability/hours/{doctorId}",
+        "normalized_route": "/api/doctors/availability/hours/{doctorId}",
+        "parameters": [
+          "doctorId",
+          "day",
+          "month",
+          "year"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<DateTime>>",
+        "route_template": "api/[controller]/availability/hours/{doctorId}",
+        "route_token_resolution": {
+          "controller": "doctors"
+        }
       }
     },
     {
@@ -22577,23 +22759,1553 @@
         "line_end": 47,
         "line_start": 47,
         "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "690cacfdc8921237c5241d051880ee28c7a64ebe38580b3cebad73243413b453",
+        "source_path": "src/MyHealth.API/Controllers/DoctorsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/doctors/appointments/days/{doctorId}",
+      "properties": {
+        "action": "GetDaysWithAppoinmentsAsync",
+        "controller": "DoctorsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "appointments/days/{doctorId}",
+        "normalized_route": "/api/doctors/appointments/days/{doctorId}",
+        "parameters": [
+          "doctorId",
+          "month",
+          "year"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<int>>",
+        "route_template": "api/[controller]/appointments/days/{doctorId}",
+        "route_token_resolution": {
+          "controller": "doctors"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 54,
+        "line_start": 54,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "690cacfdc8921237c5241d051880ee28c7a64ebe38580b3cebad73243413b453",
+        "source_path": "src/MyHealth.API/Controllers/DoctorsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "DELETE /api/doctors/{id}",
+      "properties": {
+        "action": "DeleteAsync",
+        "controller": "DoctorsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "DELETE",
+        "method_route_template": "{id}",
+        "normalized_route": "/api/doctors/{id}",
+        "parameters": [
+          "id"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task",
+        "route_template": "api/[controller]/{id}",
+        "route_token_resolution": {
+          "controller": "doctors"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 60,
+        "line_start": 60,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "690cacfdc8921237c5241d051880ee28c7a64ebe38580b3cebad73243413b453",
+        "source_path": "src/MyHealth.API/Controllers/DoctorsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "POST /api/doctors",
+      "properties": {
+        "action": "AddAsync",
+        "controller": "DoctorsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "POST",
+        "method_route_template": "",
+        "normalized_route": "/api/doctors",
+        "parameters": [
+          "doctor"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<int>",
+        "route_template": "api/[controller]",
+        "route_token_resolution": {
+          "controller": "doctors"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 66,
+        "line_start": 66,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "690cacfdc8921237c5241d051880ee28c7a64ebe38580b3cebad73243413b453",
+        "source_path": "src/MyHealth.API/Controllers/DoctorsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "PUT /api/doctors",
+      "properties": {
+        "action": "UpdateAsync",
+        "controller": "DoctorsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "PUT",
+        "method_route_template": "",
+        "normalized_route": "/api/doctors",
+        "parameters": [
+          "doctor"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task",
+        "route_template": "api/[controller]",
+        "route_token_resolution": {
+          "controller": "doctors"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 22,
+        "line_start": 22,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0836c1b377ee6b90a1db3b85b6df8e98e95bee48911196b498b4418d6da523f0",
+        "source_path": "src/MyHealth.API/Controllers/HomeAppointmentsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/homeappointments/{id}",
+      "properties": {
+        "action": "Get",
+        "controller": "HomeAppointmentsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "{id}",
+        "normalized_route": "/api/homeappointments/{id}",
+        "parameters": [
+          "id"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<HomeAppointment>",
+        "route_template": "api/[controller]/{id}",
+        "route_token_resolution": {
+          "controller": "homeappointments"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 28,
+        "line_start": 28,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0836c1b377ee6b90a1db3b85b6df8e98e95bee48911196b498b4418d6da523f0",
+        "source_path": "src/MyHealth.API/Controllers/HomeAppointmentsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/homeappointments/NextVisits/{patientId}",
+      "properties": {
+        "action": "GetNextVisits",
+        "controller": "HomeAppointmentsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "NextVisits/{patientId}",
+        "normalized_route": "/api/homeappointments/NextVisits/{patientId}",
+        "parameters": [
+          "patientId",
+          "count"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<HomeAppointment>>",
+        "route_template": "api/[controller]/NextVisits/{patientId}",
+        "route_token_resolution": {
+          "controller": "homeappointments"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 34,
+        "line_start": 34,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0836c1b377ee6b90a1db3b85b6df8e98e95bee48911196b498b4418d6da523f0",
+        "source_path": "src/MyHealth.API/Controllers/HomeAppointmentsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/homeappointments/Visited/{patientId}",
+      "properties": {
+        "action": "GetVisitedAsync",
+        "controller": "HomeAppointmentsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "Visited/{patientId}",
+        "normalized_route": "/api/homeappointments/Visited/{patientId}",
+        "parameters": [
+          "patientId",
+          "count"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<HomeAppointment>>",
+        "route_template": "api/[controller]/Visited/{patientId}",
+        "route_token_resolution": {
+          "controller": "homeappointments"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 40,
+        "line_start": 40,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0836c1b377ee6b90a1db3b85b6df8e98e95bee48911196b498b4418d6da523f0",
+        "source_path": "src/MyHealth.API/Controllers/HomeAppointmentsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "PUT /api/homeappointments",
+      "properties": {
+        "action": "UpdateAsync",
+        "controller": "HomeAppointmentsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "PUT",
+        "method_route_template": "",
+        "normalized_route": "/api/homeappointments",
+        "parameters": [
+          "appointment"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task",
+        "route_template": "api/[controller]",
+        "route_token_resolution": {
+          "controller": "homeappointments"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 23,
+        "line_start": 23,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "3531da78de6c08692e2043053c5faa27461a2b28ee29e0127a22bd94f9efa543",
+        "source_path": "src/MyHealth.API/Controllers/MedicinesController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/medicines/{id}",
+      "properties": {
+        "action": "GetAsync",
+        "controller": "MedicinesController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "{id}",
+        "normalized_route": "/api/medicines/{id}",
+        "parameters": [
+          "id"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<Medicine>",
+        "route_template": "api/[controller]/{id}",
+        "route_token_resolution": {
+          "controller": "medicines"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 29,
+        "line_start": 29,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "3531da78de6c08692e2043053c5faa27461a2b28ee29e0127a22bd94f9efa543",
+        "source_path": "src/MyHealth.API/Controllers/MedicinesController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/medicines/next",
+      "properties": {
+        "action": "GetNextAsync",
+        "controller": "MedicinesController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "next",
+        "normalized_route": "/api/medicines/next",
+        "parameters": [],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<Medicine>",
+        "route_template": "api/[controller]/next",
+        "route_token_resolution": {
+          "controller": "medicines"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 35,
+        "line_start": 35,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "3531da78de6c08692e2043053c5faa27461a2b28ee29e0127a22bd94f9efa543",
+        "source_path": "src/MyHealth.API/Controllers/MedicinesController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/medicines/patient/{patientId}",
+      "properties": {
+        "action": "GetMedicinesAsync",
+        "controller": "MedicinesController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "patient/{patientId}",
+        "normalized_route": "/api/medicines/patient/{patientId}",
+        "parameters": [
+          "patientId",
+          "count"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<Medicine>>",
+        "route_template": "api/[controller]/patient/{patientId}",
+        "route_token_resolution": {
+          "controller": "medicines"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 41,
+        "line_start": 41,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "3531da78de6c08692e2043053c5faa27461a2b28ee29e0127a22bd94f9efa543",
+        "source_path": "src/MyHealth.API/Controllers/MedicinesController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/medicines/doses/patient/{patientId}",
+      "properties": {
+        "action": "GetMedicinesWithDosesAsync",
+        "controller": "MedicinesController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "doses/patient/{patientId}",
+        "normalized_route": "/api/medicines/doses/patient/{patientId}",
+        "parameters": [
+          "patientId",
+          "count"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<MedicineWithDoses>>",
+        "route_template": "api/[controller]/doses/patient/{patientId}",
+        "route_token_resolution": {
+          "controller": "medicines"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 24,
+        "line_start": 24,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "72fc0ab6d2f7a26fa805c108263a085fc3b194abb80082ab675091a42b67387e",
+        "source_path": "src/MyHealth.API/Controllers/Office365Controller.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/office365/users",
+      "properties": {
+        "action": "GetAsync",
+        "controller": "Office365Controller",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "users",
+        "normalized_route": "/api/office365/users",
+        "parameters": [
+          "pageSize",
+          "pageCount"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<Doctor>>",
+        "route_template": "api/[controller]/users",
+        "route_token_resolution": {
+          "controller": "office365"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 31,
+        "line_start": 31,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "72fc0ab6d2f7a26fa805c108263a085fc3b194abb80082ab675091a42b67387e",
+        "source_path": "src/MyHealth.API/Controllers/Office365Controller.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/office365/userphoto",
+      "properties": {
+        "action": "GetUserPhotoAsync",
+        "controller": "Office365Controller",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "userphoto",
+        "normalized_route": "/api/office365/userphoto",
+        "parameters": [
+          "doctorPrincipalName"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IActionResult>",
+        "route_template": "api/[controller]/userphoto",
+        "route_token_resolution": {
+          "controller": "office365"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 43,
+        "line_start": 43,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "72fc0ab6d2f7a26fa805c108263a085fc3b194abb80082ab675091a42b67387e",
+        "source_path": "src/MyHealth.API/Controllers/Office365Controller.cs"
+      },
+      "kind": "endpoint",
+      "name": "POST /api/office365/appointments",
+      "properties": {
+        "action": "AddUserEventAsync",
+        "controller": "Office365Controller",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "POST",
+        "method_route_template": "appointments",
+        "normalized_route": "/api/office365/appointments",
+        "parameters": [
+          "appointment"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task",
+        "route_template": "api/[controller]/appointments",
+        "route_token_resolution": {
+          "controller": "office365"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 58,
+        "line_start": 58,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "72fc0ab6d2f7a26fa805c108263a085fc3b194abb80082ab675091a42b67387e",
+        "source_path": "src/MyHealth.API/Controllers/Office365Controller.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/office365/appointments",
+      "properties": {
+        "action": "GetUserEventsBeta",
+        "controller": "Office365Controller",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "appointments",
+        "normalized_route": "/api/office365/appointments",
+        "parameters": [
+          "doctorPrincipalName",
+          "month",
+          "10",
+          "0"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<Event_Beta>>",
+        "route_template": "api/[controller]/appointments",
+        "route_token_resolution": {
+          "controller": "office365"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 65,
+        "line_start": 65,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "72fc0ab6d2f7a26fa805c108263a085fc3b194abb80082ab675091a42b67387e",
+        "source_path": "src/MyHealth.API/Controllers/Office365Controller.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/office365/v1/appointments",
+      "properties": {
+        "action": "GetUserEvents",
+        "controller": "Office365Controller",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "v1/appointments",
+        "normalized_route": "/api/office365/v1/appointments",
+        "parameters": [
+          "doctorPrincipalName",
+          "month",
+          "10",
+          "0"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<Event_Beta>>",
+        "route_template": "api/[controller]/v1/appointments",
+        "route_token_resolution": {
+          "controller": "office365"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 72,
+        "line_start": 72,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "72fc0ab6d2f7a26fa805c108263a085fc3b194abb80082ab675091a42b67387e",
+        "source_path": "src/MyHealth.API/Controllers/Office365Controller.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/office365/appointments/byday",
+      "properties": {
+        "action": "GetUserByDayEventsBeta",
+        "controller": "Office365Controller",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "appointments/byday",
+        "normalized_route": "/api/office365/appointments/byday",
+        "parameters": [
+          "doctorPrincipalName",
+          "day",
+          "10",
+          "0"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<Event_Beta>>",
+        "route_template": "api/[controller]/appointments/byday",
+        "route_token_resolution": {
+          "controller": "office365"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 78,
+        "line_start": 78,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "72fc0ab6d2f7a26fa805c108263a085fc3b194abb80082ab675091a42b67387e",
+        "source_path": "src/MyHealth.API/Controllers/Office365Controller.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/office365/v1/appointments/byday",
+      "properties": {
+        "action": "GetUserByDayEvents",
+        "controller": "Office365Controller",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "v1/appointments/byday",
+        "normalized_route": "/api/office365/v1/appointments/byday",
+        "parameters": [
+          "doctorPrincipalName",
+          "day",
+          "10",
+          "0"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<Event_Beta>>",
+        "route_template": "api/[controller]/v1/appointments/byday",
+        "route_token_resolution": {
+          "controller": "office365"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 106,
+        "line_start": 106,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "72fc0ab6d2f7a26fa805c108263a085fc3b194abb80082ab675091a42b67387e",
+        "source_path": "src/MyHealth.API/Controllers/Office365Controller.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/office365/opentimeslots",
+      "properties": {
+        "action": "GetUserOpenTimeSlots",
+        "controller": "Office365Controller",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "opentimeslots",
+        "normalized_route": "/api/office365/opentimeslots",
+        "parameters": [
+          "doctorPrincipalName",
+          "null"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<TimeSlot>>",
+        "route_template": "api/[controller]/opentimeslots",
+        "route_token_resolution": {
+          "controller": "office365"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 22,
+        "line_start": 22,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "452777715931b201f8b35aab893db976058d3b5f9807941dda1576dfca5ec9d7",
+        "source_path": "src/MyHealth.API/Controllers/PatientsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/patients",
+      "properties": {
+        "action": "Get",
+        "controller": "PatientsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "",
+        "normalized_route": "/api/patients",
+        "parameters": [
+          "pageSize",
+          "pageCount"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<Patient>>",
+        "route_template": "api/[controller]",
+        "route_token_resolution": {
+          "controller": "patients"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 28,
+        "line_start": 28,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "452777715931b201f8b35aab893db976058d3b5f9807941dda1576dfca5ec9d7",
+        "source_path": "src/MyHealth.API/Controllers/PatientsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/patients/name/{name}",
+      "properties": {
+        "action": "GetByName",
+        "controller": "PatientsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "name/{name}",
+        "normalized_route": "/api/patients/name/{name}",
+        "parameters": [
+          "name",
+          "count"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<Patient>>",
+        "route_template": "api/[controller]/name/{name}",
+        "route_token_resolution": {
+          "controller": "patients"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 34,
+        "line_start": 34,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "452777715931b201f8b35aab893db976058d3b5f9807941dda1576dfca5ec9d7",
+        "source_path": "src/MyHealth.API/Controllers/PatientsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/patients/{id}",
+      "properties": {
+        "action": "Get",
+        "controller": "PatientsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "{id}",
+        "normalized_route": "/api/patients/{id}",
+        "parameters": [
+          "id"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<Patient>",
+        "route_template": "api/[controller]/{id}",
+        "route_token_resolution": {
+          "controller": "patients"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 40,
+        "line_start": 40,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "452777715931b201f8b35aab893db976058d3b5f9807941dda1576dfca5ec9d7",
+        "source_path": "src/MyHealth.API/Controllers/PatientsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "DELETE /api/patients/{id}",
+      "properties": {
+        "action": "DeleteAsync",
+        "controller": "PatientsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "DELETE",
+        "method_route_template": "{id}",
+        "normalized_route": "/api/patients/{id}",
+        "parameters": [
+          "id"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task",
+        "route_template": "api/[controller]/{id}",
+        "route_token_resolution": {
+          "controller": "patients"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 23,
+        "line_start": 23,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "90099cd1d01c496a02fb4cc981ba4f50ab563322561b35341f9d35f773472bc2",
+        "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/reports/clinicsummary",
+      "properties": {
+        "action": "GetClinicSummaryAsync",
+        "controller": "ReportsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "clinicsummary",
+        "normalized_route": "/api/reports/clinicsummary",
+        "parameters": [],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<ClinicSummary>",
+        "route_template": "api/[controller]/clinicsummary",
+        "route_token_resolution": {
+          "controller": "reports"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 29,
+        "line_start": 29,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "90099cd1d01c496a02fb4cc981ba4f50ab563322561b35341f9d35f773472bc2",
+        "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/reports/expenses/{year}",
+      "properties": {
+        "action": "GetExpensesSummaryAsync",
+        "controller": "ReportsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "expenses/{year}",
+        "normalized_route": "/api/reports/expenses/{year}",
+        "parameters": [
+          "year"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<ExpensesSummary>>",
+        "route_template": "api/[controller]/expenses/{year}",
+        "route_token_resolution": {
+          "controller": "reports"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 35,
+        "line_start": 35,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "90099cd1d01c496a02fb4cc981ba4f50ab563322561b35341f9d35f773472bc2",
+        "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/reports/patients/{year}",
+      "properties": {
+        "action": "GetPatientsSummaryAsync",
+        "controller": "ReportsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "patients/{year}",
+        "normalized_route": "/api/reports/patients/{year}",
+        "parameters": [
+          "year"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<PatientsSummary>>",
+        "route_template": "api/[controller]/patients/{year}",
+        "route_token_resolution": {
+          "controller": "reports"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 41,
+        "line_start": 41,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "5babafa776dd86257b8b6ad0857f7b3d9985d7eed693a5d7b044757dd380ad23",
+        "source_path": "src/MyHealth.API/Controllers/TenantsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/tenants",
+      "properties": {
+        "action": "GetAllAsync",
+        "controller": "TenantsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "",
+        "normalized_route": "/api/tenants",
+        "parameters": [],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<Tenant>",
+        "route_template": "api/[controller]",
+        "route_token_resolution": {
+          "controller": "tenants"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 48,
+        "line_start": 48,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "5babafa776dd86257b8b6ad0857f7b3d9985d7eed693a5d7b044757dd380ad23",
+        "source_path": "src/MyHealth.API/Controllers/TenantsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/tenants/list",
+      "properties": {
+        "action": "GetAsync",
+        "controller": "TenantsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "list",
+        "normalized_route": "/api/tenants/list",
+        "parameters": [
+          "pageSize",
+          "pageCount"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<Tenant>>",
+        "route_template": "api/[controller]/list",
+        "route_token_resolution": {
+          "controller": "tenants"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 63,
+        "line_start": 63,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "5babafa776dd86257b8b6ad0857f7b3d9985d7eed693a5d7b044757dd380ad23",
+        "source_path": "src/MyHealth.API/Controllers/TenantsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/tenants/{tenantId}",
+      "properties": {
+        "action": "GetAsync",
+        "controller": "TenantsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "{tenantId}",
+        "normalized_route": "/api/tenants/{tenantId}",
+        "parameters": [
+          "tenantId"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<Tenant>",
+        "route_template": "api/[controller]/{tenantId}",
+        "route_token_resolution": {
+          "controller": "tenants"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 70,
+        "line_start": 70,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "5babafa776dd86257b8b6ad0857f7b3d9985d7eed693a5d7b044757dd380ad23",
+        "source_path": "src/MyHealth.API/Controllers/TenantsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "POST /api/tenants",
+      "properties": {
+        "action": "AddAsync",
+        "controller": "TenantsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "POST",
+        "method_route_template": "",
+        "normalized_route": "/api/tenants",
+        "parameters": [
+          "request"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<TenantResponse>",
+        "route_template": "api/[controller]",
+        "route_token_resolution": {
+          "controller": "tenants"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 106,
+        "line_start": 106,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "5babafa776dd86257b8b6ad0857f7b3d9985d7eed693a5d7b044757dd380ad23",
+        "source_path": "src/MyHealth.API/Controllers/TenantsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "PUT /api/tenants",
+      "properties": {
+        "action": "UpdateAsync",
+        "controller": "TenantsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "PUT",
+        "method_route_template": "",
+        "normalized_route": "/api/tenants",
+        "parameters": [
+          "request"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<TenantResponse>",
+        "route_template": "api/[controller]",
+        "route_token_resolution": {
+          "controller": "tenants"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 137,
+        "line_start": 137,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "5babafa776dd86257b8b6ad0857f7b3d9985d7eed693a5d7b044757dd380ad23",
+        "source_path": "src/MyHealth.API/Controllers/TenantsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "DELETE /api/tenants/{tenantId}",
+      "properties": {
+        "action": "DeleteAsync",
+        "controller": "TenantsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "DELETE",
+        "method_route_template": "{tenantId}",
+        "normalized_route": "/api/tenants/{tenantId}",
+        "parameters": [
+          "tenantId"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task",
+        "route_template": "api/[controller]/{tenantId}",
+        "route_token_resolution": {
+          "controller": "tenants"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 21,
+        "line_start": 21,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "dca0069dd081e67e367d1d4e187effb43467c6a04251b6db99d149ea087accad",
+        "source_path": "src/MyHealth.API/Controllers/TipsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/tips/next",
+      "properties": {
+        "action": "Get",
+        "controller": "TipsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "next",
+        "normalized_route": "/api/tips/next",
+        "parameters": [],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<Tip>",
+        "route_template": "api/[controller]/next",
+        "route_token_resolution": {
+          "controller": "tips"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 53,
+        "line_start": 53,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0fa0321514da328ece373f44bef326bde408d078bd676ec052d2ae2c39ae4c30",
+        "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/users",
+      "properties": {
+        "action": "Get",
+        "controller": "UsersController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "",
+        "normalized_route": "/api/users",
+        "parameters": [
+          "pageSize",
+          "pageCount"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IEnumerable<ApplicationUser>>",
+        "route_template": "api/[controller]",
+        "route_token_resolution": {
+          "controller": "users"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 60,
+        "line_start": 60,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0fa0321514da328ece373f44bef326bde408d078bd676ec052d2ae2c39ae4c30",
+        "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/users/{username}",
+      "properties": {
+        "action": "GetAsync",
+        "controller": "UsersController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "{username}",
+        "normalized_route": "/api/users/{username}",
+        "parameters": [
+          "username"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<ApplicationUser>",
+        "route_template": "api/[controller]/{username}",
+        "route_token_resolution": {
+          "controller": "users"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 67,
+        "line_start": 67,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0fa0321514da328ece373f44bef326bde408d078bd676ec052d2ae2c39ae4c30",
+        "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+      },
+      "kind": "endpoint",
+      "name": "POST /api/users",
+      "properties": {
+        "action": "AddAsync",
+        "controller": "UsersController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "POST",
+        "method_route_template": "",
+        "normalized_route": "/api/users",
+        "parameters": [
+          "request"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<ApplicationUserResponse>",
+        "route_template": "api/[controller]",
+        "route_token_resolution": {
+          "controller": "users"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 82,
+        "line_start": 82,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0fa0321514da328ece373f44bef326bde408d078bd676ec052d2ae2c39ae4c30",
+        "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+      },
+      "kind": "endpoint",
+      "name": "PUT /api/users",
+      "properties": {
+        "action": "UpdateAsync",
+        "controller": "UsersController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "PUT",
+        "method_route_template": "",
+        "normalized_route": "/api/users",
+        "parameters": [
+          "request"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<ApplicationUserResponse>",
+        "route_template": "api/[controller]",
+        "route_token_resolution": {
+          "controller": "users"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 111,
+        "line_start": 111,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0fa0321514da328ece373f44bef326bde408d078bd676ec052d2ae2c39ae4c30",
+        "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+      },
+      "kind": "endpoint",
+      "name": "DELETE /api/users/{username}",
+      "properties": {
+        "action": "DeleteAsync",
+        "controller": "UsersController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "DELETE",
+        "method_route_template": "{username}",
+        "normalized_route": "/api/users/{username}",
+        "parameters": [
+          "username"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<ApplicationUserResponse>",
+        "route_template": "api/[controller]/{username}",
+        "route_token_resolution": {
+          "controller": "users"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 118,
+        "line_start": 118,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0fa0321514da328ece373f44bef326bde408d078bd676ec052d2ae2c39ae4c30",
+        "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/users/current/avatar",
+      "properties": {
+        "action": "GetCurrentUserAvatar",
+        "controller": "UsersController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "current/avatar",
+        "normalized_route": "/api/users/current/avatar",
+        "parameters": [],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "FileContentResult",
+        "route_template": "api/[controller]/current/avatar",
+        "route_token_resolution": {
+          "controller": "users"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 124,
+        "line_start": 124,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0fa0321514da328ece373f44bef326bde408d078bd676ec052d2ae2c39ae4c30",
+        "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/users/current/user",
+      "properties": {
+        "action": "GetCurrentUserAsync",
+        "controller": "UsersController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "current/user",
+        "normalized_route": "/api/users/current/user",
+        "parameters": [],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<string>",
+        "route_template": "api/[controller]/current/user",
+        "route_token_resolution": {
+          "controller": "users"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 133,
+        "line_start": 133,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0fa0321514da328ece373f44bef326bde408d078bd676ec052d2ae2c39ae4c30",
+        "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/users/current/claims",
+      "properties": {
+        "action": "GetCurrentClaimsAsync",
+        "controller": "UsersController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "current/claims",
+        "normalized_route": "/api/users/current/claims",
+        "parameters": [],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "JsonResult",
+        "route_template": "api/[controller]/current/claims",
+        "route_token_resolution": {
+          "controller": "users"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 146,
+        "line_start": 146,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0fa0321514da328ece373f44bef326bde408d078bd676ec052d2ae2c39ae4c30",
+        "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/users/current/tenant",
+      "properties": {
+        "action": "GetCurrentTenantAsync",
+        "controller": "UsersController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "current/tenant",
+        "normalized_route": "/api/users/current/tenant",
+        "parameters": [],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<int?>",
+        "route_template": "api/[controller]/current/tenant",
+        "route_token_resolution": {
+          "controller": "users"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 45,
+        "line_start": 45,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "bc0a74274476ad460824f8bb54b289d9431e2cad1eff38bf4baebff269ac0c99",
+        "source_path": "src/MyHealth.MobileApp/Controllers/UpdateTagsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /",
+      "properties": {
+        "action": "GetTagsByInstallationId",
+        "controller": "UpdateTagsController",
+        "controller_route_template": "",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "",
+        "normalized_route": "/",
+        "parameters": [
+          "Id"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<List<string>>",
+        "route_template": "",
+        "route_token_resolution": {}
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 62,
+        "line_start": 62,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "bc0a74274476ad460824f8bb54b289d9431e2cad1eff38bf4baebff269ac0c99",
+        "source_path": "src/MyHealth.MobileApp/Controllers/UpdateTagsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "POST /",
+      "properties": {
+        "action": "AddTagsToInstallation",
+        "controller": "UpdateTagsController",
+        "controller_route_template": "",
+        "framework": "ASP.NET",
+        "http_method": "POST",
+        "method_route_template": "",
+        "normalized_route": "/",
+        "parameters": [
+          "Id"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<HttpResponseMessage>",
+        "route_template": "",
+        "route_token_resolution": {}
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 24,
+        "line_start": 24,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
         "source_hash": "2a2370157b8e312da83f79a002236872c659a6d07828ef242541fa68459321d9",
         "source_path": "src/MyHealth.Web.Stress/Api/Controllers/BandController.cs"
       },
       "kind": "endpoint",
-      "name": "POST /api/Band/{value}",
+      "name": "GET /api/band",
+      "properties": {
+        "action": "Get",
+        "controller": "BandController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "",
+        "normalized_route": "/api/band",
+        "parameters": [],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "RootObject",
+        "route_template": "api/[controller]",
+        "route_token_resolution": {
+          "controller": "band"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 50,
+        "line_start": 50,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "2a2370157b8e312da83f79a002236872c659a6d07828ef242541fa68459321d9",
+        "source_path": "src/MyHealth.Web.Stress/Api/Controllers/BandController.cs"
+      },
+      "kind": "endpoint",
+      "name": "POST /api/band/{value}",
       "properties": {
         "action": "Post",
         "controller": "BandController",
+        "controller_route_template": "api/[controller]",
         "framework": "ASP.NET",
         "http_method": "POST",
-        "normalized_route": "/api/Band/{value}",
+        "method_route_template": "{value}",
+        "normalized_route": "/api/band/{value}",
         "parameters": [
           "value"
         ],
         "provenance": "FRAMEWORK_PROVEN",
         "response_type": "void",
-        "route_template": "/api/Band/{value}"
+        "route_template": "api/[controller]/{value}",
+        "route_token_resolution": {
+          "controller": "band"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 29,
+        "line_start": 29,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "2f4ce0f56db5403c1ffd2b7c6a84bf8a1853389ca46e99b7e074d30b2a18bd9f",
+        "source_path": "src/MyHealth.Web.Stress/Api/Controllers/CalendarsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/calendars/user/{userEmail}/year/{year:int}/month/{month:range(1,12)}",
+      "properties": {
+        "action": "GetMonthInformation",
+        "controller": "CalendarsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "user/{userEmail}/year/{year:int}/month/{month:range(1,12)}",
+        "normalized_route": "/api/calendars/user/{userEmail}/year/{year:int}/month/{month:range(1,12)}",
+        "parameters": [
+          "userEmail",
+          "year",
+          "month"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<MonthInformation>",
+        "route_template": "api/[controller]/user/{userEmail}/year/{year:int}/month/{month:range(1,12)}",
+        "route_token_resolution": {
+          "controller": "calendars"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 80,
+        "line_start": 80,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "2f4ce0f56db5403c1ffd2b7c6a84bf8a1853389ca46e99b7e074d30b2a18bd9f",
+        "source_path": "src/MyHealth.Web.Stress/Api/Controllers/CalendarsController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/calendars/user/{userEmail}/year/{year:int}/month/{month:range(1,12)}/day/{day:int}",
+      "properties": {
+        "action": "GetDayInformation",
+        "controller": "CalendarsController",
+        "controller_route_template": "api/[controller]",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "user/{userEmail}/year/{year:int}/month/{month:range(1,12)}/day/{day:int}",
+        "normalized_route": "/api/calendars/user/{userEmail}/year/{year:int}/month/{month:range(1,12)}/day/{day:int}",
+        "parameters": [
+          "userEmail",
+          "year",
+          "month",
+          "day"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<DayInformation>",
+        "route_template": "api/[controller]/user/{userEmail}/year/{year:int}/month/{month:range(1,12)}/day/{day:int}",
+        "route_token_resolution": {
+          "controller": "calendars"
+        }
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 29,
+        "line_start": 29,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+        "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+      },
+      "kind": "endpoint",
+      "name": "POST /",
+      "properties": {
+        "action": "Login",
+        "controller": "AccountController",
+        "controller_route_template": "",
+        "framework": "ASP.NET",
+        "http_method": "POST",
+        "method_route_template": "",
+        "normalized_route": "/",
+        "parameters": [
+          "model",
+          "null"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "Task<IActionResult>",
+        "route_template": "",
+        "route_token_resolution": {}
       }
     },
     {
@@ -22657,9 +24369,10 @@
       "kind": "api_call",
       "name": "GET /clinics",
       "properties": {
+        "external": false,
         "framework": "AngularJS",
         "http_method": "GET",
-        "match_status": "UNRESOLVED",
+        "match_status": "NO_BACKEND_ROUTE",
         "normalized_route": "/clinics",
         "provenance": "FRAMEWORK_PROVEN",
         "url": "/clinics"
@@ -22678,9 +24391,10 @@
       "kind": "api_call",
       "name": "GET /api/users/current/tenant",
       "properties": {
+        "external": false,
         "framework": "AngularJS",
         "http_method": "GET",
-        "match_status": "UNRESOLVED",
+        "match_status": "PROVEN",
         "normalized_route": "/api/users/current/tenant",
         "provenance": "FRAMEWORK_PROVEN",
         "url": "/api/users/current/tenant"
@@ -22699,9 +24413,10 @@
       "kind": "api_call",
       "name": "GET /api/users/current/tenant",
       "properties": {
+        "external": false,
         "framework": "AngularJS",
         "http_method": "GET",
-        "match_status": "UNRESOLVED",
+        "match_status": "PROVEN",
         "normalized_route": "/api/users/current/tenant",
         "provenance": "FRAMEWORK_PROVEN",
         "url": "/api/users/current/tenant"
@@ -22720,9 +24435,10 @@
       "kind": "api_call",
       "name": "GET /api/users/current/tenant",
       "properties": {
+        "external": false,
         "framework": "AngularJS",
         "http_method": "GET",
-        "match_status": "UNRESOLVED",
+        "match_status": "PROVEN",
         "normalized_route": "/api/users/current/tenant",
         "provenance": "FRAMEWORK_PROVEN",
         "url": "/api/users/current/tenant"
@@ -22741,9 +24457,10 @@
       "kind": "api_call",
       "name": "GET /api/users/current/tenant",
       "properties": {
+        "external": false,
         "framework": "AngularJS",
         "http_method": "GET",
-        "match_status": "UNRESOLVED",
+        "match_status": "PROVEN",
         "normalized_route": "/api/users/current/tenant",
         "provenance": "FRAMEWORK_PROVEN",
         "url": "/api/users/current/tenant"
@@ -22762,9 +24479,10 @@
       "kind": "api_call",
       "name": "GET /api/users/current/tenant",
       "properties": {
+        "external": false,
         "framework": "AngularJS",
         "http_method": "GET",
-        "match_status": "UNRESOLVED",
+        "match_status": "PROVEN",
         "normalized_route": "/api/users/current/tenant",
         "provenance": "FRAMEWORK_PROVEN",
         "url": "/api/users/current/tenant"
@@ -22783,9 +24501,10 @@
       "kind": "api_call",
       "name": "GET /api/users/current/tenant",
       "properties": {
+        "external": false,
         "framework": "AngularJS",
         "http_method": "GET",
-        "match_status": "UNRESOLVED",
+        "match_status": "PROVEN",
         "normalized_route": "/api/users/current/tenant",
         "provenance": "FRAMEWORK_PROVEN",
         "url": "/api/users/current/tenant"
@@ -22804,9 +24523,10 @@
       "kind": "api_call",
       "name": "GET /api/users/current/user",
       "properties": {
+        "external": false,
         "framework": "AngularJS",
         "http_method": "GET",
-        "match_status": "UNRESOLVED",
+        "match_status": "PROVEN",
         "normalized_route": "/api/users/current/user",
         "provenance": "FRAMEWORK_PROVEN",
         "url": "/api/users/current/user"
@@ -22825,9 +24545,10 @@
       "kind": "api_call",
       "name": "GET /api/users/current/claims",
       "properties": {
+        "external": false,
         "framework": "AngularJS",
         "http_method": "GET",
-        "match_status": "UNRESOLVED",
+        "match_status": "PROVEN",
         "normalized_route": "/api/users/current/claims",
         "provenance": "FRAMEWORK_PROVEN",
         "url": "/api/users/current/claims"
@@ -22846,9 +24567,10 @@
       "kind": "api_call",
       "name": "GET /api/users/current/claims",
       "properties": {
+        "external": false,
         "framework": "AngularJS",
         "http_method": "GET",
-        "match_status": "UNRESOLVED",
+        "match_status": "PROVEN",
         "normalized_route": "/api/users/current/claims",
         "provenance": "FRAMEWORK_PROVEN",
         "url": "/api/users/current/claims"
@@ -22867,12 +24589,183 @@
       "kind": "api_call",
       "name": "GET /api/users/current/tenant",
       "properties": {
+        "external": false,
         "framework": "AngularJS",
         "http_method": "GET",
-        "match_status": "UNRESOLVED",
+        "match_status": "PROVEN",
         "normalized_route": "/api/users/current/tenant",
         "provenance": "FRAMEWORK_PROVEN",
         "url": "/api/users/current/tenant"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 15,
+        "line_start": 15,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "8ffd0fca8e9be4a3ea7b70415d6b421565ae7d2be303d08f733a973c34520479",
+        "source_path": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js"
+      },
+      "kind": "api_mapping",
+      "name": "GET /api/users/current/tenant",
+      "properties": {
+        "endpoint": "GET /api/users/current/tenant",
+        "status": "PROVEN"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 18,
+        "line_start": 18,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "api_mapping",
+      "name": "GET /api/users/current/tenant",
+      "properties": {
+        "endpoint": "GET /api/users/current/tenant",
+        "status": "PROVEN"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 42,
+        "line_start": 42,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "api_mapping",
+      "name": "GET /api/users/current/tenant",
+      "properties": {
+        "endpoint": "GET /api/users/current/tenant",
+        "status": "PROVEN"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 66,
+        "line_start": 66,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "api_mapping",
+      "name": "GET /api/users/current/tenant",
+      "properties": {
+        "endpoint": "GET /api/users/current/tenant",
+        "status": "PROVEN"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 16,
+        "line_start": 16,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "b12c583956657df716c2bc34b6ecda4da2154e58e72389669a49a8a5d35e7843",
+        "source_path": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js"
+      },
+      "kind": "api_mapping",
+      "name": "GET /api/users/current/tenant",
+      "properties": {
+        "endpoint": "GET /api/users/current/tenant",
+        "status": "PROVEN"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 12,
+        "line_start": 12,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d49ea4e7495a765720b1302f9183f552e2a1d7452f9e64ea2f6ad082f8608a79",
+        "source_path": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js"
+      },
+      "kind": "api_mapping",
+      "name": "GET /api/users/current/tenant",
+      "properties": {
+        "endpoint": "GET /api/users/current/tenant",
+        "status": "PROVEN"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 24,
+        "line_start": 24,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "72004319a2ba31f388234363794681d62b936488ee12fab2ccca7a2868ff9eb5",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js"
+      },
+      "kind": "api_mapping",
+      "name": "GET /api/users/current/user",
+      "properties": {
+        "endpoint": "GET /api/users/current/user",
+        "status": "PROVEN"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 31,
+        "line_start": 31,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "72004319a2ba31f388234363794681d62b936488ee12fab2ccca7a2868ff9eb5",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js"
+      },
+      "kind": "api_mapping",
+      "name": "GET /api/users/current/claims",
+      "properties": {
+        "endpoint": "GET /api/users/current/claims",
+        "status": "PROVEN"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 10,
+        "line_start": 10,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "a12063f556212be35f9949e326418381c6c9dded50a98c8404743ff83745f115",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js"
+      },
+      "kind": "api_mapping",
+      "name": "GET /api/users/current/claims",
+      "properties": {
+        "endpoint": "GET /api/users/current/claims",
+        "status": "PROVEN"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 15,
+        "line_start": 15,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "4d42ae14459afffbf710fc06373cbd8763b81e3b930b58503179f1dcf1505e9f",
+        "source_path": "src/MyHealth.Web/content/app/components/users/services/usersService.js"
+      },
+      "kind": "api_mapping",
+      "name": "GET /api/users/current/tenant",
+      "properties": {
+        "endpoint": "GET /api/users/current/tenant",
+        "status": "PROVEN"
       }
     }
   ],

@@ -1,0 +1,14 @@
+{
+  "run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-032625",
+  "frontend_api_call_facts": 44,
+  "backend_endpoint_facts": 58,
+  "proven": 10,
+  "ambiguous": 0,
+  "dynamic_url_warnings": 22,
+  "external_api": 1,
+  "no_backend_route": 1,
+  "unresolved_structural_calls": 32,
+  "unique_graph_implemented_by_edges": 3,
+  "source_route_evidence": {"controllers_with_api_controller_template": 12, "endpoints_retaining_api_controller_template": 55},
+  "status": "TARGETED_ROUTE_DEFECTS_FIXED"
+}
