@@ -1,0 +1,21 @@
+{
+  "ac_semantic_equivalence": "PASS",
+  "all_features_manual_review": "PASS",
+  "authoritative_acceptance_criteria": 14,
+  "customer_comprehension_review": "PASS",
+  "dashboard_manual_review": "PASS",
+  "feature_narrative_validation": "PASS",
+  "features": 5,
+  "internal_diagnostic_noise": 0,
+  "md_json_parity": "PASS",
+  "minimum_score": 10.0,
+  "narrative_concepts": 12,
+  "narrative_statements": 12,
+  "presentation_only_ac_scenarios": 0,
+  "raw_workflow_mechanics": 0,
+  "semantic_duplication_rate": 0.0,
+  "stories": 12,
+  "story_semantic_equivalence": "PASS",
+  "untraceable_narrative_statements": 0,
+  "valid": true
+}

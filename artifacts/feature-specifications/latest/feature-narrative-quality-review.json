@@ -1,0 +1,916 @@
+{
+  "features": {
+    "feature-clinic-appointment-experience": {
+      "ac_coherence": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "ac_readability": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "ac_testability": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "audience_separation": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "business_analyst_usability": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "business_narrative": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "context_clarity": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "customer_sme_usability": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "functional_behavior_clarity": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "information_prioritization": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "integration_context": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "markdown_readability": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "modernization_context": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "modernization_engineer_usability": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "product_owner_usability": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "qa_usability": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "semantic_deduplication": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "solution_architect_usability": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "story_coherence": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "story_readability": {
+        "positive_examples": [
+          "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence.",
+          "A clinic detail experience is available. A clinic list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      }
+    },
+    "feature-doctor-directory-management": {
+      "ac_coherence": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "ac_readability": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "ac_testability": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "audience_separation": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "business_analyst_usability": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "business_narrative": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "context_clarity": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "customer_sme_usability": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "functional_behavior_clarity": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "information_prioritization": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "integration_context": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "markdown_readability": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "modernization_context": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "modernization_engineer_usability": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "product_owner_usability": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "qa_usability": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "semantic_deduplication": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "solution_architect_usability": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "story_coherence": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "story_readability": {
+        "positive_examples": [
+          "Provides navigation and tenant-aware access to doctor information.",
+          "A doctor detail experience is available. Doctor functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      }
+    },
+    "feature-operational-dashboard-insights": {
+      "ac_coherence": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "ac_readability": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "ac_testability": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "audience_separation": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "business_analyst_usability": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "business_narrative": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "context_clarity": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "customer_sme_usability": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "functional_behavior_clarity": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "information_prioritization": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "integration_context": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "markdown_readability": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "modernization_context": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "modernization_engineer_usability": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "product_owner_usability": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "qa_usability": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "semantic_deduplication": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "solution_architect_usability": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "story_coherence": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "story_readability": {
+        "positive_examples": [
+          "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience.",
+          "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      }
+    },
+    "feature-patient-directory-management": {
+      "ac_coherence": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "ac_readability": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "ac_testability": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "audience_separation": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "business_analyst_usability": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "business_narrative": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "context_clarity": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "customer_sme_usability": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "functional_behavior_clarity": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "information_prioritization": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "integration_context": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "markdown_readability": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "modernization_context": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "modernization_engineer_usability": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "product_owner_usability": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "qa_usability": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "semantic_deduplication": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "solution_architect_usability": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "story_coherence": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "story_readability": {
+        "positive_examples": [
+          "Provides tenant-aware navigation and access to patient information.",
+          "Patient functionality has current tenant context."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      }
+    },
+    "feature-user-access-context": {
+      "ac_coherence": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "ac_readability": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "ac_testability": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "audience_separation": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "business_analyst_usability": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "business_narrative": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "context_clarity": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "customer_sme_usability": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "functional_behavior_clarity": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "information_prioritization": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "integration_context": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "markdown_readability": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "modernization_context": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "modernization_engineer_usability": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "product_owner_usability": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "qa_usability": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "semantic_deduplication": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "solution_architect_usability": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "story_coherence": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      },
+      "story_readability": {
+        "positive_examples": [
+          "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+          "A user detail experience is available. A user list experience is available."
+        ],
+        "reason": "Narrative model passes concept grouping, coherence, traceability, audience, and readability checks.",
+        "remaining_issues": [],
+        "score": 10.0
+      }
+    }
+  },
+  "overall_minimum_score": 10.0,
+  "rubric": "Scores derive from ten coherence, synthesis, traceability, audience, and usefulness checks; material issues prohibit readiness."
+}

@@ -294,6 +294,9 @@ def main() -> None:
     presentation_parser = subparsers.add_parser("refine-feature-presentations", help="Professionalize Feature Markdown without changing machine contracts")
     presentation_parser.add_argument("--source-specification-root", required=True, type=Path)
     presentation_parser.add_argument("--output", type=Path, default=Path("artifacts/feature-specifications"))
+    narrative_parser = subparsers.add_parser("synthesize-feature-narratives", help="Build customer Feature narratives from approved concepts")
+    narrative_parser.add_argument("--source-specification-root", required=True, type=Path)
+    narrative_parser.add_argument("--output", type=Path, default=Path("artifacts/feature-specifications"))
     load_parser = subparsers.add_parser("load-neo4j")
     load_parser.add_argument("--graph", required=True, type=Path)
     load_parser.add_argument("--project-id", required=True)
@@ -371,6 +374,10 @@ def main() -> None:
     elif args.command == "refine-feature-presentations":
         from polaris_modernization.feature_specifications.presentation import refine_feature_presentations
         result = refine_feature_presentations(args.source_specification_root, args.output)
+        print(result["path"])
+    elif args.command == "synthesize-feature-narratives":
+        from polaris_modernization.feature_specifications.narrative import synthesize_feature_narratives
+        result = synthesize_feature_narratives(args.source_specification_root, args.output)
         print(result["path"])
     elif args.command in {"load-neo4j", "clear-neo4j-project"}:
         driver = connect(os.getenv("NEO4J_URI", "bolt://localhost:7687"), os.getenv("NEO4J_USERNAME", "neo4j"), os.getenv("NEO4J_PASSWORD", "change-me"))

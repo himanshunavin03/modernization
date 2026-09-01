@@ -1,0 +1,296 @@
+{
+  "features": {
+    "feature-clinic-appointment-experience": {
+      "decisions": [
+        {
+          "question": "Which appointment operations are part of the current business workflow and must be preserved?",
+          "validation_role": "Product Owner / Business Analyst / Customer SME",
+          "why_it_matters": "The approved Feature does not contain a complete appointment-operation flow."
+        },
+        {
+          "question": "How are the Razor appointment surfaces and AngularJS clinic surfaces intended to work together in the current user journey?",
+          "validation_role": "Product Owner / Business Analyst / Customer SME",
+          "why_it_matters": "Both are approved surfaces, but their complete composition is not proven."
+        }
+      ],
+      "integration_and_data": {
+        "data": [
+          {
+            "meaning": "Information representing an appointment associated with a clinic.",
+            "name": "Clinic appointment",
+            "role": "Provides approved appointment-domain context."
+          },
+          {
+            "meaning": "Information representing a home appointment.",
+            "name": "Home appointment",
+            "role": "Identifies another approved appointment concept; its behavior is not elaborated by this Feature evidence."
+          }
+        ],
+        "integrations": [
+          {
+            "api_contract": "GET /api/users/current/tenant",
+            "backend_endpoint": "GET /api/users/current/tenant",
+            "frontend_source": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
+            "review_note": "Established relationship must be preserved.",
+            "status": "PROVEN",
+            "workflow": "Clinics load current tenant"
+          }
+        ]
+      },
+      "main_behaviors": [
+        "A clinic detail experience is available. A clinic list experience is available.",
+        "Clinic functionality has current tenant context."
+      ],
+      "preservation": [
+        "Preserve this approved business behavior during frontend modernization without changing backend contracts."
+      ],
+      "review": "PASS",
+      "stories": [
+        "Access Clinic Information",
+        "Establish Clinic Context"
+      ],
+      "what_it_does": "Provides clinic/appointment navigation and appointment information with proven tenant context but incomplete transaction flow evidence."
+    },
+    "feature-doctor-directory-management": {
+      "decisions": [
+        {
+          "question": "Which doctor list and detail operations must be included when this Feature is decomposed into modernization Stories?",
+          "validation_role": "Product Owner / Business Analyst / Customer SME",
+          "why_it_matters": "The approved Feature proves navigation and tenant context but not every doctor operation mapping."
+        }
+      ],
+      "integration_and_data": {
+        "data": [
+          {
+            "meaning": "Information representing a doctor in the application domain.",
+            "name": "Doctor",
+            "role": "Provides the domain information associated with doctor list/detail behavior."
+          }
+        ],
+        "integrations": [
+          {
+            "api_contract": "GET /api/users/current/tenant",
+            "backend_endpoint": "GET /api/users/current/tenant",
+            "frontend_source": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
+            "review_note": "Established relationship must be preserved.",
+            "status": "PROVEN",
+            "workflow": "Doctors load current tenant"
+          }
+        ]
+      },
+      "main_behaviors": [
+        "A doctor detail experience is available. Doctor functionality has current tenant context.",
+        "A doctor list experience is available."
+      ],
+      "preservation": [
+        "Preserve this approved business behavior during frontend modernization without changing backend contracts."
+      ],
+      "review": "PASS",
+      "stories": [
+        "View Doctor Details in Tenant Context",
+        "Review Doctor Directory"
+      ],
+      "what_it_does": "Provides navigation and tenant-aware access to doctor information."
+    },
+    "feature-operational-dashboard-insights": {
+      "decisions": [
+        {
+          "question": "Which dashboard summaries and yearly reports are most important for the initial modernization workshop?",
+          "validation_role": "Product Owner / Business Analyst / Customer SME",
+          "why_it_matters": "Evidence identifies available flows but not stakeholder priority."
+        },
+        {
+          "question": "Should the target frontend preserve the current year-dependent report navigation behavior or present those reports inside the new dashboard experience?",
+          "validation_role": "Product Owner / Business Analyst / Customer SME",
+          "why_it_matters": "The current dynamic URL construction proves behavior but not desired future presentation."
+        },
+        {
+          "question": "What contract detail is required to validate the unresolved clinic-summary frontend-to-backend relationship before implementation?",
+          "validation_role": "Product Owner / Business Analyst / Customer SME",
+          "why_it_matters": "The approved Feature retains this relationship as unresolved."
+        }
+      ],
+      "integration_and_data": {
+        "data": [],
+        "integrations": [
+          {
+            "api_contract": "GET /api/users/current/tenant",
+            "backend_endpoint": "GET /api/users/current/tenant",
+            "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+            "review_note": "Established relationship must be preserved.",
+            "status": "PROVEN",
+            "workflow": "Dashboard expenses load current tenant"
+          },
+          {
+            "api_contract": "GET /api/users/current/tenant",
+            "backend_endpoint": "GET /api/users/current/tenant",
+            "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+            "review_note": "Established relationship must be preserved.",
+            "status": "PROVEN",
+            "workflow": "Dashboard patient report loads current tenant"
+          },
+          {
+            "api_contract": "'/api/reports/expenses/' + year",
+            "backend_endpoint": "GET /api/reports/expenses/{year}",
+            "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+            "review_note": "Backend integration details require confirmation before implementation.",
+            "status": "DYNAMIC",
+            "workflow": "Dashboard requests yearly expenses"
+          },
+          {
+            "api_contract": "'/api/reports/patients/' + year",
+            "backend_endpoint": "GET /api/reports/patients/{year}",
+            "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+            "review_note": "Backend integration details require confirmation before implementation.",
+            "status": "DYNAMIC",
+            "workflow": "Dashboard requests yearly patient report"
+          },
+          {
+            "api_contract": "GET /api/users/current/tenant",
+            "backend_endpoint": "GET /api/users/current/tenant",
+            "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+            "review_note": "Established relationship must be preserved.",
+            "status": "PROVEN",
+            "workflow": "Dashboard summary loads current tenant"
+          },
+          {
+            "api_contract": "/api/reports/clinicsummary",
+            "backend_endpoint": "GET /api/reports/clinicsummary",
+            "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+            "review_note": "Backend integration details require confirmation before implementation.",
+            "status": "UNRESOLVED",
+            "workflow": "Dashboard requests clinic summary"
+          }
+        ]
+      },
+      "main_behaviors": [
+        "The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested.",
+        "The dashboard summary flow has current tenant context. Clinic summary information is requested for the dashboard.",
+        "The Dashboard experience is available."
+      ],
+      "preservation": [
+        "Preserve this approved business behavior during frontend modernization without changing backend contracts."
+      ],
+      "review": "PASS",
+      "stories": [
+        "Access Yearly Operational Reports",
+        "View Tenant-Aware Dashboard Summary",
+        "Open Operational Dashboard"
+      ],
+      "what_it_does": "Presents clinic-context operational summaries and yearly reporting through the legacy Dashboard experience."
+    },
+    "feature-patient-directory-management": {
+      "decisions": [
+        {
+          "question": "Which patient operations must be included when this Feature is decomposed into modernization Stories?",
+          "validation_role": "Product Owner / Business Analyst / Customer SME",
+          "why_it_matters": "The approved Feature proves navigation and tenant context but not every patient operation mapping."
+        }
+      ],
+      "integration_and_data": {
+        "data": [
+          {
+            "meaning": "Information representing a patient in the application domain.",
+            "name": "Patient",
+            "role": "Provides the domain information associated with patient behavior."
+          }
+        ],
+        "integrations": [
+          {
+            "api_contract": "GET /api/users/current/tenant",
+            "backend_endpoint": "GET /api/users/current/tenant",
+            "frontend_source": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
+            "review_note": "Established relationship must be preserved.",
+            "status": "PROVEN",
+            "workflow": "Patients load current tenant"
+          }
+        ]
+      },
+      "main_behaviors": [
+        "Patient functionality has current tenant context.",
+        "The patient directory experience is available."
+      ],
+      "preservation": [
+        "Preserve this approved business behavior during frontend modernization without changing backend contracts."
+      ],
+      "review": "PASS",
+      "stories": [
+        "Establish Patient Tenant Context",
+        "Review Patient Directory"
+      ],
+      "what_it_does": "Provides tenant-aware navigation and access to patient information."
+    },
+    "feature-user-access-context": {
+      "decisions": [
+        {
+          "question": "Which claims-driven behaviors must be visible in later Stories without changing existing authorization semantics?",
+          "validation_role": "Product Owner / Business Analyst / Customer SME",
+          "why_it_matters": "Claims loading is proven, but business meaning and desired presentation are not."
+        }
+      ],
+      "integration_and_data": {
+        "data": [
+          {
+            "meaning": "Information used when requesting an application-user operation.",
+            "name": "Application user request",
+            "role": "Represents user-related information at the preserved API boundary."
+          },
+          {
+            "meaning": "Information associated with tenant operations.",
+            "name": "Tenant request",
+            "role": "Represents tenant-related information used by the broader user/tenant context area."
+          }
+        ],
+        "integrations": [
+          {
+            "api_contract": "GET /api/users/current/user",
+            "backend_endpoint": "GET /api/users/current/user",
+            "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+            "review_note": "Established relationship must be preserved.",
+            "status": "PROVEN",
+            "workflow": "Header loads current user"
+          },
+          {
+            "api_contract": "GET /api/users/current/claims",
+            "backend_endpoint": "GET /api/users/current/claims",
+            "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+            "review_note": "Established relationship must be preserved.",
+            "status": "PROVEN",
+            "workflow": "Header loads current claims"
+          },
+          {
+            "api_contract": "GET /api/users/current/claims",
+            "backend_endpoint": "GET /api/users/current/claims",
+            "frontend_source": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
+            "review_note": "Established relationship must be preserved.",
+            "status": "PROVEN",
+            "workflow": "Initial page loads current claims"
+          },
+          {
+            "api_contract": "GET /api/users/current/tenant",
+            "backend_endpoint": "GET /api/users/current/tenant",
+            "frontend_source": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
+            "review_note": "Established relationship must be preserved.",
+            "status": "PROVEN",
+            "workflow": "Users load current tenant"
+          }
+        ]
+      },
+      "main_behaviors": [
+        "A user detail experience is available. A user list experience is available.",
+        "The header has current user identity. The header has current claims. Initial-page behavior has current claims.",
+        "User functionality has tenant context."
+      ],
+      "preservation": [
+        "Preserve this approved business behavior during frontend modernization without changing backend contracts."
+      ],
+      "review": "PASS",
+      "stories": [
+        "Access User Management Views",
+        "Resolve Current User and Claims",
+        "Resolve Tenant Context for User Functions"
+      ],
+      "what_it_does": "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior."
+    }
+  }
+}
