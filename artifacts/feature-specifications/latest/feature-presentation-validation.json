@@ -1,0 +1,15 @@
+{
+  "ac_semantic_equivalence": "PASS",
+  "acceptance_criteria": 14,
+  "features": 5,
+  "internal_diagnostic_noise": 0,
+  "md_json_parity": "PASS",
+  "minimum_score": 9.0,
+  "presentation_validation": "PASS",
+  "rendering_defects": 0,
+  "stories": 12,
+  "story_semantic_equivalence": "PASS",
+  "valid": true,
+  "workflow_semantic_equivalence": "PASS",
+  "workflows": 21
+}
