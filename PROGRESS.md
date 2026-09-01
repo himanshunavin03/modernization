@@ -39,3 +39,11 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Result: `READY_WITH_EXPLAINED_LIMITATIONS`. The graph has valid JSON, complete 2,384-file inventory, zero Tree-sitter warnings, zero evidence gaps, no duplicate/broken records, no C#-as-Angular conflicts, and zero analyzer defects. Of 4,344 unresolved semantics, 4,342 are explicitly partial-compilation, fallback, or overload limitations; two source-backed inaccessible-member candidates remain `UNKNOWN`.
 - The 314 invocation increase is fully reconciled against an unchanged prior inventory: 306 newly represented partial-compilation attempts and 8 fallback attempts, not source loss or an analyzer regression. API endpoint mapping remains absent (33 frontend API calls, zero endpoint facts/mappings), so Phase 2 must retain this as a visible limitation.
 - Not performed: graph regeneration, graph/fact JSON edits, Neo4j load, analyzer changes, or Phase 2 work.
+
+## Phase 2 Application Understanding
+
+- Completed: separate LangGraph orchestration, provider-neutral LangChain structured boundary, deterministic KG evidence retrieval, provenance confidence model, claim validator, stable package-hash cache, CLI boundary, and project-memory protocol. Phase 1 analyzers and approved KG artifacts were not modified.
+- Validation: `python -m pytest -q` returned `72 passed, 2 skipped`. A generic timestamp collision in Phase-2 immutable run IDs was fixed with microsecond precision and the complete suite rerun successfully.
+- Actual output: `artifacts/application-understanding/latest/` is `FRAMEWORK_ONLY` with `NONE` provider, 64 evidence packages, 0 LLM calls, 0 input/output tokens, 4,868 KG nodes, 5,124 KG relationships, 8 Razor views, 15 partials, 4 layouts, 26 AngularJS controllers, 10 services, and 14 directives. The Dashboard Razor view and `DashboardController` are the best evidence-backed demo candidates.
+- Limitation preserved: 33 frontend API-call facts have zero backend endpoint facts, so all Phase-2 user workflows retain `BACKEND_MAPPING=UNRESOLVED`. No AI-derived business capability or rule was fabricated.
+- Next action: `VALIDATE_APPLICATION_UNDERSTANDING`; do not proceed to features, stories, architecture recommendation, or Angular generation.

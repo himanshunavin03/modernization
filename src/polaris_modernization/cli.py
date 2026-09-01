@@ -260,6 +260,10 @@ def main() -> None:
     agent_parser.add_argument("--profile", default="default")
     agent_parser.add_argument("--output", type=Path, default=Path("artifacts"))
     agent_parser.add_argument("--load-neo4j", action="store_true")
+    understand_parser = subparsers.add_parser("understand-application", help="Run Phase 2 over an approved immutable KG")
+    understand_parser.add_argument("--kg-root", required=True, type=Path)
+    understand_parser.add_argument("--output", type=Path, default=Path("artifacts/application-understanding"))
+    understand_parser.add_argument("--provider", choices=("none", "mock"), default="none")
     load_parser = subparsers.add_parser("load-neo4j")
     load_parser.add_argument("--graph", required=True, type=Path)
     load_parser.add_argument("--project-id", required=True)
@@ -290,6 +294,12 @@ def main() -> None:
         result = create_knowledge_graph_command(args.source_root, project_id=args.project_id, profile=args.profile, output=args.output, load_neo4j=args.load_neo4j)
         print(f"Create Knowledge Graph {result['overall_status']} for {result['project_id']}")
         if result["overall_status"] == "failed": raise SystemExit(1)
+    elif args.command == "understand-application":
+        from polaris_modernization.application_understanding.providers import MockReasoningProvider
+        from polaris_modernization.application_understanding.workflow import run_application_understanding
+        result = run_application_understanding(args.kg_root, args.output, MockReasoningProvider() if args.provider == "mock" else None)
+        print(f"Application understanding {result['understanding'].status} for {result['understanding'].project_id}")
+        print(result["path"])
     elif args.command in {"load-neo4j", "clear-neo4j-project"}:
         driver = connect(os.getenv("NEO4J_URI", "bolt://localhost:7687"), os.getenv("NEO4J_USERNAME", "neo4j"), os.getenv("NEO4J_PASSWORD", "change-me"))
         loader = Neo4jLoader(driver)

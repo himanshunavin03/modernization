@@ -1,0 +1,3 @@
+# Prompt 036: Phase 2 Application Understanding
+
+Implement Phase 2 as a separate LangGraph-orchestrated application-understanding workflow over an approved immutable Knowledge Graph. Keep KG extraction and source read-only. Retrieve deterministic, compact evidence packages, use a provider-neutral LangChain structured-reasoning boundary with a test-only mock, validate every interpretation against package evidence, preserve confidence provenance, cache by stable package hash, and write isolated understanding artifacts. Do not invent backend mappings or start feature, story, architecture, or Angular generation.

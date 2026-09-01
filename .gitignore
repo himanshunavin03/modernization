@@ -9,6 +9,8 @@ artifacts/*
 !artifacts/.gitkeep
 !artifacts/knowledge-graph/
 !artifacts/knowledge-graph/**
+!artifacts/application-understanding/
+!artifacts/application-understanding/**
 source/*
 !source/.gitkeep
 !source/README.md
