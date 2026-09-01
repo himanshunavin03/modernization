@@ -50,13 +50,19 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 
 ## Provider And Developer Experience
 
-- Real provider discovery found no Azure OpenAI or AWS Bedrock configuration. `understand-application --provider auto` now produces `WAITING_FOR_PROVIDER_CONFIGURATION` with zero LLM calls/tokens; Azure requires `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`, and `AZURE_OPENAI_DEPLOYMENT`, while Bedrock requires `AWS_REGION` and `POLARIS_BEDROCK_MODEL_ID` plus standard AWS credentials.
+- Superseded historical result: provider discovery previously produced `WAITING_FOR_PROVIDER_CONFIGURATION`. The normal interactive path no longer accepts `--provider auto` or requires external credentials; Azure and Bedrock are optional headless enterprise boundaries only.
 - Codex uses `AGENTS.md` plus `docs/agents/commands/` and does not claim repository-defined slash-menu discovery. GitHub Copilot uses supported `.github/copilot-instructions.md` and `.github/prompts/*.prompt.md` prompt files. Both delegate to the same CLI; see `docs/developer-experience.md`.
 - Validation: `python -m pytest -q` returned `74 passed, 2 skipped`. No KG regeneration, Phase-1 change, Neo4j load, feature/story generation, architecture recommendation, or Angular generation occurred.
 - Next action: `CONFIGURE_LLM_PROVIDER`.
 
-## Local OpenAI Provider
+## Removed Local OpenAI Runtime
 
-- Completed: OpenAI local-demo selection is a lazy implementation of the existing `ReasoningProvider` protocol. It uses LangChain structured output, sends only one compact deterministic evidence package per call, validates every AI item against that package's KG node IDs, and caches each package independently. Azure OpenAI and AWS Bedrock remain provider options.
-- Local configuration is not present in this workspace. `POLARIS_LLM_PROVIDER=openai` without `OPENAI_API_KEY` results in `WAITING_FOR_PROVIDER_CONFIGURATION` with zero calls and zero tokens; no mock result is represented as real understanding. See `docs/developer-experience.md` and prompt 038.
-- Next action: `CONFIGURE_LOCAL_OPENAI_PROVIDER` or retain the waiting state. Do not proceed to features, stories, architecture recommendation, or Angular generation.
+- Superseded: the local OpenAI API demo provider and `WAITING_FOR_PROVIDER_CONFIGURATION` normal workflow were removed. They incorrectly required a separate billed API connection while the developer was already using Codex/Copilot Chat. Prompt 038 is historical; prompt 039 records the correction.
+
+## Interactive Agent Architecture Correction
+
+- Completed: the normal interactive `understand-application` path is provider-free. It prepares compact evidence packages and a structured schema, relies on the active Codex/Copilot agent for non-deterministic reasoning, then validates exact KG evidence references before publishing immutable artifacts. It does not read or require external LLM credentials.
+- Azure OpenAI and AWS Bedrock remain optional headless enterprise provider boundaries and are not called by interactive mode. API safety remains unchanged: 33 frontend API calls, zero backend endpoint facts, and `BACKEND_MAPPING=UNRESOLVED`.
+- Actual validation: Codex prepared and reasoned only over 64 evidence packages, then Polaris accepted and persisted `legacy-dashboard-complete-application-demo-v1-2026-09-01-010758-025370` as `COMPLETE`. The result has 88 modules, one agent capability, 16 workflows, 94 UI surfaces, no business rules/domain concepts/dependencies, and zero rejected claims. It uses zero external API calls.
+- Demo traceability: `src/MyHealth.Web/Views/Dashboard/Index.cshtml` has the `Dashboard Razor shell modernization candidate`; `DashboardController` has the `Legacy AngularJS Dashboard controller modernization candidate`; both retain the `Dashboard route workflow` with `BACKEND_MAPPING=UNRESOLVED`.
+- Next action: `VALIDATE_APPLICATION_UNDERSTANDING`. Do not proceed to features, stories, architecture recommendation, or Angular generation.

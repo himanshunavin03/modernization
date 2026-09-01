@@ -1,0 +1,7 @@
+{
+  "evidence_packages": 64,
+  "external_llm_calls": 0,
+  "kg_readiness_gate": "PASS",
+  "next_step": "Active Codex or Copilot agent writes agent-reasoning.json, then invoke understand-application --agent-result.",
+  "project_id": "legacy-dashboard-complete-application-demo-v1"
+}

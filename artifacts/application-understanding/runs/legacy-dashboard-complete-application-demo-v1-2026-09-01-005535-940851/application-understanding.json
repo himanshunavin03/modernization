@@ -1,301 +1,9 @@
 {
-  "agent_reasoning": {
-    "angular_demo_capability": {
-      "confidence": {
-        "level": "LOW",
-        "provenance": [
-          "STRUCTURAL_ONLY"
-        ],
-        "rationale": "The deterministic candidate is the DashboardController declaration."
-      },
-      "evidence": [
-        {
-          "line_end": 141,
-          "line_start": 1,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
-          "provenance": "STRUCTURAL_ONLY",
-          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
-        }
-      ],
-      "name": "Legacy AngularJS Dashboard controller modernization candidate",
-      "origin": "AGENT_REASONING"
-    },
-    "angular_demo_workflow": {
-      "backend_mapping": "UNRESOLVED",
-      "confidence": {
-        "level": "LOW",
-        "provenance": [
-          "STRUCTURAL_ONLY"
-        ],
-        "rationale": "The configured route has no deterministic backend endpoint mapping."
-      },
-      "evidence": [
-        {
-          "line_end": 41,
-          "line_start": 32,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:Route:dashboard",
-          "provenance": "STRUCTURAL_ONLY",
-          "source_path": "src/MyHealth.Web/content/app/app.module.js"
-        }
-      ],
-      "name": "Dashboard route workflow",
-      "origin": "AGENT_REASONING",
-      "ui_surface": "dashboard"
-    },
-    "application_purpose": {
-      "confidence": {
-        "level": "LOW",
-        "provenance": [
-          "STRUCTURAL_ONLY"
-        ],
-        "rationale": "The statement is limited to the prepared Razor and AngularJS evidence."
-      },
-      "evidence": [
-        {
-          "line_end": 13,
-          "line_start": 1,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
-          "provenance": "STRUCTURAL_ONLY",
-          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
-        },
-        {
-          "line_end": 141,
-          "line_start": 1,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
-          "provenance": "STRUCTURAL_ONLY",
-          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
-        }
-      ],
-      "name": "Web application with a Dashboard Razor view and legacy AngularJS client-side UI.",
-      "origin": "AGENT_REASONING"
-    },
-    "best_angular_demo_candidate": "DashboardController",
-    "best_razor_demo_candidate": "src/MyHealth.Web/Views/Dashboard/Index.cshtml",
-    "business_capabilities": [
-      {
-        "confidence": {
-          "level": "LOW",
-          "provenance": [
-            "STRUCTURAL_ONLY"
-          ],
-          "rationale": "The package proves a legacy AngularJS DashboardController declaration only."
-        },
-        "evidence": [
-          {
-            "line_end": 141,
-            "line_start": 1,
-            "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
-            "provenance": "STRUCTURAL_ONLY",
-            "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
-          }
-        ],
-        "name": "Dashboard client-side interaction",
-        "origin": "AGENT_REASONING"
-      }
-    ],
-    "business_modules": [
-      {
-        "confidence": {
-          "level": "LOW",
-          "provenance": [
-            "STRUCTURAL_ONLY"
-          ],
-          "rationale": "The package identifies a Dashboard Razor UI surface."
-        },
-        "evidence": [
-          {
-            "line_end": 13,
-            "line_start": 1,
-            "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
-            "provenance": "STRUCTURAL_ONLY",
-            "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
-          }
-        ],
-        "name": "Dashboard UI module",
-        "origin": "AGENT_REASONING"
-      }
-    ],
-    "business_rules": [],
-    "dependencies": [],
-    "domain_concepts": [],
-    "razor_demo_capability": {
-      "confidence": {
-        "level": "LOW",
-        "provenance": [
-          "STRUCTURAL_ONLY"
-        ],
-        "rationale": "The deterministic candidate is a Dashboard Razor view."
-      },
-      "evidence": [
-        {
-          "line_end": 13,
-          "line_start": 1,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
-          "provenance": "STRUCTURAL_ONLY",
-          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
-        }
-      ],
-      "name": "Dashboard Razor shell modernization candidate",
-      "origin": "AGENT_REASONING"
-    },
-    "razor_demo_workflow": {
-      "backend_mapping": "UNRESOLVED",
-      "confidence": {
-        "level": "LOW",
-        "provenance": [
-          "STRUCTURAL_ONLY"
-        ],
-        "rationale": "The configured route has no deterministic backend endpoint mapping."
-      },
-      "evidence": [
-        {
-          "line_end": 41,
-          "line_start": 32,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:Route:dashboard",
-          "provenance": "STRUCTURAL_ONLY",
-          "source_path": "src/MyHealth.Web/content/app/app.module.js"
-        }
-      ],
-      "name": "Dashboard route workflow",
-      "origin": "AGENT_REASONING",
-      "ui_surface": "dashboard"
-    },
-    "ui_surfaces": [
-      {
-        "confidence": {
-          "level": "LOW",
-          "provenance": [
-            "STRUCTURAL_ONLY"
-          ],
-          "rationale": "The package identifies the Razor view."
-        },
-        "evidence": [
-          {
-            "line_end": 13,
-            "line_start": 1,
-            "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
-            "provenance": "STRUCTURAL_ONLY",
-            "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
-          }
-        ],
-        "kind": "RazorView",
-        "name": "Legacy Razor Dashboard view",
-        "origin": "AGENT_REASONING"
-      },
-      {
-        "confidence": {
-          "level": "LOW",
-          "provenance": [
-            "STRUCTURAL_ONLY"
-          ],
-          "rationale": "The package identifies the AngularJS controller declaration."
-        },
-        "evidence": [
-          {
-            "line_end": 141,
-            "line_start": 1,
-            "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
-            "provenance": "STRUCTURAL_ONLY",
-            "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
-          }
-        ],
-        "kind": "AngularController",
-        "name": "Legacy AngularJS Dashboard controller",
-        "origin": "AGENT_REASONING"
-      }
-    ],
-    "user_workflows": [
-      {
-        "backend_mapping": "UNRESOLVED",
-        "confidence": {
-          "level": "LOW",
-          "provenance": [
-            "STRUCTURAL_ONLY"
-          ],
-          "rationale": "The configured dashboard route is proven; no backend endpoint fact is available."
-        },
-        "evidence": [
-          {
-            "line_end": 41,
-            "line_start": 32,
-            "node_id": "legacy-dashboard-complete-application-demo-v1:Route:dashboard",
-            "provenance": "STRUCTURAL_ONLY",
-            "source_path": "src/MyHealth.Web/content/app/app.module.js"
-          }
-        ],
-        "name": "Dashboard route workflow",
-        "origin": "AGENT_REASONING",
-        "ui_surface": "dashboard"
-      }
-    ]
-  },
-  "angular_demo_capability": {
-    "confidence": {
-      "level": "LOW",
-      "provenance": [
-        "STRUCTURAL_ONLY"
-      ],
-      "rationale": "The deterministic candidate is the DashboardController declaration."
-    },
-    "evidence": [
-      {
-        "line_end": 141,
-        "line_start": 1,
-        "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
-        "provenance": "STRUCTURAL_ONLY",
-        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
-      }
-    ],
-    "name": "Legacy AngularJS Dashboard controller modernization candidate",
-    "origin": "AGENT_REASONING"
-  },
-  "angular_demo_workflow": {
-    "backend_mapping": "UNRESOLVED",
-    "confidence": {
-      "level": "LOW",
-      "provenance": [
-        "STRUCTURAL_ONLY"
-      ],
-      "rationale": "The configured route has no deterministic backend endpoint mapping."
-    },
-    "evidence": [
-      {
-        "line_end": 41,
-        "line_start": 32,
-        "node_id": "legacy-dashboard-complete-application-demo-v1:Route:dashboard",
-        "provenance": "STRUCTURAL_ONLY",
-        "source_path": "src/MyHealth.Web/content/app/app.module.js"
-      }
-    ],
-    "name": "Dashboard route workflow",
-    "origin": "AGENT_REASONING",
-    "ui_surface": "dashboard"
-  },
-  "application_purpose": "Web application with a Dashboard Razor view and legacy AngularJS client-side UI.",
+  "ai_interpretations": [],
+  "application_purpose": "Evidence-backed technical application understanding from the approved Knowledge Graph.",
   "best_angular_demo_candidate": "DashboardController",
   "best_razor_demo_candidate": "src/MyHealth.Web/Views/Dashboard/Index.cshtml",
-  "business_capabilities": [
-    {
-      "confidence": {
-        "level": "LOW",
-        "provenance": [
-          "STRUCTURAL_ONLY"
-        ],
-        "rationale": "The package proves a legacy AngularJS DashboardController declaration only."
-      },
-      "evidence": [
-        {
-          "line_end": 141,
-          "line_start": 1,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
-          "provenance": "STRUCTURAL_ONLY",
-          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
-        }
-      ],
-      "name": "Dashboard client-side interaction",
-      "origin": "AGENT_REASONING"
-    }
-  ],
+  "business_capabilities": [],
   "business_modules": [
     {
       "confidence": {
@@ -6215,82 +5923,61 @@
       ],
       "name": "users",
       "origin": "DETERMINISTIC_FACT"
-    },
-    {
-      "confidence": {
-        "level": "LOW",
-        "provenance": [
-          "STRUCTURAL_ONLY"
-        ],
-        "rationale": "The package identifies a Dashboard Razor UI surface."
-      },
-      "evidence": [
-        {
-          "line_end": 13,
-          "line_start": 1,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
-          "provenance": "STRUCTURAL_ONLY",
-          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
-        }
-      ],
-      "name": "Dashboard UI module",
-      "origin": "AGENT_REASONING"
     }
   ],
   "business_rules": [],
-  "dependencies": [],
+  "dependencies": [
+    "./app.module",
+    "./components/calendar/calendar.module",
+    "./components/clinics/clinics.module",
+    "./components/dailyReport/dailyReport.module",
+    "./components/dashboard/dashboard.module",
+    "./components/doctors/doctors.module",
+    "./components/patients/patients.module",
+    "./components/shared/shared.module",
+    "./components/users/users.module",
+    "./controllers/clinicDetailController",
+    "./controllers/clinicsController",
+    "./controllers/dailyCalendarController",
+    "./controllers/dailyReportController",
+    "./controllers/dashboardController",
+    "./controllers/doctorDetailController",
+    "./controllers/doctorsController",
+    "./controllers/headerController",
+    "./controllers/monthlyCalendarController",
+    "./controllers/patientsController",
+    "./controllers/userDetailController",
+    "./controllers/usersController",
+    "./directives/MHChartDirective",
+    "./directives/dailyGraph",
+    "./directives/fileDirective",
+    "./directives/headerBar/headerBarDirective",
+    "./directives/leftMenu/leftMenuDirective",
+    "./directives/monthlyCalendarDays",
+    "./directives/stressfulBtn",
+    "./filters/camelCaseFilter",
+    "./services/calendarService",
+    "./services/clinicsService",
+    "./services/dashboardService",
+    "./services/doctorsService",
+    "./services/exceptionHandler",
+    "./services/initialPageService",
+    "./services/modalService",
+    "./services/patientsService",
+    "./services/toasterService",
+    "./services/usersService"
+  ],
   "domain_concepts": [],
   "kg_metrics": {
     "total_kg_nodes": 4868,
     "total_kg_relationships": 5124
   },
   "limitations": [
-    "BACKEND_MAPPING=UNRESOLVED: 33 frontend API-call facts have zero backend endpoint facts."
+    "BACKEND_MAPPING=UNRESOLVED: 33 frontend API-call facts have zero backend endpoint facts.",
+    "AI interpretation is absent because no configured provider was used."
   ],
   "project_id": "legacy-dashboard-complete-application-demo-v1",
-  "razor_demo_capability": {
-    "confidence": {
-      "level": "LOW",
-      "provenance": [
-        "STRUCTURAL_ONLY"
-      ],
-      "rationale": "The deterministic candidate is a Dashboard Razor view."
-    },
-    "evidence": [
-      {
-        "line_end": 13,
-        "line_start": 1,
-        "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
-        "provenance": "STRUCTURAL_ONLY",
-        "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
-      }
-    ],
-    "name": "Dashboard Razor shell modernization candidate",
-    "origin": "AGENT_REASONING"
-  },
-  "razor_demo_workflow": {
-    "backend_mapping": "UNRESOLVED",
-    "confidence": {
-      "level": "LOW",
-      "provenance": [
-        "STRUCTURAL_ONLY"
-      ],
-      "rationale": "The configured route has no deterministic backend endpoint mapping."
-    },
-    "evidence": [
-      {
-        "line_end": 41,
-        "line_start": 32,
-        "node_id": "legacy-dashboard-complete-application-demo-v1:Route:dashboard",
-        "provenance": "STRUCTURAL_ONLY",
-        "source_path": "src/MyHealth.Web/content/app/app.module.js"
-      }
-    ],
-    "name": "Dashboard route workflow",
-    "origin": "AGENT_REASONING",
-    "ui_surface": "dashboard"
-  },
-  "status": "COMPLETE",
+  "status": "WAITING_FOR_PROVIDER_CONFIGURATION",
   "ui_surfaces": [
     {
       "confidence": {
@@ -6310,8 +5997,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "ClinicDetailController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "ClinicDetailController"
     },
     {
       "confidence": {
@@ -6331,8 +6017,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "ClinicsController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "ClinicsController"
     },
     {
       "confidence": {
@@ -6352,8 +6037,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "DailyCalendarController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "DailyCalendarController"
     },
     {
       "confidence": {
@@ -6373,8 +6057,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "DailyReportController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "DailyReportController"
     },
     {
       "confidence": {
@@ -6394,8 +6077,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "DashboardController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "DashboardController"
     },
     {
       "confidence": {
@@ -6415,8 +6097,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "DetailController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "DetailController"
     },
     {
       "confidence": {
@@ -6436,8 +6117,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "DoctorDetailController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "DoctorDetailController"
     },
     {
       "confidence": {
@@ -6457,8 +6137,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "DoctorsController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "DoctorsController"
     },
     {
       "confidence": {
@@ -6478,8 +6157,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "HeaderController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "HeaderController"
     },
     {
       "confidence": {
@@ -6499,8 +6177,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "MonthlyCalendarController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "MonthlyCalendarController"
     },
     {
       "confidence": {
@@ -6520,8 +6197,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "PatientsController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "PatientsController"
     },
     {
       "confidence": {
@@ -6541,8 +6217,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "UserDetailController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "UserDetailController"
     },
     {
       "confidence": {
@@ -6562,8 +6237,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "UsersController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "UsersController"
     },
     {
       "confidence": {
@@ -6583,8 +6257,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "clinicDetailController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "clinicDetailController"
     },
     {
       "confidence": {
@@ -6604,8 +6277,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "clinicsController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "clinicsController"
     },
     {
       "confidence": {
@@ -6625,8 +6297,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "clinicsListController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "clinicsListController"
     },
     {
       "confidence": {
@@ -6646,8 +6317,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "dailyCalendarController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "dailyCalendarController"
     },
     {
       "confidence": {
@@ -6667,8 +6337,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "dailyReportController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "dailyReportController"
     },
     {
       "confidence": {
@@ -6688,8 +6357,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "dashboardController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "dashboardController"
     },
     {
       "confidence": {
@@ -6709,8 +6377,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "doctorDetailController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "doctorDetailController"
     },
     {
       "confidence": {
@@ -6730,8 +6397,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "doctorsController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "doctorsController"
     },
     {
       "confidence": {
@@ -6751,8 +6417,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "headerController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "headerController"
     },
     {
       "confidence": {
@@ -6772,8 +6437,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "monthlyCalendarController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "monthlyCalendarController"
     },
     {
       "confidence": {
@@ -6793,8 +6457,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "patientsController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "patientsController"
     },
     {
       "confidence": {
@@ -6814,8 +6477,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "userDetailController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "userDetailController"
     },
     {
       "confidence": {
@@ -6835,8 +6497,7 @@
         }
       ],
       "kind": "AngularController",
-      "name": "usersController",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "usersController"
     },
     {
       "confidence": {
@@ -6856,8 +6517,7 @@
         }
       ],
       "kind": "AngularDirective",
-      "name": "DailyGraphDirective",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "DailyGraphDirective"
     },
     {
       "confidence": {
@@ -6877,8 +6537,7 @@
         }
       ],
       "kind": "AngularDirective",
-      "name": "FileBase64",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "FileBase64"
     },
     {
       "confidence": {
@@ -6898,8 +6557,7 @@
         }
       ],
       "kind": "AngularDirective",
-      "name": "HeaderBar",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "HeaderBar"
     },
     {
       "confidence": {
@@ -6919,8 +6577,7 @@
         }
       ],
       "kind": "AngularDirective",
-      "name": "LeftMenu",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "LeftMenu"
     },
     {
       "confidence": {
@@ -6940,8 +6597,7 @@
         }
       ],
       "kind": "AngularDirective",
-      "name": "MHChart",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "MHChart"
     },
     {
       "confidence": {
@@ -6961,8 +6617,7 @@
         }
       ],
       "kind": "AngularDirective",
-      "name": "MonthlyCalendarDays",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "MonthlyCalendarDays"
     },
     {
       "confidence": {
@@ -6982,8 +6637,7 @@
         }
       ],
       "kind": "AngularDirective",
-      "name": "StressfulBtn",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "StressfulBtn"
     },
     {
       "confidence": {
@@ -7003,8 +6657,7 @@
         }
       ],
       "kind": "AngularDirective",
-      "name": "chart",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "chart"
     },
     {
       "confidence": {
@@ -7024,8 +6677,7 @@
         }
       ],
       "kind": "AngularDirective",
-      "name": "dailyGraph",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "dailyGraph"
     },
     {
       "confidence": {
@@ -7045,8 +6697,7 @@
         }
       ],
       "kind": "AngularDirective",
-      "name": "fileBase64",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "fileBase64"
     },
     {
       "confidence": {
@@ -7066,8 +6717,7 @@
         }
       ],
       "kind": "AngularDirective",
-      "name": "headerBar",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "headerBar"
     },
     {
       "confidence": {
@@ -7087,8 +6737,7 @@
         }
       ],
       "kind": "AngularDirective",
-      "name": "leftMenu",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "leftMenu"
     },
     {
       "confidence": {
@@ -7108,8 +6757,7 @@
         }
       ],
       "kind": "AngularDirective",
-      "name": "monthlyCalendarDays",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "monthlyCalendarDays"
     },
     {
       "confidence": {
@@ -7129,8 +6777,7 @@
         }
       ],
       "kind": "AngularDirective",
-      "name": "stressfulBtn",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "stressfulBtn"
     },
     {
       "confidence": {
@@ -7150,8 +6797,7 @@
         }
       ],
       "kind": "AngularService",
-      "name": "calendarService",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "calendarService"
     },
     {
       "confidence": {
@@ -7171,8 +6817,7 @@
         }
       ],
       "kind": "AngularService",
-      "name": "clinicsService",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "clinicsService"
     },
     {
       "confidence": {
@@ -7192,8 +6837,7 @@
         }
       ],
       "kind": "AngularService",
-      "name": "dashboardService",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "dashboardService"
     },
     {
       "confidence": {
@@ -7213,8 +6857,7 @@
         }
       ],
       "kind": "AngularService",
-      "name": "dataService",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "dataService"
     },
     {
       "confidence": {
@@ -7234,8 +6877,7 @@
         }
       ],
       "kind": "AngularService",
-      "name": "doctorsService",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "doctorsService"
     },
     {
       "confidence": {
@@ -7255,8 +6897,7 @@
         }
       ],
       "kind": "AngularService",
-      "name": "initialPageService",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "initialPageService"
     },
     {
       "confidence": {
@@ -7276,8 +6917,7 @@
         }
       ],
       "kind": "AngularService",
-      "name": "modalService",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "modalService"
     },
     {
       "confidence": {
@@ -7297,8 +6937,7 @@
         }
       ],
       "kind": "AngularService",
-      "name": "patientsService",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "patientsService"
     },
     {
       "confidence": {
@@ -7318,8 +6957,7 @@
         }
       ],
       "kind": "AngularService",
-      "name": "toasterService",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "toasterService"
     },
     {
       "confidence": {
@@ -7339,8 +6977,7 @@
         }
       ],
       "kind": "AngularService",
-      "name": "usersService",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "usersService"
     },
     {
       "confidence": {
@@ -7360,8 +6997,7 @@
         }
       ],
       "kind": "Layout",
-      "name": "src/MyHealth.Web.Stress/Views/Shared/_Layout.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web.Stress/Views/Shared/_Layout.cshtml"
     },
     {
       "confidence": {
@@ -7381,8 +7017,7 @@
         }
       ],
       "kind": "Layout",
-      "name": "src/MyHealth.Web/Views/Shared/_Layout.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Shared/_Layout.cshtml"
     },
     {
       "confidence": {
@@ -7402,8 +7037,7 @@
         }
       ],
       "kind": "Layout",
-      "name": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml"
     },
     {
       "confidence": {
@@ -7423,8 +7057,7 @@
         }
       ],
       "kind": "Layout",
-      "name": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml"
     },
     {
       "confidence": {
@@ -7444,8 +7077,7 @@
         }
       ],
       "kind": "PartialView",
-      "name": "src/MyHealth.Web.Stress/Views/Home/_Content.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web.Stress/Views/Home/_Content.cshtml"
     },
     {
       "confidence": {
@@ -7465,8 +7097,7 @@
         }
       ],
       "kind": "PartialView",
-      "name": "src/MyHealth.Web.Stress/Views/Home/_Footer.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web.Stress/Views/Home/_Footer.cshtml"
     },
     {
       "confidence": {
@@ -7486,8 +7117,7 @@
         }
       ],
       "kind": "PartialView",
-      "name": "src/MyHealth.Web.Stress/Views/Home/_Header.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web.Stress/Views/Home/_Header.cshtml"
     },
     {
       "confidence": {
@@ -7507,8 +7137,7 @@
         }
       ],
       "kind": "PartialView",
-      "name": "src/MyHealth.Web.Stress/Views/_ViewImports.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web.Stress/Views/_ViewImports.cshtml"
     },
     {
       "confidence": {
@@ -7528,8 +7157,7 @@
         }
       ],
       "kind": "PartialView",
-      "name": "src/MyHealth.Web.Stress/Views/_ViewStart.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web.Stress/Views/_ViewStart.cshtml"
     },
     {
       "confidence": {
@@ -7549,8 +7177,7 @@
         }
       ],
       "kind": "PartialView",
-      "name": "src/MyHealth.Web/Views/Appointments/_Content.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Appointments/_Content.cshtml"
     },
     {
       "confidence": {
@@ -7570,8 +7197,7 @@
         }
       ],
       "kind": "PartialView",
-      "name": "src/MyHealth.Web/Views/Appointments/_Header.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Appointments/_Header.cshtml"
     },
     {
       "confidence": {
@@ -7591,8 +7217,7 @@
         }
       ],
       "kind": "PartialView",
-      "name": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
     },
     {
       "confidence": {
@@ -7612,8 +7237,7 @@
         }
       ],
       "kind": "PartialView",
-      "name": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml"
     },
     {
       "confidence": {
@@ -7633,8 +7257,7 @@
         }
       ],
       "kind": "PartialView",
-      "name": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml"
     },
     {
       "confidence": {
@@ -7654,8 +7277,7 @@
         }
       ],
       "kind": "PartialView",
-      "name": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml"
     },
     {
       "confidence": {
@@ -7675,8 +7297,7 @@
         }
       ],
       "kind": "PartialView",
-      "name": "src/MyHealth.Web/Views/Shared/_Footer.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Shared/_Footer.cshtml"
     },
     {
       "confidence": {
@@ -7696,8 +7317,7 @@
         }
       ],
       "kind": "PartialView",
-      "name": "src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml"
     },
     {
       "confidence": {
@@ -7717,8 +7337,7 @@
         }
       ],
       "kind": "PartialView",
-      "name": "src/MyHealth.Web/Views/_ViewImports.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/_ViewImports.cshtml"
     },
     {
       "confidence": {
@@ -7738,8 +7357,7 @@
         }
       ],
       "kind": "PartialView",
-      "name": "src/MyHealth.Web/Views/_ViewStart.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/_ViewStart.cshtml"
     },
     {
       "confidence": {
@@ -7759,8 +7377,7 @@
         }
       ],
       "kind": "RazorView",
-      "name": "src/MyHealth.Web.Stress/Views/Home/Index.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web.Stress/Views/Home/Index.cshtml"
     },
     {
       "confidence": {
@@ -7780,8 +7397,7 @@
         }
       ],
       "kind": "RazorView",
-      "name": "src/MyHealth.Web.Stress/Views/Shared/Error.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web.Stress/Views/Shared/Error.cshtml"
     },
     {
       "confidence": {
@@ -7801,8 +7417,7 @@
         }
       ],
       "kind": "RazorView",
-      "name": "src/MyHealth.Web/Views/Account/Login.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Account/Login.cshtml"
     },
     {
       "confidence": {
@@ -7822,8 +7437,7 @@
         }
       ],
       "kind": "RazorView",
-      "name": "src/MyHealth.Web/Views/Appointments/Index.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Appointments/Index.cshtml"
     },
     {
       "confidence": {
@@ -7843,8 +7457,7 @@
         }
       ],
       "kind": "RazorView",
-      "name": "src/MyHealth.Web/Views/Dashboard/Index.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
     },
     {
       "confidence": {
@@ -7864,8 +7477,7 @@
         }
       ],
       "kind": "RazorView",
-      "name": "src/MyHealth.Web/Views/Home/Index.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Home/Index.cshtml"
     },
     {
       "confidence": {
@@ -7885,8 +7497,7 @@
         }
       ],
       "kind": "RazorView",
-      "name": "src/MyHealth.Web/Views/O365Integration/Index.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/O365Integration/Index.cshtml"
     },
     {
       "confidence": {
@@ -7906,8 +7517,7 @@
         }
       ],
       "kind": "RazorView",
-      "name": "src/MyHealth.Web/Views/Shared/Error.cshtml",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "src/MyHealth.Web/Views/Shared/Error.cshtml"
     },
     {
       "confidence": {
@@ -7927,8 +7537,7 @@
         }
       ],
       "kind": "Route",
-      "name": "app",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "app"
     },
     {
       "confidence": {
@@ -7948,8 +7557,7 @@
         }
       ],
       "kind": "Route",
-      "name": "calendar",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "calendar"
     },
     {
       "confidence": {
@@ -7969,8 +7577,7 @@
         }
       ],
       "kind": "Route",
-      "name": "calendar.daily",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "calendar.daily"
     },
     {
       "confidence": {
@@ -7990,8 +7597,7 @@
         }
       ],
       "kind": "Route",
-      "name": "calendar.monthly",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "calendar.monthly"
     },
     {
       "confidence": {
@@ -8011,8 +7617,7 @@
         }
       ],
       "kind": "Route",
-      "name": "clinic",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "clinic"
     },
     {
       "confidence": {
@@ -8032,8 +7637,7 @@
         }
       ],
       "kind": "Route",
-      "name": "clinics",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "clinics"
     },
     {
       "confidence": {
@@ -8053,8 +7657,7 @@
         }
       ],
       "kind": "Route",
-      "name": "dailyReport",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "dailyReport"
     },
     {
       "confidence": {
@@ -8074,8 +7677,7 @@
         }
       ],
       "kind": "Route",
-      "name": "dashboard",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "dashboard"
     },
     {
       "confidence": {
@@ -8095,8 +7697,7 @@
         }
       ],
       "kind": "Route",
-      "name": "default",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "default"
     },
     {
       "confidence": {
@@ -8116,8 +7717,7 @@
         }
       ],
       "kind": "Route",
-      "name": "doctor",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "doctor"
     },
     {
       "confidence": {
@@ -8137,8 +7737,7 @@
         }
       ],
       "kind": "Route",
-      "name": "doctors",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "doctors"
     },
     {
       "confidence": {
@@ -8158,8 +7757,7 @@
         }
       ],
       "kind": "Route",
-      "name": "error",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "error"
     },
     {
       "confidence": {
@@ -8179,8 +7777,7 @@
         }
       ],
       "kind": "Route",
-      "name": "patients",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "patients"
     },
     {
       "confidence": {
@@ -8200,8 +7797,7 @@
         }
       ],
       "kind": "Route",
-      "name": "user",
-      "origin": "DETERMINISTIC_FACT"
+      "name": "user"
     },
     {
       "confidence": {
@@ -8221,50 +7817,7 @@
         }
       ],
       "kind": "Route",
-      "name": "users",
-      "origin": "DETERMINISTIC_FACT"
-    },
-    {
-      "confidence": {
-        "level": "LOW",
-        "provenance": [
-          "STRUCTURAL_ONLY"
-        ],
-        "rationale": "The package identifies the Razor view."
-      },
-      "evidence": [
-        {
-          "line_end": 13,
-          "line_start": 1,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
-          "provenance": "STRUCTURAL_ONLY",
-          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
-        }
-      ],
-      "kind": "RazorView",
-      "name": "Legacy Razor Dashboard view",
-      "origin": "AGENT_REASONING"
-    },
-    {
-      "confidence": {
-        "level": "LOW",
-        "provenance": [
-          "STRUCTURAL_ONLY"
-        ],
-        "rationale": "The package identifies the AngularJS controller declaration."
-      },
-      "evidence": [
-        {
-          "line_end": 141,
-          "line_start": 1,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
-          "provenance": "STRUCTURAL_ONLY",
-          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
-        }
-      ],
-      "kind": "AngularController",
-      "name": "Legacy AngularJS Dashboard controller",
-      "origin": "AGENT_REASONING"
+      "name": "users"
     }
   ],
   "user_workflows": [
@@ -8597,28 +8150,6 @@
       "name": "Route users",
       "origin": "DETERMINISTIC_FACT",
       "ui_surface": "users"
-    },
-    {
-      "backend_mapping": "UNRESOLVED",
-      "confidence": {
-        "level": "LOW",
-        "provenance": [
-          "STRUCTURAL_ONLY"
-        ],
-        "rationale": "The configured dashboard route is proven; no backend endpoint fact is available."
-      },
-      "evidence": [
-        {
-          "line_end": 41,
-          "line_start": 32,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:Route:dashboard",
-          "provenance": "STRUCTURAL_ONLY",
-          "source_path": "src/MyHealth.Web/content/app/app.module.js"
-        }
-      ],
-      "name": "Dashboard route workflow",
-      "origin": "AGENT_REASONING",
-      "ui_surface": "dashboard"
     }
   ]
 }

@@ -1,9 +1,15 @@
 # understand-application
 
-Use the shared Phase-2 CLI only after an approved KG exists. Run:
+Use the shared Phase-2 CLI only after an approved KG exists. In Codex or Copilot Chat, the active agent performs the interpretation; Polaris performs only deterministic preparation and validation. No API key is required.
 
 ```powershell
-python -m polaris_modernization.cli understand-application --kg-root artifacts/knowledge-graph/latest --output artifacts/application-understanding --provider auto
+python -m polaris_modernization.cli understand-application --kg-root artifacts/knowledge-graph/latest --output artifacts/application-understanding
 ```
 
-`auto` selects only the configured provider (`openai`, `azure`, or `bedrock`) or records `WAITING_FOR_PROVIDER_CONFIGURATION` without fabricating AI conclusions. For the local OpenAI demo, follow `docs/developer-experience.md`; never paste a secret into this guide. Never bypass KG readiness or invent backend API mappings.
+Read the resulting `evidence-packages.json`, `agent-reasoning-schema.json`, and `agent-instructions.md` only. Do not scan source or the full KG. Create `agent-reasoning.json` with `AGENT_REASONING` origin and exact package evidence references, then validate it:
+
+```powershell
+python -m polaris_modernization.cli understand-application --kg-root artifacts/knowledge-graph/latest --output artifacts/application-understanding --agent-result <prepared-path>/agent-reasoning.json
+```
+
+The validator rejects nonexistent evidence, invented relationships/API mappings, malformed claims, missing confidence/provenance, and non-approved demo candidates. Backend mappings remain `UNRESOLVED`.

@@ -1,0 +1,15 @@
+{
+  "cache_hits": 0,
+  "cache_misses": 0,
+  "evidence_packages_created": 64,
+  "input_tokens": 0,
+  "llm_calls": 0,
+  "llm_model_used": "NONE",
+  "llm_provider_used": "NONE",
+  "output_tokens": 0,
+  "tokens_per_evidence_package": 0.0,
+  "total_kg_nodes": 4868,
+  "total_kg_relationships": 5124,
+  "total_tokens": 0,
+  "unsupported_claims_rejected": 0
+}

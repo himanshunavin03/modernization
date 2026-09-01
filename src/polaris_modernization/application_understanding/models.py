@@ -1,9 +1,13 @@
-"""Structured Phase 2 contracts; AI claims remain separate from KG facts."""
+"""Phase-2 contracts: agent interpretations stay separate from deterministic KG facts."""
 from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
+
+
+EvidenceProvenance = Literal["COMPILER_PROVEN", "PROJECT_PARTIAL", "SYNTHETIC_FALLBACK", "STRUCTURAL_ONLY"]
+InterpretationOrigin = Literal["DETERMINISTIC_FACT", "AGENT_REASONING"]
 
 
 class EvidenceReference(BaseModel):
@@ -11,12 +15,12 @@ class EvidenceReference(BaseModel):
     source_path: str
     line_start: int = 0
     line_end: int = 0
-    provenance: Literal["COMPILER_PROVEN", "PROJECT_PARTIAL", "SYNTHETIC_FALLBACK", "STRUCTURAL_ONLY"]
+    provenance: EvidenceProvenance
 
 
 class ConfidenceAssessment(BaseModel):
     level: Literal["HIGH", "MEDIUM", "LOW"]
-    provenance: list[Literal["COMPILER_PROVEN", "PROJECT_PARTIAL", "SYNTHETIC_FALLBACK", "STRUCTURAL_ONLY"]]
+    provenance: list[EvidenceProvenance]
     rationale: str
 
 
@@ -32,46 +36,64 @@ class EvidencePackage(BaseModel):
     confidence: ConfidenceAssessment
 
 
-class BusinessModule(BaseModel):
+class EvidenceBackedItem(BaseModel):
     name: str
     evidence: list[EvidenceReference]
     confidence: ConfidenceAssessment
-    origin: Literal["DETERMINISTIC_FACT", "AI_INTERPRETATION"] = "DETERMINISTIC_FACT"
+    origin: InterpretationOrigin = "DETERMINISTIC_FACT"
 
 
-class BusinessCapability(BaseModel):
-    name: str
-    evidence: list[EvidenceReference]
-    confidence: ConfidenceAssessment
-    origin: Literal["DETERMINISTIC_FACT", "AI_INTERPRETATION"]
+class BusinessModule(EvidenceBackedItem):
+    pass
 
 
-class UserWorkflow(BaseModel):
-    name: str
+class BusinessCapability(EvidenceBackedItem):
+    pass
+
+
+class BusinessRule(EvidenceBackedItem):
+    pass
+
+
+class DomainConcept(EvidenceBackedItem):
+    pass
+
+
+class Dependency(EvidenceBackedItem):
+    pass
+
+
+class UserWorkflow(EvidenceBackedItem):
     ui_surface: str
     backend_mapping: Literal["UNRESOLVED", "NOT_APPLICABLE"]
-    evidence: list[EvidenceReference]
-    confidence: ConfidenceAssessment
-    origin: Literal["DETERMINISTIC_FACT", "AI_INTERPRETATION"] = "DETERMINISTIC_FACT"
 
 
-class BusinessRule(BaseModel):
-    name: str
-    evidence: list[EvidenceReference]
-    confidence: ConfidenceAssessment
-    origin: Literal["AI_INTERPRETATION"]
-
-
-class UISurface(BaseModel):
-    name: str
+class UISurface(EvidenceBackedItem):
     kind: str
-    evidence: list[EvidenceReference]
-    confidence: ConfidenceAssessment
+
+
+class AgentReasoningSubmission(BaseModel):
+    """Provider-neutral payload authored by the active Codex or Copilot chat agent."""
+    model_config = ConfigDict(extra="forbid")
+    application_purpose: BusinessCapability
+    business_modules: list[BusinessModule] = Field(default_factory=list)
+    business_capabilities: list[BusinessCapability] = Field(default_factory=list)
+    user_workflows: list[UserWorkflow] = Field(default_factory=list)
+    business_rules: list[BusinessRule] = Field(default_factory=list)
+    domain_concepts: list[DomainConcept] = Field(default_factory=list)
+    ui_surfaces: list[UISurface] = Field(default_factory=list)
+    dependencies: list[Dependency] = Field(default_factory=list)
+    best_razor_demo_candidate: str | None = None
+    razor_demo_capability: BusinessCapability | None = None
+    razor_demo_workflow: UserWorkflow | None = None
+    best_angular_demo_candidate: str | None = None
+    angular_demo_capability: BusinessCapability | None = None
+    angular_demo_workflow: UserWorkflow | None = None
 
 
 class ApplicationUnderstanding(BaseModel):
     project_id: str
-    status: Literal["COMPLETE", "FRAMEWORK_ONLY", "WAITING_FOR_PROVIDER_CONFIGURATION"]
+    status: Literal["COMPLETE"]
     application_purpose: str
     kg_metrics: dict[str, int]
     limitations: list[str]
@@ -80,19 +102,12 @@ class ApplicationUnderstanding(BaseModel):
     user_workflows: list[UserWorkflow]
     business_rules: list[BusinessRule]
     ui_surfaces: list[UISurface]
-    domain_concepts: list[BusinessModule]
-    dependencies: list[str]
+    domain_concepts: list[DomainConcept]
+    dependencies: list[Dependency]
     best_razor_demo_candidate: str | None
+    razor_demo_capability: BusinessCapability | None = None
+    razor_demo_workflow: UserWorkflow | None = None
     best_angular_demo_candidate: str | None
-    ai_interpretations: list[BusinessCapability] = Field(default_factory=list)
-
-
-class ReasoningResult(BaseModel):
-    application_purpose: BusinessCapability | None = None
-    business_modules: list[BusinessModule] = Field(default_factory=list)
-    claims: list[BusinessCapability] = Field(default_factory=list)
-    business_rules: list[BusinessRule] = Field(default_factory=list)
-    domain_concepts: list[BusinessModule] = Field(default_factory=list)
-    user_workflows: list[UserWorkflow] = Field(default_factory=list)
-    input_tokens: int = 0
-    output_tokens: int = 0
+    angular_demo_capability: BusinessCapability | None = None
+    angular_demo_workflow: UserWorkflow | None = None
+    agent_reasoning: AgentReasoningSubmission

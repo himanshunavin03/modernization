@@ -1,0 +1,3 @@
+# Prompt 039: Interactive Agent Application Understanding
+
+Correct Phase 2 so normal Codex Chat and GitHub Copilot Chat workflows do not require an external API key or hosted-provider runtime. Polaris must prepare only approved, compact KG evidence packages and a schema; the active chat agent reasons only over those packages; Polaris validates exact KG evidence, provenance, confidence, API safety, and demo candidates before publishing artifacts. Keep deterministic KG creation token-free. Preserve Azure OpenAI and Bedrock only as optional future headless enterprise adapters. Do not expose agent credentials, fabricate backend mappings, or begin feature, story, architecture, or Angular generation.

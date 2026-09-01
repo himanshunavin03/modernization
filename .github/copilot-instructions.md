@@ -12,4 +12,4 @@
 
 ## Developer capabilities
 
-Use `.github/prompts/create-knowledge-graph.prompt.md` and `.github/prompts/understand-application.prompt.md` in supported Copilot prompt-file surfaces. Both are thin instructions over the shared Polaris CLI. `understand-application` requires KG readiness, configured providers only, and unresolved backend mappings remain unresolved.
+Use `.github/prompts/create-knowledge-graph.prompt.md` and `.github/prompts/understand-application.prompt.md` in supported Copilot prompt-file surfaces. Both are thin instructions over the shared Polaris CLI. In interactive `understand-application`, Copilot reasons only over Polaris-prepared evidence packages and submits a schema-valid result to deterministic validation; it does not require an external API key. Unresolved backend mappings remain unresolved.

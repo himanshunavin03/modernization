@@ -1,0 +1,210 @@
+{
+  "application_purpose": {
+    "name": "Web application with a Dashboard Razor view and legacy AngularJS client-side UI.",
+    "origin": "AGENT_REASONING",
+    "evidence": [
+      {
+        "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+        "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+        "line_start": 1,
+        "line_end": 13,
+        "provenance": "STRUCTURAL_ONLY"
+      },
+      {
+        "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js",
+        "line_start": 1,
+        "line_end": 141,
+        "provenance": "STRUCTURAL_ONLY"
+      }
+    ],
+    "confidence": {
+      "level": "LOW",
+      "provenance": ["STRUCTURAL_ONLY"],
+      "rationale": "The statement is limited to the prepared Razor and AngularJS evidence."
+    }
+  },
+  "business_modules": [
+    {
+      "name": "Dashboard UI module",
+      "origin": "AGENT_REASONING",
+      "evidence": [
+        {
+          "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+          "line_start": 1,
+          "line_end": 13,
+          "provenance": "STRUCTURAL_ONLY"
+        }
+      ],
+      "confidence": {
+        "level": "LOW",
+        "provenance": ["STRUCTURAL_ONLY"],
+        "rationale": "The package identifies a Dashboard Razor UI surface."
+      }
+    }
+  ],
+  "business_capabilities": [
+    {
+      "name": "Dashboard client-side interaction",
+      "origin": "AGENT_REASONING",
+      "evidence": [
+        {
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js",
+          "line_start": 1,
+          "line_end": 141,
+          "provenance": "STRUCTURAL_ONLY"
+        }
+      ],
+      "confidence": {
+        "level": "LOW",
+        "provenance": ["STRUCTURAL_ONLY"],
+        "rationale": "The package proves a legacy AngularJS DashboardController declaration only."
+      }
+    }
+  ],
+  "user_workflows": [
+    {
+      "name": "Dashboard route workflow",
+      "ui_surface": "dashboard",
+      "backend_mapping": "UNRESOLVED",
+      "origin": "AGENT_REASONING",
+      "evidence": [
+        {
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Route:dashboard",
+          "source_path": "src/MyHealth.Web/content/app/app.module.js",
+          "line_start": 32,
+          "line_end": 41,
+          "provenance": "STRUCTURAL_ONLY"
+        }
+      ],
+      "confidence": {
+        "level": "LOW",
+        "provenance": ["STRUCTURAL_ONLY"],
+        "rationale": "The configured dashboard route is proven; no backend endpoint fact is available."
+      }
+    }
+  ],
+  "business_rules": [],
+  "domain_concepts": [],
+  "ui_surfaces": [
+    {
+      "name": "Legacy Razor Dashboard view",
+      "kind": "RazorView",
+      "origin": "AGENT_REASONING",
+      "evidence": [
+        {
+          "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+          "line_start": 1,
+          "line_end": 13,
+          "provenance": "STRUCTURAL_ONLY"
+        }
+      ],
+      "confidence": {
+        "level": "LOW",
+        "provenance": ["STRUCTURAL_ONLY"],
+        "rationale": "The package identifies the Razor view."
+      }
+    },
+    {
+      "name": "Legacy AngularJS Dashboard controller",
+      "kind": "AngularController",
+      "origin": "AGENT_REASONING",
+      "evidence": [
+        {
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js",
+          "line_start": 1,
+          "line_end": 141,
+          "provenance": "STRUCTURAL_ONLY"
+        }
+      ],
+      "confidence": {
+        "level": "LOW",
+        "provenance": ["STRUCTURAL_ONLY"],
+        "rationale": "The package identifies the AngularJS controller declaration."
+      }
+    }
+  ],
+  "dependencies": [],
+  "best_razor_demo_candidate": "src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+  "razor_demo_capability": {
+    "name": "Dashboard Razor shell modernization candidate",
+    "origin": "AGENT_REASONING",
+    "evidence": [
+      {
+        "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+        "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+        "line_start": 1,
+        "line_end": 13,
+        "provenance": "STRUCTURAL_ONLY"
+      }
+    ],
+    "confidence": {
+      "level": "LOW",
+      "provenance": ["STRUCTURAL_ONLY"],
+      "rationale": "The deterministic candidate is a Dashboard Razor view."
+    }
+  },
+  "razor_demo_workflow": {
+    "name": "Dashboard route workflow",
+    "ui_surface": "dashboard",
+    "backend_mapping": "UNRESOLVED",
+    "origin": "AGENT_REASONING",
+    "evidence": [
+      {
+        "node_id": "legacy-dashboard-complete-application-demo-v1:Route:dashboard",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js",
+        "line_start": 32,
+        "line_end": 41,
+        "provenance": "STRUCTURAL_ONLY"
+      }
+    ],
+    "confidence": {
+      "level": "LOW",
+      "provenance": ["STRUCTURAL_ONLY"],
+      "rationale": "The configured route has no deterministic backend endpoint mapping."
+    }
+  },
+  "best_angular_demo_candidate": "DashboardController",
+  "angular_demo_capability": {
+    "name": "Legacy AngularJS Dashboard controller modernization candidate",
+    "origin": "AGENT_REASONING",
+    "evidence": [
+      {
+        "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js",
+        "line_start": 1,
+        "line_end": 141,
+        "provenance": "STRUCTURAL_ONLY"
+      }
+    ],
+    "confidence": {
+      "level": "LOW",
+      "provenance": ["STRUCTURAL_ONLY"],
+      "rationale": "The deterministic candidate is the DashboardController declaration."
+    }
+  },
+  "angular_demo_workflow": {
+    "name": "Dashboard route workflow",
+    "ui_surface": "dashboard",
+    "backend_mapping": "UNRESOLVED",
+    "origin": "AGENT_REASONING",
+    "evidence": [
+      {
+        "node_id": "legacy-dashboard-complete-application-demo-v1:Route:dashboard",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js",
+        "line_start": 32,
+        "line_end": 41,
+        "provenance": "STRUCTURAL_ONLY"
+      }
+    ],
+    "confidence": {
+      "level": "LOW",
+      "provenance": ["STRUCTURAL_ONLY"],
+      "rationale": "The configured route has no deterministic backend endpoint mapping."
+    }
+  }
+}

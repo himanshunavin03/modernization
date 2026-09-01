@@ -1,16 +1,17 @@
-import json
 import inspect
+import json
 
 import pytest
-from langchain_core.messages import AIMessage
 
-from polaris_modernization.application_understanding.models import BusinessCapability, ConfidenceAssessment, EvidenceReference, ReasoningResult
+from polaris_modernization.application_understanding.models import AgentReasoningSubmission
 from polaris_modernization.application_understanding.providers import (
-    AzureOpenAIReasoningProvider, BedrockReasoningProvider, MockReasoningProvider,
-    OpenAIReasoningProvider, ProviderConfigurationError, provider_from_environment,
+    AzureOpenAIHeadlessProvider, BedrockHeadlessProvider, headless_provider_from_environment,
 )
 from polaris_modernization.application_understanding.retrieval import build_evidence_packages, load_approved_graph
-from polaris_modernization.application_understanding.workflow import run_application_understanding
+from polaris_modernization.application_understanding.workflow import (
+    UnsupportedAgentClaimsError, prepare_application_understanding,
+    validate_and_persist_application_understanding,
+)
 from polaris_modernization.knowledge_graph_agent import create_knowledge_graph
 
 
@@ -30,27 +31,35 @@ def kg(tmp_path, ready=True):
     return root
 
 
-def claim(node_id, source_path):
-    return BusinessCapability(
-        name="Evidence-backed dashboard capability", origin="AI_INTERPRETATION",
-        evidence=[EvidenceReference(node_id=node_id, source_path=source_path, provenance="STRUCTURAL_ONLY")],
-        confidence=ConfidenceAssessment(level="LOW", provenance=["STRUCTURAL_ONLY"], rationale="Fixture evidence."),
-    )
+def agent_item(reference, name="Evidence-backed dashboard capability"):
+    return {"name": name, "origin": "AGENT_REASONING", "evidence": [reference], "confidence": {"level": "LOW", "provenance": [reference["provenance"]], "rationale": "Only package evidence was used."}}
 
 
-class FakeStructuredRunnable:
-    def __init__(self, response):
-        self.response = response
-        self.calls = 0
+def valid_submission(packages):
+    evidence = [item for package in packages for item in package.evidence]
+    razor = next(item for item in evidence if item.source_path.endswith("Index.cshtml")).model_dump(mode="json")
+    angular = next(item for item in evidence if item.source_path.endswith("controller.js")).model_dump(mode="json")
+    route = next(item for item in evidence if item.source_path.endswith("app.js")).model_dump(mode="json")
+    purpose = agent_item(razor, "Dashboard-oriented web application")
+    workflow = {**agent_item(route, "Dashboard route workflow"), "ui_surface": "dashboard", "backend_mapping": "UNRESOLVED"}
+    return {
+        "application_purpose": purpose,
+        "business_modules": [agent_item(razor, "Dashboard module")],
+        "business_capabilities": [agent_item(angular, "Dashboard client interaction")],
+        "user_workflows": [workflow],
+        "business_rules": [], "domain_concepts": [], "ui_surfaces": [], "dependencies": [],
+        "best_razor_demo_candidate": "src/Web/Views/Dashboard/Index.cshtml",
+        "razor_demo_capability": agent_item(razor, "Dashboard shell capability"),
+        "razor_demo_workflow": workflow,
+        "best_angular_demo_candidate": "DashboardController",
+        "angular_demo_capability": agent_item(angular, "Dashboard controller capability"),
+        "angular_demo_workflow": workflow,
+    }
 
-    def invoke(self, messages):
-        self.calls += 1
-        return self.response
 
-
-def test_not_ready_kg_cannot_proceed(tmp_path):
+def test_not_ready_kg_cannot_prepare(tmp_path):
     with pytest.raises(ValueError, match="not approved"):
-        load_approved_graph(kg(tmp_path, False))
+        prepare_application_understanding(kg(tmp_path, False), tmp_path / "out")
 
 
 def test_evidence_packages_are_deterministic_and_hash_stable(tmp_path):
@@ -58,104 +67,72 @@ def test_evidence_packages_are_deterministic_and_hash_stable(tmp_path):
     assert [item.package_hash for item in build_evidence_packages(graph)] == [item.package_hash for item in build_evidence_packages(graph)]
 
 
-def test_knowledge_graph_creation_has_no_reasoning_provider_dependency():
-    assert "provider_from_environment" not in inspect.getsource(create_knowledge_graph)
-    assert "OpenAI" not in inspect.getsource(create_knowledge_graph)
+def test_interactive_preparation_requires_no_openai_key(monkeypatch, tmp_path):
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    prepared = prepare_application_understanding(kg(tmp_path), tmp_path / "out")
+    assert (prepared["path"] / "evidence-packages.json").is_file()
+    assert (prepared["path"] / "agent-reasoning-schema.json").is_file()
+    assert json.loads((prepared["path"] / "preparation.json").read_text())["external_llm_calls"] == 0
 
 
-def test_mock_provider_and_artifacts_keep_api_mapping_unresolved(tmp_path):
-    result = run_application_understanding(kg(tmp_path), tmp_path / "out", MockReasoningProvider())
+def test_knowledge_graph_creation_has_no_agent_or_provider_dependency():
+    source = inspect.getsource(create_knowledge_graph)
+    assert "provider" not in source.lower()
+    assert "agent_reasoning" not in source.lower()
+
+
+def test_valid_agent_submission_is_validated_and_persisted(tmp_path):
+    root = kg(tmp_path)
+    packages = build_evidence_packages(load_approved_graph(root)["graph"])
+    result_path = tmp_path / "agent.json"
+    result_path.write_text(json.dumps(valid_submission(packages)))
+    result = validate_and_persist_application_understanding(root, tmp_path / "out", result_path)
     assert result["understanding"].status == "COMPLETE"
-    assert result["token_usage"]["llm_provider_used"] == "MOCK"
-    assert result["understanding"].user_workflows[0].backend_mapping == "UNRESOLVED"
+    assert result["understanding"].user_workflows[-1].backend_mapping == "UNRESOLVED"
     assert (tmp_path / "out/latest/application-understanding.json").is_file()
+    assert json.loads((tmp_path / "out/latest/agent-reasoning-validation.json").read_text())["valid"] is True
 
 
-def test_none_provider_is_framework_only_and_records_zero_tokens(tmp_path):
-    result = run_application_understanding(kg(tmp_path), tmp_path / "out")
-    assert result["understanding"].status == "FRAMEWORK_ONLY"
-    assert result["token_usage"]["llm_calls"] == 0
-    assert result["token_usage"]["total_tokens"] == 0
+def test_malformed_agent_submission_is_rejected(tmp_path):
+    path = tmp_path / "agent.json"
+    path.write_text(json.dumps({"unexpected": "payload"}))
+    with pytest.raises(Exception):
+        validate_and_persist_application_understanding(kg(tmp_path), tmp_path / "out", path)
 
 
-def test_explicit_openai_without_key_waits_without_llm(monkeypatch, tmp_path):
-    for name in ("OPENAI_API_KEY", "AZURE_OPENAI_ENDPOINT", "AZURE_OPENAI_API_KEY", "AZURE_OPENAI_DEPLOYMENT", "AWS_REGION", "POLARIS_BEDROCK_MODEL_ID"):
-        monkeypatch.delenv(name, raising=False)
-    monkeypatch.setenv("POLARIS_LLM_PROVIDER", "openai")
-    assert provider_from_environment() is None
-    result = run_application_understanding(kg(tmp_path), tmp_path / "out", waiting_for_provider=True)
-    assert result["understanding"].status == "WAITING_FOR_PROVIDER_CONFIGURATION"
-    assert result["token_usage"]["llm_calls"] == 0
+def test_unsupported_agent_claim_and_invented_api_mapping_are_rejected(tmp_path):
+    root = kg(tmp_path)
+    packages = build_evidence_packages(load_approved_graph(root)["graph"])
+    payload = valid_submission(packages)
+    payload["business_capabilities"][0]["evidence"][0]["node_id"] = "missing"
+    path = tmp_path / "unsupported.json"
+    path.write_text(json.dumps(payload))
+    with pytest.raises(UnsupportedAgentClaimsError):
+        validate_and_persist_application_understanding(root, tmp_path / "out", path)
+    payload = valid_submission(packages)
+    payload["user_workflows"][0]["backend_mapping"] = "MAPPED"
+    path.write_text(json.dumps(payload))
+    with pytest.raises(Exception):
+        validate_and_persist_application_understanding(root, tmp_path / "out", path)
 
 
-def test_provider_selection_is_explicit_and_preserves_enterprise_paths(monkeypatch):
-    monkeypatch.setenv("POLARIS_LLM_PROVIDER", "openai")
-    monkeypatch.setenv("OPENAI_API_KEY", "test-only-secret")
-    monkeypatch.setenv("POLARIS_OPENAI_MODEL", "test-model")
-    assert isinstance(provider_from_environment(), OpenAIReasoningProvider)
-    monkeypatch.setenv("POLARIS_LLM_PROVIDER", "azure")
+def test_headless_enterprise_boundaries_remain_optional(monkeypatch):
+    monkeypatch.setenv("POLARIS_HEADLESS_LLM_PROVIDER", "azure")
     monkeypatch.setenv("AZURE_OPENAI_ENDPOINT", "https://example.invalid")
     monkeypatch.setenv("AZURE_OPENAI_API_KEY", "test-only-secret")
     monkeypatch.setenv("AZURE_OPENAI_DEPLOYMENT", "deployment")
-    assert isinstance(provider_from_environment(), AzureOpenAIReasoningProvider)
-    monkeypatch.setenv("POLARIS_LLM_PROVIDER", "bedrock")
+    assert isinstance(headless_provider_from_environment(), AzureOpenAIHeadlessProvider)
+    monkeypatch.setenv("POLARIS_HEADLESS_LLM_PROVIDER", "bedrock")
     monkeypatch.setenv("AWS_REGION", "ca-central-1")
     monkeypatch.setenv("POLARIS_BEDROCK_MODEL_ID", "model")
-    assert isinstance(provider_from_environment(), BedrockReasoningProvider)
-    monkeypatch.setenv("POLARIS_LLM_PROVIDER", "unknown")
-    with pytest.raises(ProviderConfigurationError):
-        provider_from_environment()
+    assert isinstance(headless_provider_from_environment(), BedrockHeadlessProvider)
 
 
-def test_unselected_provider_preserves_existing_enterprise_precedence(monkeypatch):
-    monkeypatch.delenv("POLARIS_LLM_PROVIDER", raising=False)
-    monkeypatch.setenv("OPENAI_API_KEY", "test-only-secret")
-    monkeypatch.setenv("AZURE_OPENAI_ENDPOINT", "https://example.invalid")
-    monkeypatch.setenv("AZURE_OPENAI_API_KEY", "test-only-secret")
-    monkeypatch.setenv("AZURE_OPENAI_DEPLOYMENT", "deployment")
-    assert isinstance(provider_from_environment(), AzureOpenAIReasoningProvider)
-
-
-def test_mocked_openai_response_is_structured_and_captures_actual_usage(tmp_path):
-    package = build_evidence_packages(load_approved_graph(kg(tmp_path))["graph"])[0]
-    response = {"parsed": ReasoningResult(claims=[claim(package.node_ids[0], package.evidence[0].source_path)]), "raw": AIMessage(content="", usage_metadata={"input_tokens": 19, "output_tokens": 7, "total_tokens": 26})}
-    runnable = FakeStructuredRunnable(response)
-    provider = OpenAIReasoningProvider("test-model", runnable)
-    result = provider.reason(package)
-    assert result.claims[0].origin == "AI_INTERPRETATION"
-    assert (result.input_tokens, result.output_tokens) == (19, 7)
-    assert runnable.calls == 1
-
-
-def test_malformed_openai_response_is_rejected(tmp_path):
-    package = build_evidence_packages(load_approved_graph(kg(tmp_path))["graph"])[0]
-    provider = OpenAIReasoningProvider("test-model", FakeStructuredRunnable({"parsed": {"claims": "not-a-list"}, "raw": AIMessage(content="")}))
-    with pytest.raises(Exception):
-        provider.reason(package)
-
-
-def test_unsupported_ai_claim_without_package_evidence_is_rejected(tmp_path):
-    class UnsafeProvider:
-        name = "TEST"
-        model = "test"
-        def reason(self, package):
-            return ReasoningResult(claims=[claim("missing", "x")])
-    with pytest.raises(ValueError, match="package-scoped KG evidence"):
-        run_application_understanding(kg(tmp_path), tmp_path / "out", UnsafeProvider())
-
-
-def test_reasoning_results_are_cached_per_stable_package_hash(tmp_path):
-    output = tmp_path / "out"
-    first = run_application_understanding(kg(tmp_path), output, MockReasoningProvider())
-    second = run_application_understanding(tmp_path / "kg", output, MockReasoningProvider())
-    assert first["token_usage"]["cache_misses"] == len(first["packages"])
-    assert second["token_usage"]["cache_hits"] == len(second["packages"])
-    assert second["token_usage"]["llm_calls"] == 0
-
-
-def test_no_secret_is_persisted_in_application_understanding_artifacts(monkeypatch, tmp_path):
-    secret = "test-only-secret"
-    monkeypatch.setenv("OPENAI_API_KEY", secret)
-    result = run_application_understanding(kg(tmp_path), tmp_path / "out", MockReasoningProvider())
-    text = "\n".join(path.read_text(encoding="utf-8") for path in result["path"].iterdir() if path.is_file())
-    assert secret not in text
+def test_submission_schema_requires_agent_reasoning_origin(tmp_path):
+    packages = build_evidence_packages(load_approved_graph(kg(tmp_path))["graph"])
+    payload = valid_submission(packages)
+    payload["application_purpose"]["origin"] = "DETERMINISTIC_FACT"
+    with pytest.raises(UnsupportedAgentClaimsError):
+        path = tmp_path / "origin.json"
+        path.write_text(json.dumps(payload))
+        validate_and_persist_application_understanding(tmp_path / "kg", tmp_path / "out", path)

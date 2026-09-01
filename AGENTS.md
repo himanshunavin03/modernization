@@ -10,3 +10,4 @@
 8. If blocked, document the blocker and the exact next action in `PROGRESS.md`.
 9. Keep scanner behavior project-agnostic; select projects through `--source-root`, `--project-id`, and profiles.
 10. Repository capability guides under `docs/agents/commands/` must delegate to the shared CLI rather than duplicate engine behavior.
+11. For interactive `understand-application`, prepare evidence with Polaris, reason only over those packages as the active chat agent, and submit the schema-valid result to Polaris for deterministic validation. Never require, expose, or reuse a provider API key in Codex or Copilot interactive mode.

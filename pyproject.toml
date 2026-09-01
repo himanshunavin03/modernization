@@ -21,7 +21,6 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=8.0,<9.0"]
 azure-openai = ["langchain-openai>=0.3,<1.0"]
-openai = ["langchain-openai>=0.3,<1.0"]
 bedrock = ["langchain-aws>=0.2,<1.0"]
 
 [project.scripts]

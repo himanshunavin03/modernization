@@ -127,8 +127,14 @@ Phase 2 is implemented as a separate LangGraph workflow over the approved immuta
 
 ## Provider And Developer Experience
 
-Provider selection is environment-driven and lazy: Azure OpenAI requires `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`, and `AZURE_OPENAI_DEPLOYMENT`; Bedrock requires `AWS_REGION` and `POLARIS_BEDROCK_MODEL_ID`. No real provider is configured locally, so the latest Phase-2 execution is `WAITING_FOR_PROVIDER_CONFIGURATION` with no token use. Codex capability guides and GitHub Copilot prompt files both invoke the shared CLI; repository-defined slash-command discovery is not claimed for Codex. See `docs/developer-experience.md` and prompt 037.
+Historical note, superseded by prompt 039: the former provider-driven Phase-2 workflow waited for credentials. Azure OpenAI and Bedrock now remain only optional headless enterprise boundaries; Codex capability guides and GitHub Copilot prompt files invoke the provider-free interactive flow. Repository-defined slash-command discovery is not claimed for Codex. See `docs/developer-experience.md`.
 
-## Local OpenAI Provider
+## Headless Provider Boundary
 
-Phase 2 also supports a local OpenAI provider through the same provider-neutral LangChain boundary. Select it with `POLARIS_LLM_PROVIDER=openai`, supply `OPENAI_API_KEY` only in the local environment, and optionally set `POLARIS_OPENAI_MODEL` (default `gpt-4o-mini`). Reasoning is per deterministic evidence package, carries package-scoped evidence validation, caches by package hash, and records actual input/output usage metadata when the provider returns it. No local OpenAI credential is configured in this workspace, so no real inference was performed; the safe status remains `WAITING_FOR_PROVIDER_CONFIGURATION`. Recovery reading includes prompt 038 and `docs/developer-experience.md`.
+The previous local OpenAI demo runtime was removed from normal developer use. Azure OpenAI and Bedrock remain optional future headless enterprise adapters, isolated from the interactive Codex/Copilot workflow and its artifacts.
+
+## Interactive Agent Architecture Correction
+
+Interactive Phase 2 no longer uses the OpenAI local-demo runtime or requires `OPENAI_API_KEY`. Codex Chat is the primary active reasoning agent and GitHub Copilot Chat is a compatible client interface. Polaris deterministically prepares approved KG evidence packages and schema, the active agent reasons only over those packages, and Polaris deterministically validates and persists the submission. Azure OpenAI and Bedrock are retained only as optional future headless enterprise adapters. Recovery reading includes prompt 039 and `docs/developer-experience.md`.
+
+The validated interactive run `legacy-dashboard-complete-application-demo-v1-2026-09-01-010758-025370` is `COMPLETE`: 64 evidence packages, zero external API calls, 88 modules (87 deterministic plus one agent interpretation), one evidence-backed capability, 16 workflows, 94 UI surfaces, and zero rejected claims. It identifies the Dashboard Razor view and legacy AngularJS `DashboardController` as the approved demo candidates. All backend mappings remain unresolved because the approved KG has 33 frontend API calls and zero backend endpoint facts.

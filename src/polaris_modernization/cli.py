@@ -260,10 +260,10 @@ def main() -> None:
     agent_parser.add_argument("--profile", default="default")
     agent_parser.add_argument("--output", type=Path, default=Path("artifacts"))
     agent_parser.add_argument("--load-neo4j", action="store_true")
-    understand_parser = subparsers.add_parser("understand-application", help="Run Phase 2 over an approved immutable KG")
+    understand_parser = subparsers.add_parser("understand-application", help="Prepare or validate interactive Phase 2 application understanding")
     understand_parser.add_argument("--kg-root", required=True, type=Path)
     understand_parser.add_argument("--output", type=Path, default=Path("artifacts/application-understanding"))
-    understand_parser.add_argument("--provider", choices=("auto", "none", "mock"), default="auto")
+    understand_parser.add_argument("--agent-result", type=Path, help="Structured result supplied by the active Codex or Copilot chat agent.")
     load_parser = subparsers.add_parser("load-neo4j")
     load_parser.add_argument("--graph", required=True, type=Path)
     load_parser.add_argument("--project-id", required=True)
@@ -295,11 +295,13 @@ def main() -> None:
         print(f"Create Knowledge Graph {result['overall_status']} for {result['project_id']}")
         if result["overall_status"] == "failed": raise SystemExit(1)
     elif args.command == "understand-application":
-        from polaris_modernization.application_understanding.providers import MockReasoningProvider, provider_from_environment
-        from polaris_modernization.application_understanding.workflow import run_application_understanding
-        provider = MockReasoningProvider() if args.provider == "mock" else provider_from_environment() if args.provider == "auto" else None
-        result = run_application_understanding(args.kg_root, args.output, provider, waiting_for_provider=args.provider == "auto" and provider is None)
-        print(f"Application understanding {result['understanding'].status} for {result['understanding'].project_id}")
+        from polaris_modernization.application_understanding.workflow import prepare_application_understanding, validate_and_persist_application_understanding
+        if args.agent_result:
+            result = validate_and_persist_application_understanding(args.kg_root, args.output, args.agent_result)
+            print(f"Application understanding COMPLETE for {result['understanding'].project_id}")
+        else:
+            result = prepare_application_understanding(args.kg_root, args.output)
+            print(f"Application understanding prepared for active-agent reasoning for {result['approved']['status']['project_id']}")
         print(result["path"])
     elif args.command in {"load-neo4j", "clear-neo4j-project"}:
         driver = connect(os.getenv("NEO4J_URI", "bolt://localhost:7687"), os.getenv("NEO4J_USERNAME", "neo4j"), os.getenv("NEO4J_PASSWORD", "change-me"))
