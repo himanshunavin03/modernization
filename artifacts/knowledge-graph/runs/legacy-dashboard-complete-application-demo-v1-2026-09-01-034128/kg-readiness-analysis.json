@@ -1,0 +1,55 @@
+{
+  "run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-034128",
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "files": 2384,
+  "facts": 8929,
+  "nodes": 4931,
+  "relationships": 5205,
+  "graph_integrity": "PASS",
+  "evidence_integrity": "PASS",
+  "integrity": {
+    "duplicate_node_ids": 0,
+    "duplicate_relationships": 0,
+    "broken_relationship_endpoints": 0,
+    "nodes_without_evidence": 0,
+    "relationships_without_evidence": 0,
+    "invalid_evidence_paths": 0,
+    "invalid_source_hashes": 0,
+    "invalid_evidence_line_ranges": 0,
+    "framework_misclassifications": 0,
+    "orphan_nodes": 377
+  },
+  "roslyn": {
+    "unresolved_total": 4344,
+    "compilation_error": 3701,
+    "project_load_failure": 534,
+    "overload_resolution": 107,
+    "inaccessible": 2,
+    "unknown": 0,
+    "guessed_converter_invokes": 0
+  },
+  "api": {
+    "backend_endpoints": 58,
+    "frontend_api_calls": 44,
+    "proven_mappings": 10,
+    "ambiguous_mappings": 0,
+    "dynamic_urls": 22,
+    "external_api": 1,
+    "no_backend_route": 1,
+    "unresolved_structural_calls": 32
+  },
+  "razor": {
+    "views": 8,
+    "partials": 15,
+    "layouts": 4,
+    "model_facts": 3,
+    "uses_view_model_relationships": 2,
+    "action_mappings": 0
+  },
+  "generic_analyzer_defects": 0,
+  "unknown_blockers": 0,
+  "tests": {"collected": 90, "passed": 88, "failed": 0, "skipped": 2},
+  "readiness": "READY_WITH_EXPLAINED_LIMITATIONS",
+  "application_understanding_status": "STALE",
+  "next_action": "RERUN_UNDERSTAND_APPLICATION"
+}

@@ -158,3 +158,11 @@ The generic route repair is complete. A deterministic balanced attribute scanner
 The new immutable run `legacy-dashboard-complete-application-demo-v1-2026-09-01-032625` has 58 backend endpoint facts and 10 proven frontend mappings, compared with 4 and 0 in `013227`. The real source retains 55 endpoint facts across 12 controllers with `api/[controller]` class templates. Focused framework tests passed 11 and the complete suite passed 87 with 2 skipped. Source inventory/hash data is unchanged, and graph/evidence integrity pass.
 
 The new forensic gate remains `NOT_READY`, not because either targeted defect remains, but because Roslyn still has two `UNKNOWN` unresolved invocations in the iOS client. Application Understanding remains `STALE`; do not begin Phase 2. Next action: `ADDITIONAL_DIAGNOSIS`. Recovery reading includes prompt 041 and `artifacts/knowledge-graph/latest/kg-readiness-analysis.md`.
+
+## Final Knowledge Graph Readiness
+
+Immutable run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128` is approved as `READY_WITH_EXPLAINED_LIMITATIONS`. Graph and evidence integrity pass at 2,384 files, 8,929 pipeline facts, 4,931 nodes, and 5,205 relationships. There are no duplicate IDs/relationships, broken endpoints, evidence gaps, invalid evidence paths/hashes/lines, or framework classification conflicts.
+
+Roslyn has 4,344 unresolved occurrences, all deterministically classified: 3,701 compilation errors, 534 project-load failures, 107 overload-resolution limitations, two inaccessible calls, and zero unknowns. The two converter calls in `HomeView.cs` remain unresolved at confidence zero with candidate evidence and no guessed `INVOKES` edges. Framework/API evidence remains stable at 58 endpoints, 44 frontend calls, and 10 proven mappings. The complete suite collected 90 tests: 88 passed and 2 skipped.
+
+Application Understanding remains `STALE` because its prior complete output predates the approved KG. The next action is `RERUN_UNDERSTAND_APPLICATION`; do not generate features, stories, architecture, or Angular work before that rerun is explicitly requested. Recovery reading includes prompts through 043 and `artifacts/knowledge-graph/latest/kg-readiness-analysis.md`.

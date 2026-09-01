@@ -1,0 +1,3 @@
+# Prompt 043: Final Knowledge Graph Readiness Validation
+
+Validate only immutable Knowledge Graph run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`. Recalculate graph/evidence integrity, Roslyn unresolved classifications, framework/API mappings, and Razor evidence from that run without mixing `latest` or older artifacts. Publish fresh readiness and API-forensics reports to the immutable run and to `latest` only after proving `latest` points to the same run. Run focused and complete tests, keep Application Understanding stale, and stop before Phase 2 execution or modernization work.

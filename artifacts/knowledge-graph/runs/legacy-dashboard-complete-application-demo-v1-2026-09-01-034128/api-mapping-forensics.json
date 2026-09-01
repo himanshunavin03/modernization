@@ -1,0 +1,20 @@
+{
+  "run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-034128",
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "backend_endpoint_facts": 58,
+  "frontend_api_call_facts": 44,
+  "proven": 10,
+  "ambiguous": 0,
+  "dynamic_url_warnings": 22,
+  "external_api": 1,
+  "no_backend_route": 1,
+  "unresolved_structural_calls": 32,
+  "controller_template_endpoints": 55,
+  "controllers_with_controller_template": 12,
+  "unexpanded_controller_tokens": 0,
+  "http_methods": {"GET": 42, "POST": 8, "PUT": 4, "DELETE": 4},
+  "mapping_facts_without_evidence": 0,
+  "non_proven_mapping_facts": 0,
+  "application_specific_rules": 0,
+  "status": "PASS_WITH_EXPLAINED_LIMITATIONS"
+}
