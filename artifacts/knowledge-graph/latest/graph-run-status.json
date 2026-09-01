@@ -7,27 +7,25 @@
     "source_inventory": "artifacts\\legacy-dashboard-complete-application-demo-v1\\source-inventory.json"
   },
   "counts": {
-    "edge_count": 5124,
+    "edge_count": 5148,
     "extraction_warning_count": 0,
-    "fact_count": 8847,
+    "fact_count": 8865,
     "file_count": 2384,
-    "node_count": 4868,
-    "review_warning_count": 4453,
-    "warning_count": 4453
+    "node_count": 4878,
+    "review_warning_count": 4483,
+    "warning_count": 4483
   },
-  "ended_at": "2026-09-01T01:20:25.135916Z",
+  "ended_at": "2026-09-01T01:32:21.097534Z",
   "neo4j": {
-    "loaded": {
-      "edges": 5124,
-      "nodes": 4868,
-      "warnings": 4453
-    },
-    "requested": true,
-    "status": "succeeded"
+    "requested": false,
+    "status": "skipped"
   },
   "neo4j_browser_url": "http://localhost:7474",
   "next_actions": [
-    "Open Neo4j Browser manually at http://localhost:7474 and run a read-only demo query."
+    "Review knowledge-graph.json locally.",
+    "Start Neo4j with `docker compose up -d` when ready; this command does not start Docker.",
+    "Rerun with --load-neo4j after setting NEO4J_URI, NEO4J_USERNAME, and NEO4J_PASSWORD.",
+    "Open Neo4j Browser manually at http://localhost:7474."
   ],
   "overall_status": "succeeded",
   "project_id": "legacy-dashboard-complete-application-demo-v1",
@@ -41,7 +39,7 @@
     "extraction_warning_count": 0,
     "opaque_dependency_count": 44,
     "out_of_scope_file_count": 0,
-    "review_warning_count": 4453,
+    "review_warning_count": 4483,
     "scope_description": "Complete discovered application inventory and graph.",
     "scope_id": "full-application",
     "scope_name": "Full application analysis",
@@ -66,9 +64,9 @@
       "status": "succeeded"
     },
     {
-      "message": "Loaded only this project graph into Neo4j.",
+      "message": "Neo4j load skipped by --skip-neo4j or default graph-only mode.",
       "name": "load_neo4j",
-      "status": "succeeded"
+      "status": "warning"
     },
     {
       "message": "Customer-facing run status artifacts were created.",
@@ -76,5 +74,5 @@
       "status": "succeeded"
     }
   ],
-  "started_at": "2026-09-01T01:19:31.769992Z"
+  "started_at": "2026-09-01T01:31:34.787953Z"
 }

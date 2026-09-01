@@ -10,7 +10,7 @@ def detect_frameworks(source_root: Path, inventory: list[dict]) -> list[dict]:
     if any(path.endswith((".cshtml", ".razor")) for path in paths): add("ASP.NET MVC/Razor", next(path for path in paths if path.endswith((".cshtml", ".razor"))))
     if any(path.endswith(".razor") for path in paths): add("Blazor", next(path for path in paths if path.endswith(".razor")))
     if any(path.endswith(".csproj") or path.endswith(".sln") for path in paths): add(".NET API", next(path for path in paths if path.endswith((".csproj", ".sln"))))
-    for package_path in (item for item in inventory if item["source_path"].endswith("package.json")):
+    for package_path in (item for item in inventory if item["source_path"].endswith(("package.json", "bower.json"))):
         try:
             package = json.loads((source_root / package_path["source_path"]).read_text(encoding="utf-8"))
         except json.JSONDecodeError:

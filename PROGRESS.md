@@ -71,3 +71,9 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 
 - Read-only validation passed for the published `COMPLETE` application-understanding artifact against immutable KG run `legacy-dashboard-complete-application-demo-v1-2026-08-31-184436`: application schema, agent-submission schema, exact package-scoped KG evidence, and all 64 package hashes match. The validation metadata records zero rejected claims, `BACKEND_MAPPING=UNRESOLVED`, and zero external LLM API calls. Source remained unchanged.
 - Recovery observation: the mutable `artifacts/knowledge-graph/latest/` directory currently lacks `kg-readiness-analysis.md`, so it cannot independently satisfy the approved-KG gate. Do not retarget or regenerate Phase 2 from that mutable pointer until its review artifact is restored or an approved immutable run is explicitly selected.
+
+## Framework API Contract Analyzer
+
+- Completed: the reusable framework-analyzer registry is wired into normal deterministic KG generation. Current supported analyzers are ASP.NET attribute/conventional route discovery, Razor `@model` and action-link extraction, and AngularJS literal `$http` call extraction with deterministic route matching. Dynamic URLs and ambiguous matches remain unproven.
+- New run: `legacy-dashboard-complete-application-demo-v1-2026-09-01-013227` succeeded with 2,384 files, 8,865 facts, 4,878 nodes, 5,148 relationships, zero extraction warnings, and valid graph/evidence integrity. It has 4 endpoint facts, 44 frontend API facts, 0 proven mappings, 3 Razor view-model mappings, 0 Razor action mappings, and 22 visible dynamic-URL review warnings. The source tree is unchanged.
+- Readiness: `NOT_READY` for Phase 2 because the new immutable archive has no newly calculated readiness report; do not reuse the earlier readiness result. The new package hashes differ in 8 entries, so the existing Application Understanding is `STALE`. Next action: `COMPLETE_KG_READINESS_ANALYSIS`.

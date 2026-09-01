@@ -21464,12 +21464,101 @@
     "extraction_warning_count": 0,
     "opaque_dependency_count": 44,
     "out_of_scope_file_count": 0,
-    "review_warning_count": 4453,
+    "review_warning_count": 4483,
     "scope_description": "Complete discovered application inventory and graph.",
     "scope_id": "full-application",
     "scope_name": "Full application analysis",
     "scope_type": "full_application",
     "selected_file_count": 2384
   },
-  "warnings": []
+  "warnings": [
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web.Stress/content/app/components/calendar/services/calendarService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web.Stress/content/app/components/calendar/services/calendarService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/users/services/usersService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/users/services/usersService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/users/services/usersService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/users/services/usersService.js"
+    },
+    {
+      "message": "Dynamic AngularJS API URL remains unresolved.",
+      "source_path": "src/MyHealth.Web/content/app/components/users/services/usersService.js"
+    }
+  ]
 }

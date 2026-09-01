@@ -25,6 +25,8 @@ KIND_TO_LABEL = {
     "chart": "Chart",
     "ui_control": "UIControl",
     "api_call": "ApiCall",
+    "endpoint": "Endpoint",
+    "view_model": "Type",
     "opaque_source": "OpaqueSource",
     "conservative_source": "ConservativeSource",
     "type": "Type",
@@ -72,6 +74,7 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
     pending_routes: list[tuple[str, Fact]] = []
     pending_actions: list[tuple[str, Fact]] = []
     pending_returns: list[Fact] = []
+    pending_framework: list[Fact] = []
     owners_by_file: dict[str, list[str]] = defaultdict(list)
     warnings: list[dict] = []
 
@@ -80,6 +83,9 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
         file_node = file_nodes[evidence["source_path"]]
         if fact.kind == "returns_view":
             pending_returns.append(fact)
+            continue
+        if fact.kind in {"api_mapping", "razor_model", "razor_action"}:
+            pending_framework.append(fact)
             continue
         label = KIND_TO_LABEL.get(fact.kind)
         if label is None:
@@ -95,6 +101,8 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
             add_edge("CONTAINS_CONTROL", file_node, node, evidence)
         if fact.kind == "controller":
             controllers[fact.name] = node
+            if fact.name.endswith("Controller"):
+                controllers[fact.name.removesuffix("Controller")] = node
         if fact.kind == "angular_module":
             modules_by_file[evidence["source_path"]] = node
         if fact.kind == "razor_view":
@@ -140,6 +148,26 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
         if isinstance(controller_name, str):
             controller_node = add_node("AngularController", controller_name, route_fact.evidence.to_dict())
             add_edge("DEPENDS_ON", route_node, controller_node, route_fact.evidence.to_dict())
+
+    endpoint_nodes = {node["name"]: node["id"] for node in nodes.values() if node["label"] == "Endpoint"}
+    api_nodes = {node["name"]: node["id"] for node in nodes.values() if node["label"] == "ApiCall"}
+    for fact in pending_framework:
+        evidence = fact.evidence.to_dict()
+        if fact.kind == "api_mapping":
+            call = api_nodes.get(fact.name)
+            endpoint = endpoint_nodes.get(str(fact.properties.get("endpoint")))
+            if call and endpoint and fact.properties.get("status") == "PROVEN":
+                add_edge("IMPLEMENTED_BY", call, endpoint, evidence, {"status": "PROVEN"})
+        elif fact.kind == "razor_model":
+            view = next((node["id"] for node in nodes.values() if node["label"] == "RazorView" and node["name"] == fact.name), None)
+            if view:
+                model = add_node("Type", str(fact.properties["model"]), evidence)
+                add_edge("USES_VIEW_MODEL", view, model, evidence)
+        elif fact.kind == "razor_action":
+            view = next((node["id"] for node in nodes.values() if node["label"] == "RazorView" and node["name"] == fact.name), None)
+            action = controllers.get(str(fact.properties["controller"]))
+            if view and action:
+                add_edge("CALLS_ACTION", view, action, evidence, {"action": fact.properties["action"]})
 
     return {
         "nodes": sorted(nodes.values(), key=lambda item: item["id"]),

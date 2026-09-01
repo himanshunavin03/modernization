@@ -22497,6 +22497,383 @@
       "properties": {
         "controller": "Tests"
       }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 115,
+        "line_start": 115,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0fa0321514da328ece373f44bef326bde408d078bd676ec052d2ae2c39ae4c30",
+        "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /current/avatar",
+      "properties": {
+        "action": "GetCurrentUserAvatar",
+        "controller": "UsersController",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "normalized_route": "/current/avatar",
+        "parameters": [],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "FileContentResult",
+        "route_template": "/current/avatar"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 130,
+        "line_start": 130,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0fa0321514da328ece373f44bef326bde408d078bd676ec052d2ae2c39ae4c30",
+        "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /current/claims",
+      "properties": {
+        "action": "GetCurrentClaimsAsync",
+        "controller": "UsersController",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "normalized_route": "/current/claims",
+        "parameters": [],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "JsonResult",
+        "route_template": "/current/claims"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 21,
+        "line_start": 21,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "2a2370157b8e312da83f79a002236872c659a6d07828ef242541fa68459321d9",
+        "source_path": "src/MyHealth.Web.Stress/Api/Controllers/BandController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/Band",
+      "properties": {
+        "action": "Get",
+        "controller": "BandController",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "normalized_route": "/api/Band",
+        "parameters": [],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "RootObject",
+        "route_template": "/api/Band"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 47,
+        "line_start": 47,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "2a2370157b8e312da83f79a002236872c659a6d07828ef242541fa68459321d9",
+        "source_path": "src/MyHealth.Web.Stress/Api/Controllers/BandController.cs"
+      },
+      "kind": "endpoint",
+      "name": "POST /api/Band/{value}",
+      "properties": {
+        "action": "Post",
+        "controller": "BandController",
+        "framework": "ASP.NET",
+        "http_method": "POST",
+        "normalized_route": "/api/Band/{value}",
+        "parameters": [
+          "value"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "response_type": "void",
+        "route_template": "/api/Band/{value}"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 1,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "edd30969138357eb2b1dced37a2fe8029c02aa93199969883fd8e706d7c1f72a",
+        "source_path": "src/MyHealth.Web/Views/Account/Login.cshtml"
+      },
+      "kind": "razor_model",
+      "name": "src/MyHealth.Web/Views/Account/Login.cshtml",
+      "properties": {
+        "model": "MyHealth.Web.Viewmodels.LoginViewModel"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 1,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "4096bc0701dbeeb88ce7a2a9d12936bd86b40ca6745d1a00543b88bb21be6d3c",
+        "source_path": "src/MyHealth.Web/Views/Appointments/_Content.cshtml"
+      },
+      "kind": "razor_model",
+      "name": "src/MyHealth.Web/Views/Appointments/_Content.cshtml",
+      "properties": {
+        "model": "IEnumerable<MyHealth.Model.ClinicAppointment>"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 1,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "e05b3d33e8bd13e4d7590410477ce35aea35963e8b3e18cb60abf3e6ac02afd8",
+        "source_path": "src/MyHealth.Web/Views/O365Integration/Index.cshtml"
+      },
+      "kind": "razor_model",
+      "name": "src/MyHealth.Web/Views/O365Integration/Index.cshtml",
+      "properties": {
+        "model": "MyHealth.Web.Services.AppState"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 13,
+        "line_start": 13,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "1cfbe5e13d8db24398358e9ff8924905b254d5f13a37c903d65486fb2fd663e5",
+        "source_path": "src/MyHealth.Web.Clinics/public/app/services/dataService.js"
+      },
+      "kind": "api_call",
+      "name": "GET /clinics",
+      "properties": {
+        "framework": "AngularJS",
+        "http_method": "GET",
+        "match_status": "UNRESOLVED",
+        "normalized_route": "/clinics",
+        "provenance": "FRAMEWORK_PROVEN",
+        "url": "/clinics"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 15,
+        "line_start": 15,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "8ffd0fca8e9be4a3ea7b70415d6b421565ae7d2be303d08f733a973c34520479",
+        "source_path": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js"
+      },
+      "kind": "api_call",
+      "name": "GET /api/users/current/tenant",
+      "properties": {
+        "framework": "AngularJS",
+        "http_method": "GET",
+        "match_status": "UNRESOLVED",
+        "normalized_route": "/api/users/current/tenant",
+        "provenance": "FRAMEWORK_PROVEN",
+        "url": "/api/users/current/tenant"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 18,
+        "line_start": 18,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "api_call",
+      "name": "GET /api/users/current/tenant",
+      "properties": {
+        "framework": "AngularJS",
+        "http_method": "GET",
+        "match_status": "UNRESOLVED",
+        "normalized_route": "/api/users/current/tenant",
+        "provenance": "FRAMEWORK_PROVEN",
+        "url": "/api/users/current/tenant"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 42,
+        "line_start": 42,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "api_call",
+      "name": "GET /api/users/current/tenant",
+      "properties": {
+        "framework": "AngularJS",
+        "http_method": "GET",
+        "match_status": "UNRESOLVED",
+        "normalized_route": "/api/users/current/tenant",
+        "provenance": "FRAMEWORK_PROVEN",
+        "url": "/api/users/current/tenant"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 66,
+        "line_start": 66,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "api_call",
+      "name": "GET /api/users/current/tenant",
+      "properties": {
+        "framework": "AngularJS",
+        "http_method": "GET",
+        "match_status": "UNRESOLVED",
+        "normalized_route": "/api/users/current/tenant",
+        "provenance": "FRAMEWORK_PROVEN",
+        "url": "/api/users/current/tenant"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 16,
+        "line_start": 16,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "b12c583956657df716c2bc34b6ecda4da2154e58e72389669a49a8a5d35e7843",
+        "source_path": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js"
+      },
+      "kind": "api_call",
+      "name": "GET /api/users/current/tenant",
+      "properties": {
+        "framework": "AngularJS",
+        "http_method": "GET",
+        "match_status": "UNRESOLVED",
+        "normalized_route": "/api/users/current/tenant",
+        "provenance": "FRAMEWORK_PROVEN",
+        "url": "/api/users/current/tenant"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 12,
+        "line_start": 12,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d49ea4e7495a765720b1302f9183f552e2a1d7452f9e64ea2f6ad082f8608a79",
+        "source_path": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js"
+      },
+      "kind": "api_call",
+      "name": "GET /api/users/current/tenant",
+      "properties": {
+        "framework": "AngularJS",
+        "http_method": "GET",
+        "match_status": "UNRESOLVED",
+        "normalized_route": "/api/users/current/tenant",
+        "provenance": "FRAMEWORK_PROVEN",
+        "url": "/api/users/current/tenant"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 24,
+        "line_start": 24,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "72004319a2ba31f388234363794681d62b936488ee12fab2ccca7a2868ff9eb5",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js"
+      },
+      "kind": "api_call",
+      "name": "GET /api/users/current/user",
+      "properties": {
+        "framework": "AngularJS",
+        "http_method": "GET",
+        "match_status": "UNRESOLVED",
+        "normalized_route": "/api/users/current/user",
+        "provenance": "FRAMEWORK_PROVEN",
+        "url": "/api/users/current/user"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 31,
+        "line_start": 31,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "72004319a2ba31f388234363794681d62b936488ee12fab2ccca7a2868ff9eb5",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js"
+      },
+      "kind": "api_call",
+      "name": "GET /api/users/current/claims",
+      "properties": {
+        "framework": "AngularJS",
+        "http_method": "GET",
+        "match_status": "UNRESOLVED",
+        "normalized_route": "/api/users/current/claims",
+        "provenance": "FRAMEWORK_PROVEN",
+        "url": "/api/users/current/claims"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 10,
+        "line_start": 10,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "a12063f556212be35f9949e326418381c6c9dded50a98c8404743ff83745f115",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js"
+      },
+      "kind": "api_call",
+      "name": "GET /api/users/current/claims",
+      "properties": {
+        "framework": "AngularJS",
+        "http_method": "GET",
+        "match_status": "UNRESOLVED",
+        "normalized_route": "/api/users/current/claims",
+        "provenance": "FRAMEWORK_PROVEN",
+        "url": "/api/users/current/claims"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 15,
+        "line_start": 15,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "4d42ae14459afffbf710fc06373cbd8763b81e3b930b58503179f1dcf1505e9f",
+        "source_path": "src/MyHealth.Web/content/app/components/users/services/usersService.js"
+      },
+      "kind": "api_call",
+      "name": "GET /api/users/current/tenant",
+      "properties": {
+        "framework": "AngularJS",
+        "http_method": "GET",
+        "match_status": "UNRESOLVED",
+        "normalized_route": "/api/users/current/tenant",
+        "provenance": "FRAMEWORK_PROVEN",
+        "url": "/api/users/current/tenant"
+      }
     }
   ],
   "project_id": "legacy-dashboard-complete-application-demo-v1"

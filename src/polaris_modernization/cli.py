@@ -19,6 +19,7 @@ from polaris_modernization.roslyn_bridge import enrich
 from polaris_modernization.isolated_extraction import extract_file
 from polaris_modernization.knowledge_graph_agent import create_knowledge_graph
 from polaris_modernization.graph.context_flow import add_context_flow
+from polaris_modernization.framework_analyzers import FrameworkAnalyzerRegistry
 
 ROSLYN_LABELS = {
     "namespace": "Namespace", "controller": "Controller", "action": "Action",
@@ -175,6 +176,10 @@ def analyze(source_root: Path, project_id: str, profile_name: str, output: Path,
             facts.extend(result.facts)
 
     in_scope_entries = [entry for entry in inventory if entry["selected_for_extraction"]]
+    detections = detect_frameworks(source_root, inventory)
+    framework_result = FrameworkAnalyzerRegistry().analyze(source_root, in_scope_entries, project_id, detections)
+    facts.extend(framework_result.facts)
+    warnings.extend(framework_result.warnings)
     graph_inventory = inventory if scope_type == "full_application" else in_scope_entries
     graph_metadata = {
         "scope_id": profile.get("scope_id", "full-application"),
@@ -188,6 +193,7 @@ def analyze(source_root: Path, project_id: str, profile_name: str, output: Path,
         "coverage_status": "pending",
     }
     graph = normalize(project_id, graph_inventory, facts, graph_metadata)
+    graph["warnings"].extend(framework_result.warnings)
     run_output = output / project_id
     run_output.mkdir(parents=True, exist_ok=True)
     roslyn_all = enrich(source_root, project_id, run_output / "roslyn-semantic-all.json") if enable_roslyn else {"project_id":project_id,"facts":[],"warnings":[]}
@@ -228,7 +234,7 @@ def analyze(source_root: Path, project_id: str, profile_name: str, output: Path,
         else "scope_partial_with_extraction_failures"
     )
     write_json(run_output / "source-inventory.json", {"project_id": project_id, "scope": graph["metadata"], "files": inventory, "warnings": warnings, "extraction_warnings": extraction_warnings})
-    write_json(run_output / "framework-detection.json", {"project_id": project_id, "scope": graph["metadata"], "frameworks": detect_frameworks(source_root, graph_inventory)})
+    write_json(run_output / "framework-detection.json", {"project_id": project_id, "scope": graph["metadata"], "frameworks": detections})
     write_json(run_output / "facts.json", {"project_id": project_id, "facts": [fact.to_dict() for fact in facts]})
     write_json(run_output / "knowledge-graph.json", graph)
     write_summary(run_output / "analysis-summary.md", inventory, facts, graph, extraction_warnings)

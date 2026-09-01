@@ -24,6 +24,7 @@
       "ConservativeSource",
       "Controller",
       "DTO",
+      "Endpoint",
       "ExternalReference",
       "File",
       "Function",
@@ -42,7 +43,7 @@
       "Type",
       "UIControl"
     ],
-    "nodes": 4868,
+    "nodes": 4878,
     "nodes_with_review_warnings": 278,
     "nodes_without_evidence": [],
     "relationship_types": [
@@ -58,9 +59,10 @@
       "INVOKES",
       "PROTECTS",
       "RETURNS_TYPE",
-      "USES_TEMPLATE"
+      "USES_TEMPLATE",
+      "USES_VIEW_MODEL"
     ],
-    "relationships": 5124,
+    "relationships": 5148,
     "relationships_without_evidence": [],
     "unresolved_invocation_targets": 2098,
     "unresolved_parameter_types": 39,
