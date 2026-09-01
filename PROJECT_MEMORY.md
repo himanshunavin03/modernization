@@ -128,3 +128,7 @@ Phase 2 is implemented as a separate LangGraph workflow over the approved immuta
 ## Provider And Developer Experience
 
 Provider selection is environment-driven and lazy: Azure OpenAI requires `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`, and `AZURE_OPENAI_DEPLOYMENT`; Bedrock requires `AWS_REGION` and `POLARIS_BEDROCK_MODEL_ID`. No real provider is configured locally, so the latest Phase-2 execution is `WAITING_FOR_PROVIDER_CONFIGURATION` with no token use. Codex capability guides and GitHub Copilot prompt files both invoke the shared CLI; repository-defined slash-command discovery is not claimed for Codex. See `docs/developer-experience.md` and prompt 037.
+
+## Local OpenAI Provider
+
+Phase 2 also supports a local OpenAI provider through the same provider-neutral LangChain boundary. Select it with `POLARIS_LLM_PROVIDER=openai`, supply `OPENAI_API_KEY` only in the local environment, and optionally set `POLARIS_OPENAI_MODEL` (default `gpt-4o-mini`). Reasoning is per deterministic evidence package, carries package-scoped evidence validation, caches by package hash, and records actual input/output usage metadata when the provider returns it. No local OpenAI credential is configured in this workspace, so no real inference was performed; the safe status remains `WAITING_FOR_PROVIDER_CONFIGURATION`. Recovery reading includes prompt 038 and `docs/developer-experience.md`.

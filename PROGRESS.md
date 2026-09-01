@@ -54,3 +54,9 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Codex uses `AGENTS.md` plus `docs/agents/commands/` and does not claim repository-defined slash-menu discovery. GitHub Copilot uses supported `.github/copilot-instructions.md` and `.github/prompts/*.prompt.md` prompt files. Both delegate to the same CLI; see `docs/developer-experience.md`.
 - Validation: `python -m pytest -q` returned `74 passed, 2 skipped`. No KG regeneration, Phase-1 change, Neo4j load, feature/story generation, architecture recommendation, or Angular generation occurred.
 - Next action: `CONFIGURE_LLM_PROVIDER`.
+
+## Local OpenAI Provider
+
+- Completed: OpenAI local-demo selection is a lazy implementation of the existing `ReasoningProvider` protocol. It uses LangChain structured output, sends only one compact deterministic evidence package per call, validates every AI item against that package's KG node IDs, and caches each package independently. Azure OpenAI and AWS Bedrock remain provider options.
+- Local configuration is not present in this workspace. `POLARIS_LLM_PROVIDER=openai` without `OPENAI_API_KEY` results in `WAITING_FOR_PROVIDER_CONFIGURATION` with zero calls and zero tokens; no mock result is represented as real understanding. See `docs/developer-experience.md` and prompt 038.
+- Next action: `CONFIGURE_LOCAL_OPENAI_PROVIDER` or retain the waiting state. Do not proceed to features, stories, architecture recommendation, or Angular generation.

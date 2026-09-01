@@ -16,7 +16,7 @@ class EvidenceReference(BaseModel):
 
 class ConfidenceAssessment(BaseModel):
     level: Literal["HIGH", "MEDIUM", "LOW"]
-    provenance: list[str]
+    provenance: list[Literal["COMPILER_PROVEN", "PROJECT_PARTIAL", "SYNTHETIC_FALLBACK", "STRUCTURAL_ONLY"]]
     rationale: str
 
 
@@ -88,6 +88,11 @@ class ApplicationUnderstanding(BaseModel):
 
 
 class ReasoningResult(BaseModel):
+    application_purpose: BusinessCapability | None = None
+    business_modules: list[BusinessModule] = Field(default_factory=list)
     claims: list[BusinessCapability] = Field(default_factory=list)
+    business_rules: list[BusinessRule] = Field(default_factory=list)
+    domain_concepts: list[BusinessModule] = Field(default_factory=list)
+    user_workflows: list[UserWorkflow] = Field(default_factory=list)
     input_tokens: int = 0
     output_tokens: int = 0
