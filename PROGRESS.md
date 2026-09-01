@@ -1,8 +1,8 @@
 # Progress
 
-- Status: PO/BA Business Feature specifications validated as `BUSINESS_FEATURES_READY_WITH_LIMITATIONS` from approved Feature run `legacy-dashboard-complete-application-demo-v1-2026-09-01-141302-518966`.
+- Status: Jira-style Story catalog validated as `STORIES_READY_WITH_LIMITATIONS` from approved Business Feature run `legacy-dashboard-complete-application-demo-v1-2026-09-01-145336-704667`.
 - Agent command: `/create-knowledge-graph` is documented at `docs/agents/commands/create-knowledge-graph.md` and delegates to the deterministic `agent-create-knowledge-graph` CLI adapter. It derives a safe project ID from the selected source root, enables project-aware Roslyn only when .NET project evidence exists, keeps Neo4j opt-in, and does not use an LLM.
-- Current step: Business Feature enrichment is complete; await explicit authorization for `GENERATE_JIRA_STYLE_STORIES`.
+- Current step: Story generation is complete; await explicit authorization for `GENERATE_ACCEPTANCE_CRITERIA`.
 - Complete application correction: deterministic first-party native-crash fallback now emits literal C#/JavaScript/Razor facts alongside provenance. Final analysis: 2,384 files, 3,386 nodes, 4,593 edges, 38 review warnings, zero extraction warnings, 44 opaque dependencies, and `complete_with_opaque_dependencies`. The attempted Neo4j load is blocked solely by unavailable local Neo4j environment configuration; full viewer export remains gated on that load.
 - Failure inventory: 42 JavaScript, 3 C#, and 2 HTML Tree-sitter workers exit with `3221225477`; all are supported-language parser defects requiring a generic repair. See `docs/validation/complete-application-extraction-failure-inventory.md`.
 - Viewer runbook: `docs/runbooks/understand-anything-viewer.md` documents the validated UI-only command and `tools/launch_understand_anything_viewer.ps1` safely exports and launches any approved project-scoped graph with a caller-supplied local token.
@@ -10,9 +10,9 @@
 - Customer-facing viewer branding is neutralized as `Legacy Dashboard POC`; audit: `docs/validation/customer-facing-branding-audit.md`.
 - End-to-end data context: the isolated graph now shows the proven Reports controller to repository, EF/LINQ query, selected model, and `MyHealthContext` flow; raw SQL is not represented because no literal SQL evidence exists.
 - Completed work: Project memory initialized; Dashboard source discovery completed; deterministic scoped inventory, facts, normalized graph JSON, summary, CLI, and tests created; Roslyn graph-label correction validated on a real .NET 8 SDK; Create Knowledge Graph now validates input, analyzes source, validates the project-scoped graph, optionally loads only that project into Neo4j, and writes customer-facing run status artifacts. Native Tree-sitter extraction is isolated per file; child workers bootstrap the repository-local `src` directory through a copied `PYTHONPATH`, and abnormal exits, timeouts, invalid worker output, startup/import errors, and Python extraction errors produce safe structured warnings while remaining files continue. Profiles now carry explicit scope metadata, audit every discovered file, limit selected-flow graph File nodes and normal Roslyn facts to the approved scope, and expose proven cross-scope semantic references without silently widening the graph. Step 3C.6 loaded only `healthclinic-dashboard-scope-demo-v3` with 123 Neo4j nodes, 169 relationships, 27 warnings, and `scope_complete` coverage. Step 3C.7 now assigns all 123 exported viewer nodes exactly once across five deterministic evidence-derived layers, preserving 169 edges and 27 warnings; the port-5175 viewer returned HTTP 200 for both the page and graph endpoint.
-- Next action: `GENERATE_JIRA_STYLE_STORIES` only when explicitly requested. Do not begin acceptance criteria, architecture, Angular generation, or source modification.
+- Next action: `GENERATE_ACCEPTANCE_CRITERIA` only when explicitly requested. Do not begin Given/When/Then scenarios, architecture, Angular generation, or source modification.
 - Blockers: None for Step 3C.6. Known review warnings remain visible: unresolved API-call ownership, implicit MVC `View()` matching, and Roslyn symbols that could not be resolved against the legacy source context.
-- Exact next action when resumed: Read prompts through 046, approved lineage, and `artifacts/business-features/latest/`. Await explicit authorization for `GENERATE_JIRA_STYLE_STORIES`.
+- Exact next action when resumed: Read prompts through 047, approved lineage, and `artifacts/stories/latest/`. Await explicit authorization for `GENERATE_ACCEPTANCE_CRITERIA`.
 
 ## Resume Command
 
@@ -79,6 +79,18 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - POC specification explains the Razor Dashboard and AngularJS `DashboardController` as two current surfaces of one business Feature. It separates current and modernization objectives, limitations/concerns, scope, success indicators, and later Story boundaries without generating Stories.
 - Validation: focused Business Feature/Feature/AU/API suite `24 passed`; complete suite `100 passed, 2 skipped, 0 failed, 0 errors` in `23.70s`.
 - Readiness: `BUSINESS_FEATURES_READY_WITH_LIMITATIONS`; next action is `GENERATE_JIRA_STYLE_STORIES` only after explicit authorization.
+
+## Evidence-Backed Jira-Style Story Generation
+
+- Approved lineage is unchanged: KG `034128` -> AU `054440-719694` -> Feature `141302-518966` -> Business Feature `145336-704667`; no upstream artifact or source file was modified.
+- Final Story run: `legacy-dashboard-complete-application-demo-v1-2026-09-01-105453-078418`; 12 deterministic workflow-boundary packages, manifest `cfcb2ed6775cca46374feab41abab20442610ccc2be7f29d995e4bdc525ba194`, and zero external LLM API calls.
+- Catalog: 12 stable business Stories cover all 5 Business Features, 6 capabilities, and 21 approved Business Feature workflows. Priorities are 6 high, 4 medium, and 2 low.
+- Actor/value safety: all Stories use `user of the existing application` at low actor confidence; invented personas and assumptions are zero. All 12 values retain `INFERRED_BUSINESS_VALUE`, and all 8 approved open questions are mapped without answers.
+- API profile: 7 Stories contain proven API mappings, 1 contains an unresolved mapping, 1 contains dynamic mappings, and none contains external mappings. No status was upgraded.
+- POC: 2 Dashboard Stories selected. `Open Operational Dashboard` spans the Razor and AngularJS surfaces; `View Tenant-Aware Dashboard Summary` uses the AngularJS surface and retains the unresolved clinic-summary relationship.
+- Quality: zero duplicate, technical-artifact, unsupported, or untraceable accepted Stories. Story Points are `UNESTIMATED`; no Acceptance Criteria, Jira tickets, architecture, code, or source changes were generated.
+- Validation: focused Story/Business Feature/Feature/AU/API suite `31 passed`; complete suite `107 passed, 2 skipped, 0 failed, 0 errors` in `33.33s`.
+- Readiness: `STORIES_READY_WITH_LIMITATIONS`; next action is `GENERATE_ACCEPTANCE_CRITERIA` only after explicit authorization.
 
 ## Provider And Developer Experience
 

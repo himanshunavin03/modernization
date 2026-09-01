@@ -1,0 +1,22 @@
+{
+  "application_understanding_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694",
+  "business_feature_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-145336-704667",
+  "feature_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-141302-518966",
+  "hash_validation": "PASS",
+  "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-034128",
+  "manifest_hash": "cfcb2ed6775cca46374feab41abab20442610ccc2be7f29d995e4bdc525ba194",
+  "packages": {
+    "story-evidence:feature-clinic-appointment-experience:navigate-clinic-surfaces": "4390a04c577b6278a7bdb7cb22fb6bb6c10aee71a57000fa4e2ff33669f27976",
+    "story-evidence:feature-clinic-appointment-experience:resolve-clinic-tenant-context": "022d0e2b3cb02060a2b199bc928e9f649cb22a7c995ecb28948619ef8860e746",
+    "story-evidence:feature-doctor-directory-management:access-doctor-detail-with-tenant-context": "8f6c0e7380b9d7ebccc7d6d4362fa7d843bc91c3b65ab49e647cceb943bbe925",
+    "story-evidence:feature-doctor-directory-management:navigate-doctor-directory": "b7dd7e04ed8f40978959fe99a93b00cf23ade412a817190d11da409e286ee796",
+    "story-evidence:feature-operational-dashboard-insights:access-yearly-reporting-information": "3cadef420e0fdbee307e29e98d4818819f73046c78e22b93a29ff0be7d22fb9b",
+    "story-evidence:feature-operational-dashboard-insights:load-tenant-aware-dashboard-summaries": "3ccba1d8cc7c9937c7a3e064769d4ee8e00d82703e0b3bba863e70bcf1f1f148",
+    "story-evidence:feature-operational-dashboard-insights:open-the-operational-dashboard": "d821587d515bdaea0747041e58740664079145fd23352542dbdc644301578e22",
+    "story-evidence:feature-patient-directory-management:load-tenant-aware-patient-context": "794d127c19c11975448e3f8eb89c2c1ce01a5ed49ee233c46da43495b550dd3e",
+    "story-evidence:feature-patient-directory-management:navigate-patient-directory": "b8d4fb1f34441d46c1ff57d7efa5e316f9c9027248e8a0385917d8449b26e40a",
+    "story-evidence:feature-user-access-context:navigate-user-management-surfaces": "c2d93ffac871bc062a3468b632b8ad176b56e1279ab655f39db7113c2f2eb707",
+    "story-evidence:feature-user-access-context:resolve-current-user-and-claims-for-shared-ui": "ebcfa230b315a8fd8e001085f877c1a6cbb52bc75907b6f9e5fa96c6b1e2d3e8",
+    "story-evidence:feature-user-access-context:resolve-tenant-context-for-user-functionality": "96762822c472728b3563caddff404aeffd003d6aee6a81d905fa0bc30ea4c7d3"
+  }
+}

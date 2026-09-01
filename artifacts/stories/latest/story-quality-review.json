@@ -1,0 +1,201 @@
+{
+  "stories": [
+    {
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [
+          "Complete appointment operations are not proven by the approved workflows."
+        ],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "stakeholder_validation_required": true,
+      "story_id": "story-clinic-appointment-experience-access-clinic-information"
+    },
+    {
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [
+          "How clinic and appointment surfaces form a complete journey remains unresolved."
+        ],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "stakeholder_validation_required": true,
+      "story_id": "story-clinic-appointment-experience-establish-clinic-context"
+    },
+    {
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "stakeholder_validation_required": true,
+      "story_id": "story-doctor-directory-management-view-doctor-details-in-tenant-context"
+    },
+    {
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "stakeholder_validation_required": true,
+      "story_id": "story-doctor-directory-management-review-doctor-directory"
+    },
+    {
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [
+          "Two yearly report relationships remain DYNAMIC and are not treated as proven endpoint mappings."
+        ],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "stakeholder_validation_required": true,
+      "story_id": "story-operational-dashboard-insights-access-yearly-operational-reports"
+    },
+    {
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [
+          "The clinic-summary frontend-to-backend relationship remains UNRESOLVED."
+        ],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "stakeholder_validation_required": true,
+      "story_id": "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary"
+    },
+    {
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "stakeholder_validation_required": true,
+      "story_id": "story-operational-dashboard-insights-open-operational-dashboard"
+    },
+    {
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "stakeholder_validation_required": true,
+      "story_id": "story-patient-directory-management-establish-patient-tenant-context"
+    },
+    {
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "stakeholder_validation_required": true,
+      "story_id": "story-patient-directory-management-review-patient-directory"
+    },
+    {
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "stakeholder_validation_required": true,
+      "story_id": "story-user-access-context-access-user-management-views"
+    },
+    {
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [
+          "The business meaning of individual claims and authorization decisions is not proven."
+        ],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "stakeholder_validation_required": true,
+      "story_id": "story-user-access-context-resolve-current-user-and-claims"
+    },
+    {
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "stakeholder_validation_required": true,
+      "story_id": "story-user-access-context-resolve-tenant-context-for-user-functions"
+    }
+  ],
+  "summary": {
+    "actor_mode": "EVIDENCE_SAFE_GENERIC_APPLICATION_USER",
+    "business_features_with_stories": 5,
+    "business_features_without_stories": 0,
+    "capabilities_represented": 6,
+    "duplicate_stories": 0,
+    "high_priority_stories": 6,
+    "inferred_business_value_stories": 12,
+    "invented_personas": 0,
+    "low_confidence_stories": 2,
+    "low_priority_stories": 2,
+    "medium_priority_stories": 4,
+    "package_hash_validation": "PASS",
+    "poc_stories_selected": 2,
+    "provenance_validation": "PASS",
+    "stories_with_dynamic_api": 1,
+    "stories_with_external_api": 0,
+    "stories_with_open_questions": 8,
+    "stories_with_proven_api": 7,
+    "stories_with_unresolved_api": 1,
+    "story_assumptions_created": 0,
+    "story_quality_validation": "PASS",
+    "story_validation": "PASS",
+    "technical_story_candidates_rejected": 0,
+    "total_business_features": 5,
+    "total_stories": 12,
+    "unsupported_story_claims_rejected": 0,
+    "untraceable_stories": 0,
+    "workflows_covered": 21,
+    "workflows_intentionally_uncovered": 0
+  }
+}

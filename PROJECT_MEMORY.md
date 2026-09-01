@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-PO/BA Business Feature enrichment is complete and validated against Feature run `legacy-dashboard-complete-application-demo-v1-2026-09-01-141302-518966`. The next authorized action is `GENERATE_JIRA_STYLE_STORIES`; do not generate Stories until explicitly requested.
+Evidence-backed Jira-style Story generation is complete and validated against Business Feature run `legacy-dashboard-complete-application-demo-v1-2026-09-01-145336-704667`. The next authorized action is `GENERATE_ACCEPTANCE_CRITERIA`; do not generate Acceptance Criteria until explicitly requested.
 
 ## Agent Command
 
@@ -44,7 +44,7 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Await explicit authorization to generate Jira-style Stories from the validated Business Feature specifications. Do not generate acceptance criteria, architecture, Angular 22 code, or modify legacy source.
+Await explicit authorization to generate Acceptance Criteria from the validated Story catalog. Do not generate Given/When/Then scenarios, architecture, Angular 22 code, or modify legacy source.
 
 ## Step 3B.2 Result
 
@@ -115,7 +115,7 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 046 under `docs/prompts/`, approved KG/AU/Feature artifacts, and `artifacts/business-features/latest/`. Business Feature run `legacy-dashboard-complete-application-demo-v1-2026-09-01-145336-704667` is `BUSINESS_FEATURES_READY_WITH_LIMITATIONS`. The next action is `GENERATE_JIRA_STYLE_STORIES` only after explicit user authorization; do not start acceptance criteria, architecture, Angular generation, or source changes.
+Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 047 under `docs/prompts/`, approved KG/AU/Feature/Business Feature artifacts, and `artifacts/stories/latest/`. Story run `legacy-dashboard-complete-application-demo-v1-2026-09-01-105453-078418` is `STORIES_READY_WITH_LIMITATIONS`. The next action is `GENERATE_ACCEPTANCE_CRITERIA` only after explicit user authorization; do not start that phase, architecture, Angular generation, or source changes automatically.
 
 ## Project-Aware Roslyn Engine Proof
 
@@ -138,6 +138,12 @@ The POC selects only `feature-operational-dashboard-insights`; its Razor surface
 Business Feature run `legacy-dashboard-complete-application-demo-v1-2026-09-01-145336-704667` enriches the same five Feature IDs and names without changing the approved catalog. Five compact packages bind the exact Feature/AU/KG lineage through manifest hash `d93c012b5729deda3eb481fbf7de75c209c9a4c6df08723550dc997429a5634f`. Machine-readable catalog, stakeholder summary, five individual specifications, POC specification, open questions, validation, provenance, and token metadata are published under `artifacts/business-features/`.
 
 The specifications cover all six capabilities and 21 approved Feature workflows, use six domain concepts, one approved business rule, and five dependencies. No actor/persona is claimed because none is approved upstream; assumptions remain zero. Five value statements are labeled `INFERRED_BUSINESS_VALUE`, and eight open questions retain stakeholder decisions as questions rather than requirements. Deterministic API paths preserve 10 proven, 1 unresolved, and 2 dynamic relationships. Readiness is `BUSINESS_FEATURES_READY_WITH_LIMITATIONS`; next action is `GENERATE_JIRA_STYLE_STORIES` only after approval.
+
+## Evidence-Backed Jira-Style Stories
+
+Story run `legacy-dashboard-complete-application-demo-v1-2026-09-01-105453-078418` is bound to the approved KG/AU/Feature/Business Feature lineage through 12 deterministic workflow-boundary packages and manifest `cfcb2ed6775cca46374feab41abab20442610ccc2be7f29d995e4bdc525ba194`. The catalog contains 12 stable Stories across all five Business Features, all six capabilities, and all 21 approved Business Feature workflows. Priorities are 6 high, 4 medium, and 2 low.
+
+All Stories use the evidence-safe actor `user of the existing application` at low actor confidence because no persona is approved. All 12 preserve `INFERRED_BUSINESS_VALUE`, assumptions remain zero, all eight stakeholder questions are mapped, and API truth remains 7 Stories with proven mappings, 1 with unresolved mapping, 1 with dynamic mappings, and none with external mappings. The two-Story Dashboard POC includes `Open Operational Dashboard`, which spans the approved Razor and AngularJS surfaces, and `View Tenant-Aware Dashboard Summary`, which retains the unresolved clinic-summary limitation. No Acceptance Criteria or Story Points were generated. Readiness is `STORIES_READY_WITH_LIMITATIONS`; next action is `GENERATE_ACCEPTANCE_CRITERIA` only after approval.
 
 ## Provider And Developer Experience
 

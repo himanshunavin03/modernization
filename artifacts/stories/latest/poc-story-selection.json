@@ -1,0 +1,44 @@
+{
+  "feature_id": "feature-operational-dashboard-insights",
+  "stories": [
+    {
+      "api_statuses": [
+        "PROVEN",
+        "UNRESOLVED"
+      ],
+      "limitations": [
+        "The clinic-summary frontend-to-backend relationship remains UNRESOLVED."
+      ],
+      "rationale": "Selected because it demonstrates meaningful AngularJS dashboard behavior, a proven tenant-context contract, and the visible unresolved clinic-summary limitation.",
+      "story_id": "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary",
+      "title": "View Tenant-Aware Dashboard Summary",
+      "ui_surfaces": [
+        "DashboardController",
+        "dashboardService"
+      ],
+      "workflows": [
+        "Dashboard summary loads current tenant",
+        "Dashboard requests clinic summary"
+      ]
+    },
+    {
+      "api_statuses": [],
+      "limitations": [],
+      "rationale": "Selected because one business interaction spans the proven Razor entry surface and AngularJS Dashboard surface without splitting the Story by technology.",
+      "story_id": "story-operational-dashboard-insights-open-operational-dashboard",
+      "title": "Open Operational Dashboard",
+      "ui_surfaces": [
+        "DashboardController",
+        "dashboard",
+        "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+      ],
+      "workflows": [
+        "Route dashboard"
+      ]
+    }
+  ],
+  "story_ids": [
+    "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary",
+    "story-operational-dashboard-insights-open-operational-dashboard"
+  ]
+}
