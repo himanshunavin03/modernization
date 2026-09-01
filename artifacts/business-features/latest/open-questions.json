@@ -1,0 +1,180 @@
+{
+  "questions": [
+    {
+      "confidence": {
+        "level": "MEDIUM",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Priority is not encoded in source evidence."
+      },
+      "evidence": [
+        {
+          "line_end": 141,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+        }
+      ],
+      "feature_id": "feature-operational-dashboard-insights",
+      "question": "Which dashboard summaries and yearly reports are most important for the initial modernization workshop?",
+      "question_id": "Q-DASH-001",
+      "reason": "Evidence identifies available flows but not stakeholder priority."
+    },
+    {
+      "confidence": {
+        "level": "MEDIUM",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Future UX requires stakeholder clarification."
+      },
+      "evidence": [
+        {
+          "line_end": 141,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+        }
+      ],
+      "feature_id": "feature-operational-dashboard-insights",
+      "question": "Should the target frontend preserve the current year-dependent report navigation behavior or present those reports inside the new dashboard experience?",
+      "question_id": "Q-DASH-002",
+      "reason": "The current dynamic URL construction proves behavior but not desired future presentation."
+    },
+    {
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Direct inherited limitation."
+      },
+      "evidence": [
+        {
+          "line_end": 23,
+          "line_start": 23,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
+        }
+      ],
+      "feature_id": "feature-operational-dashboard-insights",
+      "question": "What contract detail is required to validate the unresolved clinic-summary frontend-to-backend relationship before implementation?",
+      "question_id": "Q-DASH-003",
+      "reason": "The approved Feature retains this relationship as unresolved."
+    },
+    {
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Direct evidence limitation."
+      },
+      "evidence": [
+        {
+          "line_end": 100,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js"
+        }
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "question": "Which doctor list and detail operations must be included when this Feature is decomposed into modernization Stories?",
+      "question_id": "Q-DOC-001",
+      "reason": "The approved Feature proves navigation and tenant context but not every doctor operation mapping."
+    },
+    {
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Direct evidence limitation."
+      },
+      "evidence": [
+        {
+          "line_end": 99,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:PatientsController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/patients/controllers/patientsController.js"
+        }
+      ],
+      "feature_id": "feature-patient-directory-management",
+      "question": "Which patient operations must be included when this Feature is decomposed into modernization Stories?",
+      "question_id": "Q-PAT-001",
+      "reason": "The approved Feature proves navigation and tenant context but not every patient operation mapping."
+    },
+    {
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Direct evidence gap."
+      },
+      "evidence": [
+        {
+          "line_end": 8,
+          "line_start": 4,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.ClinicAppointment",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Model/ClinicAppointment.cs"
+        }
+      ],
+      "feature_id": "feature-clinic-appointment-experience",
+      "question": "Which appointment operations are part of the current business workflow and must be preserved?",
+      "question_id": "Q-APT-001",
+      "reason": "The approved Feature does not contain a complete appointment-operation flow."
+    },
+    {
+      "confidence": {
+        "level": "LOW",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Requires stakeholder validation."
+      },
+      "evidence": [
+        {
+          "line_end": 8,
+          "line_start": 4,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.ClinicAppointment",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Model/ClinicAppointment.cs"
+        }
+      ],
+      "feature_id": "feature-clinic-appointment-experience",
+      "question": "How are the Razor appointment surfaces and AngularJS clinic surfaces intended to work together in the current user journey?",
+      "question_id": "Q-APT-002",
+      "reason": "Both are approved surfaces, but their complete composition is not proven."
+    },
+    {
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Direct evidence limitation."
+      },
+      "evidence": [
+        {
+          "line_end": 133,
+          "line_start": 133,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        }
+      ],
+      "feature_id": "feature-user-access-context",
+      "question": "Which claims-driven behaviors must be visible in later Stories without changing existing authorization semantics?",
+      "question_id": "Q-USER-001",
+      "reason": "Claims loading is proven, but business meaning and desired presentation are not."
+    }
+  ]
+}

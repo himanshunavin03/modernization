@@ -13,6 +13,8 @@ artifacts/*
 !artifacts/application-understanding/**
 !artifacts/features/
 !artifacts/features/**
+!artifacts/business-features/
+!artifacts/business-features/**
 source/*
 !source/.gitkeep
 !source/README.md

@@ -274,6 +274,10 @@ def main() -> None:
     feature_parser.add_argument("--application-understanding-root", required=True, type=Path)
     feature_parser.add_argument("--output", type=Path, default=Path("artifacts/features"))
     feature_parser.add_argument("--agent-result", type=Path, help="Structured Feature result supplied by the active Codex or Copilot chat agent.")
+    business_feature_parser = subparsers.add_parser("enrich-business-features", help="Prepare or validate PO/BA Business Feature specifications")
+    business_feature_parser.add_argument("--feature-root", required=True, type=Path)
+    business_feature_parser.add_argument("--output", type=Path, default=Path("artifacts/business-features"))
+    business_feature_parser.add_argument("--agent-result", type=Path, help="Structured PO/BA enrichment supplied by the active Codex or Copilot chat agent.")
     load_parser = subparsers.add_parser("load-neo4j")
     load_parser.add_argument("--graph", required=True, type=Path)
     load_parser.add_argument("--project-id", required=True)
@@ -321,6 +325,15 @@ def main() -> None:
         else:
             result = prepare_feature_generation(args.application_understanding_root, args.output)
             print(f"Feature generation prepared for active-agent reasoning for {result['approved']['understanding']['project_id']}")
+        print(result["path"])
+    elif args.command == "enrich-business-features":
+        from polaris_modernization.business_features.workflow import prepare_business_feature_enrichment, validate_and_persist_business_features
+        if args.agent_result:
+            result = validate_and_persist_business_features(args.feature_root, args.output, args.agent_result)
+            print(f"Business Feature enrichment {result['catalog'].readiness} for {result['catalog'].project_id}")
+        else:
+            result = prepare_business_feature_enrichment(args.feature_root, args.output)
+            print(f"Business Feature enrichment prepared for active-agent reasoning for {result['approved']['catalog']['project_id']}")
         print(result["path"])
     elif args.command in {"load-neo4j", "clear-neo4j-project"}:
         driver = connect(os.getenv("NEO4J_URI", "bolt://localhost:7687"), os.getenv("NEO4J_USERNAME", "neo4j"), os.getenv("NEO4J_PASSWORD", "change-me"))
