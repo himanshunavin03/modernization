@@ -282,6 +282,10 @@ def main() -> None:
     story_parser.add_argument("--business-feature-root", required=True, type=Path)
     story_parser.add_argument("--output", type=Path, default=Path("artifacts/stories"))
     story_parser.add_argument("--agent-result", type=Path, help="Structured Story result supplied by the active Codex or Copilot chat agent.")
+    ac_parser = subparsers.add_parser("generate-acceptance-criteria", help="Prepare or validate evidence-backed Acceptance Criteria")
+    ac_parser.add_argument("--story-root", required=True, type=Path)
+    ac_parser.add_argument("--output", type=Path, default=Path("artifacts/acceptance-criteria"))
+    ac_parser.add_argument("--agent-result", type=Path)
     load_parser = subparsers.add_parser("load-neo4j")
     load_parser.add_argument("--graph", required=True, type=Path)
     load_parser.add_argument("--project-id", required=True)
@@ -347,6 +351,10 @@ def main() -> None:
         else:
             result = prepare_story_generation(args.business_feature_root, args.output)
             print(f"Story generation prepared for active-agent reasoning for {result['approved']['catalog']['project_id']}")
+        print(result["path"])
+    elif args.command == "generate-acceptance-criteria":
+        from polaris_modernization.acceptance_criteria.workflow import prepare_acceptance_criteria, validate_and_persist_acceptance_criteria
+        result = validate_and_persist_acceptance_criteria(args.story_root, args.output, args.agent_result) if args.agent_result else prepare_acceptance_criteria(args.story_root, args.output)
         print(result["path"])
     elif args.command in {"load-neo4j", "clear-neo4j-project"}:
         driver = connect(os.getenv("NEO4J_URI", "bolt://localhost:7687"), os.getenv("NEO4J_USERNAME", "neo4j"), os.getenv("NEO4J_PASSWORD", "change-me"))

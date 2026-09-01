@@ -93,3 +93,5 @@
 | Unproven business value is labeled `INFERRED_BUSINESS_VALUE`, and actors remain absent when upstream evidence has no approved persona. | Polished stakeholder language must not turn interpretation or healthcare context into fabricated requirements or roles. |
 | Jira-style Stories are immutable downstream interpretations organized by approved Business Feature workflow boundaries. | Story granularity remains business-driven and traceable without creating file/controller/API migration tasks or changing approved Feature structure. |
 | Story statements use `user of the existing application` with low actor confidence when no persona is approved. | Jira syntax must not manufacture healthcare roles; persona refinement remains a stakeholder decision. |
+| Acceptance Criteria are immutable Story-scoped preservation contracts and preserve uncertainty. | Testability cannot justify invented preconditions, outcomes, rules, errors, NFRs, or API upgrades. |
+| Optional Figma target-design analysis occurs only after Acceptance Criteria and before or with Target Architecture. | Target design may guide future UX but cannot silently redefine evidence-backed existing behavior. |

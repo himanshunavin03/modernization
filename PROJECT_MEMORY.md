@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Evidence-backed Jira-style Story generation is complete and validated against Business Feature run `legacy-dashboard-complete-application-demo-v1-2026-09-01-145336-704667`. The next authorized action is `GENERATE_ACCEPTANCE_CRITERIA`; do not generate Acceptance Criteria until explicitly requested.
+Evidence-backed Acceptance Criteria generation is complete and validated against Story run `legacy-dashboard-complete-application-demo-v1-2026-09-01-105453-078418`. The next authorized action is `ANALYZE_OPTIONAL_TARGET_DESIGN_OR_RECOMMEND_TARGET_ARCHITECTURE`; do not execute either path until explicitly requested.
 
 ## Agent Command
 
@@ -44,7 +44,7 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Await explicit authorization to generate Acceptance Criteria from the validated Story catalog. Do not generate Given/When/Then scenarios, architecture, Angular 22 code, or modify legacy source.
+Await explicit authorization to analyze an optional target design or recommend Target Architecture from the validated Acceptance Criteria. Do not analyze Figma, recommend architecture, generate Angular 22 code, or modify legacy source automatically.
 
 ## Step 3B.2 Result
 
@@ -115,7 +115,7 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 047 under `docs/prompts/`, approved KG/AU/Feature/Business Feature artifacts, and `artifacts/stories/latest/`. Story run `legacy-dashboard-complete-application-demo-v1-2026-09-01-105453-078418` is `STORIES_READY_WITH_LIMITATIONS`. The next action is `GENERATE_ACCEPTANCE_CRITERIA` only after explicit user authorization; do not start that phase, architecture, Angular generation, or source changes automatically.
+Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 048 under `docs/prompts/`, approved upstream artifacts, and `artifacts/acceptance-criteria/latest/`. AC run `legacy-dashboard-complete-application-demo-v1-2026-09-01-112024-635713` is `ACCEPTANCE_CRITERIA_READY_WITH_LIMITATIONS`. Await explicit selection of optional target-design analysis or Target Architecture; do not analyze Figma, recommend architecture, generate Angular, or change source automatically.
 
 ## Project-Aware Roslyn Engine Proof
 
@@ -144,6 +144,12 @@ The specifications cover all six capabilities and 21 approved Feature workflows,
 Story run `legacy-dashboard-complete-application-demo-v1-2026-09-01-105453-078418` is bound to the approved KG/AU/Feature/Business Feature lineage through 12 deterministic workflow-boundary packages and manifest `cfcb2ed6775cca46374feab41abab20442610ccc2be7f29d995e4bdc525ba194`. The catalog contains 12 stable Stories across all five Business Features, all six capabilities, and all 21 approved Business Feature workflows. Priorities are 6 high, 4 medium, and 2 low.
 
 All Stories use the evidence-safe actor `user of the existing application` at low actor confidence because no persona is approved. All 12 preserve `INFERRED_BUSINESS_VALUE`, assumptions remain zero, all eight stakeholder questions are mapped, and API truth remains 7 Stories with proven mappings, 1 with unresolved mapping, 1 with dynamic mappings, and none with external mappings. The two-Story Dashboard POC includes `Open Operational Dashboard`, which spans the approved Razor and AngularJS surfaces, and `View Tenant-Aware Dashboard Summary`, which retains the unresolved clinic-summary limitation. No Acceptance Criteria or Story Points were generated. Readiness is `STORIES_READY_WITH_LIMITATIONS`; next action is `GENERATE_ACCEPTANCE_CRITERIA` only after approval.
+
+## Evidence-Backed Acceptance Criteria
+
+AC run `legacy-dashboard-complete-application-demo-v1-2026-09-01-112024-635713` binds 12 Story-scoped evidence packages to the immutable Story run. Fourteen criteria cover all 12 Stories: 8 proven and 6 supported with limitations. The two extra criteria define POC modernization preservation contracts without architecture or implementation detail. API truth remains 8 AC with proven, 2 with unresolved, 1 with dynamic, and none with external relationships. Eight open questions remain unanswered; nine AC require stakeholder validation. No persona, assumption, NFR, validation rule, error behavior, contradiction, duplicate, or untraceable criterion was introduced.
+
+Polaris supports an optional target-design input such as Figma after Acceptance Criteria and before or fused into Target Architecture. Figma describes target UX/design and must not silently redefine evidence-backed existing behavior. No design analysis occurred in this phase. Readiness is `ACCEPTANCE_CRITERIA_READY_WITH_LIMITATIONS`; next action requires explicit selection between optional design analysis and Target Architecture.
 
 ## Provider And Developer Experience
 

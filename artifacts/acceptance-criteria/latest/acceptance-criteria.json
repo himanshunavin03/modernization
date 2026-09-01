@@ -1,0 +1,1425 @@
+{
+  "acceptance_criteria": [
+    {
+      "acceptance_criterion_id": "ac-clinic-appointment-experience-access-clinic-information-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-clinic-appointment-experience-access-clinic-information",
+      "api_contract_refs": [],
+      "api_mapping_status": [],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.ClinicAppointment",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant"
+      ],
+      "assumptions": [],
+      "business_condition": "Navigate clinic surfaces",
+      "business_feature_evidence": [
+        "business-feature:feature-clinic-appointment-experience"
+      ],
+      "business_rule_refs": [
+        "NO_EVIDENCE_BACKED_BUSINESS_RULE"
+      ],
+      "confidence": {
+        "level": "LOW",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "NAVIGATION",
+      "dependency_refs": [],
+      "domain_concept_refs": [
+        "Clinic appointment",
+        "Home appointment"
+      ],
+      "evidence_status": "SUPPORTED_WITH_LIMITATION",
+      "feature_evidence": [
+        "feature-clinic-appointment-experience"
+      ],
+      "given": "the approved current-state context for navigate clinic surfaces is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.ClinicAppointment",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant"
+      ],
+      "limitations": [
+        "Complete appointment operations are not proven by the approved workflows."
+      ],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: A clinic detail experience is available. A clinic list experience is available.",
+      "open_questions": [
+        "Q-APT-001"
+      ],
+      "parent_feature_id": "feature-clinic-appointment-experience",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 8,
+          "line_start": 4,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.ClinicAppointment",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Model/ClinicAppointment.cs"
+        },
+        {
+          "line_end": 146,
+          "line_start": 146,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        }
+      ],
+      "stakeholder_validation_required": true,
+      "story_evidence": [
+        "story-clinic-appointment-experience-access-clinic-information"
+      ],
+      "story_id": "story-clinic-appointment-experience-access-clinic-information",
+      "then": "The existing application supports: A clinic detail experience is available. A clinic list experience is available.",
+      "title": "Access Clinic Information Behavior",
+      "ui_surface_refs": [
+        "ClinicsController",
+        "clinic",
+        "clinics"
+      ],
+      "when": "access the existing clinic information views",
+      "workflow_refs": [
+        "Route clinic",
+        "Route clinics"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-clinic-appointment-experience-establish-clinic-context-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-clinic-appointment-experience-establish-clinic-context",
+      "api_contract_refs": [
+        {
+          "api_contract": "GET /api/users/current/tenant",
+          "backend_endpoint": "GET /api/users/current/tenant",
+          "frontend_source": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
+          "status": "PROVEN",
+          "workflow": "Clinics load current tenant"
+        }
+      ],
+      "api_mapping_status": [
+        "PROVEN"
+      ],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.ClinicAppointment",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant"
+      ],
+      "assumptions": [],
+      "business_condition": "Resolve clinic tenant context",
+      "business_feature_evidence": [
+        "business-feature:feature-clinic-appointment-experience"
+      ],
+      "business_rule_refs": [
+        "NO_EVIDENCE_BACKED_BUSINESS_RULE"
+      ],
+      "confidence": {
+        "level": "LOW",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "TENANT_CONTEXT",
+      "dependency_refs": [],
+      "domain_concept_refs": [
+        "Clinic appointment",
+        "Home appointment"
+      ],
+      "evidence_status": "SUPPORTED_WITH_LIMITATION",
+      "feature_evidence": [
+        "feature-clinic-appointment-experience"
+      ],
+      "given": "the approved current-state context for resolve clinic tenant context is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.ClinicAppointment",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant"
+      ],
+      "limitations": [
+        "How clinic and appointment surfaces form a complete journey remains unresolved."
+      ],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: Clinic functionality has current tenant context.",
+      "open_questions": [
+        "Q-APT-002"
+      ],
+      "parent_feature_id": "feature-clinic-appointment-experience",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 8,
+          "line_start": 4,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.ClinicAppointment",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Model/ClinicAppointment.cs"
+        },
+        {
+          "line_end": 146,
+          "line_start": 146,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        }
+      ],
+      "stakeholder_validation_required": true,
+      "story_evidence": [
+        "story-clinic-appointment-experience-establish-clinic-context"
+      ],
+      "story_id": "story-clinic-appointment-experience-establish-clinic-context",
+      "then": "The existing application supports: Clinic functionality has current tenant context.",
+      "title": "Establish Clinic Context Behavior",
+      "ui_surface_refs": [
+        "ClinicsController"
+      ],
+      "when": "obtain tenant context for clinic functionality",
+      "workflow_refs": [
+        "Clinics load current tenant"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-review-doctor-directory-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-doctor-directory-management-review-doctor-directory",
+      "api_contract_refs": [],
+      "api_mapping_status": [],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor"
+      ],
+      "assumptions": [],
+      "business_condition": "Navigate doctor directory",
+      "business_feature_evidence": [
+        "business-feature:feature-doctor-directory-management"
+      ],
+      "business_rule_refs": [
+        "NO_EVIDENCE_BACKED_BUSINESS_RULE"
+      ],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "NAVIGATION",
+      "dependency_refs": [
+        "Doctor UI depends on doctor API contract"
+      ],
+      "domain_concept_refs": [
+        "Doctor"
+      ],
+      "evidence_status": "PROVEN",
+      "feature_evidence": [
+        "feature-doctor-directory-management"
+      ],
+      "given": "the approved current-state context for navigate doctor directory is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor"
+      ],
+      "limitations": [],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: A doctor list experience is available.",
+      "open_questions": [],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 100,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js"
+        },
+        {
+          "line_end": 59,
+          "line_start": 10,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Model/Doctor.cs"
+        }
+      ],
+      "stakeholder_validation_required": false,
+      "story_evidence": [
+        "story-doctor-directory-management-review-doctor-directory"
+      ],
+      "story_id": "story-doctor-directory-management-review-doctor-directory",
+      "then": "The existing application supports: A doctor list experience is available.",
+      "title": "Review Doctor Directory Behavior",
+      "ui_surface_refs": [
+        "DoctorsController",
+        "doctors"
+      ],
+      "when": "access the existing doctor directory",
+      "workflow_refs": [
+        "Route doctors"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-doctor-directory-management-view-doctor-details-in-tenant-context",
+      "api_contract_refs": [
+        {
+          "api_contract": "GET /api/users/current/tenant",
+          "backend_endpoint": "GET /api/users/current/tenant",
+          "frontend_source": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
+          "status": "PROVEN",
+          "workflow": "Doctors load current tenant"
+        }
+      ],
+      "api_mapping_status": [
+        "PROVEN"
+      ],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor"
+      ],
+      "assumptions": [],
+      "business_condition": "Access doctor detail with tenant context",
+      "business_feature_evidence": [
+        "business-feature:feature-doctor-directory-management"
+      ],
+      "business_rule_refs": [
+        "NO_EVIDENCE_BACKED_BUSINESS_RULE"
+      ],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "DATA_PRESENTATION",
+      "dependency_refs": [
+        "Doctor UI depends on doctor API contract"
+      ],
+      "domain_concept_refs": [
+        "Doctor"
+      ],
+      "evidence_status": "PROVEN",
+      "feature_evidence": [
+        "feature-doctor-directory-management"
+      ],
+      "given": "the approved current-state context for access doctor detail with tenant context is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor"
+      ],
+      "limitations": [],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: A doctor detail experience is available. Doctor functionality has current tenant context.",
+      "open_questions": [
+        "Q-DOC-001"
+      ],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 100,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js"
+        },
+        {
+          "line_end": 59,
+          "line_start": 10,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Model/Doctor.cs"
+        }
+      ],
+      "stakeholder_validation_required": true,
+      "story_evidence": [
+        "story-doctor-directory-management-view-doctor-details-in-tenant-context"
+      ],
+      "story_id": "story-doctor-directory-management-view-doctor-details-in-tenant-context",
+      "then": "The existing application supports: A doctor detail experience is available. Doctor functionality has current tenant context.",
+      "title": "View Doctor Details in Tenant Context Behavior",
+      "ui_surface_refs": [
+        "DoctorsController",
+        "doctor",
+        "doctorsService"
+      ],
+      "when": "access doctor detail information with current tenant context",
+      "workflow_refs": [
+        "Route doctor",
+        "Doctors load current tenant"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-operational-dashboard-insights-access-yearly-operational-reports",
+      "api_contract_refs": [
+        {
+          "api_contract": "GET /api/users/current/tenant",
+          "backend_endpoint": "GET /api/users/current/tenant",
+          "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+          "status": "PROVEN",
+          "workflow": "Dashboard expenses load current tenant"
+        },
+        {
+          "api_contract": "GET /api/users/current/tenant",
+          "backend_endpoint": "GET /api/users/current/tenant",
+          "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+          "status": "PROVEN",
+          "workflow": "Dashboard patient report loads current tenant"
+        },
+        {
+          "api_contract": "'/api/reports/expenses/' + year",
+          "backend_endpoint": "GET /api/reports/expenses/{year}",
+          "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+          "status": "DYNAMIC",
+          "workflow": "Dashboard requests yearly expenses"
+        },
+        {
+          "api_contract": "'/api/reports/patients/' + year",
+          "backend_endpoint": "GET /api/reports/patients/{year}",
+          "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+          "status": "DYNAMIC",
+          "workflow": "Dashboard requests yearly patient report"
+        }
+      ],
+      "api_mapping_status": [
+        "DYNAMIC",
+        "PROVEN"
+      ],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
+        "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+      ],
+      "assumptions": [],
+      "business_condition": "Access yearly reporting information",
+      "business_feature_evidence": [
+        "business-feature:feature-operational-dashboard-insights"
+      ],
+      "business_rule_refs": [
+        "NO_EVIDENCE_BACKED_BUSINESS_RULE"
+      ],
+      "confidence": {
+        "level": "MEDIUM",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "DATA_INTERACTION",
+      "dependency_refs": [
+        "Dashboard depends on tenant context API",
+        "Dashboard depends on reports API contract"
+      ],
+      "domain_concept_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATION",
+      "feature_evidence": [
+        "feature-operational-dashboard-insights"
+      ],
+      "given": "the approved current-state context for access yearly reporting information is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary"
+      ],
+      "limitations": [
+        "Two yearly report relationships remain DYNAMIC and are not treated as proven endpoint mappings."
+      ],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested.",
+      "open_questions": [
+        "Q-DASH-002"
+      ],
+      "parent_feature_id": "feature-operational-dashboard-insights",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 141,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+        },
+        {
+          "line_end": 23,
+          "line_start": 23,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
+        },
+        {
+          "line_end": 13,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+        }
+      ],
+      "stakeholder_validation_required": true,
+      "story_evidence": [
+        "story-operational-dashboard-insights-access-yearly-operational-reports"
+      ],
+      "story_id": "story-operational-dashboard-insights-access-yearly-operational-reports",
+      "then": "The existing application supports: The expense-reporting flow has current tenant context. The patient-reporting flow has current tenant context. Yearly expense information is requested. Yearly patient-report information is requested.",
+      "title": "Access Yearly Operational Reports Behavior",
+      "ui_surface_refs": [
+        "DashboardController",
+        "dashboardService"
+      ],
+      "when": "access year-dependent expense and patient reporting information",
+      "workflow_refs": [
+        "Dashboard expenses load current tenant",
+        "Dashboard patient report loads current tenant",
+        "Dashboard requests yearly expenses",
+        "Dashboard requests yearly patient report"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-operational-dashboard-insights-open-operational-dashboard-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-operational-dashboard-insights-open-operational-dashboard",
+      "api_contract_refs": [],
+      "api_mapping_status": [],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
+        "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+      ],
+      "assumptions": [],
+      "business_condition": "Open the operational dashboard",
+      "business_feature_evidence": [
+        "business-feature:feature-operational-dashboard-insights"
+      ],
+      "business_rule_refs": [
+        "NO_EVIDENCE_BACKED_BUSINESS_RULE"
+      ],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "NAVIGATION",
+      "dependency_refs": [
+        "Dashboard depends on tenant context API",
+        "Dashboard depends on reports API contract"
+      ],
+      "domain_concept_refs": [],
+      "evidence_status": "PROVEN",
+      "feature_evidence": [
+        "feature-operational-dashboard-insights"
+      ],
+      "given": "the approved current-state context for open the operational dashboard is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary"
+      ],
+      "limitations": [],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: The Dashboard experience is available.",
+      "open_questions": [
+        "Q-DASH-001"
+      ],
+      "parent_feature_id": "feature-operational-dashboard-insights",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 141,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+        },
+        {
+          "line_end": 23,
+          "line_start": 23,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
+        },
+        {
+          "line_end": 13,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+        }
+      ],
+      "stakeholder_validation_required": true,
+      "story_evidence": [
+        "story-operational-dashboard-insights-open-operational-dashboard"
+      ],
+      "story_id": "story-operational-dashboard-insights-open-operational-dashboard",
+      "then": "The existing application supports: The Dashboard experience is available.",
+      "title": "Open Operational Dashboard Behavior",
+      "ui_surface_refs": [
+        "DashboardController",
+        "dashboard",
+        "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+      ],
+      "when": "open the existing operational dashboard experience",
+      "workflow_refs": [
+        "Route dashboard"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-operational-dashboard-insights-open-operational-dashboard-002",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-operational-dashboard-insights-open-operational-dashboard",
+      "api_contract_refs": [],
+      "api_mapping_status": [],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
+        "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+      ],
+      "assumptions": [],
+      "business_condition": "Preserve approved behavior independently of legacy implementation technology.",
+      "business_feature_evidence": [
+        "business-feature:feature-operational-dashboard-insights"
+      ],
+      "business_rule_refs": [
+        "NO_EVIDENCE_BACKED_BUSINESS_RULE"
+      ],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "MODERNIZATION_PRESERVATION",
+      "dependency_refs": [
+        "Dashboard depends on tenant context API",
+        "Dashboard depends on reports API contract"
+      ],
+      "domain_concept_refs": [],
+      "evidence_status": "PROVEN",
+      "feature_evidence": [
+        "feature-operational-dashboard-insights"
+      ],
+      "given": "the approved current-state behavior and evidence limitations are used as the modernization baseline",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary"
+      ],
+      "limitations": [],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The evidenced behavior remains available and unresolved relationships remain unresolved.",
+      "open_questions": [],
+      "parent_feature_id": "feature-operational-dashboard-insights",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 141,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+        },
+        {
+          "line_end": 23,
+          "line_start": 23,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
+        },
+        {
+          "line_end": 13,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+        }
+      ],
+      "stakeholder_validation_required": false,
+      "story_evidence": [
+        "story-operational-dashboard-insights-open-operational-dashboard"
+      ],
+      "story_id": "story-operational-dashboard-insights-open-operational-dashboard",
+      "then": "the approved current-state behavior remains available without changing the evidenced backend relationship status",
+      "title": "Open Operational Dashboard Preservation",
+      "ui_surface_refs": [
+        "DashboardController",
+        "dashboard",
+        "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+      ],
+      "when": "the frontend experience is modernized",
+      "workflow_refs": [
+        "Route dashboard"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-operational-dashboard-insights-view-tenant-aware-dashboard-summary",
+      "api_contract_refs": [
+        {
+          "api_contract": "GET /api/users/current/tenant",
+          "backend_endpoint": "GET /api/users/current/tenant",
+          "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+          "status": "PROVEN",
+          "workflow": "Dashboard summary loads current tenant"
+        },
+        {
+          "api_contract": "/api/reports/clinicsummary",
+          "backend_endpoint": "GET /api/reports/clinicsummary",
+          "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+          "status": "UNRESOLVED",
+          "workflow": "Dashboard requests clinic summary"
+        }
+      ],
+      "api_mapping_status": [
+        "PROVEN",
+        "UNRESOLVED"
+      ],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
+        "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+      ],
+      "assumptions": [],
+      "business_condition": "Load tenant-aware dashboard summaries",
+      "business_feature_evidence": [
+        "business-feature:feature-operational-dashboard-insights"
+      ],
+      "business_rule_refs": [
+        "NO_EVIDENCE_BACKED_BUSINESS_RULE"
+      ],
+      "confidence": {
+        "level": "MEDIUM",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "DATA_PRESENTATION",
+      "dependency_refs": [
+        "Dashboard depends on tenant context API",
+        "Dashboard depends on reports API contract"
+      ],
+      "domain_concept_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATION",
+      "feature_evidence": [
+        "feature-operational-dashboard-insights"
+      ],
+      "given": "the approved current-state context for load tenant-aware dashboard summaries is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary"
+      ],
+      "limitations": [
+        "The clinic-summary frontend-to-backend relationship remains UNRESOLVED."
+      ],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: The dashboard summary flow has current tenant context. Clinic summary information is requested for the dashboard.",
+      "open_questions": [
+        "Q-DASH-003"
+      ],
+      "parent_feature_id": "feature-operational-dashboard-insights",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 141,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+        },
+        {
+          "line_end": 23,
+          "line_start": 23,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
+        },
+        {
+          "line_end": 13,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+        }
+      ],
+      "stakeholder_validation_required": true,
+      "story_evidence": [
+        "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary"
+      ],
+      "story_id": "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary",
+      "then": "The existing application supports: The dashboard summary flow has current tenant context. Clinic summary information is requested for the dashboard.",
+      "title": "View Tenant-Aware Dashboard Summary Behavior",
+      "ui_surface_refs": [
+        "DashboardController",
+        "dashboardService"
+      ],
+      "when": "access dashboard summary information in current tenant context",
+      "workflow_refs": [
+        "Dashboard summary loads current tenant",
+        "Dashboard requests clinic summary"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-operational-dashboard-insights-view-tenant-aware-dashboard-summary",
+      "api_contract_refs": [
+        {
+          "api_contract": "GET /api/users/current/tenant",
+          "backend_endpoint": "GET /api/users/current/tenant",
+          "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+          "status": "PROVEN",
+          "workflow": "Dashboard summary loads current tenant"
+        },
+        {
+          "api_contract": "/api/reports/clinicsummary",
+          "backend_endpoint": "GET /api/reports/clinicsummary",
+          "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+          "status": "UNRESOLVED",
+          "workflow": "Dashboard requests clinic summary"
+        }
+      ],
+      "api_mapping_status": [
+        "PROVEN",
+        "UNRESOLVED"
+      ],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
+        "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+      ],
+      "assumptions": [],
+      "business_condition": "Preserve approved behavior independently of legacy implementation technology.",
+      "business_feature_evidence": [
+        "business-feature:feature-operational-dashboard-insights"
+      ],
+      "business_rule_refs": [
+        "NO_EVIDENCE_BACKED_BUSINESS_RULE"
+      ],
+      "confidence": {
+        "level": "MEDIUM",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "MODERNIZATION_PRESERVATION",
+      "dependency_refs": [
+        "Dashboard depends on tenant context API",
+        "Dashboard depends on reports API contract"
+      ],
+      "domain_concept_refs": [],
+      "evidence_status": "SUPPORTED_WITH_LIMITATION",
+      "feature_evidence": [
+        "feature-operational-dashboard-insights"
+      ],
+      "given": "the approved current-state behavior and evidence limitations are used as the modernization baseline",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary"
+      ],
+      "limitations": [
+        "The clinic-summary frontend-to-backend relationship remains UNRESOLVED."
+      ],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The evidenced behavior remains available and unresolved relationships remain unresolved.",
+      "open_questions": [],
+      "parent_feature_id": "feature-operational-dashboard-insights",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 141,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+        },
+        {
+          "line_end": 23,
+          "line_start": 23,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
+        },
+        {
+          "line_end": 13,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+        }
+      ],
+      "stakeholder_validation_required": true,
+      "story_evidence": [
+        "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary"
+      ],
+      "story_id": "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary",
+      "then": "the approved current-state behavior remains available without changing the evidenced backend relationship status",
+      "title": "View Tenant-Aware Dashboard Summary Preservation",
+      "ui_surface_refs": [
+        "DashboardController",
+        "dashboardService"
+      ],
+      "when": "the frontend experience is modernized",
+      "workflow_refs": [
+        "Dashboard summary loads current tenant",
+        "Dashboard requests clinic summary"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-patient-directory-management-establish-patient-tenant-context-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-patient-directory-management-establish-patient-tenant-context",
+      "api_contract_refs": [
+        {
+          "api_contract": "GET /api/users/current/tenant",
+          "backend_endpoint": "GET /api/users/current/tenant",
+          "frontend_source": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
+          "status": "PROVEN",
+          "workflow": "Patients load current tenant"
+        }
+      ],
+      "api_mapping_status": [
+        "PROVEN"
+      ],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:PatientsController",
+        "legacy-dashboard-complete-application-demo-v1:Type:Patient"
+      ],
+      "assumptions": [],
+      "business_condition": "Load tenant-aware patient context",
+      "business_feature_evidence": [
+        "business-feature:feature-patient-directory-management"
+      ],
+      "business_rule_refs": [
+        "NO_EVIDENCE_BACKED_BUSINESS_RULE"
+      ],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "TENANT_CONTEXT",
+      "dependency_refs": [
+        "Patient UI depends on patient API contract"
+      ],
+      "domain_concept_refs": [
+        "Patient"
+      ],
+      "evidence_status": "PROVEN",
+      "feature_evidence": [
+        "feature-patient-directory-management"
+      ],
+      "given": "the approved current-state context for load tenant-aware patient context is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:PatientsController",
+        "legacy-dashboard-complete-application-demo-v1:Type:Patient"
+      ],
+      "limitations": [],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: Patient functionality has current tenant context.",
+      "open_questions": [],
+      "parent_feature_id": "feature-patient-directory-management",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 99,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:PatientsController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/patients/controllers/patientsController.js"
+        },
+        {
+          "line_end": 60,
+          "line_start": 8,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Type:Patient",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Model/Patient.cs"
+        }
+      ],
+      "stakeholder_validation_required": false,
+      "story_evidence": [
+        "story-patient-directory-management-establish-patient-tenant-context"
+      ],
+      "story_id": "story-patient-directory-management-establish-patient-tenant-context",
+      "then": "The existing application supports: Patient functionality has current tenant context.",
+      "title": "Establish Patient Tenant Context Behavior",
+      "ui_surface_refs": [
+        "PatientsController",
+        "patientsService"
+      ],
+      "when": "obtain tenant context for patient functionality",
+      "workflow_refs": [
+        "Patients load current tenant"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-patient-directory-management-review-patient-directory-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-patient-directory-management-review-patient-directory",
+      "api_contract_refs": [],
+      "api_mapping_status": [],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:PatientsController",
+        "legacy-dashboard-complete-application-demo-v1:Type:Patient"
+      ],
+      "assumptions": [],
+      "business_condition": "Navigate patient directory",
+      "business_feature_evidence": [
+        "business-feature:feature-patient-directory-management"
+      ],
+      "business_rule_refs": [
+        "NO_EVIDENCE_BACKED_BUSINESS_RULE"
+      ],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "NAVIGATION",
+      "dependency_refs": [
+        "Patient UI depends on patient API contract"
+      ],
+      "domain_concept_refs": [
+        "Patient"
+      ],
+      "evidence_status": "PROVEN",
+      "feature_evidence": [
+        "feature-patient-directory-management"
+      ],
+      "given": "the approved current-state context for navigate patient directory is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:PatientsController",
+        "legacy-dashboard-complete-application-demo-v1:Type:Patient"
+      ],
+      "limitations": [],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: The patient directory experience is available.",
+      "open_questions": [
+        "Q-PAT-001"
+      ],
+      "parent_feature_id": "feature-patient-directory-management",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 99,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:PatientsController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/patients/controllers/patientsController.js"
+        },
+        {
+          "line_end": 60,
+          "line_start": 8,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Type:Patient",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Model/Patient.cs"
+        }
+      ],
+      "stakeholder_validation_required": true,
+      "story_evidence": [
+        "story-patient-directory-management-review-patient-directory"
+      ],
+      "story_id": "story-patient-directory-management-review-patient-directory",
+      "then": "The existing application supports: The patient directory experience is available.",
+      "title": "Review Patient Directory Behavior",
+      "ui_surface_refs": [
+        "PatientsController",
+        "patients"
+      ],
+      "when": "access the existing patient directory",
+      "workflow_refs": [
+        "Route patients"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-user-access-context-access-user-management-views-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-user-access-context-access-user-management-views",
+      "api_contract_refs": [],
+      "api_mapping_status": [],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user"
+      ],
+      "assumptions": [],
+      "business_condition": "Navigate user management surfaces",
+      "business_feature_evidence": [
+        "business-feature:feature-user-access-context"
+      ],
+      "business_rule_refs": [
+        "BR-USER-001"
+      ],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "NAVIGATION",
+      "dependency_refs": [
+        "Header depends on current-user API"
+      ],
+      "domain_concept_refs": [
+        "Application user request",
+        "Tenant request"
+      ],
+      "evidence_status": "PROVEN",
+      "feature_evidence": [
+        "feature-user-access-context"
+      ],
+      "given": "the approved current-state context for navigate user management surfaces is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant"
+      ],
+      "limitations": [],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: A user detail experience is available. A user list experience is available.",
+      "open_questions": [],
+      "parent_feature_id": "feature-user-access-context",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 133,
+          "line_start": 133,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 146,
+          "line_start": 146,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 124,
+          "line_start": 124,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        }
+      ],
+      "stakeholder_validation_required": false,
+      "story_evidence": [
+        "story-user-access-context-access-user-management-views"
+      ],
+      "story_id": "story-user-access-context-access-user-management-views",
+      "then": "The existing application supports: A user detail experience is available. A user list experience is available.",
+      "title": "Access User Management Views Behavior",
+      "ui_surface_refs": [
+        "UsersController",
+        "user",
+        "users"
+      ],
+      "when": "access existing user list and detail views",
+      "workflow_refs": [
+        "Route user",
+        "Route users"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-user-access-context-resolve-current-user-and-claims-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-user-access-context-resolve-current-user-and-claims",
+      "api_contract_refs": [
+        {
+          "api_contract": "GET /api/users/current/user",
+          "backend_endpoint": "GET /api/users/current/user",
+          "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+          "status": "PROVEN",
+          "workflow": "Header loads current user"
+        },
+        {
+          "api_contract": "GET /api/users/current/claims",
+          "backend_endpoint": "GET /api/users/current/claims",
+          "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+          "status": "PROVEN",
+          "workflow": "Header loads current claims"
+        },
+        {
+          "api_contract": "GET /api/users/current/claims",
+          "backend_endpoint": "GET /api/users/current/claims",
+          "frontend_source": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
+          "status": "PROVEN",
+          "workflow": "Initial page loads current claims"
+        }
+      ],
+      "api_mapping_status": [
+        "PROVEN"
+      ],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user"
+      ],
+      "assumptions": [],
+      "business_condition": "Resolve current user and claims for shared UI",
+      "business_feature_evidence": [
+        "business-feature:feature-user-access-context"
+      ],
+      "business_rule_refs": [
+        "BR-USER-001"
+      ],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "DATA_INTERACTION",
+      "dependency_refs": [
+        "Header depends on current-user API"
+      ],
+      "domain_concept_refs": [
+        "Application user request",
+        "Tenant request"
+      ],
+      "evidence_status": "SUPPORTED_WITH_LIMITATION",
+      "feature_evidence": [
+        "feature-user-access-context"
+      ],
+      "given": "the approved current-state context for resolve current user and claims for shared ui is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant"
+      ],
+      "limitations": [
+        "The business meaning of individual claims and authorization decisions is not proven."
+      ],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: The header has current user identity. The header has current claims. Initial-page behavior has current claims.",
+      "open_questions": [
+        "Q-USER-001"
+      ],
+      "parent_feature_id": "feature-user-access-context",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 133,
+          "line_start": 133,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 146,
+          "line_start": 146,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 124,
+          "line_start": 124,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        }
+      ],
+      "stakeholder_validation_required": true,
+      "story_evidence": [
+        "story-user-access-context-resolve-current-user-and-claims"
+      ],
+      "story_id": "story-user-access-context-resolve-current-user-and-claims",
+      "then": "The existing application supports: The header has current user identity. The header has current claims. Initial-page behavior has current claims.",
+      "title": "Resolve Current User and Claims Behavior",
+      "ui_surface_refs": [],
+      "when": "make current user identity and claims available to shared application behavior",
+      "workflow_refs": [
+        "Header loads current user",
+        "Header loads current claims",
+        "Initial page loads current claims"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-user-access-context-resolve-tenant-context-for-user-functions-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-user-access-context-resolve-tenant-context-for-user-functions",
+      "api_contract_refs": [
+        {
+          "api_contract": "GET /api/users/current/tenant",
+          "backend_endpoint": "GET /api/users/current/tenant",
+          "frontend_source": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
+          "status": "PROVEN",
+          "workflow": "Users load current tenant"
+        }
+      ],
+      "api_mapping_status": [
+        "PROVEN"
+      ],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user"
+      ],
+      "assumptions": [],
+      "business_condition": "Resolve tenant context for user functionality",
+      "business_feature_evidence": [
+        "business-feature:feature-user-access-context"
+      ],
+      "business_rule_refs": [
+        "BR-USER-001"
+      ],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "BUSINESS_RULE",
+      "dependency_refs": [
+        "Header depends on current-user API"
+      ],
+      "domain_concept_refs": [
+        "Application user request",
+        "Tenant request"
+      ],
+      "evidence_status": "PROVEN",
+      "feature_evidence": [
+        "feature-user-access-context"
+      ],
+      "given": "the approved current-state context for resolve tenant context for user functionality is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant"
+      ],
+      "limitations": [],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: User functionality has tenant context.",
+      "open_questions": [],
+      "parent_feature_id": "feature-user-access-context",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 133,
+          "line_start": 133,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 146,
+          "line_start": 146,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 124,
+          "line_start": 124,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        }
+      ],
+      "stakeholder_validation_required": false,
+      "story_evidence": [
+        "story-user-access-context-resolve-tenant-context-for-user-functions"
+      ],
+      "story_id": "story-user-access-context-resolve-tenant-context-for-user-functions",
+      "then": "The existing application supports: User functionality has tenant context.",
+      "title": "Resolve Tenant Context for User Functions Behavior",
+      "ui_surface_refs": [
+        "UsersController",
+        "usersService"
+      ],
+      "when": "make current tenant context available to user functionality",
+      "workflow_refs": [
+        "Users load current tenant"
+      ]
+    }
+  ],
+  "acceptance_criteria_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-112024-635713",
+  "application_understanding_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694",
+  "business_feature_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-145336-704667",
+  "coverage": {
+    "ac_assumptions_created": 0,
+    "ac_with_dynamic_api": 1,
+    "ac_with_external_api": 0,
+    "ac_with_proven_api": 8,
+    "ac_with_unresolved_api": 2,
+    "acceptance_criteria_quality_validation": "PASS",
+    "acceptance_criteria_validation": "PASS",
+    "api_contract_ac": 0,
+    "business_rule_ac": 1,
+    "contradictory_acceptance_criteria": 0,
+    "core_behavior_ac": 0,
+    "data_interaction_ac": 2,
+    "data_presentation_ac": 2,
+    "duplicate_acceptance_criteria": 0,
+    "error_or_edge_behavior_ac": 0,
+    "invented_ac_personas": 0,
+    "invented_error_behaviors": 0,
+    "invented_nfrs": 0,
+    "invented_validation_rules": 0,
+    "modernization_preservation_ac": 2,
+    "navigation_ac": 5,
+    "open_questions": 8,
+    "package_hash_validation": "PASS",
+    "proven_acceptance_criteria": 8,
+    "provenance_validation": "PASS",
+    "requires_stakeholder_clarification_ac": 0,
+    "stakeholder_validation_required_ac": 9,
+    "stories_with_acceptance_criteria": 12,
+    "stories_without_safe_acceptance_criteria": 0,
+    "supported_with_limitation_ac": 6,
+    "tenant_context_ac": 2,
+    "total_acceptance_criteria": 14,
+    "total_features": 5,
+    "total_stories": 12,
+    "unsupported_ac_candidates_rejected": 0,
+    "untraceable_acceptance_criteria": 0,
+    "upstream_story_review_required": 0
+  },
+  "feature_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-141302-518966",
+  "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-034128",
+  "limitations": [
+    "Inherited unresolved/dynamic API, incomplete appointment, actor, and stakeholder-question limitations remain visible."
+  ],
+  "next_action": "ANALYZE_OPTIONAL_TARGET_DESIGN_OR_RECOMMEND_TARGET_ARCHITECTURE",
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "quality_review": {
+    "ac_assumptions_created": 0,
+    "ac_with_dynamic_api": 1,
+    "ac_with_external_api": 0,
+    "ac_with_proven_api": 8,
+    "ac_with_unresolved_api": 2,
+    "acceptance_criteria_quality_validation": "PASS",
+    "acceptance_criteria_validation": "PASS",
+    "api_contract_ac": 0,
+    "business_rule_ac": 1,
+    "contradictory_acceptance_criteria": 0,
+    "core_behavior_ac": 0,
+    "data_interaction_ac": 2,
+    "data_presentation_ac": 2,
+    "duplicate_acceptance_criteria": 0,
+    "error_or_edge_behavior_ac": 0,
+    "invented_ac_personas": 0,
+    "invented_error_behaviors": 0,
+    "invented_nfrs": 0,
+    "invented_validation_rules": 0,
+    "modernization_preservation_ac": 2,
+    "navigation_ac": 5,
+    "open_questions": 8,
+    "package_hash_validation": "PASS",
+    "proven_acceptance_criteria": 8,
+    "provenance_validation": "PASS",
+    "requires_stakeholder_clarification_ac": 0,
+    "stakeholder_validation_required_ac": 9,
+    "stories_with_acceptance_criteria": 12,
+    "stories_without_safe_acceptance_criteria": 0,
+    "supported_with_limitation_ac": 6,
+    "tenant_context_ac": 2,
+    "total_acceptance_criteria": 14,
+    "total_features": 5,
+    "total_stories": 12,
+    "unsupported_ac_candidates_rejected": 0,
+    "untraceable_acceptance_criteria": 0,
+    "upstream_story_review_required": 0
+  },
+  "readiness": "ACCEPTANCE_CRITERIA_READY_WITH_LIMITATIONS",
+  "story_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-105453-078418"
+}

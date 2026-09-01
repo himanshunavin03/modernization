@@ -1,0 +1,18 @@
+{
+  "hash_validation": "PASS",
+  "manifest_hash": "02e9d2121a4c5cda71039278846c9ff335c07ff6131a52903c910ec359d8054c",
+  "packages": {
+    "acceptance-evidence:story-clinic-appointment-experience-access-clinic-information": "204ab6a178a308308292233d611f75c3d3489f5e9a9a6a7da645a4be9a0dbbe1",
+    "acceptance-evidence:story-clinic-appointment-experience-establish-clinic-context": "2d136b4bb21dcab0d1a38b91729d8a36cdc5d8d2a35c839b94e6bfb8827e6d5b",
+    "acceptance-evidence:story-doctor-directory-management-review-doctor-directory": "a5ed912571e9f8b754483c06ecfabda998e8b51f11547c6d002081a6317ca627",
+    "acceptance-evidence:story-doctor-directory-management-view-doctor-details-in-tenant-context": "2a125b652993876e0df54f9615f9056e0f198badf298eb78e5148994bfba3680",
+    "acceptance-evidence:story-operational-dashboard-insights-access-yearly-operational-reports": "33a1f458140e4d64b8cd6ff4bed14ce53285820f6c155f11fe3595514d03a531",
+    "acceptance-evidence:story-operational-dashboard-insights-open-operational-dashboard": "47a59866dff5dfbac49e4cf2aec1062c86036e917946ef622de7aab1afdc8e6c",
+    "acceptance-evidence:story-operational-dashboard-insights-view-tenant-aware-dashboard-summary": "3fdc538029c3b923ac94e41b540eed526be0ab34ce241a744e725173915c5eed",
+    "acceptance-evidence:story-patient-directory-management-establish-patient-tenant-context": "952bb252ae43c8fe97f3258e21cb91766117c8c5247783e624688f064e777d54",
+    "acceptance-evidence:story-patient-directory-management-review-patient-directory": "6fd01b5bc50b0e5dfe20af261b12ca235b396d2f171b6df88b51c395496b5c6f",
+    "acceptance-evidence:story-user-access-context-access-user-management-views": "7faf09cb8ae672a48bfdb4c573e2276ce1bac3a37d0ec5a7da98100cc2edb022",
+    "acceptance-evidence:story-user-access-context-resolve-current-user-and-claims": "be0100fe18212109b99d343505eaf48f872f66827079fad06a0bb5ab72b67cd8",
+    "acceptance-evidence:story-user-access-context-resolve-tenant-context-for-user-functions": "33330f284c28cf3cc5aaaa61b870a7a6f4b44dfed26eea29c11b1f972bf5f8f3"
+  }
+}
