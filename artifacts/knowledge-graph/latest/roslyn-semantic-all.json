@@ -113326,7 +113326,7 @@
         "candidate_symbols": [
           "global::MyHealth.Client.Core.MedicineToNameWithDosisConverter.Convert(global::MyHealth.Client.Core.Model.Medicine, Type, global::System.Object, global::System.Globalization.CultureInfo)"
         ],
-        "unresolved_classification": "UNKNOWN",
+        "unresolved_classification": "INACCESSIBLE",
         "semantic_project_identity": "C:\\Users\\himan\\OneDrive\\Documents\\polaris-modernization-poc\\modernization\\modernization\\source\\HealthClinic.biz\\src\\MyHealth.Client.iOS\\MyHealth.Client.iOS.csproj",
         "analysis_mode": "PARTIAL_PROJECT_COMPILATION"
       }
@@ -113382,7 +113382,7 @@
         "candidate_symbols": [
           "global::MyHealth.Client.Core.TimeOfDayToStringConverter.Convert(global::MyHealth.Client.Core.Model.TimeOfDay, Type, global::System.Object, global::System.Globalization.CultureInfo)"
         ],
-        "unresolved_classification": "UNKNOWN",
+        "unresolved_classification": "INACCESSIBLE",
         "semantic_project_identity": "C:\\Users\\himan\\OneDrive\\Documents\\polaris-modernization-poc\\modernization\\modernization\\source\\HealthClinic.biz\\src\\MyHealth.Client.iOS\\MyHealth.Client.iOS.csproj",
         "analysis_mode": "PARTIAL_PROJECT_COMPILATION"
       }
@@ -193090,7 +193090,7 @@
       "COMPILATION_ERROR": 3701,
       "OVERLOAD_RESOLUTION": 107,
       "PROJECT_LOAD_FAILURE": 534,
-      "UNKNOWN": 2
+      "INACCESSIBLE": 2
     },
     "items": [
       {
@@ -261219,14 +261219,14 @@
         }
       },
       {
-        "unresolved_id": "b4b10966d0950b8c7cb95163656337f694dfba36a0f2226455dfda21770c305f",
+        "unresolved_id": "b3677d9b72b51ff6b8a8e2e644c391b0028c060dcaaec6b9d300e8036f5544b4",
         "source_file": "src/MyHealth.Client.iOS/Views/HomeView.cs",
         "line_start": 116,
         "line_end": 117,
         "project": "C:\\Users\\himan\\OneDrive\\Documents\\polaris-modernization-poc\\modernization\\modernization\\source\\HealthClinic.biz\\src\\MyHealth.Client.iOS\\MyHealth.Client.iOS.csproj",
         "semantic_operation": "invocation",
         "attempted_symbol": "new MedicineToNameWithDosisConverter()\r\n                        .Convert",
-        "classification": "UNKNOWN",
+        "classification": "INACCESSIBLE",
         "reason": "Roslyn could not resolve the invocation target.",
         "analyzer_mode": "PARTIAL_PROJECT_COMPILATION",
         "evidence": {
@@ -261269,14 +261269,14 @@
         }
       },
       {
-        "unresolved_id": "77d650e05f4c914666a0a709819fef54248ca734139fe839c169b64411480424",
+        "unresolved_id": "2bdbdbfde6c74a3433b82cb6cd9e6afe0d16529fee00c611663ce8a93d8eb767",
         "source_file": "src/MyHealth.Client.iOS/Views/HomeView.cs",
         "line_start": 119,
         "line_end": 120,
         "project": "C:\\Users\\himan\\OneDrive\\Documents\\polaris-modernization-poc\\modernization\\modernization\\source\\HealthClinic.biz\\src\\MyHealth.Client.iOS\\MyHealth.Client.iOS.csproj",
         "semantic_operation": "invocation",
         "attempted_symbol": "new TimeOfDayToStringConverter()\r\n                        .Convert",
-        "classification": "UNKNOWN",
+        "classification": "INACCESSIBLE",
         "reason": "Roslyn could not resolve the invocation target.",
         "analyzer_mode": "PARTIAL_PROJECT_COMPILATION",
         "evidence": {

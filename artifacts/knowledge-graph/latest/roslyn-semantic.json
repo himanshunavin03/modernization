@@ -113327,7 +113327,7 @@
         "semantic_project_identity": "C:\\Users\\himan\\OneDrive\\Documents\\polaris-modernization-poc\\modernization\\modernization\\source\\HealthClinic.biz\\src\\MyHealth.Client.iOS\\MyHealth.Client.iOS.csproj",
         "target_identity": "new MedicineToNameWithDosisConverter()\r\n                        .Convert",
         "target_name": "new MedicineToNameWithDosisConverter()\r\n                        .Convert",
-        "unresolved_classification": "UNKNOWN"
+        "unresolved_classification": "INACCESSIBLE"
       }
     },
     {
@@ -113383,7 +113383,7 @@
         "semantic_project_identity": "C:\\Users\\himan\\OneDrive\\Documents\\polaris-modernization-poc\\modernization\\modernization\\source\\HealthClinic.biz\\src\\MyHealth.Client.iOS\\MyHealth.Client.iOS.csproj",
         "target_identity": "new TimeOfDayToStringConverter()\r\n                        .Convert",
         "target_name": "new TimeOfDayToStringConverter()\r\n                        .Convert",
-        "unresolved_classification": "UNKNOWN"
+        "unresolved_classification": "INACCESSIBLE"
       }
     },
     {

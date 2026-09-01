@@ -1,9 +1,9 @@
 {
   "application_project_id": "legacy-dashboard-complete-application-demo-v1",
-  "generation_timestamp_utc": "2026-09-01T03:26:25.458527Z",
+  "generation_timestamp_utc": "2026-09-01T03:41:28.539289Z",
   "lsp_analysis_completed": false,
   "roslyn_semantic_completed": true,
-  "run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-032625",
+  "run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-034128",
   "tree_sitter_completed": true,
   "validation": {
     "expected_artifacts": [

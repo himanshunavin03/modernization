@@ -1,0 +1,3 @@
+# Prompt 042: Diagnose Inaccessible Roslyn Invocations
+
+Forensically inspect unresolved Roslyn invocation records classified `UNKNOWN`. When Roslyn provides `CandidateReason.Inaccessible` with candidate symbols, classify the fact generically as `INACCESSIBLE` while retaining unresolved status, source evidence, candidate data, and zero confidence. Do not emit a proven invocation relationship. Add a standalone fixture for private-member inaccessibility, rerun deterministic KG generation only after tests pass, and preserve Application Understanding as stale until a new readiness gate is calculated.

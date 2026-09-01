@@ -165,7 +165,12 @@ foreach (var input in inputs)
                 {
                     invocationProperties["candidate_reason"] = symbolInfo.CandidateReason.ToString();
                     invocationProperties["candidate_symbols"] = symbolInfo.CandidateSymbols.Select(SymbolId).ToArray();
-                    invocationProperties["unresolved_classification"] = symbolInfo.CandidateReason == CandidateReason.OverloadResolutionFailure ? "OVERLOAD_RESOLUTION" : "UNKNOWN";
+                    invocationProperties["unresolved_classification"] = symbolInfo.CandidateReason switch
+                    {
+                        CandidateReason.OverloadResolutionFailure => "OVERLOAD_RESOLUTION",
+                        CandidateReason.Inaccessible => "INACCESSIBLE",
+                        _ => "UNKNOWN",
+                    };
                 }
                 facts.Add(context.CreateFact("invocation", target?.Name ?? invocation.Expression.ToString(), invocation,
                     invocationProperties,

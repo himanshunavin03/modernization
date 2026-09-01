@@ -46,3 +46,17 @@ def test_failed_project_keeps_project_facts_and_narrow_synthetic_fallback(tmp_pa
     assert unresolved["totals"]["COMPILATION_ERROR"] >= 1
     assert unresolved["total_unresolved_occurrences"] >= unresolved["unique_unresolved_diagnostics"]
     assert not any(fact["evidence"]["resolution_status"] == "proven" and fact["properties"].get("target_name") == "MissingType.Build" for fact in facts)
+
+
+def test_inaccessible_invocation_is_classified_without_a_proven_target(tmp_path):
+    result = analyze_fixture("roslyn-inaccessible", tmp_path)
+    inaccessible = [fact for fact in result["facts"] if fact["kind"] == "invocation" and fact["properties"].get("unresolved_classification") == "INACCESSIBLE"]
+
+    assert len(inaccessible) == 1
+    fact = inaccessible[0]
+    assert fact["evidence"]["resolution_status"] == "unresolved"
+    assert fact["evidence"]["confidence"] == 0.0
+    assert fact["properties"]["candidate_reason"] == "Inaccessible"
+    assert fact["properties"]["candidate_symbols"]
+    assert result["unresolved_analysis"]["totals"]["INACCESSIBLE"] == 1
+    assert not [item for item in result["facts"] if item["kind"] == "invocation" and item["evidence"]["resolution_status"] == "proven" and item["name"] == "Hidden"]
