@@ -1,8 +1,8 @@
 # Progress
 
-- Status: Feature Narrative Synthesis validated as `FEATURE_NARRATIVE_READY_WITH_LIMITATIONS` without changing approved machine contracts.
+- Status: Final PO/BA semantic refinement validated as `FINAL_FEATURE_SPECIFICATIONS_READY_WITH_LIMITATIONS` without changing approved machine contracts or API classifications.
 - Agent command: `/create-knowledge-graph` is documented at `docs/agents/commands/create-knowledge-graph.md` and delegates to the deterministic `agent-create-knowledge-graph` CLI adapter. It derives a safe project ID from the selected source root, enables project-aware Roslyn only when .NET project evidence exists, keeps Neo4j opt-in, and does not use an LLM.
-- Current step: Feature Narrative Synthesis is complete; await explicit authorization for optional target-design analysis or Target Architecture.
+- Current step: Customer-ready Feature Specification refinement is complete; await explicit authorization for optional target-design analysis or Target Architecture.
 - Complete application correction: deterministic first-party native-crash fallback now emits literal C#/JavaScript/Razor facts alongside provenance. Final analysis: 2,384 files, 3,386 nodes, 4,593 edges, 38 review warnings, zero extraction warnings, 44 opaque dependencies, and `complete_with_opaque_dependencies`. The attempted Neo4j load is blocked solely by unavailable local Neo4j environment configuration; full viewer export remains gated on that load.
 - Failure inventory: 42 JavaScript, 3 C#, and 2 HTML Tree-sitter workers exit with `3221225477`; all are supported-language parser defects requiring a generic repair. See `docs/validation/complete-application-extraction-failure-inventory.md`.
 - Viewer runbook: `docs/runbooks/understand-anything-viewer.md` documents the validated UI-only command and `tools/launch_understand_anything_viewer.ps1` safely exports and launches any approved project-scoped graph with a caller-supplied local token.
@@ -146,6 +146,19 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Language/AC gates report zero circular Stories, generic AC preconditions, vague ordinary AC outcomes, boilerplate announcements, or business/technical leakage. Preservation criteria remain authoritative and are visibly classified.
 - Validation: focused Feature/API tests `10 passed` in `5.50s`; final complete regression `133 passed, 2 skipped, 0 failed, 0 errors` in `28.45s`.
 - Readiness remains with explained limitations until unresolved/dynamic frontend-to-backend relationships are confirmed. Figma is not analyzed, architecture is pending, and modernization is not started.
+
+## Final PO/BA Semantic Quality Refinement
+
+- Final run: `legacy-dashboard-complete-application-demo-v1-2026-09-01-142601-917816`; the approved 5 Features, 12 Stories, 14 authoritative AC, immutable Feature JSON contracts, and API classification architecture are unchanged.
+- Story quality: explicit semantic models distinguish proven behavior, supported interpretation, and business intent. Circular, semantically circular, system-centric, and unsupported-business-value Story defects are zero. Five capability Stories stop at an explicit stakeholder-enrichment request rather than inventing business rationale.
+- AC quality: 4 AC are fully testable from evidence, 8 are testable with explicit evidence limitations, and 2 modernization-preservation AC are presented separately. Generic preconditions, vague outcomes, non-observable criteria, and invented fields/UI/rules are zero.
+- Feature alignment: 4 Features are aligned; Clinic Appointment Experience is partially aligned and carries a specific PO/BA question because complete appointment creation/update/scheduling is not established.
+- Stakeholder decisions: 14 business enrichment items include 8 blocking implementation/QA details and 6 non-blocking value/name questions. Ten unresolved/dynamic API relationships remain blocking technical clarifications.
+- API regression: 4 primary business contracts, 4 supporting/shared contracts, 5 dynamic-primary interactions, 5 unresolved-primary interactions, and 10 unpromoted candidate endpoints are preserved exactly.
+- Quality scoring no longer awards automatic 9+ scores for evidence safety. The minimum is 8.0, reflecting meaningful evidence limitations while evidence integrity and API evidence safety remain independently strong.
+- Manual review: all five Markdown documents pass customer comprehension, Story outcome/enrichment, QA observability, API role separation, and actionable-gap checks. Target design is `NOT_YET_ANALYZED`, target architecture is `PENDING`, and modernization is `NOT_STARTED`.
+- Validation: focused semantic/narrative suite `19 passed`; complete repository suite `144 passed, 2 skipped, 0 failed, 0 errors` in `32.28s`. All 32 generated JSON files parse, immutable/latest parity passes across 38 files, authoritative Feature JSON parity passes, circular-pattern scan passes, and no `source/` path changed.
+- Next action, only with explicit approval: `ANALYZE_OPTIONAL_TARGET_DESIGN_OR_RECOMMEND_TARGET_ARCHITECTURE`.
 
 ## Provider And Developer Experience
 

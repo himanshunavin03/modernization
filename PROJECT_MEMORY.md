@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Feature Narrative Synthesis is complete in run `legacy-dashboard-complete-application-demo-v1-2026-09-01-121948-351008`. The next authorized action remains `ANALYZE_OPTIONAL_TARGET_DESIGN_OR_RECOMMEND_TARGET_ARCHITECTURE`; do not execute either path until explicitly requested.
+Final PO/BA semantic refinement is complete in run `legacy-dashboard-complete-application-demo-v1-2026-09-01-142601-917816`. The five customer Feature Specifications preserve the approved 5 Feature / 12 Story / 14 Acceptance Criterion contract and API classifications while explicitly separating proven behavior, supported interpretation, and stakeholder business intent. The next authorized action remains `ANALYZE_OPTIONAL_TARGET_DESIGN_OR_RECOMMEND_TARGET_ARCHITECTURE`; do not execute either path until explicitly requested.
 
 ## Agent Command
 
@@ -115,7 +115,7 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 051 under `docs/prompts/`, approved upstream artifacts, and `artifacts/feature-specifications/latest/`. Narrative run `legacy-dashboard-complete-application-demo-v1-2026-09-01-121948-351008` is `FEATURE_NARRATIVE_READY_WITH_LIMITATIONS`. Await explicit selection of optional target-design analysis or Target Architecture.
+Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 054 under `docs/prompts/`, approved upstream artifacts, and `artifacts/feature-specifications/latest/`. Final run `legacy-dashboard-complete-application-demo-v1-2026-09-01-142601-917816` is `FINAL_FEATURE_SPECIFICATIONS_READY_WITH_LIMITATIONS`. Await explicit selection of optional target-design analysis or Target Architecture.
 
 ## Project-Aware Roslyn Engine Proof
 
@@ -180,6 +180,12 @@ Natural-language realization now produces coherent behavior, Story, and AC claus
 ## Final Feature Specification Correction
 
 Final run `legacy-dashboard-complete-application-demo-v1-2026-09-01-135345-568122` re-evaluates Feature API completeness from every approved caller file rather than treating the previous 11 Story-selected contracts as complete. Tenant context is now supporting/shared for Dashboard, Doctor, Patient, and Clinic, and primary for User Access/Tenant Context. Doctor, Clinic/Tenant, Patient, User-management, and Dashboard reporting calls without `IMPLEMENTED_BY` proof remain explicit unresolved/dynamic primary interactions with candidate endpoints that are never promoted.
+
+## Final PO/BA Semantic Refinement
+
+Run `legacy-dashboard-complete-application-demo-v1-2026-09-01-142601-917816` adds explicit Story and Acceptance Criterion semantic models, Feature-name/behavior alignment, stakeholder-enrichment records, semantic circularity checks, limitation-aware readiness, and evidence-sensitive quality scores. Evidence-proven behavior is distinct from supported business interpretation and stakeholder intent. Missing business rationale is not invented to satisfy a User Story template; five Stories request stakeholder enrichment instead.
+
+All 14 authoritative AC remain present: 4 are fully testable from current evidence, 8 are testable with explicit evidence limitations, and 2 modernization-preservation criteria are rendered separately. Clinic Appointment Experience is `PARTIALLY_ALIGNED` because appointment creation, update, and scheduling behavior is not established; the Feature is not renamed and an explicit PO/BA decision is recorded. Technical/API completeness and PO/BA semantic quality remain independent readiness dimensions.
 
 All five Features have explicit primary-behavior coverage with inherited uncertainty. User Access has four proven primary context contracts; the other Features expose primary business calls as unresolved or dynamic plus a proven shared tenant contract. The documents use non-circular Stories, workflow-derived AC preconditions, labeled modernization-preservation criteria, and separate Primary, Supporting, and Unresolved/Dynamic integration sections. Target design, architecture, and modernization status remain unchanged.
 
