@@ -1271,6 +1271,6 @@
       }
     }
   },
-  "overall_minimum_score": 9.0,
-  "rubric": "Scores reflect content, grammar, coherence, audience separation, API clarity, and deterministic traceability; any material issue caps the score below readiness."
+  "minimum_score": 9.0,
+  "status": "PASS"
 }

@@ -137,6 +137,16 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Validation: focused API/narrative tests `8 passed` in `2.75s`; final complete suite `131 passed, 2 skipped, 0 failed, 0 errors` in `25.98s`. Immutable/latest hashes, model/Markdown parity, provenance, source integrity, and upstream machine-contract integrity pass.
 - Readiness: `MODERNIZATION_FEATURE_SPECIFICATIONS_READY_WITH_LIMITATIONS`; inherited dynamic and unresolved API relationships require confirmation. Next action, only with explicit approval, is `ANALYZE_OPTIONAL_TARGET_DESIGN_OR_RECOMMEND_TARGET_ARCHITECTURE`.
 
+## Final Feature Specification Correction
+
+- Final run: `legacy-dashboard-complete-application-demo-v1-2026-09-01-135345-568122`; approved KG/AU/Feature/Story/AC lineage and authoritative 5/12/14 counts are unchanged.
+- API completeness now inventories GET interactions from every already-associated frontend caller. Shared tenant context is no longer presented as Doctor, Patient, Clinic, or Dashboard business data.
+- Coverage: Dashboard has 1 supporting, 2 dynamic-primary, and 1 unresolved-primary interaction; Doctor has 1 supporting, 1 dynamic-primary, and 1 unresolved-primary; Patient has 1 supporting and 1 unresolved-primary; Clinic has 1 supporting, 1 dynamic-primary, and 1 unresolved-primary; User Access has 4 proven-primary, 1 dynamic-primary, and 1 unresolved-primary.
+- Candidate backend endpoints remain `NOT_PROVEN_NO_FRONTEND_MAPPING`; domain/name similarity is candidate discovery only. No approved KG artifact or source file changed.
+- Language/AC gates report zero circular Stories, generic AC preconditions, vague ordinary AC outcomes, boilerplate announcements, or business/technical leakage. Preservation criteria remain authoritative and are visibly classified.
+- Validation: focused Feature/API tests `10 passed` in `5.50s`; final complete regression `133 passed, 2 skipped, 0 failed, 0 errors` in `28.45s`.
+- Readiness remains with explained limitations until unresolved/dynamic frontend-to-backend relationships are confirmed. Figma is not analyzed, architecture is pending, and modernization is not started.
+
 ## Provider And Developer Experience
 
 - Superseded historical result: provider discovery previously produced `WAITING_FOR_PROVIDER_CONFIGURATION`. The normal interactive path no longer accepts `--provider auto` or requires external credentials; Azure and Bedrock are optional headless enterprise boundaries only.

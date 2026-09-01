@@ -177,6 +177,12 @@ The approved KG baseline is 58 backend endpoint facts, 44 frontend API-call fact
 
 Natural-language realization now produces coherent behavior, Story, and AC clauses and rejects broken verb constructions and concatenated outcome fragments. Manual review passes all five Feature documents, including the Dashboard's proven/dynamic/unresolved distinctions; the minimum criterion score is 9.2 rather than an automatic perfect score. Focused tests pass 8; the full suite passes 131 with 2 skipped. Source applications, approved KG artifacts, and upstream machine contracts are unchanged. Target design remains `NOT_YET_ANALYZED`, target architecture remains `PENDING`, and modernization has not started.
 
+## Final Feature Specification Correction
+
+Final run `legacy-dashboard-complete-application-demo-v1-2026-09-01-135345-568122` re-evaluates Feature API completeness from every approved caller file rather than treating the previous 11 Story-selected contracts as complete. Tenant context is now supporting/shared for Dashboard, Doctor, Patient, and Clinic, and primary for User Access/Tenant Context. Doctor, Clinic/Tenant, Patient, User-management, and Dashboard reporting calls without `IMPLEMENTED_BY` proof remain explicit unresolved/dynamic primary interactions with candidate endpoints that are never promoted.
+
+All five Features have explicit primary-behavior coverage with inherited uncertainty. User Access has four proven primary context contracts; the other Features expose primary business calls as unresolved or dynamic plus a proven shared tenant contract. The documents use non-circular Stories, workflow-derived AC preconditions, labeled modernization-preservation criteria, and separate Primary, Supporting, and Unresolved/Dynamic integration sections. Target design, architecture, and modernization status remain unchanged.
+
 ## Provider And Developer Experience
 
 Historical note, superseded by prompt 039: the former provider-driven Phase-2 workflow waited for credentials. Azure OpenAI and Bedrock now remain only optional headless enterprise boundaries; Codex capability guides and GitHub Copilot prompt files invoke the provider-free interactive flow. Repository-defined slash-command discovery is not claimed for Codex. See `docs/developer-experience.md`.
