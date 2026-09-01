@@ -1,0 +1,1140 @@
+{
+  "acceptance_criteria": [
+    {
+      "acceptance_criterion_id": "ac-user-access-context-access-user-management-views-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-user-access-context-access-user-management-views",
+      "api_contract_refs": [],
+      "api_mapping_status": [],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user"
+      ],
+      "assumptions": [],
+      "business_condition": "Navigate user management surfaces",
+      "business_feature_evidence": [
+        "business-feature:feature-user-access-context"
+      ],
+      "business_rule_refs": [
+        "BR-USER-001"
+      ],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "NAVIGATION",
+      "dependency_refs": [
+        "Header depends on current-user API"
+      ],
+      "domain_concept_refs": [
+        "Application user request",
+        "Tenant request"
+      ],
+      "evidence_status": "PROVEN",
+      "feature_evidence": [
+        "feature-user-access-context"
+      ],
+      "given": "the approved current-state context for navigate user management surfaces is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant"
+      ],
+      "limitations": [],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: A user detail experience is available. A user list experience is available.",
+      "open_questions": [],
+      "parent_feature_id": "feature-user-access-context",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 133,
+          "line_start": 133,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 146,
+          "line_start": 146,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 124,
+          "line_start": 124,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        }
+      ],
+      "stakeholder_validation_required": false,
+      "story_evidence": [
+        "story-user-access-context-access-user-management-views"
+      ],
+      "story_id": "story-user-access-context-access-user-management-views",
+      "then": "The existing application supports: A user detail experience is available. A user list experience is available.",
+      "title": "Access User Management Views Behavior",
+      "ui_surface_refs": [
+        "UsersController",
+        "user",
+        "users"
+      ],
+      "when": "access existing user list and detail views",
+      "workflow_refs": [
+        "Route user",
+        "Route users"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-user-access-context-resolve-current-user-and-claims-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-user-access-context-resolve-current-user-and-claims",
+      "api_contract_refs": [
+        {
+          "api_contract": "GET /api/users/current/user",
+          "backend_endpoint": "GET /api/users/current/user",
+          "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+          "status": "PROVEN",
+          "workflow": "Header loads current user"
+        },
+        {
+          "api_contract": "GET /api/users/current/claims",
+          "backend_endpoint": "GET /api/users/current/claims",
+          "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+          "status": "PROVEN",
+          "workflow": "Header loads current claims"
+        },
+        {
+          "api_contract": "GET /api/users/current/claims",
+          "backend_endpoint": "GET /api/users/current/claims",
+          "frontend_source": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
+          "status": "PROVEN",
+          "workflow": "Initial page loads current claims"
+        }
+      ],
+      "api_mapping_status": [
+        "PROVEN"
+      ],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user"
+      ],
+      "assumptions": [],
+      "business_condition": "Resolve current user and claims for shared UI",
+      "business_feature_evidence": [
+        "business-feature:feature-user-access-context"
+      ],
+      "business_rule_refs": [
+        "BR-USER-001"
+      ],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "DATA_INTERACTION",
+      "dependency_refs": [
+        "Header depends on current-user API"
+      ],
+      "domain_concept_refs": [
+        "Application user request",
+        "Tenant request"
+      ],
+      "evidence_status": "SUPPORTED_WITH_LIMITATION",
+      "feature_evidence": [
+        "feature-user-access-context"
+      ],
+      "given": "the approved current-state context for resolve current user and claims for shared ui is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant"
+      ],
+      "limitations": [
+        "The business meaning of individual claims and authorization decisions is not proven."
+      ],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: The header has current user identity. The header has current claims. Initial-page behavior has current claims.",
+      "open_questions": [
+        "Q-USER-001"
+      ],
+      "parent_feature_id": "feature-user-access-context",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 133,
+          "line_start": 133,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 146,
+          "line_start": 146,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 124,
+          "line_start": 124,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        }
+      ],
+      "stakeholder_validation_required": true,
+      "story_evidence": [
+        "story-user-access-context-resolve-current-user-and-claims"
+      ],
+      "story_id": "story-user-access-context-resolve-current-user-and-claims",
+      "then": "The existing application supports: The header has current user identity. The header has current claims. Initial-page behavior has current claims.",
+      "title": "Resolve Current User and Claims Behavior",
+      "ui_surface_refs": [],
+      "when": "make current user identity and claims available to shared application behavior",
+      "workflow_refs": [
+        "Header loads current user",
+        "Header loads current claims",
+        "Initial page loads current claims"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-user-access-context-resolve-tenant-context-for-user-functions-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-user-access-context-resolve-tenant-context-for-user-functions",
+      "api_contract_refs": [
+        {
+          "api_contract": "GET /api/users/current/tenant",
+          "backend_endpoint": "GET /api/users/current/tenant",
+          "frontend_source": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
+          "status": "PROVEN",
+          "workflow": "Users load current tenant"
+        }
+      ],
+      "api_mapping_status": [
+        "PROVEN"
+      ],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user"
+      ],
+      "assumptions": [],
+      "business_condition": "Resolve tenant context for user functionality",
+      "business_feature_evidence": [
+        "business-feature:feature-user-access-context"
+      ],
+      "business_rule_refs": [
+        "BR-USER-001"
+      ],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "BUSINESS_RULE",
+      "dependency_refs": [
+        "Header depends on current-user API"
+      ],
+      "domain_concept_refs": [
+        "Application user request",
+        "Tenant request"
+      ],
+      "evidence_status": "PROVEN",
+      "feature_evidence": [
+        "feature-user-access-context"
+      ],
+      "given": "the approved current-state context for resolve tenant context for user functionality is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant"
+      ],
+      "limitations": [],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: User functionality has tenant context.",
+      "open_questions": [],
+      "parent_feature_id": "feature-user-access-context",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 133,
+          "line_start": 133,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 146,
+          "line_start": 146,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 124,
+          "line_start": 124,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        }
+      ],
+      "stakeholder_validation_required": false,
+      "story_evidence": [
+        "story-user-access-context-resolve-tenant-context-for-user-functions"
+      ],
+      "story_id": "story-user-access-context-resolve-tenant-context-for-user-functions",
+      "then": "The existing application supports: User functionality has tenant context.",
+      "title": "Resolve Tenant Context for User Functions Behavior",
+      "ui_surface_refs": [
+        "UsersController",
+        "usersService"
+      ],
+      "when": "make current tenant context available to user functionality",
+      "workflow_refs": [
+        "Users load current tenant"
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "name": "user of the existing application",
+      "specific_persona_status": "Not established by approved evidence"
+    }
+  ],
+  "architecture_inputs": {
+    "constraints": [
+      "Shared user and tenant context should be implemented once for reuse rather than duplicated across modernized Feature areas.",
+      "The approved evidence proves claims loading but not the business interpretation of individual claims or authorization decisions."
+    ],
+    "integrations": [
+      {
+        "api_contract": "GET /api/users/current/user",
+        "backend_endpoint": "GET /api/users/current/user",
+        "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+        "review_note": "Established relationship must be preserved.",
+        "status": "PROVEN",
+        "workflow": "Header loads current user"
+      },
+      {
+        "api_contract": "GET /api/users/current/claims",
+        "backend_endpoint": "GET /api/users/current/claims",
+        "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+        "review_note": "Established relationship must be preserved.",
+        "status": "PROVEN",
+        "workflow": "Header loads current claims"
+      },
+      {
+        "api_contract": "GET /api/users/current/claims",
+        "backend_endpoint": "GET /api/users/current/claims",
+        "frontend_source": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
+        "review_note": "Established relationship must be preserved.",
+        "status": "PROVEN",
+        "workflow": "Initial page loads current claims"
+      },
+      {
+        "api_contract": "GET /api/users/current/tenant",
+        "backend_endpoint": "GET /api/users/current/tenant",
+        "frontend_source": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
+        "review_note": "Established relationship must be preserved.",
+        "status": "PROVEN",
+        "workflow": "Users load current tenant"
+      }
+    ],
+    "legacy_surfaces": [
+      "UsersController",
+      "user",
+      "users",
+      "usersService"
+    ]
+  },
+  "business_objective": "Provide current user, claims, and tenant context to shared and user-management frontend flows.",
+  "business_rules": [
+    {
+      "description": "Tenant-scoped frontend flows obtain current tenant context before continuing.",
+      "id": "BR-USER-001"
+    }
+  ],
+  "business_value": [
+    {
+      "classification": "INFERRED_BUSINESS_VALUE",
+      "text": "The Feature appears to support consistent access to user and tenant context across frontend areas."
+    }
+  ],
+  "current_experience": [
+    "AngularJS user routes and shared initialization behavior obtain identity, claims, and tenant context from existing APIs."
+  ],
+  "data_dependencies": [
+    {
+      "description": "Shared header behavior requires preserved current-user and claims integrations.",
+      "name": "Header depends on current-user API"
+    }
+  ],
+  "definition_of_ready": [
+    "Business Feature reviewed",
+    "Stories reviewed",
+    "Acceptance Criteria reviewed",
+    "Open decisions resolved or explicitly accepted",
+    "Target-design path selected",
+    "Target Architecture approved",
+    "Required integration contracts confirmed"
+  ],
+  "dependencies": [
+    "Header depends on current-user API"
+  ],
+  "domain_concepts": [
+    {
+      "meaning": "Information used when requesting an application-user operation.",
+      "name": "Application user request",
+      "role": "Represents user-related information at the preserved API boundary."
+    },
+    {
+      "meaning": "Information associated with tenant operations.",
+      "name": "Tenant request",
+      "role": "Represents tenant-related information used by the broader user/tenant context area."
+    }
+  ],
+  "feature_id": "feature-user-access-context",
+  "feature_name": "User Access and Tenant Context",
+  "feature_overview": {
+    "current_context": "Existing application behavior represented by approved workflows and Stories.",
+    "description": "Supplies current user identity, authorization claims, and tenant context to shared frontend behavior.",
+    "modernization_relevance": "Preserve proven identity, claims, and tenant contracts as reusable target-frontend context behavior without redesigning backend authorization.",
+    "purpose": "Provide current user, claims, and tenant context to shared and user-management frontend flows."
+  },
+  "functional_requirements": [
+    {
+      "acceptance_criterion_id": "ac-user-access-context-access-user-management-views-001",
+      "requirement": "The existing application supports: A user detail experience is available. A user list experience is available."
+    },
+    {
+      "acceptance_criterion_id": "ac-user-access-context-resolve-current-user-and-claims-001",
+      "requirement": "The existing application supports: The header has current user identity. The header has current claims. Initial-page behavior has current claims."
+    },
+    {
+      "acceptance_criterion_id": "ac-user-access-context-resolve-tenant-context-for-user-functions-001",
+      "requirement": "The existing application supports: User functionality has tenant context."
+    }
+  ],
+  "information_filter": {
+    "architect_reviewable": [
+      "legacy technology",
+      "integrations",
+      "data dependencies",
+      "migration constraints",
+      "target-design status"
+    ],
+    "customer_reviewable": [
+      "behavior",
+      "objective",
+      "value",
+      "workflows",
+      "Stories",
+      "Acceptance Criteria",
+      "scope",
+      "decisions"
+    ],
+    "internal_only_excluded_from_markdown": [
+      "analyzer diagnostics",
+      "parser diagnostics",
+      "package hashes",
+      "internal confidence mechanics"
+    ]
+  },
+  "integrations": [
+    {
+      "api_contract": "GET /api/users/current/user",
+      "backend_endpoint": "GET /api/users/current/user",
+      "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+      "review_note": "Established relationship must be preserved.",
+      "status": "PROVEN",
+      "workflow": "Header loads current user"
+    },
+    {
+      "api_contract": "GET /api/users/current/claims",
+      "backend_endpoint": "GET /api/users/current/claims",
+      "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+      "review_note": "Established relationship must be preserved.",
+      "status": "PROVEN",
+      "workflow": "Header loads current claims"
+    },
+    {
+      "api_contract": "GET /api/users/current/claims",
+      "backend_endpoint": "GET /api/users/current/claims",
+      "frontend_source": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
+      "review_note": "Established relationship must be preserved.",
+      "status": "PROVEN",
+      "workflow": "Initial page loads current claims"
+    },
+    {
+      "api_contract": "GET /api/users/current/tenant",
+      "backend_endpoint": "GET /api/users/current/tenant",
+      "frontend_source": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
+      "review_note": "Established relationship must be preserved.",
+      "status": "PROVEN",
+      "workflow": "Users load current tenant"
+    }
+  ],
+  "legacy_mapping": {
+    "integration_contracts": [
+      {
+        "api_contract": "GET /api/users/current/user",
+        "backend_endpoint": "GET /api/users/current/user",
+        "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+        "review_note": "Established relationship must be preserved.",
+        "status": "PROVEN",
+        "workflow": "Header loads current user"
+      },
+      {
+        "api_contract": "GET /api/users/current/claims",
+        "backend_endpoint": "GET /api/users/current/claims",
+        "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+        "review_note": "Established relationship must be preserved.",
+        "status": "PROVEN",
+        "workflow": "Header loads current claims"
+      },
+      {
+        "api_contract": "GET /api/users/current/claims",
+        "backend_endpoint": "GET /api/users/current/claims",
+        "frontend_source": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
+        "review_note": "Established relationship must be preserved.",
+        "status": "PROVEN",
+        "workflow": "Initial page loads current claims"
+      },
+      {
+        "api_contract": "GET /api/users/current/tenant",
+        "backend_endpoint": "GET /api/users/current/tenant",
+        "frontend_source": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
+        "review_note": "Established relationship must be preserved.",
+        "status": "PROVEN",
+        "workflow": "Users load current tenant"
+      }
+    ],
+    "target_mapping_status": "Pending Target Design and Target Architecture",
+    "ui_surfaces": [
+      "UsersController",
+      "user",
+      "users",
+      "usersService"
+    ]
+  },
+  "modernization_requirements": [
+    "Preserve this approved business behavior during frontend modernization without changing backend contracts.",
+    "Preserve this approved business behavior during frontend modernization without changing backend contracts.",
+    "Preserve this approved business behavior during frontend modernization without changing backend contracts."
+  ],
+  "nfr_status": "Feature-specific non-functional requirements have not yet been approved.",
+  "open_decisions": [
+    {
+      "question": "Which claims-driven behaviors must be visible in later Stories without changing existing authorization semantics?",
+      "validation_role": "Product Owner / Business Analyst / Customer SME",
+      "why_it_matters": "Claims loading is proven, but business meaning and desired presentation are not."
+    }
+  ],
+  "review_status": {
+    "Business Analyst": "Pending",
+    "Modernization Lead": "Pending",
+    "Product Owner": "Pending",
+    "QA Lead": "Pending",
+    "Solution Architect": "Pending"
+  },
+  "risks": [
+    "Interpreting claims beyond observed retrieval could create unsupported authorization requirements.",
+    "Duplicating shared context behavior across target Features could create inconsistent frontend state handling."
+  ],
+  "scope": {
+    "in_scope": [
+      "Approved user routes, user surfaces, identity/claims/tenant workflows, one tenant-context rule, and four proven API relationships."
+    ],
+    "out_of_scope": [
+      "Backend identity redesign, authorization policy redesign, and inferred meaning for individual claims."
+    ]
+  },
+  "security_context": "Feature-specific access and authorization requirements will be confirmed during architecture and stakeholder validation.",
+  "stories": [
+    {
+      "actor": "user of the existing application",
+      "actor_confidence": {
+        "level": "LOW",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "No approved Business Feature evidence identifies a named persona."
+      },
+      "api_contract_refs": [],
+      "api_mapping_status": [],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user"
+      ],
+      "assumptions": [],
+      "business_capability": "Resolve current user context",
+      "business_feature_evidence": [
+        "business-feature:feature-user-access-context"
+      ],
+      "business_goal": "Access existing user list and detail views",
+      "business_rule_refs": [
+        "BR-USER-001"
+      ],
+      "business_value": "The Feature appears to support consistent access to user and tenant context across frontend areas.",
+      "business_value_status": "INFERRED_BUSINESS_VALUE",
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "current_state_behavior": {
+        "classification": "PROVEN",
+        "confidence": {
+          "level": "HIGH",
+          "provenance": [
+            "STRUCTURAL_ONLY"
+          ],
+          "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+        },
+        "evidence": [
+          {
+            "line_end": 133,
+            "line_start": 133,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          }
+        ],
+        "text": "The existing application supports: A user detail experience is available. A user list experience is available."
+      },
+      "dependency_refs": [
+        "Header depends on current-user API"
+      ],
+      "description": "Represents the approved user-management navigation behavior.",
+      "domain_concept_refs": [
+        "Application user request",
+        "Tenant request"
+      ],
+      "feature_evidence": [
+        "feature-user-access-context"
+      ],
+      "in_scope": [
+        "Approved workflows and existing frontend behavior represented by this Story boundary."
+      ],
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant"
+      ],
+      "limitations": [],
+      "modernization_relevance": {
+        "classification": "MODERNIZATION_CONCERN",
+        "confidence": {
+          "level": "HIGH",
+          "provenance": [
+            "STRUCTURAL_ONLY"
+          ],
+          "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+        },
+        "evidence": [
+          {
+            "line_end": 133,
+            "line_start": 133,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          }
+        ],
+        "text": "Preserve this approved business behavior during frontend modernization without changing backend contracts."
+      },
+      "open_questions": [],
+      "out_of_scope": [
+        "Downstream refinement artifacts, target architecture, backend redesign, and unsupported future behavior."
+      ],
+      "parent_feature_id": "feature-user-access-context",
+      "parent_feature_name": "User Access and Tenant Context",
+      "poc_relevance": "Not selected; this Story is outside the approved Dashboard POC.",
+      "priority_rationale": "High modernization/POC or shared-context relevance is supported by approved evidence.",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 133,
+          "line_start": 133,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 146,
+          "line_start": 146,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 124,
+          "line_start": 124,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        }
+      ],
+      "story_evidence_package_id": "story-evidence:feature-user-access-context:navigate-user-management-surfaces",
+      "story_id": "story-user-access-context-access-user-management-views",
+      "story_key_candidate": "STORY_USER_ACCESS_CONTEXT_ACCESS_USER_MANAGEMENT_VIEWS",
+      "story_points": "UNESTIMATED",
+      "story_priority": "HIGH",
+      "story_statement": "As a user of the existing application, I want access existing user list and detail views, so that I can access the supported behavior in the existing experience.",
+      "title": "Access User Management Views",
+      "ui_surface_refs": [
+        "UsersController",
+        "user",
+        "users"
+      ],
+      "workflow_boundary": "Navigate user management surfaces",
+      "workflow_boundary_rationale": "Groups approved user navigation.",
+      "workflow_refs": [
+        "Route user",
+        "Route users"
+      ]
+    },
+    {
+      "actor": "user of the existing application",
+      "actor_confidence": {
+        "level": "LOW",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "No approved Business Feature evidence identifies a named persona."
+      },
+      "api_contract_refs": [
+        {
+          "api_contract": "GET /api/users/current/user",
+          "backend_endpoint": "GET /api/users/current/user",
+          "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+          "status": "PROVEN",
+          "workflow": "Header loads current user"
+        },
+        {
+          "api_contract": "GET /api/users/current/claims",
+          "backend_endpoint": "GET /api/users/current/claims",
+          "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+          "status": "PROVEN",
+          "workflow": "Header loads current claims"
+        },
+        {
+          "api_contract": "GET /api/users/current/claims",
+          "backend_endpoint": "GET /api/users/current/claims",
+          "frontend_source": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
+          "status": "PROVEN",
+          "workflow": "Initial page loads current claims"
+        }
+      ],
+      "api_mapping_status": [
+        "PROVEN"
+      ],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user"
+      ],
+      "assumptions": [],
+      "business_capability": "Resolve current user context",
+      "business_feature_evidence": [
+        "business-feature:feature-user-access-context"
+      ],
+      "business_goal": "Make current user identity and claims available to shared application behavior",
+      "business_rule_refs": [
+        "BR-USER-001"
+      ],
+      "business_value": "The Feature appears to support consistent access to user and tenant context across frontend areas.",
+      "business_value_status": "INFERRED_BUSINESS_VALUE",
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "current_state_behavior": {
+        "classification": "PROVEN",
+        "confidence": {
+          "level": "HIGH",
+          "provenance": [
+            "STRUCTURAL_ONLY"
+          ],
+          "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+        },
+        "evidence": [
+          {
+            "line_end": 133,
+            "line_start": 133,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          }
+        ],
+        "text": "The existing application supports: The header has current user identity. The header has current claims. Initial-page behavior has current claims."
+      },
+      "dependency_refs": [
+        "Header depends on current-user API"
+      ],
+      "description": "Combines the approved identity and claims retrieval workflows used by shared header and initial-page behavior.",
+      "domain_concept_refs": [
+        "Application user request",
+        "Tenant request"
+      ],
+      "feature_evidence": [
+        "feature-user-access-context"
+      ],
+      "in_scope": [
+        "Approved workflows and existing frontend behavior represented by this Story boundary."
+      ],
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [
+          "The business meaning of individual claims and authorization decisions is not proven."
+        ],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant"
+      ],
+      "limitations": [
+        "The business meaning of individual claims and authorization decisions is not proven."
+      ],
+      "modernization_relevance": {
+        "classification": "MODERNIZATION_CONCERN",
+        "confidence": {
+          "level": "HIGH",
+          "provenance": [
+            "STRUCTURAL_ONLY"
+          ],
+          "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+        },
+        "evidence": [
+          {
+            "line_end": 133,
+            "line_start": 133,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          }
+        ],
+        "text": "Preserve this approved business behavior during frontend modernization without changing backend contracts."
+      },
+      "open_questions": [
+        "Q-USER-001"
+      ],
+      "out_of_scope": [
+        "Downstream refinement artifacts, target architecture, backend redesign, and unsupported future behavior."
+      ],
+      "parent_feature_id": "feature-user-access-context",
+      "parent_feature_name": "User Access and Tenant Context",
+      "poc_relevance": "Not selected; this Story is outside the approved Dashboard POC.",
+      "priority_rationale": "High modernization/POC or shared-context relevance is supported by approved evidence.",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 133,
+          "line_start": 133,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 146,
+          "line_start": 146,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 124,
+          "line_start": 124,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        }
+      ],
+      "story_evidence_package_id": "story-evidence:feature-user-access-context:resolve-current-user-and-claims-for-shared-ui",
+      "story_id": "story-user-access-context-resolve-current-user-and-claims",
+      "story_key_candidate": "STORY_USER_ACCESS_CONTEXT_RESOLVE_CURRENT_USER_AND_CLAIMS",
+      "story_points": "UNESTIMATED",
+      "story_priority": "HIGH",
+      "story_statement": "As a user of the existing application, I want make current user identity and claims available to shared application behavior, so that I can access the supported behavior in the existing experience.",
+      "title": "Resolve Current User and Claims",
+      "ui_surface_refs": [],
+      "workflow_boundary": "Resolve current user and claims for shared UI",
+      "workflow_boundary_rationale": "Groups shared identity/claims behavior.",
+      "workflow_refs": [
+        "Header loads current user",
+        "Header loads current claims",
+        "Initial page loads current claims"
+      ]
+    },
+    {
+      "actor": "user of the existing application",
+      "actor_confidence": {
+        "level": "LOW",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "No approved Business Feature evidence identifies a named persona."
+      },
+      "api_contract_refs": [
+        {
+          "api_contract": "GET /api/users/current/tenant",
+          "backend_endpoint": "GET /api/users/current/tenant",
+          "frontend_source": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
+          "status": "PROVEN",
+          "workflow": "Users load current tenant"
+        }
+      ],
+      "api_mapping_status": [
+        "PROVEN"
+      ],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user"
+      ],
+      "assumptions": [],
+      "business_capability": "Resolve current user context",
+      "business_feature_evidence": [
+        "business-feature:feature-user-access-context"
+      ],
+      "business_goal": "Make current tenant context available to user functionality",
+      "business_rule_refs": [
+        "BR-USER-001"
+      ],
+      "business_value": "The Feature appears to support consistent access to user and tenant context across frontend areas.",
+      "business_value_status": "INFERRED_BUSINESS_VALUE",
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "current_state_behavior": {
+        "classification": "PROVEN",
+        "confidence": {
+          "level": "HIGH",
+          "provenance": [
+            "STRUCTURAL_ONLY"
+          ],
+          "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+        },
+        "evidence": [
+          {
+            "line_end": 133,
+            "line_start": 133,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          }
+        ],
+        "text": "The existing application supports: User functionality has tenant context."
+      },
+      "dependency_refs": [
+        "Header depends on current-user API"
+      ],
+      "description": "Represents the proven tenant-context interaction and its approved tenant-scoped behavior rule.",
+      "domain_concept_refs": [
+        "Application user request",
+        "Tenant request"
+      ],
+      "feature_evidence": [
+        "feature-user-access-context"
+      ],
+      "in_scope": [
+        "Approved workflows and existing frontend behavior represented by this Story boundary."
+      ],
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant"
+      ],
+      "limitations": [],
+      "modernization_relevance": {
+        "classification": "MODERNIZATION_CONCERN",
+        "confidence": {
+          "level": "HIGH",
+          "provenance": [
+            "STRUCTURAL_ONLY"
+          ],
+          "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+        },
+        "evidence": [
+          {
+            "line_end": 133,
+            "line_start": 133,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          }
+        ],
+        "text": "Preserve this approved business behavior during frontend modernization without changing backend contracts."
+      },
+      "open_questions": [],
+      "out_of_scope": [
+        "Downstream refinement artifacts, target architecture, backend redesign, and unsupported future behavior."
+      ],
+      "parent_feature_id": "feature-user-access-context",
+      "parent_feature_name": "User Access and Tenant Context",
+      "poc_relevance": "Not selected; this Story is outside the approved Dashboard POC.",
+      "priority_rationale": "High modernization/POC or shared-context relevance is supported by approved evidence.",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 133,
+          "line_start": 133,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 146,
+          "line_start": 146,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        },
+        {
+          "line_end": 124,
+          "line_start": 124,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+        }
+      ],
+      "story_evidence_package_id": "story-evidence:feature-user-access-context:resolve-tenant-context-for-user-functionality",
+      "story_id": "story-user-access-context-resolve-tenant-context-for-user-functions",
+      "story_key_candidate": "STORY_USER_ACCESS_CONTEXT_RESOLVE_TENANT_CONTEXT_FOR_USER_FUNCTIONS",
+      "story_points": "UNESTIMATED",
+      "story_priority": "HIGH",
+      "story_statement": "As a user of the existing application, I want make current tenant context available to user functionality, so that I can access the supported behavior in the existing experience.",
+      "title": "Resolve Tenant Context for User Functions",
+      "ui_surface_refs": [
+        "UsersController",
+        "usersService"
+      ],
+      "workflow_boundary": "Resolve tenant context for user functionality",
+      "workflow_boundary_rationale": "Separates the tenant-scoped rule and proven integration.",
+      "workflow_refs": [
+        "Users load current tenant"
+      ]
+    }
+  ],
+  "target_design": {
+    "mapped_screens": [],
+    "mapped_stories": [],
+    "provider": null,
+    "status": "NOT_YET_ANALYZED",
+    "url": null
+  },
+  "traceability": {
+    "acceptance_criteria_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-112024-635713",
+    "application_understanding_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694",
+    "business_feature_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-145336-704667",
+    "feature_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-141302-518966",
+    "kg_refs": [
+      "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+      "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+      "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user"
+    ],
+    "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-034128",
+    "source_refs": [
+      "src/MyHealth.API/Controllers/UsersController.cs"
+    ],
+    "story_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-105453-078418"
+  },
+  "workflows": [
+    {
+      "interaction": [
+        "Resolve the user route.",
+        "Present the user detail surface."
+      ],
+      "name": "Route user",
+      "outcome": "A user detail experience is available.",
+      "trigger": "User detail navigation is initiated."
+    },
+    {
+      "interaction": [
+        "Resolve the users route.",
+        "Present the user list surface."
+      ],
+      "name": "Route users",
+      "outcome": "A user list experience is available.",
+      "trigger": "User list navigation is initiated."
+    },
+    {
+      "interaction": [
+        "Request current tenant context.",
+        "Make tenant context available to user functionality."
+      ],
+      "name": "Users load current tenant",
+      "outcome": "User functionality has tenant context.",
+      "trigger": "User functionality needs tenant context."
+    },
+    {
+      "interaction": [
+        "Request current user identity.",
+        "Make identity available to shared header behavior."
+      ],
+      "name": "Header loads current user",
+      "outcome": "The header has current user identity.",
+      "trigger": "Shared header initialization needs current user identity."
+    },
+    {
+      "interaction": [
+        "Request current claims.",
+        "Make claims available to shared header behavior."
+      ],
+      "name": "Header loads current claims",
+      "outcome": "The header has current claims.",
+      "trigger": "Shared header initialization needs current claims."
+    },
+    {
+      "interaction": [
+        "Request current claims.",
+        "Make claims available to initial-page behavior."
+      ],
+      "name": "Initial page loads current claims",
+      "outcome": "Initial-page behavior has current claims.",
+      "trigger": "Initial page setup needs current claims."
+    }
+  ]
+}

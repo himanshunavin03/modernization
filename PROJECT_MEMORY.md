@@ -169,6 +169,14 @@ Narrative run `legacy-dashboard-complete-application-demo-v1-2026-09-01-121948-3
 
 Customer comprehension and manual reviews pass for Dashboard and all five Features. Every required coherence/usability score is 10.0, with zero raw workflow mechanics, diagnostic noise, invention, or untraceable narrative statements. Readiness is `FEATURE_NARRATIVE_READY_WITH_LIMITATIONS`; inherited application uncertainty remains visible as decisions or constraints.
 
+## Modernization Feature Specifications
+
+The finalized immutable run is `legacy-dashboard-complete-application-demo-v1-2026-09-01-132759-483752`, derived from narrative run `legacy-dashboard-complete-application-demo-v1-2026-09-01-121948-351008` and approved KG run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`. It preserves five machine Feature contracts, 12 Stories, and 14 authoritative Acceptance Criteria byte-for-byte while adding an evidence-backed current API view to the human narrative model.
+
+The approved KG baseline is 58 backend endpoint facts, 44 frontend API-call facts, 10 proven mappings, 22 dynamic URL warnings, one external call, one no-backend-route call, and 32 unresolved structural calls. The five Features contain 11 caller-specific relevant contracts: eight proven, two dynamic, one unresolved, and zero external. Eight contracts expose a proven method, route, controller, action, and response type; no relevant proven contract establishes path/query parameters, request DTOs/fields, or response fields. All 110 populated technical fields are traceable and no absent detail is inferred.
+
+Natural-language realization now produces coherent behavior, Story, and AC clauses and rejects broken verb constructions and concatenated outcome fragments. Manual review passes all five Feature documents, including the Dashboard's proven/dynamic/unresolved distinctions; the minimum criterion score is 9.2 rather than an automatic perfect score. Focused tests pass 8; the full suite passes 131 with 2 skipped. Source applications, approved KG artifacts, and upstream machine contracts are unchanged. Target design remains `NOT_YET_ANALYZED`, target architecture remains `PENDING`, and modernization has not started.
+
 ## Provider And Developer Experience
 
 Historical note, superseded by prompt 039: the former provider-driven Phase-2 workflow waited for credentials. Azure OpenAI and Bedrock now remain only optional headless enterprise boundaries; Codex capability guides and GitHub Copilot prompt files invoke the provider-free interactive flow. Repository-defined slash-command discovery is not claimed for Codex. See `docs/developer-experience.md`.

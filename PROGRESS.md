@@ -125,6 +125,18 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Validation: focused presentation/specification suite `6 passed`; complete suite `123 passed, 2 skipped, 0 failed, 0 errors` in `29.69s`.
 - Readiness: `FEATURE_PRESENTATION_READY_WITH_LIMITATIONS`; next action remains explicit optional target-design analysis or Target Architecture selection.
 
+## Modernization Feature Specifications with API Contracts
+
+- Final run: `legacy-dashboard-complete-application-demo-v1-2026-09-01-132759-483752`, using approved narrative run `legacy-dashboard-complete-application-demo-v1-2026-09-01-121948-351008` and KG run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`.
+- Preserved contract: 5 Features, 12 Stories, and 14 authoritative AC; the five machine Feature JSON files are byte-identical to their approved input.
+- API baseline: 58 endpoint facts, 44 frontend API-call facts, 10 proven mappings, 22 dynamic URL warnings, 1 external call, 1 no-backend-route call, and 32 unresolved structural calls.
+- Feature API scope: 11 caller-specific contracts consisting of 8 proven, 2 dynamic, 1 unresolved, and 0 external. Eight contain proven HTTP method, resolved route, controller/action, and response type. No Feature-relevant proven contract establishes parameters, request types/fields, or response fields.
+- Evidence gate: 110 populated API contract fields are traced to deterministic analyzer/source evidence; untraceable and invented API fields, status codes, and error behavior are zero. Dynamic and unresolved Dashboard calls remain unpromoted.
+- Language gate: broken verb constructions, concatenated outcomes, grammar defects, Story defects, and AC defects are zero. Semantic duplication and unnecessary narrative repetition are zero.
+- Review: all five Feature documents and the Dashboard special checklist pass manual review. Every quality criterion is at least 9.2; target design is `NOT_YET_ANALYZED`, architecture is `PENDING`, and modernization is not started.
+- Validation: focused API/narrative tests `8 passed` in `2.75s`; final complete suite `131 passed, 2 skipped, 0 failed, 0 errors` in `25.98s`. Immutable/latest hashes, model/Markdown parity, provenance, source integrity, and upstream machine-contract integrity pass.
+- Readiness: `MODERNIZATION_FEATURE_SPECIFICATIONS_READY_WITH_LIMITATIONS`; inherited dynamic and unresolved API relationships require confirmation. Next action, only with explicit approval, is `ANALYZE_OPTIONAL_TARGET_DESIGN_OR_RECOMMEND_TARGET_ARCHITECTURE`.
+
 ## Provider And Developer Experience
 
 - Superseded historical result: provider discovery previously produced `WAITING_FOR_PROVIDER_CONFIGURATION`. The normal interactive path no longer accepts `--provider auto` or requires external credentials; Azure and Bedrock are optional headless enterprise boundaries only.

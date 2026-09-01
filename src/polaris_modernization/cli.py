@@ -296,6 +296,7 @@ def main() -> None:
     presentation_parser.add_argument("--output", type=Path, default=Path("artifacts/feature-specifications"))
     narrative_parser = subparsers.add_parser("synthesize-feature-narratives", help="Build customer Feature narratives from approved concepts")
     narrative_parser.add_argument("--source-specification-root", required=True, type=Path)
+    narrative_parser.add_argument("--knowledge-graph-root", required=True, type=Path)
     narrative_parser.add_argument("--output", type=Path, default=Path("artifacts/feature-specifications"))
     load_parser = subparsers.add_parser("load-neo4j")
     load_parser.add_argument("--graph", required=True, type=Path)
@@ -377,7 +378,7 @@ def main() -> None:
         print(result["path"])
     elif args.command == "synthesize-feature-narratives":
         from polaris_modernization.feature_specifications.narrative import synthesize_feature_narratives
-        result = synthesize_feature_narratives(args.source_specification_root, args.output)
+        result = synthesize_feature_narratives(args.source_specification_root, args.output, args.knowledge_graph_root)
         print(result["path"])
     elif args.command in {"load-neo4j", "clear-neo4j-project"}:
         driver = connect(os.getenv("NEO4J_URI", "bolt://localhost:7687"), os.getenv("NEO4J_USERNAME", "neo4j"), os.getenv("NEO4J_PASSWORD", "change-me"))
