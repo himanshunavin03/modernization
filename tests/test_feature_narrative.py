@@ -101,15 +101,17 @@ def test_human_markdown_quality_and_lineage(tmp_path):
     result=synthesize_feature_narratives(SOURCE,tmp_path/"out",KG,APP)
     root=tmp_path/"out/latest"
     validation=result["validation"]
-    assert validation["functional_requirements_generated"]==12
+    assert validation["functional_requirements_generated"]==18
     assert validation["business_rules_generated"]==1
     assert validation["api_requirements_generated"]==17
-    assert validation["clarifications_generated"]==14
+    assert validation["clarifications_generated"]==17
     assert all(validation[key]==0 for key in (
         "polaris_terms_in_human_markdown", "kg_terms_in_human_markdown",
         "analyzer_terms_in_human_markdown", "resolver_classifications_in_human_markdown",
         "source_file_paths_in_human_markdown", "source_line_references_in_human_markdown",
-        "evidence_jargon_in_human_markdown",
+        "evidence_jargon_in_human_markdown", "legacy_implementation_language_in_human_markdown",
+        "semantically_circular_stories", "vague_human_ac", "generic_clarification_questions",
+        "backend_task_wrappers_as_primary_response",
     ))
     dashboard=(root/"feature-operational-dashboard-insights.md").read_text(encoding="utf-8")
     for contract in (
@@ -117,7 +119,35 @@ def test_human_markdown_quality_and_lineage(tmp_path):
         "GET /api/reports/clinicsummary", "GET /api/users/current/tenant",
     ):
         assert contract in dashboard
+    assert "Enable users to access the operational dashboard" in dashboard
+    assert "Expense summary information is retrieved for the selected reporting year." in dashboard
+    assert "Which expense fields and metrics must be displayed for the selected reporting year?" in dashboard
+    assert "| Response | Expense summary information |" in dashboard
+    assert "Task<" not in dashboard and "ValueTask<" not in dashboard
+    human_markdown="\n".join(path.read_text(encoding="utf-8") for path in root.glob("feature-*.md") if "index" not in path.name)
+    assert not any(phrase in human_markdown.lower() for phrase in (
+        "flow has", "flow needs", "information remains available", "feature is ready for delivery",
+        "feature is implemented", "which information must be considered mandatory", "resulting behavior",
+        "access to the access", "claims is", "the the", "linked feature behavior", "information views",
+    ))
+    artifact=json.loads((root/"feature-narrative-model.json").read_text())
+    presentations=[item["narrative_model"]["human_presentation"] for item in artifact["features"]]
+    dashboard_model=next(item for item in presentations if item["feature"]["source_feature_id"]=="feature-operational-dashboard-insights")
+    assert [item["title"] for item in dashboard_model["functional_requirements"]]==[
+        "Access Operational Dashboard", "View Yearly Expense Information", "View Yearly Patient Information",
+        "View Clinic Summary", "Establish Organization Context",
+    ]
+    assert all(item["source_story_ids"] and item["source_behavior_ids"] for model in presentations for item in model["functional_requirements"])
+    assert all(item["source_story_id"] for model in presentations for item in model["stories"])
+    assert all(item["source_ac_id"] and item["source_story_id"] for model in presentations for item in model["acceptance_criteria"])
+    assert all(item["source_interaction_ids"] for model in presentations for item in model["api_requirements"])
+    assert all(item["source_ids"] for model in presentations for item in model["clarifications"])
+    user_model=next(item for item in presentations if item["feature"]["source_feature_id"]=="feature-user-access-context")
+    assert {item["question"] for item in user_model["clarifications"]} >= {
+        "Which application user fields must be displayed in the detail view?",
+        "Which application user fields must be displayed in the directory?",
+    }
     clinic=(root/"feature-clinic-appointment-experience.md").read_text(encoding="utf-8")
-    assert "Provide the clinic information views within current tenant context." in clinic
+    assert "Enable users to view clinic details and review the clinic directory within the applicable organization context." in clinic
     assert "Appointment creation/update behavior" in clinic
-    assert "Provide access to clinic/appointment" not in clinic
+    assert "appointment creation" not in clinic.lower().replace("appointment creation/update behavior", "")

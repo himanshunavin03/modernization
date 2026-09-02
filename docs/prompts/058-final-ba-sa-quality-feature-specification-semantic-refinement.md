@@ -1,0 +1,7 @@
+# Final BA/SA-Quality Feature Specification Semantic Refinement
+
+Continue from commit `561e6e2`. Keep the approved human-presentation architecture and frozen UNDERSTAND baseline. Refine only human Feature Specification semantics so all five documents read as professional BA/SA/developer/QA delivery requirements.
+
+Preserve exactly 5 Features, 12 Stories, 14 authoritative Acceptance Criteria, approved meaning and lineage, API contracts/mappings, machine evidence, KG, resolver/analyzers, and `source/`. Functional Requirements may decompose Story behavior for readability without changing Story lineage. Derive natural requirements, flows, Jira Story wording, testable human AC, concise API descriptions without C# task wrappers, specific linked clarifications, and Feature-derived Definition of Done items from structured semantic data. Do not hardcode application/Feature-specific renderer branches or invent requirements, rules, API/UI behavior, business value, architecture, or target design.
+
+Add quality gates for circular Stories, vague human AC, generic clarification questions, backend task wrappers as primary responses, analysis/implementation-history leakage, and existing invention/leakage checks. Regenerate all five Markdown files, manually review each with Dashboard as the primary gate, run focused and full tests, minimally update project records, and create one commit named `Refine feature specifications to BA-quality requirements`. Stop before LangGraph, LangChain, architecture, Figma, or Angular work.

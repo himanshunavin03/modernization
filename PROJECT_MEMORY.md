@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Final API relationship resolution is complete in immutable Knowledge Graph run `legacy-dashboard-complete-application-demo-v1-2026-09-02-050627`. Jira-ready human Feature Specifications are published in run `legacy-dashboard-complete-application-demo-v1-2026-09-02-004448-723610`, preserving the approved 5 Features, 12 Stories, 14 authoritative Acceptance Criteria, and byte-identical source Feature JSON. The next authorized action is `IMPLEMENT_LANGGRAPH_LANGCHAIN_POC_ORCHESTRATION_FOUNDATION`; do not execute it until explicitly requested.
+Final API relationship resolution is complete in immutable Knowledge Graph run `legacy-dashboard-complete-application-demo-v1-2026-09-02-050627`. Final BA/SA-quality human Feature Specifications are published in run `legacy-dashboard-complete-application-demo-v1-2026-09-02-023203-926950`, preserving the approved 5 Features, 12 Stories, 14 authoritative Acceptance Criteria, and byte-identical source Feature JSON. The next authorized action is `IMPLEMENT_LANGGRAPH_LANGCHAIN_POC_ORCHESTRATION_FOUNDATION`; do not execute it until explicitly requested.
 
 ## Agent Command
 
@@ -115,7 +115,7 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 057 under `docs/prompts/`, immutable KG run `legacy-dashboard-complete-application-demo-v1-2026-09-02-050627`, and Jira-ready feature-specification run `legacy-dashboard-complete-application-demo-v1-2026-09-02-004448-723610` plus `artifacts/feature-specifications/latest/`. The UNDERSTAND pillar is frozen `FROZEN_READY_WITH_LIMITATIONS`. Await explicit authorization to implement the LangGraph/LangChain POC orchestration foundation.
+Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 058 under `docs/prompts/`, immutable KG run `legacy-dashboard-complete-application-demo-v1-2026-09-02-050627`, and final BA/SA-quality feature-specification run `legacy-dashboard-complete-application-demo-v1-2026-09-02-023203-926950` plus `artifacts/feature-specifications/latest/`. The UNDERSTAND pillar is frozen `FROZEN_READY_WITH_LIMITATIONS`. Await explicit authorization to implement the LangGraph/LangChain POC orchestration foundation.
 
 ## Final API Relationship Resolution Audit And Freeze Gate
 
@@ -140,6 +140,12 @@ The historical `FRONTEND_API_CALLS_VISIBLE_PREVIOUS=44` value is the old KG's mi
 Feature Specification run `legacy-dashboard-complete-application-demo-v1-2026-09-02-004448-723610` presents the approved requirements as delivery artifacts for PO, BA, architecture, development, and QA review. The five Markdown documents contain 12 functional requirements, 12 Jira-style Stories, 14 authoritative Given/When/Then Acceptance Criteria, 17 API requirements, 1 supported business rule, and 14 genuine stakeholder clarifications. Dashboard retains its 3 functional requirements, 3 Stories, 5 Acceptance Criteria, and all four required reporting/tenant APIs.
 
 Human-facing Feature Specifications are delivery artifacts, not analysis reports. Machine-readable evidence/provenance remains in JSON/KG while Markdown presents business, functional, API, development, and QA requirements in normal project terminology. The source Feature JSON files remain byte-identical, all human-document leakage and invention counters are zero, and no Knowledge Graph, analyzer, resolver semantics, or application source changed.
+
+## Final BA/SA Feature Specification Semantics
+
+Run `legacy-dashboard-complete-application-demo-v1-2026-09-02-023203-926950` strengthens the approved human-presentation architecture without changing frozen machine meaning. The final semantic layer derives 18 implementable Functional Requirements, 17 concise API requirements, 1 supported business rule, and 17 specific linked clarifications from the approved 5 Features, 12 Stories, and 14 authoritative Acceptance Criteria. Dashboard decomposes naturally into access, yearly expense, yearly patient, clinic summary, and organization-context requirements.
+
+Functional Requirements may decompose approved Story behavior for human readability without changing authoritative Story lineage. Machine evidence remains authoritative; human presentation expresses the supported meaning as BA/SA/developer/QA-readable requirements. Circular Stories, vague human AC, generic clarification questions, backend Task wrappers as primary responses, analysis jargon, and implementation-history language are all zero.
 
 ## Project-Aware Roslyn Engine Proof
 
