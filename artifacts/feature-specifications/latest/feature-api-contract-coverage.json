@@ -1,19 +1,20 @@
 {
   "features": [
     {
-      "contracts_with_method": 1,
-      "contracts_with_parameters": 0,
+      "contracts_with_method": 4,
+      "contracts_with_parameters": 2,
       "contracts_with_request_fields": 0,
       "contracts_with_request_type": 0,
       "contracts_with_response_fields": 0,
-      "contracts_with_response_type": 1,
-      "contracts_with_route": 1,
-      "dynamic_relationships": 2,
+      "contracts_with_response_type": 4,
+      "contracts_with_route": 4,
+      "dynamic_relationships": 0,
       "external_relationships": 0,
       "feature_id": "feature-operational-dashboard-insights",
       "frontend_api_calls": 4,
-      "proven_backend_contracts": 1,
-      "unresolved_relationships": 1
+      "no_backend_route_relationships": 0,
+      "proven_backend_contracts": 4,
+      "unresolved_relationships": 0
     },
     {
       "contracts_with_method": 1,
@@ -27,6 +28,7 @@
       "external_relationships": 0,
       "feature_id": "feature-doctor-directory-management",
       "frontend_api_calls": 1,
+      "no_backend_route_relationships": 0,
       "proven_backend_contracts": 1,
       "unresolved_relationships": 0
     },
@@ -42,6 +44,7 @@
       "external_relationships": 0,
       "feature_id": "feature-patient-directory-management",
       "frontend_api_calls": 1,
+      "no_backend_route_relationships": 0,
       "proven_backend_contracts": 1,
       "unresolved_relationships": 0
     },
@@ -57,6 +60,7 @@
       "external_relationships": 0,
       "feature_id": "feature-clinic-appointment-experience",
       "frontend_api_calls": 1,
+      "no_backend_route_relationships": 0,
       "proven_backend_contracts": 1,
       "unresolved_relationships": 0
     },
@@ -72,25 +76,27 @@
       "external_relationships": 0,
       "feature_id": "feature-user-access-context",
       "frontend_api_calls": 4,
+      "no_backend_route_relationships": 0,
       "proven_backend_contracts": 4,
       "unresolved_relationships": 0
     }
   ],
   "totals": {
-    "contracts_with_http_method": 8,
-    "contracts_with_path_parameters": 0,
+    "contracts_with_http_method": 11,
+    "contracts_with_path_parameters": 2,
     "contracts_with_query_parameters": 0,
     "contracts_with_request_fields": 0,
     "contracts_with_request_type": 0,
     "contracts_with_response_fields": 0,
-    "contracts_with_response_type": 8,
-    "contracts_with_route": 8,
-    "dynamic": 2,
+    "contracts_with_response_type": 11,
+    "contracts_with_route": 11,
+    "dynamic": 0,
     "external": 0,
     "feature_relevant_api_contracts": 11,
-    "proven": 8,
-    "traceable_api_contract_fields": 110,
-    "unresolved": 1,
+    "no_backend_route": 0,
+    "proven": 11,
+    "traceable_api_contract_fields": 147,
+    "unresolved": 0,
     "untraceable_api_contract_fields": 0
   }
 }

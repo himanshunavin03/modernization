@@ -157,7 +157,16 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
             call = api_nodes.get(fact.name)
             endpoint = endpoint_nodes.get(str(fact.properties.get("endpoint")))
             if call and endpoint and fact.properties.get("status") == "PROVEN":
-                add_edge("IMPLEMENTED_BY", call, endpoint, evidence, {"status": "PROVEN"})
+                add_edge("IMPLEMENTED_BY", call, endpoint, evidence, {
+                    "status": "PROVEN",
+                    "detail_status": fact.properties.get("detail_status"),
+                    "resolution": fact.properties.get("resolution"),
+                    "confidence": fact.properties.get("confidence"),
+                    "frontend_call_id": fact.properties.get("frontend_call_id"),
+                    "backend_endpoint_id": fact.properties.get("backend_endpoint_id"),
+                    "proof": fact.properties.get("proof"),
+                    "resolver_version": fact.properties.get("resolver_version"),
+                })
         elif fact.kind == "razor_model":
             view = next((node["id"] for node in nodes.values() if node["label"] == "RazorView" and node["name"] == fact.name), None)
             if view:

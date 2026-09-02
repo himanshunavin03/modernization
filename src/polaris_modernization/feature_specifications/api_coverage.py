@@ -47,10 +47,84 @@ def _candidate_endpoints(expression: str, method: str, endpoints: list[dict]) ->
     return result
 
 
+def _api_expression(fact: dict) -> str:
+    return str(fact.get("properties", {}).get("raw_url_expression") or fact["name"])
+
+
+def _api_status(fact: dict) -> str:
+    status = fact.get("properties", {}).get("match_status")
+    if status in {"PROVEN", "DYNAMIC", "UNRESOLVED", "EXTERNAL", "NO_BACKEND_ROUTE"}:
+        return str(status)
+    return "DYNAMIC" if any(token in _api_expression(fact) for token in ("${", " + ")) else "UNRESOLVED"
+
+
+def _api_signatures(fact: dict) -> set[tuple[str, str]]:
+    props = fact.get("properties", {})
+    source = fact["evidence"]["source_path"]
+    method = str(props.get("http_method") or "").upper()
+    expression = _api_expression(fact)
+    normalized = str(props.get("normalized_route") or "")
+    resolved = str(props.get("resolved_backend_endpoint") or "")
+    values = {fact["name"], expression, normalized, resolved}
+    if method and expression.startswith("/"):
+        values.add(f"{method} {expression}")
+    if method and normalized:
+        values.add(f"{method} {normalized}")
+    return {(source, value) for value in values if value}
+
+
+def _contract_signatures(contract: dict) -> set[tuple[str, str]]:
+    source = contract["frontend"]["source_reference"]
+    method = str(contract["frontend"].get("method") or "").upper()
+    expression = contract["frontend"]["api_expression"]
+    resolved = contract["backend"].get("resolved_endpoint") or ""
+    values = {expression, resolved}
+    if method and expression.startswith("/"):
+        values.add(f"{method} {expression}")
+    if method and resolved:
+        values.add(f"{method} {resolved}")
+    return {(source, value) for value in values if value}
+
+
+def _classification(status: str, *, supporting: bool) -> str:
+    supporting_map = {
+        "PROVEN": "SUPPORTING_SHARED_API",
+        "DYNAMIC": "DYNAMIC_SUPPORTING_INTERACTION",
+        "UNRESOLVED": "UNRESOLVED_SUPPORTING_INTERACTION",
+        "EXTERNAL": "EXTERNAL_API",
+        "NO_BACKEND_ROUTE": "UNRESOLVED_SUPPORTING_INTERACTION",
+    }
+    primary_map = {
+        "PROVEN": "PRIMARY_BUSINESS_API",
+        "DYNAMIC": "DYNAMIC_PRIMARY_INTERACTION",
+        "UNRESOLVED": "UNRESOLVED_PRIMARY_INTERACTION",
+        "EXTERNAL": "EXTERNAL_API",
+        "NO_BACKEND_ROUTE": "UNRESOLVED_PRIMARY_INTERACTION",
+    }
+    return (supporting_map if supporting else primary_map)[status]
+
+
+def _resolved_backend(fact: dict, endpoints_by_name: dict[str, dict]) -> dict:
+    endpoint = endpoints_by_name.get(str(fact.get("properties", {}).get("resolved_backend_endpoint") or ""))
+    if not endpoint:
+        return {"http_method": None, "route_template": None, "resolved_endpoint": None, "controller": None, "action": None, "source_reference": None}
+    props = endpoint["properties"]
+    evidence = endpoint.get("evidence", [])
+    return {
+        "http_method": props.get("http_method"),
+        "route_template": props.get("route_template"),
+        "resolved_endpoint": props.get("normalized_route"),
+        "controller": props.get("controller"),
+        "action": props.get("action"),
+        "source_reference": evidence[0]["source_path"] if evidence else None,
+    }
+
+
 def build_feature_api_coverage(specifications: list[dict], api_artifact: dict, graph: dict, facts: dict, source_root: Path) -> tuple[dict, dict]:
     endpoints = [node for node in graph["nodes"] if node.get("label") == "Endpoint"]
+    endpoints_by_name = {node["name"]: node for node in endpoints}
     raw_facts = facts.get("facts", facts)
-    tree_calls = [fact for fact in raw_facts if fact.get("kind") == "api_call" and fact.get("evidence", {}).get("extraction_method") == "tree-sitter"]
+    tree_calls = [fact for fact in raw_facts if fact.get("kind") == "api_call"]
     contracts_by_feature = {item["feature_id"]: item["contracts"] for item in api_artifact["features"]}
     matrices, classifications = [], []
     for spec in specifications:
@@ -62,48 +136,49 @@ def build_feature_api_coverage(specifications: list[dict], api_artifact: dict, g
             route = (contract["backend"].get("resolved_endpoint") or contract["frontend"]["api_expression"]).lower()
             is_context = "/current/" in route
             status = contract["relationship"]["status"]
-            if is_context and not context_is_primary:
-                classification = {"PROVEN":"SUPPORTING_SHARED_API", "DYNAMIC":"DYNAMIC_SUPPORTING_INTERACTION", "UNRESOLVED":"UNRESOLVED_SUPPORTING_INTERACTION", "EXTERNAL":"EXTERNAL_API"}[status]
-            else:
-                classification = {"PROVEN":"PRIMARY_BUSINESS_API", "DYNAMIC":"DYNAMIC_PRIMARY_INTERACTION", "UNRESOLVED":"UNRESOLVED_PRIMARY_INTERACTION", "EXTERNAL":"EXTERNAL_API"}[status]
+            classification = _classification(status, supporting=is_context and not context_is_primary)
             contract["classification"] = classification
-            matching_fact = next((fact for fact in tree_calls if fact["evidence"]["source_path"] == contract["frontend"]["source_reference"] and fact["name"] == contract["frontend"]["api_expression"]), None)
-            method = contract["backend"].get("http_method") or (_read_method(source_root, matching_fact) if matching_fact else None)
+            matching_fact = next((
+                fact for fact in tree_calls
+                if fact["evidence"]["source_path"] == contract["frontend"]["source_reference"]
+                and (contract["frontend"]["source_reference"], contract["frontend"]["api_expression"]) in _api_signatures(fact)
+            ), None)
+            method = contract["backend"].get("http_method") or contract["frontend"].get("method") or (_read_method(source_root, matching_fact) if matching_fact else None)
             candidates = [] if status == "PROVEN" or not method else _candidate_endpoints(contract["frontend"]["api_expression"], method, endpoints)
             interactions.append({"interaction_id":contract["contract_id"], "classification":classification, "status":status, "frontend":contract["frontend"], "backend":contract["backend"], "candidate_endpoints":candidates, "story_ids":contract["related_story_ids"], "ac_ids":contract["related_ac_ids"]})
 
         caller_files = sorted({contract["frontend"]["source_reference"] for contract in contracts})
-        existing = {(contract["frontend"]["source_reference"], contract["frontend"]["api_expression"]) for contract in contracts}
+        existing = {signature for contract in contracts for signature in _contract_signatures(contract)}
         extra_number = 1
         primary_stories = [story for story in spec["stories"] if any(word in story["business_goal"].lower() for word in ("access", "view", "review", "open"))]
         for fact in tree_calls:
             source = fact["evidence"]["source_path"]
-            if source not in caller_files or (source, fact["name"]) in existing:
+            if source not in caller_files or _api_signatures(fact).intersection(existing):
                 continue
-            method = _read_method(source_root, fact)
+            method = fact.get("properties", {}).get("http_method") or _read_method(source_root, fact)
             if method != "GET" or "/current/" in fact["name"].lower():
                 continue
-            candidates = _candidate_endpoints(fact["name"], method, endpoints)
-            dynamic = any(token in fact["name"] for token in ("${", " + "))
-            classification = "DYNAMIC_PRIMARY_INTERACTION" if dynamic else "UNRESOLVED_PRIMARY_INTERACTION"
+            status = _api_status(fact)
+            candidates = [] if status == "PROVEN" else _candidate_endpoints(_api_expression(fact), method, endpoints)
+            classification = _classification(status, supporting=False)
             interaction_id = f"API-{feature_id.removeprefix('feature-').upper().replace('-', '_')}-DISCOVERED-{extra_number:03d}"
             extra_number += 1
             interactions.append({
                 "interaction_id": interaction_id, "classification": classification,
-                "status": "DYNAMIC" if dynamic else "UNRESOLVED",
-                "frontend": {"technology":"Legacy AngularJS 1.x", "controller_or_component":None, "service":None,
-                             "method":method, "api_expression":fact["name"], "source_reference":source,
+                "status": status,
+                "frontend": {"technology":"Legacy AngularJS 1.x", "controller_or_component":fact.get("properties", {}).get("controller_or_component"), "service":fact.get("properties", {}).get("service"),
+                             "method":method, "api_expression":_api_expression(fact), "source_reference":source,
                              "evidence":fact["evidence"]},
-                "backend": {"http_method":None,"route_template":None,"resolved_endpoint":None,"controller":None,"action":None,"source_reference":None},
+                "backend": _resolved_backend(fact, endpoints_by_name) if status == "PROVEN" else {"http_method":None,"route_template":None,"resolved_endpoint":None,"controller":None,"action":None,"source_reference":None},
                 "candidate_endpoints": candidates,
                 "story_ids": [story["story_id"] for story in primary_stories],
                 "ac_ids": [ac["acceptance_criterion_id"] for ac in spec["acceptance_criteria"] if ac["story_id"] in {story["story_id"] for story in primary_stories}],
-                "relationship_reason": "The associated frontend caller proves the interaction; no deterministic frontend-to-endpoint mapping exists.",
+                "relationship_reason": fact.get("properties", {}).get("relationship_reason") or "The associated frontend caller proves the interaction; no deterministic frontend-to-endpoint mapping exists.",
             })
         counts = {name:sum(item["classification"] == name for item in interactions) for name in (
             "PRIMARY_BUSINESS_API", "SUPPORTING_SHARED_API", "EXTERNAL_API", "UNRESOLVED_PRIMARY_INTERACTION",
             "DYNAMIC_PRIMARY_INTERACTION", "UNRESOLVED_SUPPORTING_INTERACTION", "DYNAMIC_SUPPORTING_INTERACTION")}
-        unresolved = counts["UNRESOLVED_PRIMARY_INTERACTION"]
+        unresolved = counts["UNRESOLVED_PRIMARY_INTERACTION"] + counts["UNRESOLVED_SUPPORTING_INTERACTION"]
         dynamic = counts["DYNAMIC_PRIMARY_INTERACTION"]
         coverage_status = "COMPLETE_WITH_UNRESOLVED_RELATIONSHIP" if unresolved else ("COMPLETE_WITH_DYNAMIC_RELATIONSHIP" if dynamic else "COMPLETE_PROVEN")
         behavior_rows = []

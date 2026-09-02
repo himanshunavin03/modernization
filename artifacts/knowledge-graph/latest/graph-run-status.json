@@ -7,15 +7,15 @@
     "source_inventory": "artifacts\\legacy-dashboard-complete-application-demo-v1\\source-inventory.json"
   },
   "counts": {
-    "edge_count": 5205,
+    "edge_count": 5208,
     "extraction_warning_count": 0,
-    "fact_count": 8929,
+    "fact_count": 8939,
     "file_count": 2384,
-    "node_count": 4931,
-    "review_warning_count": 4483,
-    "warning_count": 4483
+    "node_count": 4926,
+    "review_warning_count": 4453,
+    "warning_count": 4453
   },
-  "ended_at": "2026-09-01T03:41:08.285152Z",
+  "ended_at": "2026-09-02T05:06:20.818427Z",
   "neo4j": {
     "requested": false,
     "status": "skipped"
@@ -37,9 +37,9 @@
   "scope": {
     "coverage_status": "complete_with_opaque_dependencies",
     "extraction_warning_count": 0,
-    "opaque_dependency_count": 44,
+    "opaque_dependency_count": 43,
     "out_of_scope_file_count": 0,
-    "review_warning_count": 4483,
+    "review_warning_count": 4453,
     "scope_description": "Complete discovered application inventory and graph.",
     "scope_id": "full-application",
     "scope_name": "Full application analysis",
@@ -74,5 +74,5 @@
       "status": "succeeded"
     }
   ],
-  "started_at": "2026-09-01T03:40:11.135679Z"
+  "started_at": "2026-09-02T05:05:33.508401Z"
 }

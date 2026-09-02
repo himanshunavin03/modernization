@@ -121,9 +121,27 @@ Represents the proven tenant-context interaction that supports the existing clin
 
 Confirmed existing backend API contracts are preserved integration boundaries for the target frontend unless an explicitly approved change modifies them.
 
+### Primary Business APIs
+
+#### API-CLINIC_APPOINTMENT_EXPERIENCE-DISCOVERED-001 — `/api/tenants/${tenantId}`
+
+**Role in this Feature:** Primary Business Api.
+
+**Current Frontend:** `src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js` calls `GET /api/tenants/${tenantId}`.
+
+**Confirmed Backend:** `GET /api/tenants/{tenantId}` implemented by `TenantsController.GetAsync`.
+
+#### API-CLINIC_APPOINTMENT_EXPERIENCE-DISCOVERED-002 — /api/tenants/list
+
+**Role in this Feature:** Primary Business Api.
+
+**Current Frontend:** `src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js` calls `GET /api/tenants/list`.
+
+**Confirmed Backend:** `GET /api/tenants/list` implemented by `TenantsController.GetAsync`.
+
 ### Supporting / Shared APIs
 
-#### API-CLINIC_APPOINTMENT_EXPERIENCE-001 — GET /api/users/current/tenant
+#### API-CLINIC_APPOINTMENT_EXPERIENCE-001 — /api/users/current/tenant
 
 **Role in this Feature:** Supporting Shared Api.
 
@@ -132,36 +150,6 @@ Confirmed existing backend API contracts are preserved integration boundaries fo
 **Confirmed Backend:** `GET /api/users/current/tenant` implemented by `UsersController.GetCurrentTenantAsync`.
 
 This contract supplies shared context only; it does not provide the Feature's primary business data.
-
-### Unresolved or Dynamic Integrations
-
-#### API-CLINIC_APPOINTMENT_EXPERIENCE-DISCOVERED-001 — `/api/tenants/${tenantId}`
-
-**Role in this Feature:** Dynamic Primary Interaction.
-
-**Current Frontend:** `src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js` calls `GET `/api/tenants/${tenantId}`.
-
-**Candidate Existing Backend Contract**
-
-A matching backend endpoint exists, but the current frontend-to-backend relationship has not been conclusively established:
-
-- `GET /api/tenants/{tenantId}` — `TenantsController.GetAsync`; response `Task<Tenant>`
-
-**Modernization Requirement:** Confirm the existing integration before implementing this behavior in the target frontend.
-
-#### API-CLINIC_APPOINTMENT_EXPERIENCE-DISCOVERED-002 — /api/tenants/list
-
-**Role in this Feature:** Unresolved Primary Interaction.
-
-**Current Frontend:** `src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js` calls `GET /api/tenants/list`.
-
-**Candidate Existing Backend Contract**
-
-A matching backend endpoint exists, but the current frontend-to-backend relationship has not been conclusively established:
-
-- `GET /api/tenants/list` — `TenantsController.GetAsync`; response `Task<IEnumerable<Tenant>>`
-
-**Modernization Requirement:** Confirm the existing integration before implementing this behavior in the target frontend.
 
 ## 6. Modernization Considerations
 
@@ -186,13 +174,6 @@ Relevant legacy surfaces: ClinicsController, clinic, clinics
 | What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability? | Current evidence establishes the behavior but not the stakeholder's intended business outcome. | NON_BLOCKING | Product Owner / Business Analyst / Customer SME |
 | Which information must be considered mandatory when validating Access Clinic Information in the modernized experience? | Current evidence does not establish a complete customer-approved definition of the information or presentation details that must be retained. | BLOCKING | Product Owner / Business Analyst / Customer SME / QA Lead |
 | Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors? | One or more meaningful Feature-name terms are not established by the primary behaviors. | NON_BLOCKING | Product Owner / Business Analyst |
-
-### Technical Integration Clarifications
-
-| Question | Why It Matters | Impact | Owner |
-| --- | --- | --- | --- |
-| Which existing backend contract conclusively supports `/api/tenants/${tenantId}`? | The frontend interaction is established, but its backend relationship is dynamic or unresolved. | BLOCKING | Solution Architect / Modernization Engineer |
-| Which existing backend contract conclusively supports `/api/tenants/list`? | The frontend interaction is established, but its backend relationship is dynamic or unresolved. | BLOCKING | Solution Architect / Modernization Engineer |
 
 ## 8. Review & Approval
 

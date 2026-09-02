@@ -30,7 +30,7 @@ def write_summary(path: Path, inventory: list[dict[str, str]], facts: list[Fact]
         "## Needs Review",
         "",
         "- Razor directives are not modeled beyond file classification because this POC uses the Tree-sitter HTML grammar, not a Razor grammar.",
-        "- Dynamic JavaScript URL expressions are emitted as source expressions, not resolved API endpoints.",
+        "- Dynamic JavaScript API expressions are normalized when structure is deterministic; runtime-dependent URL composition remains unresolved.",
         "- Only the configured dashboard source scope was inspected; no behavior outside it is represented.",
     ]
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")

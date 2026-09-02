@@ -15,7 +15,7 @@ Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy ro
 
 ## Current Step
 
-Final PO/BA semantic refinement is complete in run `legacy-dashboard-complete-application-demo-v1-2026-09-01-142601-917816`. The five customer Feature Specifications preserve the approved 5 Feature / 12 Story / 14 Acceptance Criterion contract and API classifications while explicitly separating proven behavior, supported interpretation, and stakeholder business intent. The next authorized action remains `ANALYZE_OPTIONAL_TARGET_DESIGN_OR_RECOMMEND_TARGET_ARCHITECTURE`; do not execute either path until explicitly requested.
+Final API relationship resolution is complete in immutable Knowledge Graph run `legacy-dashboard-complete-application-demo-v1-2026-09-02-050627` and downstream Modernization Feature Specification run `legacy-dashboard-complete-application-demo-v1-2026-09-01-230757-788124`. The Knowledge Graph now accounts for all 33 frontend API-call facts against 58 backend endpoint facts, proving 32 first-party frontend-to-backend relationships and leaving 1 true external API call. The next authorized action is `IMPLEMENT_LANGGRAPH_LANGCHAIN_POC_ORCHESTRATION_FOUNDATION`; do not execute it until explicitly requested.
 
 ## Agent Command
 
@@ -44,7 +44,7 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Await explicit authorization to analyze an optional target design or recommend Target Architecture from the validated Acceptance Criteria. Do not analyze Figma, recommend architecture, generate Angular 22 code, or modify legacy source automatically.
+Await explicit authorization to implement the LangGraph/LangChain POC orchestration foundation over the frozen UNDERSTAND pillar. Do not analyze Figma, recommend Target Architecture, generate Angular 22 code, or modify legacy source automatically.
 
 ## Step 3B.2 Result
 
@@ -115,7 +115,19 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 054 under `docs/prompts/`, approved upstream artifacts, and `artifacts/feature-specifications/latest/`. Final run `legacy-dashboard-complete-application-demo-v1-2026-09-01-142601-917816` is `FINAL_FEATURE_SPECIFICATIONS_READY_WITH_LIMITATIONS`. Await explicit selection of optional target-design analysis or Target Architecture.
+Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 055 under `docs/prompts/`, immutable KG run `legacy-dashboard-complete-application-demo-v1-2026-09-02-050627`, and final feature-specification run `legacy-dashboard-complete-application-demo-v1-2026-09-01-230757-788124` plus `artifacts/feature-specifications/latest/`. The UNDERSTAND pillar is frozen `FROZEN_READY_WITH_LIMITATIONS`. Await explicit authorization to implement the LangGraph/LangChain POC orchestration foundation.
+
+## Final API Relationship Resolution Audit And Freeze Gate
+
+Immutable KG run `legacy-dashboard-complete-application-demo-v1-2026-09-02-050627` completes the final UNDERSTAND-pillar API relationship repair. Fact-level API evidence is 33 frontend API calls and 58 backend endpoint facts. The deterministic resolver now proves 32 first-party relationships: 21 `PROVEN_EXACT_STATIC`, 11 `PROVEN_EXACT_TEMPLATE`, 0 `PROVEN_UNIQUE_PARAMETERIZED`, 0 `PROVEN_FRAMEWORK_SEMANTIC`, 0 remaining dynamic-resolvable calls, 0 ambiguous calls, 0 no-backend-route calls, 0 unresolved calls, and 1 true external API call.
+
+The root cause of the earlier Doctor, Patient, Dashboard, Tenant, and User misses was generic rather than application-specific: identifier-backed AngularJS URL variables and simple template/concatenation expressions were extracted but did not flow into deterministic method-plus-route normalization. The reusable `NormalizedApiRoute` resolver now reconciles literal, identifier-backed, and structurally resolvable template/concatenation forms without promoting name-only candidates or adding application-specific rules.
+
+The Knowledge Graph is the authoritative source for proven frontend-to-backend API relationships. Cross-language API relationships may be established deterministically using HTTP method, normalized route/template, uniqueness, and non-contradictory evidence. Dynamic syntax does not automatically mean unresolved; structurally resolvable dynamic paths may become proven. Candidate backend endpoints must not be promoted based only on controller, endpoint, or domain naming. Downstream Features and Feature Specifications consume KG relationship truth and must not independently promote unresolved API relationships. The goal is maximum truthful deterministic resolution, not maximum proven count.
+
+Compared with approved KG run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`, deterministic contract enrichment added query-parameter evidence to 24 endpoints, request types to 9 endpoints, request fields to 4 endpoints, and response fields to 10 endpoints. Final feature-specification run `legacy-dashboard-complete-application-demo-v1-2026-09-01-230757-788124` preserves the approved 5 Feature / 12 Story / 14 Acceptance Criterion semantic lineage while promoting all 11 feature-relevant API contracts to `PROVEN`. Tenant API classification remains Feature-relative: supporting for Dashboard, Doctor, Patient, and Clinic; primary for User Access and Tenant Context.
+
+The UNDERSTAND pillar is frozen `FROZEN_READY_WITH_LIMITATIONS`. Remaining legitimate limitations are one true external API call, `complete_with_opaque_dependencies` coverage with 43 opaque dependencies, 72 Roslyn warnings with 4,344 unresolved semantic symbols, and 57 inherited evidence-range anomalies that are unchanged from approved KG run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`.
 
 ## Project-Aware Roslyn Engine Proof
 

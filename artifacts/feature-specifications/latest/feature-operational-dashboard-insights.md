@@ -62,7 +62,7 @@ so that the established reporting information remains available for the selected
 
 **Business Context**
 
-Represents the approved yearly expense and patient-report interactions while retaining their dynamic URL status.
+Represents the approved yearly expense and patient-report interactions with their proven backend relationships.
 
 **Business Value Status:** Supported Interpretation.
 
@@ -173,9 +173,35 @@ the approved current-state behavior remains available without changing the evide
 
 Confirmed existing backend API contracts are preserved integration boundaries for the target frontend unless an explicitly approved change modifies them.
 
+### Primary Business APIs
+
+#### API-OPERATIONAL_DASHBOARD_INSIGHTS-002 — '/api/reports/expenses/' + year
+
+**Role in this Feature:** Primary Business Api.
+
+**Current Frontend:** `src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js` calls `GET '/api/reports/expenses/' + year`.
+
+**Confirmed Backend:** `GET /api/reports/expenses/{year}` implemented by `ReportsController.GetExpensesSummaryAsync`.
+
+#### API-OPERATIONAL_DASHBOARD_INSIGHTS-003 — '/api/reports/patients/' + year
+
+**Role in this Feature:** Primary Business Api.
+
+**Current Frontend:** `src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js` calls `GET '/api/reports/patients/' + year`.
+
+**Confirmed Backend:** `GET /api/reports/patients/{year}` implemented by `ReportsController.GetPatientsSummaryAsync`.
+
+#### API-OPERATIONAL_DASHBOARD_INSIGHTS-004 — /api/reports/clinicsummary
+
+**Role in this Feature:** Primary Business Api.
+
+**Current Frontend:** `src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js` calls `GET /api/reports/clinicsummary`.
+
+**Confirmed Backend:** `GET /api/reports/clinicsummary` implemented by `ReportsController.GetClinicSummaryAsync`.
+
 ### Supporting / Shared APIs
 
-#### API-OPERATIONAL_DASHBOARD_INSIGHTS-001 — GET /api/users/current/tenant
+#### API-OPERATIONAL_DASHBOARD_INSIGHTS-001 — /api/users/current/tenant
 
 **Role in this Feature:** Supporting Shared Api.
 
@@ -184,50 +210,6 @@ Confirmed existing backend API contracts are preserved integration boundaries fo
 **Confirmed Backend:** `GET /api/users/current/tenant` implemented by `UsersController.GetCurrentTenantAsync`.
 
 This contract supplies shared context only; it does not provide the Feature's primary business data.
-
-### Unresolved or Dynamic Integrations
-
-#### API-OPERATIONAL_DASHBOARD_INSIGHTS-002 — '/api/reports/expenses/' + year
-
-**Role in this Feature:** Dynamic Primary Interaction.
-
-**Current Frontend:** `src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js` calls `'/api/reports/expenses/' + year`.
-
-**Candidate Existing Backend Contract**
-
-A matching backend endpoint exists, but the current frontend-to-backend relationship has not been conclusively established:
-
-- `GET /api/reports/expenses/{year}` — `ReportsController.GetExpensesSummaryAsync`; response `Task<IEnumerable<ExpensesSummary>>`
-
-**Modernization Requirement:** Confirm the existing integration before implementing this behavior in the target frontend.
-
-#### API-OPERATIONAL_DASHBOARD_INSIGHTS-003 — '/api/reports/patients/' + year
-
-**Role in this Feature:** Dynamic Primary Interaction.
-
-**Current Frontend:** `src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js` calls `'/api/reports/patients/' + year`.
-
-**Candidate Existing Backend Contract**
-
-A matching backend endpoint exists, but the current frontend-to-backend relationship has not been conclusively established:
-
-- `GET /api/reports/patients/{year}` — `ReportsController.GetPatientsSummaryAsync`; response `Task<IEnumerable<PatientsSummary>>`
-
-**Modernization Requirement:** Confirm the existing integration before implementing this behavior in the target frontend.
-
-#### API-OPERATIONAL_DASHBOARD_INSIGHTS-004 — /api/reports/clinicsummary
-
-**Role in this Feature:** Unresolved Primary Interaction.
-
-**Current Frontend:** `src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js` calls `/api/reports/clinicsummary`.
-
-**Candidate Existing Backend Contract**
-
-A matching backend endpoint exists, but the current frontend-to-backend relationship has not been conclusively established:
-
-- `GET /api/reports/clinicsummary` — `ReportsController.GetClinicSummaryAsync`; response `Task<ClinicSummary>`
-
-**Modernization Requirement:** Confirm the existing integration before implementing this behavior in the target frontend.
 
 ## 6. Modernization Considerations
 
@@ -253,14 +235,6 @@ Relevant legacy surfaces: DashboardController, dashboard, dashboardService, src/
 | Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience? | Current evidence does not establish a complete customer-approved definition of the information or presentation details that must be retained. | BLOCKING | Product Owner / Business Analyst / Customer SME / QA Lead |
 | Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience? | Current evidence does not establish a complete customer-approved definition of the information or presentation details that must be retained. | BLOCKING | Product Owner / Business Analyst / Customer SME / QA Lead |
 | Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience? | Current evidence does not establish a complete customer-approved definition of the information or presentation details that must be retained. | BLOCKING | Product Owner / Business Analyst / Customer SME / QA Lead |
-
-### Technical Integration Clarifications
-
-| Question | Why It Matters | Impact | Owner |
-| --- | --- | --- | --- |
-| Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`? | The frontend interaction is established, but its backend relationship is dynamic or unresolved. | BLOCKING | Solution Architect / Modernization Engineer |
-| Which existing backend contract conclusively supports `'/api/reports/patients/' + year`? | The frontend interaction is established, but its backend relationship is dynamic or unresolved. | BLOCKING | Solution Architect / Modernization Engineer |
-| Which existing backend contract conclusively supports `/api/reports/clinicsummary`? | The frontend interaction is established, but its backend relationship is dynamic or unresolved. | BLOCKING | Solution Architect / Modernization Engineer |
 
 ## 8. Review & Approval
 

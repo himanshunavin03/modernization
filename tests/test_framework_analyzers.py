@@ -31,10 +31,16 @@ def test_razor_model_and_action_relationships_are_evidence_backed(tmp_path):
     assert all(edge["evidence"] for edge in graph["edges"])
 
 
-def test_dynamic_angular_url_is_not_mapped(tmp_path):
+def test_structurally_resolvable_angular_url_becomes_proven_template_match(tmp_path):
     result = analyze(FIXTURE, "contracts", "default", tmp_path)
-    assert any("Dynamic AngularJS API URL" in item["message"] for item in result["warnings"])
-    assert all("+ id" not in fact.name for fact in result["facts"] if fact.kind == "api_mapping")
+    mappings = [fact for fact in result["facts"] if fact.kind == "api_mapping"]
+    assert not result["warnings"]
+    assert any(
+        fact.name == "'/api/orders/' + id"
+        and fact.properties["detail_status"] == "PROVEN_EXACT_TEMPLATE"
+        and fact.properties["resolution"] == "EXACT_TEMPLATE_METHOD_ROUTE"
+        for fact in mappings
+    )
 
 
 def _entry(path: str) -> dict:
@@ -128,12 +134,13 @@ angular.module('demo').service('ordersService', function ($http) {
   this.external = function () { return $http.get('https://example.invalid/api/orders/42'); };
   this.dynamic = function (id) { return $http.get('/api/orders/' + id); };
 });
-''', encoding="utf-8")
+    ''', encoding="utf-8")
     result = analyze(tmp_path, "contracts", "default", tmp_path / "output")
     calls = [fact for fact in result["facts"] if fact.kind == "api_call"]
     assert not [fact for fact in result["facts"] if fact.kind == "api_mapping"]
-    assert {fact.properties["match_status"] for fact in calls} == {"NO_BACKEND_ROUTE", "EXTERNAL_API"}
-    assert any("Dynamic AngularJS API URL" in warning["message"] for warning in result["warnings"])
+    assert {fact.properties["match_status"] for fact in calls} == {"NO_BACKEND_ROUTE", "EXTERNAL"}
+    assert {fact.properties["match_detail_status"] for fact in calls} == {"NO_BACKEND_MATCH", "EXTERNAL"}
+    assert any("API relationship remains no_backend_route" in warning["message"] for warning in result["warnings"])
 
 
 def test_ambiguous_backend_routes_do_not_become_proven(tmp_path):
@@ -156,6 +163,7 @@ public class {name} {{
     client.write_text("angular.module('demo').service('ordersService', function ($http) { $http.get('/api/orders'); });", encoding="utf-8")
     result = analyze(tmp_path, "contracts", "default", tmp_path / "output")
     calls = [fact for fact in result["facts"] if fact.kind == "api_call"]
-    assert calls[0].properties["match_status"] == "AMBIGUOUS"
+    assert calls[0].properties["match_status"] == "UNRESOLVED"
+    assert calls[0].properties["match_detail_status"] == "AMBIGUOUS"
     assert not [fact for fact in result["facts"] if fact.kind == "api_mapping"]
-    assert any("ambiguous backend endpoint" in warning["message"] for warning in result["warnings"])
+    assert any("compatible after HTTP method and normalized route comparison" in warning["message"] for warning in result["warnings"])

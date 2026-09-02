@@ -1,0 +1,55 @@
+{
+  "extraction_warnings": [],
+  "files": [
+    {
+      "extraction_status": "in_scope_succeeded",
+      "language": "csharp",
+      "modernization_role": "review_required",
+      "selected_for_extraction": true,
+      "source_hash": "643c4a2f8f82c1238f3de63177e90baf69517ac893b0b25647922867bbef4c04",
+      "source_path": "Api/OrdersController.cs",
+      "supported": true
+    },
+    {
+      "extraction_status": "in_scope_succeeded",
+      "language": "html",
+      "modernization_role": "review_required",
+      "selected_for_extraction": true,
+      "source_hash": "c953fbac6f9c78952cdb695b0032a1405194472cf217bf8d329c7b259bf582bb",
+      "source_path": "Views/Orders.cshtml",
+      "supported": true
+    },
+    {
+      "extraction_status": "in_scope_unsupported",
+      "language": "json",
+      "modernization_role": "review_required",
+      "selected_for_extraction": true,
+      "source_hash": "9de62856d0c5da055fac566f9f5e9c12971427e76c200868248e286c1c1e85d6",
+      "source_path": "bower.json",
+      "supported": true
+    },
+    {
+      "extraction_status": "in_scope_succeeded",
+      "language": "javascript",
+      "modernization_role": "review_required",
+      "selected_for_extraction": true,
+      "source_hash": "07ee3a7c1bda7d296b064f62195bfcf7dad808a0443201846c6990c077d670bf",
+      "source_path": "web/ordersService.js",
+      "supported": true
+    }
+  ],
+  "project_id": "contracts",
+  "scope": {
+    "coverage_status": "complete_application",
+    "extraction_warning_count": 0,
+    "opaque_dependency_count": 0,
+    "out_of_scope_file_count": 0,
+    "review_warning_count": 0,
+    "scope_description": "Complete discovered application inventory and graph.",
+    "scope_id": "full-application",
+    "scope_name": "Full application analysis",
+    "scope_type": "full_application",
+    "selected_file_count": 4
+  },
+  "warnings": []
+}

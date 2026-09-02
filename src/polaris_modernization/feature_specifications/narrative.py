@@ -37,7 +37,12 @@ def _read(path: Path) -> dict: return json.loads(path.read_text(encoding="utf-8"
 def _write(path: Path, value: object) -> None: path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 def _clean(value: str) -> str: return re.sub(r"\s+", " ", value.replace(".;", ".")).strip()
 def _concept_id(title: str) -> str: return re.sub(r"[^A-Z0-9]+", "_", title.upper()).strip("_")
-def _code(value: str) -> str: return f"`{value.strip('`')}`"
+def _code(value: str) -> str: return f"`{value.replace('`', '').strip()}`"
+
+
+def _run_project_id(run_id: str) -> str | None:
+    match = re.fullmatch(r"(?P<project>.+)-\d{4}-\d{2}-\d{2}-\d{6}(?:-\d+)?", run_id)
+    return match.group("project") if match else None
 
 
 def _evidence_model(spec: dict) -> dict:
@@ -174,6 +179,25 @@ def _enrichment_items(spec: dict, story_models: list[dict], ac_models: list[dict
     return items
 
 
+def _story_business_context(story: dict, interactions: list[dict]) -> str:
+    context = _clean(story["description"])
+    story_interactions = [item for item in interactions if story["story_id"] in item["story_ids"]]
+    if story_interactions and all(item["status"] == "PROVEN" for item in story_interactions):
+        context = re.sub(
+            r"while retaining their dynamic URL status\.?$",
+            "with their proven backend relationships.",
+            context,
+            flags=re.I,
+        )
+        context = re.sub(
+            r"while preserving dynamic status\.?$",
+            "while preserving their proven backend relationships.",
+            context,
+            flags=re.I,
+        )
+    return context
+
+
 def _narrative(spec: dict, evidence: dict, contracts: list[dict], interactions: list[dict]) -> tuple[dict, list[dict]]:
     workflows = {x["name"]: x for x in evidence["workflows"]}; behaviors = {x["story_id"]: x for x in evidence["behaviors"]}; criteria = {x["story_id"]: [] for x in evidence["stories"]}
     for ac in evidence["acceptance_criteria"]: criteria[ac["story_id"]].append(ac)
@@ -204,7 +228,7 @@ def _narrative(spec: dict, evidence: dict, contracts: list[dict], interactions: 
             presented_ac.append({"id": ac["acceptance_criterion_id"], "title": ac["title"], **ac_semantic})
         presented_stories.append({
             "id": story["story_id"], "title": story["title"], "statement": semantic["customer_presentation"],
-            "business_context": _clean(story["description"]), "story_semantic_model": semantic,
+            "business_context": _story_business_context(story, interactions), "story_semantic_model": semantic,
             "api_contract_ids": contract_ids_by_story[story["story_id"]], "acceptance_criteria": presented_ac,
         })
     alignment = feature_name_behavior_alignment(spec["feature_name"], spec["stories"])
@@ -347,7 +371,7 @@ def _quality_scores(model: dict, defects: dict, coverage_status: str) -> dict:
     enrichment = any(item["stakeholder_enrichment_required"] for item in stories)
     limited_ac = any(item["evidence_status"] in {"TESTABLE_WITH_EVIDENCE_LIMITATION", "REQUIRES_STAKEHOLDER_CLARIFICATION"} for item in criteria)
     partial_name = model["feature_name_behavior_alignment"]["status"] != "ALIGNED"
-    unresolved_api = any(item["status"] in {"DYNAMIC", "UNRESOLVED"} for item in model["api_interactions"])
+    unresolved_api = any(item["status"] in {"DYNAMIC", "UNRESOLVED", "NO_BACKEND_ROUTE"} for item in model["api_interactions"])
     values = {
         "EVIDENCE_INTEGRITY": 10.0, "FEATURE_PURPOSE_CLARITY": 9.0,
         "FEATURE_NAME_BEHAVIOR_ALIGNMENT": 8.0 if partial_name else 9.2,
@@ -394,7 +418,12 @@ def _readiness(model: dict) -> dict:
 def synthesize_feature_narratives(source_root: Path, output_root: Path, knowledge_graph_root: Path, application_source_root: Path) -> dict:
     index = _read(source_root / "feature-specification-index.json")
     provenance = _read(source_root / "provenance.json")
-    if knowledge_graph_root.name != provenance["kg_run_id"]:
+    source_kg_run_id = provenance["kg_run_id"]
+    current_kg_run_id = knowledge_graph_root.name
+    kg_status = _read(knowledge_graph_root / "graph-run-status.json") if (knowledge_graph_root / "graph-run-status.json").is_file() else {}
+    current_kg_project_id = str(kg_status.get("project_id") or _run_project_id(current_kg_run_id) or current_kg_run_id)
+    source_kg_project_id = _run_project_id(source_kg_run_id) or source_kg_run_id
+    if current_kg_run_id != source_kg_run_id and current_kg_project_id != source_kg_project_id:
         raise ValueError("Knowledge Graph run does not match approved Feature lineage.")
     ids = [item["feature_id"] for item in index["features"]]
     specifications = [_read(source_root / f"{feature_id}.json") for feature_id in ids]
@@ -411,7 +440,7 @@ def synthesize_feature_narratives(source_root: Path, output_root: Path, knowledg
     api_artifact["feature_relevant_interactions"] = api_classification["interactions"]
     contracts_by_feature = {item["feature_id"]: item["contracts"] for item in api_artifact["features"]}
     interactions_by_feature = {item["feature_id"]: item["interactions"] for item in coverage_matrix["features"]}
-    run_id = f"{provenance['kg_run_id'].split('-2026-')[0]}-{datetime.now().strftime('%Y-%m-%d-%H%M%S-%f')}"
+    run_id = f"{current_kg_project_id}-{datetime.now().strftime('%Y-%m-%d-%H%M%S-%f')}"
     path = output_root / "runs" / run_id
     path.mkdir(parents=True)
     models, trace, duplication, quality, comprehension, reviews = [], [], [], {}, {}, []
@@ -527,7 +556,13 @@ def synthesize_feature_narratives(source_root: Path, output_root: Path, knowledg
     _write(path / "feature-narrative-quality-review.json", {"rubric": "10 exceptional; 9 strong and customer-ready; 8 usable with meaningful refinement remaining; 7 understandable but visibly analyst/generated; 6 or below not customer-ready. Evidence safety and writing quality are scored independently.", "features": quality, "overall_minimum_score": minimum})
     _write(path / "feature-customer-comprehension-review.json", {"features": comprehension})
     _write(path / "feature-manual-review.json", {"features": reviews})
-    _write(path / "provenance.json", {**provenance, "source_feature_narrative_run_id": source_root.name, "modernization_feature_specification_run_id": run_id})
+    _write(path / "provenance.json", {
+        **provenance,
+        "kg_run_id": current_kg_run_id,
+        "source_kg_run_id": source_kg_run_id,
+        "source_feature_narrative_run_id": source_root.name,
+        "modernization_feature_specification_run_id": run_id,
+    })
     if not validation["valid"]:
         raise ValueError(validation)
     latest = output_root / "latest"

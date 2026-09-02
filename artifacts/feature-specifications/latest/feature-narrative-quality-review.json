@@ -7,9 +7,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 9.0
       },
@@ -19,9 +17,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 10.0
       },
@@ -31,9 +27,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 8.3
       },
@@ -43,9 +37,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 8.7
       },
@@ -55,9 +47,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 8.1
       },
@@ -67,9 +57,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 10.0
       },
@@ -79,11 +67,9 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
-        "score": 8.7
+        "score": 9.2
       },
       "API_EVIDENCE_SAFETY": {
         "penalties": [],
@@ -91,9 +77,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 10.0
       },
@@ -103,9 +87,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 9.2
       },
@@ -115,9 +97,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 9.0
       },
@@ -129,9 +109,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 8.3
       },
@@ -141,9 +119,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 8.5
       },
@@ -153,9 +129,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 10.0
       },
@@ -167,9 +141,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 8.0
       },
@@ -179,9 +151,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 9.0
       },
@@ -191,9 +161,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 9.0
       },
@@ -203,9 +171,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 9.0
       },
@@ -215,11 +181,9 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
-        "score": 8.5
+        "score": 9.0
       },
       "OVERALL_CUSTOMER_READINESS": {
         "penalties": [],
@@ -227,9 +191,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 8.3
       },
@@ -239,9 +201,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 8.5
       },
@@ -251,9 +211,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 9.1
       },
@@ -263,9 +221,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 8.2
       },
@@ -275,9 +231,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 9.0
       },
@@ -287,9 +241,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 8.3
       },
@@ -299,9 +251,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 10.0
       },
@@ -311,9 +261,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 8.0
       },
@@ -323,9 +271,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Access Clinic Information beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Clinic Information in the modernized experience?",
-          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?",
-          "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "Which existing backend contract conclusively supports `/api/tenants/list`?"
+          "Does 'Clinic Appointment Experience' include behavior related to appointment, or should the approved scope/name remain limited to the currently established behaviors?"
         ],
         "score": 9.0
       }
@@ -337,9 +283,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -349,9 +293,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -361,9 +303,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -373,9 +313,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 8.7
       },
@@ -385,9 +323,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 8.1
       },
@@ -397,9 +333,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -409,11 +343,9 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
-        "score": 8.7
+        "score": 9.2
       },
       "API_EVIDENCE_SAFETY": {
         "penalties": [],
@@ -421,9 +353,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -433,9 +363,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 9.2
       },
@@ -445,9 +373,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -459,9 +385,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -471,9 +395,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 8.5
       },
@@ -483,9 +405,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -495,9 +415,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 9.2
       },
@@ -507,9 +425,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -519,9 +435,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -531,9 +445,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -543,11 +455,9 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
-        "score": 8.5
+        "score": 9.0
       },
       "OVERALL_CUSTOMER_READINESS": {
         "penalties": [],
@@ -555,9 +465,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -567,9 +475,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 8.5
       },
@@ -579,9 +485,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 9.1
       },
@@ -591,9 +495,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 8.2
       },
@@ -603,9 +505,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -615,9 +515,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -627,9 +525,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -639,9 +535,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 8.0
       },
@@ -651,9 +545,7 @@
         "remaining_issues": [
           "What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience?",
-          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "Which existing backend contract conclusively supports `/api/doctors`?"
+          "Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience?"
         ],
         "score": 9.0
       }
@@ -666,10 +558,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -680,10 +569,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -694,10 +580,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -708,10 +591,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 8.7
       },
@@ -722,10 +602,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 8.1
       },
@@ -736,10 +613,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -750,12 +624,9 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
-        "score": 8.7
+        "score": 9.2
       },
       "API_EVIDENCE_SAFETY": {
         "penalties": [],
@@ -764,10 +635,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -778,10 +646,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 9.2
       },
@@ -792,10 +657,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -808,10 +670,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -822,10 +681,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 8.5
       },
@@ -836,10 +692,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -850,10 +703,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 9.2
       },
@@ -864,10 +714,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -878,10 +725,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -892,10 +736,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -906,12 +747,9 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
-        "score": 8.5
+        "score": 9.0
       },
       "OVERALL_CUSTOMER_READINESS": {
         "penalties": [],
@@ -920,10 +758,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -934,10 +769,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 8.5
       },
@@ -948,10 +780,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 9.1
       },
@@ -962,10 +791,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 8.2
       },
@@ -976,10 +802,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -990,10 +813,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -1004,10 +824,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -1018,10 +835,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 8.0
       },
@@ -1032,10 +846,7 @@
           "What business outcome should users achieve through Open Operational Dashboard beyond access to the currently established capability?",
           "Which information must be considered mandatory when validating Access Yearly Operational Reports in the modernized experience?",
           "Which information must be considered mandatory when validating Open Operational Dashboard in the modernized experience?",
-          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?",
-          "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?"
+          "Which information must be considered mandatory when validating View Tenant-Aware Dashboard Summary in the modernized experience?"
         ],
         "score": 9.0
       }
@@ -1046,8 +857,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -1056,8 +866,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -1066,8 +875,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -1076,8 +884,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 8.7
       },
@@ -1086,8 +893,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 8.1
       },
@@ -1096,8 +902,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -1106,18 +911,16 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
-        "score": 8.7
+        "score": 9.2
       },
       "API_EVIDENCE_SAFETY": {
         "penalties": [],
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -1126,8 +929,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 9.2
       },
@@ -1136,8 +938,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -1148,8 +949,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -1158,8 +958,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 8.5
       },
@@ -1168,8 +967,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -1178,8 +976,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 9.2
       },
@@ -1188,8 +985,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -1198,8 +994,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -1208,8 +1003,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -1218,18 +1012,16 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
-        "score": 8.5
+        "score": 9.0
       },
       "OVERALL_CUSTOMER_READINESS": {
         "penalties": [],
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -1238,8 +1030,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 8.5
       },
@@ -1248,8 +1039,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 9.1
       },
@@ -1258,8 +1048,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 8.2
       },
@@ -1268,8 +1057,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -1278,8 +1066,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -1288,8 +1075,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -1298,8 +1084,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 8.0
       },
@@ -1308,8 +1093,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/patients`?"
+          "Which information must be considered mandatory when validating Review Patient Directory in the modernized experience?"
         ],
         "score": 9.0
       }
@@ -1320,9 +1104,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -1331,9 +1113,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -1342,9 +1122,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -1353,9 +1131,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 8.7
       },
@@ -1364,9 +1140,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 8.1
       },
@@ -1375,9 +1149,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -1386,20 +1158,16 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
-        "score": 8.7
+        "score": 9.2
       },
       "API_EVIDENCE_SAFETY": {
         "penalties": [],
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -1408,9 +1176,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 9.2
       },
@@ -1419,9 +1185,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -1432,9 +1196,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -1443,9 +1205,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 8.5
       },
@@ -1454,9 +1214,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -1465,9 +1223,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 9.2
       },
@@ -1476,9 +1232,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -1487,9 +1241,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -1498,9 +1250,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -1509,20 +1259,16 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
-        "score": 8.5
+        "score": 9.0
       },
       "OVERALL_CUSTOMER_READINESS": {
         "penalties": [],
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -1531,9 +1277,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 8.5
       },
@@ -1542,9 +1286,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 9.1
       },
@@ -1553,9 +1295,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 8.2
       },
@@ -1564,9 +1304,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 9.0
       },
@@ -1575,9 +1313,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 8.3
       },
@@ -1586,9 +1322,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 10.0
       },
@@ -1597,9 +1331,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 8.0
       },
@@ -1608,9 +1340,7 @@
         "reason": "The score reflects evidence safety and human usability separately; explicit evidence limitations reduce quality without being replaced by invented requirements.",
         "remaining_issues": [
           "What business outcome should users achieve through Access User Management Views beyond access to the currently established capability?",
-          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?",
-          "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "Which existing backend contract conclusively supports `/api/users`?"
+          "Which information must be considered mandatory when validating Access User Management Views in the modernized experience?"
         ],
         "score": 9.0
       }

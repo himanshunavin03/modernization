@@ -1,11 +1,11 @@
 # Dashboard Deterministic Extraction Summary
 
 - Inventory files: 2384
-- Deterministic facts: 1556
-- Graph nodes: 4931
-- Graph edges: 5205
+- Deterministic facts: 1566
+- Graph nodes: 4926
+- Graph edges: 5208
 - Extraction warnings: 0
-- Total graph warnings: 4483
+- Total graph warnings: 4453
 - Scope: Full application analysis
 - Coverage status: complete_with_opaque_dependencies
 - Parser: Tree-sitter JavaScript, HTML, and C# only.
@@ -13,5 +13,5 @@
 ## Needs Review
 
 - Razor directives are not modeled beyond file classification because this POC uses the Tree-sitter HTML grammar, not a Razor grammar.
-- Dynamic JavaScript URL expressions are emitted as source expressions, not resolved API endpoints.
+- Dynamic JavaScript API expressions are normalized when structure is deterministic; runtime-dependent URL composition remains unresolved.
 - Only the configured dashboard source scope was inspected; no behavior outside it is represented.

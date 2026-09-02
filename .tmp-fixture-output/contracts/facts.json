@@ -1,0 +1,358 @@
+{
+  "facts": [
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 9,
+        "line_start": 1,
+        "project_id": "contracts",
+        "source_hash": "643c4a2f8f82c1238f3de63177e90baf69517ac893b0b25647922867bbef4c04",
+        "source_path": "Api/OrdersController.cs"
+      },
+      "kind": "controller",
+      "name": "OrdersController",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 5,
+        "line_start": 3,
+        "project_id": "contracts",
+        "source_hash": "643c4a2f8f82c1238f3de63177e90baf69517ac893b0b25647922867bbef4c04",
+        "source_path": "Api/OrdersController.cs"
+      },
+      "kind": "action",
+      "name": "Get",
+      "properties": {
+        "controller": "OrdersController"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 8,
+        "line_start": 7,
+        "project_id": "contracts",
+        "source_hash": "643c4a2f8f82c1238f3de63177e90baf69517ac893b0b25647922867bbef4c04",
+        "source_path": "Api/OrdersController.cs"
+      },
+      "kind": "action",
+      "name": "Create",
+      "properties": {
+        "controller": "OrdersController"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 3,
+        "line_start": 1,
+        "project_id": "contracts",
+        "source_hash": "c953fbac6f9c78952cdb695b0032a1405194472cf217bf8d329c7b259bf582bb",
+        "source_path": "Views/Orders.cshtml"
+      },
+      "kind": "razor_view",
+      "name": "Views/Orders.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 4,
+        "line_start": 1,
+        "project_id": "contracts",
+        "source_hash": "07ee3a7c1bda7d296b064f62195bfcf7dad808a0443201846c6990c077d670bf",
+        "source_path": "web/ordersService.js"
+      },
+      "kind": "angular_service",
+      "name": "ordersService",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 1,
+        "line_start": 1,
+        "project_id": "contracts",
+        "source_hash": "07ee3a7c1bda7d296b064f62195bfcf7dad808a0443201846c6990c077d670bf",
+        "source_path": "web/ordersService.js"
+      },
+      "kind": "angular_module",
+      "name": "demo",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 5,
+        "line_start": 5,
+        "project_id": "contracts",
+        "source_hash": "643c4a2f8f82c1238f3de63177e90baf69517ac893b0b25647922867bbef4c04",
+        "source_path": "Api/OrdersController.cs"
+      },
+      "kind": "endpoint",
+      "name": "GET /api/orders/{id}",
+      "properties": {
+        "action": "Get",
+        "controller": "OrdersController",
+        "controller_route_template": "api/orders",
+        "framework": "ASP.NET",
+        "http_method": "GET",
+        "method_route_template": "{id}",
+        "normalized_route": "/api/orders/{id}",
+        "parameters": [
+          "id"
+        ],
+        "path_parameters": [
+          "id"
+        ],
+        "provenance": "FRAMEWORK_PROVEN",
+        "query_parameters": [],
+        "request_fields": [],
+        "request_type": null,
+        "response_fields": [],
+        "response_type": "OrderDto",
+        "route_template": "api/orders/{id}",
+        "route_token_resolution": {}
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 8,
+        "line_start": 8,
+        "project_id": "contracts",
+        "source_hash": "643c4a2f8f82c1238f3de63177e90baf69517ac893b0b25647922867bbef4c04",
+        "source_path": "Api/OrdersController.cs"
+      },
+      "kind": "endpoint",
+      "name": "POST /api/orders",
+      "properties": {
+        "action": "Create",
+        "controller": "OrdersController",
+        "controller_route_template": "api/orders",
+        "framework": "ASP.NET",
+        "http_method": "POST",
+        "method_route_template": "",
+        "normalized_route": "/api/orders",
+        "parameters": [
+          "request"
+        ],
+        "path_parameters": [],
+        "provenance": "FRAMEWORK_PROVEN",
+        "query_parameters": [],
+        "request_fields": [],
+        "request_type": null,
+        "response_fields": [],
+        "response_type": "OrderDto",
+        "route_template": "api/orders",
+        "route_token_resolution": {}
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 1,
+        "line_start": 1,
+        "project_id": "contracts",
+        "source_hash": "c953fbac6f9c78952cdb695b0032a1405194472cf217bf8d329c7b259bf582bb",
+        "source_path": "Views/Orders.cshtml"
+      },
+      "kind": "razor_model",
+      "name": "Views/Orders.cshtml",
+      "properties": {
+        "model": "Demo.OrderDto"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 2,
+        "line_start": 2,
+        "project_id": "contracts",
+        "source_hash": "c953fbac6f9c78952cdb695b0032a1405194472cf217bf8d329c7b259bf582bb",
+        "source_path": "Views/Orders.cshtml"
+      },
+      "kind": "razor_action",
+      "name": "Views/Orders.cshtml",
+      "properties": {
+        "action": "Get",
+        "controller": "Orders"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 2,
+        "line_start": 2,
+        "project_id": "contracts",
+        "source_hash": "07ee3a7c1bda7d296b064f62195bfcf7dad808a0443201846c6990c077d670bf",
+        "source_path": "web/ordersService.js"
+      },
+      "kind": "api_call",
+      "name": "/api/orders/42",
+      "properties": {
+        "base_url_source": null,
+        "candidate_backend_endpoints": [
+          "GET /api/orders/{id}"
+        ],
+        "controller_or_component": null,
+        "dynamic_segments": [],
+        "external": false,
+        "framework": "AngularJS",
+        "frontend_call_id": "frontend-api-call:web/ordersService.js:2:GET:/api/orders/42",
+        "function_name": null,
+        "http_method": "GET",
+        "match_detail_status": "PROVEN_UNIQUE_PARAMETERIZED",
+        "match_status": "PROVEN",
+        "normalized_route": "/api/orders/42",
+        "normalized_route_template": "/api/orders/{PARAM}",
+        "query_components": [],
+        "raw_url_expression": "/api/orders/42",
+        "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
+        "resolution_strategy": "UNIQUE_PARAMETERIZED_METHOD_ROUTE",
+        "resolved_backend_endpoint": "GET /api/orders/{id}",
+        "resolver_version": "2026-09-02",
+        "service": null,
+        "url_source_kind": "inline_expression",
+        "url_source_name": null
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 3,
+        "line_start": 3,
+        "project_id": "contracts",
+        "source_hash": "07ee3a7c1bda7d296b064f62195bfcf7dad808a0443201846c6990c077d670bf",
+        "source_path": "web/ordersService.js"
+      },
+      "kind": "api_call",
+      "name": "'/api/orders/' + id",
+      "properties": {
+        "base_url_source": null,
+        "candidate_backend_endpoints": [
+          "GET /api/orders/{id}"
+        ],
+        "controller_or_component": null,
+        "dynamic_segments": [
+          "id"
+        ],
+        "external": false,
+        "framework": "AngularJS",
+        "frontend_call_id": "frontend-api-call:web/ordersService.js:3:GET:'/api/orders/' + id",
+        "function_name": null,
+        "http_method": "GET",
+        "match_detail_status": "PROVEN_EXACT_TEMPLATE",
+        "match_status": "PROVEN",
+        "normalized_route": "/api/orders/{PARAM}",
+        "normalized_route_template": "/api/orders/{PARAM}",
+        "query_components": [],
+        "raw_url_expression": "'/api/orders/' + id",
+        "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
+        "resolution_strategy": "EXACT_TEMPLATE_METHOD_ROUTE",
+        "resolved_backend_endpoint": "GET /api/orders/{id}",
+        "resolver_version": "2026-09-02",
+        "service": null,
+        "url_source_kind": "inline_expression",
+        "url_source_name": null
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 2,
+        "line_start": 2,
+        "project_id": "contracts",
+        "source_hash": "07ee3a7c1bda7d296b064f62195bfcf7dad808a0443201846c6990c077d670bf",
+        "source_path": "web/ordersService.js"
+      },
+      "kind": "api_mapping",
+      "name": "/api/orders/42",
+      "properties": {
+        "backend_endpoint_id": "backend-endpoint:Api/OrdersController.cs:5:GET:/api/orders/{id}",
+        "confidence": "PROVEN",
+        "detail_status": "PROVEN_UNIQUE_PARAMETERIZED",
+        "endpoint": "GET /api/orders/{id}",
+        "frontend_call_id": "frontend-api-call:web/ordersService.js:2:GET:/api/orders/42",
+        "proof": {
+          "backend_endpoint_id": "backend-endpoint:Api/OrdersController.cs:5:GET:/api/orders/{id}",
+          "backend_http_method": "GET",
+          "backend_route": "/api/orders/{id}",
+          "backend_template": "/api/orders/{PARAM}",
+          "candidate_count": 1,
+          "confidence": "PROVEN",
+          "frontend_call_id": "frontend-api-call:web/ordersService.js:2:GET:/api/orders/42",
+          "frontend_http_method": "GET",
+          "frontend_route": "/api/orders/42",
+          "frontend_template": "/api/orders/{PARAM}",
+          "parameter_positions_match": true,
+          "public_status": "PROVEN",
+          "reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
+          "resolution": "UNIQUE_PARAMETERIZED_METHOD_ROUTE",
+          "resolver_version": "2026-09-02",
+          "status": "PROVEN_UNIQUE_PARAMETERIZED"
+        },
+        "resolution": "UNIQUE_PARAMETERIZED_METHOD_ROUTE",
+        "resolver_version": "2026-09-02",
+        "status": "PROVEN"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 3,
+        "line_start": 3,
+        "project_id": "contracts",
+        "source_hash": "07ee3a7c1bda7d296b064f62195bfcf7dad808a0443201846c6990c077d670bf",
+        "source_path": "web/ordersService.js"
+      },
+      "kind": "api_mapping",
+      "name": "'/api/orders/' + id",
+      "properties": {
+        "backend_endpoint_id": "backend-endpoint:Api/OrdersController.cs:5:GET:/api/orders/{id}",
+        "confidence": "PROVEN",
+        "detail_status": "PROVEN_EXACT_TEMPLATE",
+        "endpoint": "GET /api/orders/{id}",
+        "frontend_call_id": "frontend-api-call:web/ordersService.js:3:GET:'/api/orders/' + id",
+        "proof": {
+          "backend_endpoint_id": "backend-endpoint:Api/OrdersController.cs:5:GET:/api/orders/{id}",
+          "backend_http_method": "GET",
+          "backend_route": "/api/orders/{id}",
+          "backend_template": "/api/orders/{PARAM}",
+          "candidate_count": 1,
+          "confidence": "PROVEN",
+          "frontend_call_id": "frontend-api-call:web/ordersService.js:3:GET:'/api/orders/' + id",
+          "frontend_http_method": "GET",
+          "frontend_route": "/api/orders/{PARAM}",
+          "frontend_template": "/api/orders/{PARAM}",
+          "parameter_positions_match": true,
+          "public_status": "PROVEN",
+          "reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
+          "resolution": "EXACT_TEMPLATE_METHOD_ROUTE",
+          "resolver_version": "2026-09-02",
+          "status": "PROVEN_EXACT_TEMPLATE"
+        },
+        "resolution": "EXACT_TEMPLATE_METHOD_ROUTE",
+        "resolver_version": "2026-09-02",
+        "status": "PROVEN"
+      }
+    }
+  ],
+  "project_id": "contracts"
+}

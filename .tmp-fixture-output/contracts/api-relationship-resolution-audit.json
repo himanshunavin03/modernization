@@ -1,0 +1,190 @@
+{
+  "backend_endpoints": [
+    {
+      "action": "Get",
+      "action_route": "{id}",
+      "backend_endpoint_id": "backend-endpoint:Api/OrdersController.cs:5:GET:/api/orders/{id}",
+      "controller": "OrdersController",
+      "controller_route": "api/orders",
+      "framework": "ASP.NET",
+      "http_method": "GET",
+      "normalized_route_template": "/api/orders/{PARAM}",
+      "path_parameters": [
+        "id"
+      ],
+      "query_parameters": [],
+      "request_fields": [],
+      "request_type": null,
+      "resolved_route_template": "api/orders/{id}",
+      "response_fields": [],
+      "response_type": "OrderDto",
+      "source_file": "Api/OrdersController.cs",
+      "source_range": {
+        "line_end": 5,
+        "line_start": 5
+      }
+    },
+    {
+      "action": "Create",
+      "action_route": "",
+      "backend_endpoint_id": "backend-endpoint:Api/OrdersController.cs:8:POST:/api/orders",
+      "controller": "OrdersController",
+      "controller_route": "api/orders",
+      "framework": "ASP.NET",
+      "http_method": "POST",
+      "normalized_route_template": "/api/orders",
+      "path_parameters": [],
+      "query_parameters": [],
+      "request_fields": [],
+      "request_type": null,
+      "resolved_route_template": "api/orders",
+      "response_fields": [],
+      "response_type": "OrderDto",
+      "source_file": "Api/OrdersController.cs",
+      "source_range": {
+        "line_end": 8,
+        "line_start": 8
+      }
+    }
+  ],
+  "before_after": {
+    "after": {
+      "ambiguous": 0,
+      "dynamic": 0,
+      "external": 0,
+      "no_backend_match": 0,
+      "proven": 2,
+      "unresolved": 0
+    },
+    "before": {
+      "dynamic": 1,
+      "external": 0,
+      "no_backend_match": 1,
+      "proven": 0,
+      "unresolved": 0
+    },
+    "promotions": [
+      {
+        "final_status": "PROVEN_UNIQUE_PARAMETERIZED",
+        "frontend_call": "/api/orders/42",
+        "frontend_call_id": "frontend-api-call:web/ordersService.js:2:GET:/api/orders/42",
+        "previous_status": "NO_BACKEND_ROUTE",
+        "reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
+        "source_file": "web/ordersService.js"
+      },
+      {
+        "final_status": "PROVEN_EXACT_TEMPLATE",
+        "frontend_call": "'/api/orders/' + id",
+        "frontend_call_id": "frontend-api-call:web/ordersService.js:3:GET:'/api/orders/' + id",
+        "previous_status": "DYNAMIC",
+        "reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
+        "source_file": "web/ordersService.js"
+      }
+    ],
+    "regressions": [],
+    "unchanged_unresolved": []
+  },
+  "frontend_calls": [
+    {
+      "base_url_source": null,
+      "candidate_backend_endpoints": [
+        "backend-endpoint:Api/OrdersController.cs:5:GET:/api/orders/{id}"
+      ],
+      "controller_or_component": null,
+      "current_relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
+      "dynamic_segments": [],
+      "final_status": "PROVEN_UNIQUE_PARAMETERIZED",
+      "framework": "AngularJS",
+      "frontend_call_id": "frontend-api-call:web/ordersService.js:2:GET:/api/orders/42",
+      "http_method": "GET",
+      "limitations": [],
+      "method_or_function": null,
+      "normalized_template": "/api/orders/{PARAM}",
+      "normalized_url": "/api/orders/42",
+      "previous_status": "NO_BACKEND_ROUTE",
+      "proof": {
+        "backend_http_method": "GET",
+        "backend_route": "/api/orders/{id}",
+        "backend_template": "/api/orders/{PARAM}",
+        "candidate_count": 1,
+        "confidence": "PROVEN",
+        "frontend_http_method": "GET",
+        "frontend_route": "/api/orders/42",
+        "frontend_template": "/api/orders/{PARAM}",
+        "parameter_positions_match": true,
+        "relationship_type": "IMPLEMENTED_BY",
+        "resolution": "UNIQUE_PARAMETERIZED_METHOD_ROUTE",
+        "resolver_version": "2026-09-02"
+      },
+      "public_status": "PROVEN",
+      "query_components": [],
+      "raw_url_expression": "/api/orders/42",
+      "resolution_strategy": "UNIQUE_PARAMETERIZED_METHOD_ROUTE",
+      "service": null,
+      "source_file": "web/ordersService.js",
+      "source_range": {
+        "line_end": 2,
+        "line_start": 2
+      }
+    },
+    {
+      "base_url_source": null,
+      "candidate_backend_endpoints": [
+        "backend-endpoint:Api/OrdersController.cs:5:GET:/api/orders/{id}"
+      ],
+      "controller_or_component": null,
+      "current_relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
+      "dynamic_segments": [
+        "id"
+      ],
+      "final_status": "PROVEN_EXACT_TEMPLATE",
+      "framework": "AngularJS",
+      "frontend_call_id": "frontend-api-call:web/ordersService.js:3:GET:'/api/orders/' + id",
+      "http_method": "GET",
+      "limitations": [],
+      "method_or_function": null,
+      "normalized_template": "/api/orders/{PARAM}",
+      "normalized_url": "/api/orders/{PARAM}",
+      "previous_status": "DYNAMIC",
+      "proof": {
+        "backend_http_method": "GET",
+        "backend_route": "/api/orders/{id}",
+        "backend_template": "/api/orders/{PARAM}",
+        "candidate_count": 1,
+        "confidence": "PROVEN",
+        "frontend_http_method": "GET",
+        "frontend_route": "/api/orders/{PARAM}",
+        "frontend_template": "/api/orders/{PARAM}",
+        "parameter_positions_match": true,
+        "relationship_type": "IMPLEMENTED_BY",
+        "resolution": "EXACT_TEMPLATE_METHOD_ROUTE",
+        "resolver_version": "2026-09-02"
+      },
+      "public_status": "PROVEN",
+      "query_components": [],
+      "raw_url_expression": "'/api/orders/' + id",
+      "resolution_strategy": "EXACT_TEMPLATE_METHOD_ROUTE",
+      "service": null,
+      "source_file": "web/ordersService.js",
+      "source_range": {
+        "line_end": 3,
+        "line_start": 3
+      }
+    }
+  ],
+  "project_id": "contracts",
+  "resolver_version": "2026-09-02",
+  "summary": {
+    "external": 0,
+    "final_proven": 2,
+    "new_exact_static_matches": 0,
+    "new_exact_template_matches": 1,
+    "new_unique_parameterized_matches": 1,
+    "no_backend_match": 0,
+    "previous_proven": 0,
+    "remaining_ambiguous": 0,
+    "remaining_dynamic": 0,
+    "total_frontend_calls": 2,
+    "unresolved": 0
+  }
+}

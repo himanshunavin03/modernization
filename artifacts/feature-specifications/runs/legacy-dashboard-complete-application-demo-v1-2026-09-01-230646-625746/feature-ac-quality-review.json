@@ -1,0 +1,11 @@
+{
+  "acceptance_criteria": 14,
+  "fully_testable": 4,
+  "generic_preconditions": 0,
+  "modernization_preservation": 2,
+  "non_observable": 0,
+  "requires_stakeholder_clarification": 0,
+  "status": "PASS",
+  "testable_with_evidence_limitation": 8,
+  "vague_outcomes": 0
+}

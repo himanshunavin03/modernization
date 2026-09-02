@@ -1,0 +1,55 @@
+{
+  "feature_specification_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-114638-016471",
+  "features": [
+    {
+      "acceptance_criteria": 5,
+      "architecture": "Pending",
+      "business_purpose": "Provide access to dashboard summaries and clinic reporting information in the current tenant context.",
+      "feature_id": "feature-operational-dashboard-insights",
+      "feature_name": "Operational Dashboard Insights",
+      "modernization": "Not Started",
+      "stories": 3,
+      "target_design": "Not Yet Analyzed"
+    },
+    {
+      "acceptance_criteria": 2,
+      "architecture": "Pending",
+      "business_purpose": "Provide tenant-aware navigation and access to doctor information.",
+      "feature_id": "feature-doctor-directory-management",
+      "feature_name": "Doctor Directory Management",
+      "modernization": "Not Started",
+      "stories": 2,
+      "target_design": "Not Yet Analyzed"
+    },
+    {
+      "acceptance_criteria": 2,
+      "architecture": "Pending",
+      "business_purpose": "Provide tenant-aware navigation and access to patient information.",
+      "feature_id": "feature-patient-directory-management",
+      "feature_name": "Patient Directory Management",
+      "modernization": "Not Started",
+      "stories": 2,
+      "target_design": "Not Yet Analyzed"
+    },
+    {
+      "acceptance_criteria": 2,
+      "architecture": "Pending",
+      "business_purpose": "Provide access to clinic/appointment navigation and appointment information within current tenant context.",
+      "feature_id": "feature-clinic-appointment-experience",
+      "feature_name": "Clinic Appointment Experience",
+      "modernization": "Not Started",
+      "stories": 2,
+      "target_design": "Not Yet Analyzed"
+    },
+    {
+      "acceptance_criteria": 3,
+      "architecture": "Pending",
+      "business_purpose": "Provide current user, claims, and tenant context to shared and user-management frontend flows.",
+      "feature_id": "feature-user-access-context",
+      "feature_name": "User Access and Tenant Context",
+      "modernization": "Not Started",
+      "stories": 3,
+      "target_design": "Not Yet Analyzed"
+    }
+  ]
+}

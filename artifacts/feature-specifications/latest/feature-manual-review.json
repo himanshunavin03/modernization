@@ -7,10 +7,7 @@
         "blocking_items": [
           "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-002",
           "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-003",
-          "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-004",
-          "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-005",
-          "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-006",
-          "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-007"
+          "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-004"
         ],
         "business_readiness": "READY_WITH_LIMITATIONS",
         "modernization_readiness": "REQUIRES_CLARIFICATION",
@@ -18,7 +15,7 @@
           "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-001"
         ],
         "qa_readiness": "READY_WITH_LIMITATIONS",
-        "technical_readiness": "REQUIRES_CLARIFICATION"
+        "technical_readiness": "READY"
       },
       "required_changes": [],
       "review_questions": {
@@ -31,7 +28,7 @@
       "review_status": "PASS",
       "strengths": [
         "Operational Dashboard Insights presents 3 supported behavior group(s) before implementation detail.",
-        "Its API section distinguishes 1 proven, 2 dynamic, and 1 unresolved interaction(s), including explicit primary versus supporting roles."
+        "Its API section distinguishes 4 proven, 0 dynamic, and 0 unresolved interaction(s), including explicit primary versus supporting roles."
       ]
     },
     {
@@ -40,9 +37,7 @@
       "readiness": {
         "blocking_items": [
           "ENR-DOCTOR-DIRECTORY-MANAGEMENT-002",
-          "ENR-DOCTOR-DIRECTORY-MANAGEMENT-003",
-          "ENR-DOCTOR-DIRECTORY-MANAGEMENT-004",
-          "ENR-DOCTOR-DIRECTORY-MANAGEMENT-005"
+          "ENR-DOCTOR-DIRECTORY-MANAGEMENT-003"
         ],
         "business_readiness": "READY_WITH_LIMITATIONS",
         "modernization_readiness": "REQUIRES_CLARIFICATION",
@@ -50,7 +45,7 @@
           "ENR-DOCTOR-DIRECTORY-MANAGEMENT-001"
         ],
         "qa_readiness": "READY_WITH_LIMITATIONS",
-        "technical_readiness": "REQUIRES_CLARIFICATION"
+        "technical_readiness": "READY"
       },
       "required_changes": [],
       "review_questions": {
@@ -63,7 +58,7 @@
       "review_status": "PASS",
       "strengths": [
         "Doctor Directory Management presents 2 supported behavior group(s) before implementation detail.",
-        "Its API section distinguishes 1 proven, 1 dynamic, and 1 unresolved interaction(s), including explicit primary versus supporting roles."
+        "Its API section distinguishes 3 proven, 0 dynamic, and 0 unresolved interaction(s), including explicit primary versus supporting roles."
       ]
     },
     {
@@ -71,8 +66,7 @@
       "problems": [],
       "readiness": {
         "blocking_items": [
-          "ENR-PATIENT-DIRECTORY-MANAGEMENT-002",
-          "ENR-PATIENT-DIRECTORY-MANAGEMENT-003"
+          "ENR-PATIENT-DIRECTORY-MANAGEMENT-002"
         ],
         "business_readiness": "READY_WITH_LIMITATIONS",
         "modernization_readiness": "REQUIRES_CLARIFICATION",
@@ -80,7 +74,7 @@
           "ENR-PATIENT-DIRECTORY-MANAGEMENT-001"
         ],
         "qa_readiness": "READY_WITH_LIMITATIONS",
-        "technical_readiness": "REQUIRES_CLARIFICATION"
+        "technical_readiness": "READY"
       },
       "required_changes": [],
       "review_questions": {
@@ -93,7 +87,7 @@
       "review_status": "PASS",
       "strengths": [
         "Patient Directory Management presents 2 supported behavior group(s) before implementation detail.",
-        "Its API section distinguishes 1 proven, 0 dynamic, and 1 unresolved interaction(s), including explicit primary versus supporting roles."
+        "Its API section distinguishes 2 proven, 0 dynamic, and 0 unresolved interaction(s), including explicit primary versus supporting roles."
       ]
     },
     {
@@ -101,9 +95,7 @@
       "problems": [],
       "readiness": {
         "blocking_items": [
-          "ENR-CLINIC-APPOINTMENT-EXPERIENCE-002",
-          "ENR-CLINIC-APPOINTMENT-EXPERIENCE-004",
-          "ENR-CLINIC-APPOINTMENT-EXPERIENCE-005"
+          "ENR-CLINIC-APPOINTMENT-EXPERIENCE-002"
         ],
         "business_readiness": "READY_WITH_LIMITATIONS",
         "modernization_readiness": "REQUIRES_CLARIFICATION",
@@ -112,7 +104,7 @@
           "ENR-CLINIC-APPOINTMENT-EXPERIENCE-003"
         ],
         "qa_readiness": "READY_WITH_LIMITATIONS",
-        "technical_readiness": "REQUIRES_CLARIFICATION"
+        "technical_readiness": "READY"
       },
       "required_changes": [],
       "review_questions": {
@@ -125,7 +117,7 @@
       "review_status": "PASS",
       "strengths": [
         "Clinic Appointment Experience presents 2 supported behavior group(s) before implementation detail.",
-        "Its API section distinguishes 1 proven, 1 dynamic, and 1 unresolved interaction(s), including explicit primary versus supporting roles."
+        "Its API section distinguishes 3 proven, 0 dynamic, and 0 unresolved interaction(s), including explicit primary versus supporting roles."
       ]
     },
     {
@@ -133,9 +125,7 @@
       "problems": [],
       "readiness": {
         "blocking_items": [
-          "ENR-USER-ACCESS-CONTEXT-002",
-          "ENR-USER-ACCESS-CONTEXT-003",
-          "ENR-USER-ACCESS-CONTEXT-004"
+          "ENR-USER-ACCESS-CONTEXT-002"
         ],
         "business_readiness": "READY_WITH_LIMITATIONS",
         "modernization_readiness": "REQUIRES_CLARIFICATION",
@@ -143,7 +133,7 @@
           "ENR-USER-ACCESS-CONTEXT-001"
         ],
         "qa_readiness": "READY_WITH_LIMITATIONS",
-        "technical_readiness": "REQUIRES_CLARIFICATION"
+        "technical_readiness": "READY"
       },
       "required_changes": [],
       "review_questions": {
@@ -156,7 +146,7 @@
       "review_status": "PASS",
       "strengths": [
         "User Access and Tenant Context presents 3 supported behavior group(s) before implementation detail.",
-        "Its API section distinguishes 4 proven, 1 dynamic, and 1 unresolved interaction(s), including explicit primary versus supporting roles."
+        "Its API section distinguishes 6 proven, 0 dynamic, and 0 unresolved interaction(s), including explicit primary versus supporting roles."
       ]
     }
   ]

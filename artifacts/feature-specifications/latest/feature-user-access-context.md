@@ -159,7 +159,7 @@ Confirmed existing backend API contracts are preserved integration boundaries fo
 
 ### Primary Business APIs
 
-#### API-USER_ACCESS_CONTEXT-001 — GET /api/users/current/user
+#### API-USER_ACCESS_CONTEXT-001 — /api/users/current/user
 
 **Role in this Feature:** Primary Business Api.
 
@@ -167,7 +167,7 @@ Confirmed existing backend API contracts are preserved integration boundaries fo
 
 **Confirmed Backend:** `GET /api/users/current/user` implemented by `UsersController.GetCurrentUserAsync`.
 
-#### API-USER_ACCESS_CONTEXT-002 — GET /api/users/current/claims
+#### API-USER_ACCESS_CONTEXT-002 — /api/users/current/claims
 
 **Role in this Feature:** Primary Business Api.
 
@@ -175,7 +175,7 @@ Confirmed existing backend API contracts are preserved integration boundaries fo
 
 **Confirmed Backend:** `GET /api/users/current/claims` implemented by `UsersController.GetCurrentClaimsAsync`.
 
-#### API-USER_ACCESS_CONTEXT-003 — GET /api/users/current/claims
+#### API-USER_ACCESS_CONTEXT-003 — /api/users/current/claims
 
 **Role in this Feature:** Primary Business Api.
 
@@ -183,7 +183,7 @@ Confirmed existing backend API contracts are preserved integration boundaries fo
 
 **Confirmed Backend:** `GET /api/users/current/claims` implemented by `UsersController.GetCurrentClaimsAsync`.
 
-#### API-USER_ACCESS_CONTEXT-004 — GET /api/users/current/tenant
+#### API-USER_ACCESS_CONTEXT-004 — /api/users/current/tenant
 
 **Role in this Feature:** Primary Business Api.
 
@@ -191,35 +191,21 @@ Confirmed existing backend API contracts are preserved integration boundaries fo
 
 **Confirmed Backend:** `GET /api/users/current/tenant` implemented by `UsersController.GetCurrentTenantAsync`.
 
-### Unresolved or Dynamic Integrations
-
 #### API-USER_ACCESS_CONTEXT-DISCOVERED-001 — `/api/users/${username}`
 
-**Role in this Feature:** Dynamic Primary Interaction.
+**Role in this Feature:** Primary Business Api.
 
-**Current Frontend:** `src/MyHealth.Web/content/app/components/users/services/usersService.js` calls `GET `/api/users/${username}`.
+**Current Frontend:** `src/MyHealth.Web/content/app/components/users/services/usersService.js` calls `GET /api/users/${username}`.
 
-**Candidate Existing Backend Contract**
-
-A matching backend endpoint exists, but the current frontend-to-backend relationship has not been conclusively established:
-
-- `GET /api/users/{username}` — `UsersController.GetAsync`; response `Task<ApplicationUser>`
-
-**Modernization Requirement:** Confirm the existing integration before implementing this behavior in the target frontend.
+**Confirmed Backend:** `GET /api/users/{username}` implemented by `UsersController.GetAsync`.
 
 #### API-USER_ACCESS_CONTEXT-DISCOVERED-002 — /api/users
 
-**Role in this Feature:** Unresolved Primary Interaction.
+**Role in this Feature:** Primary Business Api.
 
 **Current Frontend:** `src/MyHealth.Web/content/app/components/users/services/usersService.js` calls `GET /api/users`.
 
-**Candidate Existing Backend Contract**
-
-A matching backend endpoint exists, but the current frontend-to-backend relationship has not been conclusively established:
-
-- `GET /api/users` — `UsersController.Get`; response `Task<IEnumerable<ApplicationUser>>`
-
-**Modernization Requirement:** Confirm the existing integration before implementing this behavior in the target frontend.
+**Confirmed Backend:** `GET /api/users` implemented by `UsersController.Get`.
 
 ## 6. Modernization Considerations
 
@@ -243,13 +229,6 @@ Relevant legacy surfaces: UsersController, user, users, usersService
 | --- | --- | --- | --- |
 | What business outcome should users achieve through Access User Management Views beyond access to the currently established capability? | Current evidence establishes the behavior but not the stakeholder's intended business outcome. | NON_BLOCKING | Product Owner / Business Analyst / Customer SME |
 | Which information must be considered mandatory when validating Access User Management Views in the modernized experience? | Current evidence does not establish a complete customer-approved definition of the information or presentation details that must be retained. | BLOCKING | Product Owner / Business Analyst / Customer SME / QA Lead |
-
-### Technical Integration Clarifications
-
-| Question | Why It Matters | Impact | Owner |
-| --- | --- | --- | --- |
-| Which existing backend contract conclusively supports `/api/users/${username}`? | The frontend interaction is established, but its backend relationship is dynamic or unresolved. | BLOCKING | Solution Architect / Modernization Engineer |
-| Which existing backend contract conclusively supports `/api/users`? | The frontend interaction is established, but its backend relationship is dynamic or unresolved. | BLOCKING | Solution Architect / Modernization Engineer |
 
 ## 8. Review & Approval
 

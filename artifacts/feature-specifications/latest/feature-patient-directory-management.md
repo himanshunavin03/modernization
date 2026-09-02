@@ -118,9 +118,19 @@ Current evidence does not establish a complete customer-approved definition of t
 
 Confirmed existing backend API contracts are preserved integration boundaries for the target frontend unless an explicitly approved change modifies them.
 
+### Primary Business APIs
+
+#### API-PATIENT_DIRECTORY_MANAGEMENT-DISCOVERED-001 — /api/patients
+
+**Role in this Feature:** Primary Business Api.
+
+**Current Frontend:** `src/MyHealth.Web/content/app/components/patients/services/patientsService.js` calls `GET /api/patients`.
+
+**Confirmed Backend:** `GET /api/patients` implemented by `PatientsController.Get`.
+
 ### Supporting / Shared APIs
 
-#### API-PATIENT_DIRECTORY_MANAGEMENT-001 — GET /api/users/current/tenant
+#### API-PATIENT_DIRECTORY_MANAGEMENT-001 — /api/users/current/tenant
 
 **Role in this Feature:** Supporting Shared Api.
 
@@ -129,22 +139,6 @@ Confirmed existing backend API contracts are preserved integration boundaries fo
 **Confirmed Backend:** `GET /api/users/current/tenant` implemented by `UsersController.GetCurrentTenantAsync`.
 
 This contract supplies shared context only; it does not provide the Feature's primary business data.
-
-### Unresolved or Dynamic Integrations
-
-#### API-PATIENT_DIRECTORY_MANAGEMENT-DISCOVERED-001 — /api/patients
-
-**Role in this Feature:** Unresolved Primary Interaction.
-
-**Current Frontend:** `src/MyHealth.Web/content/app/components/patients/services/patientsService.js` calls `GET /api/patients`.
-
-**Candidate Existing Backend Contract**
-
-A matching backend endpoint exists, but the current frontend-to-backend relationship has not been conclusively established:
-
-- `GET /api/patients` — `PatientsController.Get`; response `Task<IEnumerable<Patient>>`
-
-**Modernization Requirement:** Confirm the existing integration before implementing this behavior in the target frontend.
 
 ## 6. Modernization Considerations
 
@@ -168,12 +162,6 @@ Relevant legacy surfaces: PatientsController, patients, patientsService
 | --- | --- | --- | --- |
 | What business outcome should users achieve through Review Patient Directory beyond access to the currently established capability? | Current evidence establishes the behavior but not the stakeholder's intended business outcome. | NON_BLOCKING | Product Owner / Business Analyst / Customer SME |
 | Which information must be considered mandatory when validating Review Patient Directory in the modernized experience? | Current evidence does not establish a complete customer-approved definition of the information or presentation details that must be retained. | BLOCKING | Product Owner / Business Analyst / Customer SME / QA Lead |
-
-### Technical Integration Clarifications
-
-| Question | Why It Matters | Impact | Owner |
-| --- | --- | --- | --- |
-| Which existing backend contract conclusively supports `/api/patients`? | The frontend interaction is established, but its backend relationship is dynamic or unresolved. | BLOCKING | Solution Architect / Modernization Engineer |
 
 ## 8. Review & Approval
 

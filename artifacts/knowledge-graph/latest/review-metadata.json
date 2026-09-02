@@ -1,13 +1,18 @@
 {
   "application_project_id": "legacy-dashboard-complete-application-demo-v1",
-  "generation_timestamp_utc": "2026-09-01T03:41:28.539289Z",
+  "generation_timestamp_utc": "2026-09-02T05:06:27.218343Z",
   "lsp_analysis_completed": false,
   "roslyn_semantic_completed": true,
-  "run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-034128",
+  "run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-02-050627",
   "tree_sitter_completed": true,
   "validation": {
     "expected_artifacts": [
       "analysis-summary.md",
+      "api-mapping-forensics.json",
+      "api-relationship-before-after.json",
+      "api-relationship-resolution-audit.json",
+      "api-relationship-resolution-matrix.json",
+      "api-relationship-resolution-summary.md",
       "facts.json",
       "framework-detection.json",
       "graph-run-status.json",
@@ -50,7 +55,7 @@
         "Type",
         "UIControl"
       ],
-      "nodes": 4931,
+      "nodes": 4926,
       "nodes_with_review_warnings": 278,
       "nodes_without_evidence": [],
       "relationship_types": [
@@ -70,7 +75,7 @@
         "USES_TEMPLATE",
         "USES_VIEW_MODEL"
       ],
-      "relationships": 5205,
+      "relationships": 5208,
       "relationships_without_evidence": [],
       "unresolved_invocation_targets": 2098,
       "unresolved_parameter_types": 39,

@@ -6,8 +6,10 @@ import argparse
 from concurrent.futures import ThreadPoolExecutor
 import os
 from pathlib import Path
+import re
 
 from polaris_modernization.framework_detection import detect_frameworks
+from polaris_modernization.graph.api_mapping import RESOLVER_VERSION, resolve_api_relationships
 from polaris_modernization.graph.normalizer import normalize
 from polaris_modernization.graph.writer import write_json, write_summary
 from polaris_modernization.models import Fact
@@ -26,6 +28,170 @@ ROSLYN_LABELS = {
     "type": "Type", "dto": "DTO", "property": "Property", "method": "Method",
     "endpoint": "Endpoint", "authorization_policy": "AuthorizationPolicy",
 }
+FIELDLESS_TYPES = {
+    "bool", "byte", "byte[]", "char", "dateonly", "datetime", "datetimeoffset", "decimal",
+    "double", "filecontentresult", "float", "guid", "iactionresult", "int", "jsonresult",
+    "long", "object", "short", "string", "task", "timeonly", "timespan", "void",
+}
+CONTAINER_TYPES = {"Task", "ActionResult", "IActionResult", "IEnumerable", "ICollection", "IList", "List", "Collection", "Nullable"}
+
+
+def _api_resolution_summary_markdown(project_id: str, resolution: dict[str, object]) -> str:
+    summary = resolution["summary"]
+    audit_rows = resolution["audit_rows"]
+    promoted = [row for row in audit_rows if row["previous_status"] != "PROVEN" and row["public_status"] == "PROVEN"]
+    unresolved = [row for row in audit_rows if row["public_status"] in {"UNRESOLVED", "DYNAMIC"}]
+    examples = []
+    for source_path, expression in (
+        ("src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js", "/api/doctors"),
+        ("src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js", "`/api/doctors/${doctorId}`"),
+        ("src/MyHealth.Web/content/app/components/patients/services/patientsService.js", "/api/patients"),
+        ("src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js", "'/api/reports/expenses/' + year"),
+        ("src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js", "'/api/reports/patients/' + year"),
+        ("src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js", "/api/reports/clinicsummary"),
+        ("src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js", "`/api/tenants/${tenantId}`"),
+        ("src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js", "/api/tenants/list"),
+        ("src/MyHealth.Web/content/app/components/shared/controllers/headerController.js", "/api/users/current/user"),
+        ("src/MyHealth.Web/content/app/components/shared/controllers/headerController.js", "/api/users/current/claims"),
+    ):
+        row = next((item for item in audit_rows if item["source_file"] == source_path and item["raw_url_expression"] == expression), None)
+        if row:
+            examples.append(row)
+    lines = [
+        "# API Relationship Resolution Summary",
+        "",
+        f"- Project ID: `{project_id}`",
+        f"- Resolver version: `{RESOLVER_VERSION}`",
+        f"- Total frontend calls: {summary['total_frontend_calls']}",
+        f"- Proven before: {summary['previous_proven']}",
+        f"- Proven after: {summary['final_proven']}",
+        f"- New exact static matches: {summary['new_exact_static_matches']}",
+        f"- New exact template matches: {summary['new_exact_template_matches']}",
+        f"- New unique parameterized matches: {summary['new_unique_parameterized_matches']}",
+        f"- Remaining dynamic: {summary['remaining_dynamic']}",
+        f"- Remaining ambiguous: {summary['remaining_ambiguous']}",
+        f"- External: {summary['external']}",
+        f"- No backend match: {summary['no_backend_match']}",
+        f"- Unresolved: {summary['unresolved']}",
+        "",
+        "## Root Cause",
+        "",
+        "The previous resolver only promoted inline literal AngularJS URLs. Calls routed through `url` variables or simple dynamic template/concatenation expressions never reached deterministic method-plus-route reconciliation, so uniquely matchable endpoints remained unresolved or dynamic.",
+        "",
+        "## Promotions",
+        "",
+    ]
+    if promoted:
+        lines.extend(
+            f"- `{item['raw_url_expression']}` in `{item['source_file']}` -> `{item['final_status']}`"
+            for item in promoted[:20]
+        )
+    else:
+        lines.append("- No frontend calls were promoted.")
+    if examples:
+        lines.extend(["", "## Important Cases", ""])
+        lines.extend(
+            f"- `{item['raw_url_expression']}` in `{item['source_file']}` -> `{item['final_status']}` ({item['current_relationship_reason']})"
+            for item in examples
+        )
+    if unresolved:
+        lines.extend(["", "## Remaining Limitations", ""])
+        lines.extend(
+            f"- `{item['raw_url_expression']}` in `{item['source_file']}` -> `{item['final_status']}` ({item['current_relationship_reason']})"
+            for item in unresolved[:10]
+        )
+    return "\n".join(lines) + "\n"
+
+
+def _split_generic_arguments(value: str) -> list[str]:
+    parts: list[str] = []
+    depth = 0
+    start = 0
+    for index, char in enumerate(value):
+        if char == "<":
+            depth += 1
+        elif char == ">" and depth:
+            depth -= 1
+        elif char == "," and depth == 0:
+            parts.append(value[start:index].strip())
+            start = index + 1
+    parts.append(value[start:].strip())
+    return [part for part in parts if part]
+
+
+def _unwrap_container_type(type_name: str | None) -> str | None:
+    if not type_name:
+        return None
+    value = str(type_name).replace("global::", "").strip().rstrip("?")
+    while True:
+        match = re.fullmatch(r"(?P<outer>[\w.]+)\s*<(?P<inner>.+)>", value)
+        if not match:
+            return value
+        outer = match.group("outer").rsplit(".", 1)[-1]
+        if outer not in CONTAINER_TYPES:
+            return value
+        arguments = _split_generic_arguments(match.group("inner"))
+        if len(arguments) != 1:
+            return value
+        value = arguments[0].strip().rstrip("?")
+
+
+def _short_type_name(type_name: str | None) -> str | None:
+    value = _unwrap_container_type(type_name)
+    if not value:
+        return None
+    return value.replace("global::", "").rstrip("?").removesuffix("[]").rsplit(".", 1)[-1]
+
+
+def _fields_for_type(type_name: str | None, types_by_short: dict[str, list[dict]], properties_by_owner: dict[str, list[dict]]) -> list[dict]:
+    short_name = _short_type_name(type_name)
+    if not short_name or short_name.casefold() in FIELDLESS_TYPES:
+        return []
+    matches = types_by_short.get(short_name, [])
+    if len(matches) != 1:
+        return []
+    owner_identity = matches[0].get("properties", {}).get("identity")
+    if not owner_identity:
+        return []
+    fields = []
+    for item in sorted(properties_by_owner.get(str(owner_identity), []), key=lambda fact: (fact["evidence"]["source_path"], fact["evidence"]["line_start"], fact["name"])):
+        evidence = item["evidence"]
+        fields.append({
+            "name": item["name"],
+            "type": item.get("properties", {}).get("type_name"),
+            "source_path": evidence["source_path"],
+            "line_start": evidence["line_start"],
+            "line_end": evidence["line_end"],
+        })
+    return fields
+
+
+def _enrich_endpoint_contracts(facts: list[Fact], roslyn_facts: list[dict]) -> list[Fact]:
+    types_by_short: dict[str, list[dict]] = {}
+    properties_by_owner: dict[str, list[dict]] = {}
+    for fact in roslyn_facts:
+        if fact.get("evidence", {}).get("resolution_status") != "proven":
+            continue
+        if fact.get("kind") in {"type", "dto"}:
+            short_name = _short_type_name(str(fact.get("properties", {}).get("identity") or fact["name"]))
+            if short_name:
+                types_by_short.setdefault(short_name, []).append(fact)
+        elif fact.get("kind") == "property" and fact.get("properties", {}).get("owner_identity"):
+            properties_by_owner.setdefault(str(fact["properties"]["owner_identity"]), []).append(fact)
+    if not types_by_short or not properties_by_owner:
+        return facts
+    enriched: list[Fact] = []
+    for fact in facts:
+        if fact.kind != "endpoint":
+            enriched.append(fact)
+            continue
+        props = dict(fact.properties)
+        if not props.get("request_fields") and props.get("request_type"):
+            props["request_fields"] = _fields_for_type(str(props["request_type"]), types_by_short, properties_by_owner)
+        if not props.get("response_fields") and props.get("response_type"):
+            props["response_fields"] = _fields_for_type(str(props["response_type"]), types_by_short, properties_by_owner)
+        enriched.append(Fact(fact.kind, fact.name, fact.evidence, props))
+    return enriched
 
 
 def merge_roslyn(graph: dict, facts: list[dict], project_id: str, out_of_scope_symbols: dict[str, str] | None = None) -> None:
@@ -180,20 +346,6 @@ def analyze(source_root: Path, project_id: str, profile_name: str, output: Path,
     framework_result = FrameworkAnalyzerRegistry().analyze(source_root, in_scope_entries, project_id, detections)
     facts.extend(framework_result.facts)
     warnings.extend(framework_result.warnings)
-    graph_inventory = inventory if scope_type == "full_application" else in_scope_entries
-    graph_metadata = {
-        "scope_id": profile.get("scope_id", "full-application"),
-        "scope_name": profile.get("scope_name", "Full application analysis"),
-        "scope_description": profile.get("scope_description", "Complete discovered application inventory and graph."),
-        "scope_type": scope_type,
-        "selected_file_count": len(in_scope_entries),
-        "out_of_scope_file_count": len(inventory) - len(in_scope_entries),
-        "extraction_warning_count": len(extraction_warnings),
-        "review_warning_count": 0,
-        "coverage_status": "pending",
-    }
-    graph = normalize(project_id, graph_inventory, facts, graph_metadata)
-    graph["warnings"].extend(framework_result.warnings)
     run_output = output / project_id
     run_output.mkdir(parents=True, exist_ok=True)
     roslyn_all = enrich(source_root, project_id, run_output / "roslyn-semantic-all.json") if enable_roslyn else {"project_id":project_id,"facts":[],"warnings":[]}
@@ -216,6 +368,26 @@ def analyze(source_root: Path, project_id: str, profile_name: str, output: Path,
         and str(fact["properties"]["identity"]) not in in_scope_symbols
     } if scope_type == "selected_modernization_flow" else {}
     roslyn = {"project_id": project_id, "facts": roslyn_facts, "warnings": roslyn_all["warnings"]}
+    facts = _enrich_endpoint_contracts(facts, roslyn_facts)
+    api_resolution = resolve_api_relationships(facts)
+    facts = [fact for fact in facts if fact.kind not in {"api_call", "api_mapping"}]
+    facts.extend(api_resolution["call_facts"])
+    facts.extend(api_resolution["mapping_facts"])
+    warnings.extend(api_resolution["warnings"])
+    graph_inventory = inventory if scope_type == "full_application" else in_scope_entries
+    graph_metadata = {
+        "scope_id": profile.get("scope_id", "full-application"),
+        "scope_name": profile.get("scope_name", "Full application analysis"),
+        "scope_description": profile.get("scope_description", "Complete discovered application inventory and graph."),
+        "scope_type": scope_type,
+        "selected_file_count": len(in_scope_entries),
+        "out_of_scope_file_count": len(inventory) - len(in_scope_entries),
+        "extraction_warning_count": len(extraction_warnings),
+        "review_warning_count": 0,
+        "coverage_status": "pending",
+    }
+    graph = normalize(project_id, graph_inventory, facts, graph_metadata)
+    graph["warnings"].extend(framework_result.warnings)
     write_json(run_output / "roslyn-semantic.json", roslyn)
     graph["warnings"].extend(roslyn["warnings"])
     graph["warnings"].extend(extraction_warnings)
@@ -237,9 +409,57 @@ def analyze(source_root: Path, project_id: str, profile_name: str, output: Path,
     write_json(run_output / "framework-detection.json", {"project_id": project_id, "scope": graph["metadata"], "frameworks": detections})
     write_json(run_output / "facts.json", {"project_id": project_id, "facts": [fact.to_dict() for fact in facts]})
     write_json(run_output / "knowledge-graph.json", graph)
+    write_json(run_output / "api-mapping-forensics.json", {
+        "project_id": project_id,
+        "run_id": project_id,
+        **api_resolution["forensics"],
+        "http_methods": {
+            method: sum(1 for row in api_resolution["backend_endpoint_rows"] if row["http_method"] == method)
+            for method in sorted({row["http_method"] for row in api_resolution["backend_endpoint_rows"]})
+        },
+        "controller_template_endpoints": sum(bool(row["controller_route"]) and "[controller]" in row["controller_route"] for row in api_resolution["backend_endpoint_rows"]),
+        "controllers_with_controller_template": len({row["controller"] for row in api_resolution["backend_endpoint_rows"] if row["controller_route"] and "[controller]" in row["controller_route"]}),
+        "unexpanded_controller_tokens": 0,
+        "status": "PASS_WITH_EXPLAINED_LIMITATIONS" if api_resolution["summary"]["unresolved"] or api_resolution["summary"]["remaining_dynamic"] or api_resolution["summary"]["no_backend_match"] else "PASS",
+    })
+    write_json(run_output / "api-relationship-resolution-audit.json", {
+        "project_id": project_id,
+        "resolver_version": RESOLVER_VERSION,
+        "summary": api_resolution["summary"],
+        "before_after": api_resolution["before_after"],
+        "frontend_calls": api_resolution["audit_rows"],
+        "backend_endpoints": [
+            {
+                "backend_endpoint_id": row["endpoint_id"],
+                "source_file": row["source_path"],
+                "source_range": {"line_start": row["line_start"], "line_end": row["line_end"]},
+                "framework": "ASP.NET",
+                "controller": row["controller"],
+                "action": row["action"],
+                "http_method": row["http_method"],
+                "controller_route": row["controller_route"],
+                "action_route": row["action_route"],
+                "resolved_route_template": row["resolved_route_template"],
+                "normalized_route_template": row["normalized_route_template"],
+                "path_parameters": row["path_parameters"],
+                "query_parameters": row["query_parameters"],
+                "request_type": row["request_type"],
+                "request_fields": row["request_fields"],
+                "response_type": row["response_type"],
+                "response_fields": row["response_fields"],
+            }
+            for row in api_resolution["backend_endpoint_rows"]
+        ],
+    })
+    write_json(run_output / "api-relationship-resolution-matrix.json", {"project_id": project_id, "rows": api_resolution["matrix_rows"]})
+    write_json(run_output / "api-relationship-before-after.json", api_resolution["before_after"])
+    (run_output / "api-relationship-resolution-summary.md").write_text(
+        _api_resolution_summary_markdown(project_id, api_resolution),
+        encoding="utf-8",
+    )
     write_summary(run_output / "analysis-summary.md", inventory, facts, graph, extraction_warnings)
     analysis_status = "failed" if not extractable_entries or successful_extractions == 0 else "succeeded_with_warnings" if extraction_warnings else "succeeded"
-    return {"inventory": inventory, "graph_inventory": graph_inventory, "facts": facts, "graph": graph, "warnings": warnings, "extraction_warnings": extraction_warnings, "output": run_output, "roslyn": roslyn, "analysis_status": analysis_status, "extractable_file_count": len(extractable_entries), "successful_extraction_count": successful_extractions}
+    return {"inventory": inventory, "graph_inventory": graph_inventory, "facts": facts, "graph": graph, "warnings": warnings, "extraction_warnings": extraction_warnings, "output": run_output, "roslyn": roslyn, "analysis_status": analysis_status, "extractable_file_count": len(extractable_entries), "successful_extraction_count": successful_extractions, "api_resolution": api_resolution}
 
 
 def main() -> None:

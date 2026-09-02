@@ -4,18 +4,18 @@
     "backend_endpoint_facts": 58,
     "controller_template_endpoints": 55,
     "controllers_with_controller_template": 12,
-    "dynamic_url_warnings": 22,
+    "dynamic_url_warnings": 0,
     "external_api": 1,
-    "frontend_api_call_facts": 44,
+    "frontend_api_call_facts": 33,
     "http_methods": {
       "DELETE": 4,
       "GET": 42,
       "POST": 8,
       "PUT": 4
     },
-    "no_backend_route": 1,
-    "proven": 10,
-    "unresolved_structural_calls": 32
+    "no_backend_route": 0,
+    "proven": 32,
+    "unresolved_structural_calls": 0
   },
   "feature_relevant_interactions": [
     {
@@ -36,9 +36,9 @@
       "classification": "SUPPORTING_SHARED_API",
       "feature_id": "feature-operational-dashboard-insights",
       "frontend": {
-        "api_expression": "GET /api/users/current/tenant",
+        "api_expression": "/api/users/current/tenant",
         "controller_or_component": null,
-        "method": null,
+        "method": "GET",
         "service": null,
         "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
         "surface": "src/MyHealth.Web/content/app/components/dashboard",
@@ -56,52 +56,27 @@
         "ac-operational-dashboard-insights-access-yearly-operational-reports-001"
       ],
       "backend": {
-        "action": null,
-        "controller": null,
-        "http_method": null,
-        "resolved_endpoint": null,
-        "route_template": null,
-        "source_reference": null
+        "action": "GetExpensesSummaryAsync",
+        "controller": "ReportsController",
+        "http_method": "GET",
+        "resolved_endpoint": "/api/reports/expenses/{year}",
+        "route_template": "api/[controller]/expenses/{year}",
+        "source_reference": "src/MyHealth.API/Controllers/ReportsController.cs"
       },
-      "candidate_endpoints": [
-        {
-          "action": "GetExpensesSummaryAsync",
-          "classification": "CANDIDATE_RELEVANT_BACKEND_ENDPOINT",
-          "controller": "ReportsController",
-          "endpoint_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/expenses/{year}",
-          "evidence": [
-            {
-              "confidence": 1.0,
-              "extraction_method": "framework-analyzer",
-              "line_end": 29,
-              "line_start": 29,
-              "project_id": "legacy-dashboard-complete-application-demo-v1",
-              "source_hash": "90099cd1d01c496a02fb4cc981ba4f50ab563322561b35341f9d35f773472bc2",
-              "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
-            }
-          ],
-          "http_method": "GET",
-          "parameters": [
-            "year"
-          ],
-          "promotion_status": "NOT_PROVEN_NO_FRONTEND_MAPPING",
-          "response_type": "Task<IEnumerable<ExpensesSummary>>",
-          "route": "/api/reports/expenses/{year}"
-        }
-      ],
-      "classification": "DYNAMIC_PRIMARY_INTERACTION",
+      "candidate_endpoints": [],
+      "classification": "PRIMARY_BUSINESS_API",
       "feature_id": "feature-operational-dashboard-insights",
       "frontend": {
         "api_expression": "'/api/reports/expenses/' + year",
         "controller_or_component": null,
-        "method": null,
+        "method": "GET",
         "service": null,
         "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
         "surface": "src/MyHealth.Web/content/app/components/dashboard",
         "technology": "Legacy AngularJS 1.x"
       },
       "interaction_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
-      "status": "DYNAMIC",
+      "status": "PROVEN",
       "story_ids": [
         "story-operational-dashboard-insights-access-yearly-operational-reports"
       ]
@@ -111,52 +86,27 @@
         "ac-operational-dashboard-insights-access-yearly-operational-reports-001"
       ],
       "backend": {
-        "action": null,
-        "controller": null,
-        "http_method": null,
-        "resolved_endpoint": null,
-        "route_template": null,
-        "source_reference": null
+        "action": "GetPatientsSummaryAsync",
+        "controller": "ReportsController",
+        "http_method": "GET",
+        "resolved_endpoint": "/api/reports/patients/{year}",
+        "route_template": "api/[controller]/patients/{year}",
+        "source_reference": "src/MyHealth.API/Controllers/ReportsController.cs"
       },
-      "candidate_endpoints": [
-        {
-          "action": "GetPatientsSummaryAsync",
-          "classification": "CANDIDATE_RELEVANT_BACKEND_ENDPOINT",
-          "controller": "ReportsController",
-          "endpoint_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/patients/{year}",
-          "evidence": [
-            {
-              "confidence": 1.0,
-              "extraction_method": "framework-analyzer",
-              "line_end": 35,
-              "line_start": 35,
-              "project_id": "legacy-dashboard-complete-application-demo-v1",
-              "source_hash": "90099cd1d01c496a02fb4cc981ba4f50ab563322561b35341f9d35f773472bc2",
-              "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
-            }
-          ],
-          "http_method": "GET",
-          "parameters": [
-            "year"
-          ],
-          "promotion_status": "NOT_PROVEN_NO_FRONTEND_MAPPING",
-          "response_type": "Task<IEnumerable<PatientsSummary>>",
-          "route": "/api/reports/patients/{year}"
-        }
-      ],
-      "classification": "DYNAMIC_PRIMARY_INTERACTION",
+      "candidate_endpoints": [],
+      "classification": "PRIMARY_BUSINESS_API",
       "feature_id": "feature-operational-dashboard-insights",
       "frontend": {
         "api_expression": "'/api/reports/patients/' + year",
         "controller_or_component": null,
-        "method": null,
+        "method": "GET",
         "service": null,
         "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
         "surface": "src/MyHealth.Web/content/app/components/dashboard",
         "technology": "Legacy AngularJS 1.x"
       },
       "interaction_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-003",
-      "status": "DYNAMIC",
+      "status": "PROVEN",
       "story_ids": [
         "story-operational-dashboard-insights-access-yearly-operational-reports"
       ]
@@ -167,50 +117,27 @@
         "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002"
       ],
       "backend": {
-        "action": null,
-        "controller": null,
-        "http_method": null,
-        "resolved_endpoint": null,
-        "route_template": null,
-        "source_reference": null
+        "action": "GetClinicSummaryAsync",
+        "controller": "ReportsController",
+        "http_method": "GET",
+        "resolved_endpoint": "/api/reports/clinicsummary",
+        "route_template": "api/[controller]/clinicsummary",
+        "source_reference": "src/MyHealth.API/Controllers/ReportsController.cs"
       },
-      "candidate_endpoints": [
-        {
-          "action": "GetClinicSummaryAsync",
-          "classification": "CANDIDATE_RELEVANT_BACKEND_ENDPOINT",
-          "controller": "ReportsController",
-          "endpoint_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
-          "evidence": [
-            {
-              "confidence": 1.0,
-              "extraction_method": "framework-analyzer",
-              "line_end": 23,
-              "line_start": 23,
-              "project_id": "legacy-dashboard-complete-application-demo-v1",
-              "source_hash": "90099cd1d01c496a02fb4cc981ba4f50ab563322561b35341f9d35f773472bc2",
-              "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
-            }
-          ],
-          "http_method": "GET",
-          "parameters": [],
-          "promotion_status": "NOT_PROVEN_NO_FRONTEND_MAPPING",
-          "response_type": "Task<ClinicSummary>",
-          "route": "/api/reports/clinicsummary"
-        }
-      ],
-      "classification": "UNRESOLVED_PRIMARY_INTERACTION",
+      "candidate_endpoints": [],
+      "classification": "PRIMARY_BUSINESS_API",
       "feature_id": "feature-operational-dashboard-insights",
       "frontend": {
         "api_expression": "/api/reports/clinicsummary",
         "controller_or_component": null,
-        "method": null,
+        "method": "GET",
         "service": null,
         "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
         "surface": "src/MyHealth.Web/content/app/components/dashboard",
         "technology": "Legacy AngularJS 1.x"
       },
       "interaction_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-004",
-      "status": "UNRESOLVED",
+      "status": "PROVEN",
       "story_ids": [
         "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary"
       ]
@@ -231,9 +158,9 @@
       "classification": "SUPPORTING_SHARED_API",
       "feature_id": "feature-doctor-directory-management",
       "frontend": {
-        "api_expression": "GET /api/users/current/tenant",
+        "api_expression": "/api/users/current/tenant",
         "controller_or_component": null,
-        "method": null,
+        "method": "GET",
         "service": null,
         "source_reference": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
         "surface": "src/MyHealth.Web/content/app/components/doctors",
@@ -251,40 +178,15 @@
         "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001"
       ],
       "backend": {
-        "action": null,
-        "controller": null,
-        "http_method": null,
-        "resolved_endpoint": null,
-        "route_template": null,
-        "source_reference": null
+        "action": "GetAsync",
+        "controller": "DoctorsController",
+        "http_method": "GET",
+        "resolved_endpoint": "/api/doctors/{id}",
+        "route_template": "api/[controller]/{id}",
+        "source_reference": "src/MyHealth.API/Controllers/DoctorsController.cs"
       },
-      "candidate_endpoints": [
-        {
-          "action": "GetAsync",
-          "classification": "CANDIDATE_RELEVANT_BACKEND_ENDPOINT",
-          "controller": "DoctorsController",
-          "endpoint_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors/{id}",
-          "evidence": [
-            {
-              "confidence": 1.0,
-              "extraction_method": "framework-analyzer",
-              "line_end": 23,
-              "line_start": 23,
-              "project_id": "legacy-dashboard-complete-application-demo-v1",
-              "source_hash": "690cacfdc8921237c5241d051880ee28c7a64ebe38580b3cebad73243413b453",
-              "source_path": "src/MyHealth.API/Controllers/DoctorsController.cs"
-            }
-          ],
-          "http_method": "GET",
-          "parameters": [
-            "id"
-          ],
-          "promotion_status": "NOT_PROVEN_NO_FRONTEND_MAPPING",
-          "response_type": "Task<Doctor>",
-          "route": "/api/doctors/{id}"
-        }
-      ],
-      "classification": "DYNAMIC_PRIMARY_INTERACTION",
+      "candidate_endpoints": [],
+      "classification": "PRIMARY_BUSINESS_API",
       "feature_id": "feature-doctor-directory-management",
       "frontend": {
         "api_expression": "`/api/doctors/${doctorId}`",
@@ -299,13 +201,13 @@
           "source_path": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js"
         },
         "method": "GET",
-        "service": null,
+        "service": "DoctorsService",
         "source_reference": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
         "technology": "Legacy AngularJS 1.x"
       },
       "interaction_id": "API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-001",
-      "relationship_reason": "The associated frontend caller proves the interaction; no deterministic frontend-to-endpoint mapping exists.",
-      "status": "DYNAMIC",
+      "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
+      "status": "PROVEN",
       "story_ids": [
         "story-doctor-directory-management-view-doctor-details-in-tenant-context",
         "story-doctor-directory-management-review-doctor-directory"
@@ -317,41 +219,15 @@
         "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001"
       ],
       "backend": {
-        "action": null,
-        "controller": null,
-        "http_method": null,
-        "resolved_endpoint": null,
-        "route_template": null,
-        "source_reference": null
+        "action": "GetAsync",
+        "controller": "DoctorsController",
+        "http_method": "GET",
+        "resolved_endpoint": "/api/doctors",
+        "route_template": "api/[controller]",
+        "source_reference": "src/MyHealth.API/Controllers/DoctorsController.cs"
       },
-      "candidate_endpoints": [
-        {
-          "action": "GetAsync",
-          "classification": "CANDIDATE_RELEVANT_BACKEND_ENDPOINT",
-          "controller": "DoctorsController",
-          "endpoint_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors",
-          "evidence": [
-            {
-              "confidence": 1.0,
-              "extraction_method": "framework-analyzer",
-              "line_end": 29,
-              "line_start": 29,
-              "project_id": "legacy-dashboard-complete-application-demo-v1",
-              "source_hash": "690cacfdc8921237c5241d051880ee28c7a64ebe38580b3cebad73243413b453",
-              "source_path": "src/MyHealth.API/Controllers/DoctorsController.cs"
-            }
-          ],
-          "http_method": "GET",
-          "parameters": [
-            "pageSize",
-            "pageCount"
-          ],
-          "promotion_status": "NOT_PROVEN_NO_FRONTEND_MAPPING",
-          "response_type": "Task<IEnumerable<Doctor>>",
-          "route": "/api/doctors"
-        }
-      ],
-      "classification": "UNRESOLVED_PRIMARY_INTERACTION",
+      "candidate_endpoints": [],
+      "classification": "PRIMARY_BUSINESS_API",
       "feature_id": "feature-doctor-directory-management",
       "frontend": {
         "api_expression": "/api/doctors",
@@ -366,13 +242,13 @@
           "source_path": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js"
         },
         "method": "GET",
-        "service": null,
+        "service": "DoctorsService",
         "source_reference": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
         "technology": "Legacy AngularJS 1.x"
       },
       "interaction_id": "API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-002",
-      "relationship_reason": "The associated frontend caller proves the interaction; no deterministic frontend-to-endpoint mapping exists.",
-      "status": "UNRESOLVED",
+      "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
+      "status": "PROVEN",
       "story_ids": [
         "story-doctor-directory-management-view-doctor-details-in-tenant-context",
         "story-doctor-directory-management-review-doctor-directory"
@@ -394,9 +270,9 @@
       "classification": "SUPPORTING_SHARED_API",
       "feature_id": "feature-patient-directory-management",
       "frontend": {
-        "api_expression": "GET /api/users/current/tenant",
+        "api_expression": "/api/users/current/tenant",
         "controller_or_component": null,
-        "method": null,
+        "method": "GET",
         "service": null,
         "source_reference": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
         "surface": "src/MyHealth.Web/content/app/components/patients",
@@ -413,41 +289,15 @@
         "ac-patient-directory-management-review-patient-directory-001"
       ],
       "backend": {
-        "action": null,
-        "controller": null,
-        "http_method": null,
-        "resolved_endpoint": null,
-        "route_template": null,
-        "source_reference": null
+        "action": "Get",
+        "controller": "PatientsController",
+        "http_method": "GET",
+        "resolved_endpoint": "/api/patients",
+        "route_template": "api/[controller]",
+        "source_reference": "src/MyHealth.API/Controllers/PatientsController.cs"
       },
-      "candidate_endpoints": [
-        {
-          "action": "Get",
-          "classification": "CANDIDATE_RELEVANT_BACKEND_ENDPOINT",
-          "controller": "PatientsController",
-          "endpoint_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/patients",
-          "evidence": [
-            {
-              "confidence": 1.0,
-              "extraction_method": "framework-analyzer",
-              "line_end": 22,
-              "line_start": 22,
-              "project_id": "legacy-dashboard-complete-application-demo-v1",
-              "source_hash": "452777715931b201f8b35aab893db976058d3b5f9807941dda1576dfca5ec9d7",
-              "source_path": "src/MyHealth.API/Controllers/PatientsController.cs"
-            }
-          ],
-          "http_method": "GET",
-          "parameters": [
-            "pageSize",
-            "pageCount"
-          ],
-          "promotion_status": "NOT_PROVEN_NO_FRONTEND_MAPPING",
-          "response_type": "Task<IEnumerable<Patient>>",
-          "route": "/api/patients"
-        }
-      ],
-      "classification": "UNRESOLVED_PRIMARY_INTERACTION",
+      "candidate_endpoints": [],
+      "classification": "PRIMARY_BUSINESS_API",
       "feature_id": "feature-patient-directory-management",
       "frontend": {
         "api_expression": "/api/patients",
@@ -462,13 +312,13 @@
           "source_path": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js"
         },
         "method": "GET",
-        "service": null,
+        "service": "PatientsService",
         "source_reference": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
         "technology": "Legacy AngularJS 1.x"
       },
       "interaction_id": "API-PATIENT_DIRECTORY_MANAGEMENT-DISCOVERED-001",
-      "relationship_reason": "The associated frontend caller proves the interaction; no deterministic frontend-to-endpoint mapping exists.",
-      "status": "UNRESOLVED",
+      "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
+      "status": "PROVEN",
       "story_ids": [
         "story-patient-directory-management-review-patient-directory"
       ]
@@ -489,9 +339,9 @@
       "classification": "SUPPORTING_SHARED_API",
       "feature_id": "feature-clinic-appointment-experience",
       "frontend": {
-        "api_expression": "GET /api/users/current/tenant",
+        "api_expression": "/api/users/current/tenant",
         "controller_or_component": null,
-        "method": null,
+        "method": "GET",
         "service": null,
         "source_reference": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
         "surface": "src/MyHealth.Web/content/app/components/clinics",
@@ -508,40 +358,15 @@
         "ac-clinic-appointment-experience-access-clinic-information-001"
       ],
       "backend": {
-        "action": null,
-        "controller": null,
-        "http_method": null,
-        "resolved_endpoint": null,
-        "route_template": null,
-        "source_reference": null
+        "action": "GetAsync",
+        "controller": "TenantsController",
+        "http_method": "GET",
+        "resolved_endpoint": "/api/tenants/{tenantId}",
+        "route_template": "api/[controller]/{tenantId}",
+        "source_reference": "src/MyHealth.API/Controllers/TenantsController.cs"
       },
-      "candidate_endpoints": [
-        {
-          "action": "GetAsync",
-          "classification": "CANDIDATE_RELEVANT_BACKEND_ENDPOINT",
-          "controller": "TenantsController",
-          "endpoint_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/tenants/{tenantId}",
-          "evidence": [
-            {
-              "confidence": 1.0,
-              "extraction_method": "framework-analyzer",
-              "line_end": 63,
-              "line_start": 63,
-              "project_id": "legacy-dashboard-complete-application-demo-v1",
-              "source_hash": "5babafa776dd86257b8b6ad0857f7b3d9985d7eed693a5d7b044757dd380ad23",
-              "source_path": "src/MyHealth.API/Controllers/TenantsController.cs"
-            }
-          ],
-          "http_method": "GET",
-          "parameters": [
-            "tenantId"
-          ],
-          "promotion_status": "NOT_PROVEN_NO_FRONTEND_MAPPING",
-          "response_type": "Task<Tenant>",
-          "route": "/api/tenants/{tenantId}"
-        }
-      ],
-      "classification": "DYNAMIC_PRIMARY_INTERACTION",
+      "candidate_endpoints": [],
+      "classification": "PRIMARY_BUSINESS_API",
       "feature_id": "feature-clinic-appointment-experience",
       "frontend": {
         "api_expression": "`/api/tenants/${tenantId}`",
@@ -556,13 +381,13 @@
           "source_path": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js"
         },
         "method": "GET",
-        "service": null,
+        "service": "ClinicsService",
         "source_reference": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
         "technology": "Legacy AngularJS 1.x"
       },
       "interaction_id": "API-CLINIC_APPOINTMENT_EXPERIENCE-DISCOVERED-001",
-      "relationship_reason": "The associated frontend caller proves the interaction; no deterministic frontend-to-endpoint mapping exists.",
-      "status": "DYNAMIC",
+      "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
+      "status": "PROVEN",
       "story_ids": [
         "story-clinic-appointment-experience-access-clinic-information"
       ]
@@ -572,41 +397,15 @@
         "ac-clinic-appointment-experience-access-clinic-information-001"
       ],
       "backend": {
-        "action": null,
-        "controller": null,
-        "http_method": null,
-        "resolved_endpoint": null,
-        "route_template": null,
-        "source_reference": null
+        "action": "GetAsync",
+        "controller": "TenantsController",
+        "http_method": "GET",
+        "resolved_endpoint": "/api/tenants/list",
+        "route_template": "api/[controller]/list",
+        "source_reference": "src/MyHealth.API/Controllers/TenantsController.cs"
       },
-      "candidate_endpoints": [
-        {
-          "action": "GetAsync",
-          "classification": "CANDIDATE_RELEVANT_BACKEND_ENDPOINT",
-          "controller": "TenantsController",
-          "endpoint_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/tenants/list",
-          "evidence": [
-            {
-              "confidence": 1.0,
-              "extraction_method": "framework-analyzer",
-              "line_end": 48,
-              "line_start": 48,
-              "project_id": "legacy-dashboard-complete-application-demo-v1",
-              "source_hash": "5babafa776dd86257b8b6ad0857f7b3d9985d7eed693a5d7b044757dd380ad23",
-              "source_path": "src/MyHealth.API/Controllers/TenantsController.cs"
-            }
-          ],
-          "http_method": "GET",
-          "parameters": [
-            "pageSize",
-            "pageCount"
-          ],
-          "promotion_status": "NOT_PROVEN_NO_FRONTEND_MAPPING",
-          "response_type": "Task<IEnumerable<Tenant>>",
-          "route": "/api/tenants/list"
-        }
-      ],
-      "classification": "UNRESOLVED_PRIMARY_INTERACTION",
+      "candidate_endpoints": [],
+      "classification": "PRIMARY_BUSINESS_API",
       "feature_id": "feature-clinic-appointment-experience",
       "frontend": {
         "api_expression": "/api/tenants/list",
@@ -621,13 +420,13 @@
           "source_path": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js"
         },
         "method": "GET",
-        "service": null,
+        "service": "ClinicsService",
         "source_reference": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
         "technology": "Legacy AngularJS 1.x"
       },
       "interaction_id": "API-CLINIC_APPOINTMENT_EXPERIENCE-DISCOVERED-002",
-      "relationship_reason": "The associated frontend caller proves the interaction; no deterministic frontend-to-endpoint mapping exists.",
-      "status": "UNRESOLVED",
+      "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
+      "status": "PROVEN",
       "story_ids": [
         "story-clinic-appointment-experience-access-clinic-information"
       ]
@@ -648,9 +447,9 @@
       "classification": "PRIMARY_BUSINESS_API",
       "feature_id": "feature-user-access-context",
       "frontend": {
-        "api_expression": "GET /api/users/current/user",
+        "api_expression": "/api/users/current/user",
         "controller_or_component": "HeaderController",
-        "method": null,
+        "method": "GET",
         "service": null,
         "source_reference": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
         "surface": "src/MyHealth.Web/content/app/components/shared",
@@ -678,9 +477,9 @@
       "classification": "PRIMARY_BUSINESS_API",
       "feature_id": "feature-user-access-context",
       "frontend": {
-        "api_expression": "GET /api/users/current/claims",
+        "api_expression": "/api/users/current/claims",
         "controller_or_component": "HeaderController",
-        "method": null,
+        "method": "GET",
         "service": null,
         "source_reference": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
         "surface": "src/MyHealth.Web/content/app/components/shared",
@@ -708,9 +507,9 @@
       "classification": "PRIMARY_BUSINESS_API",
       "feature_id": "feature-user-access-context",
       "frontend": {
-        "api_expression": "GET /api/users/current/claims",
+        "api_expression": "/api/users/current/claims",
         "controller_or_component": null,
-        "method": null,
+        "method": "GET",
         "service": null,
         "source_reference": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
         "surface": "src/MyHealth.Web/content/app/components/shared",
@@ -738,9 +537,9 @@
       "classification": "PRIMARY_BUSINESS_API",
       "feature_id": "feature-user-access-context",
       "frontend": {
-        "api_expression": "GET /api/users/current/tenant",
+        "api_expression": "/api/users/current/tenant",
         "controller_or_component": null,
-        "method": null,
+        "method": "GET",
         "service": null,
         "source_reference": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
         "surface": "src/MyHealth.Web/content/app/components/users",
@@ -757,40 +556,15 @@
         "ac-user-access-context-access-user-management-views-001"
       ],
       "backend": {
-        "action": null,
-        "controller": null,
-        "http_method": null,
-        "resolved_endpoint": null,
-        "route_template": null,
-        "source_reference": null
+        "action": "GetAsync",
+        "controller": "UsersController",
+        "http_method": "GET",
+        "resolved_endpoint": "/api/users/{username}",
+        "route_template": "api/[controller]/{username}",
+        "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
       },
-      "candidate_endpoints": [
-        {
-          "action": "GetAsync",
-          "classification": "CANDIDATE_RELEVANT_BACKEND_ENDPOINT",
-          "controller": "UsersController",
-          "endpoint_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/{username}",
-          "evidence": [
-            {
-              "confidence": 1.0,
-              "extraction_method": "framework-analyzer",
-              "line_end": 60,
-              "line_start": 60,
-              "project_id": "legacy-dashboard-complete-application-demo-v1",
-              "source_hash": "0fa0321514da328ece373f44bef326bde408d078bd676ec052d2ae2c39ae4c30",
-              "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
-            }
-          ],
-          "http_method": "GET",
-          "parameters": [
-            "username"
-          ],
-          "promotion_status": "NOT_PROVEN_NO_FRONTEND_MAPPING",
-          "response_type": "Task<ApplicationUser>",
-          "route": "/api/users/{username}"
-        }
-      ],
-      "classification": "DYNAMIC_PRIMARY_INTERACTION",
+      "candidate_endpoints": [],
+      "classification": "PRIMARY_BUSINESS_API",
       "feature_id": "feature-user-access-context",
       "frontend": {
         "api_expression": "`/api/users/${username}`",
@@ -805,13 +579,13 @@
           "source_path": "src/MyHealth.Web/content/app/components/users/services/usersService.js"
         },
         "method": "GET",
-        "service": null,
+        "service": "UsersService",
         "source_reference": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
         "technology": "Legacy AngularJS 1.x"
       },
       "interaction_id": "API-USER_ACCESS_CONTEXT-DISCOVERED-001",
-      "relationship_reason": "The associated frontend caller proves the interaction; no deterministic frontend-to-endpoint mapping exists.",
-      "status": "DYNAMIC",
+      "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
+      "status": "PROVEN",
       "story_ids": [
         "story-user-access-context-access-user-management-views"
       ]
@@ -821,41 +595,15 @@
         "ac-user-access-context-access-user-management-views-001"
       ],
       "backend": {
-        "action": null,
-        "controller": null,
-        "http_method": null,
-        "resolved_endpoint": null,
-        "route_template": null,
-        "source_reference": null
+        "action": "Get",
+        "controller": "UsersController",
+        "http_method": "GET",
+        "resolved_endpoint": "/api/users",
+        "route_template": "api/[controller]",
+        "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
       },
-      "candidate_endpoints": [
-        {
-          "action": "Get",
-          "classification": "CANDIDATE_RELEVANT_BACKEND_ENDPOINT",
-          "controller": "UsersController",
-          "endpoint_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users",
-          "evidence": [
-            {
-              "confidence": 1.0,
-              "extraction_method": "framework-analyzer",
-              "line_end": 53,
-              "line_start": 53,
-              "project_id": "legacy-dashboard-complete-application-demo-v1",
-              "source_hash": "0fa0321514da328ece373f44bef326bde408d078bd676ec052d2ae2c39ae4c30",
-              "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
-            }
-          ],
-          "http_method": "GET",
-          "parameters": [
-            "pageSize",
-            "pageCount"
-          ],
-          "promotion_status": "NOT_PROVEN_NO_FRONTEND_MAPPING",
-          "response_type": "Task<IEnumerable<ApplicationUser>>",
-          "route": "/api/users"
-        }
-      ],
-      "classification": "UNRESOLVED_PRIMARY_INTERACTION",
+      "candidate_endpoints": [],
+      "classification": "PRIMARY_BUSINESS_API",
       "feature_id": "feature-user-access-context",
       "frontend": {
         "api_expression": "/api/users",
@@ -870,13 +618,13 @@
           "source_path": "src/MyHealth.Web/content/app/components/users/services/usersService.js"
         },
         "method": "GET",
-        "service": null,
+        "service": "UsersService",
         "source_reference": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
         "technology": "Legacy AngularJS 1.x"
       },
       "interaction_id": "API-USER_ACCESS_CONTEXT-DISCOVERED-002",
-      "relationship_reason": "The associated frontend caller proves the interaction; no deterministic frontend-to-endpoint mapping exists.",
-      "status": "UNRESOLVED",
+      "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
+      "status": "PROVEN",
       "story_ids": [
         "story-user-access-context-access-user-management-views"
       ]
@@ -899,9 +647,9 @@
           "contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-001",
           "feature_id": "feature-operational-dashboard-insights",
           "frontend": {
-            "api_expression": "GET /api/users/current/tenant",
+            "api_expression": "/api/users/current/tenant",
             "controller_or_component": null,
-            "method": null,
+            "method": "GET",
             "service": null,
             "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
             "surface": "src/MyHealth.Web/content/app/components/dashboard",
@@ -929,8 +677,8 @@
             "evidence": [
               {
                 "confidence": 1.0,
-                "extraction_method": "framework-analyzer",
-                "line_end": 18,
+                "extraction_method": "tree-sitter",
+                "line_end": 21,
                 "line_start": 18,
                 "project_id": "legacy-dashboard-complete-application-demo-v1",
                 "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
@@ -938,8 +686,8 @@
               },
               {
                 "confidence": 1.0,
-                "extraction_method": "framework-analyzer",
-                "line_end": 42,
+                "extraction_method": "tree-sitter",
+                "line_end": 45,
                 "line_start": 42,
                 "project_id": "legacy-dashboard-complete-application-demo-v1",
                 "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
@@ -947,8 +695,8 @@
               },
               {
                 "confidence": 1.0,
-                "extraction_method": "framework-analyzer",
-                "line_end": 66,
+                "extraction_method": "tree-sitter",
+                "line_end": 69,
                 "line_start": 66,
                 "project_id": "legacy-dashboard-complete-application-demo-v1",
                 "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
@@ -973,29 +721,29 @@
         },
         {
           "backend": {
-            "action": null,
-            "controller": null,
-            "http_method": null,
-            "resolved_endpoint": null,
-            "route_template": null,
-            "source_reference": null
+            "action": "GetExpensesSummaryAsync",
+            "controller": "ReportsController",
+            "http_method": "GET",
+            "resolved_endpoint": "/api/reports/expenses/{year}",
+            "route_template": "api/[controller]/expenses/{year}",
+            "source_reference": "src/MyHealth.API/Controllers/ReportsController.cs"
           },
           "business_purpose": "Dashboard requests yearly expenses",
-          "classification": "DYNAMIC_PRIMARY_INTERACTION",
+          "classification": "PRIMARY_BUSINESS_API",
           "contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
           "feature_id": "feature-operational-dashboard-insights",
           "frontend": {
             "api_expression": "'/api/reports/expenses/' + year",
             "controller_or_component": null,
-            "method": null,
+            "method": "GET",
             "service": null,
             "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
             "surface": "src/MyHealth.Web/content/app/components/dashboard",
             "technology": "Legacy AngularJS 1.x"
           },
           "modernization": {
-            "clarification_required": true,
-            "preservation_required": false
+            "clarification_required": false,
+            "preservation_required": true
           },
           "related_ac_ids": [
             "ac-operational-dashboard-insights-access-yearly-operational-reports-001"
@@ -1007,7 +755,7 @@
             "story-operational-dashboard-insights-access-yearly-operational-reports"
           ],
           "relationship": {
-            "confidence_classification": "REQUIRES_CONFIRMATION",
+            "confidence_classification": "CONFIRMED",
             "evidence": [
               {
                 "confidence": 1.0,
@@ -1019,47 +767,54 @@
                 "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
               }
             ],
-            "status": "DYNAMIC"
+            "status": "PROVEN"
           },
           "request": {
             "body_fields": [],
             "body_type": null,
             "headers": [],
-            "path_parameters": [],
+            "path_parameters": [
+              {
+                "location": "Path",
+                "name": "year",
+                "required": "Not established",
+                "type": null
+              }
+            ],
             "query_parameters": []
           },
           "response": {
-            "collection_or_single": null,
+            "collection_or_single": "collection",
             "known_status_behavior": [],
             "response_fields": [],
-            "response_type": null
+            "response_type": "Task<IEnumerable<ExpensesSummary>>"
           }
         },
         {
           "backend": {
-            "action": null,
-            "controller": null,
-            "http_method": null,
-            "resolved_endpoint": null,
-            "route_template": null,
-            "source_reference": null
+            "action": "GetPatientsSummaryAsync",
+            "controller": "ReportsController",
+            "http_method": "GET",
+            "resolved_endpoint": "/api/reports/patients/{year}",
+            "route_template": "api/[controller]/patients/{year}",
+            "source_reference": "src/MyHealth.API/Controllers/ReportsController.cs"
           },
           "business_purpose": "Dashboard requests yearly patient report",
-          "classification": "DYNAMIC_PRIMARY_INTERACTION",
+          "classification": "PRIMARY_BUSINESS_API",
           "contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-003",
           "feature_id": "feature-operational-dashboard-insights",
           "frontend": {
             "api_expression": "'/api/reports/patients/' + year",
             "controller_or_component": null,
-            "method": null,
+            "method": "GET",
             "service": null,
             "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
             "surface": "src/MyHealth.Web/content/app/components/dashboard",
             "technology": "Legacy AngularJS 1.x"
           },
           "modernization": {
-            "clarification_required": true,
-            "preservation_required": false
+            "clarification_required": false,
+            "preservation_required": true
           },
           "related_ac_ids": [
             "ac-operational-dashboard-insights-access-yearly-operational-reports-001"
@@ -1071,7 +826,7 @@
             "story-operational-dashboard-insights-access-yearly-operational-reports"
           ],
           "relationship": {
-            "confidence_classification": "REQUIRES_CONFIRMATION",
+            "confidence_classification": "CONFIRMED",
             "evidence": [
               {
                 "confidence": 1.0,
@@ -1083,47 +838,54 @@
                 "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
               }
             ],
-            "status": "DYNAMIC"
+            "status": "PROVEN"
           },
           "request": {
             "body_fields": [],
             "body_type": null,
             "headers": [],
-            "path_parameters": [],
+            "path_parameters": [
+              {
+                "location": "Path",
+                "name": "year",
+                "required": "Not established",
+                "type": null
+              }
+            ],
             "query_parameters": []
           },
           "response": {
-            "collection_or_single": null,
+            "collection_or_single": "collection",
             "known_status_behavior": [],
             "response_fields": [],
-            "response_type": null
+            "response_type": "Task<IEnumerable<PatientsSummary>>"
           }
         },
         {
           "backend": {
-            "action": null,
-            "controller": null,
-            "http_method": null,
-            "resolved_endpoint": null,
-            "route_template": null,
-            "source_reference": null
+            "action": "GetClinicSummaryAsync",
+            "controller": "ReportsController",
+            "http_method": "GET",
+            "resolved_endpoint": "/api/reports/clinicsummary",
+            "route_template": "api/[controller]/clinicsummary",
+            "source_reference": "src/MyHealth.API/Controllers/ReportsController.cs"
           },
           "business_purpose": "Dashboard requests clinic summary",
-          "classification": "UNRESOLVED_PRIMARY_INTERACTION",
+          "classification": "PRIMARY_BUSINESS_API",
           "contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-004",
           "feature_id": "feature-operational-dashboard-insights",
           "frontend": {
             "api_expression": "/api/reports/clinicsummary",
             "controller_or_component": null,
-            "method": null,
+            "method": "GET",
             "service": null,
             "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
             "surface": "src/MyHealth.Web/content/app/components/dashboard",
             "technology": "Legacy AngularJS 1.x"
           },
           "modernization": {
-            "clarification_required": true,
-            "preservation_required": false
+            "clarification_required": false,
+            "preservation_required": true
           },
           "related_ac_ids": [
             "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
@@ -1136,7 +898,7 @@
             "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary"
           ],
           "relationship": {
-            "confidence_classification": "REQUIRES_CONFIRMATION",
+            "confidence_classification": "CONFIRMED",
             "evidence": [
               {
                 "confidence": 1.0,
@@ -1148,7 +910,7 @@
                 "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
               }
             ],
-            "status": "UNRESOLVED"
+            "status": "PROVEN"
           },
           "request": {
             "body_fields": [],
@@ -1158,10 +920,10 @@
             "query_parameters": []
           },
           "response": {
-            "collection_or_single": null,
+            "collection_or_single": "single",
             "known_status_behavior": [],
             "response_fields": [],
-            "response_type": null
+            "response_type": "Task<ClinicSummary>"
           }
         }
       ],
@@ -1183,9 +945,9 @@
           "contract_id": "API-DOCTOR_DIRECTORY_MANAGEMENT-001",
           "feature_id": "feature-doctor-directory-management",
           "frontend": {
-            "api_expression": "GET /api/users/current/tenant",
+            "api_expression": "/api/users/current/tenant",
             "controller_or_component": null,
-            "method": null,
+            "method": "GET",
             "service": null,
             "source_reference": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
             "surface": "src/MyHealth.Web/content/app/components/doctors",
@@ -1209,8 +971,8 @@
             "evidence": [
               {
                 "confidence": 1.0,
-                "extraction_method": "framework-analyzer",
-                "line_end": 16,
+                "extraction_method": "tree-sitter",
+                "line_end": 19,
                 "line_start": 16,
                 "project_id": "legacy-dashboard-complete-application-demo-v1",
                 "source_hash": "b12c583956657df716c2bc34b6ecda4da2154e58e72389669a49a8a5d35e7843",
@@ -1252,9 +1014,9 @@
           "contract_id": "API-PATIENT_DIRECTORY_MANAGEMENT-001",
           "feature_id": "feature-patient-directory-management",
           "frontend": {
-            "api_expression": "GET /api/users/current/tenant",
+            "api_expression": "/api/users/current/tenant",
             "controller_or_component": null,
-            "method": null,
+            "method": "GET",
             "service": null,
             "source_reference": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
             "surface": "src/MyHealth.Web/content/app/components/patients",
@@ -1278,8 +1040,8 @@
             "evidence": [
               {
                 "confidence": 1.0,
-                "extraction_method": "framework-analyzer",
-                "line_end": 12,
+                "extraction_method": "tree-sitter",
+                "line_end": 15,
                 "line_start": 12,
                 "project_id": "legacy-dashboard-complete-application-demo-v1",
                 "source_hash": "d49ea4e7495a765720b1302f9183f552e2a1d7452f9e64ea2f6ad082f8608a79",
@@ -1321,9 +1083,9 @@
           "contract_id": "API-CLINIC_APPOINTMENT_EXPERIENCE-001",
           "feature_id": "feature-clinic-appointment-experience",
           "frontend": {
-            "api_expression": "GET /api/users/current/tenant",
+            "api_expression": "/api/users/current/tenant",
             "controller_or_component": null,
-            "method": null,
+            "method": "GET",
             "service": null,
             "source_reference": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
             "surface": "src/MyHealth.Web/content/app/components/clinics",
@@ -1347,8 +1109,8 @@
             "evidence": [
               {
                 "confidence": 1.0,
-                "extraction_method": "framework-analyzer",
-                "line_end": 15,
+                "extraction_method": "tree-sitter",
+                "line_end": 18,
                 "line_start": 15,
                 "project_id": "legacy-dashboard-complete-application-demo-v1",
                 "source_hash": "8ffd0fca8e9be4a3ea7b70415d6b421565ae7d2be303d08f733a973c34520479",
@@ -1390,9 +1152,9 @@
           "contract_id": "API-USER_ACCESS_CONTEXT-001",
           "feature_id": "feature-user-access-context",
           "frontend": {
-            "api_expression": "GET /api/users/current/user",
+            "api_expression": "/api/users/current/user",
             "controller_or_component": "HeaderController",
-            "method": null,
+            "method": "GET",
             "service": null,
             "source_reference": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
             "surface": "src/MyHealth.Web/content/app/components/shared",
@@ -1416,8 +1178,8 @@
             "evidence": [
               {
                 "confidence": 1.0,
-                "extraction_method": "framework-analyzer",
-                "line_end": 24,
+                "extraction_method": "tree-sitter",
+                "line_end": 27,
                 "line_start": 24,
                 "project_id": "legacy-dashboard-complete-application-demo-v1",
                 "source_hash": "72004319a2ba31f388234363794681d62b936488ee12fab2ccca7a2868ff9eb5",
@@ -1454,9 +1216,9 @@
           "contract_id": "API-USER_ACCESS_CONTEXT-002",
           "feature_id": "feature-user-access-context",
           "frontend": {
-            "api_expression": "GET /api/users/current/claims",
+            "api_expression": "/api/users/current/claims",
             "controller_or_component": "HeaderController",
-            "method": null,
+            "method": "GET",
             "service": null,
             "source_reference": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
             "surface": "src/MyHealth.Web/content/app/components/shared",
@@ -1480,8 +1242,8 @@
             "evidence": [
               {
                 "confidence": 1.0,
-                "extraction_method": "framework-analyzer",
-                "line_end": 31,
+                "extraction_method": "tree-sitter",
+                "line_end": 34,
                 "line_start": 31,
                 "project_id": "legacy-dashboard-complete-application-demo-v1",
                 "source_hash": "72004319a2ba31f388234363794681d62b936488ee12fab2ccca7a2868ff9eb5",
@@ -1518,9 +1280,9 @@
           "contract_id": "API-USER_ACCESS_CONTEXT-003",
           "feature_id": "feature-user-access-context",
           "frontend": {
-            "api_expression": "GET /api/users/current/claims",
+            "api_expression": "/api/users/current/claims",
             "controller_or_component": null,
-            "method": null,
+            "method": "GET",
             "service": null,
             "source_reference": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
             "surface": "src/MyHealth.Web/content/app/components/shared",
@@ -1544,8 +1306,8 @@
             "evidence": [
               {
                 "confidence": 1.0,
-                "extraction_method": "framework-analyzer",
-                "line_end": 10,
+                "extraction_method": "tree-sitter",
+                "line_end": 13,
                 "line_start": 10,
                 "project_id": "legacy-dashboard-complete-application-demo-v1",
                 "source_hash": "a12063f556212be35f9949e326418381c6c9dded50a98c8404743ff83745f115",
@@ -1582,9 +1344,9 @@
           "contract_id": "API-USER_ACCESS_CONTEXT-004",
           "feature_id": "feature-user-access-context",
           "frontend": {
-            "api_expression": "GET /api/users/current/tenant",
+            "api_expression": "/api/users/current/tenant",
             "controller_or_component": null,
-            "method": null,
+            "method": "GET",
             "service": null,
             "source_reference": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
             "surface": "src/MyHealth.Web/content/app/components/users",
@@ -1608,8 +1370,8 @@
             "evidence": [
               {
                 "confidence": 1.0,
-                "extraction_method": "framework-analyzer",
-                "line_end": 15,
+                "extraction_method": "tree-sitter",
+                "line_end": 18,
                 "line_start": 15,
                 "project_id": "legacy-dashboard-complete-application-demo-v1",
                 "source_hash": "4d42ae14459afffbf710fc06373cbd8763b81e3b930b58503179f1dcf1505e9f",
@@ -1638,27 +1400,27 @@
   ],
   "property_traceability": [
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-001",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.api_expression",
       "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
       "source_range": {
-        "line_end": 18,
+        "line_end": 21,
         "line_start": 18
       },
-      "value": "GET /api/users/current/tenant"
+      "value": "/api/users/current/tenant"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-001",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.source_reference",
       "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
       "source_range": {
-        "line_end": 18,
+        "line_end": 21,
         "line_start": 18
       },
       "value": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
@@ -1675,6 +1437,19 @@
         "line_start": null
       },
       "value": "Legacy AngularJS 1.x"
+    },
+    {
+      "analyzer": "tree-sitter",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-001",
+      "confidence": 1.0,
+      "evidence_source": "tree-sitter",
+      "property": "frontend.method",
+      "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "source_range": {
+        "line_end": 21,
+        "line_start": 18
+      },
+      "value": "GET"
     },
     {
       "analyzer": "framework-analyzer",
@@ -1781,14 +1556,14 @@
       "value": "single"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-001",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "relationship.status",
       "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
       "source_range": {
-        "line_end": 18,
+        "line_end": 21,
         "line_start": 18
       },
       "value": "PROVEN"
@@ -1837,13 +1612,150 @@
       "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
       "confidence": 1.0,
       "evidence_source": "tree-sitter",
+      "property": "frontend.method",
+      "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "source_range": {
+        "line_end": 54,
+        "line_start": 48
+      },
+      "value": "GET"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.http_method",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 29,
+        "line_start": 29
+      },
+      "value": "GET"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.route_template",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 29,
+        "line_start": 29
+      },
+      "value": "api/[controller]/expenses/{year}"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.resolved_endpoint",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 29,
+        "line_start": 29
+      },
+      "value": "/api/reports/expenses/{year}"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.controller",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 29,
+        "line_start": 29
+      },
+      "value": "ReportsController"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.action",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 29,
+        "line_start": 29
+      },
+      "value": "GetExpensesSummaryAsync"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.source_reference",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 29,
+        "line_start": 29
+      },
+      "value": "src/MyHealth.API/Controllers/ReportsController.cs"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "request.path_parameters",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 29,
+        "line_start": 29
+      },
+      "value": [
+        {
+          "location": "Path",
+          "name": "year",
+          "required": "Not established",
+          "type": null
+        }
+      ]
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "response.response_type",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 29,
+        "line_start": 29
+      },
+      "value": "Task<IEnumerable<ExpensesSummary>>"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "response.collection_or_single",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 29,
+        "line_start": 29
+      },
+      "value": "collection"
+    },
+    {
+      "analyzer": "tree-sitter",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
+      "confidence": 1.0,
+      "evidence_source": "tree-sitter",
       "property": "relationship.status",
       "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
       "source_range": {
         "line_end": 54,
         "line_start": 48
       },
-      "value": "DYNAMIC"
+      "value": "PROVEN"
     },
     {
       "analyzer": "tree-sitter",
@@ -1889,13 +1801,150 @@
       "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-003",
       "confidence": 1.0,
       "evidence_source": "tree-sitter",
+      "property": "frontend.method",
+      "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "source_range": {
+        "line_end": 78,
+        "line_start": 72
+      },
+      "value": "GET"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-003",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.http_method",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 35,
+        "line_start": 35
+      },
+      "value": "GET"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-003",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.route_template",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 35,
+        "line_start": 35
+      },
+      "value": "api/[controller]/patients/{year}"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-003",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.resolved_endpoint",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 35,
+        "line_start": 35
+      },
+      "value": "/api/reports/patients/{year}"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-003",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.controller",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 35,
+        "line_start": 35
+      },
+      "value": "ReportsController"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-003",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.action",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 35,
+        "line_start": 35
+      },
+      "value": "GetPatientsSummaryAsync"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-003",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.source_reference",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 35,
+        "line_start": 35
+      },
+      "value": "src/MyHealth.API/Controllers/ReportsController.cs"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-003",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "request.path_parameters",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 35,
+        "line_start": 35
+      },
+      "value": [
+        {
+          "location": "Path",
+          "name": "year",
+          "required": "Not established",
+          "type": null
+        }
+      ]
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-003",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "response.response_type",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 35,
+        "line_start": 35
+      },
+      "value": "Task<IEnumerable<PatientsSummary>>"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-003",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "response.collection_or_single",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 35,
+        "line_start": 35
+      },
+      "value": "collection"
+    },
+    {
+      "analyzer": "tree-sitter",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-003",
+      "confidence": 1.0,
+      "evidence_source": "tree-sitter",
       "property": "relationship.status",
       "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
       "source_range": {
         "line_end": 78,
         "line_start": 72
       },
-      "value": "DYNAMIC"
+      "value": "PROVEN"
     },
     {
       "analyzer": "tree-sitter",
@@ -1941,36 +1990,153 @@
       "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-004",
       "confidence": 1.0,
       "evidence_source": "tree-sitter",
+      "property": "frontend.method",
+      "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "source_range": {
+        "line_end": 30,
+        "line_start": 24
+      },
+      "value": "GET"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-004",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.http_method",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 23,
+        "line_start": 23
+      },
+      "value": "GET"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-004",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.route_template",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 23,
+        "line_start": 23
+      },
+      "value": "api/[controller]/clinicsummary"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-004",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.resolved_endpoint",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 23,
+        "line_start": 23
+      },
+      "value": "/api/reports/clinicsummary"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-004",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.controller",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 23,
+        "line_start": 23
+      },
+      "value": "ReportsController"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-004",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.action",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 23,
+        "line_start": 23
+      },
+      "value": "GetClinicSummaryAsync"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-004",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "backend.source_reference",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 23,
+        "line_start": 23
+      },
+      "value": "src/MyHealth.API/Controllers/ReportsController.cs"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-004",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "response.response_type",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 23,
+        "line_start": 23
+      },
+      "value": "Task<ClinicSummary>"
+    },
+    {
+      "analyzer": "framework-analyzer",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-004",
+      "confidence": 1.0,
+      "evidence_source": "framework-analyzer",
+      "property": "response.collection_or_single",
+      "source_file": "src/MyHealth.API/Controllers/ReportsController.cs",
+      "source_range": {
+        "line_end": 23,
+        "line_start": 23
+      },
+      "value": "single"
+    },
+    {
+      "analyzer": "tree-sitter",
+      "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-004",
+      "confidence": 1.0,
+      "evidence_source": "tree-sitter",
       "property": "relationship.status",
       "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
       "source_range": {
         "line_end": 30,
         "line_start": 24
       },
-      "value": "UNRESOLVED"
+      "value": "PROVEN"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-DOCTOR_DIRECTORY_MANAGEMENT-001",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.api_expression",
       "source_file": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
       "source_range": {
-        "line_end": 16,
+        "line_end": 19,
         "line_start": 16
       },
-      "value": "GET /api/users/current/tenant"
+      "value": "/api/users/current/tenant"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-DOCTOR_DIRECTORY_MANAGEMENT-001",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.source_reference",
       "source_file": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
       "source_range": {
-        "line_end": 16,
+        "line_end": 19,
         "line_start": 16
       },
       "value": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js"
@@ -1989,6 +2155,19 @@
       "value": "Legacy AngularJS 1.x"
     },
     {
+      "analyzer": "tree-sitter",
+      "api_contract_id": "API-DOCTOR_DIRECTORY_MANAGEMENT-001",
+      "confidence": 1.0,
+      "evidence_source": "tree-sitter",
+      "property": "frontend.method",
+      "source_file": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
+      "source_range": {
+        "line_end": 19,
+        "line_start": 16
+      },
+      "value": "GET"
+    },
+    {
       "analyzer": "framework-analyzer",
       "api_contract_id": "API-DOCTOR_DIRECTORY_MANAGEMENT-001",
       "confidence": 1.0,
@@ -2093,40 +2272,40 @@
       "value": "single"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-DOCTOR_DIRECTORY_MANAGEMENT-001",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "relationship.status",
       "source_file": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
       "source_range": {
-        "line_end": 16,
+        "line_end": 19,
         "line_start": 16
       },
       "value": "PROVEN"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-PATIENT_DIRECTORY_MANAGEMENT-001",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.api_expression",
       "source_file": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
       "source_range": {
-        "line_end": 12,
+        "line_end": 15,
         "line_start": 12
       },
-      "value": "GET /api/users/current/tenant"
+      "value": "/api/users/current/tenant"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-PATIENT_DIRECTORY_MANAGEMENT-001",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.source_reference",
       "source_file": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
       "source_range": {
-        "line_end": 12,
+        "line_end": 15,
         "line_start": 12
       },
       "value": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js"
@@ -2145,6 +2324,19 @@
       "value": "Legacy AngularJS 1.x"
     },
     {
+      "analyzer": "tree-sitter",
+      "api_contract_id": "API-PATIENT_DIRECTORY_MANAGEMENT-001",
+      "confidence": 1.0,
+      "evidence_source": "tree-sitter",
+      "property": "frontend.method",
+      "source_file": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
+      "source_range": {
+        "line_end": 15,
+        "line_start": 12
+      },
+      "value": "GET"
+    },
+    {
       "analyzer": "framework-analyzer",
       "api_contract_id": "API-PATIENT_DIRECTORY_MANAGEMENT-001",
       "confidence": 1.0,
@@ -2249,40 +2441,40 @@
       "value": "single"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-PATIENT_DIRECTORY_MANAGEMENT-001",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "relationship.status",
       "source_file": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
       "source_range": {
-        "line_end": 12,
+        "line_end": 15,
         "line_start": 12
       },
       "value": "PROVEN"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-CLINIC_APPOINTMENT_EXPERIENCE-001",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.api_expression",
       "source_file": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
       "source_range": {
-        "line_end": 15,
+        "line_end": 18,
         "line_start": 15
       },
-      "value": "GET /api/users/current/tenant"
+      "value": "/api/users/current/tenant"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-CLINIC_APPOINTMENT_EXPERIENCE-001",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.source_reference",
       "source_file": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
       "source_range": {
-        "line_end": 15,
+        "line_end": 18,
         "line_start": 15
       },
       "value": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js"
@@ -2301,6 +2493,19 @@
       "value": "Legacy AngularJS 1.x"
     },
     {
+      "analyzer": "tree-sitter",
+      "api_contract_id": "API-CLINIC_APPOINTMENT_EXPERIENCE-001",
+      "confidence": 1.0,
+      "evidence_source": "tree-sitter",
+      "property": "frontend.method",
+      "source_file": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
+      "source_range": {
+        "line_end": 18,
+        "line_start": 15
+      },
+      "value": "GET"
+    },
+    {
       "analyzer": "framework-analyzer",
       "api_contract_id": "API-CLINIC_APPOINTMENT_EXPERIENCE-001",
       "confidence": 1.0,
@@ -2405,40 +2610,40 @@
       "value": "single"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-CLINIC_APPOINTMENT_EXPERIENCE-001",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "relationship.status",
       "source_file": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
       "source_range": {
-        "line_end": 15,
+        "line_end": 18,
         "line_start": 15
       },
       "value": "PROVEN"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-USER_ACCESS_CONTEXT-001",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.api_expression",
       "source_file": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
       "source_range": {
-        "line_end": 24,
+        "line_end": 27,
         "line_start": 24
       },
-      "value": "GET /api/users/current/user"
+      "value": "/api/users/current/user"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-USER_ACCESS_CONTEXT-001",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.source_reference",
       "source_file": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
       "source_range": {
-        "line_end": 24,
+        "line_end": 27,
         "line_start": 24
       },
       "value": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js"
@@ -2468,6 +2673,19 @@
         "line_start": 3
       },
       "value": "HeaderController"
+    },
+    {
+      "analyzer": "tree-sitter",
+      "api_contract_id": "API-USER_ACCESS_CONTEXT-001",
+      "confidence": 1.0,
+      "evidence_source": "tree-sitter",
+      "property": "frontend.method",
+      "source_file": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+      "source_range": {
+        "line_end": 27,
+        "line_start": 24
+      },
+      "value": "GET"
     },
     {
       "analyzer": "framework-analyzer",
@@ -2574,40 +2792,40 @@
       "value": "single"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-USER_ACCESS_CONTEXT-001",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "relationship.status",
       "source_file": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
       "source_range": {
-        "line_end": 24,
+        "line_end": 27,
         "line_start": 24
       },
       "value": "PROVEN"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-USER_ACCESS_CONTEXT-002",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.api_expression",
       "source_file": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
       "source_range": {
-        "line_end": 31,
+        "line_end": 34,
         "line_start": 31
       },
-      "value": "GET /api/users/current/claims"
+      "value": "/api/users/current/claims"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-USER_ACCESS_CONTEXT-002",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.source_reference",
       "source_file": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
       "source_range": {
-        "line_end": 31,
+        "line_end": 34,
         "line_start": 31
       },
       "value": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js"
@@ -2639,6 +2857,19 @@
       "value": "HeaderController"
     },
     {
+      "analyzer": "tree-sitter",
+      "api_contract_id": "API-USER_ACCESS_CONTEXT-002",
+      "confidence": 1.0,
+      "evidence_source": "tree-sitter",
+      "property": "frontend.method",
+      "source_file": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+      "source_range": {
+        "line_end": 34,
+        "line_start": 31
+      },
+      "value": "GET"
+    },
+    {
       "analyzer": "framework-analyzer",
       "api_contract_id": "API-USER_ACCESS_CONTEXT-002",
       "confidence": 1.0,
@@ -2743,40 +2974,40 @@
       "value": "single"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-USER_ACCESS_CONTEXT-002",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "relationship.status",
       "source_file": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
       "source_range": {
-        "line_end": 31,
+        "line_end": 34,
         "line_start": 31
       },
       "value": "PROVEN"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-USER_ACCESS_CONTEXT-003",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.api_expression",
       "source_file": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
       "source_range": {
-        "line_end": 10,
+        "line_end": 13,
         "line_start": 10
       },
-      "value": "GET /api/users/current/claims"
+      "value": "/api/users/current/claims"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-USER_ACCESS_CONTEXT-003",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.source_reference",
       "source_file": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
       "source_range": {
-        "line_end": 10,
+        "line_end": 13,
         "line_start": 10
       },
       "value": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js"
@@ -2795,6 +3026,19 @@
       "value": "Legacy AngularJS 1.x"
     },
     {
+      "analyzer": "tree-sitter",
+      "api_contract_id": "API-USER_ACCESS_CONTEXT-003",
+      "confidence": 1.0,
+      "evidence_source": "tree-sitter",
+      "property": "frontend.method",
+      "source_file": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
+      "source_range": {
+        "line_end": 13,
+        "line_start": 10
+      },
+      "value": "GET"
+    },
+    {
       "analyzer": "framework-analyzer",
       "api_contract_id": "API-USER_ACCESS_CONTEXT-003",
       "confidence": 1.0,
@@ -2899,40 +3143,40 @@
       "value": "single"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-USER_ACCESS_CONTEXT-003",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "relationship.status",
       "source_file": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
       "source_range": {
-        "line_end": 10,
+        "line_end": 13,
         "line_start": 10
       },
       "value": "PROVEN"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-USER_ACCESS_CONTEXT-004",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.api_expression",
       "source_file": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
       "source_range": {
-        "line_end": 15,
+        "line_end": 18,
         "line_start": 15
       },
-      "value": "GET /api/users/current/tenant"
+      "value": "/api/users/current/tenant"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-USER_ACCESS_CONTEXT-004",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "frontend.source_reference",
       "source_file": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
       "source_range": {
-        "line_end": 15,
+        "line_end": 18,
         "line_start": 15
       },
       "value": "src/MyHealth.Web/content/app/components/users/services/usersService.js"
@@ -2949,6 +3193,19 @@
         "line_start": null
       },
       "value": "Legacy AngularJS 1.x"
+    },
+    {
+      "analyzer": "tree-sitter",
+      "api_contract_id": "API-USER_ACCESS_CONTEXT-004",
+      "confidence": 1.0,
+      "evidence_source": "tree-sitter",
+      "property": "frontend.method",
+      "source_file": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
+      "source_range": {
+        "line_end": 18,
+        "line_start": 15
+      },
+      "value": "GET"
     },
     {
       "analyzer": "framework-analyzer",
@@ -3055,14 +3312,14 @@
       "value": "single"
     },
     {
-      "analyzer": "framework-analyzer",
+      "analyzer": "tree-sitter",
       "api_contract_id": "API-USER_ACCESS_CONTEXT-004",
       "confidence": 1.0,
-      "evidence_source": "framework-analyzer",
+      "evidence_source": "tree-sitter",
       "property": "relationship.status",
       "source_file": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
       "source_range": {
-        "line_end": 15,
+        "line_end": 18,
         "line_start": 15
       },
       "value": "PROVEN"

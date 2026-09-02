@@ -14,8 +14,11 @@ def complete_run(path):
         "knowledge-graph.json": graph, "facts.json": {"facts": []}, "source-inventory.json": {"files": []},
         "framework-detection.json": {}, "graph-run-status.json": {"neo4j": {"status": "skipped"}},
         "roslyn-semantic.json": {"facts": []}, "roslyn-semantic-all.json": {"facts": []},
+        "api-mapping-forensics.json": {}, "api-relationship-resolution-audit.json": {},
+        "api-relationship-resolution-matrix.json": {"rows": []}, "api-relationship-before-after.json": {},
     }.items(): write_json(path / name, value)
-    for name in ("graph-run-summary.md", "analysis-summary.md"): (path / name).write_text("summary", encoding="utf-8")
+    for name in ("graph-run-summary.md", "analysis-summary.md", "api-relationship-resolution-summary.md"):
+        (path / name).write_text("summary", encoding="utf-8")
 
 
 def test_validated_run_is_copied_raw_to_latest_and_timestamped_run(tmp_path):

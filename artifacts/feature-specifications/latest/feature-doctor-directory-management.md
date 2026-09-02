@@ -125,9 +125,27 @@ Current evidence does not establish a complete customer-approved definition of t
 
 Confirmed existing backend API contracts are preserved integration boundaries for the target frontend unless an explicitly approved change modifies them.
 
+### Primary Business APIs
+
+#### API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-001 — `/api/doctors/${doctorId}`
+
+**Role in this Feature:** Primary Business Api.
+
+**Current Frontend:** `src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js` calls `GET /api/doctors/${doctorId}`.
+
+**Confirmed Backend:** `GET /api/doctors/{id}` implemented by `DoctorsController.GetAsync`.
+
+#### API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-002 — /api/doctors
+
+**Role in this Feature:** Primary Business Api.
+
+**Current Frontend:** `src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js` calls `GET /api/doctors`.
+
+**Confirmed Backend:** `GET /api/doctors` implemented by `DoctorsController.GetAsync`.
+
 ### Supporting / Shared APIs
 
-#### API-DOCTOR_DIRECTORY_MANAGEMENT-001 — GET /api/users/current/tenant
+#### API-DOCTOR_DIRECTORY_MANAGEMENT-001 — /api/users/current/tenant
 
 **Role in this Feature:** Supporting Shared Api.
 
@@ -136,36 +154,6 @@ Confirmed existing backend API contracts are preserved integration boundaries fo
 **Confirmed Backend:** `GET /api/users/current/tenant` implemented by `UsersController.GetCurrentTenantAsync`.
 
 This contract supplies shared context only; it does not provide the Feature's primary business data.
-
-### Unresolved or Dynamic Integrations
-
-#### API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-001 — `/api/doctors/${doctorId}`
-
-**Role in this Feature:** Dynamic Primary Interaction.
-
-**Current Frontend:** `src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js` calls `GET `/api/doctors/${doctorId}`.
-
-**Candidate Existing Backend Contract**
-
-A matching backend endpoint exists, but the current frontend-to-backend relationship has not been conclusively established:
-
-- `GET /api/doctors/{id}` — `DoctorsController.GetAsync`; response `Task<Doctor>`
-
-**Modernization Requirement:** Confirm the existing integration before implementing this behavior in the target frontend.
-
-#### API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-002 — /api/doctors
-
-**Role in this Feature:** Unresolved Primary Interaction.
-
-**Current Frontend:** `src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js` calls `GET /api/doctors`.
-
-**Candidate Existing Backend Contract**
-
-A matching backend endpoint exists, but the current frontend-to-backend relationship has not been conclusively established:
-
-- `GET /api/doctors` — `DoctorsController.GetAsync`; response `Task<IEnumerable<Doctor>>`
-
-**Modernization Requirement:** Confirm the existing integration before implementing this behavior in the target frontend.
 
 ## 6. Modernization Considerations
 
@@ -190,13 +178,6 @@ Relevant legacy surfaces: DoctorsController, doctor, doctors, doctorsService
 | What business outcome should users achieve through Review Doctor Directory beyond access to the currently established capability? | Current evidence establishes the behavior but not the stakeholder's intended business outcome. | NON_BLOCKING | Product Owner / Business Analyst / Customer SME |
 | Which information must be considered mandatory when validating Review Doctor Directory in the modernized experience? | Current evidence does not establish a complete customer-approved definition of the information or presentation details that must be retained. | BLOCKING | Product Owner / Business Analyst / Customer SME / QA Lead |
 | Which information must be considered mandatory when validating View Doctor Details in Tenant Context in the modernized experience? | Current evidence does not establish a complete customer-approved definition of the information or presentation details that must be retained. | BLOCKING | Product Owner / Business Analyst / Customer SME / QA Lead |
-
-### Technical Integration Clarifications
-
-| Question | Why It Matters | Impact | Owner |
-| --- | --- | --- | --- |
-| Which existing backend contract conclusively supports `/api/doctors/${doctorId}`? | The frontend interaction is established, but its backend relationship is dynamic or unresolved. | BLOCKING | Solution Architect / Modernization Engineer |
-| Which existing backend contract conclusively supports `/api/doctors`? | The frontend interaction is established, but its backend relationship is dynamic or unresolved. | BLOCKING | Solution Architect / Modernization Engineer |
 
 ## 8. Review & Approval
 

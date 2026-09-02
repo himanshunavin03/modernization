@@ -40,32 +40,6 @@
           "recommended_owner": "Product Owner / Business Analyst",
           "status": "OPEN",
           "story_id": null
-        },
-        {
-          "ac_id": null,
-          "category": "TECHNICAL_INTEGRATION",
-          "current_evidence": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
-          "feature_id": "feature-clinic-appointment-experience",
-          "id": "ENR-CLINIC-APPOINTMENT-EXPERIENCE-004",
-          "impact_if_unresolved": "BLOCKING",
-          "question": "Which existing backend contract conclusively supports `/api/tenants/${tenantId}`?",
-          "reason": "The frontend interaction is established, but its backend relationship is dynamic or unresolved.",
-          "recommended_owner": "Solution Architect / Modernization Engineer",
-          "status": "OPEN",
-          "story_id": "story-clinic-appointment-experience-access-clinic-information"
-        },
-        {
-          "ac_id": null,
-          "category": "TECHNICAL_INTEGRATION",
-          "current_evidence": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
-          "feature_id": "feature-clinic-appointment-experience",
-          "id": "ENR-CLINIC-APPOINTMENT-EXPERIENCE-005",
-          "impact_if_unresolved": "BLOCKING",
-          "question": "Which existing backend contract conclusively supports `/api/tenants/list`?",
-          "reason": "The frontend interaction is established, but its backend relationship is dynamic or unresolved.",
-          "recommended_owner": "Solution Architect / Modernization Engineer",
-          "status": "OPEN",
-          "story_id": "story-clinic-appointment-experience-access-clinic-information"
         }
       ],
       "main_behaviors": [
@@ -85,9 +59,7 @@
       ],
       "readiness": {
         "blocking_items": [
-          "ENR-CLINIC-APPOINTMENT-EXPERIENCE-002",
-          "ENR-CLINIC-APPOINTMENT-EXPERIENCE-004",
-          "ENR-CLINIC-APPOINTMENT-EXPERIENCE-005"
+          "ENR-CLINIC-APPOINTMENT-EXPERIENCE-002"
         ],
         "business_readiness": "READY_WITH_LIMITATIONS",
         "modernization_readiness": "REQUIRES_CLARIFICATION",
@@ -96,7 +68,7 @@
           "ENR-CLINIC-APPOINTMENT-EXPERIENCE-003"
         ],
         "qa_readiness": "READY_WITH_LIMITATIONS",
-        "technical_readiness": "REQUIRES_CLARIFICATION"
+        "technical_readiness": "READY"
       },
       "review": "PASS",
       "stories": [
@@ -148,32 +120,6 @@
           "recommended_owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
           "status": "OPEN",
           "story_id": "story-doctor-directory-management-view-doctor-details-in-tenant-context"
-        },
-        {
-          "ac_id": null,
-          "category": "TECHNICAL_INTEGRATION",
-          "current_evidence": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
-          "feature_id": "feature-doctor-directory-management",
-          "id": "ENR-DOCTOR-DIRECTORY-MANAGEMENT-004",
-          "impact_if_unresolved": "BLOCKING",
-          "question": "Which existing backend contract conclusively supports `/api/doctors/${doctorId}`?",
-          "reason": "The frontend interaction is established, but its backend relationship is dynamic or unresolved.",
-          "recommended_owner": "Solution Architect / Modernization Engineer",
-          "status": "OPEN",
-          "story_id": "story-doctor-directory-management-view-doctor-details-in-tenant-context"
-        },
-        {
-          "ac_id": null,
-          "category": "TECHNICAL_INTEGRATION",
-          "current_evidence": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
-          "feature_id": "feature-doctor-directory-management",
-          "id": "ENR-DOCTOR-DIRECTORY-MANAGEMENT-005",
-          "impact_if_unresolved": "BLOCKING",
-          "question": "Which existing backend contract conclusively supports `/api/doctors`?",
-          "reason": "The frontend interaction is established, but its backend relationship is dynamic or unresolved.",
-          "recommended_owner": "Solution Architect / Modernization Engineer",
-          "status": "OPEN",
-          "story_id": "story-doctor-directory-management-view-doctor-details-in-tenant-context"
         }
       ],
       "main_behaviors": [
@@ -194,9 +140,7 @@
       "readiness": {
         "blocking_items": [
           "ENR-DOCTOR-DIRECTORY-MANAGEMENT-002",
-          "ENR-DOCTOR-DIRECTORY-MANAGEMENT-003",
-          "ENR-DOCTOR-DIRECTORY-MANAGEMENT-004",
-          "ENR-DOCTOR-DIRECTORY-MANAGEMENT-005"
+          "ENR-DOCTOR-DIRECTORY-MANAGEMENT-003"
         ],
         "business_readiness": "READY_WITH_LIMITATIONS",
         "modernization_readiness": "REQUIRES_CLARIFICATION",
@@ -204,7 +148,7 @@
           "ENR-DOCTOR-DIRECTORY-MANAGEMENT-001"
         ],
         "qa_readiness": "READY_WITH_LIMITATIONS",
-        "technical_readiness": "REQUIRES_CLARIFICATION"
+        "technical_readiness": "READY"
       },
       "review": "PASS",
       "stories": [
@@ -269,45 +213,6 @@
           "recommended_owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
           "status": "OPEN",
           "story_id": "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary"
-        },
-        {
-          "ac_id": null,
-          "category": "TECHNICAL_INTEGRATION",
-          "current_evidence": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
-          "feature_id": "feature-operational-dashboard-insights",
-          "id": "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-005",
-          "impact_if_unresolved": "BLOCKING",
-          "question": "Which existing backend contract conclusively supports `'/api/reports/expenses/' + year`?",
-          "reason": "The frontend interaction is established, but its backend relationship is dynamic or unresolved.",
-          "recommended_owner": "Solution Architect / Modernization Engineer",
-          "status": "OPEN",
-          "story_id": "story-operational-dashboard-insights-access-yearly-operational-reports"
-        },
-        {
-          "ac_id": null,
-          "category": "TECHNICAL_INTEGRATION",
-          "current_evidence": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
-          "feature_id": "feature-operational-dashboard-insights",
-          "id": "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-006",
-          "impact_if_unresolved": "BLOCKING",
-          "question": "Which existing backend contract conclusively supports `'/api/reports/patients/' + year`?",
-          "reason": "The frontend interaction is established, but its backend relationship is dynamic or unresolved.",
-          "recommended_owner": "Solution Architect / Modernization Engineer",
-          "status": "OPEN",
-          "story_id": "story-operational-dashboard-insights-access-yearly-operational-reports"
-        },
-        {
-          "ac_id": null,
-          "category": "TECHNICAL_INTEGRATION",
-          "current_evidence": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
-          "feature_id": "feature-operational-dashboard-insights",
-          "id": "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-007",
-          "impact_if_unresolved": "BLOCKING",
-          "question": "Which existing backend contract conclusively supports `/api/reports/clinicsummary`?",
-          "reason": "The frontend interaction is established, but its backend relationship is dynamic or unresolved.",
-          "recommended_owner": "Solution Architect / Modernization Engineer",
-          "status": "OPEN",
-          "story_id": "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary"
         }
       ],
       "main_behaviors": [
@@ -334,10 +239,7 @@
         "blocking_items": [
           "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-002",
           "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-003",
-          "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-004",
-          "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-005",
-          "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-006",
-          "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-007"
+          "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-004"
         ],
         "business_readiness": "READY_WITH_LIMITATIONS",
         "modernization_readiness": "REQUIRES_CLARIFICATION",
@@ -345,7 +247,7 @@
           "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-001"
         ],
         "qa_readiness": "READY_WITH_LIMITATIONS",
-        "technical_readiness": "REQUIRES_CLARIFICATION"
+        "technical_readiness": "READY"
       },
       "review": "PASS",
       "stories": [
@@ -385,19 +287,6 @@
           "recommended_owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
           "status": "OPEN",
           "story_id": "story-patient-directory-management-review-patient-directory"
-        },
-        {
-          "ac_id": null,
-          "category": "TECHNICAL_INTEGRATION",
-          "current_evidence": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
-          "feature_id": "feature-patient-directory-management",
-          "id": "ENR-PATIENT-DIRECTORY-MANAGEMENT-003",
-          "impact_if_unresolved": "BLOCKING",
-          "question": "Which existing backend contract conclusively supports `/api/patients`?",
-          "reason": "The frontend interaction is established, but its backend relationship is dynamic or unresolved.",
-          "recommended_owner": "Solution Architect / Modernization Engineer",
-          "status": "OPEN",
-          "story_id": "story-patient-directory-management-review-patient-directory"
         }
       ],
       "main_behaviors": [
@@ -416,8 +305,7 @@
       ],
       "readiness": {
         "blocking_items": [
-          "ENR-PATIENT-DIRECTORY-MANAGEMENT-002",
-          "ENR-PATIENT-DIRECTORY-MANAGEMENT-003"
+          "ENR-PATIENT-DIRECTORY-MANAGEMENT-002"
         ],
         "business_readiness": "READY_WITH_LIMITATIONS",
         "modernization_readiness": "REQUIRES_CLARIFICATION",
@@ -425,7 +313,7 @@
           "ENR-PATIENT-DIRECTORY-MANAGEMENT-001"
         ],
         "qa_readiness": "READY_WITH_LIMITATIONS",
-        "technical_readiness": "REQUIRES_CLARIFICATION"
+        "technical_readiness": "READY"
       },
       "review": "PASS",
       "stories": [
@@ -464,32 +352,6 @@
           "recommended_owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
           "status": "OPEN",
           "story_id": "story-user-access-context-access-user-management-views"
-        },
-        {
-          "ac_id": null,
-          "category": "TECHNICAL_INTEGRATION",
-          "current_evidence": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
-          "feature_id": "feature-user-access-context",
-          "id": "ENR-USER-ACCESS-CONTEXT-003",
-          "impact_if_unresolved": "BLOCKING",
-          "question": "Which existing backend contract conclusively supports `/api/users/${username}`?",
-          "reason": "The frontend interaction is established, but its backend relationship is dynamic or unresolved.",
-          "recommended_owner": "Solution Architect / Modernization Engineer",
-          "status": "OPEN",
-          "story_id": "story-user-access-context-access-user-management-views"
-        },
-        {
-          "ac_id": null,
-          "category": "TECHNICAL_INTEGRATION",
-          "current_evidence": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
-          "feature_id": "feature-user-access-context",
-          "id": "ENR-USER-ACCESS-CONTEXT-004",
-          "impact_if_unresolved": "BLOCKING",
-          "question": "Which existing backend contract conclusively supports `/api/users`?",
-          "reason": "The frontend interaction is established, but its backend relationship is dynamic or unresolved.",
-          "recommended_owner": "Solution Architect / Modernization Engineer",
-          "status": "OPEN",
-          "story_id": "story-user-access-context-access-user-management-views"
         }
       ],
       "main_behaviors": [
@@ -515,9 +377,7 @@
       ],
       "readiness": {
         "blocking_items": [
-          "ENR-USER-ACCESS-CONTEXT-002",
-          "ENR-USER-ACCESS-CONTEXT-003",
-          "ENR-USER-ACCESS-CONTEXT-004"
+          "ENR-USER-ACCESS-CONTEXT-002"
         ],
         "business_readiness": "READY_WITH_LIMITATIONS",
         "modernization_readiness": "REQUIRES_CLARIFICATION",
@@ -525,7 +385,7 @@
           "ENR-USER-ACCESS-CONTEXT-001"
         ],
         "qa_readiness": "READY_WITH_LIMITATIONS",
-        "technical_readiness": "REQUIRES_CLARIFICATION"
+        "technical_readiness": "READY"
       },
       "review": "PASS",
       "stories": [

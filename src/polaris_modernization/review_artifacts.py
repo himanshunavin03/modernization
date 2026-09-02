@@ -14,6 +14,9 @@ from polaris_modernization.graph.writer import write_json
 BASE_FILES = {
     "knowledge-graph.json", "facts.json", "source-inventory.json", "framework-detection.json",
     "graph-run-status.json", "graph-run-summary.md", "analysis-summary.md",
+    "api-mapping-forensics.json", "api-relationship-resolution-audit.json",
+    "api-relationship-resolution-matrix.json", "api-relationship-before-after.json",
+    "api-relationship-resolution-summary.md",
 }
 ROSLYN_FILES = {"roslyn-semantic.json", "roslyn-semantic-all.json"}
 SECRET_PATTERNS = (

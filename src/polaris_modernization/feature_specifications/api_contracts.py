@@ -6,7 +6,7 @@ from pathlib import Path, PurePosixPath
 import re
 
 
-STATUSES = {"PROVEN", "DYNAMIC", "UNRESOLVED", "EXTERNAL"}
+STATUSES = {"PROVEN", "DYNAMIC", "UNRESOLVED", "EXTERNAL", "NO_BACKEND_ROUTE"}
 
 
 def _evidence(value: dict, source: str | None = None) -> list[dict]:
@@ -40,16 +40,55 @@ def _frontend_node(nodes: list[dict], reference: dict) -> tuple[dict, list[dict]
         and node.get("name") == reference["api_contract"]
         and _evidence(node, source)
     ]
-    if not candidates and reference["status"] == "PROVEN":
-        candidates = [
-            node for node in nodes
-            if node.get("label") == "ApiCall"
-            and node.get("name") == reference["backend_endpoint"]
-            and _evidence(node, source)
-        ]
+    if candidates:
+        return candidates[0], _evidence(candidates[0], source)
+    targets = {value for value in (reference.get("api_contract"), reference.get("backend_endpoint")) if value}
+    candidates = [
+        node for node in nodes
+        if node.get("label") == "ApiCall"
+        and _evidence(node, source)
+        and targets.intersection(_api_call_signatures(node))
+    ]
     if not candidates:
         raise ValueError(f"No frontend API evidence for {source}: {reference['api_contract']}")
     return candidates[0], _evidence(candidates[0], source)
+
+
+def _api_call_signatures(node: dict) -> set[str]:
+    props = node.get("properties", {})
+    method = str(props.get("http_method") or "").upper()
+    raw_expression = str(props.get("raw_url_expression") or node.get("name") or "")
+    normalized_route = str(props.get("normalized_route") or "")
+    resolved_endpoint = str(props.get("resolved_backend_endpoint") or "")
+    values = {str(node.get("name") or ""), raw_expression, normalized_route, resolved_endpoint}
+    if method and raw_expression.startswith("/"):
+        values.add(f"{method} {raw_expression}")
+    if method and normalized_route:
+        values.add(f"{method} {normalized_route}")
+    return {value for value in values if value}
+
+
+def _current_reference(frontend_node: dict, reference: dict, mapping_edges: list[dict], node_by_id: dict[str, dict]) -> dict:
+    props = frontend_node.get("properties", {})
+    status = str(props.get("match_status") or reference["status"])
+    if status not in STATUSES:
+        status = reference["status"]
+    matching_edges = [edge for edge in mapping_edges if edge.get("source") == frontend_node["id"]]
+    backend_endpoint = str(props.get("resolved_backend_endpoint") or reference.get("backend_endpoint") or "")
+    if backend_endpoint:
+        matching_edges = [
+            edge for edge in matching_edges
+            if node_by_id.get(edge["target"], {}).get("name") == backend_endpoint
+        ] or matching_edges
+    mapping_edge = matching_edges[0] if len(matching_edges) == 1 else None
+    if status == "PROVEN" and mapping_edge is None:
+        raise ValueError(f"PROVEN API contract cannot be reconciled to a single IMPLEMENTED_BY edge: {reference}")
+    return {
+        "status": status,
+        "frontend_expression": str(props.get("raw_url_expression") or frontend_node.get("name") or reference["api_contract"]),
+        "frontend_method": str(props.get("http_method")).upper() if props.get("http_method") else None,
+        "mapping_edge": mapping_edge,
+    }
 
 
 def _framework_evidence(frameworks: dict, source: str) -> list[dict]:
@@ -104,6 +143,7 @@ def build_feature_api_contracts(
             reference = item["reference"]
             contract_id = f"API-{spec['feature_id'].removeprefix('feature-').upper().replace('-', '_')}-{number:03d}"
             frontend_node, frontend_evidence = _frontend_node(nodes, reference)
+            current = _current_reference(frontend_node, reference, mapping_edges, node_by_id)
             technology_evidence = _framework_evidence(frameworks, reference["frontend_source"])
             source = PurePosixPath(reference["frontend_source"])
             declared = [
@@ -120,8 +160,8 @@ def build_feature_api_contracts(
                 "surface": "/".join(source.parts[:-2]) if len(source.parts) > 2 else None,
                 "controller_or_component": controller,
                 "service": service,
-                "method": None,
-                "api_expression": reference["api_contract"],
+                "method": current["frontend_method"],
+                "api_expression": current["frontend_expression"],
                 "source_reference": reference["frontend_source"],
             }
             evidence_by_property: dict[str, list[dict]] = {
@@ -134,6 +174,8 @@ def build_feature_api_contracts(
                 evidence_by_property["frontend.service"] = services[0][1]
             if controller:
                 evidence_by_property["frontend.controller_or_component"] = controllers[0][1]
+            if frontend["method"]:
+                evidence_by_property["frontend.method"] = frontend_evidence
 
             backend = {"http_method": None, "route_template": None, "resolved_endpoint": None,
                        "controller": None, "action": None, "source_reference": None}
@@ -142,16 +184,8 @@ def build_feature_api_contracts(
             response = {"response_type": None, "response_fields": [],
                         "collection_or_single": None, "known_status_behavior": []}
             relationship_evidence: list[dict] = []
-            if reference["status"] == "PROVEN":
-                matching = [
-                    edge for edge in mapping_edges
-                    if node_by_id.get(edge["source"], {}).get("name") == reference["api_contract"]
-                    and node_by_id.get(edge["target"], {}).get("name") == reference["backend_endpoint"]
-                    and _evidence(edge, reference["frontend_source"])
-                ]
-                if not matching:
-                    raise ValueError(f"PROVEN Feature API lacks an IMPLEMENTED_BY edge: {reference}")
-                edge = matching[0]
+            if current["status"] == "PROVEN":
+                edge = current["mapping_edge"]
                 endpoint = node_by_id[edge["target"]]
                 endpoint_evidence = _evidence(endpoint)
                 relationship_evidence = _evidence(edge, reference["frontend_source"])
@@ -161,7 +195,10 @@ def build_feature_api_contracts(
                     "resolved_endpoint": props.get("normalized_route"), "controller": props.get("controller"),
                     "action": props.get("action"), "source_reference": endpoint_evidence[0]["source_path"],
                 })
-                request["path_parameters"] = [{"name": name, "location": "Path", "type": None, "required": "Not established"} for name in props.get("parameters", []) if "{" + name + "}" in props.get("normalized_route", "")]
+                request["path_parameters"] = [
+                    {"name": name, "location": "Path", "type": None, "required": "Not established"}
+                    for name in props.get("path_parameters", []) or props.get("parameters", [])
+                ]
                 request["query_parameters"] = props.get("query_parameters", [])
                 request["body_type"] = props.get("request_type") or props.get("request_body_type")
                 request["body_fields"] = props.get("request_fields", [])
@@ -186,9 +223,9 @@ def build_feature_api_contracts(
                     evidence_by_property["response.response_fields"] = endpoint_evidence
 
             relationship = {
-                "status": reference["status"],
+                "status": current["status"],
                 "evidence": relationship_evidence or frontend_evidence,
-                "confidence_classification": "CONFIRMED" if reference["status"] == "PROVEN" else "REQUIRES_CONFIRMATION",
+                "confidence_classification": "CONFIRMED" if current["status"] == "PROVEN" else "REQUIRES_CONFIRMATION",
             }
             evidence_by_property["relationship.status"] = relationship["evidence"]
             contract = {
@@ -199,7 +236,7 @@ def build_feature_api_contracts(
                 "related_ac_ids": sorted(set(item["ac_ids"])),
                 "frontend": frontend, "backend": backend, "request": request, "response": response,
                 "relationship": relationship,
-                "modernization": {"preservation_required": reference["status"] == "PROVEN", "clarification_required": reference["status"] != "PROVEN"},
+                "modernization": {"preservation_required": current["status"] == "PROVEN", "clarification_required": current["status"] != "PROVEN"},
             }
             for prop, evidence in evidence_by_property.items():
                 target: object = contract
@@ -219,6 +256,7 @@ def build_feature_api_contracts(
             "feature_id": feature["feature_id"], "frontend_api_calls": len(contracts),
             "proven_backend_contracts": counts["PROVEN"], "dynamic_relationships": counts["DYNAMIC"],
             "unresolved_relationships": counts["UNRESOLVED"], "external_relationships": counts["EXTERNAL"],
+            "no_backend_route_relationships": counts["NO_BACKEND_ROUTE"],
             "contracts_with_method": sum(bool(x["backend"]["http_method"]) for x in contracts),
             "contracts_with_route": sum(bool(x["backend"]["resolved_endpoint"]) for x in contracts),
             "contracts_with_parameters": sum(bool(x["request"]["path_parameters"] or x["request"]["query_parameters"]) for x in contracts),
@@ -230,6 +268,7 @@ def build_feature_api_contracts(
     totals = {
         "feature_relevant_api_contracts": len(all_contracts), "proven": statuses["PROVEN"],
         "dynamic": statuses["DYNAMIC"], "unresolved": statuses["UNRESOLVED"], "external": statuses["EXTERNAL"],
+        "no_backend_route": statuses["NO_BACKEND_ROUTE"],
         "contracts_with_http_method": sum(bool(x["backend"]["http_method"]) for x in all_contracts),
         "contracts_with_route": sum(bool(x["backend"]["resolved_endpoint"]) for x in all_contracts),
         "contracts_with_path_parameters": sum(bool(x["request"]["path_parameters"]) for x in all_contracts),

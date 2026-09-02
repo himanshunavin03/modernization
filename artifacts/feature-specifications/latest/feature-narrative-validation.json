@@ -7,7 +7,7 @@
   "api_regression_validation": "PASS",
   "authoritative_acceptance_criteria": 14,
   "blocking_business_items": 8,
-  "blocking_technical_items": 10,
+  "blocking_technical_items": 0,
   "boilerplate_sentences": 0,
   "broken_verb_constructions": 0,
   "business_enrichment_items": 14,

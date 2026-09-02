@@ -5,7 +5,6 @@ from dataclasses import dataclass, field
 import re
 from pathlib import Path
 from typing import Iterable, Protocol
-from urllib.parse import urlparse
 
 from polaris_modernization.graph.api_mapping import normalize_route
 from polaris_modernization.models import Evidence, Fact
@@ -112,6 +111,27 @@ def _first_string(arguments: str) -> str | None:
     return bytes(match.group(1), "utf-8").decode("unicode_escape") if match else None
 
 
+def _parameter_details(parameters: str) -> list[dict[str, object]]:
+    result: list[dict[str, object]] = []
+    for parameter in [part.strip() for part in parameters.split(",") if part.strip()]:
+        attributes = re.findall(r"\[([^\]]+)\]", parameter)
+        cleaned = re.sub(r"\[[^\]]+\]\s*", "", parameter).strip()
+        if not cleaned:
+            continue
+        tokens = cleaned.split()
+        if len(tokens) < 2:
+            continue
+        name = tokens[-1].strip()
+        parameter_type = " ".join(tokens[:-1]).strip()
+        result.append({
+            "name": name,
+            "type": parameter_type,
+            "from_body": any("FromBody" in attribute for attribute in attributes),
+            "attributes": attributes,
+        })
+    return result
+
+
 def _api_path_hint(source_path: str) -> bool:
     parts = re.split(r"[\\/]", source_path)
     return any(part.casefold() == "api" or part.casefold().endswith(".api") for part in parts)
@@ -172,14 +192,24 @@ class AspNetRouteAnalyzer:
                         continue
                     line = text.count("\n", 0, method.start()) + 1
                     response = method.group("return")
-                    params = [part.strip().split()[-1] for part in method.group("params").split(",") if part.strip()]
+                    parameter_details = _parameter_details(method.group("params"))
                     for verb in dict.fromkeys(verbs):
                         template, route, tokens = _route(prefix or "", controller, action, suffix or "")
+                        path_parameters = [match.group(1) for match in re.finditer(r"\{([^{}]+)\}", route)]
+                        request_parameter = next((item for item in parameter_details if item["from_body"]), None)
+                        query_parameters = [
+                            {"name": item["name"], "type": item["type"]}
+                            for item in parameter_details
+                            if not item["from_body"] and item["name"] not in path_parameters and verb in {"GET", "DELETE"}
+                        ]
                         result.facts.append(Fact("endpoint", f"{verb} {route}", _evidence(entry, project_id, line), {
                             "http_method": verb, "normalized_route": route, "route_template": template,
                             "controller_route_template": prefix or "", "method_route_template": suffix or "",
                             "route_token_resolution": tokens, "controller": controller, "action": action,
-                            "response_type": response, "parameters": params, "framework": "ASP.NET",
+                            "response_type": response, "parameters": [item["name"] for item in parameter_details],
+                            "path_parameters": path_parameters, "query_parameters": query_parameters,
+                            "request_type": request_parameter["type"] if request_parameter else None,
+                            "request_fields": [], "response_fields": [], "framework": "ASP.NET",
                             "provenance": "FRAMEWORK_PROVEN",
                         }))
         return result
@@ -203,43 +233,9 @@ class RazorAnalyzer:
         return result
 
 
-class AngularJsApiAnalyzer:
-    _config = re.compile(r"\$http\s*\(\s*\{(?P<body>.*?)\}\s*\)", re.S)
-    _shortcut = re.compile(r"\$http\.(get|post|put|patch|delete)\s*\(\s*(?P<url>[^,\)]+)", re.I)
-
-    def supports(self, detections: list[dict]) -> bool:
-        return any(item["framework"] == "AngularJS" for item in detections)
-
-    def analyze(self, source_root: Path, inventory: list[dict], project_id: str) -> FrameworkFacts:
-        result = FrameworkFacts()
-        for entry in inventory:
-            if not entry["selected_for_extraction"] or not entry["source_path"].endswith(".js"):
-                continue
-            text = (source_root / entry["source_path"]).read_text(encoding="utf-8", errors="replace")
-            matches = []
-            for match in self._config.finditer(text):
-                method = re.search(r"\bmethod\s*:\s*['\"](\w+)['\"]", match.group("body"), re.I)
-                url = re.search(r"\burl\s*:\s*([^,}\n]+)", match.group("body"), re.I)
-                matches.append((match.start(), method.group(1).upper() if method else "GET", _literal(url.group(1)) if url else None))
-            matches.extend((match.start(), match.group(1).upper(), _literal(match.group("url"))) for match in self._shortcut.finditer(text))
-            for offset, verb, url in matches:
-                line = text.count("\n", 0, offset) + 1
-                if url is None:
-                    result.warnings.append({"source_path": entry["source_path"], "message": "Dynamic AngularJS API URL remains unresolved."})
-                    continue
-                route = normalize_route(url)
-                external = bool(urlparse(url).scheme and urlparse(url).netloc)
-                result.facts.append(Fact("api_call", f"{verb} {route}", _evidence(entry, project_id, line), {
-                    "http_method": verb, "normalized_route": route, "url": url,
-                    "match_status": "EXTERNAL_API" if external else "UNRESOLVED",
-                    "framework": "AngularJS", "provenance": "FRAMEWORK_PROVEN", "external": external,
-                }))
-        return result
-
-
 class FrameworkAnalyzerRegistry:
     def __init__(self, analyzers: list[FrameworkAnalyzer] | None = None):
-        self.analyzers = analyzers or [AspNetRouteAnalyzer(), RazorAnalyzer(), AngularJsApiAnalyzer()]
+        self.analyzers = analyzers or [AspNetRouteAnalyzer(), RazorAnalyzer()]
 
     def analyze(self, source_root: Path, inventory: list[dict], project_id: str, detections: list[dict]) -> FrameworkFacts:
         result = FrameworkFacts()
@@ -248,17 +244,4 @@ class FrameworkAnalyzerRegistry:
                 facts = analyzer.analyze(source_root, inventory, project_id)
                 result.facts.extend(facts.facts)
                 result.warnings.extend(facts.warnings)
-        endpoints = [fact for fact in result.facts if fact.kind == "endpoint"]
-        for call in (fact for fact in result.facts if fact.kind == "api_call"):
-            if call.properties.get("external"):
-                continue
-            candidates = [endpoint for endpoint in endpoints if endpoint.properties["http_method"] == call.properties["http_method"] and endpoint.properties["normalized_route"] == call.properties["normalized_route"]]
-            if len(candidates) == 1:
-                call.properties["match_status"] = "PROVEN"
-                result.facts.append(Fact("api_mapping", call.name, call.evidence, {"endpoint": candidates[0].name, "status": "PROVEN"}))
-            elif len(candidates) > 1:
-                call.properties["match_status"] = "AMBIGUOUS"
-                result.warnings.append({"source_path": call.evidence.source_path, "message": "AngularJS API call has ambiguous backend endpoint candidates."})
-            else:
-                call.properties["match_status"] = "NO_BACKEND_ROUTE"
         return result
