@@ -115,7 +115,7 @@ The solution is project-agnostic. Every source project is selected by `--source-
 
 ## Recovery Instruction
 
-Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 055 under `docs/prompts/`, immutable KG run `legacy-dashboard-complete-application-demo-v1-2026-09-02-050627`, and final feature-specification run `legacy-dashboard-complete-application-demo-v1-2026-09-01-230757-788124` plus `artifacts/feature-specifications/latest/`. The UNDERSTAND pillar is frozen `FROZEN_READY_WITH_LIMITATIONS`. Await explicit authorization to implement the LangGraph/LangChain POC orchestration foundation.
+Before further work, read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts through 056 under `docs/prompts/`, immutable KG run `legacy-dashboard-complete-application-demo-v1-2026-09-02-050627`, and final feature-specification run `legacy-dashboard-complete-application-demo-v1-2026-09-01-230757-788124` plus `artifacts/feature-specifications/latest/`. The UNDERSTAND pillar is frozen `FROZEN_READY_WITH_LIMITATIONS`. Await explicit authorization to implement the LangGraph/LangChain POC orchestration foundation.
 
 ## Final API Relationship Resolution Audit And Freeze Gate
 
@@ -128,6 +128,12 @@ The Knowledge Graph is the authoritative source for proven frontend-to-backend A
 Compared with approved KG run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`, deterministic contract enrichment added query-parameter evidence to 24 endpoints, request types to 9 endpoints, request fields to 4 endpoints, and response fields to 10 endpoints. Final feature-specification run `legacy-dashboard-complete-application-demo-v1-2026-09-01-230757-788124` preserves the approved 5 Feature / 12 Story / 14 Acceptance Criterion semantic lineage while promoting all 11 feature-relevant API contracts to `PROVEN`. Tenant API classification remains Feature-relative: supporting for Dashboard, Doctor, Patient, and Clinic; primary for User Access and Tenant Context.
 
 The UNDERSTAND pillar is frozen `FROZEN_READY_WITH_LIMITATIONS`. Remaining legitimate limitations are one true external API call, `complete_with_opaque_dependencies` coverage with 43 opaque dependencies, 72 Roslyn warnings with 4,344 unresolved semantic symbols, and 57 inherited evidence-range anomalies that are unchanged from approved KG run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`.
+
+## Repository Hygiene And Frontend API Count Terminology
+
+Cleanup after commit `9970fba` removes five accidentally committed root-level `.tmp-*` execution-output directories and protects equivalent Polaris temporary runs with the narrow `.tmp-*/` ignore rule. Canonical `artifacts/` outputs and immutable approved runs remain unchanged. API resolver production behavior is unchanged.
+
+The historical `FRONTEND_API_CALLS_VISIBLE_PREVIOUS=44` value is the old KG's mixed-producer `api_call` fact count, not 44 distinct source occurrences: 32 facts came from Tree-sitter, 11 from the former AngularJS framework analyzer, and 1 from deterministic crash fallback. Ten framework-analyzer facts duplicate Tree-sitter call sites; one framework-only fact represents `this.$http.get('/clinics')`. The final resolver inventory intentionally contains 33 normalized resolver-input facts from the retained primary extraction paths: 32 Tree-sitter facts plus 1 crash-fallback fact. Of those final facts, 32 are first-party and 1 is external. The difference is therefore reconciled as a fact-producer/model change, not source loss, deduplication performed by the resolver, or a reason to alter analyzer behavior during freeze cleanup.
 
 ## Project-Aware Roslyn Engine Proof
 

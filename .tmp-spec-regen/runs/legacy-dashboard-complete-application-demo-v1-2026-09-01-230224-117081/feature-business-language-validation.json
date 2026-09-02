@@ -1,9 +1,0 @@
-{
-  "boilerplate_sentences": 0,
-  "business_technical_leakage": 0,
-  "circular_stories": 0,
-  "semantically_circular_stories": 0,
-  "status": "PASS",
-  "system_centric_stories": 0,
-  "unsupported_business_value_stories": 0
-}
