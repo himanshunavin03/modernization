@@ -1,0 +1,15 @@
+# Polaris POC - Human-Readable Feature Specification and Jira-Ready Requirement Refinement
+
+Continue from `BASE_COMMIT=9f2d1001fd5a31655ef2d60ce3fee9187e57eb2f`. The UNDERSTAND pillar remains frozen `FROZEN_READY_WITH_LIMITATIONS`; do not reopen or redesign it.
+
+Refine the five generated human-facing Feature Specification Markdown documents into professional functional specifications suitable for Product Owner, Business Analyst, Solution Architect, development, and QA review. Readers must not need to understand Polaris, knowledge graphs, analyzers, source locations, evidence packages, provenance, confidence, or resolver classifications.
+
+Preserve the approved machine lineage of 5 Features, 12 Stories, and 14 authoritative Acceptance Criteria. Do not change the Knowledge Graph, API resolver, framework/Tree-sitter/Roslyn/LSP behavior, Application Understanding meaning, Feature meaning, Story meaning, authoritative Acceptance Criteria meaning, API relationships, or anything under `source/`. Do not invent personas, UI behavior, API behavior, errors, validation, business rules, response fields, defaults, authorization, sorting, filtering, pagination, or target architecture.
+
+Implement a reusable human presentation layer that derives from the frozen approved JSON contracts. Human Markdown should contain meaningful sections for Feature Overview, numbered Functional Requirements, Jira-readable User Stories, Given/When/Then Acceptance Criteria, exact API Requirements, supported Business Rules, genuine Clarifications Required, Development Requirements, Definition of Done, and Review and Approval. Avoid excessive repetition. Keep source evidence, IDs, hashes, ranges, provenance, relationship classifications, and confidence in machine JSON/KG, not normal human prose.
+
+Use Operational Dashboard Insights as the reference-quality document and clearly present its yearly expense, yearly patient, clinic summary, and tenant-context behavior, including exact contracts `GET /api/reports/expenses/{year}`, `GET /api/reports/patients/{year}`, `GET /api/reports/clinicsummary`, and `GET /api/users/current/tenant`. Apply the same reusable model to Doctor Directory Management, Patient Directory Management, Clinic Appointment Experience, and User Access and Tenant Context.
+
+Add quality validation for forbidden internal terminology and source references, understandable Functional Requirements, API contract presentation, preserved Stories and Acceptance Criteria, genuine clarifications, no unsupported requirements or target architecture, 5/12/14 lineage, unchanged source, and zero external LLM requirement. Manually review all five documents for BA, PO, SA, developer, and QA usability.
+
+Update project records with the decision that human-facing Feature Specifications are delivery artifacts rather than analysis reports, while machine-readable evidence/provenance remains in JSON/KG. Run focused Feature Specification tests and the full regression suite. Create one commit named `Refine feature specifications for Jira-ready delivery review`, then stop without starting LangGraph, LangChain, Figma, target architecture, or Angular generation.

@@ -107,7 +107,8 @@ def _classification(status: str, *, supporting: bool) -> str:
 def _resolved_backend(fact: dict, endpoints_by_name: dict[str, dict]) -> dict:
     endpoint = endpoints_by_name.get(str(fact.get("properties", {}).get("resolved_backend_endpoint") or ""))
     if not endpoint:
-        return {"http_method": None, "route_template": None, "resolved_endpoint": None, "controller": None, "action": None, "source_reference": None}
+        return {"http_method": None, "route_template": None, "resolved_endpoint": None, "controller": None, "action": None, "source_reference": None,
+                "path_parameters": [], "query_parameters": [], "request_type": None, "request_fields": [], "response_type": None, "response_fields": []}
     props = endpoint["properties"]
     evidence = endpoint.get("evidence", [])
     return {
@@ -117,6 +118,12 @@ def _resolved_backend(fact: dict, endpoints_by_name: dict[str, dict]) -> dict:
         "controller": props.get("controller"),
         "action": props.get("action"),
         "source_reference": evidence[0]["source_path"] if evidence else None,
+        "path_parameters": props.get("path_parameters", []),
+        "query_parameters": props.get("query_parameters", []),
+        "request_type": props.get("request_type"),
+        "request_fields": props.get("request_fields", []),
+        "response_type": props.get("response_type"),
+        "response_fields": props.get("response_fields", []),
     }
 
 

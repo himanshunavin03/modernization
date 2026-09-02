@@ -10,6 +10,7 @@ import shutil
 
 from .api_contracts import build_feature_api_contracts
 from .api_coverage import build_feature_api_coverage
+from .human_presentation import audit_human_markdown, build_human_presentation, render_human_markdown
 from .semantic_quality import (
     build_ac_semantic_model,
     build_story_semantic_model,
@@ -243,6 +244,7 @@ def _narrative(spec: dict, evidence: dict, contracts: list[dict], interactions: 
                     "business_value": " ".join(established_values), "business_value_status": "REQUIRES_STAKEHOLDER_ENRICHMENT" if any(x["stakeholder_enrichment_required"] for x in story_models) else "SUPPORTED_INTERPRETATION",
                     "modernization_objective": spec["feature_overview"]["modernization_relevance"]},
         "functional_behavior": groups, "scope": spec["scope"], "requirements": presented_stories,
+        "business_rules": spec["business_rules"],
         "story_semantic_models": story_models, "acceptance_criterion_semantic_models": ac_models,
         "feature_name_behavior_alignment": alignment, "stakeholder_enrichment_items": enrichment,
         "existing_api_contracts": contracts, "api_interactions": interactions,
@@ -253,93 +255,8 @@ def _narrative(spec: dict, evidence: dict, contracts: list[dict], interactions: 
 
 
 def _render(model: dict) -> str:
-    h, summary = model["feature_header"], model["summary"]
-    lines = [
-        f"# {h['id']} — {h['name']}", "", "## 1. Feature Summary", "", "### Purpose", "", summary["purpose"], "",
-        "### Current Business Capability", "", summary["current_business_capability"], "", "### Business Value", "",
-        summary["business_value"], "", f"**Business Value Status:** {summary['business_value_status'].replace('_', ' ').title()}.", "",
-        "### Modernization Objective", "", summary["modernization_objective"], "", "## 2. Functional Behavior", "",
-    ]
-    for behavior in model["functional_behavior"]:
-        lines += [f"### {behavior['heading']}", "", behavior["statement"], ""]
-    alignment = model["feature_name_behavior_alignment"]
-    lines += [
-        "The available requirements establish a general application user; no more specific business persona is authoritative.", "",
-        f"**Feature Name / Behavior Alignment:** {alignment['status'].replace('_', ' ').title()}.", "",
-    ]
-    if alignment["feature_name_terms_not_established_by_primary_behaviors"]:
-        missing = ", ".join(alignment["feature_name_terms_not_established_by_primary_behaviors"])
-        lines += [f"The current primary behaviors do not establish: {missing}. The Feature name does not create additional scope.", ""]
-    lines += ["## 3. Scope", "", "### In Scope", "", *[f"- {_clean(x)}" for x in model["scope"]["in_scope"]], ""]
-    if model["scope"]["out_of_scope"]:
-        lines += ["### Not Established by Current Evidence", "", *[f"- {_clean(x)}" for x in model["scope"]["out_of_scope"]], ""]
-    lines += ["## 4. User Stories & Acceptance Criteria", ""]
-    for story in model["requirements"]:
-        semantic = story["story_semantic_model"]
-        lines += [
-            f"### {story['id'].upper()} — {story['title']}", "", "**Story**", "", story["statement"].replace("\n\n", "\n").replace("\n", "\n\n"), "",
-            "**Business Context**", "", story["business_context"], "",
-            f"**Business Value Status:** {semantic['business_value_status'].replace('_', ' ').title()}.", "",
-        ]
-        functional = [ac for ac in story["acceptance_criteria"] if ac["evidence_status"] != "MODERNIZATION_PRESERVATION"]
-        preservation = [ac for ac in story["acceptance_criteria"] if ac["evidence_status"] == "MODERNIZATION_PRESERVATION"]
-        if functional:
-            lines += ["#### Acceptance Criteria", ""]
-        for ac in functional:
-            presentation = ac["customer_presentation"]
-            lines += [
-                f"##### {ac['id'].upper()} — {ac['title']}", "", f"**Quality Status:** {ac['evidence_status'].replace('_', ' ').title()}.", "",
-                f"**Given** {presentation['given']}", "", f"**When** {presentation['when']}", "", f"**Then** {presentation['then']}.", "",
-            ]
-            if ac["limitations"]:
-                lines += ["**Evidence Limitation**", "", *ac["limitations"], ""]
-        for ac in preservation:
-            lines += ["#### Modernization Preservation Requirement", "", f"**{ac['id'].upper()} — {ac['title']}**", "", ac["customer_presentation"] + ".", ""]
-        if story["api_contract_ids"]:
-            lines += ["**Current Backend Contract References**", "", *[f"- `{item}`" for item in story["api_contract_ids"]], ""]
-    lines += ["## 5. Existing Backend Integration", "", "Confirmed existing backend API contracts are preserved integration boundaries for the target frontend unless an explicitly approved change modifies them.", ""]
-    interactions = model["api_interactions"]
-    sections = [
-        ("Primary Business APIs", [x for x in interactions if x["classification"] == "PRIMARY_BUSINESS_API"]),
-        ("Supporting / Shared APIs", [x for x in interactions if "SUPPORTING" in x["classification"]]),
-        ("Unresolved or Dynamic Integrations", [x for x in interactions if x["classification"] in {"UNRESOLVED_PRIMARY_INTERACTION", "DYNAMIC_PRIMARY_INTERACTION", "EXTERNAL_API"}]),
-    ]
-    for heading, items in sections:
-        if not items:
-            continue
-        lines += [f"### {heading}", ""]
-        for item in items:
-            front, back = item["frontend"], item["backend"]
-            method_prefix = f"{front.get('method')} " if front.get("method") else ""
-            lines += [f"#### {item['interaction_id']} — {front['api_expression']}", "", f"**Role in this Feature:** {item['classification'].replace('_', ' ').title()}.", "", f"**Current Frontend:** {_code(front['source_reference'])} calls {_code(method_prefix + front['api_expression'])}.", ""]
-            if back.get("http_method"):
-                lines += [f"**Confirmed Backend:** `{back['http_method']} {back['resolved_endpoint']}` implemented by `{back['controller']}.{back['action']}`.", ""]
-            elif item["candidate_endpoints"]:
-                lines += ["**Candidate Existing Backend Contract**", "", "A matching backend endpoint exists, but the current frontend-to-backend relationship has not been conclusively established:", ""]
-                lines += [f"- `{candidate['http_method']} {candidate['route']}` — `{candidate['controller']}.{candidate['action']}`; response `{candidate['response_type'] or 'not established'}`" for candidate in item["candidate_endpoints"]]
-                lines += [""]
-            else:
-                lines += ["The corresponding backend endpoint has not been conclusively identified.", ""]
-            if item["classification"] == "SUPPORTING_SHARED_API":
-                lines += ["This contract supplies shared context only; it does not provide the Feature's primary business data.", ""]
-            if item["status"] != "PROVEN":
-                lines += ["**Modernization Requirement:** Confirm the existing integration before implementing this behavior in the target frontend.", ""]
-    modernization = model["modernization"]
-    lines += [
-        "## 6. Modernization Considerations", "", "### Current Implementation Context", "",
-        f"Relevant legacy surfaces: {', '.join(modernization['legacy_context']) or 'No separate UI surface is identified.'}", "",
-        "### Preservation Requirements", "", *[f"- {_clean(x)}" for x in modernization["preservation"]], "",
-        f"**Target Design:** {modernization['target_design_status']}.", "", f"**Target Architecture:** {modernization['target_architecture_status']}.", "",
-        "## 7. Decisions Required Before Modernization", "",
-    ]
-    business = [x for x in model["stakeholder_enrichment_items"] if x["category"] != "TECHNICAL_INTEGRATION"]
-    technical = [x for x in model["stakeholder_enrichment_items"] if x["category"] == "TECHNICAL_INTEGRATION"]
-    if business:
-        lines += ["### Business Clarifications", "", "| Question | Why It Matters | Impact | Owner |", "| --- | --- | --- | --- |", *[f"| {x['question']} | {x['reason']} | {x['impact_if_unresolved']} | {x['recommended_owner']} |" for x in business], ""]
-    if technical:
-        lines += ["### Technical Integration Clarifications", "", "| Question | Why It Matters | Impact | Owner |", "| --- | --- | --- | --- |", *[f"| {x['question']} | {x['reason']} | {x['impact_if_unresolved']} | {x['recommended_owner']} |" for x in technical], ""]
-    lines += ["## 8. Review & Approval", "", "| Role | Review Focus | Status |", "| --- | --- | --- |", *[f"| {role} | Review this Feature contract for the role's area of responsibility | {status} |" for role, status in model["review"].items()], "| Customer SME | Current behavior and unresolved business decisions | Pending |", "", "## Appendix — Technical Traceability", "", f"- Story IDs: {', '.join(x['id'] for x in model['requirements'])}", f"- Acceptance Criteria IDs: {', '.join(ac['id'] for x in model['requirements'] for ac in x['acceptance_criteria'])}", f"- Source references: {', '.join(model['technical_traceability']['source_refs'])}", ""]
-    return "\n".join(lines)
+    model["human_presentation"] = build_human_presentation(model)
+    return render_human_markdown(model["human_presentation"])
 
 
 def _language_defects(model: dict, markdown: str) -> dict:
@@ -445,6 +362,7 @@ def synthesize_feature_narratives(source_root: Path, output_root: Path, knowledg
     path.mkdir(parents=True)
     models, trace, duplication, quality, comprehension, reviews = [], [], [], {}, {}, []
     aggregate_defects = Counter()
+    human_audit = Counter()
     all_md = ""
     for spec in specifications:
         fid = spec["feature_id"]
@@ -452,6 +370,7 @@ def synthesize_feature_narratives(source_root: Path, output_root: Path, knowledg
         evidence = _evidence_model(spec)
         model, statements = _narrative(spec, evidence, contracts_by_feature[fid], interactions_by_feature[fid])
         markdown = _render(model)
+        human_audit.update(audit_human_markdown(markdown))
         (path / f"{fid}.md").write_text(markdown, encoding="utf-8")
         defects = _language_defects(model, markdown)
         aggregate_defects.update({key: value for key, value in defects.items() if isinstance(value, int)})
@@ -496,8 +415,10 @@ def synthesize_feature_narratives(source_root: Path, output_root: Path, knowledg
     alignments = Counter(model["feature_name_behavior_alignment"]["status"] for model in narrative_models)
     ac_statuses = Counter(ac["evidence_status"] for ac in all_ac_models)
     hard_total = sum(aggregate_defects[key] for key in ("grammar_defects", "story_coherence_defects", "ac_coherence_defects", "circular_stories", "semantically_circular_stories", "system_centric_stories", "unsupported_business_value_stories", "generic_ac_preconditions", "vague_ac_outcomes", "non_observable_ac", "boilerplate_sentences"))
+    human_defects = sum(human_audit.values())
+    human_models = [model["human_presentation"] for model in narrative_models]
     validation = {
-        "valid": minimum >= 8 and maxdup <= 10 and not hard_total,
+        "valid": minimum >= 8 and maxdup <= 10 and not hard_total and not human_defects,
         "features": len(models), "stories": sum(len(x["narrative_model"]["requirements"]) for x in models),
         "authoritative_acceptance_criteria": sum(len(y["acceptance_criteria"]) for x in models for y in x["narrative_model"]["requirements"]),
         "presentation_only_ac_scenarios": 0, "narrative_concepts": len(trace), "narrative_statements": len(trace),
@@ -506,6 +427,17 @@ def synthesize_feature_narratives(source_root: Path, output_root: Path, knowledg
         "minimum_score": minimum, "story_semantic_equivalence": "PASS", "ac_semantic_equivalence": "PASS",
         **dict(aggregate_defects), "raw_workflow_mechanics": 0,
         "internal_diagnostic_noise": sum(item in all_md.lower() for item in NOISE),
+        "functional_requirements_generated": sum(len(x["functional_requirements"]) for x in human_models),
+        "business_rules_generated": sum(len(x["business_rules"]) for x in human_models),
+        "api_requirements_generated": sum(len(x["api_requirements"]) for x in human_models),
+        "clarifications_generated": sum(len(x["clarifications"]) for x in human_models),
+        "polaris_terms_in_human_markdown": human_audit["polaris_terms"],
+        "kg_terms_in_human_markdown": human_audit["kg_terms"],
+        "analyzer_terms_in_human_markdown": human_audit["analyzer_terms"],
+        "resolver_classifications_in_human_markdown": human_audit["resolver_classifications"],
+        "source_file_paths_in_human_markdown": human_audit["source_file_paths"],
+        "source_line_references_in_human_markdown": human_audit["source_line_references"],
+        "evidence_jargon_in_human_markdown": human_audit["evidence_jargon"],
         "invented_api_endpoints": 0, "invented_http_methods": 0, "invented_path_parameters": 0,
         "invented_query_parameters": 0, "invented_request_dtos": 0, "invented_request_fields": 0,
         "invented_response_dtos": 0, "invented_response_fields": 0, "invented_status_codes": 0,
