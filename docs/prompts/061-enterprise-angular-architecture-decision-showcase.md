@@ -1,0 +1,7 @@
+# Enterprise Angular 22 Architecture Decision Engine and Showcase
+
+Enrich approved baseline `3e6245356fbfa9e6c612adc79b3a98de63e5d929` without rebuilding its real LangGraph/LangChain foundation. Add a maintainable enterprise Angular catalog, controlled decision statuses, distinct recommendation and selected downstream architecture models, strengthened validation and post-validation lock, coherent ADRs, consolidated machine contracts, and a polished standalone data-driven customer architecture HTML showcase.
+
+For the POC target, select Angular 22, TypeScript, Nx, standalone/domain boundaries, Signals with RxJS interoperability, compatible zoneless operation, CSR, Angular Router/lazy routes, typed API clients, provider-neutral API Gateway and BFF target topology, security, accessibility, observability, and Playwright. Evaluate but do not falsely select SSR, hydration, NgRx, microfrontends, or Module Federation. Preserve the four Dashboard API contracts behind target topology and invent no gateway/BFF endpoints or business behavior.
+
+Preserve 5 Features, 12 Stories, 14 authoritative AC, frozen UNDERSTAND and Jira delivery truth, existing APIs, and `source/`. Do not implement Figma, gateway, BFF, tasks, Angular, Jira/Rovo/MCP, Graphiti, or an external LLM call. Generate canonical artifacts, run focused and full tests, update records, create one commit titled `Add enterprise Angular architecture decision showcase`, and stop.

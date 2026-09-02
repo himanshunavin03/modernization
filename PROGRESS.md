@@ -1,8 +1,8 @@
 # Progress
 
-- Status: Minimal LangGraph/LangChain orchestration and target architecture foundation completed on Wednesday, September 2, 2026. The UNDERSTAND pillar remains frozen `FROZEN_READY_WITH_LIMITATIONS`.
+- Status: Enterprise Angular 22 architecture decision engine and customer showcase completed on Wednesday, September 2, 2026. The UNDERSTAND pillar remains frozen `FROZEN_READY_WITH_LIMITATIONS`.
 - Agent command: `/create-knowledge-graph` is documented at `docs/agents/commands/create-knowledge-graph.md` and delegates to the deterministic `agent-create-knowledge-graph` CLI adapter. It derives a safe project ID from the selected source root, enables project-aware Roslyn only when .NET project evidence exists, keeps Neo4j opt-in, and does not use an LLM.
-- Current step: Await explicit authorization for `FIGMA_ADAPTER_AND_TECHNICAL_TASKS`; Angular generation has not started.
+- Current step: Await explicit authorization for `FIGMA_ADAPTER_AND_TECHNICAL_TASK_GENERATION`; Figma, technical tasks, Gateway/BFF implementation, Nx scaffolding, and Angular generation have not started.
 - Complete application correction: deterministic first-party native-crash fallback now emits literal C#/JavaScript/Razor facts alongside provenance. Final analysis: 2,384 files, 3,386 nodes, 4,593 edges, 38 review warnings, zero extraction warnings, 44 opaque dependencies, and `complete_with_opaque_dependencies`. The attempted Neo4j load is blocked solely by unavailable local Neo4j environment configuration; full viewer export remains gated on that load.
 - Failure inventory: 42 JavaScript, 3 C#, and 2 HTML Tree-sitter workers exit with `3221225477`; all are supported-language parser defects requiring a generic repair. See `docs/validation/complete-application-extraction-failure-inventory.md`.
 - Viewer runbook: `docs/runbooks/understand-anything-viewer.md` documents the validated UI-only command and `tools/launch_understand_anything_viewer.ps1` safely exports and launches any approved project-scoped graph with a caller-supplied local token.
@@ -10,9 +10,9 @@
 - Customer-facing viewer branding is neutralized as `Legacy Dashboard POC`; audit: `docs/validation/customer-facing-branding-audit.md`.
 - End-to-end data context: the isolated graph now shows the proven Reports controller to repository, EF/LINQ query, selected model, and `MyHealthContext` flow; raw SQL is not represented because no literal SQL evidence exists.
 - Completed work: Project memory initialized; Dashboard source discovery completed; deterministic scoped inventory, facts, normalized graph JSON, summary, CLI, and tests created; Roslyn graph-label correction validated on a real .NET 8 SDK; Create Knowledge Graph now validates input, analyzes source, validates the project-scoped graph, optionally loads only that project into Neo4j, and writes customer-facing run status artifacts. Native Tree-sitter extraction is isolated per file; child workers bootstrap the repository-local `src` directory through a copied `PYTHONPATH`, and abnormal exits, timeouts, invalid worker output, startup/import errors, and Python extraction errors produce safe structured warnings while remaining files continue. Profiles now carry explicit scope metadata, audit every discovered file, limit selected-flow graph File nodes and normal Roslyn facts to the approved scope, and expose proven cross-scope semantic references without silently widening the graph. Step 3C.6 loaded only `healthclinic-dashboard-scope-demo-v3` with 123 Neo4j nodes, 169 relationships, 27 warnings, and `scope_complete` coverage. Step 3C.7 now assigns all 123 exported viewer nodes exactly once across five deterministic evidence-derived layers, preserving 169 edges and 27 warnings; the port-5175 viewer returned HTTP 200 for both the page and graph endpoint.
-- Next action: `FIGMA_ADAPTER_AND_TECHNICAL_TASKS` only when explicitly requested. Do not claim Figma analysis, generate Angular, or modify source automatically.
+- Next action: `FIGMA_ADAPTER_AND_TECHNICAL_TASK_GENERATION` only when explicitly requested. Do not claim Figma analysis, generate Angular, implement the target topology, or modify source automatically.
 - Blockers: None for Step 3C.6. Known review warnings remain visible: unresolved API-call ownership, implicit MVC `View()` matching, and Roslyn symbols that could not be resolved against the legacy source context.
-- Exact next action when resumed: Read prompts through 060, approved Jira delivery artifacts in `artifacts/feature-specifications/latest/`, and `artifacts/architecture/latest/`. Await explicit authorization for `FIGMA_ADAPTER_AND_TECHNICAL_TASKS`.
+- Exact next action when resumed: Read prompts through 061, approved Jira delivery artifacts in `artifacts/feature-specifications/latest/`, and the locked selection in `artifacts/architecture/latest/architecture-selection.json`. Await explicit authorization for `FIGMA_ADAPTER_AND_TECHNICAL_TASK_GENERATION`.
 
 ## POC Orchestration And Architecture Foundation
 
@@ -21,6 +21,16 @@
 - Design input is optional and normalized through `DesignSpecification`. Figma is a recognized provider target, but the actual connector remains unimplemented and reports `FIGMA_CONNECTOR_NOT_IMPLEMENTED` honestly.
 - Architecture recommendations consume approved requirements, Jira Story models, AC, API contracts, and optional design context while preserving machine traceability. Dashboard output preserves all four approved GET contracts.
 - Run `legacy-dashboard-complete-application-demo-v1-2026-09-02-180329-133914` is `ARCHITECTURE_READY_WITH_LIMITATIONS`, executes 17 technology decisions, and emits 6 ADRs. Focused tests passed `21`; full regression passed `159` with `2` skipped in `45.40s`.
+
+## Enterprise Angular Architecture Decision Showcase
+
+- The maintainable architecture catalog evaluates 52 controlled decisions: 32 selected, 6 recommended, 9 evaluated alternatives, 3 not selected, 1 not applicable, and 1 requiring clarification.
+- Recommendation and selection are distinct machine contracts. The POC selection source is `POLARIS_POC_DEFAULT`, it is the downstream source of truth, and its SHA-256 lock is created only after deterministic validation.
+- Selected target: Angular 22, TypeScript, Nx, standalone/domain libraries, Signals plus RxJS interoperability, zoneless operation subject to dependency validation, CSR, Router/lazy routes, typed HttpClient, provider-neutral Gateway/BFF topology, security, accessibility, correlated observability, and Playwright.
+- Signal Forms are recommended subject to target API maturity and applicability; Reactive Forms remain an evaluated alternative. SSR/hydration, NgRx, microfrontends, and Module Federation are visibly evaluated without false selection.
+- Gateway and BFF are target-state decisions only. No provider, product configuration, endpoint, response shape, implementation, or replacement backend is created; all four Dashboard API contracts remain byte-for-byte represented in the selected contract.
+- Canonical run `legacy-dashboard-complete-application-demo-v1-2026-09-02-204635-171223` emits consolidated/recommendation/selection/catalog JSON, workflow proof, 19-section Markdown, standalone data-driven HTML, and 9 coherent ADRs. Headless Edge rendering and structural checks pass with no external runtime dependency or internal analyzer leakage.
+- Focused architecture plus Feature/Jira regression tests passed `24`; full regression passed `162` with `2` skipped in `45.63s`.
 
 ## Final BA/SA Feature Specification Semantics
 

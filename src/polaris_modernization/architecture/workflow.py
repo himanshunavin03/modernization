@@ -1,7 +1,9 @@
-"""Executable LangGraph workflow for deterministic target architecture recommendations."""
+"""Executable enterprise architecture recommendation and selection workflow."""
 from __future__ import annotations
 
+from collections import Counter
 from datetime import datetime, timezone
+from hashlib import sha256
 import json
 from pathlib import Path
 import shutil
@@ -10,7 +12,13 @@ from typing import TypedDict
 from langchain_core.runnables import RunnableLambda
 from langgraph.graph import END, START, StateGraph
 
-from .models import ArchitectureDecision, ArchitectureRecommendation, ArchitectureValidation, FigmaDesignProvider, NoDesignProvider
+from .catalog import evaluate_architecture_catalog, load_architecture_catalog
+from .models import (
+    ArchitectureLock, ArchitectureRecommendation, ArchitectureSelection,
+    ArchitectureValidation, DecisionStatus, FigmaDesignProvider, NoDesignProvider,
+    SelectionSource,
+)
+from .renderers import render_adrs, render_architecture_html, render_architecture_markdown
 
 
 class ArchitectureWorkflowError(ValueError):
@@ -29,8 +37,11 @@ class PolarisWorkflowState(TypedDict, total=False):
     acceptance_criteria: list[dict]
     api_contracts: list[dict]
     design_specification: dict
+    catalog_decisions: list[dict]
     architecture_recommendation: dict
+    architecture_selection: dict
     architecture_validation: dict
+    architecture_lock: dict
     warnings: list[str]
     blockers: list[str]
     nodes_executed: list[str]
@@ -40,7 +51,11 @@ class PolarisWorkflowState(TypedDict, total=False):
     traceability: dict
 
 
-NODES = ["load_feature", "load_requirement_context", "load_design_context", "validate_requirements", "recommend_architecture", "validate_architecture", "finalize_architecture"]
+NODES = [
+    "load_feature", "load_requirement_context", "load_design_context", "validate_requirements",
+    "evaluate_architecture_catalog", "recommend_architecture", "select_architecture",
+    "validate_architecture", "finalize_architecture",
+]
 
 
 def _read(path: Path) -> dict:
@@ -66,7 +81,13 @@ def _load_feature(state: PolarisWorkflowState) -> PolarisWorkflowState:
     if not feature:
         raise ArchitectureWorkflowError(f"Unknown Feature: {state['feature_id']}")
     provenance = _read(root / "provenance.json")
-    return _advance(state, "load_feature", {"feature": feature, "traceability": {"requirement_run": provenance.get("modernization_feature_specification_run_id"), "kg_run": provenance.get("kg_run_id")}})
+    return _advance(state, "load_feature", {
+        "feature": feature,
+        "traceability": {
+            "requirement_run": provenance.get("modernization_feature_specification_run_id"),
+            "kg_run": provenance.get("kg_run_id"),
+        },
+    })
 
 
 def _load_requirement_context(state: PolarisWorkflowState) -> PolarisWorkflowState:
@@ -74,13 +95,15 @@ def _load_requirement_context(state: PolarisWorkflowState) -> PolarisWorkflowSta
     requirements = list({item["id"]: item for story in stories for item in story["functional_requirement_refs"]}.values())
     criteria = [item for story in stories for item in story["acceptance_criteria"]]
     apis = list({item["api_id"]: item for story in stories for item in story["api_dependencies"]}.values())
-    return _advance(state, "load_requirement_context", {"requirements": requirements, "stories": stories, "acceptance_criteria": criteria, "api_contracts": apis})
+    return _advance(state, "load_requirement_context", {
+        "requirements": requirements, "stories": stories,
+        "acceptance_criteria": criteria, "api_contracts": apis,
+    })
 
 
 def _load_design_context(state: PolarisWorkflowState) -> PolarisWorkflowState:
     requested = state.get("design_provider", "NONE").upper()
-    providers = (NoDesignProvider(), FigmaDesignProvider())
-    provider = next((item for item in providers if item.can_handle(requested)), None)
+    provider = next((item for item in (NoDesignProvider(), FigmaDesignProvider()) if item.can_handle(requested)), None)
     if not provider:
         raise ArchitectureWorkflowError(f"Unknown design provider: {requested}")
     design = provider.analyze(state.get("design_reference"))
@@ -98,7 +121,7 @@ def _validate_requirements(state: PolarisWorkflowState) -> PolarisWorkflowState:
     if any(story["readiness"]["status"] == "BLOCKED" for story in state["stories"]):
         blockers.append("At least one approved Story is blocked.")
     if any(story["readiness"]["status"] == "NEEDS_CLARIFICATION" for story in state["stories"]):
-        warnings.append("Implementation clarifications remain, but they do not block architecture decisions.")
+        warnings.append("Implementation clarifications remain, but they do not block architecture selection.")
     api_refs = {api["api_id"] for api in state["api_contracts"]}
     referenced = {ref for story in state["stories"] for ref in story["traceability"]["api_interaction_refs"]}
     if referenced and not api_refs:
@@ -107,41 +130,24 @@ def _validate_requirements(state: PolarisWorkflowState) -> PolarisWorkflowState:
     return _advance(state, "validate_requirements", {"warnings": warnings, "blockers": blockers, "status": status})
 
 
-def _decision(state: PolarisWorkflowState, number: int, category: str, technology: str, status: str, decision: str, rationale: str, *, adr: bool = False, risks: list[str] | None = None, alternatives: list[str] | None = None) -> ArchitectureDecision:
-    return ArchitectureDecision(
-        id=f"ARCH-{number:03d}", category=category, technology=technology, status=status, decision=decision, rationale=rationale,
-        requirement_refs=[item["id"] for item in state["requirements"]], story_refs=[item["story_id"] for item in state["stories"]],
-        api_refs=[item["api_id"] for item in state["api_contracts"]], design_refs=state["design_specification"]["traceability"],
-        risks=risks or [], alternatives=alternatives or [], adr_required=adr,
-    )
+def _evaluate_catalog_node(state: PolarisWorkflowState) -> PolarisWorkflowState:
+    decisions = [item.model_dump(mode="json") for item in evaluate_architecture_catalog(state)]
+    return _advance(state, "evaluate_architecture_catalog", {"catalog_decisions": decisions})
 
 
 def _recommend(state: PolarisWorkflowState) -> dict:
     if state["blockers"]:
         return {}
-    has_apis = bool(state["api_contracts"])
-    many_features = len(_read(Path(state["specification_root"]) / "jira-quality.json")["features"]) > 1
-    decisions = [
-        _decision(state, 1, "Platform", "Angular 22", "USE", "Build the target frontend on Angular 22.", "Angular 22 is the explicit POC target.", adr=True),
-        _decision(state, 2, "Application Structure", "Standalone architecture", "USE", "Use standalone components and route-level feature boundaries.", "The target is a new Angular frontend with independently scoped approved Features.", adr=True),
-        _decision(state, 3, "State", "Signals", "USE", "Use Signals for local and derived UI state.", "The dashboard requires reactive selected-year, context, loading, and derived presentation state.", adr=True),
-        _decision(state, 4, "Async", "RxJS", "USE" if has_apis else "NOT_APPLICABLE", "Use RxJS at HTTP and asynchronous composition boundaries.", "Approved APIs require cancellation and stream composition; Observables need not replace local Signal state."),
-        _decision(state, 5, "Runtime", "Zoneless change detection", "EVALUATE", "Validate zoneless compatibility during the implementation spike.", "Angular 22 supports the target model, but third-party and future design-system compatibility is not yet known.", risks=["A selected UI dependency may require additional compatibility work."]),
-        _decision(state, 6, "State", "Service and Signal stores", "USE", "Keep Feature state in focused injectable services backed by Signals.", "The approved scope does not establish cross-domain complexity requiring a global event store."),
-        _decision(state, 7, "Routing", "Router with lazy feature routes", "USE" if many_features else "USE", "Use lazy route boundaries for approved Features and functional guards where access checks apply.", "Multiple approved Feature boundaries map naturally to route-level loading.", adr=True),
-        _decision(state, 8, "API", "Typed HttpClient", "USE" if has_apis else "NOT_APPLICABLE", "Create typed Feature API services over preserved backend routes.", "Approved request parameters and response models are available and must remain authoritative.", adr=True),
-        _decision(state, 9, "Rendering", "SSR and hydration", "NOT_APPLICABLE", "Do not add SSR or hydration to this authenticated operational POC.", "No public discovery, SEO, or server-rendering requirement is present."),
-        _decision(state, 10, "Backend", "Backend for Frontend", "DO_NOT_USE", "Call the preserved backend APIs directly through typed services.", "The explicit frontend-modernization constraint does not justify a replacement or aggregation backend."),
-        _decision(state, 11, "Workspace", "Nx", "DO_NOT_USE", "Use a standard Angular workspace for the POC.", "The approved scope does not establish a multi-application monorepo need."),
-        _decision(state, 12, "Deployment", "Microfrontends", "DO_NOT_USE", "Keep one modular frontend deployment.", "Independent deployment and team-autonomy requirements are absent."),
-        _decision(state, 13, "State", "NgRx", "DO_NOT_USE", "Do not introduce NgRx for the current Feature set.", "Signals and focused services cover the known state without global event-store overhead.", alternatives=["Re-evaluate if later workflows establish complex cross-feature events or audit requirements."]),
-        _decision(state, 14, "Testing", "Playwright", "USE", "Use Playwright for critical Feature journeys and API-backed acceptance paths.", "The approved AC provide observable end-to-end behavior.", adr=True),
-        _decision(state, 15, "Quality", "Error handling and observability", "USE", "Use a functional HTTP interceptor, user-safe Feature error states, and structured client diagnostics.", "API-backed workflows require consistent technical failure handling without inventing business outcomes."),
-        _decision(state, 16, "UI", "Accessible component strategy", "USE", "Use reusable accessible components; apply normalized design input when available.", "Shared presentation and accessibility are architecture concerns while design input remains optional."),
-        _decision(state, 17, "Forms", "Signal Forms", "NOT_APPLICABLE", "Use a direct typed control bound to Signal state for the selected reporting year.", "The approved Dashboard has a single year selection and no multi-field form workflow requiring a forms architecture."),
-    ]
-    limitations = list(state["warnings"])
-    recommendation = ArchitectureRecommendation(feature_id=state["feature_id"], target_platform="Web", target_framework="Angular", framework_version="22", decisions=decisions, limitations=limitations, traceability={"requirements": [x["id"] for x in state["requirements"]], "stories": [x["story_id"] for x in state["stories"]], "acceptance_criteria": [x["authoritative_ac_ref"] for x in state["acceptance_criteria"]], "apis": [x["api_id"] for x in state["api_contracts"]]})
+    recommendation = ArchitectureRecommendation(
+        feature_id=state["feature_id"], target_platform="Web", target_framework="Angular", framework_version="22",
+        decisions=state["catalog_decisions"], limitations=list(state["warnings"]),
+        traceability={
+            "requirements": [item["id"] for item in state["requirements"]],
+            "stories": [item["story_id"] for item in state["stories"]],
+            "acceptance_criteria": [item["authoritative_ac_ref"] for item in state["acceptance_criteria"]],
+            "apis": [item["api_id"] for item in state["api_contracts"]],
+        },
+    )
     return recommendation.model_dump(mode="json")
 
 
@@ -151,49 +157,93 @@ def architecture_recommendation_chain() -> RunnableLambda:
 
 
 def _recommend_node(state: PolarisWorkflowState) -> PolarisWorkflowState:
-    recommendation = architecture_recommendation_chain().invoke(state)
-    return _advance(state, "recommend_architecture", {"architecture_recommendation": recommendation})
+    return _advance(state, "recommend_architecture", {"architecture_recommendation": architecture_recommendation_chain().invoke(state)})
+
+
+def _select_architecture(state: PolarisWorkflowState) -> PolarisWorkflowState:
+    decisions = state["architecture_recommendation"]["decisions"]
+    alternative_statuses = {DecisionStatus.EVALUATED_ALTERNATIVE.value, DecisionStatus.NOT_SELECTED.value, DecisionStatus.NOT_APPLICABLE.value}
+    selection = ArchitectureSelection(
+        feature_id=state["feature_id"], selection_source=SelectionSource.POLARIS_POC_DEFAULT,
+        recommendation_ref="architecture-recommendation.json", decisions=decisions,
+        selected_decision_ids=[item["id"] for item in decisions if item["status"] == DecisionStatus.SELECTED.value],
+        recommended_decision_ids=[item["id"] for item in decisions if item["status"] == DecisionStatus.RECOMMENDED.value],
+        alternative_decision_ids=[item["id"] for item in decisions if item["status"] in alternative_statuses],
+        clarification_decision_ids=[item["id"] for item in decisions if item["status"] == DecisionStatus.REQUIRES_CLARIFICATION.value],
+        existing_api_contracts=state["api_contracts"],
+        target_integration_topology=["Browser", "Angular 22", "Provider-Neutral API Gateway", "Backend for Frontend", "Existing Business APIs"],
+    )
+    return _advance(state, "select_architecture", {"architecture_selection": selection.model_dump(mode="json")})
 
 
 def validate_architecture(state: PolarisWorkflowState) -> ArchitectureValidation:
     recommendation = state.get("architecture_recommendation", {})
-    decisions = recommendation.get("decisions", [])
-    use = {(item["technology"], item["status"]) for item in decisions}
-    preserved = {(api["method"], api["endpoint"]) for api in state["api_contracts"]}
+    selection = state.get("architecture_selection", {})
+    decisions = selection.get("decisions", [])
+    by_technology = {item["technology"]: item for item in decisions}
     statuses_by_technology: dict[str, set[str]] = {}
     for item in decisions:
         statuses_by_technology.setdefault(item["technology"], set()).add(item["status"])
-    contradictions = any(len(statuses) > 1 for statuses in statuses_by_technology.values())
+    original_contracts = [{key: api.get(key) for key in ("api_id", "method", "endpoint", "path_parameters", "query_parameters", "request_model", "response_description", "response_model")} for api in state["api_contracts"]]
+    selected_contracts = [{key: api.get(key) for key in ("api_id", "method", "endpoint", "path_parameters", "query_parameters", "request_model", "response_description", "response_model")} for api in selection.get("existing_api_contracts", [])]
+    selected = lambda technology: by_technology.get(technology, {}).get("status") == DecisionStatus.SELECTED.value
+    not_selected = lambda technology: by_technology.get(technology, {}).get("status") != DecisionStatus.SELECTED.value
     checks = {
-        "target_framework_selected": recommendation.get("target_framework") == "Angular" and recommendation.get("framework_version") == "22",
-        "rationale_present": bool(decisions) and all(item["rationale"] for item in decisions),
-        "requirement_traceability_present": bool(recommendation.get("traceability", {}).get("requirements")),
-        "api_preservation_respected": all(api["method"] and api["endpoint"] for api in state["api_contracts"]) and ("Backend for Frontend", "DO_NOT_USE") in use,
+        "architecture_has_target_platform": recommendation.get("target_framework") == "Angular" and recommendation.get("framework_version") == "22",
+        "architecture_has_selection": selection.get("status") == "ARCHITECTURE_SELECTED",
+        "architecture_decisions_have_status": bool(decisions) and all(item["status"] in {value.value for value in DecisionStatus} for item in decisions),
+        "selected_decisions_have_rationale": all(item["rationale"] for item in decisions if item["status"] == DecisionStatus.SELECTED.value),
+        "selected_decisions_have_traceability": all(item["requirement_refs"] and item["feature_refs"] and item["story_refs"] for item in decisions if item["status"] == DecisionStatus.SELECTED.value),
+        "no_contradictory_selections": not any(len(values) > 1 for values in statuses_by_technology.values()),
+        "no_unsupported_technology_selection": selected("Angular 22") and selected("Nx Monorepo") and selected("Standalone Components"),
+        "no_unjustified_complexity": not_selected("NgRx") and not_selected("Microfrontends") and not_selected("Module Federation"),
+        "existing_api_contracts_preserved": original_contracts == selected_contracts and bool(original_contracts),
+        "gateway_does_not_rewrite_business_api_contracts": selected("Provider-Neutral API Gateway") and original_contracts == selected_contracts,
+        "bff_does_not_invent_business_behavior": selected("Backend for Frontend") and all("endpoint" not in item["decision"].lower() for item in decisions if item["technology"] == "Backend for Frontend"),
+        "ssr_not_selected_without_rendering_justification": not_selected("Server-Side Rendering"),
+        "mfe_not_selected_without_deployment_justification": not_selected("Microfrontends"),
+        "ngrx_not_selected_without_state_complexity": not_selected("NgRx"),
+        "rxjs_async_boundary_preserved": selected("RxJS"),
+        "signals_ui_state_supported": selected("Angular Signals") and selected("Computed Signals"),
+        "architecture_selection_is_downstream_source_of_truth": selection.get("downstream_source_of_truth") is True,
         "design_status_recorded": bool(state.get("design_specification", {}).get("status")),
-        "major_decisions_have_rationale": all(not item["adr_required"] or item["rationale"] for item in decisions),
-        "contradictory_decisions_absent": not contradictions,
-        "unsupported_backend_replacement_absent": bool(preserved) and ("Backend for Frontend", "USE") not in use,
-        "unsupported_business_behavior_absent": True,
-        "poc_scope_respected": all(item["technology"] != "Angular generation" for item in decisions),
+        "poc_scope_respected": all(item["technology"] not in {"Angular Generation", "Technical Task Generation"} for item in decisions),
     }
     blockers = [name for name, passed in checks.items() if not passed]
-    status = "ARCHITECTURE_BLOCKED" if blockers else "ARCHITECTURE_READY_WITH_LIMITATIONS" if state["warnings"] else "ARCHITECTURE_READY"
-    return ArchitectureValidation(status=status, checks=checks, warnings=state["warnings"], blockers=blockers)
+    warnings = list(state["warnings"])
+    if selection.get("clarification_decision_ids"):
+        warnings.append("Identity provider and browser authentication/session architecture require customer clarification.")
+    status = "ARCHITECTURE_BLOCKED" if blockers else "ARCHITECTURE_READY_WITH_LIMITATIONS" if warnings else "ARCHITECTURE_READY"
+    return ArchitectureValidation(status=status, checks=checks, warnings=warnings, blockers=blockers)
 
 
 def _validate_architecture_node(state: PolarisWorkflowState) -> PolarisWorkflowState:
     validation = validate_architecture(state)
-    return _advance(state, "validate_architecture", {"architecture_validation": validation.model_dump(mode="json"), "blockers": validation.blockers})
+    return _advance(state, "validate_architecture", {"architecture_validation": validation.model_dump(mode="json"), "warnings": validation.warnings, "blockers": validation.blockers})
 
 
 def _finalize(state: PolarisWorkflowState) -> PolarisWorkflowState:
-    status = state["architecture_validation"]["status"]
-    return _advance(state, "finalize_architecture", {"status": "READY_FOR_TASKS" if status != "ARCHITECTURE_BLOCKED" else "BLOCKED"})
+    validation_passed = state["architecture_validation"]["status"] != "ARCHITECTURE_BLOCKED"
+    encoded = json.dumps(state["architecture_selection"], sort_keys=True, separators=(",", ":")).encode("utf-8")
+    lock = ArchitectureLock(
+        status="LOCKED" if validation_passed else "NOT_LOCKED",
+        selection_source=state["architecture_selection"]["selection_source"],
+        selection_hash=sha256(encoded).hexdigest() if validation_passed else None,
+        locked_after_validation=validation_passed,
+    )
+    return _advance(state, "finalize_architecture", {
+        "architecture_lock": lock.model_dump(mode="json"),
+        "status": "READY_FOR_TASKS" if validation_passed else "BLOCKED",
+    })
 
 
 def build_architecture_graph():
     graph = StateGraph(PolarisWorkflowState)
-    functions = (_load_feature, _load_requirement_context, _load_design_context, _validate_requirements, _recommend_node, _validate_architecture_node, _finalize)
+    functions = (
+        _load_feature, _load_requirement_context, _load_design_context, _validate_requirements,
+        _evaluate_catalog_node, _recommend_node, _select_architecture,
+        _validate_architecture_node, _finalize,
+    )
     for name, function in zip(NODES, functions, strict=True):
         graph.add_node(name, function)
     graph.add_edge(START, NODES[0])
@@ -203,28 +253,30 @@ def build_architecture_graph():
     return graph.compile()
 
 
-def _markdown(state: PolarisWorkflowState) -> str:
-    rec = state["architecture_recommendation"]
-    decisions = rec["decisions"]
-    selected = [item for item in decisions if item["status"] == "USE"]
-    rejected = [item for item in decisions if item["status"] in {"DO_NOT_USE", "NOT_APPLICABLE", "EVALUATE"}]
-    sections = [
-        "# Target Architecture", "", "## Executive Summary", "", f"Use Angular 22 with standalone, lazy Feature boundaries for `{state['feature_id']}` while preserving all approved backend APIs.", "",
-        "## Architecture Goals", "", "- Deliver the approved Feature behavior without redefining requirements.", "- Keep state, API integration, and UI composition testable and Feature-scoped.", "",
-        "## Constraints", "", "- Existing backend APIs remain authoritative.", "- Story clarifications limit final UI detail but do not block architecture.", "- Angular generation is outside this stage.", "",
-        "## Target Technology", "", "- Angular 22 standalone architecture", "- Signals for UI state and RxJS for asynchronous boundaries", "- Typed HttpClient and Playwright", "",
-        "## Application Structure", "", "Use route-level Feature folders containing pages, presentation components, API services, and focused Signal-backed state services.", "",
-        "## Feature Architecture", "", *[f"- `{item['id']}`: {item['requirement']}" for item in state["requirements"]], "",
-        "## State Management", "", next(item["decision"] for item in decisions if item["technology"] == "Service and Signal stores"), "", "## API Integration", "", *[f"- `{api['method']} {api['endpoint']}`: {api['response_description']}" for api in state["api_contracts"]], "",
-        "## Routing", "", next(item["decision"] for item in decisions if item["technology"] == "Router with lazy feature routes"), "", "## Security / Tenant Context", "", "Resolve organization context through the approved tenant endpoint and propagate it through Feature services without changing backend contracts.", "",
-        "## Design System and Optional Figma Input", "", f"Design status: `{state['design_specification']['status']}`. Target UI design input is optional and normalized through `DesignSpecification`; Figma is recognized, but its connector is not implemented.", "",
-        "## Error Handling", "", next(item["decision"] for item in decisions if item["technology"] == "Error handling and observability"), "", "## Testing Strategy", "", "Use unit tests for state/services, HTTP contract tests for approved routes, and Playwright for critical AC-backed journeys.", "",
-        "## Observability", "", "Record structured client diagnostics at API boundaries without exposing sensitive user or organization data.", "",
-        "## Architecture Decisions", "", *[f"- **{item['id']} - {item['technology']} ({item['status']}):** {item['rationale']}" for item in selected], "",
-        "## Technologies Evaluated but Not Selected", "", *[f"- **{item['technology']} ({item['status']}):** {item['rationale']}" for item in rejected], "",
-        "## Known Limitations / Clarifications", "", *([f"- {item}" for item in rec["limitations"]] or ["- None."]), "", "## Next Step", "", "Review the architecture and approved clarifications before technical task generation.", "",
-    ]
-    return "\n".join(sections)
+def _feature_context(state: PolarisWorkflowState) -> dict:
+    return {
+        "feature_id": state["feature_id"], "feature_name": state["feature"]["feature_name"],
+        "requirements": state["requirements"],
+        "stories": [{"story_id": item["story_id"], "summary": item["summary"], "readiness": item["readiness"]["status"]} for item in state["stories"]],
+        "acceptance_criteria": [{"id": item["id"], "authoritative_ac_ref": item["authoritative_ac_ref"]} for item in state["acceptance_criteria"]],
+        "api_contracts": state["api_contracts"],
+    }
+
+
+def _counts(state: PolarisWorkflowState, adr_count: int) -> dict:
+    statuses = Counter(item["status"] for item in state["architecture_selection"]["decisions"])
+    return {
+        "decisions": sum(statuses.values()), "selected": statuses[DecisionStatus.SELECTED.value],
+        "recommended": statuses[DecisionStatus.RECOMMENDED.value],
+        "alternatives": statuses[DecisionStatus.EVALUATED_ALTERNATIVE.value] + statuses[DecisionStatus.NOT_SELECTED.value] + statuses[DecisionStatus.NOT_APPLICABLE.value],
+        "evaluated_alternatives": statuses[DecisionStatus.EVALUATED_ALTERNATIVE.value],
+        "not_selected": statuses[DecisionStatus.NOT_SELECTED.value],
+        "not_applicable": statuses[DecisionStatus.NOT_APPLICABLE.value],
+        "clarifications": statuses[DecisionStatus.REQUIRES_CLARIFICATION.value],
+        "requirements": len(state["requirements"]), "stories": len(state["stories"]),
+        "acceptance_criteria": len(state["acceptance_criteria"]), "apis": len(state["api_contracts"]),
+        "adrs": adr_count,
+    }
 
 
 def _write_json(path: Path, value: object) -> None:
@@ -232,32 +284,48 @@ def _write_json(path: Path, value: object) -> None:
 
 
 def recommend_architecture(project_id: str, feature_id: str, specification_root: Path, output_root: Path, design_provider: str = "NONE", design_reference: str | None = None) -> dict:
-    state = build_architecture_graph().invoke({"project_id": project_id, "feature_id": feature_id, "specification_root": str(specification_root), "design_provider": design_provider, "design_reference": design_reference, "warnings": [], "blockers": [], "nodes_executed": [], "state_transitions": [], "current_stage": "START", "status": "STARTED"})
+    state = build_architecture_graph().invoke({
+        "project_id": project_id, "feature_id": feature_id, "specification_root": str(specification_root),
+        "design_provider": design_provider, "design_reference": design_reference,
+        "warnings": [], "blockers": [], "nodes_executed": [], "state_transitions": [],
+        "current_stage": "START", "status": "STARTED",
+    })
     if state["status"] == "BLOCKED":
         raise ArchitectureWorkflowError(str(state["architecture_validation"]["blockers"]))
     run_id = f"{project_id}-{datetime.now(timezone.utc).strftime('%Y-%m-%d-%H%M%S-%f')}"
     run = output_root / "runs" / run_id
     (run / "adrs").mkdir(parents=True)
-    feature_context = {
-        "feature_id": state["feature_id"],
-        "feature_name": state["feature"]["feature_name"],
-        "requirements": state["requirements"],
-        "stories": [{"story_id": item["story_id"], "summary": item["summary"], "readiness": item["readiness"]["status"]} for item in state["stories"]],
-        "acceptance_criteria": [{"id": item["id"], "authoritative_ac_ref": item["authoritative_ac_ref"]} for item in state["acceptance_criteria"]],
-        "api_contracts": state["api_contracts"],
+    shell = {
+        "project_id": project_id, "feature_context": _feature_context(state),
+        "design_specification": state["design_specification"],
+        "recommendation": state["architecture_recommendation"], "selection": state["architecture_selection"],
+        "validation": state["architecture_validation"], "architecture_lock": state["architecture_lock"],
+        "traceability": state["traceability"],
     }
-    architecture = {"project_id": project_id, "feature_context": feature_context, "design_specification": state["design_specification"], "recommendation": state["architecture_recommendation"], "validation": state["architecture_validation"], "traceability": state["traceability"]}
-    _write_json(run / "architecture.json", architecture)
-    (run / "architecture.md").write_text(_markdown(state), encoding="utf-8")
-    adr_files = []
-    for index, decision in enumerate((item for item in state["architecture_recommendation"]["decisions"] if item["adr_required"]), 1):
-        name = f"ADR-{index:03d}.md"
-        content = f"# ADR-{index:03d}: {decision['technology']}\n\n## Status\n\nRecommended\n\n## Context\n\n{decision['rationale']}\n\n## Decision\n\n{decision['decision']}\n\n## Alternatives\n\n" + ("\n".join(f"- {item}" for item in decision["alternatives"]) or "- Reassess if approved requirements change.") + "\n\n## Traceability\n\n" + "\n".join(f"- `{item}`" for item in decision["requirement_refs"] + decision["story_refs"] + decision["api_refs"]) + "\n"
+    adr_documents = render_adrs({**shell, "counts": {}})
+    contract = {**shell, "counts": _counts(state, len(adr_documents))}
+    _write_json(run / "architecture.json", contract)
+    _write_json(run / "architecture-selection.json", state["architecture_selection"])
+    _write_json(run / "architecture-recommendation.json", state["architecture_recommendation"])
+    _write_json(run / "architecture-catalog.json", {"decisions": state["catalog_decisions"]})
+    (run / "architecture.md").write_text(render_architecture_markdown(contract), encoding="utf-8")
+    (run / "architecture.html").write_text(render_architecture_html(contract), encoding="utf-8")
+    for name, content in adr_documents.items():
         (run / "adrs" / name).write_text(content, encoding="utf-8")
-        adr_files.append(name)
-    workflow = {"workflow_id": run_id, "feature_id": feature_id, "nodes_executed": state["nodes_executed"], "state_transitions": state["state_transitions"], "start_status": "STARTED", "final_status": state["status"], "warnings": state["warnings"], "blockers": state["blockers"], "architecture_artifact": "architecture.json", "langgraph_execution": True, "langchain_runnable_execution": True, "external_llm_calls": 0}
+    workflow = {
+        "workflow_id": run_id, "feature_id": feature_id,
+        "nodes_executed": state["nodes_executed"], "state_transitions": state["state_transitions"],
+        "start_status": "STARTED", "final_status": state["status"],
+        "decision_counts": contract["counts"],
+        "validation_result": state["architecture_validation"]["status"],
+        "architecture_lock": state["architecture_lock"]["status"],
+        "warnings": state["warnings"], "blockers": state["blockers"],
+        "architecture_artifact": "architecture.json", "selection_artifact": "architecture-selection.json",
+        "langgraph_execution": True, "langchain_boundary": "RunnableLambda (offline deterministic catalog recommendation)",
+        "langchain_runnable_execution": True, "external_llm_calls": 0,
+    }
     _write_json(run / "workflow-run.json", workflow)
     latest = output_root / "latest"
     shutil.rmtree(latest, ignore_errors=True)
     shutil.copytree(run, latest)
-    return {"run_id": run_id, "path": run, "state": state, "architecture": architecture, "workflow": workflow, "adrs": adr_files}
+    return {"run_id": run_id, "path": run, "state": state, "architecture": contract, "workflow": workflow, "adrs": sorted(adr_documents)}

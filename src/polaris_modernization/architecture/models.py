@@ -1,9 +1,26 @@
-"""Compact structured contracts for design and architecture decisions."""
+"""Typed contracts for enterprise design and architecture decisions."""
 from __future__ import annotations
 
+from enum import StrEnum
 from typing import Literal, Protocol
 
 from pydantic import BaseModel, ConfigDict, Field
+
+
+class DecisionStatus(StrEnum):
+    SELECTED = "SELECTED"
+    RECOMMENDED = "RECOMMENDED"
+    EVALUATED_ALTERNATIVE = "EVALUATED_ALTERNATIVE"
+    NOT_SELECTED = "NOT_SELECTED"
+    NOT_APPLICABLE = "NOT_APPLICABLE"
+    REQUIRES_CLARIFICATION = "REQUIRES_CLARIFICATION"
+
+
+class SelectionSource(StrEnum):
+    POLARIS_POC_DEFAULT = "POLARIS_POC_DEFAULT"
+    POLARIS_RECOMMENDATION = "POLARIS_RECOMMENDATION"
+    CUSTOMER_OVERRIDE = "CUSTOMER_OVERRIDE"
+    ENTERPRISE_POLICY = "ENTERPRISE_POLICY"
 
 
 class DesignSpecification(BaseModel):
@@ -57,16 +74,20 @@ class ArchitectureDecision(BaseModel):
     id: str
     category: str
     technology: str
-    status: Literal["USE", "DO_NOT_USE", "EVALUATE", "NOT_APPLICABLE"]
+    status: DecisionStatus
     decision: str
     rationale: str
+    benefits: list[str]
+    tradeoffs: list[str]
+    selection_conditions: list[str]
+    rejection_reason: str | None = None
     requirement_refs: list[str]
+    feature_refs: list[str]
     story_refs: list[str]
     api_refs: list[str]
     design_refs: list[str] = Field(default_factory=list)
-    risks: list[str] = Field(default_factory=list)
-    alternatives: list[str] = Field(default_factory=list)
-    adr_required: bool = False
+    adr_ref: str | None = None
+    machine_traceability: dict[str, str]
 
 
 class ArchitectureRecommendation(BaseModel):
@@ -80,9 +101,33 @@ class ArchitectureRecommendation(BaseModel):
     traceability: dict[str, list[str]]
 
 
+class ArchitectureSelection(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    feature_id: str
+    status: Literal["ARCHITECTURE_SELECTED"] = "ARCHITECTURE_SELECTED"
+    selection_source: SelectionSource
+    recommendation_ref: str
+    decisions: list[ArchitectureDecision]
+    selected_decision_ids: list[str]
+    recommended_decision_ids: list[str]
+    alternative_decision_ids: list[str]
+    clarification_decision_ids: list[str]
+    existing_api_contracts: list[dict]
+    target_integration_topology: list[str]
+    downstream_source_of_truth: bool = True
+
+
 class ArchitectureValidation(BaseModel):
     model_config = ConfigDict(extra="forbid")
     status: Literal["ARCHITECTURE_READY", "ARCHITECTURE_READY_WITH_LIMITATIONS", "ARCHITECTURE_BLOCKED"]
     checks: dict[str, bool]
     warnings: list[str]
     blockers: list[str]
+
+
+class ArchitectureLock(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    status: Literal["LOCKED", "NOT_LOCKED"]
+    selection_source: SelectionSource
+    selection_hash: str | None = None
+    locked_after_validation: bool

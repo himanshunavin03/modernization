@@ -11,11 +11,11 @@ Tree-sitter + Roslyn/LSP -> Neo4j knowledge graph -> Graphiti shared memory -> L
 
 ## Angular Target
 
-Angular 22 with standalone components, Signals for UI state, RxJS for asynchronous boundaries, lazy routes, typed API clients, guards/interceptors, accessibility, and Playwright. The current assessment does not select Nx, SSR, BFF, microfrontends, or NgRx because the approved POC scope does not justify them.
+Angular 22 in an Nx workspace with standalone domain boundaries, Signals for UI state, RxJS for asynchronous boundaries, zoneless change detection, lazy routes, typed API clients, provider-neutral API Gateway/BFF target integration, accessibility, observability, and Playwright. CSR is selected; SSR/hydration, NgRx, microfrontends, and Module Federation are evaluated but not selected.
 
 ## Current Step
 
-The orchestration and target architecture foundation is complete in architecture run `legacy-dashboard-complete-application-demo-v1-2026-09-02-180329-133914`. A real seven-node LangGraph workflow consumes the approved Jira delivery model, uses an offline LangChain structured runnable, supports optional normalized design input, and emits a validated Dashboard architecture with six ADRs. The next stage is `FIGMA_ADAPTER_AND_TECHNICAL_TASKS`; do not generate Angular yet.
+The enterprise Angular architecture decision engine is complete in architecture run `legacy-dashboard-complete-application-demo-v1-2026-09-02-204635-171223`. A real nine-node LangGraph workflow evaluates 52 catalog decisions, creates a distinct recommendation and POC-default selection, validates and locks that selection, and uses an offline LangChain structured runnable with zero external calls. It emits machine contracts, architecture Markdown, a standalone data-driven customer HTML showcase, and nine ADRs. The next stage is `FIGMA_ADAPTER_AND_TECHNICAL_TASK_GENERATION`; do not implement Figma, tasks, Gateway/BFF, Nx, or Angular yet.
 
 ## Agent Command
 
@@ -44,7 +44,7 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Await explicit authorization for `FIGMA_ADAPTER_AND_TECHNICAL_TASKS`. The Figma provider type is recognized but no connector is implemented; do not claim design analysis, generate Angular 22 code, or modify legacy source automatically.
+Await explicit authorization for `FIGMA_ADAPTER_AND_TECHNICAL_TASK_GENERATION`. The Figma provider type is recognized but no connector is implemented; do not claim design analysis, generate tasks or Angular 22 code, implement target Gateway/BFF/Nx infrastructure, or modify legacy source automatically.
 
 ## Step 3B.2 Result
 
