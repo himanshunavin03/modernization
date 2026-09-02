@@ -11,6 +11,7 @@ import shutil
 from .api_contracts import build_feature_api_contracts
 from .api_coverage import build_feature_api_coverage
 from .human_presentation import audit_human_markdown, build_human_presentation, render_human_markdown
+from .jira_delivery import build_jira_delivery, summarize_jira_delivery
 from .semantic_quality import (
     build_ac_semantic_model,
     build_story_semantic_model,
@@ -256,6 +257,8 @@ def _narrative(spec: dict, evidence: dict, contracts: list[dict], interactions: 
 
 def _render(model: dict) -> str:
     model["human_presentation"] = build_human_presentation(model)
+    model["jira_delivery"] = build_jira_delivery(model, model["human_presentation"])
+    model["human_presentation"]["jira_stories"] = model["jira_delivery"]["stories"]
     return render_human_markdown(model["human_presentation"])
 
 
@@ -417,8 +420,10 @@ def synthesize_feature_narratives(source_root: Path, output_root: Path, knowledg
     hard_total = sum(aggregate_defects[key] for key in ("grammar_defects", "story_coherence_defects", "ac_coherence_defects", "circular_stories", "semantically_circular_stories", "system_centric_stories", "unsupported_business_value_stories", "generic_ac_preconditions", "vague_ac_outcomes", "non_observable_ac", "boilerplate_sentences"))
     human_defects = sum(human_audit.values())
     human_models = [model["human_presentation"] for model in narrative_models]
+    jira_features = [model["jira_delivery"] for model in narrative_models]
+    jira_summary = summarize_jira_delivery(jira_features)
     validation = {
-        "valid": minimum >= 8 and maxdup <= 10 and not hard_total and not human_defects,
+        "valid": minimum >= 8 and maxdup <= 10 and not hard_total and not human_defects and not jira_summary["readiness"]["BLOCKED"] and not jira_summary["circular_human_ac"] and not jira_summary["vague_human_ac"],
         "features": len(models), "stories": sum(len(x["narrative_model"]["requirements"]) for x in models),
         "authoritative_acceptance_criteria": sum(len(y["acceptance_criteria"]) for x in models for y in x["narrative_model"]["requirements"]),
         "presentation_only_ac_scenarios": 0, "narrative_concepts": len(trace), "narrative_statements": len(trace),
@@ -431,6 +436,19 @@ def synthesize_feature_narratives(source_root: Path, output_root: Path, knowledg
         "business_rules_generated": sum(len(x["business_rules"]) for x in human_models),
         "api_requirements_generated": sum(len(x["api_requirements"]) for x in human_models),
         "clarifications_generated": sum(len(x["clarifications"]) for x in human_models),
+        "jira_story_models": jira_summary["jira_story_models"],
+        "invest_validated_stories": jira_summary["jira_story_models"],
+        "invest_pass": jira_summary["invest"]["PASS"],
+        "invest_warning": jira_summary["invest"]["WARNING"],
+        "invest_needs_review": jira_summary["invest"]["NEEDS_REVIEW"],
+        "ready_stories": jira_summary["readiness"]["READY"],
+        "needs_clarification_stories": jira_summary["readiness"]["NEEDS_CLARIFICATION"],
+        "blocked_stories": jira_summary["readiness"]["BLOCKED"],
+        "ac_total": jira_summary["acceptance_criteria"]["total"],
+        "ac_testability_pass": jira_summary["acceptance_criteria"]["PASS"],
+        "ac_testability_warning": jira_summary["acceptance_criteria"]["WARNING"],
+        "ac_needs_clarification": jira_summary["acceptance_criteria"]["NEEDS_CLARIFICATION"],
+        "circular_human_ac": jira_summary["circular_human_ac"],
         "polaris_terms_in_human_markdown": human_audit["polaris_terms"],
         "kg_terms_in_human_markdown": human_audit["kg_terms"],
         "analyzer_terms_in_human_markdown": human_audit["analyzer_terms"],
@@ -474,6 +492,7 @@ def synthesize_feature_narratives(source_root: Path, output_root: Path, knowledg
         "external_llm_api_calls": 0, "final_feature_specification_readiness": "FINAL_FEATURE_SPECIFICATIONS_READY_WITH_LIMITATIONS",
     }
     _write(path / "feature-narrative-model.json", {"features": models})
+    _write(path / "jira-quality.json", {"summary": jira_summary, "features": jira_features})
     _write(path / "feature-narrative-traceability.json", {"statements": trace, "api_properties": api_trace})
     _write(path / "feature-api-contracts.json", api_artifact)
     _write(path / "feature-api-contract-coverage.json", api_coverage)

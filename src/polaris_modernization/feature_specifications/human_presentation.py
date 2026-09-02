@@ -417,6 +417,8 @@ def _objective(requirements: list[dict]) -> str:
 
 def build_human_presentation(model: dict) -> dict:
     apis, interaction_to_api = _api_requirements(model)
+    for api in apis:
+        api["delivery_story_ids"] = []
     behavior_by_story = {item["story_id"]: item for item in model["functional_behavior"]}
     requirements = []
     for story in model["requirements"]:
@@ -445,6 +447,8 @@ def build_human_presentation(model: dict) -> dict:
     for number, story in enumerate(model["requirements"], 1):
         semantic = story["story_semantic_model"]
         linked_apis = _relevant_apis(story, apis)
+        for api in linked_apis:
+            api["delivery_story_ids"].append(story["id"])
         outcome = _story_outcome(semantic, linked_apis)
         stories.append({"id": f"US-{number:02d}", "title": story["title"], "goal": _story_goal(semantic["authoritative_statement"]), "outcome": outcome, "business_outcome_status": "CONFIRMATION_REQUIRED" if outcome is None else "SUPPORTED", "source_story_id": story["id"]})
         for ac in story["acceptance_criteria"]:
@@ -482,13 +486,33 @@ def render_human_markdown(presentation: dict) -> str:
         if requirement["clarification_ids"]:
             lines += ["#### Clarification Required", "", *[f"- **{qid}:** {questions_by_id[qid]['question']}" for qid in requirement["clarification_ids"]], ""]
     lines += ["## 3. User Stories", ""]
-    for story in presentation["stories"]:
-        ending = "," if story["outcome"] else "."
-        lines += [f"### {story['id']} - {story['title']}", "", "As an application user,", "", f"I want to {story['goal']}{ending}"]
-        lines += (["", f"so that {story['outcome']}.", ""] if story["outcome"] else ["", "**Business Outcome:** Requires confirmation from Product Owner / Business SME.", ""])
-    lines += ["## 4. Acceptance Criteria", ""]
-    for criterion in presentation["acceptance_criteria"]:
-        lines += [f"### {criterion['id']} - {criterion['title']}", "", f"**Given** {criterion['given'][0]}", *[f"**And** {item}" for item in criterion["given"][1:]], "", f"**When** {criterion['when']}", "", f"**Then** {criterion['expected_results'][0]}", *[f"**And** {item}" for item in criterion["expected_results"][1:]], ""]
+    for story in presentation["jira_stories"]:
+        lines += [f"### {story['story_id']} - {story['summary']}", "", "#### Story", "", "As an application user,", "", f"I want to {story['goal']}{',' if story['business_outcome'] else '.'}"]
+        lines += (["", f"so that {story['business_outcome']}.", ""] if story["business_outcome"] else ["", "**Business Outcome:** Requires confirmation from Product Owner / Business SME.", ""])
+        lines += ["#### Functional Requirements", "", *[f"- **{item['id']}:** {item['requirement']}" for item in story["functional_requirement_refs"]], ""]
+        if story["business_rules"]:
+            lines += ["#### Business Rules", "", *[f"- **{item['id']}:** {item['rule']}" for item in story["business_rules"]], ""]
+        if story["api_dependencies"]:
+            lines += ["#### API Integration", ""]
+            for api in story["api_dependencies"]:
+                lines += [f"- **Purpose:** {api['purpose']}", f"- **Method:** `{api['method']}`", f"- **Endpoint:** `{api['endpoint']}`"]
+                lines += [f"- **Input:** `{item['name']}` - {item['description']} ({item['location'].lower()} parameter)" for item in api["path_parameters"] + api["query_parameters"]]
+                lines += [f"- **Response:** {api['response_description']}."]
+                if api["response_model"]:
+                    lines += [f"- **Response Model:** `{api['response_model']}`"]
+                lines += [""]
+        lines += ["#### Acceptance Criteria", ""]
+        for criterion in story["acceptance_criteria"]:
+            lines += [f"##### {criterion['id']} - {criterion['title']}", "", f"**Given** {criterion['given'][0]}", *[f"**And** {item}" for item in criterion["given"][1:]], "", f"**When** {criterion['when']}", "", f"**Then** {criterion['then'][0]}", *[f"**And** {item}" for item in criterion["then"][1:]], ""]
+        if story["clarifications"]:
+            lines += ["#### Clarifications Required", "", *[f"- **{item['id']}:** {item['question']}" for item in story["clarifications"]], ""]
+        lines += ["#### Story Readiness", "", f"**{story['readiness']['status']}**", ""]
+        if story["readiness"]["blocking_clarification_ids"]:
+            lines += ["Blocking clarifications: " + ", ".join(story["readiness"]["blocking_clarification_ids"]) + ".", ""]
+    lines += ["## 4. Acceptance Criteria", "", "The authoritative Acceptance Criteria are realized in their owning Stories above.", "", "| ID | Story | Criterion |", "| --- | --- | --- |"]
+    story_id_by_source = {item["traceability"]["authoritative_story_ref"]: item["story_id"] for item in presentation["jira_stories"]}
+    lines += [f"| {item['id']} | {story_id_by_source[item['source_story_id']]} | {item['title']} |" for item in presentation["acceptance_criteria"]]
+    lines += [""]
     if presentation["api_requirements"]:
         lines += ["## 5. API Requirements", ""]
         for api in presentation["api_requirements"]:
