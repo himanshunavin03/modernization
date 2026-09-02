@@ -519,6 +519,13 @@ def main() -> None:
     narrative_parser.add_argument("--knowledge-graph-root", required=True, type=Path)
     narrative_parser.add_argument("--application-source-root", required=True, type=Path)
     narrative_parser.add_argument("--output", type=Path, default=Path("artifacts/feature-specifications"))
+    architecture_parser = subparsers.add_parser("recommend-architecture", help="Run target architecture orchestration over approved Feature artifacts")
+    architecture_parser.add_argument("--project-id", required=True)
+    architecture_parser.add_argument("--feature-id", required=True)
+    architecture_parser.add_argument("--feature-specification-root", type=Path, default=Path("artifacts/feature-specifications/latest"))
+    architecture_parser.add_argument("--design-provider", choices=("NONE", "FIGMA"), default="NONE")
+    architecture_parser.add_argument("--design-reference")
+    architecture_parser.add_argument("--output", type=Path, default=Path("artifacts/architecture"))
     load_parser = subparsers.add_parser("load-neo4j")
     load_parser.add_argument("--graph", required=True, type=Path)
     load_parser.add_argument("--project-id", required=True)
@@ -600,6 +607,10 @@ def main() -> None:
     elif args.command == "synthesize-feature-narratives":
         from polaris_modernization.feature_specifications.narrative import synthesize_feature_narratives
         result = synthesize_feature_narratives(args.source_specification_root, args.output, args.knowledge_graph_root, args.application_source_root)
+        print(result["path"])
+    elif args.command == "recommend-architecture":
+        from polaris_modernization.architecture.workflow import recommend_architecture
+        result = recommend_architecture(args.project_id, args.feature_id, args.feature_specification_root, args.output, args.design_provider, args.design_reference)
         print(result["path"])
     elif args.command in {"load-neo4j", "clear-neo4j-project"}:
         driver = connect(os.getenv("NEO4J_URI", "bolt://localhost:7687"), os.getenv("NEO4J_USERNAME", "neo4j"), os.getenv("NEO4J_PASSWORD", "change-me"))

@@ -1,0 +1,737 @@
+{
+  "design_specification": {
+    "components": [],
+    "design_tokens": {},
+    "provider": "NONE",
+    "responsive_rules": [],
+    "screens": [],
+    "source_reference": null,
+    "status": "NOT_PROVIDED",
+    "traceability": [],
+    "unresolved_design_items": []
+  },
+  "feature_context": {
+    "acceptance_criteria": [
+      {
+        "authoritative_ac_ref": "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+        "id": "AC-01"
+      },
+      {
+        "authoritative_ac_ref": "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+        "id": "AC-02"
+      },
+      {
+        "authoritative_ac_ref": "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002",
+        "id": "AC-03"
+      },
+      {
+        "authoritative_ac_ref": "ac-operational-dashboard-insights-open-operational-dashboard-001",
+        "id": "AC-04"
+      },
+      {
+        "authoritative_ac_ref": "ac-operational-dashboard-insights-open-operational-dashboard-002",
+        "id": "AC-05"
+      }
+    ],
+    "api_contracts": [
+      {
+        "api_id": "API-01",
+        "endpoint": "/api/users/current/tenant",
+        "method": "GET",
+        "path_parameters": [],
+        "purpose": "Retrieve the current organization identifier required by organization-specific functionality.",
+        "query_parameters": [],
+        "request_model": null,
+        "response_description": "Current organization identifier",
+        "response_model": "int",
+        "traceability": {
+          "source_interaction_ids": [
+            "API-OPERATIONAL_DASHBOARD_INSIGHTS-001"
+          ]
+        }
+      },
+      {
+        "api_id": "API-02",
+        "endpoint": "/api/reports/expenses/{year}",
+        "method": "GET",
+        "path_parameters": [
+          {
+            "description": "selected reporting year",
+            "location": "Path",
+            "name": "year"
+          }
+        ],
+        "purpose": "Retrieve expense summary information for the selected reporting year.",
+        "query_parameters": [],
+        "request_model": null,
+        "response_description": "Expense summary information",
+        "response_model": "ExpensesSummary[]",
+        "traceability": {
+          "source_interaction_ids": [
+            "API-OPERATIONAL_DASHBOARD_INSIGHTS-002"
+          ]
+        }
+      },
+      {
+        "api_id": "API-03",
+        "endpoint": "/api/reports/patients/{year}",
+        "method": "GET",
+        "path_parameters": [
+          {
+            "description": "selected reporting year",
+            "location": "Path",
+            "name": "year"
+          }
+        ],
+        "purpose": "Retrieve patient summary information for the selected reporting year.",
+        "query_parameters": [],
+        "request_model": null,
+        "response_description": "Patient summary information",
+        "response_model": "PatientsSummary[]",
+        "traceability": {
+          "source_interaction_ids": [
+            "API-OPERATIONAL_DASHBOARD_INSIGHTS-003"
+          ]
+        }
+      },
+      {
+        "api_id": "API-04",
+        "endpoint": "/api/reports/clinicsummary",
+        "method": "GET",
+        "path_parameters": [],
+        "purpose": "Retrieve clinic summary information for the corresponding feature function.",
+        "query_parameters": [],
+        "request_model": null,
+        "response_description": "Clinic summary information",
+        "response_model": "ClinicSummary",
+        "traceability": {
+          "source_interaction_ids": [
+            "API-OPERATIONAL_DASHBOARD_INSIGHTS-004"
+          ]
+        }
+      }
+    ],
+    "feature_id": "feature-operational-dashboard-insights",
+    "feature_name": "Operational Dashboard Insights",
+    "requirements": [
+      {
+        "id": "FR-02",
+        "requirement": "The user must be able to view yearly expense information.",
+        "title": "View Yearly Expense Information"
+      },
+      {
+        "id": "FR-03",
+        "requirement": "The user must be able to view yearly patient information.",
+        "title": "View Yearly Patient Information"
+      },
+      {
+        "id": "FR-05",
+        "requirement": "The application must retrieve the current organization identifier required by organization-specific functionality.",
+        "title": "Establish Organization Context"
+      },
+      {
+        "id": "FR-04",
+        "requirement": "The user must be able to view clinic summary.",
+        "title": "View Clinic Summary"
+      },
+      {
+        "id": "FR-01",
+        "requirement": "The user must be able to access the operational dashboard.",
+        "title": "Access Operational Dashboard"
+      }
+    ],
+    "stories": [
+      {
+        "readiness": "NEEDS_CLARIFICATION",
+        "story_id": "US-01",
+        "summary": "Access Yearly Operational Reports"
+      },
+      {
+        "readiness": "NEEDS_CLARIFICATION",
+        "story_id": "US-02",
+        "summary": "View Tenant-Aware Dashboard Summary"
+      },
+      {
+        "readiness": "NEEDS_CLARIFICATION",
+        "story_id": "US-03",
+        "summary": "Open Operational Dashboard"
+      }
+    ]
+  },
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "recommendation": {
+    "decisions": [
+      {
+        "adr_required": true,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "Platform",
+        "decision": "Build the target frontend on Angular 22.",
+        "design_refs": [],
+        "id": "ARCH-001",
+        "rationale": "Angular 22 is the explicit POC target.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "USE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "Angular 22"
+      },
+      {
+        "adr_required": true,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "Application Structure",
+        "decision": "Use standalone components and route-level feature boundaries.",
+        "design_refs": [],
+        "id": "ARCH-002",
+        "rationale": "The target is a new Angular frontend with independently scoped approved Features.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "USE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "Standalone architecture"
+      },
+      {
+        "adr_required": true,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "State",
+        "decision": "Use Signals for local and derived UI state.",
+        "design_refs": [],
+        "id": "ARCH-003",
+        "rationale": "The dashboard requires reactive selected-year, context, loading, and derived presentation state.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "USE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "Signals"
+      },
+      {
+        "adr_required": false,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "Async",
+        "decision": "Use RxJS at HTTP and asynchronous composition boundaries.",
+        "design_refs": [],
+        "id": "ARCH-004",
+        "rationale": "Approved APIs require cancellation and stream composition; Observables need not replace local Signal state.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "USE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "RxJS"
+      },
+      {
+        "adr_required": false,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "Runtime",
+        "decision": "Validate zoneless compatibility during the implementation spike.",
+        "design_refs": [],
+        "id": "ARCH-005",
+        "rationale": "Angular 22 supports the target model, but third-party and future design-system compatibility is not yet known.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [
+          "A selected UI dependency may require additional compatibility work."
+        ],
+        "status": "EVALUATE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "Zoneless change detection"
+      },
+      {
+        "adr_required": false,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "State",
+        "decision": "Keep Feature state in focused injectable services backed by Signals.",
+        "design_refs": [],
+        "id": "ARCH-006",
+        "rationale": "The approved scope does not establish cross-domain complexity requiring a global event store.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "USE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "Service and Signal stores"
+      },
+      {
+        "adr_required": true,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "Routing",
+        "decision": "Use lazy route boundaries for approved Features and functional guards where access checks apply.",
+        "design_refs": [],
+        "id": "ARCH-007",
+        "rationale": "Multiple approved Feature boundaries map naturally to route-level loading.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "USE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "Router with lazy feature routes"
+      },
+      {
+        "adr_required": true,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "API",
+        "decision": "Create typed Feature API services over preserved backend routes.",
+        "design_refs": [],
+        "id": "ARCH-008",
+        "rationale": "Approved request parameters and response models are available and must remain authoritative.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "USE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "Typed HttpClient"
+      },
+      {
+        "adr_required": false,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "Rendering",
+        "decision": "Do not add SSR or hydration to this authenticated operational POC.",
+        "design_refs": [],
+        "id": "ARCH-009",
+        "rationale": "No public discovery, SEO, or server-rendering requirement is present.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "NOT_APPLICABLE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "SSR and hydration"
+      },
+      {
+        "adr_required": false,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "Backend",
+        "decision": "Call the preserved backend APIs directly through typed services.",
+        "design_refs": [],
+        "id": "ARCH-010",
+        "rationale": "The explicit frontend-modernization constraint does not justify a replacement or aggregation backend.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "DO_NOT_USE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "Backend for Frontend"
+      },
+      {
+        "adr_required": false,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "Workspace",
+        "decision": "Use a standard Angular workspace for the POC.",
+        "design_refs": [],
+        "id": "ARCH-011",
+        "rationale": "The approved scope does not establish a multi-application monorepo need.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "DO_NOT_USE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "Nx"
+      },
+      {
+        "adr_required": false,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "Deployment",
+        "decision": "Keep one modular frontend deployment.",
+        "design_refs": [],
+        "id": "ARCH-012",
+        "rationale": "Independent deployment and team-autonomy requirements are absent.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "DO_NOT_USE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "Microfrontends"
+      },
+      {
+        "adr_required": false,
+        "alternatives": [
+          "Re-evaluate if later workflows establish complex cross-feature events or audit requirements."
+        ],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "State",
+        "decision": "Do not introduce NgRx for the current Feature set.",
+        "design_refs": [],
+        "id": "ARCH-013",
+        "rationale": "Signals and focused services cover the known state without global event-store overhead.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "DO_NOT_USE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "NgRx"
+      },
+      {
+        "adr_required": true,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "Testing",
+        "decision": "Use Playwright for critical Feature journeys and API-backed acceptance paths.",
+        "design_refs": [],
+        "id": "ARCH-014",
+        "rationale": "The approved AC provide observable end-to-end behavior.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "USE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "Playwright"
+      },
+      {
+        "adr_required": false,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "Quality",
+        "decision": "Use a functional HTTP interceptor, user-safe Feature error states, and structured client diagnostics.",
+        "design_refs": [],
+        "id": "ARCH-015",
+        "rationale": "API-backed workflows require consistent technical failure handling without inventing business outcomes.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "USE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "Error handling and observability"
+      },
+      {
+        "adr_required": false,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "UI",
+        "decision": "Use reusable accessible components; apply normalized design input when available.",
+        "design_refs": [],
+        "id": "ARCH-016",
+        "rationale": "Shared presentation and accessibility are architecture concerns while design input remains optional.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "USE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "Accessible component strategy"
+      },
+      {
+        "adr_required": false,
+        "alternatives": [],
+        "api_refs": [
+          "API-01",
+          "API-02",
+          "API-03",
+          "API-04"
+        ],
+        "category": "Forms",
+        "decision": "Use a direct typed control bound to Signal state for the selected reporting year.",
+        "design_refs": [],
+        "id": "ARCH-017",
+        "rationale": "The approved Dashboard has a single year selection and no multi-field form workflow requiring a forms architecture.",
+        "requirement_refs": [
+          "FR-02",
+          "FR-03",
+          "FR-05",
+          "FR-04",
+          "FR-01"
+        ],
+        "risks": [],
+        "status": "NOT_APPLICABLE",
+        "story_refs": [
+          "US-01",
+          "US-02",
+          "US-03"
+        ],
+        "technology": "Signal Forms"
+      }
+    ],
+    "feature_id": "feature-operational-dashboard-insights",
+    "framework_version": "22",
+    "limitations": [
+      "Implementation clarifications remain, but they do not block architecture decisions."
+    ],
+    "target_framework": "Angular",
+    "target_platform": "Web",
+    "traceability": {
+      "acceptance_criteria": [
+        "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002",
+        "ac-operational-dashboard-insights-open-operational-dashboard-001",
+        "ac-operational-dashboard-insights-open-operational-dashboard-002"
+      ],
+      "apis": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-04"
+      ],
+      "requirements": [
+        "FR-02",
+        "FR-03",
+        "FR-05",
+        "FR-04",
+        "FR-01"
+      ],
+      "stories": [
+        "US-01",
+        "US-02",
+        "US-03"
+      ]
+    }
+  },
+  "traceability": {
+    "kg_run": "legacy-dashboard-complete-application-demo-v1-2026-09-02-050627",
+    "requirement_run": "legacy-dashboard-complete-application-demo-v1-2026-09-02-103340-465304"
+  },
+  "validation": {
+    "blockers": [],
+    "checks": {
+      "api_preservation_respected": true,
+      "contradictory_decisions_absent": true,
+      "design_status_recorded": true,
+      "major_decisions_have_rationale": true,
+      "poc_scope_respected": true,
+      "rationale_present": true,
+      "requirement_traceability_present": true,
+      "target_framework_selected": true,
+      "unsupported_backend_replacement_absent": true,
+      "unsupported_business_behavior_absent": true
+    },
+    "status": "ARCHITECTURE_READY_WITH_LIMITATIONS",
+    "warnings": [
+      "Implementation clarifications remain, but they do not block architecture decisions."
+    ]
+  }
+}

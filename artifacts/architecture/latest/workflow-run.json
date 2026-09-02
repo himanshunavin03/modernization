@@ -1,0 +1,53 @@
+{
+  "architecture_artifact": "architecture.json",
+  "blockers": [],
+  "external_llm_calls": 0,
+  "feature_id": "feature-operational-dashboard-insights",
+  "final_status": "READY_FOR_TASKS",
+  "langchain_runnable_execution": true,
+  "langgraph_execution": true,
+  "nodes_executed": [
+    "load_feature",
+    "load_requirement_context",
+    "load_design_context",
+    "validate_requirements",
+    "recommend_architecture",
+    "validate_architecture",
+    "finalize_architecture"
+  ],
+  "start_status": "STARTED",
+  "state_transitions": [
+    {
+      "from": "START",
+      "to": "load_feature"
+    },
+    {
+      "from": "load_feature",
+      "to": "load_requirement_context"
+    },
+    {
+      "from": "load_requirement_context",
+      "to": "load_design_context"
+    },
+    {
+      "from": "load_design_context",
+      "to": "validate_requirements"
+    },
+    {
+      "from": "validate_requirements",
+      "to": "recommend_architecture"
+    },
+    {
+      "from": "recommend_architecture",
+      "to": "validate_architecture"
+    },
+    {
+      "from": "validate_architecture",
+      "to": "finalize_architecture"
+    }
+  ],
+  "warnings": [
+    "Implementation clarifications remain, but they do not block architecture decisions."
+  ],
+  "workflow_id": "legacy-dashboard-complete-application-demo-v1-2026-09-02-180329-133914"
+}

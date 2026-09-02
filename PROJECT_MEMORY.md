@@ -11,11 +11,11 @@ Tree-sitter + Roslyn/LSP -> Neo4j knowledge graph -> Graphiti shared memory -> L
 
 ## Angular Target
 
-Angular 22, Nx modular monolith, standalone components, Signals, OnPush, lazy routes, typed API clients, typed Reactive Forms, guards/interceptors, SSR/BFF configurable by policy.
+Angular 22 with standalone components, Signals for UI state, RxJS for asynchronous boundaries, lazy routes, typed API clients, guards/interceptors, accessibility, and Playwright. The current assessment does not select Nx, SSR, BFF, microfrontends, or NgRx because the approved POC scope does not justify them.
 
 ## Current Step
 
-Final API relationship resolution is complete in immutable Knowledge Graph run `legacy-dashboard-complete-application-demo-v1-2026-09-02-050627`. Final BA/SA-quality human Feature Specifications are published in run `legacy-dashboard-complete-application-demo-v1-2026-09-02-023203-926950`, preserving the approved 5 Features, 12 Stories, 14 authoritative Acceptance Criteria, and byte-identical source Feature JSON. The next authorized action is `IMPLEMENT_LANGGRAPH_LANGCHAIN_POC_ORCHESTRATION_FOUNDATION`; do not execute it until explicitly requested.
+The orchestration and target architecture foundation is complete in architecture run `legacy-dashboard-complete-application-demo-v1-2026-09-02-180329-133914`. A real seven-node LangGraph workflow consumes the approved Jira delivery model, uses an offline LangChain structured runnable, supports optional normalized design input, and emits a validated Dashboard architecture with six ADRs. The next stage is `FIGMA_ADAPTER_AND_TECHNICAL_TASKS`; do not generate Angular yet.
 
 ## Agent Command
 
@@ -44,7 +44,7 @@ The current Git repository root is the solution root. A Python 3.11 deterministi
 
 ## Next Step
 
-Await explicit authorization to implement the LangGraph/LangChain POC orchestration foundation over the frozen UNDERSTAND pillar. Do not analyze Figma, recommend Target Architecture, generate Angular 22 code, or modify legacy source automatically.
+Await explicit authorization for `FIGMA_ADAPTER_AND_TECHNICAL_TASKS`. The Figma provider type is recognized but no connector is implemented; do not claim design analysis, generate Angular 22 code, or modify legacy source automatically.
 
 ## Step 3B.2 Result
 

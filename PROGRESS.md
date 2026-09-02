@@ -1,8 +1,8 @@
 # Progress
 
-- Status: Final BA/SA-quality Feature Specification semantic refinement completed on Wednesday, September 2, 2026. The UNDERSTAND pillar remains frozen `FROZEN_READY_WITH_LIMITATIONS`.
+- Status: Minimal LangGraph/LangChain orchestration and target architecture foundation completed on Wednesday, September 2, 2026. The UNDERSTAND pillar remains frozen `FROZEN_READY_WITH_LIMITATIONS`.
 - Agent command: `/create-knowledge-graph` is documented at `docs/agents/commands/create-knowledge-graph.md` and delegates to the deterministic `agent-create-knowledge-graph` CLI adapter. It derives a safe project ID from the selected source root, enables project-aware Roslyn only when .NET project evidence exists, keeps Neo4j opt-in, and does not use an LLM.
-- Current step: Await explicit authorization for `IMPLEMENT_LANGGRAPH_LANGCHAIN_POC_ORCHESTRATION_FOUNDATION`.
+- Current step: Await explicit authorization for `FIGMA_ADAPTER_AND_TECHNICAL_TASKS`; Angular generation has not started.
 - Complete application correction: deterministic first-party native-crash fallback now emits literal C#/JavaScript/Razor facts alongside provenance. Final analysis: 2,384 files, 3,386 nodes, 4,593 edges, 38 review warnings, zero extraction warnings, 44 opaque dependencies, and `complete_with_opaque_dependencies`. The attempted Neo4j load is blocked solely by unavailable local Neo4j environment configuration; full viewer export remains gated on that load.
 - Failure inventory: 42 JavaScript, 3 C#, and 2 HTML Tree-sitter workers exit with `3221225477`; all are supported-language parser defects requiring a generic repair. See `docs/validation/complete-application-extraction-failure-inventory.md`.
 - Viewer runbook: `docs/runbooks/understand-anything-viewer.md` documents the validated UI-only command and `tools/launch_understand_anything_viewer.ps1` safely exports and launches any approved project-scoped graph with a caller-supplied local token.
@@ -10,9 +10,17 @@
 - Customer-facing viewer branding is neutralized as `Legacy Dashboard POC`; audit: `docs/validation/customer-facing-branding-audit.md`.
 - End-to-end data context: the isolated graph now shows the proven Reports controller to repository, EF/LINQ query, selected model, and `MyHealthContext` flow; raw SQL is not represented because no literal SQL evidence exists.
 - Completed work: Project memory initialized; Dashboard source discovery completed; deterministic scoped inventory, facts, normalized graph JSON, summary, CLI, and tests created; Roslyn graph-label correction validated on a real .NET 8 SDK; Create Knowledge Graph now validates input, analyzes source, validates the project-scoped graph, optionally loads only that project into Neo4j, and writes customer-facing run status artifacts. Native Tree-sitter extraction is isolated per file; child workers bootstrap the repository-local `src` directory through a copied `PYTHONPATH`, and abnormal exits, timeouts, invalid worker output, startup/import errors, and Python extraction errors produce safe structured warnings while remaining files continue. Profiles now carry explicit scope metadata, audit every discovered file, limit selected-flow graph File nodes and normal Roslyn facts to the approved scope, and expose proven cross-scope semantic references without silently widening the graph. Step 3C.6 loaded only `healthclinic-dashboard-scope-demo-v3` with 123 Neo4j nodes, 169 relationships, 27 warnings, and `scope_complete` coverage. Step 3C.7 now assigns all 123 exported viewer nodes exactly once across five deterministic evidence-derived layers, preserving 169 edges and 27 warnings; the port-5175 viewer returned HTTP 200 for both the page and graph endpoint.
-- Next action: `IMPLEMENT_LANGGRAPH_LANGCHAIN_POC_ORCHESTRATION_FOUNDATION` only when explicitly requested. Do not analyze Figma, recommend architecture, generate Angular, or modify source automatically.
+- Next action: `FIGMA_ADAPTER_AND_TECHNICAL_TASKS` only when explicitly requested. Do not claim Figma analysis, generate Angular, or modify source automatically.
 - Blockers: None for Step 3C.6. Known review warnings remain visible: unresolved API-call ownership, implicit MVC `View()` matching, and Roslyn symbols that could not be resolved against the legacy source context.
-- Exact next action when resumed: Read prompts through 058, immutable KG run `legacy-dashboard-complete-application-demo-v1-2026-09-02-050627`, final BA/SA-quality feature-specification run `legacy-dashboard-complete-application-demo-v1-2026-09-02-023203-926950`, and `artifacts/feature-specifications/latest/`. Await explicit authorization for `IMPLEMENT_LANGGRAPH_LANGCHAIN_POC_ORCHESTRATION_FOUNDATION`.
+- Exact next action when resumed: Read prompts through 060, approved Jira delivery artifacts in `artifacts/feature-specifications/latest/`, and `artifacts/architecture/latest/`. Await explicit authorization for `FIGMA_ADAPTER_AND_TECHNICAL_TASKS`.
+
+## POC Orchestration And Architecture Foundation
+
+- LangGraph is the workflow/state orchestration layer. The real graph executes seven nodes from approved Feature loading through architecture finalization and records every transition in `workflow-run.json`.
+- LangChain provides a small offline `RunnableLambda` structured recommendation boundary; it does not replace deterministic analysis and makes zero external LLM calls.
+- Design input is optional and normalized through `DesignSpecification`. Figma is a recognized provider target, but the actual connector remains unimplemented and reports `FIGMA_CONNECTOR_NOT_IMPLEMENTED` honestly.
+- Architecture recommendations consume approved requirements, Jira Story models, AC, API contracts, and optional design context while preserving machine traceability. Dashboard output preserves all four approved GET contracts.
+- Run `legacy-dashboard-complete-application-demo-v1-2026-09-02-180329-133914` is `ARCHITECTURE_READY_WITH_LIMITATIONS`, executes 17 technology decisions, and emits 6 ADRs. Focused tests passed `21`; full regression passed `159` with `2` skipped in `45.40s`.
 
 ## Final BA/SA Feature Specification Semantics
 
