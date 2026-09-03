@@ -15,7 +15,7 @@ Angular 22 in an Nx workspace with standalone domain boundaries, Signals for UI 
 
 ## Current Step
 
-The optional design adapter and architecture-driven technical planning stage is complete in task run `legacy-dashboard-complete-application-demo-v1-2026-09-03-062736-922737`. The architecture run `legacy-dashboard-complete-application-demo-v1-2026-09-02-204635-171223` remains frozen and byte-unchanged. A real six-node LangGraph consumes its locked selection, handles `NONE`, `FIXTURE`, and optional `LIVE` design modes, and uses one offline LangChain structured transform to produce 16 validated hero-Feature tasks with zero external LLM calls. Gateway and BFF are represented as future target work, all four existing Dashboard APIs are preserved, and no Angular, Gateway, or BFF implementation has started. The next stage is `ANGULAR_22_HERO_FEATURE_GENERATION`.
+Prompt 064 executed the real generated Angular 22/Nx validation pipeline from baseline `a7d00a2`. Five implementation repairs resolved the Vitest peer conflict, missing Nx TypeScript ESLint dependency, TypeScript 6 path configuration, strict boolean template bindings, and missing DOM test environment. Dependency installation and `npx nx build healthclinic-web` pass. Unit tests remain blocked before discovery because the generated build target lacks a `development` configuration; the five-repair limit was reached, so serve, browser, and Playwright validation were not executed. Frozen source, requirements, architecture, technical tasks, APIs, and Figma separation remain unchanged. Next action: authorize a focused continuation that adds and validates the missing development build configuration.
 
 ## Optional Design And Technical Tasks
 

@@ -266,6 +266,17 @@
       "id": "US-03"
     }
   ],
+  "runtime_validation": {
+    "artifact": "artifacts/modernization/latest/runtime-validation.json",
+    "dependency_install": "PASS",
+    "angular_build": "PASS",
+    "unit_tests": "BLOCKED_BEFORE_TEST_DISCOVERY",
+    "serve": "NOT_EXECUTED_PREREQUISITE_FAILED",
+    "browser_render": "NOT_EXECUTED_PREREQUISITE_FAILED",
+    "playwright": "NOT_EXECUTED_PREREQUISITE_FAILED",
+    "acceptance_criteria_runtime_status": "5_IMPLEMENTED_NOT_RUNTIME_VERIFIED",
+    "api_contracts": "4_OF_4_STATIC_AND_BUILD_VALIDATED"
+  },
   "technical_tasks": [
     {
       "detail": "Angular 22/Nx workspace generated with zoneless-compatible package configuration.",

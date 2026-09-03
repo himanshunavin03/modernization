@@ -250,3 +250,15 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Artifacts: machine JSON, engineering Markdown, standalone data-driven technical-task HTML, and lightweight normalized-design JSON/Markdown/HTML are published under immutable runs and `latest`.
 - Validation: focused suite `41 passed` in `7.58s`; complete repository suite `203 passed, 2 skipped` in `61.56s`. The direct `pytest` executable has a known Windows import-path collection issue for `tools`; the supported `python -m pytest` invocation passes.
 - Angular 22/Nx generation, Gateway implementation, BFF implementation, PEP, and Jira integration have not started. Next stage: `ANGULAR_22_HERO_FEATURE_GENERATION`.
+
+## Angular 22 Build, Test, And PEP Validation
+
+- Baseline `a7d00a2` was verified clean with frozen architecture and technical-task blobs unchanged.
+- PEP recorded 11 actual attempts, 7 failures, 7 revalidations, and the permitted 5 implementation repairs. No force or legacy-peer-dependency flags were used.
+- Dependency installation passes with Angular `22.1.4`, Nx `23.2.0`, TypeScript `6.0.2`, Vitest `4.1.11`, Playwright `1.55.0`, TypeScript ESLint `8.69.0`, and jsdom `30.0.1`.
+- `npx nx build healthclinic-web` passes and emits the application plus lazy Dashboard bundle.
+- `npx nx test healthclinic-web` is blocked before test discovery because `healthclinic-web:build:development` is absent. No sixth automatic implementation repair was applied.
+- Serve, browser rendering, backend connectivity, and Playwright were not executed because the required unit-test prerequisite did not pass.
+- Focused Polaris validation passed `40`; full regression passed `243` with `2` skipped. Source, approved architecture, technical tasks, API contracts, and Figma separation remain unchanged.
+- Runtime evidence is published in `artifacts/modernization/latest/pep-run.json`, `pep-run.md`, `runtime-validation.json`, traceability, and the customer modernization HTML.
+- Next action: authorize a bounded continuation to add the standard Angular `development` build configuration, rerun unit tests, then proceed to serve/browser/Playwright validation if green.

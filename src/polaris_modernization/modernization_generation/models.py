@@ -71,3 +71,67 @@ class PepValidationContract(BaseModel):
     repair: dict | None = None
     revalidation: dict | None = None
     next_stage: Literal["BUILD_TEST_PEP_AND_FINAL_TRACEABILITY"] = "BUILD_TEST_PEP_AND_FINAL_TRACEABILITY"
+
+
+class PepAttempt(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    attempt_id: str
+    stage: str
+    command: str
+    status: Literal["PASS", "FAIL"]
+    timestamp: str
+
+
+class PepFailure(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    failure_id: str
+    attempt_id: str
+    category: str
+    layer: str
+    summary: str
+    relevant_error: str
+    affected_files: list[str]
+    context: dict
+
+
+class PepDiagnosis(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    diagnosis_id: str
+    failure_id: str
+    root_cause: str
+    confidence: Literal["HIGH", "MEDIUM", "LOW"]
+    evidence: list[str]
+    candidate_repairs: list[dict]
+    selected_repair: str
+    rationale: str
+
+
+class PepRepair(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    repair_id: str
+    diagnosis_id: str
+    files_changed: list[str]
+    description: str
+    scope: str
+    architecture_impact: str
+    requirement_impact: str
+
+
+class PepRevalidation(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    repair_id: str
+    command: str
+    result: Literal["PASS", "FAIL"]
+    new_failure_id: str | None = None
+
+
+class PepRun(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    project_id: str
+    feature_id: str
+    status: Literal["IN_PROGRESS", "PASS", "BLOCKED"]
+    attempts: list[PepAttempt]
+    failures: list[PepFailure]
+    diagnoses: list[PepDiagnosis]
+    repairs: list[PepRepair]
+    revalidations: list[PepRevalidation]

@@ -1,5 +1,15 @@
 # Angular Hero Generation Traceability
 
+## Runtime Validation
+
+- Dependency installation: `PASS`
+- Angular production build: `PASS`
+- Unit tests: `BLOCKED_BEFORE_TEST_DISCOVERY`
+- Serve/browser/Playwright: `NOT_EXECUTED_PREREQUISITE_FAILED`
+- Existing API contracts: `4_OF_4_STATIC_AND_BUILD_VALIDATED`
+- Hero AC: `5_IMPLEMENTED_NOT_RUNTIME_VERIFIED`
+- Evidence: `artifacts/modernization/latest/runtime-validation.json`
+
 ## Acceptance Criteria
 
 ### ac-operational-dashboard-insights-access-yearly-operational-reports-001

@@ -1,0 +1,73 @@
+{
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "feature_id": "feature-operational-dashboard-insights",
+  "toolchain": {
+    "node": "22.23.2",
+    "npm": "10.9.8",
+    "angular": "22.1.4",
+    "nx": "23.2.0",
+    "typescript": "6.0.2",
+    "vitest": "4.1.11",
+    "playwright": "1.55.0"
+  },
+  "dependency_status": "PASS",
+  "dependency_command": "npm install",
+  "force_used": false,
+  "legacy_peer_deps_used": false,
+  "build_status": "PASS",
+  "build_command": "npx nx build healthclinic-web",
+  "unit_test_status": "BLOCKED_BEFORE_TEST_DISCOVERY",
+  "unit_test_command": "npx nx test healthclinic-web",
+  "unit_test_count": 0,
+  "serve_status": "NOT_EXECUTED_PREREQUISITE_FAILED",
+  "browser_render_status": "NOT_EXECUTED_PREREQUISITE_FAILED",
+  "playwright_status": "NOT_EXECUTED_PREREQUISITE_FAILED",
+  "playwright_test_count": 0,
+  "backend_runtime_status": "NOT_STARTED",
+  "backend_connectivity_status": "NOT_TESTED",
+  "api_preservation": {
+    "status": "PASS_STATIC_AND_BUILD_VALIDATED",
+    "contract_count": 4,
+    "invented_existing_api_count": 0
+  },
+  "design_source": {
+    "current": "EXISTING_APPLICATION_UI",
+    "figma_capability": "SUPPORTED_OPTIONAL",
+    "figma_fixture_influence": "NONE"
+  },
+  "ui_reconstruction_status": "PARTIAL",
+  "ui_reconstruction_differences": [
+    "The generated reconstruction passed static generation validation and production build.",
+    "Browser rendering was not reached because unit-test configuration blocked the serve prerequisite."
+  ],
+  "acceptance_criteria": [
+    {"id": "ac-operational-dashboard-insights-access-yearly-operational-reports-001", "status": "IMPLEMENTED_NOT_RUNTIME_VERIFIED"},
+    {"id": "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001", "status": "IMPLEMENTED_NOT_RUNTIME_VERIFIED"},
+    {"id": "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002", "status": "IMPLEMENTED_NOT_RUNTIME_VERIFIED"},
+    {"id": "ac-operational-dashboard-insights-open-operational-dashboard-001", "status": "IMPLEMENTED_NOT_RUNTIME_VERIFIED"},
+    {"id": "ac-operational-dashboard-insights-open-operational-dashboard-002", "status": "IMPLEMENTED_NOT_RUNTIME_VERIFIED"}
+  ],
+  "technical_task_validation": {
+    "count": 16,
+    "implemented_validated": 0,
+    "implemented_not_runtime_validated": 10,
+    "partial": 4,
+    "deferred": 2,
+    "not_applicable": 0
+  },
+  "pep_summary": {
+    "status": "BLOCKED",
+    "attempt_count": 11,
+    "failure_count": 7,
+    "repair_count": 5,
+    "revalidation_count": 7,
+    "initial_failure": "GENERATED_DEPENDENCY_VERSION_CONFLICT"
+  },
+  "remaining_blockers": [
+    "healthclinic-web:build:development is not configured, so Angular tests stop before discovery."
+  ],
+  "remaining_risks": [
+    "npm audit reported two high-severity findings; no broad or force-based audit repair was attempted."
+  ],
+  "readiness": "BLOCKED_BY_UNIT_TEST_CONFIGURATION"
+}

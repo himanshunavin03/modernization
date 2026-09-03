@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": ".",
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -20,19 +19,19 @@
     ],
     "paths": {
       "@healthclinic/dashboard/feature": [
-        "libs/dashboard/feature/src/index.ts"
+        "./libs/dashboard/feature/src/index.ts"
       ],
       "@healthclinic/dashboard/ui": [
-        "libs/dashboard/ui/src/index.ts"
+        "./libs/dashboard/ui/src/index.ts"
       ],
       "@healthclinic/dashboard/data-access": [
-        "libs/dashboard/data-access/src/index.ts"
+        "./libs/dashboard/data-access/src/index.ts"
       ],
       "@healthclinic/dashboard/state": [
-        "libs/dashboard/state/src/index.ts"
+        "./libs/dashboard/state/src/index.ts"
       ],
       "@healthclinic/core/platform": [
-        "libs/core/platform/src/index.ts"
+        "./libs/core/platform/src/index.ts"
       ]
     }
   },

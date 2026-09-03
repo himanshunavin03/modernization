@@ -4,8 +4,8 @@
   @if (store.summary(); as summary) {
     <div class="summaries" aria-label="Clinic summary">
       <healthclinic-summary-card variant="patients" [value]="summary.NewPatients" label="NEW PATIENTS" [variation]="summary.NewPatientsVariation" />
-      <healthclinic-summary-card variant="month" [value]="summary.MonthProfit" label="MONTH BENEFITS" [variation]="summary.MonthProfitVariation" currency />
-      <healthclinic-summary-card variant="annual" [value]="summary.AnualProfit" label="ANNUAL BENEFITS" [variation]="summary.AnualProfitVariation" currency />
+    <healthclinic-summary-card variant="month" [value]="summary.MonthProfit" label="MONTH BENEFITS" [variation]="summary.MonthProfitVariation" [currency]="true" />
+    <healthclinic-summary-card variant="annual" [value]="summary.AnualProfit" label="ANNUAL BENEFITS" [variation]="summary.AnualProfitVariation" [currency]="true" />
     </div>
   } @else if (store.loading()) { <p class="status" role="status">Loading clinic summary...</p> }
 
