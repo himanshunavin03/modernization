@@ -1,0 +1,11 @@
+{
+  "name": "core-platform",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/core/platform/src",
+  "projectType": "library",
+  "tags": [
+    "scope:core",
+    "type:platform"
+  ],
+  "targets": {}
+}

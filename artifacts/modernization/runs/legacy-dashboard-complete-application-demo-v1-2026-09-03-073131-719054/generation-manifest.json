@@ -1,0 +1,501 @@
+{
+  "architecture_selection_ref": "artifacts\\architecture\\latest\\architecture-selection.json",
+  "build_status": "NOT_YET_EXECUTED",
+  "feature_id": "feature-operational-dashboard-insights",
+  "figma_for_generation": "DISABLED",
+  "generated_components": [
+    {
+      "file": "apps/healthclinic-web/src/app/app.component.ts",
+      "kind": "ROOT",
+      "name": "AppComponent"
+    },
+    {
+      "file": "apps/healthclinic-web/src/app/private-shell.component.ts",
+      "kind": "SHELL",
+      "name": "PrivateShellComponent"
+    },
+    {
+      "file": "libs/dashboard/feature/src/lib/dashboard-feature.component.ts",
+      "kind": "FEATURE",
+      "name": "DashboardFeatureComponent"
+    },
+    {
+      "file": "libs/dashboard/ui/src/lib/summary-card.component.ts",
+      "kind": "UI",
+      "name": "SummaryCardComponent"
+    },
+    {
+      "file": "libs/dashboard/ui/src/lib/year-navigator.component.ts",
+      "kind": "UI",
+      "name": "YearNavigatorComponent"
+    },
+    {
+      "file": "libs/dashboard/ui/src/lib/dashboard-chart.component.ts",
+      "kind": "UI",
+      "name": "DashboardChartComponent"
+    }
+  ],
+  "generated_files": [
+    ".gitignore",
+    "README.md",
+    "apps/healthclinic-web-e2e/playwright.config.ts",
+    "apps/healthclinic-web-e2e/project.json",
+    "apps/healthclinic-web-e2e/src/dashboard.spec.ts",
+    "apps/healthclinic-web/project.json",
+    "apps/healthclinic-web/public/assets/dashboard/arrow_01.png",
+    "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_01.png",
+    "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_01_snap.png",
+    "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_02.png",
+    "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_02_snap.png",
+    "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_03.png",
+    "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_03_snap.png",
+    "apps/healthclinic-web/public/assets/private/logo_private_area.png",
+    "apps/healthclinic-web/public/assets/private/logo_private_area_footer.png",
+    "apps/healthclinic-web/public/runtime-config.js",
+    "apps/healthclinic-web/src/app/app.component.ts",
+    "apps/healthclinic-web/src/app/app.config.ts",
+    "apps/healthclinic-web/src/app/app.routes.spec.ts",
+    "apps/healthclinic-web/src/app/app.routes.ts",
+    "apps/healthclinic-web/src/app/private-shell.component.css",
+    "apps/healthclinic-web/src/app/private-shell.component.html",
+    "apps/healthclinic-web/src/app/private-shell.component.ts",
+    "apps/healthclinic-web/src/index.html",
+    "apps/healthclinic-web/src/main.ts",
+    "apps/healthclinic-web/src/styles.css",
+    "apps/healthclinic-web/tsconfig.app.json",
+    "apps/healthclinic-web/tsconfig.spec.json",
+    "eslint.config.mjs",
+    "libs/core/platform/project.json",
+    "libs/core/platform/src/index.ts",
+    "libs/core/platform/src/lib/correlation.interceptor.ts",
+    "libs/core/platform/src/lib/dashboard-route.guard.ts",
+    "libs/core/platform/src/lib/error.interceptor.ts",
+    "libs/core/platform/src/lib/frontend-logger.service.ts",
+    "libs/core/platform/src/lib/runtime-config.ts",
+    "libs/core/platform/src/lib/tenant-context.service.ts",
+    "libs/dashboard/data-access/project.json",
+    "libs/dashboard/data-access/src/index.ts",
+    "libs/dashboard/data-access/src/lib/dashboard-api.client.spec.ts",
+    "libs/dashboard/data-access/src/lib/dashboard-api.client.ts",
+    "libs/dashboard/data-access/src/lib/dashboard.models.ts",
+    "libs/dashboard/feature/project.json",
+    "libs/dashboard/feature/src/index.ts",
+    "libs/dashboard/feature/src/lib/dashboard-feature.component.css",
+    "libs/dashboard/feature/src/lib/dashboard-feature.component.html",
+    "libs/dashboard/feature/src/lib/dashboard-feature.component.spec.ts",
+    "libs/dashboard/feature/src/lib/dashboard-feature.component.ts",
+    "libs/dashboard/feature/src/lib/dashboard.routes.ts",
+    "libs/dashboard/state/project.json",
+    "libs/dashboard/state/src/index.ts",
+    "libs/dashboard/state/src/lib/dashboard.store.spec.ts",
+    "libs/dashboard/state/src/lib/dashboard.store.ts",
+    "libs/dashboard/ui/project.json",
+    "libs/dashboard/ui/src/index.ts",
+    "libs/dashboard/ui/src/lib/dashboard-chart.component.ts",
+    "libs/dashboard/ui/src/lib/summary-card.component.ts",
+    "libs/dashboard/ui/src/lib/year-navigator.component.spec.ts",
+    "libs/dashboard/ui/src/lib/year-navigator.component.ts",
+    "nx.json",
+    "package.json",
+    "tsconfig.base.json"
+  ],
+  "generated_models": [
+    {
+      "file": "libs/dashboard/data-access/src/lib/dashboard.models.ts",
+      "name": "ClinicSummary"
+    },
+    {
+      "file": "libs/dashboard/data-access/src/lib/dashboard.models.ts",
+      "name": "ExpensesSummary"
+    },
+    {
+      "file": "libs/dashboard/data-access/src/lib/dashboard.models.ts",
+      "name": "PatientsSummary"
+    },
+    {
+      "file": "libs/dashboard/data-access/src/lib/dashboard.models.ts",
+      "name": "TenantId"
+    },
+    {
+      "file": "libs/core/platform/src/lib/runtime-config.ts",
+      "name": "RuntimeConfig"
+    }
+  ],
+  "generated_routes": [
+    {
+      "file": "apps/healthclinic-web/src/app/app.routes.ts",
+      "name": "appRoutes",
+      "path": "/"
+    },
+    {
+      "file": "libs/dashboard/feature/src/lib/dashboard.routes.ts",
+      "name": "DASHBOARD_ROUTES",
+      "path": "/dashboard"
+    }
+  ],
+  "generated_services": [
+    {
+      "file": "libs/dashboard/data-access/src/lib/dashboard-api.client.ts",
+      "name": "DashboardApiClient"
+    },
+    {
+      "file": "libs/dashboard/state/src/lib/dashboard.store.ts",
+      "name": "DashboardStore"
+    },
+    {
+      "file": "libs/core/platform/src/lib/tenant-context.service.ts",
+      "name": "TenantContextService"
+    },
+    {
+      "file": "libs/core/platform/src/lib/error.interceptor.ts",
+      "name": "FrontendErrorService"
+    },
+    {
+      "file": "libs/core/platform/src/lib/frontend-logger.service.ts",
+      "name": "FrontendLogger"
+    }
+  ],
+  "generated_test_status": "NOT_YET_EXECUTED",
+  "generated_tests": [
+    {
+      "acceptance_criteria_refs": [
+        "ac-operational-dashboard-insights-open-operational-dashboard-001",
+        "ac-operational-dashboard-insights-open-operational-dashboard-002"
+      ],
+      "file": "apps/healthclinic-web/src/app/app.routes.spec.ts"
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-operational-dashboard-insights-access-yearly-operational-reports-001"
+      ],
+      "file": "libs/dashboard/ui/src/lib/year-navigator.component.spec.ts"
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002"
+      ],
+      "file": "libs/dashboard/data-access/src/lib/dashboard-api.client.spec.ts"
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002"
+      ],
+      "file": "libs/dashboard/state/src/lib/dashboard.store.spec.ts"
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002",
+        "ac-operational-dashboard-insights-open-operational-dashboard-001",
+        "ac-operational-dashboard-insights-open-operational-dashboard-002"
+      ],
+      "file": "libs/dashboard/feature/src/lib/dashboard-feature.component.spec.ts"
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002",
+        "ac-operational-dashboard-insights-open-operational-dashboard-001",
+        "ac-operational-dashboard-insights-open-operational-dashboard-002"
+      ],
+      "file": "apps/healthclinic-web-e2e/src/dashboard.spec.ts"
+    }
+  ],
+  "generated_workspace": "modernized",
+  "generation_timestamp": "2026-09-03T07:31:31.677983+00:00",
+  "generator": {
+    "external_llm_calls": 0,
+    "name": "Polaris deterministic Angular hero generator",
+    "version": "1.0"
+  },
+  "preserved_api_contracts": [
+    {
+      "api_id": "API-01",
+      "endpoint": "/api/users/current/tenant",
+      "method": "GET",
+      "path_parameters": [],
+      "purpose": "Retrieve the current organization identifier required by organization-specific functionality.",
+      "query_parameters": [],
+      "request_model": null,
+      "response_description": "Current organization identifier",
+      "response_model": "int",
+      "traceability": {
+        "source_interaction_ids": [
+          "API-OPERATIONAL_DASHBOARD_INSIGHTS-001"
+        ]
+      }
+    },
+    {
+      "api_id": "API-02",
+      "endpoint": "/api/reports/expenses/{year}",
+      "method": "GET",
+      "path_parameters": [
+        {
+          "description": "selected reporting year",
+          "location": "Path",
+          "name": "year"
+        }
+      ],
+      "purpose": "Retrieve expense summary information for the selected reporting year.",
+      "query_parameters": [],
+      "request_model": null,
+      "response_description": "Expense summary information",
+      "response_model": "ExpensesSummary[]",
+      "traceability": {
+        "source_interaction_ids": [
+          "API-OPERATIONAL_DASHBOARD_INSIGHTS-002"
+        ]
+      }
+    },
+    {
+      "api_id": "API-03",
+      "endpoint": "/api/reports/patients/{year}",
+      "method": "GET",
+      "path_parameters": [
+        {
+          "description": "selected reporting year",
+          "location": "Path",
+          "name": "year"
+        }
+      ],
+      "purpose": "Retrieve patient summary information for the selected reporting year.",
+      "query_parameters": [],
+      "request_model": null,
+      "response_description": "Patient summary information",
+      "response_model": "PatientsSummary[]",
+      "traceability": {
+        "source_interaction_ids": [
+          "API-OPERATIONAL_DASHBOARD_INSIGHTS-003"
+        ]
+      }
+    },
+    {
+      "api_id": "API-04",
+      "endpoint": "/api/reports/clinicsummary",
+      "method": "GET",
+      "path_parameters": [],
+      "purpose": "Retrieve clinic summary information for the corresponding feature function.",
+      "query_parameters": [],
+      "request_model": null,
+      "response_description": "Clinic summary information",
+      "response_model": "ClinicSummary",
+      "traceability": {
+        "source_interaction_ids": [
+          "API-OPERATIONAL_DASHBOARD_INSIGHTS-004"
+        ]
+      }
+    }
+  ],
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "reused_assets": [
+    {
+      "generated_path": "apps/healthclinic-web/public/assets/private/logo_private_area.png",
+      "source_path": "src/MyHealth.Web/content/images/private/logo_private_area.png"
+    },
+    {
+      "generated_path": "apps/healthclinic-web/public/assets/private/logo_private_area_footer.png",
+      "source_path": "src/MyHealth.Web/content/images/private/logo_private_area_footer.png"
+    },
+    {
+      "generated_path": "apps/healthclinic-web/public/assets/dashboard/arrow_01.png",
+      "source_path": "src/MyHealth.Web/content/images/dashboard/arrow_01.png"
+    },
+    {
+      "generated_path": "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_01.png",
+      "source_path": "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_01.png"
+    },
+    {
+      "generated_path": "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_01_snap.png",
+      "source_path": "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_01_snap.png"
+    },
+    {
+      "generated_path": "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_02.png",
+      "source_path": "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_02.png"
+    },
+    {
+      "generated_path": "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_02_snap.png",
+      "source_path": "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_02_snap.png"
+    },
+    {
+      "generated_path": "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_03.png",
+      "source_path": "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_03.png"
+    },
+    {
+      "generated_path": "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_03_snap.png",
+      "source_path": "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_03_snap.png"
+    }
+  ],
+  "source_ui_mode": "EXISTING_APPLICATION_UI",
+  "task_statuses": [
+    {
+      "detail": "Angular 22/Nx workspace generated with zoneless-compatible package configuration.",
+      "generated_file_refs": [
+        "package.json",
+        "nx.json",
+        "apps/healthclinic-web/project.json"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-001"
+    },
+    {
+      "detail": "Five tagged Nx library boundaries define app, feature, UI, data, state, and platform responsibilities.",
+      "generated_file_refs": [
+        "libs/dashboard/feature/project.json",
+        "libs/dashboard/data-access/project.json",
+        "libs/dashboard/state/project.json"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-002"
+    },
+    {
+      "detail": "Shared Dashboard UI primitives and source-derived visual tokens are implemented.",
+      "generated_file_refs": [
+        "libs/dashboard/ui/src/index.ts",
+        "apps/healthclinic-web/src/styles.css"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-003"
+    },
+    {
+      "detail": "Typed models and clients preserve all four existing API contracts.",
+      "generated_file_refs": [
+        "libs/dashboard/data-access/src/lib/dashboard.models.ts",
+        "libs/dashboard/data-access/src/lib/dashboard-api.client.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-004"
+    },
+    {
+      "detail": "Provider-neutral Gateway implementation is DEFERRED_TO_DEPLOYMENT.",
+      "generated_file_refs": [],
+      "status": "DEFERRED",
+      "task_id": "TT-005"
+    },
+    {
+      "detail": "BFF implementation is deferred; its facade remains TARGET_CONTRACT_TO_BE_DESIGNED.",
+      "generated_file_refs": [],
+      "status": "DEFERRED",
+      "task_id": "TT-006"
+    },
+    {
+      "detail": "Configurable API base URL and typed client boundary are implemented; the future BFF facade remains TARGET_CONTRACT_TO_BE_DESIGNED.",
+      "generated_file_refs": [
+        "libs/core/platform/src/lib/runtime-config.ts",
+        "libs/dashboard/data-access/src/lib/dashboard-api.client.ts"
+      ],
+      "status": "PARTIALLY_IMPLEMENTED",
+      "task_id": "TT-007"
+    },
+    {
+      "detail": "The /dashboard route is lazy-loaded through Angular Router.",
+      "generated_file_refs": [
+        "apps/healthclinic-web/src/app/app.routes.ts",
+        "libs/dashboard/feature/src/lib/dashboard.routes.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-008"
+    },
+    {
+      "detail": "Standalone private shell and Dashboard feature components are generated.",
+      "generated_file_refs": [
+        "apps/healthclinic-web/src/app/private-shell.component.ts",
+        "libs/dashboard/feature/src/lib/dashboard-feature.component.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-009"
+    },
+    {
+      "detail": "Signals own UI state and RxJS owns tenant-aware asynchronous loading and cancellation.",
+      "generated_file_refs": [
+        "libs/dashboard/state/src/lib/dashboard.store.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-010"
+    },
+    {
+      "detail": "Tenant context is retrieved and propagated through the approved TenantId header behavior without an identity-provider assumption.",
+      "generated_file_refs": [
+        "libs/core/platform/src/lib/tenant-context.service.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-011"
+    },
+    {
+      "detail": "Clinic cards and both yearly report regions reconstruct the existing Dashboard presentation.",
+      "generated_file_refs": [
+        "libs/dashboard/feature/src/lib/dashboard-feature.component.html"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-012"
+    },
+    {
+      "detail": "Semantic controls, labels, focus indicators, status regions, and responsive layouts are generated.",
+      "generated_file_refs": [
+        "libs/dashboard/ui/src/lib/year-navigator.component.ts",
+        "apps/healthclinic-web/src/app/private-shell.component.css"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-013"
+    },
+    {
+      "detail": "Frontend correlation and centralized HTTP error foundations are implemented; deployment-layer telemetry remains deferred.",
+      "generated_file_refs": [
+        "libs/core/platform/src/lib/correlation.interceptor.ts",
+        "libs/core/platform/src/lib/error.interceptor.ts",
+        "libs/core/platform/src/lib/frontend-logger.service.ts"
+      ],
+      "status": "PARTIALLY_IMPLEMENTED",
+      "task_id": "TT-014"
+    },
+    {
+      "detail": "Unit/component test sources are generated but not executed in this generation stage.",
+      "generated_file_refs": [
+        "libs/dashboard/feature/src/lib/dashboard-feature.component.spec.ts",
+        "libs/dashboard/state/src/lib/dashboard.store.spec.ts"
+      ],
+      "status": "PARTIALLY_IMPLEMENTED",
+      "task_id": "TT-015"
+    },
+    {
+      "detail": "Playwright scenarios map all five hero AC but are not executed in this generation stage.",
+      "generated_file_refs": [
+        "apps/healthclinic-web-e2e/src/dashboard.spec.ts"
+      ],
+      "status": "PARTIALLY_IMPLEMENTED",
+      "task_id": "TT-016"
+    }
+  ],
+  "technical_task_ref": "artifacts\\technical-tasks\\latest\\technical-tasks.json",
+  "unresolved_items": [
+    {
+      "detail": "The current user's display name and non-Dashboard navigation authorization depend on APIs outside the approved hero contract; the generated hero shell does not fabricate them.",
+      "item": "Header identity and broader navigation",
+      "status": "UI_RECONSTRUCTION_CLARIFICATION"
+    },
+    {
+      "detail": "The generated accessible SVG presentation preserves series, months, colors, and hierarchy without copying obsolete Chart.js/jQuery tooltip mechanics; exact hover animation awaits visual review.",
+      "item": "Legacy chart tooltip animation",
+      "status": "UI_RECONSTRUCTION_CLARIFICATION"
+    },
+    {
+      "detail": "Hero controls use accessible text symbols instead of copying the application-wide icon font; exact glyph equivalence awaits visual review.",
+      "item": "Legacy icon font glyphs",
+      "status": "UI_RECONSTRUCTION_CLARIFICATION"
+    },
+    {
+      "detail": "No Gateway infrastructure is generated.",
+      "item": "API Gateway",
+      "status": "DEFERRED_TO_DEPLOYMENT"
+    },
+    {
+      "detail": "The Angular client remains compatible with a configurable future BFF base URL.",
+      "item": "BFF facade",
+      "status": "TARGET_CONTRACT_TO_BE_DESIGNED"
+    }
+  ]
+}

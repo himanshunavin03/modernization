@@ -536,6 +536,15 @@ def main() -> None:
     task_parser.add_argument("--figma-url")
     task_parser.add_argument("--output", type=Path, default=Path("artifacts/technical-tasks"))
     task_parser.add_argument("--design-output", type=Path, default=Path("artifacts/design"))
+    generation_parser = subparsers.add_parser("generate-angular-hero", help="Generate the Angular 22 hero Feature from existing application UI")
+    generation_parser.add_argument("--project-id", required=True)
+    generation_parser.add_argument("--feature-id", required=True)
+    generation_parser.add_argument("--source-root", type=Path, default=Path("source/HealthClinic.biz"))
+    generation_parser.add_argument("--architecture-root", type=Path, default=Path("artifacts/architecture/latest"))
+    generation_parser.add_argument("--technical-task-root", type=Path, default=Path("artifacts/technical-tasks/latest"))
+    generation_parser.add_argument("--feature-specification-root", type=Path, default=Path("artifacts/feature-specifications/latest"))
+    generation_parser.add_argument("--workspace", type=Path, default=Path("modernized"))
+    generation_parser.add_argument("--output", type=Path, default=Path("artifacts/modernization"))
     load_parser = subparsers.add_parser("load-neo4j")
     load_parser.add_argument("--graph", required=True, type=Path)
     load_parser.add_argument("--project-id", required=True)
@@ -630,6 +639,14 @@ def main() -> None:
             args.figma_url, args.output, args.design_output,
         )
         print(f"Technical task generation {result['plan']['status']} for {result['plan']['feature_id']}")
+        print(result["path"])
+    elif args.command == "generate-angular-hero":
+        from polaris_modernization.modernization_generation.workflow import generate_angular_hero
+        result = generate_angular_hero(
+            args.project_id, args.feature_id, args.source_root, args.architecture_root,
+            args.technical_task_root, args.feature_specification_root, args.workspace, args.output,
+        )
+        print(f"Angular hero generation {result['state']['status']} for {args.feature_id}")
         print(result["path"])
     elif args.command in {"load-neo4j", "clear-neo4j-project"}:
         driver = connect(os.getenv("NEO4J_URI", "bolt://localhost:7687"), os.getenv("NEO4J_USERNAME", "neo4j"), os.getenv("NEO4J_PASSWORD", "change-me"))

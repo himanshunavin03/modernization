@@ -1,0 +1,45 @@
+{
+  "name": "healthclinic-web",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/healthclinic-web/src",
+  "tags": [
+    "scope:app",
+    "type:application"
+  ],
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/healthclinic-web",
+        "browser": "apps/healthclinic-web/src/main.ts",
+        "index": "apps/healthclinic-web/src/index.html",
+        "tsConfig": "apps/healthclinic-web/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/healthclinic-web/public"
+          }
+        ],
+        "styles": [
+          "apps/healthclinic-web/src/styles.css"
+        ]
+      }
+    },
+    "serve": {
+      "executor": "@angular/build:dev-server",
+      "options": {
+        "buildTarget": "healthclinic-web:build"
+      }
+    },
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {
+        "tsConfig": "apps/healthclinic-web/tsconfig.spec.json"
+      }
+    }
+  }
+}

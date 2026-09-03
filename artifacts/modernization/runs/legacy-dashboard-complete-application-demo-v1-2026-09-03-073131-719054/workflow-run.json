@@ -1,0 +1,55 @@
+{
+  "build_executed": false,
+  "external_llm_calls": 0,
+  "final_status": "MODERNIZATION_GENERATION_READY",
+  "generated_tests_executed": false,
+  "langchain_boundary": "RunnableLambda (offline deterministic Angular workspace composition)",
+  "langchain_runnable_execution": true,
+  "langgraph_execution": true,
+  "nodes_executed": [
+    "load_frozen_generation_inputs",
+    "load_existing_ui",
+    "reconstruct_existing_ui",
+    "compose_angular_workspace",
+    "generate_angular_hero",
+    "build_generation_traceability",
+    "validate_generated_workspace",
+    "finalize_generation"
+  ],
+  "start_status": "STARTED",
+  "state_transitions": [
+    {
+      "from": "START",
+      "to": "load_frozen_generation_inputs"
+    },
+    {
+      "from": "load_frozen_generation_inputs",
+      "to": "load_existing_ui"
+    },
+    {
+      "from": "load_existing_ui",
+      "to": "reconstruct_existing_ui"
+    },
+    {
+      "from": "reconstruct_existing_ui",
+      "to": "compose_angular_workspace"
+    },
+    {
+      "from": "compose_angular_workspace",
+      "to": "generate_angular_hero"
+    },
+    {
+      "from": "generate_angular_hero",
+      "to": "build_generation_traceability"
+    },
+    {
+      "from": "build_generation_traceability",
+      "to": "validate_generated_workspace"
+    },
+    {
+      "from": "validate_generated_workspace",
+      "to": "finalize_generation"
+    }
+  ],
+  "workflow_id": "legacy-dashboard-complete-application-demo-v1-2026-09-03-073131-719054"
+}

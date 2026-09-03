@@ -1,0 +1,10 @@
+{
+  "attempt": null,
+  "context": null,
+  "diagnosis": null,
+  "failure": null,
+  "next_stage": "BUILD_TEST_PEP_AND_FINAL_TRACEABILITY",
+  "repair": null,
+  "revalidation": null,
+  "status": "NOT_STARTED"
+}

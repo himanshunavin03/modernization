@@ -26,6 +26,8 @@ artifacts/*
 !artifacts/technical-tasks/**
 !artifacts/design/
 !artifacts/design/**
+!artifacts/modernization/
+!artifacts/modernization/**
 source/*
 !source/.gitkeep
 !source/README.md

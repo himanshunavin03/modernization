@@ -1,0 +1,45 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "bundler",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve",
+    "lib": [
+      "ES2022",
+      "dom"
+    ],
+    "paths": {
+      "@healthclinic/dashboard/feature": [
+        "libs/dashboard/feature/src/index.ts"
+      ],
+      "@healthclinic/dashboard/ui": [
+        "libs/dashboard/ui/src/index.ts"
+      ],
+      "@healthclinic/dashboard/data-access": [
+        "libs/dashboard/data-access/src/index.ts"
+      ],
+      "@healthclinic/dashboard/state": [
+        "libs/dashboard/state/src/index.ts"
+      ],
+      "@healthclinic/core/platform": [
+        "libs/core/platform/src/index.ts"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

@@ -1,0 +1,25 @@
+<section class="dashboard" aria-labelledby="dashboard-heading">
+  <h1 id="dashboard-heading" class="visually-hidden">Operational Dashboard</h1>
+  @if (store.errorMessage()) { <div class="error" role="alert">{{ store.errorMessage() }}</div> }
+  @if (store.summary(); as summary) {
+    <div class="summaries" aria-label="Clinic summary">
+      <healthclinic-summary-card variant="patients" [value]="summary.NewPatients" label="NEW PATIENTS" [variation]="summary.NewPatientsVariation" />
+      <healthclinic-summary-card variant="month" [value]="summary.MonthProfit" label="MONTH BENEFITS" [variation]="summary.MonthProfitVariation" currency />
+      <healthclinic-summary-card variant="annual" [value]="summary.AnualProfit" label="ANNUAL BENEFITS" [variation]="summary.AnualProfitVariation" currency />
+    </div>
+  } @else if (store.loading()) { <p class="status" role="status">Loading clinic summary...</p> }
+
+  <section class="chart-section" aria-labelledby="income-expense-title">
+    <div class="chart-heading"><h2 id="income-expense-title">INCOMES AND EXPENSES</h2><healthclinic-year-navigator label="Income and expense reporting year" [year]="store.incomeExpenseYear()" [maximumYear]="store.currentYear" (previous)="store.previousIncomeExpenseYear()" (next)="store.nextIncomeExpenseYear()" /></div>
+    @if (store.expenses(); as expenses) {
+      @if (expenses.length) { <healthclinic-dashboard-chart kind="line" [series]="incomeExpenseSeries()" /> } @else { <p class="status">No income or expense information is available for this year.</p> }
+    } @else { <p class="status" role="status">Loading income and expense information...</p> }
+  </section>
+
+  <section class="chart-section" aria-labelledby="patient-title">
+    <div class="chart-heading"><h2 id="patient-title">PATIENT VISITS</h2><healthclinic-year-navigator label="Patient reporting year" [year]="store.patientYear()" [maximumYear]="store.currentYear" (previous)="store.previousPatientYear()" (next)="store.nextPatientYear()" /></div>
+    @if (store.patients(); as patients) {
+      @if (patients.length) { <healthclinic-dashboard-chart kind="bar" [series]="patientSeries()" /> } @else { <p class="status">No patient information is available for this year.</p> }
+    } @else { <p class="status" role="status">Loading patient information...</p> }
+  </section>
+</section>

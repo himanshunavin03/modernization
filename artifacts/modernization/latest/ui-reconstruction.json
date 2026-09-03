@@ -1,0 +1,603 @@
+{
+  "api_relationships": [
+    {
+      "api_id": "API-01",
+      "endpoint": "/api/users/current/tenant",
+      "method": "GET",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+    },
+    {
+      "api_id": "API-02",
+      "endpoint": "/api/reports/expenses/{year}",
+      "method": "GET",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+    },
+    {
+      "api_id": "API-03",
+      "endpoint": "/api/reports/patients/{year}",
+      "method": "GET",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+    },
+    {
+      "api_id": "API-04",
+      "endpoint": "/api/reports/clinicsummary",
+      "method": "GET",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+    }
+  ],
+  "assets": [
+    {
+      "reuse_status": "REUSED_EXISTING_UI_ASSET",
+      "source_path": "src/MyHealth.Web/content/images/private/logo_private_area.png",
+      "target_path": "apps/healthclinic-web/public/assets/private/logo_private_area.png"
+    },
+    {
+      "reuse_status": "REUSED_EXISTING_UI_ASSET",
+      "source_path": "src/MyHealth.Web/content/images/private/logo_private_area_footer.png",
+      "target_path": "apps/healthclinic-web/public/assets/private/logo_private_area_footer.png"
+    },
+    {
+      "reuse_status": "REUSED_EXISTING_UI_ASSET",
+      "source_path": "src/MyHealth.Web/content/images/dashboard/arrow_01.png",
+      "target_path": "apps/healthclinic-web/public/assets/dashboard/arrow_01.png"
+    },
+    {
+      "reuse_status": "REUSED_EXISTING_UI_ASSET",
+      "source_path": "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_01.png",
+      "target_path": "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_01.png"
+    },
+    {
+      "reuse_status": "REUSED_EXISTING_UI_ASSET",
+      "source_path": "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_01_snap.png",
+      "target_path": "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_01_snap.png"
+    },
+    {
+      "reuse_status": "REUSED_EXISTING_UI_ASSET",
+      "source_path": "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_02.png",
+      "target_path": "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_02.png"
+    },
+    {
+      "reuse_status": "REUSED_EXISTING_UI_ASSET",
+      "source_path": "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_02_snap.png",
+      "target_path": "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_02_snap.png"
+    },
+    {
+      "reuse_status": "REUSED_EXISTING_UI_ASSET",
+      "source_path": "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_03.png",
+      "target_path": "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_03.png"
+    },
+    {
+      "reuse_status": "REUSED_EXISTING_UI_ASSET",
+      "source_path": "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_03_snap.png",
+      "target_path": "apps/healthclinic-web/public/assets/dashboard/summary/bg_graph_03_snap.png"
+    }
+  ],
+  "controls": [
+    {
+      "id": "UI-CTL-01",
+      "kind": "BUTTON",
+      "name": "Menu toggle",
+      "target": "PrivateShellComponent"
+    },
+    {
+      "id": "UI-CTL-02",
+      "kind": "LINK",
+      "name": "Dashboard navigation link",
+      "target": "PrivateShellComponent"
+    },
+    {
+      "id": "UI-CTL-03",
+      "kind": "BUTTON",
+      "name": "Previous income and expense year",
+      "target": "YearNavigatorComponent"
+    },
+    {
+      "id": "UI-CTL-04",
+      "kind": "BUTTON",
+      "name": "Next income and expense year",
+      "target": "YearNavigatorComponent"
+    },
+    {
+      "id": "UI-CTL-05",
+      "kind": "BUTTON",
+      "name": "Previous patient year",
+      "target": "YearNavigatorComponent"
+    },
+    {
+      "id": "UI-CTL-06",
+      "kind": "BUTTON",
+      "name": "Next patient year",
+      "target": "YearNavigatorComponent"
+    }
+  ],
+  "css_classes": [
+    {
+      "name": "annual",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "chart-filter-btn",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "chart-section",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "chart-section-container",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "chart-section-filter",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "chart-section-filter-year",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "chart-section-legend",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "chart-section-title",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "icon-btn_back",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "icon-btn_back-right",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "month",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "patients",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "summaries",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "summary",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "summary-container",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "summary-quantity",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "summary-title",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "name": "summary-variation",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    }
+  ],
+  "data_bindings": [
+    {
+      "binding": "summary.NewPatients",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "target_model": "ClinicSummary.NewPatients"
+    },
+    {
+      "binding": "summary.NewPatientsVariation",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "target_model": "ClinicSummary.NewPatientsVariation"
+    },
+    {
+      "binding": "summary.MonthProfit",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "target_model": "ClinicSummary.MonthProfit"
+    },
+    {
+      "binding": "summary.MonthProfitVariation",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "target_model": "ClinicSummary.MonthProfitVariation"
+    },
+    {
+      "binding": "summary.AnualProfit",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "target_model": "ClinicSummary.AnualProfit"
+    },
+    {
+      "binding": "summary.AnualProfitVariation",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "target_model": "ClinicSummary.AnualProfitVariation"
+    },
+    {
+      "binding": "elem.Expenses",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "target_model": "ExpensesSummary.Expenses"
+    },
+    {
+      "binding": "elem.Incomes",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "target_model": "ExpensesSummary.Incomes"
+    },
+    {
+      "binding": "elem.PatientsCount",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "target_model": "PatientsSummary.PatientsCount"
+    }
+  ],
+  "feature_id": "feature-operational-dashboard-insights",
+  "interactions": [
+    {
+      "behavior": "Dashboard route loads the main Dashboard view.",
+      "id": "UI-INT-01",
+      "source_path": "src/MyHealth.Web/content/app/app.module.js"
+    },
+    {
+      "behavior": "Each report year can decrement independently and cannot increment beyond the current year.",
+      "id": "UI-INT-02",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+    },
+    {
+      "behavior": "Clinic summary loads for current tenant context.",
+      "id": "UI-INT-03",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+    },
+    {
+      "behavior": "Income, expense, and patient series are normalized into twelve monthly values.",
+      "id": "UI-INT-04",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+    }
+  ],
+  "layouts": [
+    {
+      "name": "Desktop summary grid",
+      "relationship": "Three equal columns with 20px gutters",
+      "source_path": "src/MyHealth.Web/content/styles/private/components/_summary.scss"
+    },
+    {
+      "name": "Tablet summary stack",
+      "relationship": "Summary cards stack with 20px bottom spacing",
+      "source_path": "src/MyHealth.Web/content/styles/private/components/_summary.scss"
+    },
+    {
+      "name": "Chart panels",
+      "relationship": "White bordered panels with title, right-aligned year filter, chart, and optional legend",
+      "source_path": "src/MyHealth.Web/content/styles/private/components/_charts.scss"
+    },
+    {
+      "name": "Private shell",
+      "relationship": "Fixed dark header, off-canvas menu, centered content, dark footer",
+      "source_path": "src/MyHealth.Web/content/styles/private/layout/_header.scss"
+    }
+  ],
+  "navigation": [
+    {
+      "new_route": "/dashboard",
+      "old_route": "/dashboard",
+      "source_path": "src/MyHealth.Web/content/app/app.module.js",
+      "target": "DASHBOARD_ROUTES"
+    }
+  ],
+  "regions": [
+    {
+      "id": "UI-REG-01",
+      "name": "Private application header",
+      "source_ref": "UI-SH-01",
+      "target": "PrivateShellComponent"
+    },
+    {
+      "id": "UI-REG-02",
+      "name": "Collapsible navigation drawer",
+      "source_ref": "UI-SH-02",
+      "target": "PrivateShellComponent"
+    },
+    {
+      "id": "UI-REG-03",
+      "name": "Dashboard route outlet and loading overlay",
+      "source_ref": "UI-RZ-04",
+      "target": "PrivateShellComponent"
+    },
+    {
+      "id": "UI-REG-04",
+      "name": "Clinic summary card row",
+      "source_ref": "UI-NG1-06",
+      "target": "DashboardFeatureComponent"
+    },
+    {
+      "id": "UI-REG-05",
+      "name": "New patients summary",
+      "source_ref": "UI-NG1-06",
+      "target": "SummaryCardComponent"
+    },
+    {
+      "id": "UI-REG-06",
+      "name": "Month benefits summary",
+      "source_ref": "UI-NG1-06",
+      "target": "SummaryCardComponent"
+    },
+    {
+      "id": "UI-REG-07",
+      "name": "Annual benefits summary",
+      "source_ref": "UI-NG1-06",
+      "target": "SummaryCardComponent"
+    },
+    {
+      "id": "UI-REG-08",
+      "name": "Income and expenses yearly chart",
+      "source_ref": "UI-NG1-06",
+      "target": "DashboardChartComponent"
+    },
+    {
+      "id": "UI-REG-09",
+      "name": "Patient visits yearly chart",
+      "source_ref": "UI-NG1-06",
+      "target": "DashboardChartComponent"
+    },
+    {
+      "id": "UI-REG-10",
+      "name": "Private application footer",
+      "source_ref": "UI-RZ-05",
+      "target": "PrivateShellComponent"
+    }
+  ],
+  "responsive_behavior": [
+    {
+      "behavior": "Summary cards use three columns at 992px and above.",
+      "source_path": "src/MyHealth.Web/content/styles/private/components/_summary.scss"
+    },
+    {
+      "behavior": "Summary cards stack at tablet widths and below.",
+      "source_path": "src/MyHealth.Web/content/styles/private/components/_summary.scss"
+    },
+    {
+      "behavior": "Chart rendering is responsive to its container.",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+    }
+  ],
+  "shared_elements": [
+    {
+      "name": "Private shell header",
+      "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarTemplate.html",
+      "target": "PrivateShellComponent"
+    },
+    {
+      "name": "Navigation drawer",
+      "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html",
+      "target": "PrivateShellComponent"
+    },
+    {
+      "name": "Loading overlay",
+      "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "target": "PrivateShellComponent"
+    },
+    {
+      "name": "Footer",
+      "source_path": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+      "target": "PrivateShellComponent"
+    }
+  ],
+  "source_mode": "EXISTING_APPLICATION_UI",
+  "source_traceability": [
+    "src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+    "src/MyHealth.Web/Views/Dashboard/_Header.cshtml",
+    "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml",
+    "src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+    "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+    "src/MyHealth.Web/content/app/app.module.js",
+    "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js",
+    "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js",
+    "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+    "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js",
+    "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+    "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarTemplate.html",
+    "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html",
+    "src/MyHealth.Web/content/styles/base/_variables.scss",
+    "src/MyHealth.Web/content/styles/private/base/_general.scss",
+    "src/MyHealth.Web/content/styles/private/components/_summary.scss",
+    "src/MyHealth.Web/content/styles/private/components/_charts.scss",
+    "src/MyHealth.Web/content/styles/private/layout/_header.scss",
+    "src/MyHealth.Web/content/styles/private/layout/_menu.scss",
+    "src/MyHealth.Web/content/styles/private/layout/_main.scss",
+    "src/MyHealth.Web/content/styles/private/layout/_footer.scss",
+    "src/MyHealth.Web/content/images/private/logo_private_area.png",
+    "src/MyHealth.Web/content/images/private/logo_private_area_footer.png",
+    "src/MyHealth.Web/content/images/dashboard/arrow_01.png",
+    "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_01.png",
+    "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_01_snap.png",
+    "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_02.png",
+    "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_02_snap.png",
+    "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_03.png",
+    "src/MyHealth.Web/content/images/dashboard/summary/bg_graph_03_snap.png"
+  ],
+  "styles": [
+    {
+      "source_path": "src/MyHealth.Web/content/styles/base/_variables.scss",
+      "token": "private-shell",
+      "value": "#1d1e2a"
+    },
+    {
+      "source_path": "src/MyHealth.Web/content/styles/base/_variables.scss",
+      "token": "summary-patients",
+      "value": "#00d8cc"
+    },
+    {
+      "source_path": "src/MyHealth.Web/content/styles/base/_variables.scss",
+      "token": "summary-month",
+      "value": "#71717f"
+    },
+    {
+      "source_path": "src/MyHealth.Web/content/styles/base/_variables.scss",
+      "token": "summary-annual",
+      "value": "#b8b8b9"
+    },
+    {
+      "source_path": "src/MyHealth.Web/content/styles/base/_variables.scss",
+      "token": "accent",
+      "value": "#ff1770"
+    },
+    {
+      "source_path": "src/MyHealth.Web/content/styles/base/_variables.scss",
+      "token": "content-background",
+      "value": "#f0f0f0"
+    },
+    {
+      "source_path": "src/MyHealth.Web/content/styles/base/_fonts.scss",
+      "token": "body-font",
+      "value": "Raleway"
+    },
+    {
+      "source_path": "src/MyHealth.Web/content/styles/private/components/_summary.scss",
+      "token": "numeric-font",
+      "value": "Roboto"
+    }
+  ],
+  "surfaces": [
+    {
+      "id": "UI-RZ-01",
+      "kind": "RAZOR",
+      "name": "Index",
+      "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+    },
+    {
+      "id": "UI-RZ-02",
+      "kind": "RAZOR",
+      "name": "_Header",
+      "source_path": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml"
+    },
+    {
+      "id": "UI-RZ-03",
+      "kind": "RAZOR",
+      "name": "_LeftMenu",
+      "source_path": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml"
+    },
+    {
+      "id": "UI-RZ-04",
+      "kind": "RAZOR",
+      "name": "_Content",
+      "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+    },
+    {
+      "id": "UI-RZ-05",
+      "kind": "RAZOR",
+      "name": "_Footer",
+      "source_path": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml"
+    },
+    {
+      "id": "UI-NG1-01",
+      "kind": "ANGULARJS",
+      "name": "app.module.js",
+      "source_path": "src/MyHealth.Web/content/app/app.module.js"
+    },
+    {
+      "id": "UI-NG1-02",
+      "kind": "ANGULARJS",
+      "name": "dashboard.module.js",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+    },
+    {
+      "id": "UI-NG1-03",
+      "kind": "ANGULARJS",
+      "name": "dashboardController.js",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+    },
+    {
+      "id": "UI-NG1-04",
+      "kind": "ANGULARJS",
+      "name": "dashboardService.js",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+    },
+    {
+      "id": "UI-NG1-05",
+      "kind": "ANGULARJS",
+      "name": "MHChartDirective.js",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+    },
+    {
+      "id": "UI-NG1-06",
+      "kind": "ANGULARJS",
+      "name": "main.html",
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+    },
+    {
+      "id": "UI-SH-01",
+      "kind": "SHARED_UI",
+      "name": "headerBarTemplate.html",
+      "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarTemplate.html"
+    },
+    {
+      "id": "UI-SH-02",
+      "kind": "SHARED_UI",
+      "name": "leftMenuTemplate.html",
+      "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html"
+    }
+  ],
+  "unresolved_visual_details": [
+    {
+      "detail": "The current user's display name and non-Dashboard navigation authorization depend on APIs outside the approved hero contract; the generated hero shell does not fabricate them.",
+      "item": "Header identity and broader navigation",
+      "status": "UI_RECONSTRUCTION_CLARIFICATION"
+    },
+    {
+      "detail": "The generated accessible SVG presentation preserves series, months, colors, and hierarchy without copying obsolete Chart.js/jQuery tooltip mechanics; exact hover animation awaits visual review.",
+      "item": "Legacy chart tooltip animation",
+      "status": "UI_RECONSTRUCTION_CLARIFICATION"
+    },
+    {
+      "detail": "Hero controls use accessible text symbols instead of copying the application-wide icon font; exact glyph equivalence awaits visual review.",
+      "item": "Legacy icon font glyphs",
+      "status": "UI_RECONSTRUCTION_CLARIFICATION"
+    }
+  ],
+  "visible_text": [
+    {
+      "source_path": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml",
+      "text": "MENU"
+    },
+    {
+      "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html",
+      "text": "Dashboard"
+    },
+    {
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "text": "NEW PATIENTS"
+    },
+    {
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "text": "MONTH BENEFITS"
+    },
+    {
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "text": "ANNUAL BENEFITS"
+    },
+    {
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "text": "INCOMES AND EXPENSES"
+    },
+    {
+      "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html",
+      "text": "PATIENT VISITS"
+    },
+    {
+      "source_path": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+      "text": "Terms"
+    },
+    {
+      "source_path": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+      "text": "Privacy"
+    },
+    {
+      "source_path": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+      "text": "Contact"
+    },
+    {
+      "source_path": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+      "text": "Sitemap"
+    }
+  ]
+}
