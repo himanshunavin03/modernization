@@ -526,6 +526,16 @@ def main() -> None:
     architecture_parser.add_argument("--design-provider", choices=("NONE", "FIGMA"), default="NONE")
     architecture_parser.add_argument("--design-reference")
     architecture_parser.add_argument("--output", type=Path, default=Path("artifacts/architecture"))
+    task_parser = subparsers.add_parser("generate-technical-tasks", help="Generate an architecture-driven technical delivery plan")
+    task_parser.add_argument("--project-id", required=True)
+    task_parser.add_argument("--feature-id", required=True)
+    task_parser.add_argument("--architecture-root", type=Path, default=Path("artifacts/architecture/latest"))
+    task_parser.add_argument("--feature-specification-root", type=Path, default=Path("artifacts/feature-specifications/latest"))
+    task_parser.add_argument("--design-provider", choices=("NONE", "FIGMA"), default="NONE")
+    task_parser.add_argument("--design-mode", choices=("NONE", "FIXTURE", "LIVE"), default="NONE")
+    task_parser.add_argument("--figma-url")
+    task_parser.add_argument("--output", type=Path, default=Path("artifacts/technical-tasks"))
+    task_parser.add_argument("--design-output", type=Path, default=Path("artifacts/design"))
     load_parser = subparsers.add_parser("load-neo4j")
     load_parser.add_argument("--graph", required=True, type=Path)
     load_parser.add_argument("--project-id", required=True)
@@ -611,6 +621,15 @@ def main() -> None:
     elif args.command == "recommend-architecture":
         from polaris_modernization.architecture.workflow import recommend_architecture
         result = recommend_architecture(args.project_id, args.feature_id, args.feature_specification_root, args.output, args.design_provider, args.design_reference)
+        print(result["path"])
+    elif args.command == "generate-technical-tasks":
+        from polaris_modernization.technical_tasks.workflow import generate_technical_tasks
+        result = generate_technical_tasks(
+            args.project_id, args.feature_id, args.architecture_root,
+            args.feature_specification_root, args.design_provider, args.design_mode,
+            args.figma_url, args.output, args.design_output,
+        )
+        print(f"Technical task generation {result['plan']['status']} for {result['plan']['feature_id']}")
         print(result["path"])
     elif args.command in {"load-neo4j", "clear-neo4j-project"}:
         driver = connect(os.getenv("NEO4J_URI", "bolt://localhost:7687"), os.getenv("NEO4J_USERNAME", "neo4j"), os.getenv("NEO4J_PASSWORD", "change-me"))

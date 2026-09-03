@@ -15,7 +15,15 @@ Angular 22 in an Nx workspace with standalone domain boundaries, Signals for UI 
 
 ## Current Step
 
-The enterprise Angular architecture decision engine is complete in architecture run `legacy-dashboard-complete-application-demo-v1-2026-09-02-204635-171223`. A real nine-node LangGraph workflow evaluates 52 catalog decisions, creates a distinct recommendation and POC-default selection, validates and locks that selection, and uses an offline LangChain structured runnable with zero external calls. It emits machine contracts, architecture Markdown, a standalone data-driven customer HTML showcase, and nine ADRs. The next stage is `FIGMA_ADAPTER_AND_TECHNICAL_TASK_GENERATION`; do not implement Figma, tasks, Gateway/BFF, Nx, or Angular yet.
+The optional design adapter and architecture-driven technical planning stage is complete in task run `legacy-dashboard-complete-application-demo-v1-2026-09-03-062736-922737`. The architecture run `legacy-dashboard-complete-application-demo-v1-2026-09-02-204635-171223` remains frozen and byte-unchanged. A real six-node LangGraph consumes its locked selection, handles `NONE`, `FIXTURE`, and optional `LIVE` design modes, and uses one offline LangChain structured transform to produce 16 validated hero-Feature tasks with zero external LLM calls. Gateway and BFF are represented as future target work, all four existing Dashboard APIs are preserved, and no Angular, Gateway, or BFF implementation has started. The next stage is `ANGULAR_22_HERO_FEATURE_GENERATION`.
+
+## Optional Design And Technical Tasks
+
+- `DesignProvider` isolates downstream planning from provider JSON. `NoDesignProvider` returns `NOT_PROVIDED`; `FigmaDesignProvider` supports real REST access through `FIGMA_ACCESS_TOKEN` and converts invalid URL, missing auth, denied access, unavailable document, network, and invalid-response outcomes into explicit non-blocking statuses.
+- `FIXTURE` is a deterministic generic Operational Dashboard sample and is always labeled as fixture data. It is not represented as customer, legacy-source, or live Figma content.
+- Normalized design data controls presentation only. Approved requirements control functionality, locked architecture controls technical structure, and explicit inconsistencies produce `DESIGN_REQUIREMENT_CONFLICT` records requiring clarification.
+- The canonical technical plan covers only `feature-operational-dashboard-insights`, forms a valid 16-task dependency DAG, and traces Feature, five FRs, three Stories, five hero AC, 28 selected architecture decisions, eight ADRs, four APIs, and optional design nodes.
+- `TARGET_CONTRACT_TO_BE_DESIGNED` distinguishes future BFF facade design from the exact four existing backend API contracts. No new endpoint or backend behavior is asserted.
 
 ## Agent Command
 

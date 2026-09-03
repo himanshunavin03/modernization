@@ -1,0 +1,1683 @@
+{
+  "acceptance_criteria": [
+    {
+      "authoritative_ac_ref": "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+      "id": "AC-01",
+      "title": "Access Yearly Operational Reports"
+    },
+    {
+      "authoritative_ac_ref": "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+      "id": "AC-02",
+      "title": "View Organization-Specific Dashboard Summary"
+    },
+    {
+      "authoritative_ac_ref": "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002",
+      "id": "AC-03",
+      "title": "View Organization-Specific Dashboard Summary Service Integration"
+    },
+    {
+      "authoritative_ac_ref": "ac-operational-dashboard-insights-open-operational-dashboard-001",
+      "id": "AC-04",
+      "title": "Open Operational Dashboard"
+    },
+    {
+      "authoritative_ac_ref": "ac-operational-dashboard-insights-open-operational-dashboard-002",
+      "id": "AC-05",
+      "title": "Open Operational Dashboard Availability"
+    }
+  ],
+  "architecture_lock_status": "LOCKED",
+  "architecture_selection_hash": "0aa1b6f662bd9b41bd1a646a4c640ca8825bf8a5c0dd38383674e2a5cf46c3ed",
+  "architecture_selection_ref": "artifacts\\architecture\\latest\\architecture-selection.json",
+  "design": {
+    "assets": [],
+    "colors": [
+      {
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A2",
+        "value": "#0F2B33"
+      }
+    ],
+    "component_instances": [
+      {
+        "component_id": "2:1",
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A5",
+        "id": "1:5",
+        "kind": "INSTANCE",
+        "name": "Expense summary card",
+        "parent_id": "1:4"
+      },
+      {
+        "component_id": "2:1",
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A6",
+        "id": "1:6",
+        "kind": "INSTANCE",
+        "name": "Patient summary card",
+        "parent_id": "1:4"
+      },
+      {
+        "component_id": "2:1",
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A7",
+        "id": "1:7",
+        "kind": "INSTANCE",
+        "name": "Clinic summary card",
+        "parent_id": "1:4"
+      }
+    ],
+    "components": [
+      {
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A3",
+        "id": "1:3",
+        "kind": "COMPONENT",
+        "name": "Reporting year selector",
+        "parent_id": "1:1"
+      }
+    ],
+    "conflicts": [],
+    "controls": [
+      {
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A3",
+        "id": "1:3",
+        "kind": "COMPONENT",
+        "name": "Reporting year selector",
+        "parent_id": "1:1"
+      }
+    ],
+    "design_tokens": [
+      {
+        "name": "color-1",
+        "source": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A2",
+        "value": "#0F2B33"
+      }
+    ],
+    "document_name": "Operational Dashboard Fixture",
+    "error_code": null,
+    "interactions": [],
+    "layouts": [
+      {
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A1",
+        "direction": "VERTICAL",
+        "id": "1:1",
+        "kind": "FRAME",
+        "name": "Operational Dashboard",
+        "parent_id": "1:0"
+      },
+      {
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A3",
+        "direction": "HORIZONTAL",
+        "id": "1:3",
+        "kind": "COMPONENT",
+        "name": "Reporting year selector",
+        "parent_id": "1:1"
+      },
+      {
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A4",
+        "direction": "HORIZONTAL",
+        "id": "1:4",
+        "kind": "FRAME",
+        "name": "Summary cards",
+        "parent_id": "1:1"
+      }
+    ],
+    "mode": "FIXTURE",
+    "navigation_hints": [],
+    "pages": [
+      {
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A0",
+        "id": "1:0",
+        "kind": "CANVAS",
+        "name": "Dashboard",
+        "parent_id": "0:0"
+      }
+    ],
+    "provider": "FIGMA",
+    "requirement_links": [
+      {
+        "description": "Dashboard frame supports the approved dashboard access presentation.",
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A1",
+        "relationship": "SUPPORTS",
+        "requirement_ref": "FR-01"
+      },
+      {
+        "description": "Explicit reporting-year selector supports yearly report presentation.",
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A3",
+        "relationship": "SUPPORTS",
+        "requirement_ref": "FR-02"
+      }
+    ],
+    "responsive_hints": [
+      {
+        "constraints": {
+          "horizontal": "STRETCH",
+          "vertical": "TOP"
+        },
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A1",
+        "horizontal": null,
+        "id": "1:1",
+        "kind": "FRAME",
+        "name": "Operational Dashboard",
+        "parent_id": "1:0",
+        "vertical": null
+      }
+    ],
+    "screens": [
+      {
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A1",
+        "dimensions": {
+          "height": 1024,
+          "width": 1440
+        },
+        "id": "1:1",
+        "kind": "FRAME",
+        "name": "Operational Dashboard",
+        "parent_id": "1:0"
+      },
+      {
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A4",
+        "dimensions": {},
+        "id": "1:4",
+        "kind": "FRAME",
+        "name": "Summary cards",
+        "parent_id": "1:1"
+      }
+    ],
+    "source_reference": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A1",
+    "spacing": [
+      {
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A1",
+        "id": "1:1",
+        "kind": "FRAME",
+        "name": "Operational Dashboard",
+        "parent_id": "1:0",
+        "values": {
+          "itemSpacing": 24,
+          "paddingBottom": 24,
+          "paddingLeft": 32,
+          "paddingRight": 32,
+          "paddingTop": 24
+        }
+      },
+      {
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A3",
+        "id": "1:3",
+        "kind": "COMPONENT",
+        "name": "Reporting year selector",
+        "parent_id": "1:1",
+        "values": {
+          "itemSpacing": 8
+        }
+      },
+      {
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A4",
+        "id": "1:4",
+        "kind": "FRAME",
+        "name": "Summary cards",
+        "parent_id": "1:1",
+        "values": {
+          "itemSpacing": 16
+        }
+      }
+    ],
+    "status": "AVAILABLE",
+    "traceability": [
+      "figma://file/FIXTURE_DASHBOARD?node-id=0%3A0",
+      "figma://file/FIXTURE_DASHBOARD?node-id=1%3A0",
+      "figma://file/FIXTURE_DASHBOARD?node-id=1%3A1",
+      "figma://file/FIXTURE_DASHBOARD?node-id=1%3A2",
+      "figma://file/FIXTURE_DASHBOARD?node-id=1%3A3",
+      "figma://file/FIXTURE_DASHBOARD?node-id=1%3A4",
+      "figma://file/FIXTURE_DASHBOARD?node-id=1%3A5",
+      "figma://file/FIXTURE_DASHBOARD?node-id=1%3A6",
+      "figma://file/FIXTURE_DASHBOARD?node-id=1%3A7"
+    ],
+    "typography": [
+      {
+        "design_ref": "figma://file/FIXTURE_DASHBOARD?node-id=1%3A2",
+        "fontFamily": "Source Sans 3",
+        "fontSize": 32,
+        "fontWeight": 700,
+        "id": "1:2",
+        "kind": "TEXT",
+        "lineHeightPx": 40,
+        "name": "Dashboard heading",
+        "parent_id": "1:1"
+      }
+    ],
+    "unresolved_items": []
+  },
+  "existing_api_contracts": [
+    {
+      "api_id": "API-01",
+      "endpoint": "/api/users/current/tenant",
+      "method": "GET",
+      "path_parameters": [],
+      "purpose": "Retrieve the current organization identifier required by organization-specific functionality.",
+      "query_parameters": [],
+      "request_model": null,
+      "response_description": "Current organization identifier",
+      "response_model": "int",
+      "traceability": {
+        "source_interaction_ids": [
+          "API-OPERATIONAL_DASHBOARD_INSIGHTS-001"
+        ]
+      }
+    },
+    {
+      "api_id": "API-02",
+      "endpoint": "/api/reports/expenses/{year}",
+      "method": "GET",
+      "path_parameters": [
+        {
+          "description": "selected reporting year",
+          "location": "Path",
+          "name": "year"
+        }
+      ],
+      "purpose": "Retrieve expense summary information for the selected reporting year.",
+      "query_parameters": [],
+      "request_model": null,
+      "response_description": "Expense summary information",
+      "response_model": "ExpensesSummary[]",
+      "traceability": {
+        "source_interaction_ids": [
+          "API-OPERATIONAL_DASHBOARD_INSIGHTS-002"
+        ]
+      }
+    },
+    {
+      "api_id": "API-03",
+      "endpoint": "/api/reports/patients/{year}",
+      "method": "GET",
+      "path_parameters": [
+        {
+          "description": "selected reporting year",
+          "location": "Path",
+          "name": "year"
+        }
+      ],
+      "purpose": "Retrieve patient summary information for the selected reporting year.",
+      "query_parameters": [],
+      "request_model": null,
+      "response_description": "Patient summary information",
+      "response_model": "PatientsSummary[]",
+      "traceability": {
+        "source_interaction_ids": [
+          "API-OPERATIONAL_DASHBOARD_INSIGHTS-003"
+        ]
+      }
+    },
+    {
+      "api_id": "API-04",
+      "endpoint": "/api/reports/clinicsummary",
+      "method": "GET",
+      "path_parameters": [],
+      "purpose": "Retrieve clinic summary information for the corresponding feature function.",
+      "query_parameters": [],
+      "request_model": null,
+      "response_description": "Clinic summary information",
+      "response_model": "ClinicSummary",
+      "traceability": {
+        "source_interaction_ids": [
+          "API-OPERATIONAL_DASHBOARD_INSIGHTS-004"
+        ]
+      }
+    }
+  ],
+  "feature_id": "feature-operational-dashboard-insights",
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "requirements": [
+    {
+      "id": "FR-02",
+      "requirement": "The user must be able to view yearly expense information.",
+      "title": "View Yearly Expense Information"
+    },
+    {
+      "id": "FR-03",
+      "requirement": "The user must be able to view yearly patient information.",
+      "title": "View Yearly Patient Information"
+    },
+    {
+      "id": "FR-05",
+      "requirement": "The application must retrieve the current organization identifier required by organization-specific functionality.",
+      "title": "Establish Organization Context"
+    },
+    {
+      "id": "FR-04",
+      "requirement": "The user must be able to view clinic summary.",
+      "title": "View Clinic Summary"
+    },
+    {
+      "id": "FR-01",
+      "requirement": "The user must be able to access the operational dashboard.",
+      "title": "Access Operational Dashboard"
+    }
+  ],
+  "status": "TECHNICAL_TASKS_READY",
+  "stories": [
+    {
+      "story_id": "US-01",
+      "summary": "Access Yearly Operational Reports"
+    },
+    {
+      "story_id": "US-02",
+      "summary": "View Tenant-Aware Dashboard Summary"
+    },
+    {
+      "story_id": "US-03",
+      "summary": "Open Operational Dashboard"
+    }
+  ],
+  "tasks": [
+    {
+      "acceptance_criteria_refs": [],
+      "adr_refs": [
+        "ADR-001",
+        "ADR-002",
+        "ADR-003",
+        "ADR-009"
+      ],
+      "api_refs": [],
+      "architecture_decision_refs": [
+        "ARCH-001",
+        "ARCH-003",
+        "ARCH-006",
+        "ARCH-017",
+        "ARCH-052"
+      ],
+      "blocking": false,
+      "category": "SCAFFOLD",
+      "deliverables": [
+        "Nx workspace and Angular application foundation",
+        "Initial CI quality targets"
+      ],
+      "dependencies": [],
+      "description": "Create the selected enterprise workspace foundation for the hero Feature. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [],
+      "implementation_order": 1,
+      "implementation_requirements": [
+        "Create the Angular 22 application in the selected Nx workspace.",
+        "Enable standalone bootstrapping and zoneless compatibility checks.",
+        "Apply Nx-aware lint, build, and test boundaries."
+      ],
+      "objective": "Create the selected enterprise workspace foundation for the hero Feature.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [],
+      "task_id": "TT-001",
+      "title": "Establish the Angular 22 Nx delivery workspace",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "Architecture:ARCH-001",
+        "Architecture:ARCH-003",
+        "Architecture:ARCH-006",
+        "Architecture:ARCH-017",
+        "Architecture:ARCH-052",
+        "ADR:ADR-001",
+        "ADR:ADR-002",
+        "ADR:ADR-003",
+        "ADR:ADR-009"
+      ],
+      "validation_requirements": [
+        "Workspace build and quality commands pass.",
+        "Zoneless dependency compatibility is verified."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [],
+      "adr_refs": [
+        "ADR-002",
+        "ADR-007"
+      ],
+      "api_refs": [],
+      "architecture_decision_refs": [
+        "ARCH-008",
+        "ARCH-010",
+        "ARCH-034"
+      ],
+      "blocking": false,
+      "category": "CONFIGURATION",
+      "deliverables": [
+        "Dashboard feature boundary",
+        "Dashboard data-access boundary"
+      ],
+      "dependencies": [
+        "TT-001"
+      ],
+      "description": "Translate the selected modular structure into enforceable project boundaries. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [],
+      "implementation_order": 2,
+      "implementation_requirements": [
+        "Create domain-oriented feature, data-access, and shared UI library boundaries.",
+        "Configure dependency constraints so presentation does not bypass integration boundaries."
+      ],
+      "objective": "Translate the selected modular structure into enforceable project boundaries.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [],
+      "task_id": "TT-002",
+      "title": "Define Dashboard domain and library boundaries",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "Architecture:ARCH-008",
+        "Architecture:ARCH-010",
+        "Architecture:ARCH-034",
+        "ADR:ADR-002",
+        "ADR:ADR-007"
+      ],
+      "validation_requirements": [
+        "Nx dependency validation passes.",
+        "Boundary rules prevent direct cross-domain imports."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [],
+      "adr_refs": [
+        "ADR-002",
+        "ADR-009"
+      ],
+      "api_refs": [],
+      "architecture_decision_refs": [
+        "ARCH-009",
+        "ARCH-046",
+        "ARCH-048"
+      ],
+      "blocking": false,
+      "category": "DESIGN_SYSTEM",
+      "deliverables": [
+        "Shared design-system library",
+        "Dashboard presentation primitives"
+      ],
+      "dependencies": [
+        "TT-001"
+      ],
+      "description": "Provide reusable presentation primitives for Dashboard delivery. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A1",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A4",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A5",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A6",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A7"
+      ],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [],
+      "implementation_order": 3,
+      "implementation_requirements": [
+        "Translate only normalized design tokens and reusable components when design input is available.",
+        "Keep design guidance subordinate to approved requirements."
+      ],
+      "objective": "Provide reusable presentation primitives for Dashboard delivery.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [],
+      "task_id": "TT-003",
+      "title": "Establish the accessible shared design-system boundary",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "Architecture:ARCH-009",
+        "Architecture:ARCH-046",
+        "Architecture:ARCH-048",
+        "ADR:ADR-002",
+        "ADR:ADR-009",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A1",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A4",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A5",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A6",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A7"
+      ],
+      "validation_requirements": [
+        "Shared primitives meet keyboard, contrast, and responsive validation expectations.",
+        "No design-derived business behavior is introduced."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [],
+      "adr_refs": [
+        "ADR-007"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-04"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-010",
+        "ARCH-037",
+        "ARCH-038"
+      ],
+      "blocking": false,
+      "category": "API",
+      "deliverables": [
+        "Typed Dashboard API models",
+        "Existing API contract tests"
+      ],
+      "dependencies": [
+        "TT-002"
+      ],
+      "description": "Create typed client-side models without changing existing backend semantics. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [
+        "FR-02",
+        "FR-03",
+        "FR-04",
+        "FR-05"
+      ],
+      "implementation_order": 4,
+      "implementation_requirements": [
+        "Represent each approved existing method, route, parameter, and response model exactly.",
+        "Keep existing contracts distinct from future target facade design.",
+        "Use the selected typed Angular HTTP strategy."
+      ],
+      "objective": "Create typed client-side models without changing existing backend semantics.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-004",
+      "title": "Model the four existing Dashboard API contracts",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "FR:FR-02",
+        "FR:FR-03",
+        "FR:FR-04",
+        "FR:FR-05",
+        "Story:US-01",
+        "Story:US-02",
+        "Architecture:ARCH-010",
+        "Architecture:ARCH-037",
+        "Architecture:ARCH-038",
+        "ADR:ADR-007",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03",
+        "API:API-04"
+      ],
+      "validation_requirements": [
+        "Contract tests cover all four approved APIs.",
+        "No replacement or additional existing API is declared."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [],
+      "adr_refs": [
+        "ADR-007",
+        "ADR-008"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-04"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-039",
+        "ARCH-044",
+        "ARCH-051"
+      ],
+      "blocking": false,
+      "category": "GATEWAY",
+      "deliverables": [
+        "Target Gateway routing plan",
+        "Gateway policy checklist"
+      ],
+      "dependencies": [
+        "TT-004"
+      ],
+      "description": "Represent the selected target ingress layer without implementing a product or changing business APIs. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [
+        "FR-02",
+        "FR-03",
+        "FR-04",
+        "FR-05"
+      ],
+      "implementation_order": 5,
+      "implementation_requirements": [
+        "Configure future routing to preserve the four existing backend contracts.",
+        "Define policy concerns for authentication, correlation propagation, and observability.",
+        "Leave provider selection as a later configuration decision."
+      ],
+      "objective": "Represent the selected target ingress layer without implementing a product or changing business APIs.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-005",
+      "title": "Plan provider-neutral Gateway routing and policies",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "FR:FR-02",
+        "FR:FR-03",
+        "FR:FR-04",
+        "FR:FR-05",
+        "Story:US-01",
+        "Story:US-02",
+        "Architecture:ARCH-039",
+        "Architecture:ARCH-044",
+        "Architecture:ARCH-051",
+        "ADR:ADR-007",
+        "ADR:ADR-008",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03",
+        "API:API-04"
+      ],
+      "validation_requirements": [
+        "Route mapping review proves all existing contracts are preserved.",
+        "No gateway product is selected by this task."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [],
+      "adr_refs": [
+        "ADR-007",
+        "ADR-008"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-04"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-041",
+        "ARCH-044",
+        "ARCH-051"
+      ],
+      "blocking": false,
+      "category": "BFF",
+      "deliverables": [
+        "BFF responsibility design",
+        "TARGET_CONTRACT_TO_BE_DESIGNED register"
+      ],
+      "dependencies": [
+        "TT-005"
+      ],
+      "description": "Plan the selected frontend-specific integration boundary while preserving backend behavior. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [
+        "FR-02",
+        "FR-03",
+        "FR-04",
+        "FR-05"
+      ],
+      "implementation_order": 6,
+      "implementation_requirements": [
+        "Label every future frontend-facing facade as TARGET_CONTRACT_TO_BE_DESIGNED.",
+        "Map justified orchestration to the four existing API contracts without inventing business rules.",
+        "Define tenant context, correlation, and error propagation responsibilities."
+      ],
+      "objective": "Plan the selected frontend-specific integration boundary while preserving backend behavior.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-006",
+      "title": "Design the future Dashboard BFF boundary",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "FR:FR-02",
+        "FR:FR-03",
+        "FR:FR-04",
+        "FR:FR-05",
+        "Story:US-01",
+        "Story:US-02",
+        "Architecture:ARCH-041",
+        "Architecture:ARCH-044",
+        "Architecture:ARCH-051",
+        "ADR:ADR-007",
+        "ADR:ADR-008",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03",
+        "API:API-04"
+      ],
+      "validation_requirements": [
+        "Review confirms no future facade is represented as an existing API.",
+        "Backend method, path, and response semantics remain unchanged."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [],
+      "adr_refs": [
+        "ADR-007"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-04"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-037",
+        "ARCH-038",
+        "ARCH-041"
+      ],
+      "blocking": false,
+      "category": "INTEGRATION",
+      "deliverables": [
+        "Dashboard integration port",
+        "Typed integration adapters"
+      ],
+      "dependencies": [
+        "TT-006"
+      ],
+      "description": "Keep the browser integration aligned to the selected target topology. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [
+        "FR-02",
+        "FR-03",
+        "FR-04",
+        "FR-05"
+      ],
+      "implementation_order": 7,
+      "implementation_requirements": [
+        "Create a typed integration port for the future BFF contract.",
+        "Mark the port contract TARGET_CONTRACT_TO_BE_DESIGNED until approved.",
+        "Keep the existing API contracts traceable behind the target boundary."
+      ],
+      "objective": "Keep the browser integration aligned to the selected target topology.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-007",
+      "title": "Implement the Angular-to-BFF client boundary",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "FR:FR-02",
+        "FR:FR-03",
+        "FR:FR-04",
+        "FR:FR-05",
+        "Story:US-01",
+        "Story:US-02",
+        "Architecture:ARCH-037",
+        "Architecture:ARCH-038",
+        "Architecture:ARCH-041",
+        "ADR:ADR-007",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03",
+        "API:API-04"
+      ],
+      "validation_requirements": [
+        "The Dashboard feature depends on the integration port rather than backend-specific transport.",
+        "Contract status remains explicit."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-operational-dashboard-insights-open-operational-dashboard-001",
+        "ac-operational-dashboard-insights-open-operational-dashboard-002"
+      ],
+      "adr_refs": [
+        "ADR-005",
+        "ADR-008"
+      ],
+      "api_refs": [],
+      "architecture_decision_refs": [
+        "ARCH-024",
+        "ARCH-025",
+        "ARCH-026",
+        "ARCH-028"
+      ],
+      "blocking": false,
+      "category": "ROUTING",
+      "deliverables": [
+        "Dashboard route configuration",
+        "Route activation tests"
+      ],
+      "dependencies": [
+        "TT-002"
+      ],
+      "description": "Expose the approved Dashboard experience through the selected routing strategy. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A1"
+      ],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [
+        "FR-01"
+      ],
+      "implementation_order": 8,
+      "implementation_requirements": [
+        "Register a lazy feature route for the standalone Dashboard shell.",
+        "Use functional route APIs and a functional guard boundary without defining an identity provider."
+      ],
+      "objective": "Expose the approved Dashboard experience through the selected routing strategy.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-03"
+      ],
+      "task_id": "TT-008",
+      "title": "Configure the lazy Operational Dashboard route",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "FR:FR-01",
+        "Story:US-03",
+        "AC:ac-operational-dashboard-insights-open-operational-dashboard-001",
+        "AC:ac-operational-dashboard-insights-open-operational-dashboard-002",
+        "Architecture:ARCH-024",
+        "Architecture:ARCH-025",
+        "Architecture:ARCH-026",
+        "Architecture:ARCH-028",
+        "ADR:ADR-005",
+        "ADR:ADR-008",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A1"
+      ],
+      "validation_requirements": [
+        "Route loading is lazy and resolves to the standalone shell.",
+        "Approved Dashboard access criteria are covered."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-operational-dashboard-insights-open-operational-dashboard-001",
+        "ac-operational-dashboard-insights-open-operational-dashboard-002"
+      ],
+      "adr_refs": [
+        "ADR-002"
+      ],
+      "api_refs": [],
+      "architecture_decision_refs": [
+        "ARCH-003",
+        "ARCH-034",
+        "ARCH-046"
+      ],
+      "blocking": false,
+      "category": "UI",
+      "deliverables": [
+        "Standalone Dashboard shell",
+        "Summary presentation composition"
+      ],
+      "dependencies": [
+        "TT-003",
+        "TT-008"
+      ],
+      "description": "Create the feature container and presentation regions without changing functional scope. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A1",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A4",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A5",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A6",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A7"
+      ],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03",
+        "FR-04"
+      ],
+      "implementation_order": 9,
+      "implementation_requirements": [
+        "Build a standalone shell within the Dashboard feature boundary.",
+        "Expose year selection and approved expense, patient, and clinic summary regions."
+      ],
+      "objective": "Create the feature container and presentation regions without changing functional scope.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02",
+        "US-03"
+      ],
+      "task_id": "TT-009",
+      "title": "Implement the standalone Operational Dashboard shell",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "FR:FR-04",
+        "Story:US-01",
+        "Story:US-02",
+        "Story:US-03",
+        "AC:ac-operational-dashboard-insights-open-operational-dashboard-001",
+        "AC:ac-operational-dashboard-insights-open-operational-dashboard-002",
+        "Architecture:ARCH-003",
+        "Architecture:ARCH-034",
+        "Architecture:ARCH-046",
+        "ADR:ADR-002",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A1",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A4",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A5",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A6",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A7"
+      ],
+      "validation_requirements": [
+        "Shell renders all approved presentation regions.",
+        "No unsupported field, metric, or business rule is added."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002"
+      ],
+      "adr_refs": [
+        "ADR-003",
+        "ADR-004"
+      ],
+      "api_refs": [
+        "API-02",
+        "API-03",
+        "API-04"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-012",
+        "ARCH-013",
+        "ARCH-015",
+        "ARCH-016",
+        "ARCH-021"
+      ],
+      "blocking": false,
+      "category": "STATE",
+      "deliverables": [
+        "Dashboard feature state",
+        "RxJS report orchestration"
+      ],
+      "dependencies": [
+        "TT-004",
+        "TT-007",
+        "TT-009"
+      ],
+      "description": "Separate synchronous UI state from asynchronous report retrieval. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A3",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A4",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A5",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A6",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A7"
+      ],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [
+        "FR-02",
+        "FR-03",
+        "FR-04"
+      ],
+      "implementation_order": 10,
+      "implementation_requirements": [
+        "Use Signals for selected-year, loading, error, and derived presentation state.",
+        "Use RxJS for HTTP cancellation and composition across approved contracts.",
+        "Do not embed transport calls in presentation components."
+      ],
+      "objective": "Separate synchronous UI state from asynchronous report retrieval.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-010",
+      "title": "Implement Dashboard Signals and RxJS data flow",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "FR:FR-02",
+        "FR:FR-03",
+        "FR:FR-04",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+        "AC:ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+        "AC:ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002",
+        "Architecture:ARCH-012",
+        "Architecture:ARCH-013",
+        "Architecture:ARCH-015",
+        "Architecture:ARCH-016",
+        "Architecture:ARCH-021",
+        "ADR:ADR-003",
+        "ADR:ADR-004",
+        "API:API-02",
+        "API:API-03",
+        "API:API-04",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A3",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A4",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A5",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A6",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A7"
+      ],
+      "validation_requirements": [
+        "Year changes cancel stale asynchronous work.",
+        "Derived UI state remains deterministic and independently tested."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002"
+      ],
+      "adr_refs": [
+        "ADR-008",
+        "ADR-007"
+      ],
+      "api_refs": [
+        "API-01"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-026",
+        "ARCH-038",
+        "ARCH-044"
+      ],
+      "blocking": false,
+      "category": "SECURITY_CONTEXT",
+      "deliverables": [
+        "Tenant context service",
+        "Context propagation tests"
+      ],
+      "dependencies": [
+        "TT-005",
+        "TT-006",
+        "TT-010"
+      ],
+      "description": "Preserve organization-aware behavior without selecting an identity provider. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [
+        "FR-05"
+      ],
+      "implementation_order": 11,
+      "implementation_requirements": [
+        "Retrieve the approved current-tenant contract through the integration boundary.",
+        "Propagate tenant and correlation context through Angular, Gateway, and BFF responsibilities.",
+        "Keep authentication provider and browser session implementation as explicit clarifications."
+      ],
+      "objective": "Preserve organization-aware behavior without selecting an identity provider.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-011",
+      "title": "Propagate tenant context through the target integration path",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "FR:FR-05",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+        "AC:ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002",
+        "Architecture:ARCH-026",
+        "Architecture:ARCH-038",
+        "Architecture:ARCH-044",
+        "ADR:ADR-008",
+        "ADR:ADR-007",
+        "API:API-01"
+      ],
+      "validation_requirements": [
+        "Tenant context uses only the approved contract.",
+        "Tests prove context propagation and no provider assumption."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002"
+      ],
+      "adr_refs": [
+        "ADR-002"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-04"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-003",
+        "ARCH-034",
+        "ARCH-046"
+      ],
+      "blocking": false,
+      "category": "UI",
+      "deliverables": [
+        "Expense summary region",
+        "Patient summary region",
+        "Clinic summary region"
+      ],
+      "dependencies": [
+        "TT-010",
+        "TT-011"
+      ],
+      "description": "Present approved operational information while preserving unresolved field-level questions. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A4",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A5",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A6",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A7"
+      ],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [
+        "FR-02",
+        "FR-03",
+        "FR-04",
+        "FR-05"
+      ],
+      "implementation_order": 12,
+      "implementation_requirements": [
+        "Connect expense and patient regions to selected-year state.",
+        "Connect clinic summary presentation to current organization context.",
+        "Do not invent report fields or metrics pending approved clarifications."
+      ],
+      "objective": "Present approved operational information while preserving unresolved field-level questions.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-012",
+      "title": "Implement yearly report and clinic summary presentation",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "FR:FR-02",
+        "FR:FR-03",
+        "FR:FR-04",
+        "FR:FR-05",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+        "AC:ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+        "AC:ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002",
+        "Architecture:ARCH-003",
+        "Architecture:ARCH-034",
+        "Architecture:ARCH-046",
+        "ADR:ADR-002",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03",
+        "API:API-04",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A4",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A5",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A6",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A7"
+      ],
+      "validation_requirements": [
+        "Each region is driven by approved state and API references.",
+        "Unknown fields remain documented rather than fabricated."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [],
+      "adr_refs": [
+        "ADR-002",
+        "ADR-009"
+      ],
+      "api_refs": [],
+      "architecture_decision_refs": [
+        "ARCH-046",
+        "ARCH-048"
+      ],
+      "blocking": false,
+      "category": "ACCESSIBILITY",
+      "deliverables": [
+        "Accessibility validation report",
+        "Responsive behavior tests"
+      ],
+      "dependencies": [
+        "TT-012"
+      ],
+      "description": "Apply the selected accessibility strategy across the implemented experience. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A1",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A3",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A4",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A5",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A6",
+        "figma://file/FIXTURE_DASHBOARD?node-id=1%3A7"
+      ],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03",
+        "FR-04"
+      ],
+      "implementation_order": 13,
+      "implementation_requirements": [
+        "Verify semantic structure, keyboard operation, focus behavior, labels, and responsive reflow.",
+        "Use normalized responsive hints only when present and retain implementation defaults otherwise."
+      ],
+      "objective": "Apply the selected accessibility strategy across the implemented experience.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02",
+        "US-03"
+      ],
+      "task_id": "TT-013",
+      "title": "Validate responsive and accessible Dashboard behavior",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "FR:FR-04",
+        "Story:US-01",
+        "Story:US-02",
+        "Story:US-03",
+        "Architecture:ARCH-046",
+        "Architecture:ARCH-048",
+        "ADR:ADR-002",
+        "ADR:ADR-009",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A1",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A3",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A4",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A5",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A6",
+        "Design:figma://file/FIXTURE_DASHBOARD?node-id=1%3A7"
+      ],
+      "validation_requirements": [
+        "Automated accessibility checks pass.",
+        "Manual keyboard and responsive review is recorded without unsupported compliance claims."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [],
+      "adr_refs": [
+        "ADR-007",
+        "ADR-008"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-04"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-038",
+        "ARCH-039",
+        "ARCH-041",
+        "ARCH-051"
+      ],
+      "blocking": false,
+      "category": "OBSERVABILITY",
+      "deliverables": [
+        "Correlation interceptor",
+        "Dashboard telemetry events"
+      ],
+      "dependencies": [
+        "TT-007",
+        "TT-010",
+        "TT-011"
+      ],
+      "description": "Make target integration failures diagnosable without selecting a telemetry vendor. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [
+        "FR-02",
+        "FR-03",
+        "FR-04",
+        "FR-05"
+      ],
+      "implementation_order": 14,
+      "implementation_requirements": [
+        "Propagate correlation context across browser, Gateway, BFF, and existing API boundaries.",
+        "Instrument report loading and technical failures without recording sensitive tenant data.",
+        "Keep vendor configuration external to feature code."
+      ],
+      "objective": "Make target integration failures diagnosable without selecting a telemetry vendor.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-014",
+      "title": "Add correlated Dashboard telemetry and failure handling",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "FR:FR-02",
+        "FR:FR-03",
+        "FR:FR-04",
+        "FR:FR-05",
+        "Story:US-01",
+        "Story:US-02",
+        "Architecture:ARCH-038",
+        "Architecture:ARCH-039",
+        "Architecture:ARCH-041",
+        "Architecture:ARCH-051",
+        "ADR:ADR-007",
+        "ADR:ADR-008",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03",
+        "API:API-04"
+      ],
+      "validation_requirements": [
+        "Correlation propagation is covered by integration tests.",
+        "Telemetry contains no sensitive context values."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [],
+      "adr_refs": [
+        "ADR-009"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-04"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-049",
+        "ARCH-052"
+      ],
+      "blocking": false,
+      "category": "TEST",
+      "deliverables": [
+        "Dashboard unit tests",
+        "Dashboard component tests"
+      ],
+      "dependencies": [
+        "TT-012",
+        "TT-013",
+        "TT-014"
+      ],
+      "description": "Verify state, UI, routing, contract, and accessibility behavior at component boundaries. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03",
+        "FR-04",
+        "FR-05"
+      ],
+      "implementation_order": 15,
+      "implementation_requirements": [
+        "Cover Signals-derived state and RxJS cancellation.",
+        "Cover standalone shell and summary regions against approved requirements.",
+        "Cover typed contract and tenant-context boundaries."
+      ],
+      "objective": "Verify state, UI, routing, contract, and accessibility behavior at component boundaries.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02",
+        "US-03"
+      ],
+      "task_id": "TT-015",
+      "title": "Implement unit and component coverage",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "FR:FR-04",
+        "FR:FR-05",
+        "Story:US-01",
+        "Story:US-02",
+        "Story:US-03",
+        "Architecture:ARCH-049",
+        "Architecture:ARCH-052",
+        "ADR:ADR-009",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03",
+        "API:API-04"
+      ],
+      "validation_requirements": [
+        "Unit and component suites pass in affected Nx targets.",
+        "Tests retain exact approved API references."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002",
+        "ac-operational-dashboard-insights-open-operational-dashboard-001",
+        "ac-operational-dashboard-insights-open-operational-dashboard-002"
+      ],
+      "adr_refs": [
+        "ADR-009"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-04"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-050",
+        "ARCH-052"
+      ],
+      "blocking": false,
+      "category": "TEST",
+      "deliverables": [
+        "Playwright Dashboard suite",
+        "Acceptance-criteria traceability report"
+      ],
+      "dependencies": [
+        "TT-015"
+      ],
+      "description": "Provide end-to-end evidence for the five hero Feature acceptance criteria. This task implements the locked architecture selection and does not make a new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-operational-dashboard-insights",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03",
+        "FR-04",
+        "FR-05"
+      ],
+      "implementation_order": 16,
+      "implementation_requirements": [
+        "Automate Dashboard route access, yearly reporting, and tenant-aware summary behavior.",
+        "Map each scenario to an authoritative acceptance-criteria reference.",
+        "Use controlled test data without redefining unresolved report fields."
+      ],
+      "objective": "Provide end-to-end evidence for the five hero Feature acceptance criteria.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02",
+        "US-03"
+      ],
+      "task_id": "TT-016",
+      "title": "Automate approved Dashboard acceptance flows with Playwright",
+      "traceability": [
+        "Feature:feature-operational-dashboard-insights",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "FR:FR-04",
+        "FR:FR-05",
+        "Story:US-01",
+        "Story:US-02",
+        "Story:US-03",
+        "AC:ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+        "AC:ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+        "AC:ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002",
+        "AC:ac-operational-dashboard-insights-open-operational-dashboard-001",
+        "AC:ac-operational-dashboard-insights-open-operational-dashboard-002",
+        "Architecture:ARCH-050",
+        "Architecture:ARCH-052",
+        "ADR:ADR-009",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03",
+        "API:API-04"
+      ],
+      "validation_requirements": [
+        "All five approved criteria have executable scenario traceability.",
+        "End-to-end suite passes against the target integration boundary."
+      ]
+    }
+  ],
+  "traceability": {
+    "acceptance_criteria_refs": [
+      "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+      "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+      "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002",
+      "ac-operational-dashboard-insights-open-operational-dashboard-001",
+      "ac-operational-dashboard-insights-open-operational-dashboard-002"
+    ],
+    "adr_refs": [
+      "ADR-001",
+      "ADR-002",
+      "ADR-003",
+      "ADR-009",
+      "ADR-007",
+      "ADR-008",
+      "ADR-005",
+      "ADR-004"
+    ],
+    "api_refs": [
+      "API-01",
+      "API-02",
+      "API-03",
+      "API-04"
+    ],
+    "architecture_decision_refs": [
+      "ARCH-001",
+      "ARCH-003",
+      "ARCH-006",
+      "ARCH-017",
+      "ARCH-052",
+      "ARCH-008",
+      "ARCH-010",
+      "ARCH-034",
+      "ARCH-009",
+      "ARCH-046",
+      "ARCH-048",
+      "ARCH-037",
+      "ARCH-038",
+      "ARCH-039",
+      "ARCH-044",
+      "ARCH-051",
+      "ARCH-041",
+      "ARCH-024",
+      "ARCH-025",
+      "ARCH-026",
+      "ARCH-028",
+      "ARCH-012",
+      "ARCH-013",
+      "ARCH-015",
+      "ARCH-016",
+      "ARCH-021",
+      "ARCH-049",
+      "ARCH-050"
+    ],
+    "design_refs": [
+      "figma://file/FIXTURE_DASHBOARD?node-id=1%3A1",
+      "figma://file/FIXTURE_DASHBOARD?node-id=1%3A4",
+      "figma://file/FIXTURE_DASHBOARD?node-id=1%3A5",
+      "figma://file/FIXTURE_DASHBOARD?node-id=1%3A6",
+      "figma://file/FIXTURE_DASHBOARD?node-id=1%3A7",
+      "figma://file/FIXTURE_DASHBOARD?node-id=1%3A3"
+    ],
+    "feature_refs": [
+      "feature-operational-dashboard-insights"
+    ],
+    "functional_requirement_refs": [
+      "FR-02",
+      "FR-03",
+      "FR-05",
+      "FR-04",
+      "FR-01"
+    ],
+    "story_refs": [
+      "US-01",
+      "US-02",
+      "US-03"
+    ]
+  },
+  "validation": {
+    "blockers": [],
+    "checks": {
+      "acceptance_criteria_refs_valid": true,
+      "api_refs_valid": true,
+      "architecture_selection_hash_valid": true,
+      "architecture_selection_locked": true,
+      "bff_task_present": true,
+      "dashboard_apis_preserved": true,
+      "dependencies_exist": true,
+      "dependency_graph_acyclic": true,
+      "design_conflicts_preserve_requirements": true,
+      "every_task_traceable": true,
+      "future_bff_contract_labeled": true,
+      "gateway_task_present": true,
+      "hero_feature_only": true,
+      "implementation_order_valid": true,
+      "no_invented_existing_api": true,
+      "playwright_task_present": true,
+      "requirement_refs_valid": true,
+      "selected_architecture_only": true,
+      "story_refs_valid": true,
+      "task_ids_unique": true,
+      "unselected_technology_absent": true
+    },
+    "cycle_count": 0,
+    "status": "PASS"
+  },
+  "workflow": {
+    "design_mode": "FIXTURE",
+    "design_provider": "FIGMA",
+    "design_status": "AVAILABLE",
+    "external_llm_calls": 0,
+    "final_status": "TECHNICAL_TASKS_READY",
+    "langchain_boundary": "RunnableLambda (offline deterministic technical task composition)",
+    "langchain_runnable_execution": true,
+    "langgraph_execution": true,
+    "nodes_executed": [
+      "load_approved_context",
+      "load_optional_design",
+      "resolve_design_conflicts",
+      "compose_technical_tasks",
+      "validate_technical_tasks",
+      "finalize_technical_tasks"
+    ],
+    "start_status": "STARTED",
+    "state_transitions": [
+      {
+        "from": "START",
+        "to": "load_approved_context"
+      },
+      {
+        "from": "load_approved_context",
+        "to": "load_optional_design"
+      },
+      {
+        "from": "load_optional_design",
+        "to": "resolve_design_conflicts"
+      },
+      {
+        "from": "resolve_design_conflicts",
+        "to": "compose_technical_tasks"
+      },
+      {
+        "from": "compose_technical_tasks",
+        "to": "validate_technical_tasks"
+      },
+      {
+        "from": "validate_technical_tasks",
+        "to": "finalize_technical_tasks"
+      }
+    ],
+    "workflow_id": "legacy-dashboard-complete-application-demo-v1-2026-09-03-062736-922737"
+  }
+}

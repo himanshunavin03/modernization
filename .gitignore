@@ -22,6 +22,10 @@ artifacts/*
 !artifacts/acceptance-criteria/**
 !artifacts/feature-specifications/
 !artifacts/feature-specifications/**
+!artifacts/technical-tasks/
+!artifacts/technical-tasks/**
+!artifacts/design/
+!artifacts/design/**
 source/*
 !source/.gitkeep
 !source/README.md
