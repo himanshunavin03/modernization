@@ -27,12 +27,16 @@
         "styles": [
           "apps/healthclinic-web/src/styles.css"
         ]
+      },
+      "configurations": {
+        "development": {}
       }
     },
     "serve": {
       "executor": "@angular/build:dev-server",
       "options": {
-        "buildTarget": "healthclinic-web:build"
+        "buildTarget": "healthclinic-web:build",
+        "proxyConfig": "apps/healthclinic-web/proxy.conf.mjs"
       }
     },
     "test": {
