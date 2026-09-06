@@ -85,6 +85,30 @@ def test_concrete_ui_interaction_survives_broad_capability_classification():
     assert list_capability.interaction_semantics[0].label == "Fetch next records"
 
 
+def test_callback_invoked_operation_inherits_only_structural_enclosing_ui_handler():
+    graph = graph_with_crud()
+    remove = next(node for node in graph["nodes"] if node["label"] == "FrontendFunction" and node["properties"].get("function_name") == "remove" and node["properties"].get("owner") == "ordersController")
+    service = next(node for node in graph["nodes"] if node["label"] == "FrontendFunction" and node["properties"].get("function_name") == "remove" and node["properties"].get("owner") == "OrdersService")
+    graph["edges"] = [edge for edge in graph["edges"] if not (edge["type"] == "INVOKES" and edge["source"] == remove["id"] and edge["target"] == service["id"])]
+    callback = {
+        "id": "fixture:FrontendFunction:callback", "label": "FrontendFunction", "name": "ordersController.callback",
+        "properties": {"anonymous": True}, "evidence": [{"source_path": "components/orders/controllers/ordersController.js"}],
+    }
+    selection = {
+        "id": "fixture:UISelection:callback", "label": "UISelection", "name": "components/orders/views/main.html:4",
+        "properties": {"model": "record.selected"},
+        "evidence": [{"source_path": "components/orders/views/main.html", "line_start": 4, "line_end": 4}],
+    }
+    graph["nodes"].extend([callback, selection])
+    graph["edges"].extend([
+        {"source": remove["id"], "target": callback["id"], "type": "CONTAINS", "evidence": [{}]},
+        {"source": callback["id"], "target": service["id"], "type": "INVOKES", "evidence": [{}]},
+    ])
+    delete = next(item for item in derive_source_capabilities(graph) if item.operation_kind == "DELETE")
+    assert any(item.stage == "UI" for item in delete.source_evidence)
+    assert "BULK" in delete.qualifiers
+
+
 def test_selection_is_preserved_as_interaction_not_inferred_from_delete_api():
     graph = graph_with_crud()
     graph["nodes"].append({

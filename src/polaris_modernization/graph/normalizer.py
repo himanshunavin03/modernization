@@ -140,6 +140,13 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
                 f"{fact.properties.get('owner') or fact.properties.get('controller') or 'unknown'}."
                 f"{fact.name}/{fact.properties.get('arity', 0)}@{evidence['source_path']}"
             ))
+        elif fact.kind == "frontend_invocation":
+            structural_identity = f"{evidence['source_path']}:{fact.properties.get('invocation_identity') or fact.name}"
+        elif fact.kind in {
+            "angular_module", "route", "frontend_function", "state_mutation",
+            "collection_mutation", "navigation", "confirmation",
+        }:
+            structural_identity = f"{evidence['source_path']}:{fact.name}"
         node = add_node(label, node_name, evidence, fact.properties, structural_identity)
         add_edge("DECLARES", file_node, node, evidence)
         if fact.kind in {"razor_view", "layout", "partial_view", "script_asset", "style_asset", "client_component", "ui_control", "ui_action", "ui_validation", "ui_selection", "ui_condition", "validation_condition"}:
@@ -198,18 +205,24 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
                 warnings.append({"source_path": evidence["source_path"], "message": "API call owner was not uniquely proven; attached to File."})
 
     functions = [item for item in nodes.values() if item["label"] == "FrontendFunction"]
-    bound_states: dict[str, str] = {}
+    bound_states: dict[tuple[str, str], str] = {}
     for binding_node, binding_fact in pending_template_bindings:
         expression = str(binding_fact.properties.get("expression") or "")
         if expression:
-            state = bound_states.get(expression)
+            state_key = (binding_fact.evidence.source_path, expression)
+            state = bound_states.get(state_key)
             if state is None:
-                state = add_node("BoundState", expression, binding_fact.evidence.to_dict(), {"expression": expression})
-                bound_states[expression] = state
+                state = add_node(
+                    "BoundState", expression, binding_fact.evidence.to_dict(),
+                    {"expression": expression, "binding_context": binding_fact.evidence.source_path},
+                    f"{binding_fact.evidence.source_path}:{expression}",
+                )
+                bound_states[state_key] = state
             add_edge("BINDS_STATE", binding_node, state, binding_fact.evidence.to_dict(), {"status": "PROVEN"})
     for callback in (item for item in functions if item["properties"].get("anonymous")):
         parent_name = _qualified_name(callback["properties"].get("owner"), callback["properties"].get("enclosing_function"))
-        parent = next((item for item in functions if item["name"] == parent_name), None)
+        callback_path = callback["evidence"][0]["source_path"]
+        parent = next((item for item in functions if item["name"] == parent_name and item["evidence"][0]["source_path"] == callback_path), None)
         if parent:
             add_edge("CONTAINS", parent["id"], callback["id"], callback["evidence"][0], {"status": "PROVEN"})
     for action_node, action_fact in pending_ui_actions:
@@ -237,23 +250,29 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
             add_edge(edge_type, function["id"], semantic_node, semantic_fact.evidence.to_dict(), {"status": "PROVEN"})
     for condition_node, condition_fact in pending_conditions:
         expression = str(condition_fact.properties.get("condition") or "").lstrip("!")
-        if expression in bound_states:
-            add_edge("CONTROLS_RENDER", bound_states[expression], condition_node, condition_fact.evidence.to_dict(), {"status": "PROVEN"})
+        state = bound_states.get((condition_fact.evidence.source_path, expression))
+        if state:
+            add_edge("CONTROLS_RENDER", state, condition_node, condition_fact.evidence.to_dict(), {"status": "PROVEN"})
         for binding_node, binding_fact in pending_template_bindings:
             if binding_fact.properties.get("element_identity") == condition_fact.properties.get("element_identity"):
                 add_edge("CONTROLS_RENDER", condition_node, binding_node, condition_fact.evidence.to_dict(), {"status": "PROVEN"})
     for invocation_node, invocation_fact in pending_invocations:
         caller_name = _qualified_name(invocation_fact.properties.get("caller_owner"), invocation_fact.properties.get("caller"))
-        target_name = _qualified_name(invocation_fact.properties.get("target_owner"), invocation_fact.properties.get("target_function"))
-        caller = next((item["id"] for item in functions if item["name"] == caller_name), None)
-        target = next((item["id"] for item in functions if item["name"].casefold() == target_name.casefold()), None)
+        target_owner = invocation_fact.properties.get("target_owner")
+        if target_owner in {"$scope", "scope", "this"}:
+            target_owner = invocation_fact.properties.get("caller_owner")
+        target_name = _qualified_name(target_owner, invocation_fact.properties.get("target_function"))
+        invocation_path = invocation_fact.evidence.source_path
+        caller = next((item["id"] for item in functions if item["name"] == caller_name and item["evidence"][0]["source_path"] == invocation_path), None)
+        target_candidates = [item["id"] for item in functions if item["name"].casefold() == target_name.casefold()]
+        target = target_candidates[0] if len(target_candidates) == 1 else None
         if caller:
             add_edge("INVOKES", caller, invocation_node, invocation_fact.evidence.to_dict(), {"status": "PROVEN", "target_resolution": "CALL_SITE"})
         if caller and target:
             add_edge("INVOKES", caller, target, invocation_fact.evidence.to_dict(), {"status": "PROVEN"})
         for callback_id in invocation_fact.properties.get("callback_ids", []):
             callback_name = _qualified_name(invocation_fact.properties.get("caller_owner"), callback_id)
-            callback = next((item for item in functions if item["name"] == callback_name), None)
+            callback = next((item for item in functions if item["name"] == callback_name and item["evidence"][0]["source_path"] == invocation_path), None)
             if callback:
                 add_edge("PASSES_CALLBACK", invocation_node, callback["id"], invocation_fact.evidence.to_dict(), {"status": "PROVEN"})
     backend_handlers = [item for item in nodes.values() if item["label"] == "BackendHandler"]
@@ -297,7 +316,9 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
         elif return_fact.properties.get("unresolved"):
             warnings.append({"source_path": return_fact.evidence.source_path, "message": return_fact.properties["unresolved"]})
 
+    routes_by_name: dict[str, list[tuple[str, Fact]]] = defaultdict(list)
     for route_node, route_fact in pending_routes:
+        routes_by_name[route_fact.name].append((route_node, route_fact))
         module = modules_by_file.get(route_fact.evidence.source_path)
         if module:
             add_edge("CONFIGURES_ROUTE", module, route_node, route_fact.evidence.to_dict())
@@ -309,12 +330,13 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
         if isinstance(controller_name, str):
             controller_node = add_node("AngularController", controller_name, route_fact.evidence.to_dict())
             add_edge("DEPENDS_ON", route_node, controller_node, route_fact.evidence.to_dict())
-            constructor = next((item for item in functions if str(item["properties"].get("owner", "")).casefold() == controller_name.casefold() and item["properties"].get("function_name") in {"constructor", controller_name}), None)
-            if constructor:
-                add_edge("INITIALIZES_WITH", controller_node, constructor["id"], constructor["evidence"][0], {"status": "PROVEN"})
-        for navigation_node, navigation_fact in ((node, fact) for node, fact in pending_ui_semantics if fact.kind == "navigation"):
-            if navigation_fact.properties.get("target") == route_fact.name:
-                add_edge("NAVIGATES_TO", navigation_node, route_node, navigation_fact.evidence.to_dict(), {"status": "PROVEN"})
+            constructors = [item for item in functions if str(item["properties"].get("owner", "")).casefold() == controller_name.casefold() and item["properties"].get("function_name") in {"constructor", controller_name}]
+            if len(constructors) == 1:
+                add_edge("INITIALIZES_WITH", controller_node, constructors[0]["id"], constructors[0]["evidence"][0], {"status": "PROVEN"})
+    for navigation_node, navigation_fact in ((node, fact) for node, fact in pending_ui_semantics if fact.kind == "navigation"):
+        candidates = routes_by_name.get(str(navigation_fact.properties.get("target")), [])
+        if len(candidates) == 1:
+            add_edge("NAVIGATES_TO", navigation_node, candidates[0][0], navigation_fact.evidence.to_dict(), {"status": "PROVEN"})
 
     directives = [item for item in nodes.values() if item["label"] == "AngularDirective"]
     for usage_node, usage_fact in pending_directive_usage:
@@ -332,8 +354,9 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
                     if template:
                         add_edge("BINDS_TO", template, binding_node, usage_fact.evidence.to_dict(), {"status": "PROVEN"})
                     expression = str(attributes[binding])
-                    if expression in bound_states:
-                        add_edge("BINDS_STATE", binding_node, bound_states[expression], usage_fact.evidence.to_dict(), {"status": "PROVEN"})
+                    state = bound_states.get((usage_fact.evidence.source_path, expression))
+                    if state:
+                        add_edge("BINDS_STATE", binding_node, state, usage_fact.evidence.to_dict(), {"status": "PROVEN"})
                     for mutation_node, mutation_fact in pending_ui_semantics:
                         target = str(mutation_fact.properties.get("target") or "")
                         if mutation_fact.kind == "state_mutation" and mutation_fact.properties.get("container_type") == binding_fact.properties.get("directive_type") and target.rsplit(".", 1)[-1] == binding:

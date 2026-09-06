@@ -2,8 +2,8 @@
 
 - Inventory files: 2384
 - Deterministic facts: 68915
-- Graph nodes: 32599
-- Graph edges: 86540
+- Graph nodes: 71936
+- Graph edges: 113562
 - Extraction warnings: 0
 - Total graph warnings: 4453
 - Scope: Full application analysis

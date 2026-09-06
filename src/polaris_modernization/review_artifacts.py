@@ -44,6 +44,26 @@ def scan_for_secrets(run_output: Path) -> list[dict[str, str]]:
     return findings
 
 
+def find_bound_state_collisions(graph: dict[str, Any]) -> list[dict[str, Any]]:
+    """Find state nodes joined across source files solely by expression identity."""
+    nodes = {node.get("id"): node for node in graph.get("nodes", [])}
+    incoming: dict[str, set[str]] = {}
+    for edge in graph.get("edges", []):
+        source = nodes.get(edge.get("source"), {})
+        target = nodes.get(edge.get("target"), {})
+        if edge.get("type") != "BINDS_STATE" or source.get("label") != "TemplateBinding" or target.get("label") != "BoundState":
+            continue
+        paths = incoming.setdefault(str(edge.get("target")), set())
+        paths.update(
+            str(item.get("source_path")) for item in edge.get("evidence", [])
+            if item.get("source_path")
+        )
+    return [
+        {"bound_state_id": node_id, "expression": nodes[node_id].get("name", ""), "source_paths": sorted(paths)}
+        for node_id, paths in sorted(incoming.items()) if len(paths) > 1
+    ]
+
+
 def validate_run_output(run_output: Path, *, enable_roslyn: bool) -> dict[str, Any]:
     """Validate reviewability without changing or filtering raw run output."""
     expected = BASE_FILES | (ROSLYN_FILES if enable_roslyn else set())
@@ -86,8 +106,9 @@ def validate_run_output(run_output: Path, *, enable_roslyn: bool) -> dict[str, A
     no_node_evidence = [node.get("id", "") for node in nodes if not node.get("evidence")]
     no_edge_evidence = [edge.get("type", "") + ":" + edge.get("source", "") for edge in edges if not edge.get("evidence")]
     findings = scan_for_secrets(run_output)
+    bound_state_collisions = find_bound_state_collisions(graph)
     report = {
-        "valid": not missing and not json_errors and graph_error is None and not findings,
+        "valid": not missing and not json_errors and graph_error is None and not findings and not bound_state_collisions,
         "expected_artifacts": sorted(expected), "missing_artifacts": missing, "json_errors": json_errors,
         "secret_scan_findings": findings,
         "graph": {
@@ -98,6 +119,10 @@ def validate_run_output(run_output: Path, *, enable_roslyn: bool) -> dict[str, A
             "unresolved_invocation_targets": unresolved["invocation_targets"],
             "unresolved_parameter_types": unresolved["parameter_types"],
             "unresolved_return_types": unresolved["return_types"],
+        },
+        "semantic_integrity": {
+            "bound_state_cross_file_collisions": len(bound_state_collisions),
+            "bound_state_collision_examples": bound_state_collisions[:20],
         },
     }
     write_json(run_output / "knowledge-graph-validation.json", report)

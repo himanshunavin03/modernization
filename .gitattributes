@@ -1,4 +1,4 @@
 artifacts/knowledge-graph/latest/facts.json filter=lfs diff=lfs merge=lfs -text
 artifacts/knowledge-graph/latest/knowledge-graph.json filter=lfs diff=lfs merge=lfs -text
-artifacts/knowledge-graph/runs/legacy-dashboard-complete-application-demo-v1-2026-09-06-194041/facts.json filter=lfs diff=lfs merge=lfs -text
-artifacts/knowledge-graph/runs/legacy-dashboard-complete-application-demo-v1-2026-09-06-194041/knowledge-graph.json filter=lfs diff=lfs merge=lfs -text
+artifacts/knowledge-graph/runs/*/facts.json filter=lfs diff=lfs merge=lfs -text
+artifacts/knowledge-graph/runs/*/knowledge-graph.json filter=lfs diff=lfs merge=lfs -text

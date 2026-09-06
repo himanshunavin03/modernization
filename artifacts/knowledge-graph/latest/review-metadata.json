@@ -1,9 +1,9 @@
 {
   "application_project_id": "legacy-dashboard-complete-application-demo-v1",
-  "generation_timestamp_utc": "2026-09-06T19:40:41.638999Z",
+  "generation_timestamp_utc": "2026-09-06T20:39:45.231877Z",
   "lsp_analysis_completed": false,
   "roslyn_semantic_completed": true,
-  "run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-194041",
+  "run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-203944",
   "tree_sitter_completed": true,
   "validation": {
     "expected_artifacts": [
@@ -75,7 +75,7 @@
         "UIValidation",
         "ValidationCondition"
       ],
-      "nodes": 32599,
+      "nodes": 71936,
       "nodes_with_review_warnings": 278,
       "nodes_without_evidence": [],
       "relationship_types": [
@@ -110,7 +110,7 @@
         "USES_TEMPLATE",
         "USES_VIEW_MODEL"
       ],
-      "relationships": 86540,
+      "relationships": 113562,
       "relationships_without_evidence": [],
       "unresolved_invocation_targets": 2098,
       "unresolved_parameter_types": 39,
@@ -120,6 +120,10 @@
     "json_errors": [],
     "missing_artifacts": [],
     "secret_scan_findings": [],
+    "semantic_integrity": {
+      "bound_state_collision_examples": [],
+      "bound_state_cross_file_collisions": 0
+    },
     "valid": true
   }
 }

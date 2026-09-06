@@ -4,13 +4,13 @@
       "confidence": 1.0,
       "framework": "ASP.NET MVC/Razor",
       "method": "deterministic-file-evidence",
-      "source_path": "src/MyHealth.Web/Views/Shared/_Footer.cshtml"
+      "source_path": "src/MyHealth.Web.Stress/Views/Home/_Header.cshtml"
     },
     {
       "confidence": 1.0,
       "framework": ".NET API",
       "method": "deterministic-file-evidence",
-      "source_path": "src/MyHealth.Client.Droid/MyHealth.Client.Droid.csproj"
+      "source_path": "Components/AndHUD-1.3.1/samples/AndHUD.Sample/AndHUD.Sample/AndHUD.Sample.csproj"
     },
     {
       "confidence": 1.0,
@@ -28,7 +28,7 @@
       "confidence": 1.0,
       "framework": "TypeScript",
       "method": "deterministic-file-evidence",
-      "source_path": "src/MyHealth.Client.Cordova/content/app/modules/homeAppointments/filters/appointmentTimeFilter.ts"
+      "source_path": "src/MyHealth.Client.Cordova/content/app/modules/homeAppointments/homeAppointments.module.ts"
     }
   ],
   "project_id": "legacy-dashboard-complete-application-demo-v1",

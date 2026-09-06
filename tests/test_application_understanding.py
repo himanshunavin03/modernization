@@ -77,6 +77,24 @@ def test_not_ready_kg_cannot_prepare(tmp_path):
         prepare_application_understanding(kg(tmp_path, False), tmp_path / "out")
 
 
+def test_cross_file_bound_state_collision_cannot_load_as_approved(tmp_path):
+    root = kg(tmp_path)
+    graph = json.loads((root / "knowledge-graph.json").read_text())
+    state = {"id": "p:BoundState:model.value", "label": "BoundState", "name": "model.value", "properties": {"expression": "model.value"}, "evidence": [{"source_path": "view-a.html"}]}
+    graph["nodes"].extend([
+        state,
+        {"id": "p:TemplateBinding:a", "label": "TemplateBinding", "name": "a", "evidence": [{"source_path": "view-a.html"}]},
+        {"id": "p:TemplateBinding:b", "label": "TemplateBinding", "name": "b", "evidence": [{"source_path": "view-b.html"}]},
+    ])
+    graph["edges"].extend([
+        {"source": "p:TemplateBinding:a", "target": state["id"], "type": "BINDS_STATE", "evidence": [{"source_path": "view-a.html"}]},
+        {"source": "p:TemplateBinding:b", "target": state["id"], "type": "BINDS_STATE", "evidence": [{"source_path": "view-b.html"}]},
+    ])
+    (root / "knowledge-graph.json").write_text(json.dumps(graph))
+    with pytest.raises(ValueError, match="not approved"):
+        load_approved_graph(root)
+
+
 def test_readiness_publication_completes_the_approved_archive_contract(tmp_path):
     root = kg(tmp_path)
     (root / "kg-readiness-analysis.md").unlink()

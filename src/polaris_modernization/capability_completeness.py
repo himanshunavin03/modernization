@@ -167,6 +167,22 @@ def _reachable(start: str, adjacency: dict[str, list[tuple[str, str]]], wanted: 
     return found
 
 
+def _enclosing_frontend_handlers(
+    handlers: list[dict], reverse: dict[str, list[tuple[str, str]]], nodes: dict[str, dict],
+) -> list[dict]:
+    """Include structurally proven callback parents without guessing by name."""
+    result = {handler["id"]: handler for handler in handlers}
+    queue = deque(result)
+    while queue:
+        current = queue.popleft()
+        for edge_type, source in reverse.get(current, []):
+            parent = nodes[source]
+            if edge_type == "CONTAINS" and parent["label"] == "FrontendFunction" and source not in result:
+                result[source] = parent
+                queue.append(source)
+    return list(result.values())
+
+
 def derive_source_capabilities(graph: dict) -> list[SourceCapability]:
     """Derive independently addressable capabilities from evidence-bearing graph chains."""
     nodes = {item["id"]: item for item in graph.get("nodes", [])}
@@ -197,16 +213,23 @@ def derive_source_capabilities(graph: dict) -> list[SourceCapability]:
             kind = _operation(method, function_name, list(props.get("query_components", [])))
             if kind == "OTHER":
                 continue
-            ui_actions = []
+            handlers_by_id: dict[str, dict] = {}
             for caller in domain_callers:
-                handlers = [nodes[source] for edge, source in reverse.get(caller["id"], []) if edge == "INVOKES"]
-                for handler in handlers:
-                    ui_actions.extend(nodes[source] for edge, source in reverse.get(handler["id"], []) if edge == "TRIGGERS")
+                direct_handlers = [nodes[source] for edge, source in reverse.get(caller["id"], []) if edge == "INVOKES" and nodes[source]["label"] == "FrontendFunction"]
+                for handler in _enclosing_frontend_handlers(direct_handlers, reverse, nodes):
+                    handlers_by_id[handler["id"]] = handler
+            handlers = list(handlers_by_id.values())
+            ui_actions_by_id: dict[str, dict] = {}
+            for handler in (item for item in handlers if not item.get("properties", {}).get("anonymous")):
+                for edge, source in reverse.get(handler["id"], []):
+                    if edge == "TRIGGERS":
+                        ui_actions_by_id[source] = nodes[source]
+            ui_actions = list(ui_actions_by_id.values())
             api_evidence = [item for item in _evidence(call, "API") if _domain(item.source_path, identity) == domain] or _evidence(call, "API")
             evidence = [item for node, stage in [*( (x, "UI") for x in ui_actions), *( (x, "FRONTEND") for x in domain_callers), *( (x, "BACKEND") for x in endpoints), *( (x, "PERSISTENCE") for x in persistence)] for item in _evidence(node, stage)]
             evidence.extend(api_evidence)
             interactions = []
-            for handler in handlers:
+            for handler in (item for item in handlers if not item.get("properties", {}).get("anonymous")):
                 actions = [nodes[source] for edge, source in reverse.get(handler["id"], []) if edge == "TRIGGERS"]
                 interactions.extend(item for node in actions if (item := _interaction(node, handler["id"])))
             for handler in handlers:

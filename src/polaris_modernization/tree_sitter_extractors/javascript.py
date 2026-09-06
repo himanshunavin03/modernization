@@ -326,6 +326,7 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
                 "target_owner": target_owner,
                 "target_function": target_function,
                 "callback_ids": callback_ids,
+                "invocation_identity": f"call@{node.start_byte}:{node.end_byte}",
             }))
         if _call_object(node, source, "angular.module") and arguments:
             facts.append(Fact("angular_module", _literal_or_expression(arguments[0], source), node_evidence))

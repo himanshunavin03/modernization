@@ -8,6 +8,7 @@ from pathlib import Path
 import re
 
 from polaris_modernization.application_understanding.models import ConfidenceAssessment, EvidencePackage, EvidenceReference
+from polaris_modernization.review_artifacts import find_bound_state_collisions
 
 
 def load_approved_graph(kg_root: Path) -> dict:
@@ -22,7 +23,7 @@ def load_approved_graph(kg_root: Path) -> dict:
     kg_run_id = readiness_json.get("run_id") or review.get("run_id") or "LEGACY_TEST_RUN"
     if readiness_json.get("run_id") and review.get("run_id") and readiness_json["run_id"] != review["run_id"]:
         raise ValueError("Knowledge Graph readiness and review metadata identify different runs.")
-    if not validation.get("valid") or status.get("scope", {}).get("extraction_warning_count") or not approved:
+    if find_bound_state_collisions(graph) or not validation.get("valid") or status.get("scope", {}).get("extraction_warning_count") or not approved:
         raise ValueError("Knowledge Graph is not approved for application understanding.")
     api_forensics = json.loads((kg_root / "api-mapping-forensics.json").read_text(encoding="utf-8")) if (kg_root / "api-mapping-forensics.json").is_file() else {}
     return {"graph": graph, "status": status, "validation": validation, "readiness": readiness, "readiness_json": readiness_json, "kg_run_id": kg_run_id, "api_forensics": api_forensics}

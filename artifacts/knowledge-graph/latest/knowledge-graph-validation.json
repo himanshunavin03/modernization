@@ -68,7 +68,7 @@
       "UIValidation",
       "ValidationCondition"
     ],
-    "nodes": 32599,
+    "nodes": 71936,
     "nodes_with_review_warnings": 278,
     "nodes_without_evidence": [],
     "relationship_types": [
@@ -103,7 +103,7 @@
       "USES_TEMPLATE",
       "USES_VIEW_MODEL"
     ],
-    "relationships": 86540,
+    "relationships": 113562,
     "relationships_without_evidence": [],
     "unresolved_invocation_targets": 2098,
     "unresolved_parameter_types": 39,
@@ -113,5 +113,9 @@
   "json_errors": [],
   "missing_artifacts": [],
   "secret_scan_findings": [],
+  "semantic_integrity": {
+    "bound_state_collision_examples": [],
+    "bound_state_cross_file_collisions": 0
+  },
   "valid": true
 }
