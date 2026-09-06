@@ -104,6 +104,35 @@ def _enclosing_named_function(node, source: bytes) -> str | None:
     return None
 
 
+def _anonymous_identity(node) -> str:
+    return f"callback@{node.start_byte}:{node.end_byte}"
+
+
+def _nearest_function_identity(node, source: bytes) -> str | None:
+    """Return the nearest executable scope, including anonymous callbacks."""
+    current = node.parent
+    while current is not None:
+        if current.type in {"function_expression", "arrow_function"}:
+            parent = current.parent
+            if parent is None or parent.type not in {"assignment_expression", "variable_declarator"}:
+                return _anonymous_identity(current)
+        if current.type in {"function_declaration", "method_definition"}:
+            name = current.child_by_field_name("name") or current.child_by_field_name("property")
+            return node_text(name, source) if name is not None else None
+        if current.type == "variable_declarator":
+            name = current.child_by_field_name("name")
+            value = current.child_by_field_name("value")
+            if name is not None and value is not None and value.type in {"function_expression", "arrow_function"}:
+                return node_text(name, source)
+        if current.type == "assignment_expression":
+            left = current.child_by_field_name("left")
+            right = current.child_by_field_name("right")
+            if left is not None and right is not None and right.type in {"function_expression", "arrow_function"}:
+                return node_text(left, source).split(".")[-1]
+        current = current.parent
+    return None
+
+
 def _qualified_function(owner: str | None, name: str) -> str:
     return f"{owner}.{name}" if owner else name
 
@@ -128,8 +157,10 @@ def _function_fact(path, source_root, source, digest, project_id, node, owner: s
         if left is not None and right is not None and right.type in {"function_expression", "arrow_function"}:
             name = node_text(left, source).split(".")[-1]
     elif node.type in {"function_expression", "arrow_function"}:
-        enclosing_name = _enclosing_named_function(node.parent, source) or "module"
-        name = f"callback@{node.start_byte}:{node.end_byte}"
+        if node.parent is not None and node.parent.type in {"assignment_expression", "variable_declarator"}:
+            return None
+        enclosing_name = _nearest_function_identity(node, source) or "module"
+        name = _anonymous_identity(node)
     if not name:
         return None
     properties = {"function_name": name, "owner": owner}
@@ -233,8 +264,9 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
             right = node.child_by_field_name("right")
             target, property_name = _member_parts(left, source)
             if target and property_name and right is not None:
-                facts.append(Fact("state_mutation", f"{file_controller or file_service or path.stem}.{_enclosing_named_function(node, source) or 'module'}:{target}.{property_name}", evidence(path, source_root, node, digest, project_id), {
-                    "function_name": _enclosing_named_function(node, source), "owner": file_controller or file_service,
+                mutation_owner = _nearest_function_identity(node, source)
+                facts.append(Fact("state_mutation", f"{file_controller or file_service or path.stem}.{mutation_owner or 'module'}:{target}.{property_name}", evidence(path, source_root, node, digest, project_id), {
+                    "function_name": mutation_owner, "owner": file_controller or file_service,
                     "target": f"{target}.{property_name}", "expression": _literal_or_expression(right, source),
                 }))
 
@@ -246,7 +278,7 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
         function = node.child_by_field_name("function")
         function_text = node_text(function, source) if function is not None else ""
         receiver, member = _member_parts(function, source)
-        caller = _enclosing_named_function(node, source)
+        caller = _nearest_function_identity(node, source)
         if receiver and member in {"push", "pop", "shift", "unshift", "splice"}:
             facts.append(Fact("collection_mutation", f"{file_controller or file_service or path.stem}.{caller or 'module'}:{receiver}:{member}", node_evidence, {
                 "function_name": caller, "owner": file_controller or file_service,
@@ -261,16 +293,23 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
             facts.append(Fact("confirmation", f"{file_controller or file_service or path.stem}.{caller or 'module'}:{member}", node_evidence, {
                 "function_name": caller, "owner": file_controller or file_service, "operation": member,
             }))
-        if property_name and "." in function_text and not function_text.startswith(("$http.", "angular.")):
-            receiver = function_text.rsplit(".", 1)[0]
-            if receiver.lower().endswith(("service", "client", "gateway", "repository")):
-                caller = _enclosing_named_function(node, source)
-                facts.append(Fact("frontend_invocation", function_text, node_evidence, {
-                    "caller": caller,
-                    "caller_owner": file_controller or file_service,
-                    "target_owner": receiver,
-                    "target_function": property_name,
-                }))
+        callback_ids = [_anonymous_identity(item) for item in arguments if item.type in {"function_expression", "arrow_function"}]
+        target_owner = None
+        target_function = None
+        if function is not None and function.type == "identifier":
+            target_owner = file_controller or file_service
+            target_function = function_text
+        elif property_name and "." in function_text and not function_text.startswith(("$http.", "angular.")):
+            target_owner = function_text.rsplit(".", 1)[0]
+            target_function = property_name
+        if target_function:
+            facts.append(Fact("frontend_invocation", function_text, node_evidence, {
+                "caller": caller,
+                "caller_owner": file_controller or file_service,
+                "target_owner": target_owner,
+                "target_function": target_function,
+                "callback_ids": callback_ids,
+            }))
         if _call_object(node, source, "angular.module") and arguments:
             facts.append(Fact("angular_module", _literal_or_expression(arguments[0], source), node_evidence))
         if property_name in {"directive", "controller", "service"} and arguments:

@@ -183,6 +183,11 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
                 warnings.append({"source_path": evidence["source_path"], "message": "API call owner was not uniquely proven; attached to File."})
 
     functions = [item for item in nodes.values() if item["label"] == "FrontendFunction"]
+    for callback in (item for item in functions if item["properties"].get("anonymous")):
+        parent_name = _qualified_name(callback["properties"].get("owner"), callback["properties"].get("enclosing_function"))
+        parent = next((item for item in functions if item["name"] == parent_name), None)
+        if parent:
+            add_edge("CONTAINS", parent["id"], callback["id"], callback["evidence"][0], {"status": "PROVEN"})
     for action_node, action_fact in pending_ui_actions:
         handler = action_fact.properties.get("handler")
         candidates = [item for item in functions if item["properties"].get("function_name") == handler]
@@ -206,13 +211,20 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
         if function:
             edge_type = {"state_mutation": "MUTATES", "collection_mutation": "MUTATES_COLLECTION", "navigation": "NAVIGATES", "confirmation": "REQUIRES_CONFIRMATION"}[semantic_fact.kind]
             add_edge(edge_type, function["id"], semantic_node, semantic_fact.evidence.to_dict(), {"status": "PROVEN"})
-    for _, invocation_fact in pending_invocations:
+    for invocation_node, invocation_fact in pending_invocations:
         caller_name = _qualified_name(invocation_fact.properties.get("caller_owner"), invocation_fact.properties.get("caller"))
         target_name = _qualified_name(invocation_fact.properties.get("target_owner"), invocation_fact.properties.get("target_function"))
         caller = next((item["id"] for item in functions if item["name"] == caller_name), None)
         target = next((item["id"] for item in functions if item["name"].casefold() == target_name.casefold()), None)
+        if caller:
+            add_edge("INVOKES", caller, invocation_node, invocation_fact.evidence.to_dict(), {"status": "PROVEN", "target_resolution": "CALL_SITE"})
         if caller and target:
             add_edge("INVOKES", caller, target, invocation_fact.evidence.to_dict(), {"status": "PROVEN"})
+        for callback_id in invocation_fact.properties.get("callback_ids", []):
+            callback_name = _qualified_name(invocation_fact.properties.get("caller_owner"), callback_id)
+            callback = next((item for item in functions if item["name"] == callback_name), None)
+            if callback:
+                add_edge("PASSES_CALLBACK", invocation_node, callback["id"], invocation_fact.evidence.to_dict(), {"status": "PROVEN"})
     backend_handlers = [item for item in nodes.values() if item["label"] == "BackendHandler"]
     persistence_nodes = [item for item in nodes.values() if item["label"] == "PersistenceOperation"]
     for endpoint in (item for item in nodes.values() if item["label"] == "Endpoint"):
