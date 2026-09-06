@@ -3737,7 +3737,7 @@
       ]
     },
     {
-      "capability_id": "capability-clinics-other-f3373a29a6bc",
+      "capability_id": "capability-clinics-page-8348bfa7678c",
       "confidence": "PROVEN",
       "domain_context": "clinics",
       "facts_status": "PRESENT",
@@ -3761,8 +3761,8 @@
         }
       ],
       "kg_status": "PRESENT",
-      "operation_identity": "OTHER src/MyHealth.Web/content/app/components/clinics/views/main.html:46:ng-click",
-      "operation_kind": "OTHER",
+      "operation_identity": "PAGE src/MyHealth.Web/content/app/components/clinics/views/main.html:46:ng-click",
+      "operation_kind": "PAGE",
       "provenance": "DETERMINISTIC_FACT",
       "qualifiers": [],
       "source_evidence": [
@@ -5018,45 +5018,6 @@
       ]
     },
     {
-      "capability_id": "capability-doctors-other-6218aaa9d1f8",
-      "confidence": "PROVEN",
-      "domain_context": "doctors",
-      "facts_status": "PRESENT",
-      "interaction_semantics": [
-        {
-          "interaction_type": "ACTION",
-          "label": "LOAD MORE",
-          "observable_result": null,
-          "source_evidence": [
-            {
-              "line_end": 43,
-              "line_start": 43,
-              "node_id": "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:43:ng-click",
-              "source_path": "src/MyHealth.Web/content/app/components/doctors/views/main.html",
-              "stage": "UI"
-            }
-          ],
-          "state_change": null,
-          "system_initiated": false,
-          "trigger": "getList()"
-        }
-      ],
-      "kg_status": "PRESENT",
-      "operation_identity": "OTHER src/MyHealth.Web/content/app/components/doctors/views/main.html:43:ng-click",
-      "operation_kind": "OTHER",
-      "provenance": "DETERMINISTIC_FACT",
-      "qualifiers": [],
-      "source_evidence": [
-        {
-          "line_end": 43,
-          "line_start": 43,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:43:ng-click",
-          "source_path": "src/MyHealth.Web/content/app/components/doctors/views/main.html",
-          "stage": "UI"
-        }
-      ]
-    },
-    {
       "capability_id": "capability-doctors-other-676ab9565ad8",
       "confidence": "PROVEN",
       "domain_context": "doctors",
@@ -5246,6 +5207,45 @@
           "line_end": 6,
           "line_start": 6,
           "node_id": "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:6:ng-click",
+          "source_path": "src/MyHealth.Web/content/app/components/doctors/views/main.html",
+          "stage": "UI"
+        }
+      ]
+    },
+    {
+      "capability_id": "capability-doctors-page-6cd0c8021d52",
+      "confidence": "PROVEN",
+      "domain_context": "doctors",
+      "facts_status": "PRESENT",
+      "interaction_semantics": [
+        {
+          "interaction_type": "ACTION",
+          "label": "LOAD MORE",
+          "observable_result": null,
+          "source_evidence": [
+            {
+              "line_end": 43,
+              "line_start": 43,
+              "node_id": "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:43:ng-click",
+              "source_path": "src/MyHealth.Web/content/app/components/doctors/views/main.html",
+              "stage": "UI"
+            }
+          ],
+          "state_change": null,
+          "system_initiated": false,
+          "trigger": "getList()"
+        }
+      ],
+      "kg_status": "PRESENT",
+      "operation_identity": "PAGE src/MyHealth.Web/content/app/components/doctors/views/main.html:43:ng-click",
+      "operation_kind": "PAGE",
+      "provenance": "DETERMINISTIC_FACT",
+      "qualifiers": [],
+      "source_evidence": [
+        {
+          "line_end": 43,
+          "line_start": 43,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:43:ng-click",
           "source_path": "src/MyHealth.Web/content/app/components/doctors/views/main.html",
           "stage": "UI"
         }
@@ -6570,45 +6570,6 @@
       ]
     },
     {
-      "capability_id": "capability-patients-other-5aa2a433c473",
-      "confidence": "PROVEN",
-      "domain_context": "patients",
-      "facts_status": "PRESENT",
-      "interaction_semantics": [
-        {
-          "interaction_type": "ACTION",
-          "label": "LOAD MORE",
-          "observable_result": null,
-          "source_evidence": [
-            {
-              "line_end": 43,
-              "line_start": 43,
-              "node_id": "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/patients/views/main.html:43:ng-click",
-              "source_path": "src/MyHealth.Web/content/app/components/patients/views/main.html",
-              "stage": "UI"
-            }
-          ],
-          "state_change": null,
-          "system_initiated": false,
-          "trigger": "getList()"
-        }
-      ],
-      "kg_status": "PRESENT",
-      "operation_identity": "OTHER src/MyHealth.Web/content/app/components/patients/views/main.html:43:ng-click",
-      "operation_kind": "OTHER",
-      "provenance": "DETERMINISTIC_FACT",
-      "qualifiers": [],
-      "source_evidence": [
-        {
-          "line_end": 43,
-          "line_start": 43,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/patients/views/main.html:43:ng-click",
-          "source_path": "src/MyHealth.Web/content/app/components/patients/views/main.html",
-          "stage": "UI"
-        }
-      ]
-    },
-    {
       "capability_id": "capability-patients-other-d3f33ecbe48f",
       "confidence": "PROVEN",
       "domain_context": "patients",
@@ -6720,6 +6681,45 @@
           "line_end": 3,
           "line_start": 3,
           "node_id": "legacy-dashboard-complete-application-demo-v1:UISelection:src/MyHealth.Web/content/app/components/patients/views/main.html:3",
+          "source_path": "src/MyHealth.Web/content/app/components/patients/views/main.html",
+          "stage": "UI"
+        }
+      ]
+    },
+    {
+      "capability_id": "capability-patients-page-0646911e98b0",
+      "confidence": "PROVEN",
+      "domain_context": "patients",
+      "facts_status": "PRESENT",
+      "interaction_semantics": [
+        {
+          "interaction_type": "ACTION",
+          "label": "LOAD MORE",
+          "observable_result": null,
+          "source_evidence": [
+            {
+              "line_end": 43,
+              "line_start": 43,
+              "node_id": "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/patients/views/main.html:43:ng-click",
+              "source_path": "src/MyHealth.Web/content/app/components/patients/views/main.html",
+              "stage": "UI"
+            }
+          ],
+          "state_change": null,
+          "system_initiated": false,
+          "trigger": "getList()"
+        }
+      ],
+      "kg_status": "PRESENT",
+      "operation_identity": "PAGE src/MyHealth.Web/content/app/components/patients/views/main.html:43:ng-click",
+      "operation_kind": "PAGE",
+      "provenance": "DETERMINISTIC_FACT",
+      "qualifiers": [],
+      "source_evidence": [
+        {
+          "line_end": 43,
+          "line_start": 43,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/patients/views/main.html:43:ng-click",
           "source_path": "src/MyHealth.Web/content/app/components/patients/views/main.html",
           "stage": "UI"
         }
@@ -8342,7 +8342,7 @@
       ]
     },
     {
-      "capability_id": "capability-users-other-b6642fccec00",
+      "capability_id": "capability-users-page-de0ddb73cda8",
       "confidence": "PROVEN",
       "domain_context": "users",
       "facts_status": "PRESENT",
@@ -8366,8 +8366,8 @@
         }
       ],
       "kg_status": "PRESENT",
-      "operation_identity": "OTHER src/MyHealth.Web/content/app/components/users/views/main.html:42:ng-click",
-      "operation_kind": "OTHER",
+      "operation_identity": "PAGE src/MyHealth.Web/content/app/components/users/views/main.html:42:ng-click",
+      "operation_kind": "PAGE",
       "provenance": "DETERMINISTIC_FACT",
       "qualifiers": [],
       "source_evidence": [

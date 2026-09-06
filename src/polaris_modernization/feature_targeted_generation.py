@@ -99,13 +99,21 @@ def _story_for_requirement(feature: dict, requirement: dict, apis: list[dict], c
     title = requirement["title"]
     story_id = f"story-{feature['slug']}-{_slug(title)}"
     qualifiers = sorted({qualifier for capability in capabilities for qualifier in capability.get("qualifiers", [])})
+    system_initiated = bool(requirement.get("system_initiated"))
+    statement = (
+        f"The system resolves the required context before dependent {feature['name'].casefold()} operations run."
+        if system_initiated else
+        f"As a user, I want to use {title.casefold()}, so that I can complete the supported {feature['name'].casefold()} interaction."
+    )
     return {
         "story_id": story_id,
         "title": title,
         "parent_feature_id": feature["feature_id"],
         "functional_requirement_ids": [requirement["id"]],
-        "story_statement": f"As a user of the existing application, I want to {title.casefold()}, so that I can use the approved {feature['name'].casefold()} behavior.",
+        "story_statement": statement,
         "business_outcome": requirement["description"].rstrip(".") + "." + _qualifier_text(qualifiers),
+        "interaction_semantics": requirement.get("interaction_semantics", []),
+        "system_initiated": system_initiated,
         "api_contracts": apis,
         "source_capability_ids": requirement.get("source_capability_ids", []),
         "capability_qualifiers": qualifiers,
@@ -119,7 +127,7 @@ def _validate_stories(context: dict, stories: list[dict]) -> dict:
     mapped = [item for story in stories for item in story["functional_requirement_ids"]]
     duplicate_ids = len({item["story_id"] for item in stories}) != len(stories)
     unsupported_api = [api for story in stories for api in story["api_contracts"] if (api["method"], api["route"]) not in supported_api]
-    invalid = [story["story_id"] for story in stories if not story["story_statement"].startswith("As a user of the existing application,") or not story["business_outcome"]]
+    invalid = [story["story_id"] for story in stories if not story["story_statement"] or not story["business_outcome"]]
     return {
         "valid": not (set(requirements) - set(mapped) or duplicate_ids or unsupported_api or invalid),
         "total_approved_frs": len(requirements), "fr_with_story_coverage": len(set(mapped)),
@@ -168,10 +176,52 @@ def _validate_acceptance(context: dict, story_catalog: dict, criteria: list[dict
     stories = {item["story_id"] for item in story_catalog["stories"]}
     covered = {item["story_id"] for item in criteria}
     orphan = [item["acceptance_criterion_id"] for item in criteria if item["story_id"] not in stories]
+    placeholders = [item["acceptance_criterion_id"] for item in criteria if item["given"].casefold() in {"the approved feature behavior is available", "the feature is available"}]
+    non_observable = [item["acceptance_criterion_id"] for item in criteria if not item.get("then") or "preserves the resulting interaction" in item["then"].casefold()]
+    tautological = [item["acceptance_criterion_id"] for item in criteria if item["when"].casefold().removeprefix("the user performs ") == item["title"].casefold().removesuffix(" behavior")]
     return {
-        "valid": not (stories - covered or orphan), "stories_without_ac": sorted(stories - covered),
-        "orphan_ac": orphan, "ac_testability_quality": "PASS" if not orphan else "FAIL",
+        "valid": not (stories - covered or orphan or placeholders or non_observable or tautological), "stories_without_ac": sorted(stories - covered),
+        "orphan_ac": orphan, "placeholder_precondition": placeholders, "non_observable_outcome": non_observable,
+        "tautological_ac": tautological, "ac_testability_quality": "PASS" if not (orphan or placeholders or non_observable or tautological) else "FAIL",
     }
+
+
+def _acceptance_semantics(story: dict) -> tuple[str, str, str]:
+    """Compose testable criteria from retained interaction semantics, never from API shape."""
+    interactions = story.get("interaction_semantics", [])
+    if story.get("system_initiated"):
+        return (
+            "a dependent feature operation is requested",
+            "the system prepares the required context",
+            "the dependent operation receives the required context before it runs",
+        )
+    validation = next((item for item in interactions if item.get("interaction_type") == "VALIDATION"), None)
+    if validation:
+        return (
+            "the related form is displayed",
+            "the user leaves a required input incomplete",
+            "the related form action remains unavailable",
+        )
+    selection = next((item for item in interactions if item.get("interaction_type") == "SELECTION"), None)
+    if selection:
+        return (
+            "the directory contains selectable records",
+            "the user changes a record selection",
+            "the directory reflects the changed selection state",
+        )
+    action = next((item for item in interactions if item.get("interaction_type") == "ACTION" and item.get("label")), None)
+    if action:
+        label = action["label"]
+        return (
+            "the related feature surface is displayed",
+            f'the user selects "{label}"',
+            f'the "{label}" interaction is available and responds to the selection',
+        )
+    return (
+        "the related feature surface is displayed",
+        "the user performs the supported interaction",
+        "the supported interaction produces its defined feature result",
+    )
 
 
 def generate_targeted_acceptance_criteria(context: dict, story_root: Path, output_root: Path) -> dict:
@@ -181,14 +231,11 @@ def generate_targeted_acceptance_criteria(context: dict, story_root: Path, outpu
         raise FeatureLineageError("Targeted Stories are stale for the approved Feature contract.")
     criteria = []
     for story in story_catalog["stories"]:
-        api_text = ", ".join(f"{item['method']} {item['route']}" for item in story["api_contracts"])
-        outcome = story["business_outcome"].rstrip(".")
+        given, when, then = _acceptance_semantics(story)
         criteria.append({
             "acceptance_criterion_id": f"ac-{story['story_id'].removeprefix('story-')}-001",
             "story_id": story["story_id"], "functional_requirement_ids": story["functional_requirement_ids"],
-            "title": f"{story['title']} behavior", "given": "the approved feature behavior is available",
-            "when": f"the user performs {story['title'].casefold()}",
-            "then": f"{outcome}." + (f" The feature uses {api_text}." if api_text else ""),
+            "title": f"{story['title']} behavior", "given": given, "when": when, "then": then,
             "api_contracts": story["api_contracts"], "source_capability_ids": story["source_capability_ids"],
             "capability_qualifiers": story["capability_qualifiers"], "testable": True,
         })

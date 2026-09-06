@@ -75,6 +75,31 @@ def test_ui_action_handler_api_and_backend_chain_preserves_crud_capabilities():
     assert all(any(evidence.stage == "PERSISTENCE" for evidence in item.source_evidence) for item in capabilities if item.operation_kind in {"CREATE", "UPDATE", "DELETE"})
 
 
+def test_concrete_ui_interaction_survives_broad_capability_classification():
+    graph = graph_with_crud()
+    for node in graph["nodes"]:
+        if node["label"] == "UIAction" and node["properties"].get("handler") == "load":
+            node["properties"]["text"] = "Fetch next records"
+    capabilities = derive_source_capabilities(graph)
+    list_capability = next(item for item in capabilities if item.operation_kind == "LIST")
+    assert list_capability.interaction_semantics[0].label == "Fetch next records"
+
+
+def test_selection_is_preserved_as_interaction_not_inferred_from_delete_api():
+    graph = graph_with_crud()
+    graph["nodes"].append({
+        "id": "fixture:UISelection:1", "label": "UISelection", "name": "components/orders/views/main.html:9",
+        "properties": {"model": "record.selected", "change": "refreshSelection()"},
+        "evidence": [{"source_path": "components/orders/views/main.html", "line_start": 9, "line_end": 9}],
+    })
+    capabilities = derive_source_capabilities(graph)
+    selection = next(item for item in capabilities if any(
+        interaction.interaction_type == "SELECTION" for interaction in item.interaction_semantics
+    ))
+    assert selection.interaction_semantics[0].interaction_type == "SELECTION"
+    assert selection.interaction_semantics[0].state_change == "selection model record.selected"
+
+
 def test_silent_loss_fails_even_when_aggregate_prose_mentions_operations():
     capabilities = derive_source_capabilities(graph_with_crud())
     aggregate_understanding = "List, create, update, and delete orders"

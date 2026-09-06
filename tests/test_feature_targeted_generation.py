@@ -76,3 +76,20 @@ def test_stale_or_unarchived_feature_contract_cannot_fall_back_to_global_busines
 
     with pytest.raises(FeatureLineageError, match="matching immutable scope-refresh run"):
         resolve_approved_feature(root, feature)
+
+
+def test_targeted_acceptance_criteria_are_observable_and_not_title_restatements(tmp_path: Path) -> None:
+    root, feature = approved_context(tmp_path)
+    contract_path = root / feature["spec_path"]
+    contract = json.loads(contract_path.read_text(encoding="utf-8"))
+    contract["functional_requirements"][0]["interaction_semantics"] = [{"interaction_type": "ACTION", "label": "Fetch next records"}]
+    write_json(contract_path, contract)
+    write_json(root / "artifacts/feature-specifications/runs/capability-scope-fixture/feature-alpha.json", contract)
+    context = resolve_approved_feature(root, feature)
+    stories = generate_targeted_stories(context, root / "artifacts/stories")
+    criteria = generate_targeted_acceptance_criteria(context, stories["path"], root / "artifacts/acceptance-criteria")
+    first = criteria["criteria"][0]
+    assert first["when"] == 'the user selects "Fetch next records"'
+    assert first["then"] == 'the "Fetch next records" interaction is available and responds to the selection'
+    assert criteria["validation"]["tautological_ac"] == []
+    assert criteria["validation"]["non_observable_outcome"] == []

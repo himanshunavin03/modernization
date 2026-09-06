@@ -23,6 +23,18 @@ class CapabilityEvidence(BaseModel):
     stage: Literal["UI", "FRONTEND", "API", "BACKEND", "PERSISTENCE"]
 
 
+class InteractionSemantics(BaseModel):
+    """Concrete UI semantics retained alongside a broad capability category."""
+
+    interaction_type: Literal["ACTION", "SELECTION", "VALIDATION", "SYSTEM"]
+    label: str | None = None
+    trigger: str | None = None
+    observable_result: str | None = None
+    state_change: str | None = None
+    system_initiated: bool = False
+    source_evidence: list[CapabilityEvidence] = Field(default_factory=list)
+
+
 class SourceCapability(BaseModel):
     capability_id: str
     domain_context: str
@@ -30,6 +42,7 @@ class SourceCapability(BaseModel):
     operation_identity: str
     qualifiers: list[str] = Field(default_factory=list)
     source_evidence: list[CapabilityEvidence]
+    interaction_semantics: list[InteractionSemantics] = Field(default_factory=list)
     facts_status: Literal["PRESENT", "PARTIAL"] = "PRESENT"
     kg_status: Literal["PRESENT", "PARTIAL"] = "PRESENT"
     confidence: Literal["PROVEN", "PARTIAL"]
@@ -82,6 +95,31 @@ def _evidence(node: dict, stage: str) -> list[CapabilityEvidence]:
         node_id=node["id"], source_path=item.get("source_path", ""),
         line_start=item.get("line_start", 0), line_end=item.get("line_end", 0), stage=stage,
     ) for item in node.get("evidence", [])]
+
+
+def _interaction(node: dict) -> InteractionSemantics | None:
+    """Retain UI-node semantics without deriving UX from an API operation."""
+    props = node.get("properties", {})
+    label = str(props.get("text") or "").strip() or None
+    if node["label"] == "UIAction":
+        return InteractionSemantics(
+            interaction_type="ACTION", label=label, trigger=props.get("expression") or props.get("handler"),
+            source_evidence=_evidence(node, "UI"),
+        )
+    if node["label"] == "UISelection":
+        return InteractionSemantics(
+            interaction_type="SELECTION", trigger=props.get("change"),
+            state_change=f"selection model {props.get('model')}" if props.get("model") else None,
+            source_evidence=_evidence(node, "UI"),
+        )
+    if node["label"] == "UIValidation":
+        required = props.get("required")
+        return InteractionSemantics(
+            interaction_type="VALIDATION", trigger=props.get("model"),
+            observable_result="required input" if required is True else None,
+            source_evidence=_evidence(node, "UI"),
+        )
+    return None
 
 
 def _reachable(start: str, adjacency: dict[str, list[tuple[str, str]]], wanted: str, nodes: dict[str, dict]) -> list[dict]:
@@ -138,6 +176,7 @@ def derive_source_capabilities(graph: dict) -> list[SourceCapability]:
             api_evidence = [item for item in _evidence(call, "API") if _domain(item.source_path, identity) == domain] or _evidence(call, "API")
             evidence = [item for node, stage in [*( (x, "UI") for x in ui_actions), *( (x, "FRONTEND") for x in domain_callers), *( (x, "BACKEND") for x in endpoints), *( (x, "PERSISTENCE") for x in persistence)] for item in _evidence(node, stage)]
             evidence.extend(api_evidence)
+            interactions = [item for node in ui_actions if (item := _interaction(node))]
             qualifiers = []
             if any(str(value).casefold() == "tenantid" for value in props.get("request_header_components", [])):
                 qualifiers.append("TENANT_SCOPED")
@@ -151,6 +190,7 @@ def derive_source_capabilities(graph: dict) -> list[SourceCapability]:
             results[capability_id] = SourceCapability(
                 capability_id=capability_id, domain_context=domain, operation_kind=kind,
                 operation_identity=identity, qualifiers=qualifiers, source_evidence=evidence,
+                interaction_semantics=interactions,
                 facts_status="PRESENT", kg_status="PRESENT" if endpoints else "PARTIAL",
                 confidence="PROVEN" if endpoints else "PARTIAL",
             )
@@ -177,18 +217,18 @@ def derive_source_capabilities(graph: dict) -> list[SourceCapability]:
         ))
 
     for node in nodes.values():
-        if node["label"] not in {"UIAction", "UIValidation"}:
+        if node["label"] not in {"UIAction", "UISelection", "UIValidation"}:
             continue
         props = node.get("properties", {})
         if node["label"] == "UIValidation":
             kind: OperationKind = "VALIDATE"
+        elif node["label"] == "UISelection":
+            kind = "OTHER"
         elif props.get("operation_hint") == "UPLOAD":
             kind = "UPLOAD"
         else:
             text = f"{props.get('handler', '')} {props.get('text', '')}".lower()
-            kind = "PAGE" if "load more" in text else "NAVIGATE" if re.search(r"navig|nagiv|\bback\b", text) else "OTHER"
-        if kind == "OTHER":
-            continue
+            kind = "NAVIGATE" if re.search(r"navig|nagiv|\bback\b", text) else "OTHER"
         source_path = node.get("evidence", [{}])[0].get("source_path", "")
         domain = _domain(source_path, node["name"])
         identity = f"{kind} {node['name']}"
@@ -197,6 +237,7 @@ def derive_source_capabilities(graph: dict) -> list[SourceCapability]:
         results[capability_id] = SourceCapability(
             capability_id=capability_id, domain_context=domain, operation_kind=kind,
             operation_identity=identity, source_evidence=_evidence(node, "UI"),
+            interaction_semantics=[_interaction(node)] if _interaction(node) else [],
             confidence="PROVEN",
         )
     reachable_persistence = {item["id"] for endpoint in nodes.values() if endpoint["label"] == "Endpoint" for item in _reachable(endpoint["id"], forward, "PersistenceOperation", nodes)}

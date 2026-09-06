@@ -14,9 +14,8 @@ from polaris_modernization.capability_completeness import validate_capability_co
 
 def _requirement_key(capability: dict) -> str:
     kind = capability["operation_kind"]
-    identity = capability["operation_identity"].casefold()
-    if kind == "READ" and "/users/current/tenant" in identity:
-        return "TENANT_CONTEXT"
+    if kind == "READ" and not capability.get("interaction_semantics"):
+        return "SYSTEM"
     return {"READ": "DETAIL"}.get(kind, kind)
 
 
@@ -26,9 +25,26 @@ def _title(key: str, entity: str) -> str:
         "CREATE": f"Create {entity}", "UPDATE": f"Update {entity}", "DELETE": f"Delete {entity}",
         "PAGE": f"Continue Through {entity} Results", "NAVIGATE": f"Navigate from the {entity} Experience",
         "UPLOAD": f"Maintain {entity} Profile Media", "VALIDATE": f"Validate {entity} Input",
-        "TENANT_CONTEXT": "Establish Current Tenant Context", "OTHER": f"Preserve {entity} Behavior",
+        "SYSTEM": f"Resolve Required {entity} Context", "OTHER": f"Use {entity} Interaction Controls",
     }
     return values[key]
+
+
+def _behavior_description(items: list[dict], title: str) -> str:
+    """Render only UI semantics retained by the generic capability model."""
+    interactions = [semantic for item in items for semantic in item.get("interaction_semantics", [])]
+    labels = sorted({str(item["label"]).strip() for item in interactions if item.get("label")})
+    kinds = {item.get("interaction_type") for item in interactions}
+    if "VALIDATION" in kinds:
+        return "The form prevents its related action until the required inputs are provided."
+    if "SELECTION" in kinds:
+        return "The directory supports record selection and selection-state changes before related actions are used."
+    if labels:
+        quoted = ", ".join(f'"{label}"' for label in labels)
+        return f"The feature provides the {quoted} action{'s' if len(labels) > 1 else ''} and preserves the resulting interaction."
+    if any(item.get("operation_kind") == "READ" for item in items):
+        return "The system resolves the required context before dependent feature operations run."
+    return f"The feature preserves the supported {title.casefold()} interaction."
 
 
 def _api_identity(capability: dict) -> str | None:
@@ -59,8 +75,10 @@ def build_feature_scope_contract(feature_id: str, feature_name: str, coverage: d
         api_dependencies = sorted({identity for item in items for identity in [_api_identity(item)] if identity})
         requirement = {
             "id": requirement_id, "title": title,
-            "description": f"The existing application behavior requires users to {title.lower()}.",
+            "description": _behavior_description(items, title),
             "source_capability_ids": sorted(item["capability_id"] for item in items),
+            "interaction_semantics": [semantic for item in items for semantic in item.get("interaction_semantics", [])],
+            "system_initiated": key == "SYSTEM",
             "api_dependencies": api_dependencies,
         }
         requirements.append(requirement)
