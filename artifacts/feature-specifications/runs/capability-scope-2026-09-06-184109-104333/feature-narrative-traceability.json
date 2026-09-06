@@ -1,1548 +1,5 @@
 {
-  "baseline": {
-    "ambiguous": 0,
-    "backend_endpoint_facts": 58,
-    "controller_template_endpoints": 55,
-    "controllers_with_controller_template": 12,
-    "dynamic_url_warnings": 0,
-    "external_api": 1,
-    "frontend_api_call_facts": 33,
-    "http_methods": {
-      "DELETE": 4,
-      "GET": 42,
-      "POST": 8,
-      "PUT": 4
-    },
-    "no_backend_route": 0,
-    "proven": 32,
-    "unresolved_structural_calls": 0
-  },
-  "feature_relevant_interactions": [
-    {
-      "ac_ids": [
-        "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
-        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
-        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002"
-      ],
-      "backend": {
-        "action": "GetCurrentTenantAsync",
-        "controller": "UsersController",
-        "http_method": "GET",
-        "resolved_endpoint": "/api/users/current/tenant",
-        "route_template": "api/[controller]/current/tenant",
-        "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "SUPPORTING_SHARED_API",
-      "feature_id": "feature-operational-dashboard-insights",
-      "frontend": {
-        "api_expression": "/api/users/current/tenant",
-        "controller_or_component": null,
-        "method": "GET",
-        "service": null,
-        "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
-        "surface": "src/MyHealth.Web/content/app/components/dashboard",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-001",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-operational-dashboard-insights-access-yearly-operational-reports",
-        "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-operational-dashboard-insights-access-yearly-operational-reports-001"
-      ],
-      "backend": {
-        "action": "GetExpensesSummaryAsync",
-        "controller": "ReportsController",
-        "http_method": "GET",
-        "resolved_endpoint": "/api/reports/expenses/{year}",
-        "route_template": "api/[controller]/expenses/{year}",
-        "source_reference": "src/MyHealth.API/Controllers/ReportsController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "PRIMARY_BUSINESS_API",
-      "feature_id": "feature-operational-dashboard-insights",
-      "frontend": {
-        "api_expression": "'/api/reports/expenses/' + year",
-        "controller_or_component": null,
-        "method": "GET",
-        "service": null,
-        "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
-        "surface": "src/MyHealth.Web/content/app/components/dashboard",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-operational-dashboard-insights-access-yearly-operational-reports"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-operational-dashboard-insights-access-yearly-operational-reports-001"
-      ],
-      "backend": {
-        "action": "GetPatientsSummaryAsync",
-        "controller": "ReportsController",
-        "http_method": "GET",
-        "resolved_endpoint": "/api/reports/patients/{year}",
-        "route_template": "api/[controller]/patients/{year}",
-        "source_reference": "src/MyHealth.API/Controllers/ReportsController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "PRIMARY_BUSINESS_API",
-      "feature_id": "feature-operational-dashboard-insights",
-      "frontend": {
-        "api_expression": "'/api/reports/patients/' + year",
-        "controller_or_component": null,
-        "method": "GET",
-        "service": null,
-        "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
-        "surface": "src/MyHealth.Web/content/app/components/dashboard",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-003",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-operational-dashboard-insights-access-yearly-operational-reports"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
-        "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002"
-      ],
-      "backend": {
-        "action": "GetClinicSummaryAsync",
-        "controller": "ReportsController",
-        "http_method": "GET",
-        "resolved_endpoint": "/api/reports/clinicsummary",
-        "route_template": "api/[controller]/clinicsummary",
-        "source_reference": "src/MyHealth.API/Controllers/ReportsController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "PRIMARY_BUSINESS_API",
-      "feature_id": "feature-operational-dashboard-insights",
-      "frontend": {
-        "api_expression": "/api/reports/clinicsummary",
-        "controller_or_component": null,
-        "method": "GET",
-        "service": null,
-        "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
-        "surface": "src/MyHealth.Web/content/app/components/dashboard",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-004",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001"
-      ],
-      "backend": {
-        "action": "GetCurrentTenantAsync",
-        "controller": "UsersController",
-        "http_method": "GET",
-        "resolved_endpoint": "/api/users/current/tenant",
-        "route_template": "api/[controller]/current/tenant",
-        "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "SUPPORTING_SHARED_API",
-      "feature_id": "feature-doctor-directory-management",
-      "frontend": {
-        "api_expression": "/api/users/current/tenant",
-        "controller_or_component": null,
-        "method": "GET",
-        "service": null,
-        "source_reference": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
-        "surface": "src/MyHealth.Web/content/app/components/doctors",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-DOCTOR_DIRECTORY_MANAGEMENT-001",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-doctor-directory-management-view-doctor-details-in-tenant-context"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-doctor-directory-management-review-doctor-directory-001",
-        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001"
-      ],
-      "backend": {
-        "action": "GetAsync",
-        "controller": "DoctorsController",
-        "http_method": "GET",
-        "path_parameters": [
-          "id"
-        ],
-        "query_parameters": [],
-        "request_fields": [],
-        "request_type": null,
-        "resolved_endpoint": "/api/doctors/{id}",
-        "response_fields": [],
-        "response_type": "Task<Doctor>",
-        "route_template": "api/[controller]/{id}",
-        "source_reference": "src/MyHealth.API/Controllers/DoctorsController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "PRIMARY_BUSINESS_API",
-      "feature_id": "feature-doctor-directory-management",
-      "frontend": {
-        "api_expression": "`/api/doctors/${doctorId}`",
-        "controller_or_component": null,
-        "evidence": {
-          "confidence": 1.0,
-          "extraction_method": "tree-sitter",
-          "line_end": 32,
-          "line_start": 26,
-          "project_id": "legacy-dashboard-complete-application-demo-v1",
-          "source_hash": "b12c583956657df716c2bc34b6ecda4da2154e58e72389669a49a8a5d35e7843",
-          "source_path": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js"
-        },
-        "method": "GET",
-        "service": "DoctorsService",
-        "source_reference": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-001",
-      "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-doctor-directory-management-view-doctor-details-in-tenant-context",
-        "story-doctor-directory-management-review-doctor-directory"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-doctor-directory-management-review-doctor-directory-001",
-        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001"
-      ],
-      "backend": {
-        "action": "GetAsync",
-        "controller": "DoctorsController",
-        "http_method": "GET",
-        "path_parameters": [],
-        "query_parameters": [
-          {
-            "name": "pageSize",
-            "type": "int"
-          },
-          {
-            "name": "pageCount",
-            "type": "int"
-          }
-        ],
-        "request_fields": [],
-        "request_type": null,
-        "resolved_endpoint": "/api/doctors",
-        "response_fields": [],
-        "response_type": "Task<IEnumerable<Doctor>>",
-        "route_template": "api/[controller]",
-        "source_reference": "src/MyHealth.API/Controllers/DoctorsController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "PRIMARY_BUSINESS_API",
-      "feature_id": "feature-doctor-directory-management",
-      "frontend": {
-        "api_expression": "/api/doctors",
-        "controller_or_component": null,
-        "evidence": {
-          "confidence": 1.0,
-          "extraction_method": "tree-sitter",
-          "line_end": 55,
-          "line_start": 45,
-          "project_id": "legacy-dashboard-complete-application-demo-v1",
-          "source_hash": "b12c583956657df716c2bc34b6ecda4da2154e58e72389669a49a8a5d35e7843",
-          "source_path": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js"
-        },
-        "method": "GET",
-        "service": "DoctorsService",
-        "source_reference": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-002",
-      "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-doctor-directory-management-view-doctor-details-in-tenant-context",
-        "story-doctor-directory-management-review-doctor-directory"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-patient-directory-management-establish-patient-tenant-context-001"
-      ],
-      "backend": {
-        "action": "GetCurrentTenantAsync",
-        "controller": "UsersController",
-        "http_method": "GET",
-        "resolved_endpoint": "/api/users/current/tenant",
-        "route_template": "api/[controller]/current/tenant",
-        "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "SUPPORTING_SHARED_API",
-      "feature_id": "feature-patient-directory-management",
-      "frontend": {
-        "api_expression": "/api/users/current/tenant",
-        "controller_or_component": null,
-        "method": "GET",
-        "service": null,
-        "source_reference": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
-        "surface": "src/MyHealth.Web/content/app/components/patients",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-PATIENT_DIRECTORY_MANAGEMENT-001",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-patient-directory-management-establish-patient-tenant-context"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-patient-directory-management-review-patient-directory-001"
-      ],
-      "backend": {
-        "action": "Get",
-        "controller": "PatientsController",
-        "http_method": "GET",
-        "path_parameters": [],
-        "query_parameters": [
-          {
-            "name": "pageSize",
-            "type": "int"
-          },
-          {
-            "name": "pageCount",
-            "type": "int"
-          }
-        ],
-        "request_fields": [],
-        "request_type": null,
-        "resolved_endpoint": "/api/patients",
-        "response_fields": [],
-        "response_type": "Task<IEnumerable<Patient>>",
-        "route_template": "api/[controller]",
-        "source_reference": "src/MyHealth.API/Controllers/PatientsController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "PRIMARY_BUSINESS_API",
-      "feature_id": "feature-patient-directory-management",
-      "frontend": {
-        "api_expression": "/api/patients",
-        "controller_or_component": null,
-        "evidence": {
-          "confidence": 1.0,
-          "extraction_method": "tree-sitter",
-          "line_end": 37,
-          "line_start": 27,
-          "project_id": "legacy-dashboard-complete-application-demo-v1",
-          "source_hash": "d49ea4e7495a765720b1302f9183f552e2a1d7452f9e64ea2f6ad082f8608a79",
-          "source_path": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js"
-        },
-        "method": "GET",
-        "service": "PatientsService",
-        "source_reference": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-PATIENT_DIRECTORY_MANAGEMENT-DISCOVERED-001",
-      "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-patient-directory-management-review-patient-directory"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-clinic-appointment-experience-establish-clinic-context-001"
-      ],
-      "backend": {
-        "action": "GetCurrentTenantAsync",
-        "controller": "UsersController",
-        "http_method": "GET",
-        "resolved_endpoint": "/api/users/current/tenant",
-        "route_template": "api/[controller]/current/tenant",
-        "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "SUPPORTING_SHARED_API",
-      "feature_id": "feature-clinic-appointment-experience",
-      "frontend": {
-        "api_expression": "/api/users/current/tenant",
-        "controller_or_component": null,
-        "method": "GET",
-        "service": null,
-        "source_reference": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
-        "surface": "src/MyHealth.Web/content/app/components/clinics",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-CLINIC_APPOINTMENT_EXPERIENCE-001",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-clinic-appointment-experience-establish-clinic-context"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-clinic-appointment-experience-access-clinic-information-001"
-      ],
-      "backend": {
-        "action": "GetAsync",
-        "controller": "TenantsController",
-        "http_method": "GET",
-        "path_parameters": [
-          "tenantId"
-        ],
-        "query_parameters": [],
-        "request_fields": [],
-        "request_type": null,
-        "resolved_endpoint": "/api/tenants/{tenantId}",
-        "response_fields": [],
-        "response_type": "Task<Tenant>",
-        "route_template": "api/[controller]/{tenantId}",
-        "source_reference": "src/MyHealth.API/Controllers/TenantsController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "PRIMARY_BUSINESS_API",
-      "feature_id": "feature-clinic-appointment-experience",
-      "frontend": {
-        "api_expression": "`/api/tenants/${tenantId}`",
-        "controller_or_component": null,
-        "evidence": {
-          "confidence": 1.0,
-          "extraction_method": "tree-sitter",
-          "line_end": 26,
-          "line_start": 23,
-          "project_id": "legacy-dashboard-complete-application-demo-v1",
-          "source_hash": "8ffd0fca8e9be4a3ea7b70415d6b421565ae7d2be303d08f733a973c34520479",
-          "source_path": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js"
-        },
-        "method": "GET",
-        "service": "ClinicsService",
-        "source_reference": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-CLINIC_APPOINTMENT_EXPERIENCE-DISCOVERED-001",
-      "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-clinic-appointment-experience-access-clinic-information"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-clinic-appointment-experience-access-clinic-information-001"
-      ],
-      "backend": {
-        "action": "GetAsync",
-        "controller": "TenantsController",
-        "http_method": "GET",
-        "path_parameters": [],
-        "query_parameters": [
-          {
-            "name": "pageSize",
-            "type": "int"
-          },
-          {
-            "name": "pageCount",
-            "type": "int"
-          }
-        ],
-        "request_fields": [],
-        "request_type": null,
-        "resolved_endpoint": "/api/tenants/list",
-        "response_fields": [],
-        "response_type": "Task<IEnumerable<Tenant>>",
-        "route_template": "api/[controller]/list",
-        "source_reference": "src/MyHealth.API/Controllers/TenantsController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "PRIMARY_BUSINESS_API",
-      "feature_id": "feature-clinic-appointment-experience",
-      "frontend": {
-        "api_expression": "/api/tenants/list",
-        "controller_or_component": null,
-        "evidence": {
-          "confidence": 1.0,
-          "extraction_method": "tree-sitter",
-          "line_end": 42,
-          "line_start": 35,
-          "project_id": "legacy-dashboard-complete-application-demo-v1",
-          "source_hash": "8ffd0fca8e9be4a3ea7b70415d6b421565ae7d2be303d08f733a973c34520479",
-          "source_path": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js"
-        },
-        "method": "GET",
-        "service": "ClinicsService",
-        "source_reference": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-CLINIC_APPOINTMENT_EXPERIENCE-DISCOVERED-002",
-      "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-clinic-appointment-experience-access-clinic-information"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-user-access-context-resolve-current-user-and-claims-001"
-      ],
-      "backend": {
-        "action": "GetCurrentUserAsync",
-        "controller": "UsersController",
-        "http_method": "GET",
-        "resolved_endpoint": "/api/users/current/user",
-        "route_template": "api/[controller]/current/user",
-        "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "PRIMARY_BUSINESS_API",
-      "feature_id": "feature-user-access-context",
-      "frontend": {
-        "api_expression": "/api/users/current/user",
-        "controller_or_component": "HeaderController",
-        "method": "GET",
-        "service": null,
-        "source_reference": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
-        "surface": "src/MyHealth.Web/content/app/components/shared",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-USER_ACCESS_CONTEXT-001",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-user-access-context-resolve-current-user-and-claims"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-user-access-context-resolve-current-user-and-claims-001"
-      ],
-      "backend": {
-        "action": "GetCurrentClaimsAsync",
-        "controller": "UsersController",
-        "http_method": "GET",
-        "resolved_endpoint": "/api/users/current/claims",
-        "route_template": "api/[controller]/current/claims",
-        "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "PRIMARY_BUSINESS_API",
-      "feature_id": "feature-user-access-context",
-      "frontend": {
-        "api_expression": "/api/users/current/claims",
-        "controller_or_component": "HeaderController",
-        "method": "GET",
-        "service": null,
-        "source_reference": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
-        "surface": "src/MyHealth.Web/content/app/components/shared",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-USER_ACCESS_CONTEXT-002",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-user-access-context-resolve-current-user-and-claims"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-user-access-context-resolve-current-user-and-claims-001"
-      ],
-      "backend": {
-        "action": "GetCurrentClaimsAsync",
-        "controller": "UsersController",
-        "http_method": "GET",
-        "resolved_endpoint": "/api/users/current/claims",
-        "route_template": "api/[controller]/current/claims",
-        "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "PRIMARY_BUSINESS_API",
-      "feature_id": "feature-user-access-context",
-      "frontend": {
-        "api_expression": "/api/users/current/claims",
-        "controller_or_component": null,
-        "method": "GET",
-        "service": null,
-        "source_reference": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
-        "surface": "src/MyHealth.Web/content/app/components/shared",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-USER_ACCESS_CONTEXT-003",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-user-access-context-resolve-current-user-and-claims"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-user-access-context-resolve-tenant-context-for-user-functions-001"
-      ],
-      "backend": {
-        "action": "GetCurrentTenantAsync",
-        "controller": "UsersController",
-        "http_method": "GET",
-        "resolved_endpoint": "/api/users/current/tenant",
-        "route_template": "api/[controller]/current/tenant",
-        "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "PRIMARY_BUSINESS_API",
-      "feature_id": "feature-user-access-context",
-      "frontend": {
-        "api_expression": "/api/users/current/tenant",
-        "controller_or_component": null,
-        "method": "GET",
-        "service": null,
-        "source_reference": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
-        "surface": "src/MyHealth.Web/content/app/components/users",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-USER_ACCESS_CONTEXT-004",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-user-access-context-resolve-tenant-context-for-user-functions"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-user-access-context-access-user-management-views-001"
-      ],
-      "backend": {
-        "action": "GetAsync",
-        "controller": "UsersController",
-        "http_method": "GET",
-        "path_parameters": [
-          "username"
-        ],
-        "query_parameters": [],
-        "request_fields": [],
-        "request_type": null,
-        "resolved_endpoint": "/api/users/{username}",
-        "response_fields": [
-          {
-            "line_end": 12,
-            "line_start": 12,
-            "name": "FirstName",
-            "source_path": "src/MyHealth.Model/ApplicationUser.cs",
-            "type": "string"
-          },
-          {
-            "line_end": 14,
-            "line_start": 14,
-            "name": "LastName",
-            "source_path": "src/MyHealth.Model/ApplicationUser.cs",
-            "type": "string"
-          },
-          {
-            "line_end": 16,
-            "line_start": 16,
-            "name": "TenantId",
-            "source_path": "src/MyHealth.Model/ApplicationUser.cs",
-            "type": "int?"
-          },
-          {
-            "line_end": 18,
-            "line_start": 18,
-            "name": "Tenant",
-            "source_path": "src/MyHealth.Model/ApplicationUser.cs",
-            "type": "MyHealth.Model.Tenant"
-          }
-        ],
-        "response_type": "Task<ApplicationUser>",
-        "route_template": "api/[controller]/{username}",
-        "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "PRIMARY_BUSINESS_API",
-      "feature_id": "feature-user-access-context",
-      "frontend": {
-        "api_expression": "`/api/users/${username}`",
-        "controller_or_component": null,
-        "evidence": {
-          "confidence": 1.0,
-          "extraction_method": "tree-sitter",
-          "line_end": 26,
-          "line_start": 23,
-          "project_id": "legacy-dashboard-complete-application-demo-v1",
-          "source_hash": "4d42ae14459afffbf710fc06373cbd8763b81e3b930b58503179f1dcf1505e9f",
-          "source_path": "src/MyHealth.Web/content/app/components/users/services/usersService.js"
-        },
-        "method": "GET",
-        "service": "UsersService",
-        "source_reference": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-USER_ACCESS_CONTEXT-DISCOVERED-001",
-      "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-user-access-context-access-user-management-views"
-      ]
-    },
-    {
-      "ac_ids": [
-        "ac-user-access-context-access-user-management-views-001"
-      ],
-      "backend": {
-        "action": "Get",
-        "controller": "UsersController",
-        "http_method": "GET",
-        "path_parameters": [],
-        "query_parameters": [
-          {
-            "name": "pageSize",
-            "type": "int"
-          },
-          {
-            "name": "pageCount",
-            "type": "int"
-          }
-        ],
-        "request_fields": [],
-        "request_type": null,
-        "resolved_endpoint": "/api/users",
-        "response_fields": [
-          {
-            "line_end": 12,
-            "line_start": 12,
-            "name": "FirstName",
-            "source_path": "src/MyHealth.Model/ApplicationUser.cs",
-            "type": "string"
-          },
-          {
-            "line_end": 14,
-            "line_start": 14,
-            "name": "LastName",
-            "source_path": "src/MyHealth.Model/ApplicationUser.cs",
-            "type": "string"
-          },
-          {
-            "line_end": 16,
-            "line_start": 16,
-            "name": "TenantId",
-            "source_path": "src/MyHealth.Model/ApplicationUser.cs",
-            "type": "int?"
-          },
-          {
-            "line_end": 18,
-            "line_start": 18,
-            "name": "Tenant",
-            "source_path": "src/MyHealth.Model/ApplicationUser.cs",
-            "type": "MyHealth.Model.Tenant"
-          }
-        ],
-        "response_type": "Task<IEnumerable<ApplicationUser>>",
-        "route_template": "api/[controller]",
-        "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-      },
-      "candidate_endpoints": [],
-      "classification": "PRIMARY_BUSINESS_API",
-      "feature_id": "feature-user-access-context",
-      "frontend": {
-        "api_expression": "/api/users",
-        "controller_or_component": null,
-        "evidence": {
-          "confidence": 1.0,
-          "extraction_method": "tree-sitter",
-          "line_end": 48,
-          "line_start": 38,
-          "project_id": "legacy-dashboard-complete-application-demo-v1",
-          "source_hash": "4d42ae14459afffbf710fc06373cbd8763b81e3b930b58503179f1dcf1505e9f",
-          "source_path": "src/MyHealth.Web/content/app/components/users/services/usersService.js"
-        },
-        "method": "GET",
-        "service": "UsersService",
-        "source_reference": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
-        "technology": "Legacy AngularJS 1.x"
-      },
-      "interaction_id": "API-USER_ACCESS_CONTEXT-DISCOVERED-002",
-      "relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
-      "status": "PROVEN",
-      "story_ids": [
-        "story-user-access-context-access-user-management-views"
-      ]
-    }
-  ],
-  "features": [
-    {
-      "contracts": [
-        {
-          "backend": {
-            "action": "GetCurrentTenantAsync",
-            "controller": "UsersController",
-            "http_method": "GET",
-            "resolved_endpoint": "/api/users/current/tenant",
-            "route_template": "api/[controller]/current/tenant",
-            "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-          },
-          "business_purpose": "Dashboard expenses load current tenant / Dashboard patient report loads current tenant / Dashboard summary loads current tenant",
-          "classification": "SUPPORTING_SHARED_API",
-          "contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-001",
-          "feature_id": "feature-operational-dashboard-insights",
-          "frontend": {
-            "api_expression": "/api/users/current/tenant",
-            "controller_or_component": null,
-            "method": "GET",
-            "service": null,
-            "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
-            "surface": "src/MyHealth.Web/content/app/components/dashboard",
-            "technology": "Legacy AngularJS 1.x"
-          },
-          "modernization": {
-            "clarification_required": false,
-            "preservation_required": true
-          },
-          "related_ac_ids": [
-            "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
-            "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
-            "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002"
-          ],
-          "related_behavior_ids": [
-            "ACCESS_YEARLY_OPERATIONAL_REPORTS",
-            "VIEW_TENANT_AWARE_DASHBOARD_SUMMARY"
-          ],
-          "related_story_ids": [
-            "story-operational-dashboard-insights-access-yearly-operational-reports",
-            "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary"
-          ],
-          "relationship": {
-            "confidence_classification": "CONFIRMED",
-            "evidence": [
-              {
-                "confidence": 1.0,
-                "extraction_method": "tree-sitter",
-                "line_end": 21,
-                "line_start": 18,
-                "project_id": "legacy-dashboard-complete-application-demo-v1",
-                "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
-                "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
-              },
-              {
-                "confidence": 1.0,
-                "extraction_method": "tree-sitter",
-                "line_end": 45,
-                "line_start": 42,
-                "project_id": "legacy-dashboard-complete-application-demo-v1",
-                "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
-                "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
-              },
-              {
-                "confidence": 1.0,
-                "extraction_method": "tree-sitter",
-                "line_end": 69,
-                "line_start": 66,
-                "project_id": "legacy-dashboard-complete-application-demo-v1",
-                "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
-                "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
-              }
-            ],
-            "status": "PROVEN"
-          },
-          "request": {
-            "body_fields": [],
-            "body_type": null,
-            "headers": [],
-            "path_parameters": [],
-            "query_parameters": []
-          },
-          "response": {
-            "collection_or_single": "single",
-            "known_status_behavior": [],
-            "response_fields": [],
-            "response_type": "Task<int?>"
-          }
-        },
-        {
-          "backend": {
-            "action": "GetExpensesSummaryAsync",
-            "controller": "ReportsController",
-            "http_method": "GET",
-            "resolved_endpoint": "/api/reports/expenses/{year}",
-            "route_template": "api/[controller]/expenses/{year}",
-            "source_reference": "src/MyHealth.API/Controllers/ReportsController.cs"
-          },
-          "business_purpose": "Dashboard requests yearly expenses",
-          "classification": "PRIMARY_BUSINESS_API",
-          "contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
-          "feature_id": "feature-operational-dashboard-insights",
-          "frontend": {
-            "api_expression": "'/api/reports/expenses/' + year",
-            "controller_or_component": null,
-            "method": "GET",
-            "service": null,
-            "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
-            "surface": "src/MyHealth.Web/content/app/components/dashboard",
-            "technology": "Legacy AngularJS 1.x"
-          },
-          "modernization": {
-            "clarification_required": false,
-            "preservation_required": true
-          },
-          "related_ac_ids": [
-            "ac-operational-dashboard-insights-access-yearly-operational-reports-001"
-          ],
-          "related_behavior_ids": [
-            "ACCESS_YEARLY_OPERATIONAL_REPORTS"
-          ],
-          "related_story_ids": [
-            "story-operational-dashboard-insights-access-yearly-operational-reports"
-          ],
-          "relationship": {
-            "confidence_classification": "CONFIRMED",
-            "evidence": [
-              {
-                "confidence": 1.0,
-                "extraction_method": "tree-sitter",
-                "line_end": 54,
-                "line_start": 48,
-                "project_id": "legacy-dashboard-complete-application-demo-v1",
-                "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
-                "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
-              }
-            ],
-            "status": "PROVEN"
-          },
-          "request": {
-            "body_fields": [],
-            "body_type": null,
-            "headers": [],
-            "path_parameters": [
-              {
-                "location": "Path",
-                "name": "year",
-                "required": "Not established",
-                "type": null
-              }
-            ],
-            "query_parameters": []
-          },
-          "response": {
-            "collection_or_single": "collection",
-            "known_status_behavior": [],
-            "response_fields": [],
-            "response_type": "Task<IEnumerable<ExpensesSummary>>"
-          }
-        },
-        {
-          "backend": {
-            "action": "GetPatientsSummaryAsync",
-            "controller": "ReportsController",
-            "http_method": "GET",
-            "resolved_endpoint": "/api/reports/patients/{year}",
-            "route_template": "api/[controller]/patients/{year}",
-            "source_reference": "src/MyHealth.API/Controllers/ReportsController.cs"
-          },
-          "business_purpose": "Dashboard requests yearly patient report",
-          "classification": "PRIMARY_BUSINESS_API",
-          "contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-003",
-          "feature_id": "feature-operational-dashboard-insights",
-          "frontend": {
-            "api_expression": "'/api/reports/patients/' + year",
-            "controller_or_component": null,
-            "method": "GET",
-            "service": null,
-            "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
-            "surface": "src/MyHealth.Web/content/app/components/dashboard",
-            "technology": "Legacy AngularJS 1.x"
-          },
-          "modernization": {
-            "clarification_required": false,
-            "preservation_required": true
-          },
-          "related_ac_ids": [
-            "ac-operational-dashboard-insights-access-yearly-operational-reports-001"
-          ],
-          "related_behavior_ids": [
-            "ACCESS_YEARLY_OPERATIONAL_REPORTS"
-          ],
-          "related_story_ids": [
-            "story-operational-dashboard-insights-access-yearly-operational-reports"
-          ],
-          "relationship": {
-            "confidence_classification": "CONFIRMED",
-            "evidence": [
-              {
-                "confidence": 1.0,
-                "extraction_method": "tree-sitter",
-                "line_end": 78,
-                "line_start": 72,
-                "project_id": "legacy-dashboard-complete-application-demo-v1",
-                "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
-                "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
-              }
-            ],
-            "status": "PROVEN"
-          },
-          "request": {
-            "body_fields": [],
-            "body_type": null,
-            "headers": [],
-            "path_parameters": [
-              {
-                "location": "Path",
-                "name": "year",
-                "required": "Not established",
-                "type": null
-              }
-            ],
-            "query_parameters": []
-          },
-          "response": {
-            "collection_or_single": "collection",
-            "known_status_behavior": [],
-            "response_fields": [],
-            "response_type": "Task<IEnumerable<PatientsSummary>>"
-          }
-        },
-        {
-          "backend": {
-            "action": "GetClinicSummaryAsync",
-            "controller": "ReportsController",
-            "http_method": "GET",
-            "resolved_endpoint": "/api/reports/clinicsummary",
-            "route_template": "api/[controller]/clinicsummary",
-            "source_reference": "src/MyHealth.API/Controllers/ReportsController.cs"
-          },
-          "business_purpose": "Dashboard requests clinic summary",
-          "classification": "PRIMARY_BUSINESS_API",
-          "contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-004",
-          "feature_id": "feature-operational-dashboard-insights",
-          "frontend": {
-            "api_expression": "/api/reports/clinicsummary",
-            "controller_or_component": null,
-            "method": "GET",
-            "service": null,
-            "source_reference": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
-            "surface": "src/MyHealth.Web/content/app/components/dashboard",
-            "technology": "Legacy AngularJS 1.x"
-          },
-          "modernization": {
-            "clarification_required": false,
-            "preservation_required": true
-          },
-          "related_ac_ids": [
-            "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
-            "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002"
-          ],
-          "related_behavior_ids": [
-            "VIEW_TENANT_AWARE_DASHBOARD_SUMMARY"
-          ],
-          "related_story_ids": [
-            "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary"
-          ],
-          "relationship": {
-            "confidence_classification": "CONFIRMED",
-            "evidence": [
-              {
-                "confidence": 1.0,
-                "extraction_method": "tree-sitter",
-                "line_end": 30,
-                "line_start": 24,
-                "project_id": "legacy-dashboard-complete-application-demo-v1",
-                "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
-                "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
-              }
-            ],
-            "status": "PROVEN"
-          },
-          "request": {
-            "body_fields": [],
-            "body_type": null,
-            "headers": [],
-            "path_parameters": [],
-            "query_parameters": []
-          },
-          "response": {
-            "collection_or_single": "single",
-            "known_status_behavior": [],
-            "response_fields": [],
-            "response_type": "Task<ClinicSummary>"
-          }
-        }
-      ],
-      "feature_id": "feature-operational-dashboard-insights"
-    },
-    {
-      "contracts": [
-        {
-          "contract_id": "API-01",
-          "method": "DELETE",
-          "requirement_ids": [
-            "FR-05"
-          ],
-          "route": "/api/doctors/{id}",
-          "source_capability_ids": [
-            "capability-doctors-delete-2aa95f28df47"
-          ]
-        },
-        {
-          "contract_id": "API-02",
-          "method": "GET",
-          "requirement_ids": [
-            "FR-01"
-          ],
-          "route": "/api/doctors",
-          "source_capability_ids": [
-            "capability-doctors-list-8e359528dc06"
-          ]
-        },
-        {
-          "contract_id": "API-03",
-          "method": "GET",
-          "requirement_ids": [
-            "FR-02"
-          ],
-          "route": "/api/doctors/{id}",
-          "source_capability_ids": [
-            "capability-doctors-read-9d2f061a43ff"
-          ]
-        },
-        {
-          "contract_id": "API-04",
-          "method": "GET",
-          "requirement_ids": [
-            "FR-02"
-          ],
-          "route": "/api/users/current/tenant",
-          "source_capability_ids": [
-            "capability-doctors-read-440206d0d254"
-          ]
-        },
-        {
-          "contract_id": "API-05",
-          "method": "POST",
-          "requirement_ids": [
-            "FR-03"
-          ],
-          "route": "/api/doctors",
-          "source_capability_ids": [
-            "capability-doctors-create-3bf79f905f70"
-          ]
-        },
-        {
-          "contract_id": "API-06",
-          "method": "PUT",
-          "requirement_ids": [
-            "FR-04"
-          ],
-          "route": "/api/doctors",
-          "source_capability_ids": [
-            "capability-doctors-update-01a9514e9ad2"
-          ]
-        }
-      ],
-      "feature_id": "feature-doctor-directory-management"
-    },
-    {
-      "contracts": [
-        {
-          "backend": {
-            "action": "GetCurrentTenantAsync",
-            "controller": "UsersController",
-            "http_method": "GET",
-            "resolved_endpoint": "/api/users/current/tenant",
-            "route_template": "api/[controller]/current/tenant",
-            "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-          },
-          "business_purpose": "Patients load current tenant",
-          "classification": "SUPPORTING_SHARED_API",
-          "contract_id": "API-PATIENT_DIRECTORY_MANAGEMENT-001",
-          "feature_id": "feature-patient-directory-management",
-          "frontend": {
-            "api_expression": "/api/users/current/tenant",
-            "controller_or_component": null,
-            "method": "GET",
-            "service": null,
-            "source_reference": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
-            "surface": "src/MyHealth.Web/content/app/components/patients",
-            "technology": "Legacy AngularJS 1.x"
-          },
-          "modernization": {
-            "clarification_required": false,
-            "preservation_required": true
-          },
-          "related_ac_ids": [
-            "ac-patient-directory-management-establish-patient-tenant-context-001"
-          ],
-          "related_behavior_ids": [
-            "ESTABLISH_PATIENT_TENANT_CONTEXT"
-          ],
-          "related_story_ids": [
-            "story-patient-directory-management-establish-patient-tenant-context"
-          ],
-          "relationship": {
-            "confidence_classification": "CONFIRMED",
-            "evidence": [
-              {
-                "confidence": 1.0,
-                "extraction_method": "tree-sitter",
-                "line_end": 15,
-                "line_start": 12,
-                "project_id": "legacy-dashboard-complete-application-demo-v1",
-                "source_hash": "d49ea4e7495a765720b1302f9183f552e2a1d7452f9e64ea2f6ad082f8608a79",
-                "source_path": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js"
-              }
-            ],
-            "status": "PROVEN"
-          },
-          "request": {
-            "body_fields": [],
-            "body_type": null,
-            "headers": [],
-            "path_parameters": [],
-            "query_parameters": []
-          },
-          "response": {
-            "collection_or_single": "single",
-            "known_status_behavior": [],
-            "response_fields": [],
-            "response_type": "Task<int?>"
-          }
-        }
-      ],
-      "feature_id": "feature-patient-directory-management"
-    },
-    {
-      "contracts": [
-        {
-          "backend": {
-            "action": "GetCurrentTenantAsync",
-            "controller": "UsersController",
-            "http_method": "GET",
-            "resolved_endpoint": "/api/users/current/tenant",
-            "route_template": "api/[controller]/current/tenant",
-            "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-          },
-          "business_purpose": "Clinics load current tenant",
-          "classification": "SUPPORTING_SHARED_API",
-          "contract_id": "API-CLINIC_APPOINTMENT_EXPERIENCE-001",
-          "feature_id": "feature-clinic-appointment-experience",
-          "frontend": {
-            "api_expression": "/api/users/current/tenant",
-            "controller_or_component": null,
-            "method": "GET",
-            "service": null,
-            "source_reference": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
-            "surface": "src/MyHealth.Web/content/app/components/clinics",
-            "technology": "Legacy AngularJS 1.x"
-          },
-          "modernization": {
-            "clarification_required": false,
-            "preservation_required": true
-          },
-          "related_ac_ids": [
-            "ac-clinic-appointment-experience-establish-clinic-context-001"
-          ],
-          "related_behavior_ids": [
-            "ESTABLISH_CLINIC_CONTEXT"
-          ],
-          "related_story_ids": [
-            "story-clinic-appointment-experience-establish-clinic-context"
-          ],
-          "relationship": {
-            "confidence_classification": "CONFIRMED",
-            "evidence": [
-              {
-                "confidence": 1.0,
-                "extraction_method": "tree-sitter",
-                "line_end": 18,
-                "line_start": 15,
-                "project_id": "legacy-dashboard-complete-application-demo-v1",
-                "source_hash": "8ffd0fca8e9be4a3ea7b70415d6b421565ae7d2be303d08f733a973c34520479",
-                "source_path": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js"
-              }
-            ],
-            "status": "PROVEN"
-          },
-          "request": {
-            "body_fields": [],
-            "body_type": null,
-            "headers": [],
-            "path_parameters": [],
-            "query_parameters": []
-          },
-          "response": {
-            "collection_or_single": "single",
-            "known_status_behavior": [],
-            "response_fields": [],
-            "response_type": "Task<int?>"
-          }
-        }
-      ],
-      "feature_id": "feature-clinic-appointment-experience"
-    },
-    {
-      "contracts": [
-        {
-          "backend": {
-            "action": "GetCurrentUserAsync",
-            "controller": "UsersController",
-            "http_method": "GET",
-            "resolved_endpoint": "/api/users/current/user",
-            "route_template": "api/[controller]/current/user",
-            "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-          },
-          "business_purpose": "Header loads current user",
-          "classification": "PRIMARY_BUSINESS_API",
-          "contract_id": "API-USER_ACCESS_CONTEXT-001",
-          "feature_id": "feature-user-access-context",
-          "frontend": {
-            "api_expression": "/api/users/current/user",
-            "controller_or_component": "HeaderController",
-            "method": "GET",
-            "service": null,
-            "source_reference": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
-            "surface": "src/MyHealth.Web/content/app/components/shared",
-            "technology": "Legacy AngularJS 1.x"
-          },
-          "modernization": {
-            "clarification_required": false,
-            "preservation_required": true
-          },
-          "related_ac_ids": [
-            "ac-user-access-context-resolve-current-user-and-claims-001"
-          ],
-          "related_behavior_ids": [
-            "RESOLVE_CURRENT_USER_AND_CLAIMS"
-          ],
-          "related_story_ids": [
-            "story-user-access-context-resolve-current-user-and-claims"
-          ],
-          "relationship": {
-            "confidence_classification": "CONFIRMED",
-            "evidence": [
-              {
-                "confidence": 1.0,
-                "extraction_method": "tree-sitter",
-                "line_end": 27,
-                "line_start": 24,
-                "project_id": "legacy-dashboard-complete-application-demo-v1",
-                "source_hash": "72004319a2ba31f388234363794681d62b936488ee12fab2ccca7a2868ff9eb5",
-                "source_path": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js"
-              }
-            ],
-            "status": "PROVEN"
-          },
-          "request": {
-            "body_fields": [],
-            "body_type": null,
-            "headers": [],
-            "path_parameters": [],
-            "query_parameters": []
-          },
-          "response": {
-            "collection_or_single": "single",
-            "known_status_behavior": [],
-            "response_fields": [],
-            "response_type": "Task<string>"
-          }
-        },
-        {
-          "backend": {
-            "action": "GetCurrentClaimsAsync",
-            "controller": "UsersController",
-            "http_method": "GET",
-            "resolved_endpoint": "/api/users/current/claims",
-            "route_template": "api/[controller]/current/claims",
-            "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-          },
-          "business_purpose": "Header loads current claims",
-          "classification": "PRIMARY_BUSINESS_API",
-          "contract_id": "API-USER_ACCESS_CONTEXT-002",
-          "feature_id": "feature-user-access-context",
-          "frontend": {
-            "api_expression": "/api/users/current/claims",
-            "controller_or_component": "HeaderController",
-            "method": "GET",
-            "service": null,
-            "source_reference": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
-            "surface": "src/MyHealth.Web/content/app/components/shared",
-            "technology": "Legacy AngularJS 1.x"
-          },
-          "modernization": {
-            "clarification_required": false,
-            "preservation_required": true
-          },
-          "related_ac_ids": [
-            "ac-user-access-context-resolve-current-user-and-claims-001"
-          ],
-          "related_behavior_ids": [
-            "RESOLVE_CURRENT_USER_AND_CLAIMS"
-          ],
-          "related_story_ids": [
-            "story-user-access-context-resolve-current-user-and-claims"
-          ],
-          "relationship": {
-            "confidence_classification": "CONFIRMED",
-            "evidence": [
-              {
-                "confidence": 1.0,
-                "extraction_method": "tree-sitter",
-                "line_end": 34,
-                "line_start": 31,
-                "project_id": "legacy-dashboard-complete-application-demo-v1",
-                "source_hash": "72004319a2ba31f388234363794681d62b936488ee12fab2ccca7a2868ff9eb5",
-                "source_path": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js"
-              }
-            ],
-            "status": "PROVEN"
-          },
-          "request": {
-            "body_fields": [],
-            "body_type": null,
-            "headers": [],
-            "path_parameters": [],
-            "query_parameters": []
-          },
-          "response": {
-            "collection_or_single": "single",
-            "known_status_behavior": [],
-            "response_fields": [],
-            "response_type": "JsonResult"
-          }
-        },
-        {
-          "backend": {
-            "action": "GetCurrentClaimsAsync",
-            "controller": "UsersController",
-            "http_method": "GET",
-            "resolved_endpoint": "/api/users/current/claims",
-            "route_template": "api/[controller]/current/claims",
-            "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-          },
-          "business_purpose": "Initial page loads current claims",
-          "classification": "PRIMARY_BUSINESS_API",
-          "contract_id": "API-USER_ACCESS_CONTEXT-003",
-          "feature_id": "feature-user-access-context",
-          "frontend": {
-            "api_expression": "/api/users/current/claims",
-            "controller_or_component": null,
-            "method": "GET",
-            "service": null,
-            "source_reference": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
-            "surface": "src/MyHealth.Web/content/app/components/shared",
-            "technology": "Legacy AngularJS 1.x"
-          },
-          "modernization": {
-            "clarification_required": false,
-            "preservation_required": true
-          },
-          "related_ac_ids": [
-            "ac-user-access-context-resolve-current-user-and-claims-001"
-          ],
-          "related_behavior_ids": [
-            "RESOLVE_CURRENT_USER_AND_CLAIMS"
-          ],
-          "related_story_ids": [
-            "story-user-access-context-resolve-current-user-and-claims"
-          ],
-          "relationship": {
-            "confidence_classification": "CONFIRMED",
-            "evidence": [
-              {
-                "confidence": 1.0,
-                "extraction_method": "tree-sitter",
-                "line_end": 13,
-                "line_start": 10,
-                "project_id": "legacy-dashboard-complete-application-demo-v1",
-                "source_hash": "a12063f556212be35f9949e326418381c6c9dded50a98c8404743ff83745f115",
-                "source_path": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js"
-              }
-            ],
-            "status": "PROVEN"
-          },
-          "request": {
-            "body_fields": [],
-            "body_type": null,
-            "headers": [],
-            "path_parameters": [],
-            "query_parameters": []
-          },
-          "response": {
-            "collection_or_single": "single",
-            "known_status_behavior": [],
-            "response_fields": [],
-            "response_type": "JsonResult"
-          }
-        },
-        {
-          "backend": {
-            "action": "GetCurrentTenantAsync",
-            "controller": "UsersController",
-            "http_method": "GET",
-            "resolved_endpoint": "/api/users/current/tenant",
-            "route_template": "api/[controller]/current/tenant",
-            "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-          },
-          "business_purpose": "Users load current tenant",
-          "classification": "PRIMARY_BUSINESS_API",
-          "contract_id": "API-USER_ACCESS_CONTEXT-004",
-          "feature_id": "feature-user-access-context",
-          "frontend": {
-            "api_expression": "/api/users/current/tenant",
-            "controller_or_component": null,
-            "method": "GET",
-            "service": null,
-            "source_reference": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
-            "surface": "src/MyHealth.Web/content/app/components/users",
-            "technology": "Legacy AngularJS 1.x"
-          },
-          "modernization": {
-            "clarification_required": false,
-            "preservation_required": true
-          },
-          "related_ac_ids": [
-            "ac-user-access-context-resolve-tenant-context-for-user-functions-001"
-          ],
-          "related_behavior_ids": [
-            "RESOLVE_TENANT_CONTEXT_FOR_USER_FUNCTIONS"
-          ],
-          "related_story_ids": [
-            "story-user-access-context-resolve-tenant-context-for-user-functions"
-          ],
-          "relationship": {
-            "confidence_classification": "CONFIRMED",
-            "evidence": [
-              {
-                "confidence": 1.0,
-                "extraction_method": "tree-sitter",
-                "line_end": 18,
-                "line_start": 15,
-                "project_id": "legacy-dashboard-complete-application-demo-v1",
-                "source_hash": "4d42ae14459afffbf710fc06373cbd8763b81e3b930b58503179f1dcf1505e9f",
-                "source_path": "src/MyHealth.Web/content/app/components/users/services/usersService.js"
-              }
-            ],
-            "status": "PROVEN"
-          },
-          "request": {
-            "body_fields": [],
-            "body_type": null,
-            "headers": [],
-            "path_parameters": [],
-            "query_parameters": []
-          },
-          "response": {
-            "collection_or_single": "single",
-            "known_status_behavior": [],
-            "response_fields": [],
-            "response_type": "Task<int?>"
-          }
-        }
-      ],
-      "feature_id": "feature-user-access-context"
-    }
-  ],
-  "property_traceability": [
+  "api_properties": [
     {
       "analyzer": "tree-sitter",
       "api_contract_id": "API-OPERATIONAL_DASHBOARD_INSIGHTS-001",
@@ -3467,6 +1924,675 @@
         "line_start": 15
       },
       "value": "PROVEN"
+    }
+  ],
+  "statements": [
+    {
+      "audience": "FUNCTIONAL",
+      "feature_id": "feature-operational-dashboard-insights",
+      "importance": "ESSENTIAL",
+      "narrative_statement_id": "feature-operational-dashboard-insights:behavior:ACCESS_YEARLY_OPERATIONAL_REPORTS",
+      "section": "Functional Behavior",
+      "semantic_status": "SEMANTICALLY_EQUIVALENT",
+      "statement": "The current application requests expense and patient reporting information for a selected year.",
+      "supported_by": {
+        "ac_refs": [
+          "ac-operational-dashboard-insights-access-yearly-operational-reports-001"
+        ],
+        "api_refs": [
+          {
+            "api_contract": "GET /api/users/current/tenant",
+            "backend_endpoint": "GET /api/users/current/tenant",
+            "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+            "status": "PROVEN",
+            "workflow": "Dashboard expenses load current tenant"
+          },
+          {
+            "api_contract": "GET /api/users/current/tenant",
+            "backend_endpoint": "GET /api/users/current/tenant",
+            "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+            "status": "PROVEN",
+            "workflow": "Dashboard patient report loads current tenant"
+          },
+          {
+            "api_contract": "'/api/reports/expenses/' + year",
+            "backend_endpoint": "GET /api/reports/expenses/{year}",
+            "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+            "status": "DYNAMIC",
+            "workflow": "Dashboard requests yearly expenses"
+          },
+          {
+            "api_contract": "'/api/reports/patients/' + year",
+            "backend_endpoint": "GET /api/reports/patients/{year}",
+            "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+            "status": "DYNAMIC",
+            "workflow": "Dashboard requests yearly patient report"
+          }
+        ],
+        "business_feature_refs": [
+          "business-feature:feature-operational-dashboard-insights"
+        ],
+        "feature_refs": [
+          "feature-operational-dashboard-insights"
+        ],
+        "source_refs": [
+          {
+            "line_end": 141,
+            "line_start": 1,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+          },
+          {
+            "line_end": 23,
+            "line_start": 23,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
+          },
+          {
+            "line_end": 13,
+            "line_start": 1,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+          }
+        ],
+        "story_refs": [
+          "story-operational-dashboard-insights-access-yearly-operational-reports"
+        ],
+        "workflow_refs": [
+          "Dashboard expenses load current tenant",
+          "Dashboard patient report loads current tenant",
+          "Dashboard requests yearly expenses",
+          "Dashboard requests yearly patient report"
+        ]
+      }
+    },
+    {
+      "audience": "FUNCTIONAL",
+      "feature_id": "feature-operational-dashboard-insights",
+      "importance": "ESSENTIAL",
+      "narrative_statement_id": "feature-operational-dashboard-insights:behavior:VIEW_TENANT_AWARE_DASHBOARD_SUMMARY",
+      "section": "Functional Behavior",
+      "semantic_status": "SEMANTICALLY_EQUIVALENT",
+      "statement": "The dashboard summary flow has current tenant context. Clinic summary information is requested for the dashboard.",
+      "supported_by": {
+        "ac_refs": [
+          "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+          "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002"
+        ],
+        "api_refs": [
+          {
+            "api_contract": "GET /api/users/current/tenant",
+            "backend_endpoint": "GET /api/users/current/tenant",
+            "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+            "status": "PROVEN",
+            "workflow": "Dashboard summary loads current tenant"
+          },
+          {
+            "api_contract": "/api/reports/clinicsummary",
+            "backend_endpoint": "GET /api/reports/clinicsummary",
+            "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+            "status": "UNRESOLVED",
+            "workflow": "Dashboard requests clinic summary"
+          }
+        ],
+        "business_feature_refs": [
+          "business-feature:feature-operational-dashboard-insights"
+        ],
+        "feature_refs": [
+          "feature-operational-dashboard-insights"
+        ],
+        "source_refs": [
+          {
+            "line_end": 141,
+            "line_start": 1,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+          },
+          {
+            "line_end": 23,
+            "line_start": 23,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
+          },
+          {
+            "line_end": 13,
+            "line_start": 1,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+          }
+        ],
+        "story_refs": [
+          "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary"
+        ],
+        "workflow_refs": [
+          "Dashboard summary loads current tenant",
+          "Dashboard requests clinic summary"
+        ]
+      }
+    },
+    {
+      "audience": "FUNCTIONAL",
+      "feature_id": "feature-operational-dashboard-insights",
+      "importance": "ESSENTIAL",
+      "narrative_statement_id": "feature-operational-dashboard-insights:behavior:OPEN_OPERATIONAL_DASHBOARD",
+      "section": "Functional Behavior",
+      "semantic_status": "SEMANTICALLY_EQUIVALENT",
+      "statement": "Users can open the established operational dashboard experience.",
+      "supported_by": {
+        "ac_refs": [
+          "ac-operational-dashboard-insights-open-operational-dashboard-001",
+          "ac-operational-dashboard-insights-open-operational-dashboard-002"
+        ],
+        "api_refs": [],
+        "business_feature_refs": [
+          "business-feature:feature-operational-dashboard-insights"
+        ],
+        "feature_refs": [
+          "feature-operational-dashboard-insights"
+        ],
+        "source_refs": [
+          {
+            "line_end": 141,
+            "line_start": 1,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DashboardController",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+          },
+          {
+            "line_end": 23,
+            "line_start": 23,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/reports/clinicsummary",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/ReportsController.cs"
+          },
+          {
+            "line_end": 13,
+            "line_start": 1,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:RazorView:src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+          }
+        ],
+        "story_refs": [
+          "story-operational-dashboard-insights-open-operational-dashboard"
+        ],
+        "workflow_refs": [
+          "Route dashboard"
+        ]
+      }
+    },
+    {
+      "audience": "FUNCTIONAL",
+      "feature_id": "feature-doctor-directory-management",
+      "importance": "ESSENTIAL",
+      "narrative_statement_id": "feature-doctor-directory-management:behavior:VIEW_DOCTOR_DETAILS_IN_TENANT_CONTEXT",
+      "section": "Functional Behavior",
+      "semantic_status": "SEMANTICALLY_EQUIVALENT",
+      "statement": "A doctor detail experience is available. Doctor functionality has current tenant context.",
+      "supported_by": {
+        "ac_refs": [
+          "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001"
+        ],
+        "api_refs": [
+          {
+            "api_contract": "GET /api/users/current/tenant",
+            "backend_endpoint": "GET /api/users/current/tenant",
+            "frontend_source": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
+            "status": "PROVEN",
+            "workflow": "Doctors load current tenant"
+          }
+        ],
+        "business_feature_refs": [
+          "business-feature:feature-doctor-directory-management"
+        ],
+        "feature_refs": [
+          "feature-doctor-directory-management"
+        ],
+        "source_refs": [
+          {
+            "line_end": 100,
+            "line_start": 1,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js"
+          },
+          {
+            "line_end": 59,
+            "line_start": 10,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Model/Doctor.cs"
+          }
+        ],
+        "story_refs": [
+          "story-doctor-directory-management-view-doctor-details-in-tenant-context"
+        ],
+        "workflow_refs": [
+          "Route doctor",
+          "Doctors load current tenant"
+        ]
+      }
+    },
+    {
+      "audience": "FUNCTIONAL",
+      "feature_id": "feature-doctor-directory-management",
+      "importance": "ESSENTIAL",
+      "narrative_statement_id": "feature-doctor-directory-management:behavior:REVIEW_DOCTOR_DIRECTORY",
+      "section": "Functional Behavior",
+      "semantic_status": "SEMANTICALLY_EQUIVALENT",
+      "statement": "The current application provides a dedicated doctor directory through which users can access the information supported by that experience.",
+      "supported_by": {
+        "ac_refs": [
+          "ac-doctor-directory-management-review-doctor-directory-001"
+        ],
+        "api_refs": [],
+        "business_feature_refs": [
+          "business-feature:feature-doctor-directory-management"
+        ],
+        "feature_refs": [
+          "feature-doctor-directory-management"
+        ],
+        "source_refs": [
+          {
+            "line_end": 100,
+            "line_start": 1,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js"
+          },
+          {
+            "line_end": 59,
+            "line_start": 10,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Model/Doctor.cs"
+          }
+        ],
+        "story_refs": [
+          "story-doctor-directory-management-review-doctor-directory"
+        ],
+        "workflow_refs": [
+          "Route doctors"
+        ]
+      }
+    },
+    {
+      "audience": "FUNCTIONAL",
+      "feature_id": "feature-patient-directory-management",
+      "importance": "ESSENTIAL",
+      "narrative_statement_id": "feature-patient-directory-management:behavior:ESTABLISH_PATIENT_TENANT_CONTEXT",
+      "section": "Functional Behavior",
+      "semantic_status": "SEMANTICALLY_EQUIVALENT",
+      "statement": "Patient functionality has current tenant context.",
+      "supported_by": {
+        "ac_refs": [
+          "ac-patient-directory-management-establish-patient-tenant-context-001"
+        ],
+        "api_refs": [
+          {
+            "api_contract": "GET /api/users/current/tenant",
+            "backend_endpoint": "GET /api/users/current/tenant",
+            "frontend_source": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
+            "status": "PROVEN",
+            "workflow": "Patients load current tenant"
+          }
+        ],
+        "business_feature_refs": [
+          "business-feature:feature-patient-directory-management"
+        ],
+        "feature_refs": [
+          "feature-patient-directory-management"
+        ],
+        "source_refs": [
+          {
+            "line_end": 99,
+            "line_start": 1,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:PatientsController",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Web/content/app/components/patients/controllers/patientsController.js"
+          },
+          {
+            "line_end": 60,
+            "line_start": 8,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Type:Patient",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Model/Patient.cs"
+          }
+        ],
+        "story_refs": [
+          "story-patient-directory-management-establish-patient-tenant-context"
+        ],
+        "workflow_refs": [
+          "Patients load current tenant"
+        ]
+      }
+    },
+    {
+      "audience": "FUNCTIONAL",
+      "feature_id": "feature-patient-directory-management",
+      "importance": "ESSENTIAL",
+      "narrative_statement_id": "feature-patient-directory-management:behavior:REVIEW_PATIENT_DIRECTORY",
+      "section": "Functional Behavior",
+      "semantic_status": "SEMANTICALLY_EQUIVALENT",
+      "statement": "The current application provides a dedicated patient directory through which users can access the information supported by that experience.",
+      "supported_by": {
+        "ac_refs": [
+          "ac-patient-directory-management-review-patient-directory-001"
+        ],
+        "api_refs": [],
+        "business_feature_refs": [
+          "business-feature:feature-patient-directory-management"
+        ],
+        "feature_refs": [
+          "feature-patient-directory-management"
+        ],
+        "source_refs": [
+          {
+            "line_end": 99,
+            "line_start": 1,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:PatientsController",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Web/content/app/components/patients/controllers/patientsController.js"
+          },
+          {
+            "line_end": 60,
+            "line_start": 8,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Type:Patient",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Model/Patient.cs"
+          }
+        ],
+        "story_refs": [
+          "story-patient-directory-management-review-patient-directory"
+        ],
+        "workflow_refs": [
+          "Route patients"
+        ]
+      }
+    },
+    {
+      "audience": "FUNCTIONAL",
+      "feature_id": "feature-clinic-appointment-experience",
+      "importance": "ESSENTIAL",
+      "narrative_statement_id": "feature-clinic-appointment-experience:behavior:ACCESS_CLINIC_INFORMATION",
+      "section": "Functional Behavior",
+      "semantic_status": "SEMANTICALLY_EQUIVALENT",
+      "statement": "The current application makes the established clinic information views available to users.",
+      "supported_by": {
+        "ac_refs": [
+          "ac-clinic-appointment-experience-access-clinic-information-001"
+        ],
+        "api_refs": [],
+        "business_feature_refs": [
+          "business-feature:feature-clinic-appointment-experience"
+        ],
+        "feature_refs": [
+          "feature-clinic-appointment-experience"
+        ],
+        "source_refs": [
+          {
+            "line_end": 8,
+            "line_start": 4,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.ClinicAppointment",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Model/ClinicAppointment.cs"
+          },
+          {
+            "line_end": 146,
+            "line_start": 146,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          }
+        ],
+        "story_refs": [
+          "story-clinic-appointment-experience-access-clinic-information"
+        ],
+        "workflow_refs": [
+          "Route clinic",
+          "Route clinics"
+        ]
+      }
+    },
+    {
+      "audience": "FUNCTIONAL",
+      "feature_id": "feature-clinic-appointment-experience",
+      "importance": "ESSENTIAL",
+      "narrative_statement_id": "feature-clinic-appointment-experience:behavior:ESTABLISH_CLINIC_CONTEXT",
+      "section": "Functional Behavior",
+      "semantic_status": "SEMANTICALLY_EQUIVALENT",
+      "statement": "Clinic functionality has current tenant context.",
+      "supported_by": {
+        "ac_refs": [
+          "ac-clinic-appointment-experience-establish-clinic-context-001"
+        ],
+        "api_refs": [
+          {
+            "api_contract": "GET /api/users/current/tenant",
+            "backend_endpoint": "GET /api/users/current/tenant",
+            "frontend_source": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
+            "status": "PROVEN",
+            "workflow": "Clinics load current tenant"
+          }
+        ],
+        "business_feature_refs": [
+          "business-feature:feature-clinic-appointment-experience"
+        ],
+        "feature_refs": [
+          "feature-clinic-appointment-experience"
+        ],
+        "source_refs": [
+          {
+            "line_end": 8,
+            "line_start": 4,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.ClinicAppointment",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Model/ClinicAppointment.cs"
+          },
+          {
+            "line_end": 146,
+            "line_start": 146,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          }
+        ],
+        "story_refs": [
+          "story-clinic-appointment-experience-establish-clinic-context"
+        ],
+        "workflow_refs": [
+          "Clinics load current tenant"
+        ]
+      }
+    },
+    {
+      "audience": "FUNCTIONAL",
+      "feature_id": "feature-user-access-context",
+      "importance": "ESSENTIAL",
+      "narrative_statement_id": "feature-user-access-context:behavior:ACCESS_USER_MANAGEMENT_VIEWS",
+      "section": "Functional Behavior",
+      "semantic_status": "SEMANTICALLY_EQUIVALENT",
+      "statement": "The current application makes the established user list and detail views available to users.",
+      "supported_by": {
+        "ac_refs": [
+          "ac-user-access-context-access-user-management-views-001"
+        ],
+        "api_refs": [],
+        "business_feature_refs": [
+          "business-feature:feature-user-access-context"
+        ],
+        "feature_refs": [
+          "feature-user-access-context"
+        ],
+        "source_refs": [
+          {
+            "line_end": 133,
+            "line_start": 133,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          },
+          {
+            "line_end": 146,
+            "line_start": 146,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          },
+          {
+            "line_end": 124,
+            "line_start": 124,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          }
+        ],
+        "story_refs": [
+          "story-user-access-context-access-user-management-views"
+        ],
+        "workflow_refs": [
+          "Route user",
+          "Route users"
+        ]
+      }
+    },
+    {
+      "audience": "FUNCTIONAL",
+      "feature_id": "feature-user-access-context",
+      "importance": "ESSENTIAL",
+      "narrative_statement_id": "feature-user-access-context:behavior:RESOLVE_CURRENT_USER_AND_CLAIMS",
+      "section": "Functional Behavior",
+      "semantic_status": "SEMANTICALLY_EQUIVALENT",
+      "statement": "The header has current user identity. The header has current claims. Initial-page behavior has current claims.",
+      "supported_by": {
+        "ac_refs": [
+          "ac-user-access-context-resolve-current-user-and-claims-001"
+        ],
+        "api_refs": [
+          {
+            "api_contract": "GET /api/users/current/user",
+            "backend_endpoint": "GET /api/users/current/user",
+            "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+            "status": "PROVEN",
+            "workflow": "Header loads current user"
+          },
+          {
+            "api_contract": "GET /api/users/current/claims",
+            "backend_endpoint": "GET /api/users/current/claims",
+            "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
+            "status": "PROVEN",
+            "workflow": "Header loads current claims"
+          },
+          {
+            "api_contract": "GET /api/users/current/claims",
+            "backend_endpoint": "GET /api/users/current/claims",
+            "frontend_source": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
+            "status": "PROVEN",
+            "workflow": "Initial page loads current claims"
+          }
+        ],
+        "business_feature_refs": [
+          "business-feature:feature-user-access-context"
+        ],
+        "feature_refs": [
+          "feature-user-access-context"
+        ],
+        "source_refs": [
+          {
+            "line_end": 133,
+            "line_start": 133,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          },
+          {
+            "line_end": 146,
+            "line_start": 146,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          },
+          {
+            "line_end": 124,
+            "line_start": 124,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          }
+        ],
+        "story_refs": [
+          "story-user-access-context-resolve-current-user-and-claims"
+        ],
+        "workflow_refs": [
+          "Header loads current user",
+          "Header loads current claims",
+          "Initial page loads current claims"
+        ]
+      }
+    },
+    {
+      "audience": "FUNCTIONAL",
+      "feature_id": "feature-user-access-context",
+      "importance": "ESSENTIAL",
+      "narrative_statement_id": "feature-user-access-context:behavior:RESOLVE_TENANT_CONTEXT_FOR_USER_FUNCTIONS",
+      "section": "Functional Behavior",
+      "semantic_status": "SEMANTICALLY_EQUIVALENT",
+      "statement": "User functionality has tenant context.",
+      "supported_by": {
+        "ac_refs": [
+          "ac-user-access-context-resolve-tenant-context-for-user-functions-001"
+        ],
+        "api_refs": [
+          {
+            "api_contract": "GET /api/users/current/tenant",
+            "backend_endpoint": "GET /api/users/current/tenant",
+            "frontend_source": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
+            "status": "PROVEN",
+            "workflow": "Users load current tenant"
+          }
+        ],
+        "business_feature_refs": [
+          "business-feature:feature-user-access-context"
+        ],
+        "feature_refs": [
+          "feature-user-access-context"
+        ],
+        "source_refs": [
+          {
+            "line_end": 133,
+            "line_start": 133,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/claims",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          },
+          {
+            "line_end": 146,
+            "line_start": 146,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          },
+          {
+            "line_end": 124,
+            "line_start": 124,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/user",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.API/Controllers/UsersController.cs"
+          }
+        ],
+        "story_refs": [
+          "story-user-access-context-resolve-tenant-context-for-user-functions"
+        ],
+        "workflow_refs": [
+          "Users load current tenant"
+        ]
+      }
     }
   ]
 }
