@@ -4,13 +4,13 @@
       "confidence": 1.0,
       "framework": "ASP.NET MVC/Razor",
       "method": "deterministic-file-evidence",
-      "source_path": "src/MyHealth.Web/Views/O365Integration/Index.cshtml"
+      "source_path": "src/MyHealth.Web/Views/Shared/_Footer.cshtml"
     },
     {
       "confidence": 1.0,
       "framework": ".NET API",
       "method": "deterministic-file-evidence",
-      "source_path": "04_Demos_NativeXamarinApps.sln"
+      "source_path": "src/MyHealth.Client.Droid/MyHealth.Client.Droid.csproj"
     },
     {
       "confidence": 1.0,
@@ -28,14 +28,14 @@
       "confidence": 1.0,
       "framework": "TypeScript",
       "method": "deterministic-file-evidence",
-      "source_path": "CordovaPlugins/cordova-plugin-code-push/typings/cordova.d.ts"
+      "source_path": "src/MyHealth.Client.Cordova/content/app/modules/homeAppointments/filters/appointmentTimeFilter.ts"
     }
   ],
   "project_id": "legacy-dashboard-complete-application-demo-v1",
   "scope": {
     "coverage_status": "complete_with_opaque_dependencies",
     "extraction_warning_count": 0,
-    "opaque_dependency_count": 44,
+    "opaque_dependency_count": 42,
     "out_of_scope_file_count": 0,
     "review_warning_count": 4453,
     "scope_description": "Complete discovered application inventory and graph.",
