@@ -1,22 +1,21 @@
 {
   "artifact_paths": {
-    "facts": "C:\\Users\\himan\\AppData\\Local\\Temp\\polaris-method-evidence-1a1fb8529a5c4f69986bba8b48bb1a00\\legacy-dashboard-complete-application-demo-v1\\facts.json",
-    "graph_run_status": "C:\\Users\\himan\\AppData\\Local\\Temp\\polaris-method-evidence-1a1fb8529a5c4f69986bba8b48bb1a00\\legacy-dashboard-complete-application-demo-v1\\graph-run-status.json",
-    "graph_run_summary": "C:\\Users\\himan\\AppData\\Local\\Temp\\polaris-method-evidence-1a1fb8529a5c4f69986bba8b48bb1a00\\legacy-dashboard-complete-application-demo-v1\\graph-run-summary.md",
-    "knowledge_graph": "C:\\Users\\himan\\AppData\\Local\\Temp\\polaris-method-evidence-1a1fb8529a5c4f69986bba8b48bb1a00\\legacy-dashboard-complete-application-demo-v1\\knowledge-graph.json",
-    "review_archive": "C:\\Users\\himan\\AppData\\Local\\Temp\\polaris-method-evidence-1a1fb8529a5c4f69986bba8b48bb1a00\\knowledge-graph\\runs\\legacy-dashboard-complete-application-demo-v1-2026-09-06-102224",
-    "source_inventory": "C:\\Users\\himan\\AppData\\Local\\Temp\\polaris-method-evidence-1a1fb8529a5c4f69986bba8b48bb1a00\\legacy-dashboard-complete-application-demo-v1\\source-inventory.json"
+    "facts": "artifacts\\legacy-dashboard-complete-application-demo-v1\\facts.json",
+    "graph_run_status": "artifacts\\legacy-dashboard-complete-application-demo-v1\\graph-run-status.json",
+    "graph_run_summary": "artifacts\\legacy-dashboard-complete-application-demo-v1\\graph-run-summary.md",
+    "knowledge_graph": "artifacts\\legacy-dashboard-complete-application-demo-v1\\knowledge-graph.json",
+    "source_inventory": "artifacts\\legacy-dashboard-complete-application-demo-v1\\source-inventory.json"
   },
   "counts": {
-    "edge_count": 11562,
+    "edge_count": 38876,
     "extraction_warning_count": 0,
-    "fact_count": 14383,
+    "fact_count": 38058,
     "file_count": 2384,
-    "node_count": 6738,
+    "node_count": 16888,
     "review_warning_count": 4453,
     "warning_count": 4453
   },
-  "ended_at": "2026-09-06T10:22:12.925215Z",
+  "ended_at": "2026-09-06T18:22:15.785103Z",
   "neo4j": {
     "requested": false,
     "status": "skipped"
@@ -73,12 +72,7 @@
       "message": "Customer-facing run status artifacts were created.",
       "name": "produce_run_status",
       "status": "succeeded"
-    },
-    {
-      "message": "Validated raw output preserved as legacy-dashboard-complete-application-demo-v1-2026-09-06-102224.",
-      "name": "preserve_review_artifacts",
-      "status": "succeeded"
     }
   ],
-  "started_at": "2026-09-06T10:21:11.779168Z"
+  "started_at": "2026-09-06T18:21:27.413024Z"
 }

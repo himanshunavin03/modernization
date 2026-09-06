@@ -1,0 +1,3043 @@
+{
+  "facts": [
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 60,
+        "line_start": 9,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+        "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+      },
+      "kind": "controller",
+      "name": "AccountController",
+      "properties": {
+        "container_identity": "MyHeatlh.Web.Controllers.AccountController",
+        "namespace": "MyHeatlh.Web.Controllers"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 25,
+        "line_start": 22,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+        "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+      },
+      "kind": "action",
+      "name": "Login",
+      "properties": {
+        "arity": 0,
+        "container_identity": "MyHeatlh.Web.Controllers.AccountController",
+        "controller": "AccountController",
+        "owner": "AccountController",
+        "structural_identity": "MyHeatlh.Web.Controllers.AccountController.Login()@src/MyHealth.Web/Controllers/AccountController.cs",
+        "structural_signature": "()"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 25,
+        "line_start": 22,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+        "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+      },
+      "kind": "backend_handler",
+      "name": "AccountController.Login/0",
+      "properties": {
+        "arity": 0,
+        "function_name": "Login",
+        "handler_kind": "CONTROLLER",
+        "owner": "AccountController"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 24,
+        "line_start": 24,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+        "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+      },
+      "kind": "returns_view",
+      "name": "Login",
+      "properties": {
+        "controller": "AccountController",
+        "unresolved": "implicit View() cannot be matched deterministically"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 47,
+        "line_start": 27,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+        "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+      },
+      "kind": "action",
+      "name": "Login",
+      "properties": {
+        "arity": 2,
+        "container_identity": "MyHeatlh.Web.Controllers.AccountController",
+        "controller": "AccountController",
+        "owner": "AccountController",
+        "structural_identity": "MyHeatlh.Web.Controllers.AccountController.Login(LoginViewModelmodel,stringreturnUrl=null)@src/MyHealth.Web/Controllers/AccountController.cs",
+        "structural_signature": "(LoginViewModelmodel,stringreturnUrl=null)"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 47,
+        "line_start": 27,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+        "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+      },
+      "kind": "backend_handler",
+      "name": "AccountController.Login/2",
+      "properties": {
+        "arity": 2,
+        "function_name": "Login",
+        "handler_kind": "CONTROLLER",
+        "owner": "AccountController"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 33,
+        "line_start": 33,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+        "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+      },
+      "kind": "returns_view",
+      "name": "Login",
+      "properties": {
+        "controller": "AccountController",
+        "unresolved": "implicit View() cannot be matched deterministically"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 45,
+        "line_start": 45,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+        "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+      },
+      "kind": "returns_view",
+      "name": "Login",
+      "properties": {
+        "controller": "AccountController",
+        "unresolved": "implicit View() cannot be matched deterministically"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 59,
+        "line_start": 49,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+        "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+      },
+      "kind": "action",
+      "name": "RedirectToLocal",
+      "properties": {
+        "arity": 1,
+        "container_identity": "MyHeatlh.Web.Controllers.AccountController",
+        "controller": "AccountController",
+        "owner": "AccountController",
+        "structural_identity": "MyHeatlh.Web.Controllers.AccountController.RedirectToLocal(stringreturnUrl)@src/MyHealth.Web/Controllers/AccountController.cs",
+        "structural_signature": "(stringreturnUrl)"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 59,
+        "line_start": 49,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+        "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+      },
+      "kind": "backend_handler",
+      "name": "AccountController.RedirectToLocal/1",
+      "properties": {
+        "arity": 1,
+        "function_name": "RedirectToLocal",
+        "handler_kind": "CONTROLLER",
+        "owner": "AccountController"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 13,
+        "line_start": 6,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+        "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+      },
+      "kind": "controller",
+      "name": "DashboardController",
+      "properties": {
+        "container_identity": "MyHealth.Web.Controllers.DashboardController",
+        "namespace": "MyHealth.Web.Controllers"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 13,
+        "line_start": 6,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+        "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+      },
+      "kind": "authorization_policy",
+      "name": "Authorize",
+      "properties": {
+        "controller": "DashboardController"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 12,
+        "line_start": 9,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+        "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+      },
+      "kind": "action",
+      "name": "Index",
+      "properties": {
+        "arity": 0,
+        "container_identity": "MyHealth.Web.Controllers.DashboardController",
+        "controller": "DashboardController",
+        "owner": "DashboardController",
+        "structural_identity": "MyHealth.Web.Controllers.DashboardController.Index()@src/MyHealth.Web/Controllers/DashboardController.cs",
+        "structural_signature": "()"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 12,
+        "line_start": 9,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+        "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+      },
+      "kind": "backend_handler",
+      "name": "DashboardController.Index/0",
+      "properties": {
+        "arity": 0,
+        "function_name": "Index",
+        "handler_kind": "CONTROLLER",
+        "owner": "DashboardController"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 11,
+        "line_start": 11,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "620c0d4e93ec7ec141fe5636361b16e26738b2894a3685bdc3d1795a832fb5b7",
+        "source_path": "src/MyHealth.Web/Controllers/DashboardController.cs"
+      },
+      "kind": "returns_view",
+      "name": "Index",
+      "properties": {
+        "controller": "DashboardController",
+        "unresolved": "implicit View() cannot be matched deterministically"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 13,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "598a28c3d61170d15ec3f9ca3dafb048ffd1eea94ccf3ff7baf1315d5a34368d",
+        "source_path": "src/MyHealth.Web/Views/Dashboard/Index.cshtml"
+      },
+      "kind": "razor_view",
+      "name": "src/MyHealth.Web/Views/Dashboard/Index.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 12,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+        "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+      },
+      "kind": "partial_view",
+      "name": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 3,
+        "line_start": 3,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+        "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+      },
+      "kind": "ui_control",
+      "name": "ui-view",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 7,
+        "line_start": 7,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+        "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+      },
+      "kind": "ui_control",
+      "name": "toaster-container",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 12,
+        "line_start": 9,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+        "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+      },
+      "kind": "ui_control",
+      "name": "loading-overlay",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 11,
+        "line_start": 11,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "2eaf54af8eed017bc78fecfb75f6fe7570af7a5c30bd412ae5979361773eabfa",
+        "source_path": "src/MyHealth.Web/Views/Dashboard/_Content.cshtml"
+      },
+      "kind": "ui_control",
+      "name": "loading-overlay",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 16,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "1ca16a900c319263ebcae1b8fd1d6515fbb4daf76618bff6088efcc13affb97a",
+        "source_path": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml"
+      },
+      "kind": "partial_view",
+      "name": "src/MyHealth.Web/Views/Dashboard/_Footer.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 3,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "5ea069f9b58f01d7daada2535e57668e8be0c68a71a5840c7ee8bd27b96ebe06",
+        "source_path": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml"
+      },
+      "kind": "partial_view",
+      "name": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 2,
+        "line_start": 2,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "5ea069f9b58f01d7daada2535e57668e8be0c68a71a5840c7ee8bd27b96ebe06",
+        "source_path": "src/MyHealth.Web/Views/Dashboard/_Header.cshtml"
+      },
+      "kind": "client_component",
+      "name": "header-bar",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 11,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ed2a4e94e2c64f14b61b2825d12830db9a288a99fae86b4c02c0b1b0619d4e53",
+        "source_path": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml"
+      },
+      "kind": "partial_view",
+      "name": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 6,
+        "line_start": 4,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ed2a4e94e2c64f14b61b2825d12830db9a288a99fae86b4c02c0b1b0619d4e53",
+        "source_path": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml"
+      },
+      "kind": "ui_action",
+      "name": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml:4:ng-click",
+      "properties": {
+        "element": "div",
+        "event": "ng-click",
+        "expression": "menuOpen = !menuOpen",
+        "handler": null,
+        "text": ""
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 9,
+        "line_start": 9,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ed2a4e94e2c64f14b61b2825d12830db9a288a99fae86b4c02c0b1b0619d4e53",
+        "source_path": "src/MyHealth.Web/Views/Dashboard/_LeftMenu.cshtml"
+      },
+      "kind": "client_component",
+      "name": "left-menu",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 9,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "5be7cfa85fcf4c29ff622cab2feeb6061bc212cdd6dd846c8ff60929e5c25065",
+        "source_path": "src/MyHealth.Web/Views/Shared/Error.cshtml"
+      },
+      "kind": "razor_view",
+      "name": "src/MyHealth.Web/Views/Shared/Error.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 16,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "1ca16a900c319263ebcae1b8fd1d6515fbb4daf76618bff6088efcc13affb97a",
+        "source_path": "src/MyHealth.Web/Views/Shared/_Footer.cshtml"
+      },
+      "kind": "partial_view",
+      "name": "src/MyHealth.Web/Views/Shared/_Footer.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 36,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "db59cda7291242c240e634189eef7e3caa314767087fbe3b7029bfa0bc063f79",
+        "source_path": "src/MyHealth.Web/Views/Shared/_Layout.cshtml"
+      },
+      "kind": "layout",
+      "name": "src/MyHealth.Web/Views/Shared/_Layout.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 14,
+        "line_start": 14,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "db59cda7291242c240e634189eef7e3caa314767087fbe3b7029bfa0bc063f79",
+        "source_path": "src/MyHealth.Web/Views/Shared/_Layout.cshtml"
+      },
+      "kind": "style_asset",
+      "name": "href=\"~/css/public-site.css\"",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 17,
+        "line_start": 17,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "db59cda7291242c240e634189eef7e3caa314767087fbe3b7029bfa0bc063f79",
+        "source_path": "src/MyHealth.Web/Views/Shared/_Layout.cshtml"
+      },
+      "kind": "style_asset",
+      "name": "href=\"~/css/public-site.min.css\"",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 26,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "78a06f717a5babe20b0834a272a5786f025b8e85ae43920755381a5e0990997a",
+        "source_path": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml"
+      },
+      "kind": "layout",
+      "name": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 13,
+        "line_start": 13,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "78a06f717a5babe20b0834a272a5786f025b8e85ae43920755381a5e0990997a",
+        "source_path": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml"
+      },
+      "kind": "style_asset",
+      "name": "href=\"~/css/appointments-site.css\"",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 16,
+        "line_start": 16,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "78a06f717a5babe20b0834a272a5786f025b8e85ae43920755381a5e0990997a",
+        "source_path": "src/MyHealth.Web/Views/Shared/_LayoutAppointments.cshtml"
+      },
+      "kind": "style_asset",
+      "name": "href=\"~/css/appointments-site.min.css\"",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 34,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "e4cbdd1734e6d19228d821acce97caa9840523252221f427199b064446c4eada",
+        "source_path": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml"
+      },
+      "kind": "layout",
+      "name": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 10,
+        "line_start": 10,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "e4cbdd1734e6d19228d821acce97caa9840523252221f427199b064446c4eada",
+        "source_path": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml"
+      },
+      "kind": "style_asset",
+      "name": "href=\"~/css/private-site.css\"",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 13,
+        "line_start": 13,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "e4cbdd1734e6d19228d821acce97caa9840523252221f427199b064446c4eada",
+        "source_path": "src/MyHealth.Web/Views/Shared/_LayoutPrivate.cshtml"
+      },
+      "kind": "style_asset",
+      "name": "href=\"~/css/private-site.min.css\"",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 15,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "25168cb8c1fdd42f88913b5bc0bc861e8e379e453e6918163fece2dd453865fc",
+        "source_path": "src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml"
+      },
+      "kind": "partial_view",
+      "name": "src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 3,
+        "line_start": 3,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "import",
+      "name": "./components/shared/shared.module",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 4,
+        "line_start": 4,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "import",
+      "name": "./components/dashboard/dashboard.module",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 5,
+        "line_start": 5,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "import",
+      "name": "./components/doctors/doctors.module",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 6,
+        "line_start": 6,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "import",
+      "name": "./components/patients/patients.module",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 7,
+        "line_start": 7,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "import",
+      "name": "./components/dailyReport/dailyReport.module",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 8,
+        "line_start": 8,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "import",
+      "name": "./components/users/users.module",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 9,
+        "line_start": 9,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "import",
+      "name": "./components/clinics/clinics.module",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 11,
+        "line_start": 11,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "angular_module",
+      "name": "moduleName",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 20,
+        "line_start": 16,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "frontend_function",
+      "name": "run",
+      "properties": {
+        "function_name": "run",
+        "owner": null
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 17,
+        "line_start": 17,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "frontend_invocation",
+      "name": "initialPageService.getInitialState",
+      "properties": {
+        "caller": "run",
+        "caller_owner": null,
+        "target_function": "getInitialState",
+        "target_owner": "initialPageService"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 18,
+        "line_start": 18,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "navigation",
+      "name": "app.module.run:initialState",
+      "properties": {
+        "function_name": "run",
+        "operation": "go",
+        "owner": null,
+        "target": "initialState"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 86,
+        "line_start": 22,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "frontend_function",
+      "name": "config",
+      "properties": {
+        "function_name": "config",
+        "owner": null
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 85,
+        "line_start": 32,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "route",
+      "name": "error",
+      "properties": {
+        "template": "/app/components/shared/views/error.html",
+        "url": "/404"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 81,
+        "line_start": 32,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "route",
+      "name": "clinic",
+      "properties": {
+        "controller": "clinicDetailController",
+        "template": "/app/components/clinics/views/detail.html",
+        "url": "/clinic?id"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 76,
+        "line_start": 32,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "route",
+      "name": "clinics",
+      "properties": {
+        "controller": "clinicsController",
+        "template": "/app/components/clinics/views/main.html",
+        "url": "/clinics"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 71,
+        "line_start": 32,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "route",
+      "name": "user",
+      "properties": {
+        "controller": "userDetailController",
+        "template": "/app/components/users/views/detail.html",
+        "url": "/user?username"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 66,
+        "line_start": 32,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "route",
+      "name": "users",
+      "properties": {
+        "controller": "usersController",
+        "template": "/app/components/users/views/main.html",
+        "url": "/users"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 61,
+        "line_start": 32,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "route",
+      "name": "dailyReport",
+      "properties": {
+        "controller": "dailyReportController",
+        "template": "/app/components/dailyReport/views/main.html",
+        "url": "/dailyreport"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 56,
+        "line_start": 32,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "route",
+      "name": "patients",
+      "properties": {
+        "controller": "patientsController",
+        "template": "/app/components/patients/views/main.html",
+        "url": "/patients"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 51,
+        "line_start": 32,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "route",
+      "name": "doctor",
+      "properties": {
+        "controller": "doctorDetailController",
+        "template": "/app/components/doctors/views/detail.html",
+        "url": "/doctor?id"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 46,
+        "line_start": 32,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "route",
+      "name": "doctors",
+      "properties": {
+        "controller": "doctorsController",
+        "template": "/app/components/doctors/views/main.html",
+        "url": "/doctors"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 41,
+        "line_start": 32,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "route",
+      "name": "dashboard",
+      "properties": {
+        "controller": "dashboardController",
+        "template": "/app/components/dashboard/views/main.html",
+        "url": "/dashboard"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 36,
+        "line_start": 32,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "278069c4eb6b1da3062deea5b1d2c782aab17b3f2c215ab548e44cdbf83221a0",
+        "source_path": "src/MyHealth.Web/content/app/app.module.js"
+      },
+      "kind": "route",
+      "name": "default",
+      "properties": {
+        "url": "/"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 141,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "angular_controller",
+      "name": "DashboardController",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 140,
+        "line_start": 2,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "frontend_function",
+      "name": "dashboardController.constructor",
+      "properties": {
+        "function_name": "constructor",
+        "owner": "dashboardController"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 6,
+        "line_start": 6,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "state_mutation",
+      "name": "dashboardController.constructor:$scope.incomesExpensesYear",
+      "properties": {
+        "expression": "year",
+        "function_name": "constructor",
+        "owner": "dashboardController",
+        "target": "$scope.incomesExpensesYear"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 7,
+        "line_start": 7,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "state_mutation",
+      "name": "dashboardController.constructor:$scope.patientsYear",
+      "properties": {
+        "expression": "year",
+        "function_name": "constructor",
+        "owner": "dashboardController",
+        "target": "$scope.patientsYear"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 8,
+        "line_start": 8,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "state_mutation",
+      "name": "dashboardController.constructor:$scope.currentYear",
+      "properties": {
+        "expression": "year",
+        "function_name": "constructor",
+        "owner": "dashboardController",
+        "target": "$scope.currentYear"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 14,
+        "line_start": 10,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "frontend_function",
+      "name": "dashboardController.addYearIncomesExpenses",
+      "properties": {
+        "function_name": "addYearIncomesExpenses",
+        "owner": "dashboardController"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 14,
+        "line_start": 10,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "state_mutation",
+      "name": "dashboardController.constructor:$scope.addYearIncomesExpenses",
+      "properties": {
+        "expression": "() => {\r\n            if ($scope.currentYear > $scope.incomesExpensesYear) {\r\n                $scope.incomesExpensesYear += 1;\r\n            }\r\n        }",
+        "function_name": "constructor",
+        "owner": "dashboardController",
+        "target": "$scope.addYearIncomesExpenses"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 18,
+        "line_start": 16,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "frontend_function",
+      "name": "dashboardController.reduceYearIncomesExpenses",
+      "properties": {
+        "function_name": "reduceYearIncomesExpenses",
+        "owner": "dashboardController"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 18,
+        "line_start": 16,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "state_mutation",
+      "name": "dashboardController.constructor:$scope.reduceYearIncomesExpenses",
+      "properties": {
+        "expression": "() => {\r\n            $scope.incomesExpensesYear -= 1;\r\n        }",
+        "function_name": "constructor",
+        "owner": "dashboardController",
+        "target": "$scope.reduceYearIncomesExpenses"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 24,
+        "line_start": 20,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "frontend_function",
+      "name": "dashboardController.addYearPatients",
+      "properties": {
+        "function_name": "addYearPatients",
+        "owner": "dashboardController"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 24,
+        "line_start": 20,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "state_mutation",
+      "name": "dashboardController.constructor:$scope.addYearPatients",
+      "properties": {
+        "expression": "() => {\r\n            if ($scope.currentYear > $scope.patientsYear) {\r\n                $scope.patientsYear += 1;\r\n            }\r\n        }",
+        "function_name": "constructor",
+        "owner": "dashboardController",
+        "target": "$scope.addYearPatients"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 28,
+        "line_start": 26,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "frontend_function",
+      "name": "dashboardController.reduceYearPatients",
+      "properties": {
+        "function_name": "reduceYearPatients",
+        "owner": "dashboardController"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 28,
+        "line_start": 26,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "state_mutation",
+      "name": "dashboardController.constructor:$scope.reduceYearPatients",
+      "properties": {
+        "expression": "() => {\r\n            $scope.patientsYear -= 1;\r\n        }",
+        "function_name": "constructor",
+        "owner": "dashboardController",
+        "target": "$scope.reduceYearPatients"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 37,
+        "line_start": 30,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "frontend_function",
+      "name": "dashboardController.correctYear",
+      "properties": {
+        "function_name": "correctYear",
+        "owner": "dashboardController"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 37,
+        "line_start": 30,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "state_mutation",
+      "name": "dashboardController.constructor:$scope.correctYear",
+      "properties": {
+        "expression": "() => {\r\n            if ($scope.currentYear < $scope.patientsYear) {\r\n                $scope.patientsYear = $scope.currentYear;\r\n            }\r\n            if ($scope.currentYear < $scope.incomesExpensesYear) {\r\n                $scope.incomesExpensesYear = $scope.currentYear;\r\n            }\r\n        }",
+        "function_name": "constructor",
+        "owner": "dashboardController",
+        "target": "$scope.correctYear"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 32,
+        "line_start": 32,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "state_mutation",
+      "name": "dashboardController.correctYear:$scope.patientsYear",
+      "properties": {
+        "expression": "$scope.currentYear",
+        "function_name": "correctYear",
+        "owner": "dashboardController",
+        "target": "$scope.patientsYear"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 35,
+        "line_start": 35,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "state_mutation",
+      "name": "dashboardController.correctYear:$scope.incomesExpensesYear",
+      "properties": {
+        "expression": "$scope.currentYear",
+        "function_name": "correctYear",
+        "owner": "dashboardController",
+        "target": "$scope.incomesExpensesYear"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 67,
+        "line_start": 40,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "state_mutation",
+      "name": "dashboardController.createChartDataIncomesExpenses:$scope.chartDataIncomesExpenses",
+      "properties": {
+        "expression": "{\r\n                scaleLabel: function (valuePayload) {\r\n                    return Number(valuePayload.value).toFixed.replace('.', ',') + '$';\r\n                },\r\n                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],\r\n                datasets: [\r\n                    {\r\n                        label: 'INCOMES',\r\n                        fillColor:  'rgba(0,216,204,0.2)',\r\n                        strokeColor: 'rgba(0,216,204,1)',\r\n                        pointColor: 'rgba(0,216,204,1)',\r\n                        pointStrokeColor: 'rgba(0,216,204,1)',\r\n                        pointHighlightFill: 'rgba(0,216,204,1)',\r\n                        pointHighlightStroke:  '#fff',\r\n                        data: incomes\r\n                    },\r\n                    {\r\n                        label: 'EXPENSES',\r\n                        fillColor:  'rgba(255,23,112,0.2)',\r\n                        strokeColor: 'rgba(255,23,112,1)',\r\n                        pointColor: 'rgba(255,23,112,1)',\r\n                        pointStrokeColor: 'rgba(255,23,112,1)',\r\n                        pointHighlightFill: 'rgba(255,23,112,1)',\r\n                        pointHighlightStroke:  '#fff',\r\n                        data: expenses\r\n                    }\r\n                ]\r\n            }",
+        "function_name": "createChartDataIncomesExpenses",
+        "owner": "dashboardController",
+        "target": "$scope.chartDataIncomesExpenses"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 84,
+        "line_start": 70,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "state_mutation",
+      "name": "dashboardController.createChartDataPatients:$scope.chartDataPatients",
+      "properties": {
+        "expression": "{\r\n                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],\r\n                datasets: [\r\n                    {\r\n                        label: 'PATIENTS',\r\n                        fillColor:  'rgba(0,216,204,1)',\r\n                        strokeColor: 'rgba(0,216,204,1)',\r\n                        pointColor: 'rgba(0,216,204,1)',\r\n                        pointStrokeColor: 'rgba(0,216,204,1)',\r\n                        pointHighlightFill: 'rgba(0,216,204,1)',\r\n                        pointHighlightStroke:  '#fff',\r\n                        data: patients\r\n                    }\r\n                ]\r\n            }",
+        "function_name": "createChartDataPatients",
+        "owner": "dashboardController",
+        "target": "$scope.chartDataPatients"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 87,
+        "line_start": 87,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "state_mutation",
+      "name": "dashboardController.constructor:$rootScope.loading",
+      "properties": {
+        "expression": "true",
+        "function_name": "constructor",
+        "owner": "dashboardController",
+        "target": "$rootScope.loading"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 88,
+        "line_start": 88,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "frontend_invocation",
+      "name": "dashboardService.getSummary",
+      "properties": {
+        "caller": "constructor",
+        "caller_owner": "dashboardController",
+        "target_function": "getSummary",
+        "target_owner": "dashboardService"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 90,
+        "line_start": 90,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "state_mutation",
+      "name": "dashboardController.constructor:$scope.summary",
+      "properties": {
+        "expression": "summary",
+        "function_name": "constructor",
+        "owner": "dashboardController",
+        "target": "$scope.summary"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 93,
+        "line_start": 93,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "frontend_invocation",
+      "name": "toasterService.showServerError",
+      "properties": {
+        "caller": "constructor",
+        "caller_owner": "dashboardController",
+        "target_function": "showServerError",
+        "target_owner": "toasterService"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 96,
+        "line_start": 96,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "state_mutation",
+      "name": "dashboardController.constructor:$rootScope.loading",
+      "properties": {
+        "expression": "false",
+        "function_name": "constructor",
+        "owner": "dashboardController",
+        "target": "$rootScope.loading"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 107,
+        "line_start": 107,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "frontend_invocation",
+      "name": "dashboardService.getExpenses",
+      "properties": {
+        "caller": "constructor",
+        "caller_owner": "dashboardController",
+        "target_function": "getExpenses",
+        "target_owner": "dashboardService"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 117,
+        "line_start": 117,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "frontend_invocation",
+      "name": "toasterService.showServerError",
+      "properties": {
+        "caller": "constructor",
+        "caller_owner": "dashboardController",
+        "target_function": "showServerError",
+        "target_owner": "toasterService"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 127,
+        "line_start": 127,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "frontend_invocation",
+      "name": "dashboardService.getPatients",
+      "properties": {
+        "caller": "constructor",
+        "caller_owner": "dashboardController",
+        "target_function": "getPatients",
+        "target_owner": "dashboardService"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 136,
+        "line_start": 136,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "d2db71141b58179b4eef53aa2edbad08dfaab06d986e30c0502e24eafa0981f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js"
+      },
+      "kind": "frontend_invocation",
+      "name": "toasterService.showServerError",
+      "properties": {
+        "caller": "constructor",
+        "caller_owner": "dashboardController",
+        "target_function": "showServerError",
+        "target_owner": "toasterService"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 3,
+        "line_start": 3,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+      },
+      "kind": "import",
+      "name": "./controllers/dashboardController",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 4,
+        "line_start": 4,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+      },
+      "kind": "import",
+      "name": "./services/dashboardService",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 5,
+        "line_start": 5,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+      },
+      "kind": "import",
+      "name": "./directives/MHChartDirective",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 10,
+        "line_start": 7,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+      },
+      "kind": "angular_service",
+      "name": "dashboardService",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 9,
+        "line_start": 7,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+      },
+      "kind": "angular_controller",
+      "name": "dashboardController",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 8,
+        "line_start": 7,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+      },
+      "kind": "angular_directive",
+      "name": "chart",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 8,
+        "line_start": 7,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+      },
+      "kind": "chart",
+      "name": "chart",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 7,
+        "line_start": 7,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "b77f6b3b51478dc95e839a09ae7a8d011d79762c44afcd37b89d26fb315543ee",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/dashboard.module.js"
+      },
+      "kind": "angular_module",
+      "name": "moduleName",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 150,
+        "line_start": 3,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "angular_directive",
+      "name": "MHChart",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 11,
+        "line_start": 4,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "frontend_function",
+      "name": "constructor",
+      "properties": {
+        "function_name": "constructor",
+        "owner": null
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 5,
+        "line_start": 5,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "MHChartDirective.constructor:this.restrict",
+      "properties": {
+        "expression": "A",
+        "function_name": "constructor",
+        "owner": null,
+        "target": "this.restrict"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 9,
+        "line_start": 6,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "MHChartDirective.constructor:this.scope",
+      "properties": {
+        "expression": "{\r\n            'chartdata' : '=',\r\n            'kind': '@'\r\n        }",
+        "function_name": "constructor",
+        "owner": null,
+        "target": "this.scope"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 144,
+        "line_start": 13,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "frontend_function",
+      "name": "link",
+      "properties": {
+        "function_name": "link",
+        "owner": null
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 109,
+        "line_start": 109,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "MHChartDirective.link:ctx.canvas.height",
+      "properties": {
+        "expression": "80",
+        "function_name": "link",
+        "owner": null,
+        "target": "ctx.canvas.height"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 110,
+        "line_start": 110,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "MHChartDirective.link:scope.incomeExpensesChart",
+      "properties": {
+        "expression": "new Chart(ctx).Line(scope.chartdata, options)",
+        "function_name": "link",
+        "owner": null,
+        "target": "scope.incomeExpensesChart"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 112,
+        "line_start": 112,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "MHChartDirective.link:document.getElementById('legendIncomeExpenses').innerHTML",
+      "properties": {
+        "expression": "legend",
+        "function_name": "link",
+        "owner": null,
+        "target": "document.getElementById('legendIncomeExpenses').innerHTML"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 116,
+        "line_start": 116,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "MHChartDirective.link:ctx.canvas.height",
+      "properties": {
+        "expression": "80",
+        "function_name": "link",
+        "owner": null,
+        "target": "ctx.canvas.height"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 117,
+        "line_start": 117,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "MHChartDirective.link:scope.patientsChart",
+      "properties": {
+        "expression": "new Chart(ctx).Bar(scope.chartdata, options)",
+        "function_name": "link",
+        "owner": null,
+        "target": "scope.patientsChart"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 124,
+        "line_start": 124,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "MHChartDirective.link:scope.incomeExpensesChart.datasets[0].points[index].value",
+      "properties": {
+        "expression": "elem",
+        "function_name": "link",
+        "owner": null,
+        "target": "scope.incomeExpensesChart.datasets[0].points[index].value"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 128,
+        "line_start": 128,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "MHChartDirective.link:scope.incomeExpensesChart.datasets[1].points[index].value",
+      "properties": {
+        "expression": "elem",
+        "function_name": "link",
+        "owner": null,
+        "target": "scope.incomeExpensesChart.datasets[1].points[index].value"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 136,
+        "line_start": 136,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "MHChartDirective.link:scope.patientsChart.datasets[0].bars[index].value",
+      "properties": {
+        "expression": "elem",
+        "function_name": "link",
+        "owner": null,
+        "target": "scope.patientsChart.datasets[0].bars[index].value"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 143,
+        "line_start": 143,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "MHChartDirective.link:Chart.defaults.global.responsive",
+      "properties": {
+        "expression": "true",
+        "function_name": "link",
+        "owner": null,
+        "target": "Chart.defaults.global.responsive"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 149,
+        "line_start": 146,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "frontend_function",
+      "name": "directiveFactory",
+      "properties": {
+        "function_name": "directiveFactory",
+        "owner": null
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 147,
+        "line_start": 147,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "MHChartDirective.directiveFactory:MHChart.instance",
+      "properties": {
+        "expression": "new MHChart($filter)",
+        "function_name": "directiveFactory",
+        "owner": null,
+        "target": "MHChart.instance"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 152,
+        "line_start": 152,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "ce1f9cc083fc5bfce24d6b6058fc28faff907644f36200cff6c46d56e4b12af5",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/directives/MHChartDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "MHChartDirective.module:MHChart.directiveFactory.$inject",
+      "properties": {
+        "expression": "['$filter']",
+        "function_name": null,
+        "owner": null,
+        "target": "MHChart.directiveFactory.$inject"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 81,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "frontend_function",
+      "name": "DashboardService.DashboardService",
+      "properties": {
+        "function_name": "DashboardService",
+        "owner": "DashboardService"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 32,
+        "line_start": 10,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "frontend_function",
+      "name": "DashboardService.getSummary",
+      "properties": {
+        "function_name": "getSummary",
+        "owner": "DashboardService"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 56,
+        "line_start": 34,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "frontend_function",
+      "name": "DashboardService.getExpenses",
+      "properties": {
+        "function_name": "getExpenses",
+        "owner": "DashboardService"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 80,
+        "line_start": 58,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "frontend_function",
+      "name": "DashboardService.getPatients",
+      "properties": {
+        "function_name": "getPatients",
+        "owner": "DashboardService"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 25,
+        "line_start": 25,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "13fec6b1663ec25e2ce9170fc2202ad5fd73b8fc39fb437d5e95f023bf5774cf",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+      },
+      "kind": "ui_action",
+      "name": "src/MyHealth.Web/content/app/components/dashboard/views/main.html:25:ng-click",
+      "properties": {
+        "element": "span",
+        "event": "ng-click",
+        "expression": "reduceYearIncomesExpenses()",
+        "handler": "reduceYearIncomesExpenses",
+        "text": ""
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 27,
+        "line_start": 27,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "13fec6b1663ec25e2ce9170fc2202ad5fd73b8fc39fb437d5e95f023bf5774cf",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+      },
+      "kind": "ui_action",
+      "name": "src/MyHealth.Web/content/app/components/dashboard/views/main.html:27:ng-click",
+      "properties": {
+        "element": "span",
+        "event": "ng-click",
+        "expression": "addYearIncomesExpenses()",
+        "handler": "addYearIncomesExpenses",
+        "text": ""
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 38,
+        "line_start": 38,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "13fec6b1663ec25e2ce9170fc2202ad5fd73b8fc39fb437d5e95f023bf5774cf",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+      },
+      "kind": "ui_action",
+      "name": "src/MyHealth.Web/content/app/components/dashboard/views/main.html:38:ng-click",
+      "properties": {
+        "element": "span",
+        "event": "ng-click",
+        "expression": "reduceYearPatients()",
+        "handler": "reduceYearPatients",
+        "text": ""
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 40,
+        "line_start": 40,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "13fec6b1663ec25e2ce9170fc2202ad5fd73b8fc39fb437d5e95f023bf5774cf",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/views/main.html"
+      },
+      "kind": "ui_action",
+      "name": "src/MyHealth.Web/content/app/components/dashboard/views/main.html:40:ng-click",
+      "properties": {
+        "element": "span",
+        "event": "ng-click",
+        "expression": "addYearPatients()",
+        "handler": "addYearPatients",
+        "text": ""
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 29,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0cffc73511fd01e81cae0477368c6865f266bbdc8073c56da4cd13a6c75976ad",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js"
+      },
+      "kind": "angular_directive",
+      "name": "HeaderBar",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 7,
+        "line_start": 2,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0cffc73511fd01e81cae0477368c6865f266bbdc8073c56da4cd13a6c75976ad",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js"
+      },
+      "kind": "frontend_function",
+      "name": "constructor",
+      "properties": {
+        "function_name": "constructor",
+        "owner": null
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 3,
+        "line_start": 3,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0cffc73511fd01e81cae0477368c6865f266bbdc8073c56da4cd13a6c75976ad",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "headerBarDirective.constructor:this.restrict",
+      "properties": {
+        "expression": "E",
+        "function_name": "constructor",
+        "owner": null,
+        "target": "this.restrict"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 4,
+        "line_start": 4,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0cffc73511fd01e81cae0477368c6865f266bbdc8073c56da4cd13a6c75976ad",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "headerBarDirective.constructor:this.templateUrl",
+      "properties": {
+        "expression": "/app/components/shared/directives/headerBar/headerBarTemplate.html",
+        "function_name": "constructor",
+        "owner": null,
+        "target": "this.templateUrl"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 5,
+        "line_start": 5,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0cffc73511fd01e81cae0477368c6865f266bbdc8073c56da4cd13a6c75976ad",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "headerBarDirective.constructor:this.controller",
+      "properties": {
+        "expression": "headerController",
+        "function_name": "constructor",
+        "owner": null,
+        "target": "this.controller"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 6,
+        "line_start": 6,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0cffc73511fd01e81cae0477368c6865f266bbdc8073c56da4cd13a6c75976ad",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "headerBarDirective.constructor:this.controllerAs",
+      "properties": {
+        "expression": "vm",
+        "function_name": "constructor",
+        "owner": null,
+        "target": "this.controllerAs"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 23,
+        "line_start": 9,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0cffc73511fd01e81cae0477368c6865f266bbdc8073c56da4cd13a6c75976ad",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js"
+      },
+      "kind": "frontend_function",
+      "name": "link",
+      "properties": {
+        "function_name": "link",
+        "owner": null
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 15,
+        "line_start": 15,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0cffc73511fd01e81cae0477368c6865f266bbdc8073c56da4cd13a6c75976ad",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "headerBarDirective.link:scope.menuOpen",
+      "properties": {
+        "expression": "false",
+        "function_name": "link",
+        "owner": null,
+        "target": "scope.menuOpen"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 28,
+        "line_start": 25,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0cffc73511fd01e81cae0477368c6865f266bbdc8073c56da4cd13a6c75976ad",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js"
+      },
+      "kind": "frontend_function",
+      "name": "directiveFactory",
+      "properties": {
+        "function_name": "directiveFactory",
+        "owner": null
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 26,
+        "line_start": 26,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "0cffc73511fd01e81cae0477368c6865f266bbdc8073c56da4cd13a6c75976ad",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "headerBarDirective.directiveFactory:HeaderBar.instance",
+      "properties": {
+        "expression": "new HeaderBar()",
+        "function_name": "directiveFactory",
+        "owner": null,
+        "target": "HeaderBar.instance"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 1,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "3812a6498a1b7c55d2aa801fb64cbd7ad378dc9ab44d3e4ad99345b82506efb8",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarTemplate.html"
+      },
+      "kind": "ui_action",
+      "name": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarTemplate.html:1:ng-click",
+      "properties": {
+        "element": "div",
+        "event": "ng-click",
+        "expression": "menuOpen = !menuOpen",
+        "handler": null,
+        "text": ""
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 6,
+        "line_start": 6,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "3812a6498a1b7c55d2aa801fb64cbd7ad378dc9ab44d3e4ad99345b82506efb8",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarTemplate.html"
+      },
+      "kind": "ui_condition",
+      "name": "src/MyHealth.Web/content/app/components/shared/directives/headerBar/headerBarTemplate.html:6:ng-show",
+      "properties": {
+        "condition": "vm.subtitle",
+        "element": "span",
+        "text": "{{vm.subtitle}}",
+        "visibility": "SHOW"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 13,
+        "line_start": 1,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "24efbf80440f17ff0d4cfe4cf47ffd0d2e233c625c7a54281207359aec10796c",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js"
+      },
+      "kind": "angular_directive",
+      "name": "LeftMenu",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 7,
+        "line_start": 2,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "24efbf80440f17ff0d4cfe4cf47ffd0d2e233c625c7a54281207359aec10796c",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js"
+      },
+      "kind": "frontend_function",
+      "name": "constructor",
+      "properties": {
+        "function_name": "constructor",
+        "owner": null
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 3,
+        "line_start": 3,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "24efbf80440f17ff0d4cfe4cf47ffd0d2e233c625c7a54281207359aec10796c",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "leftMenuDirective.constructor:this.restrict",
+      "properties": {
+        "expression": "E",
+        "function_name": "constructor",
+        "owner": null,
+        "target": "this.restrict"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 4,
+        "line_start": 4,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "24efbf80440f17ff0d4cfe4cf47ffd0d2e233c625c7a54281207359aec10796c",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "leftMenuDirective.constructor:this.templateUrl",
+      "properties": {
+        "expression": "/app/components/shared/directives/leftMenu/leftMenuTemplate.html",
+        "function_name": "constructor",
+        "owner": null,
+        "target": "this.templateUrl"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 5,
+        "line_start": 5,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "24efbf80440f17ff0d4cfe4cf47ffd0d2e233c625c7a54281207359aec10796c",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "leftMenuDirective.constructor:this.controller",
+      "properties": {
+        "expression": "headerController",
+        "function_name": "constructor",
+        "owner": null,
+        "target": "this.controller"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 6,
+        "line_start": 6,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "24efbf80440f17ff0d4cfe4cf47ffd0d2e233c625c7a54281207359aec10796c",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "leftMenuDirective.constructor:this.controllerAs",
+      "properties": {
+        "expression": "vm",
+        "function_name": "constructor",
+        "owner": null,
+        "target": "this.controllerAs"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 12,
+        "line_start": 9,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "24efbf80440f17ff0d4cfe4cf47ffd0d2e233c625c7a54281207359aec10796c",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js"
+      },
+      "kind": "frontend_function",
+      "name": "directiveFactory",
+      "properties": {
+        "function_name": "directiveFactory",
+        "owner": null
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 10,
+        "line_start": 10,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "24efbf80440f17ff0d4cfe4cf47ffd0d2e233c625c7a54281207359aec10796c",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuDirective.js"
+      },
+      "kind": "state_mutation",
+      "name": "leftMenuDirective.directiveFactory:LeftMenu.instance",
+      "properties": {
+        "expression": "new LeftMenu()",
+        "function_name": "directiveFactory",
+        "owner": null,
+        "target": "LeftMenu.instance"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 10,
+        "line_start": 3,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "e5bb24002d225b2c9c5e3318addee0b121379b268b2d206bad3acf571fccac74",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html"
+      },
+      "kind": "ui_condition",
+      "name": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html:3:ng-if",
+      "properties": {
+        "condition": "vm.canManageUsers",
+        "element": "li",
+        "text": "Users",
+        "visibility": "RENDER"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 18,
+        "line_start": 11,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "e5bb24002d225b2c9c5e3318addee0b121379b268b2d206bad3acf571fccac74",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html"
+      },
+      "kind": "ui_condition",
+      "name": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html:11:ng-if",
+      "properties": {
+        "condition": "vm.canManageTenants",
+        "element": "li",
+        "text": "Clinics",
+        "visibility": "RENDER"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 26,
+        "line_start": 19,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "e5bb24002d225b2c9c5e3318addee0b121379b268b2d206bad3acf571fccac74",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html"
+      },
+      "kind": "ui_condition",
+      "name": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html:19:ng-if",
+      "properties": {
+        "condition": "!vm.canManageUsers && !vm.canManageTenants",
+        "element": "li",
+        "text": "Dashboard",
+        "visibility": "RENDER"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 34,
+        "line_start": 27,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "e5bb24002d225b2c9c5e3318addee0b121379b268b2d206bad3acf571fccac74",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html"
+      },
+      "kind": "ui_condition",
+      "name": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html:27:ng-if",
+      "properties": {
+        "condition": "!vm.canManageUsers && !vm.canManageTenants",
+        "element": "li",
+        "text": "Doctors",
+        "visibility": "RENDER"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 42,
+        "line_start": 35,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "e5bb24002d225b2c9c5e3318addee0b121379b268b2d206bad3acf571fccac74",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html"
+      },
+      "kind": "ui_condition",
+      "name": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html:35:ng-if",
+      "properties": {
+        "condition": "!vm.canManageUsers && !vm.canManageTenants",
+        "element": "li",
+        "text": "Patients",
+        "visibility": "RENDER"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 50,
+        "line_start": 43,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "e5bb24002d225b2c9c5e3318addee0b121379b268b2d206bad3acf571fccac74",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html"
+      },
+      "kind": "ui_condition",
+      "name": "src/MyHealth.Web/content/app/components/shared/directives/leftMenu/leftMenuTemplate.html:43:ng-if",
+      "properties": {
+        "condition": "!vm.canManageUsers && !vm.canManageTenants",
+        "element": "li",
+        "text": "Daily Report",
+        "visibility": "RENDER"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 3,
+        "line_start": 3,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+      },
+      "kind": "import",
+      "name": "./directives/leftMenu/leftMenuDirective",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 4,
+        "line_start": 4,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+      },
+      "kind": "import",
+      "name": "./directives/headerBar/headerBarDirective",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 5,
+        "line_start": 5,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+      },
+      "kind": "import",
+      "name": "./controllers/headerController",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 6,
+        "line_start": 6,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+      },
+      "kind": "import",
+      "name": "./services/toasterService",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 7,
+        "line_start": 7,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+      },
+      "kind": "import",
+      "name": "./services/modalService",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 8,
+        "line_start": 8,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+      },
+      "kind": "import",
+      "name": "./services/initialPageService",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 9,
+        "line_start": 9,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+      },
+      "kind": "import",
+      "name": "./services/exceptionHandler",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 10,
+        "line_start": 10,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+      },
+      "kind": "import",
+      "name": "./filters/camelCaseFilter",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 18,
+        "line_start": 12,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+      },
+      "kind": "angular_service",
+      "name": "initialPageService",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 17,
+        "line_start": 12,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+      },
+      "kind": "angular_service",
+      "name": "modalService",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 16,
+        "line_start": 12,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+      },
+      "kind": "angular_service",
+      "name": "toasterService",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 15,
+        "line_start": 12,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+      },
+      "kind": "angular_controller",
+      "name": "headerController",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 14,
+        "line_start": 12,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+      },
+      "kind": "angular_directive",
+      "name": "headerBar",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 13,
+        "line_start": 12,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+      },
+      "kind": "angular_directive",
+      "name": "leftMenu",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 12,
+        "line_start": 12,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "336eb2d9d5a1d76520fcaeaf52bacb1ed298830bd834ea80d9fba78c3c704784",
+        "source_path": "src/MyHealth.Web/content/app/components/shared/shared.module.js"
+      },
+      "kind": "angular_module",
+      "name": "moduleName",
+      "properties": {}
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "framework-analyzer",
+        "line_end": 29,
+        "line_start": 29,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "1d8da20851fb2e0fbd948cb7181dcbd15fd1dd7331c0b3ce551972069c99c6f1",
+        "source_path": "src/MyHealth.Web/Controllers/AccountController.cs"
+      },
+      "kind": "endpoint",
+      "name": "POST /",
+      "properties": {
+        "action": "Login",
+        "controller": "AccountController",
+        "controller_route_template": "",
+        "framework": "ASP.NET",
+        "http_method": "POST",
+        "method_route_template": "",
+        "normalized_route": "/",
+        "parameters": [
+          "model",
+          "null"
+        ],
+        "path_parameters": [],
+        "provenance": "FRAMEWORK_PROVEN",
+        "query_parameters": [],
+        "request_fields": [],
+        "request_type": null,
+        "response_fields": [],
+        "response_type": "Task<IActionResult>",
+        "route_template": "",
+        "route_token_resolution": {}
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 21,
+        "line_start": 18,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "api_call",
+      "name": "/api/users/current/tenant",
+      "properties": {
+        "base_url_source": null,
+        "candidate_backend_endpoints": [],
+        "controller_or_component": null,
+        "dynamic_segments": [],
+        "external": false,
+        "framework": "AngularJS",
+        "frontend_call_id": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:18:GET:/api/users/current/tenant",
+        "function_name": "getSummary",
+        "http_method": "GET",
+        "match_detail_status": "NO_BACKEND_MATCH",
+        "match_status": "NO_BACKEND_ROUTE",
+        "normalized_route": "/api/users/current/tenant",
+        "normalized_route_template": "/api/users/current/tenant",
+        "query_components": [],
+        "raw_url_expression": "/api/users/current/tenant",
+        "relationship_reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+        "request_header_components": [],
+        "resolution_strategy": "NO_COMPATIBLE_ENDPOINT",
+        "resolver_version": "2026-09-02",
+        "service": "DashboardService",
+        "url_source_kind": "inline_expression",
+        "url_source_name": null
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 30,
+        "line_start": 24,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "api_call",
+      "name": "/api/reports/clinicsummary",
+      "properties": {
+        "base_url_source": "url",
+        "candidate_backend_endpoints": [],
+        "controller_or_component": null,
+        "dynamic_segments": [],
+        "external": false,
+        "framework": "AngularJS",
+        "frontend_call_id": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:24:GET:/api/reports/clinicsummary",
+        "function_name": "getSummary",
+        "http_method": "GET",
+        "match_detail_status": "NO_BACKEND_MATCH",
+        "match_status": "NO_BACKEND_ROUTE",
+        "normalized_route": "/api/reports/clinicsummary",
+        "normalized_route_template": "/api/reports/clinicsummary",
+        "query_components": [],
+        "raw_url_expression": "/api/reports/clinicsummary",
+        "relationship_reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+        "request_header_components": [
+          "TenantId"
+        ],
+        "resolution_strategy": "NO_COMPATIBLE_ENDPOINT",
+        "resolver_version": "2026-09-02",
+        "service": "DashboardService",
+        "url_source_kind": "identifier",
+        "url_source_name": "url"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 45,
+        "line_start": 42,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "api_call",
+      "name": "/api/users/current/tenant",
+      "properties": {
+        "base_url_source": null,
+        "candidate_backend_endpoints": [],
+        "controller_or_component": null,
+        "dynamic_segments": [],
+        "external": false,
+        "framework": "AngularJS",
+        "frontend_call_id": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:42:GET:/api/users/current/tenant",
+        "function_name": "getExpenses",
+        "http_method": "GET",
+        "match_detail_status": "NO_BACKEND_MATCH",
+        "match_status": "NO_BACKEND_ROUTE",
+        "normalized_route": "/api/users/current/tenant",
+        "normalized_route_template": "/api/users/current/tenant",
+        "query_components": [],
+        "raw_url_expression": "/api/users/current/tenant",
+        "relationship_reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+        "request_header_components": [],
+        "resolution_strategy": "NO_COMPATIBLE_ENDPOINT",
+        "resolver_version": "2026-09-02",
+        "service": "DashboardService",
+        "url_source_kind": "inline_expression",
+        "url_source_name": null
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 54,
+        "line_start": 48,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "api_call",
+      "name": "'/api/reports/expenses/' + year",
+      "properties": {
+        "base_url_source": "url",
+        "candidate_backend_endpoints": [],
+        "controller_or_component": null,
+        "dynamic_segments": [
+          "year"
+        ],
+        "external": false,
+        "framework": "AngularJS",
+        "frontend_call_id": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:48:GET:'/api/reports/expenses/' + year",
+        "function_name": "getExpenses",
+        "http_method": "GET",
+        "match_detail_status": "NO_BACKEND_MATCH",
+        "match_status": "NO_BACKEND_ROUTE",
+        "normalized_route": "/api/reports/expenses/{PARAM}",
+        "normalized_route_template": "/api/reports/expenses/{PARAM}",
+        "query_components": [],
+        "raw_url_expression": "'/api/reports/expenses/' + year",
+        "relationship_reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+        "request_header_components": [
+          "TenantId"
+        ],
+        "resolution_strategy": "NO_COMPATIBLE_ENDPOINT",
+        "resolver_version": "2026-09-02",
+        "service": "DashboardService",
+        "url_source_kind": "identifier",
+        "url_source_name": "url"
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 69,
+        "line_start": 66,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "api_call",
+      "name": "/api/users/current/tenant",
+      "properties": {
+        "base_url_source": null,
+        "candidate_backend_endpoints": [],
+        "controller_or_component": null,
+        "dynamic_segments": [],
+        "external": false,
+        "framework": "AngularJS",
+        "frontend_call_id": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:66:GET:/api/users/current/tenant",
+        "function_name": "getPatients",
+        "http_method": "GET",
+        "match_detail_status": "NO_BACKEND_MATCH",
+        "match_status": "NO_BACKEND_ROUTE",
+        "normalized_route": "/api/users/current/tenant",
+        "normalized_route_template": "/api/users/current/tenant",
+        "query_components": [],
+        "raw_url_expression": "/api/users/current/tenant",
+        "relationship_reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+        "request_header_components": [],
+        "resolution_strategy": "NO_COMPATIBLE_ENDPOINT",
+        "resolver_version": "2026-09-02",
+        "service": "DashboardService",
+        "url_source_kind": "inline_expression",
+        "url_source_name": null
+      }
+    },
+    {
+      "evidence": {
+        "confidence": 1.0,
+        "extraction_method": "tree-sitter",
+        "line_end": 78,
+        "line_start": 72,
+        "project_id": "legacy-dashboard-complete-application-demo-v1",
+        "source_hash": "64ddecc7c7adcecbbfbafa470745512166d30bd796d635f75ef9067793ac00f8",
+        "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
+      },
+      "kind": "api_call",
+      "name": "'/api/reports/patients/' + year",
+      "properties": {
+        "base_url_source": "url",
+        "candidate_backend_endpoints": [],
+        "controller_or_component": null,
+        "dynamic_segments": [
+          "year"
+        ],
+        "external": false,
+        "framework": "AngularJS",
+        "frontend_call_id": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:72:GET:'/api/reports/patients/' + year",
+        "function_name": "getPatients",
+        "http_method": "GET",
+        "match_detail_status": "NO_BACKEND_MATCH",
+        "match_status": "NO_BACKEND_ROUTE",
+        "normalized_route": "/api/reports/patients/{PARAM}",
+        "normalized_route_template": "/api/reports/patients/{PARAM}",
+        "query_components": [],
+        "raw_url_expression": "'/api/reports/patients/' + year",
+        "relationship_reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+        "request_header_components": [
+          "TenantId"
+        ],
+        "resolution_strategy": "NO_COMPATIBLE_ENDPOINT",
+        "resolver_version": "2026-09-02",
+        "service": "DashboardService",
+        "url_source_kind": "identifier",
+        "url_source_name": "url"
+      }
+    }
+  ],
+  "project_id": "legacy-dashboard-complete-application-demo-v1"
+}

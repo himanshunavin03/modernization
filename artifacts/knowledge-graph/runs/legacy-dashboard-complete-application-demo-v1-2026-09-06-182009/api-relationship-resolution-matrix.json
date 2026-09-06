@@ -1,0 +1,89 @@
+{
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "rows": [
+    {
+      "backend_candidate": null,
+      "backend_method": null,
+      "backend_route": null,
+      "candidate_count": 0,
+      "frontend_call": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:18:GET:/api/users/current/tenant",
+      "frontend_method": "GET",
+      "frontend_route": "/api/users/current/tenant",
+      "match_strategy": "NO_COMPATIBLE_ENDPOINT",
+      "normalized_backend_route": null,
+      "normalized_frontend_route": "/api/users/current/tenant",
+      "reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+      "result": "NO_BACKEND_ROUTE"
+    },
+    {
+      "backend_candidate": null,
+      "backend_method": null,
+      "backend_route": null,
+      "candidate_count": 0,
+      "frontend_call": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:24:GET:/api/reports/clinicsummary",
+      "frontend_method": "GET",
+      "frontend_route": "/api/reports/clinicsummary",
+      "match_strategy": "NO_COMPATIBLE_ENDPOINT",
+      "normalized_backend_route": null,
+      "normalized_frontend_route": "/api/reports/clinicsummary",
+      "reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+      "result": "NO_BACKEND_ROUTE"
+    },
+    {
+      "backend_candidate": null,
+      "backend_method": null,
+      "backend_route": null,
+      "candidate_count": 0,
+      "frontend_call": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:42:GET:/api/users/current/tenant",
+      "frontend_method": "GET",
+      "frontend_route": "/api/users/current/tenant",
+      "match_strategy": "NO_COMPATIBLE_ENDPOINT",
+      "normalized_backend_route": null,
+      "normalized_frontend_route": "/api/users/current/tenant",
+      "reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+      "result": "NO_BACKEND_ROUTE"
+    },
+    {
+      "backend_candidate": null,
+      "backend_method": null,
+      "backend_route": null,
+      "candidate_count": 0,
+      "frontend_call": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:48:GET:'/api/reports/expenses/' + year",
+      "frontend_method": "GET",
+      "frontend_route": "'/api/reports/expenses/' + year",
+      "match_strategy": "NO_COMPATIBLE_ENDPOINT",
+      "normalized_backend_route": null,
+      "normalized_frontend_route": "/api/reports/expenses/{PARAM}",
+      "reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+      "result": "NO_BACKEND_ROUTE"
+    },
+    {
+      "backend_candidate": null,
+      "backend_method": null,
+      "backend_route": null,
+      "candidate_count": 0,
+      "frontend_call": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:66:GET:/api/users/current/tenant",
+      "frontend_method": "GET",
+      "frontend_route": "/api/users/current/tenant",
+      "match_strategy": "NO_COMPATIBLE_ENDPOINT",
+      "normalized_backend_route": null,
+      "normalized_frontend_route": "/api/users/current/tenant",
+      "reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+      "result": "NO_BACKEND_ROUTE"
+    },
+    {
+      "backend_candidate": null,
+      "backend_method": null,
+      "backend_route": null,
+      "candidate_count": 0,
+      "frontend_call": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:72:GET:'/api/reports/patients/' + year",
+      "frontend_method": "GET",
+      "frontend_route": "'/api/reports/patients/' + year",
+      "match_strategy": "NO_COMPATIBLE_ENDPOINT",
+      "normalized_backend_route": null,
+      "normalized_frontend_route": "/api/reports/patients/{PARAM}",
+      "reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+      "result": "NO_BACKEND_ROUTE"
+    }
+  ]
+}

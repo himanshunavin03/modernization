@@ -95,6 +95,16 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
                 "handler": _handler(expression),
                 "text": element_text,
             }))
+        for attribute, visibility in (("ng-show", "SHOW"), ("ng-hide", "HIDE"), ("ng-if", "RENDER")):
+            if attribute in attributes:
+                facts.append(Fact("ui_condition", f"{relative_path}:{node.start_point.row + 1}:{attribute}", node_evidence, {
+                    "element": tag_name, "condition": attribute_values[attribute], "visibility": visibility,
+                    "text": element_text,
+                }))
+        if "ng-disabled" in attributes:
+            facts.append(Fact("validation_condition", f"{relative_path}:{node.start_point.row + 1}:ng-disabled", node_evidence, {
+                "element": tag_name, "condition": attribute_values["ng-disabled"], "text": element_text,
+            }))
         if "required" in attributes or attribute_values.get("type", "").lower() == "email":
             facts.append(Fact("ui_validation", f"{relative_path}:{node.start_point.row + 1}", node_evidence, {
                 "element": tag_name,

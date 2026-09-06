@@ -31,6 +31,12 @@ KIND_TO_LABEL = {
     "ui_action": "UIAction",
     "ui_validation": "UIValidation",
     "ui_selection": "UISelection",
+    "ui_condition": "UICondition",
+    "validation_condition": "ValidationCondition",
+    "state_mutation": "StateMutation",
+    "collection_mutation": "CollectionMutation",
+    "navigation": "Navigation",
+    "confirmation": "Confirmation",
     "frontend_function": "FrontendFunction",
     "frontend_invocation": "FrontendInvocation",
     "backend_invocation": "BackendInvocation",
@@ -88,6 +94,7 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
     pending_returns: list[Fact] = []
     pending_framework: list[Fact] = []
     pending_ui_actions: list[tuple[str, Fact]] = []
+    pending_ui_semantics: list[tuple[str, Fact]] = []
     pending_invocations: list[tuple[str, Fact]] = []
     pending_backend_invocations: list[tuple[str, Fact]] = []
     pending_methods: list[tuple[str, Fact]] = []
@@ -128,9 +135,9 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
             ))
         node = add_node(label, node_name, evidence, fact.properties, structural_identity)
         add_edge("DECLARES", file_node, node, evidence)
-        if fact.kind in {"razor_view", "layout", "partial_view", "script_asset", "style_asset", "client_component", "ui_control", "ui_action", "ui_validation", "ui_selection"}:
+        if fact.kind in {"razor_view", "layout", "partial_view", "script_asset", "style_asset", "client_component", "ui_control", "ui_action", "ui_validation", "ui_selection", "ui_condition", "validation_condition"}:
             add_edge("HOSTS", file_node, node, evidence)
-        if fact.kind in {"client_component", "ui_control", "ui_action", "ui_validation", "ui_selection"}:
+        if fact.kind in {"client_component", "ui_control", "ui_action", "ui_validation", "ui_selection", "ui_condition", "validation_condition"}:
             add_edge("CONTAINS_CONTROL", file_node, node, evidence)
         if fact.kind == "controller":
             controllers[fact.name] = node
@@ -157,6 +164,8 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
             pending_routes.append((node, fact))
         if fact.kind == "ui_action":
             pending_ui_actions.append((node, fact))
+        if fact.kind in {"state_mutation", "collection_mutation", "navigation", "confirmation"}:
+            pending_ui_semantics.append((node, fact))
         if fact.kind == "frontend_invocation":
             pending_invocations.append((node, fact))
         if fact.kind == "backend_invocation":
@@ -191,6 +200,12 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
         resolved = preferred or scoped or candidates
         if len(resolved) == 1:
             add_edge("TRIGGERS", action_node, resolved[0]["id"], action_fact.evidence.to_dict(), {"status": "PROVEN"})
+    for semantic_node, semantic_fact in pending_ui_semantics:
+        owner = _qualified_name(semantic_fact.properties.get("owner"), semantic_fact.properties.get("function_name"))
+        function = next((item for item in functions if item["name"] == owner), None)
+        if function:
+            edge_type = {"state_mutation": "MUTATES", "collection_mutation": "MUTATES_COLLECTION", "navigation": "NAVIGATES", "confirmation": "REQUIRES_CONFIRMATION"}[semantic_fact.kind]
+            add_edge(edge_type, function["id"], semantic_node, semantic_fact.evidence.to_dict(), {"status": "PROVEN"})
     for _, invocation_fact in pending_invocations:
         caller_name = _qualified_name(invocation_fact.properties.get("caller_owner"), invocation_fact.properties.get("caller"))
         target_name = _qualified_name(invocation_fact.properties.get("target_owner"), invocation_fact.properties.get("target_function"))

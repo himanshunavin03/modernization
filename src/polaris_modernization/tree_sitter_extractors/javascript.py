@@ -86,7 +86,7 @@ def _object_keys(node, source: bytes) -> list[str]:
 def _enclosing_named_function(node, source: bytes) -> str | None:
     current = node.parent
     while current is not None:
-        if current.type == "function_declaration":
+        if current.type in {"function_declaration", "method_definition"}:
             name = current.child_by_field_name("name")
             if name is not None:
                 return node_text(name, source)
@@ -108,10 +108,18 @@ def _qualified_function(owner: str | None, name: str) -> str:
     return f"{owner}.{name}" if owner else name
 
 
+def _member_parts(node, source: bytes) -> tuple[str | None, str | None]:
+    if node is None or node.type != "member_expression":
+        return None, None
+    obj = node.child_by_field_name("object")
+    prop = node.child_by_field_name("property")
+    return (node_text(obj, source) if obj is not None else None, node_text(prop, source) if prop is not None else None)
+
+
 def _function_fact(path, source_root, source, digest, project_id, node, owner: str | None) -> Fact | None:
     name = None
-    if node.type == "function_declaration":
-        name_node = node.child_by_field_name("name")
+    if node.type in {"function_declaration", "method_definition"}:
+        name_node = node.child_by_field_name("name") or node.child_by_field_name("property")
         name = node_text(name_node, source) if name_node else None
     elif node.type == "assignment_expression":
         left = node.child_by_field_name("left")
@@ -216,6 +224,16 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
                 kind = "angular_service" if "service" in path.name.lower() else "angular_controller" if "controller" in path.name.lower() else "angular_directive"
                 facts.append(Fact(kind, class_name, evidence(path, source_root, node, digest, project_id)))
 
+        if node.type == "assignment_expression":
+            left = node.child_by_field_name("left")
+            right = node.child_by_field_name("right")
+            target, property_name = _member_parts(left, source)
+            if target and property_name and right is not None:
+                facts.append(Fact("state_mutation", f"{file_controller or file_service or path.stem}.{_enclosing_named_function(node, source) or 'module'}:{target}.{property_name}", evidence(path, source_root, node, digest, project_id), {
+                    "function_name": _enclosing_named_function(node, source), "owner": file_controller or file_service,
+                    "target": f"{target}.{property_name}", "expression": _literal_or_expression(right, source),
+                }))
+
         if node.type != "call_expression":
             continue
         node_evidence = evidence(path, source_root, node, digest, project_id)
@@ -223,6 +241,22 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
         arguments = _arguments(node)
         function = node.child_by_field_name("function")
         function_text = node_text(function, source) if function is not None else ""
+        receiver, member = _member_parts(function, source)
+        caller = _enclosing_named_function(node, source)
+        if receiver and member in {"push", "pop", "shift", "unshift", "splice"}:
+            facts.append(Fact("collection_mutation", f"{file_controller or file_service or path.stem}.{caller or 'module'}:{receiver}:{member}", node_evidence, {
+                "function_name": caller, "owner": file_controller or file_service,
+                "collection": receiver, "operation": member,
+            }))
+        if member in {"transitionTo", "go", "navigate"} and arguments:
+            facts.append(Fact("navigation", f"{file_controller or file_service or path.stem}.{caller or 'module'}:{_literal_or_expression(arguments[0], source)}", node_evidence, {
+                "function_name": caller, "owner": file_controller or file_service,
+                "target": _literal_or_expression(arguments[0], source), "operation": member,
+            }))
+        if member in {"showConfirmModal", "confirm"}:
+            facts.append(Fact("confirmation", f"{file_controller or file_service or path.stem}.{caller or 'module'}:{member}", node_evidence, {
+                "function_name": caller, "owner": file_controller or file_service, "operation": member,
+            }))
         if property_name and "." in function_text and not function_text.startswith(("$http.", "angular.")):
             receiver = function_text.rsplit(".", 1)[0]
             if receiver.lower().endswith(("service", "client", "gateway", "repository")):

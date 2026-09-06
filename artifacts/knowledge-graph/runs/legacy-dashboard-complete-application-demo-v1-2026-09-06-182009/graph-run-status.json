@@ -1,0 +1,77 @@
+{
+  "artifact_paths": {
+    "facts": "artifacts\\legacy-dashboard-complete-application-demo-v1\\facts.json",
+    "graph_run_status": "artifacts\\legacy-dashboard-complete-application-demo-v1\\graph-run-status.json",
+    "graph_run_summary": "artifacts\\legacy-dashboard-complete-application-demo-v1\\graph-run-summary.md",
+    "knowledge_graph": "artifacts\\legacy-dashboard-complete-application-demo-v1\\knowledge-graph.json",
+    "source_inventory": "artifacts\\legacy-dashboard-complete-application-demo-v1\\source-inventory.json"
+  },
+  "counts": {
+    "edge_count": 319,
+    "extraction_warning_count": 0,
+    "fact_count": 171,
+    "file_count": 2384,
+    "node_count": 195,
+    "review_warning_count": 10,
+    "warning_count": 10
+  },
+  "ended_at": "2026-09-06T18:20:06.018615Z",
+  "neo4j": {
+    "requested": false,
+    "status": "skipped"
+  },
+  "neo4j_browser_url": "http://localhost:7474",
+  "next_actions": [
+    "Review knowledge-graph.json locally.",
+    "Start Neo4j with `docker compose up -d` when ready; this command does not start Docker.",
+    "Rerun with --load-neo4j after setting NEO4J_URI, NEO4J_USERNAME, and NEO4J_PASSWORD.",
+    "Open Neo4j Browser manually at http://localhost:7474."
+  ],
+  "overall_status": "succeeded",
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "roslyn": {
+    "enabled": false,
+    "status": "skipped"
+  },
+  "scope": {
+    "coverage_status": "scope_complete",
+    "extraction_warning_count": 0,
+    "opaque_dependency_count": 0,
+    "out_of_scope_file_count": 2360,
+    "review_warning_count": 10,
+    "scope_description": "Customer-approved Dashboard MVC shell, shared dashboard UI, AngularJS route/service, and supporting controller scope for modernization review.",
+    "scope_id": "healthclinic-dashboard-modernization-flow",
+    "scope_name": "HealthClinic Dashboard modernization flow",
+    "scope_type": "selected_modernization_flow",
+    "selected_file_count": 24
+  },
+  "source_root": "C:\\Users\\himan\\OneDrive\\Documents\\polaris-modernization-poc\\modernization\\modernization\\source\\HealthClinic.biz",
+  "stages": [
+    {
+      "message": "Source root and project ID are valid.",
+      "name": "validate_input",
+      "status": "succeeded"
+    },
+    {
+      "message": "Deterministic analysis completed.",
+      "name": "analyze_source",
+      "status": "succeeded"
+    },
+    {
+      "message": "Knowledge graph is project-scoped and valid.",
+      "name": "validate_graph",
+      "status": "succeeded"
+    },
+    {
+      "message": "Neo4j load skipped by --skip-neo4j or default graph-only mode.",
+      "name": "load_neo4j",
+      "status": "warning"
+    },
+    {
+      "message": "Customer-facing run status artifacts were created.",
+      "name": "produce_run_status",
+      "status": "succeeded"
+    }
+  ],
+  "started_at": "2026-09-06T18:20:04.605490Z"
+}

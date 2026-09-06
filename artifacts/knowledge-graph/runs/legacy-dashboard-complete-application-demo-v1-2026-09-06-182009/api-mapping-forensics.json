@@ -1,0 +1,29 @@
+{
+  "ambiguous": 0,
+  "application_specific_rules": 0,
+  "backend_endpoint_facts": 1,
+  "contradictory_relationships": 0,
+  "controller_template_endpoints": 0,
+  "controllers_with_controller_template": 0,
+  "dynamic_resolvable": 0,
+  "dynamic_url_warnings": 0,
+  "external_api": 0,
+  "frontend_api_call_facts": 6,
+  "http_methods": {
+    "POST": 1
+  },
+  "mapping_facts_without_evidence": 0,
+  "no_backend_route": 6,
+  "non_proven_mapping_facts": 0,
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "proven": 0,
+  "proven_exact_static": 0,
+  "proven_exact_template": 0,
+  "proven_framework_semantic": 0,
+  "proven_unique_parameterized": 0,
+  "resolver_version": "2026-09-02",
+  "run_id": "legacy-dashboard-complete-application-demo-v1",
+  "status": "PASS_WITH_EXPLAINED_LIMITATIONS",
+  "unexpanded_controller_tokens": 0,
+  "unresolved_structural_calls": 0
+}

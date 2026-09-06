@@ -1,0 +1,47 @@
+{
+  "frameworks": [
+    {
+      "confidence": 1.0,
+      "framework": "ASP.NET MVC/Razor",
+      "method": "deterministic-file-evidence",
+      "source_path": "src/MyHealth.Web/Views/Shared/_ValidationScriptsPartial.cshtml"
+    },
+    {
+      "confidence": 1.0,
+      "framework": ".NET API",
+      "method": "deterministic-file-evidence",
+      "source_path": "07_Demos_NodeClinics.sln"
+    },
+    {
+      "confidence": 1.0,
+      "framework": "AngularJS",
+      "method": "deterministic-file-evidence",
+      "source_path": "src/MyHealth.Web.Stress/bower.json"
+    },
+    {
+      "confidence": 1.0,
+      "framework": "AngularJS",
+      "method": "deterministic-file-evidence",
+      "source_path": "src/MyHealth.Web/bower.json"
+    },
+    {
+      "confidence": 1.0,
+      "framework": "TypeScript",
+      "method": "deterministic-file-evidence",
+      "source_path": "src/MyHealth.Client.Cordova/content/app/modules/homeAppointments/filters/appointmentTimeMeridiem.ts"
+    }
+  ],
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "scope": {
+    "coverage_status": "scope_complete",
+    "extraction_warning_count": 0,
+    "opaque_dependency_count": 0,
+    "out_of_scope_file_count": 2360,
+    "review_warning_count": 10,
+    "scope_description": "Customer-approved Dashboard MVC shell, shared dashboard UI, AngularJS route/service, and supporting controller scope for modernization review.",
+    "scope_id": "healthclinic-dashboard-modernization-flow",
+    "scope_name": "HealthClinic Dashboard modernization flow",
+    "scope_type": "selected_modernization_flow",
+    "selected_file_count": 24
+  }
+}

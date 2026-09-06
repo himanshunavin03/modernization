@@ -1,0 +1,241 @@
+{
+  "backend_endpoints": [
+    {
+      "action": "Login",
+      "action_route": "",
+      "backend_endpoint_id": "backend-endpoint:src/MyHealth.Web/Controllers/AccountController.cs:29:POST:/",
+      "controller": "AccountController",
+      "controller_route": "",
+      "framework": "ASP.NET",
+      "http_method": "POST",
+      "normalized_route_template": "/",
+      "path_parameters": [],
+      "query_parameters": [],
+      "request_fields": [],
+      "request_type": null,
+      "resolved_route_template": "/",
+      "response_fields": [],
+      "response_type": "Task<IActionResult>",
+      "source_file": "src/MyHealth.Web/Controllers/AccountController.cs",
+      "source_range": {
+        "line_end": 29,
+        "line_start": 29
+      }
+    }
+  ],
+  "before_after": {
+    "after": {
+      "ambiguous": 0,
+      "dynamic": 0,
+      "external": 0,
+      "no_backend_match": 6,
+      "proven": 0,
+      "unresolved": 0
+    },
+    "before": {
+      "dynamic": 2,
+      "external": 0,
+      "no_backend_match": 3,
+      "proven": 0,
+      "unresolved": 1
+    },
+    "promotions": [],
+    "regressions": [],
+    "unchanged_unresolved": []
+  },
+  "frontend_calls": [
+    {
+      "base_url_source": null,
+      "candidate_backend_endpoints": [],
+      "controller_or_component": null,
+      "current_relationship_reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+      "dynamic_segments": [],
+      "final_status": "NO_BACKEND_MATCH",
+      "framework": "AngularJS",
+      "frontend_call_id": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:18:GET:/api/users/current/tenant",
+      "http_method": "GET",
+      "limitations": [
+        "No compatible backend endpoint exists after HTTP method and normalized route comparison."
+      ],
+      "method_or_function": "getSummary",
+      "normalized_template": "/api/users/current/tenant",
+      "normalized_url": "/api/users/current/tenant",
+      "previous_status": "NO_BACKEND_ROUTE",
+      "proof": null,
+      "public_status": "NO_BACKEND_ROUTE",
+      "query_components": [],
+      "raw_url_expression": "/api/users/current/tenant",
+      "resolution_strategy": "NO_COMPATIBLE_ENDPOINT",
+      "service": "DashboardService",
+      "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "source_range": {
+        "line_end": 21,
+        "line_start": 18
+      }
+    },
+    {
+      "base_url_source": "url",
+      "candidate_backend_endpoints": [],
+      "controller_or_component": null,
+      "current_relationship_reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+      "dynamic_segments": [],
+      "final_status": "NO_BACKEND_MATCH",
+      "framework": "AngularJS",
+      "frontend_call_id": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:24:GET:/api/reports/clinicsummary",
+      "http_method": "GET",
+      "limitations": [
+        "No compatible backend endpoint exists after HTTP method and normalized route comparison."
+      ],
+      "method_or_function": "getSummary",
+      "normalized_template": "/api/reports/clinicsummary",
+      "normalized_url": "/api/reports/clinicsummary",
+      "previous_status": "UNRESOLVED",
+      "proof": null,
+      "public_status": "NO_BACKEND_ROUTE",
+      "query_components": [],
+      "raw_url_expression": "/api/reports/clinicsummary",
+      "resolution_strategy": "NO_COMPATIBLE_ENDPOINT",
+      "service": "DashboardService",
+      "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "source_range": {
+        "line_end": 30,
+        "line_start": 24
+      }
+    },
+    {
+      "base_url_source": null,
+      "candidate_backend_endpoints": [],
+      "controller_or_component": null,
+      "current_relationship_reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+      "dynamic_segments": [],
+      "final_status": "NO_BACKEND_MATCH",
+      "framework": "AngularJS",
+      "frontend_call_id": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:42:GET:/api/users/current/tenant",
+      "http_method": "GET",
+      "limitations": [
+        "No compatible backend endpoint exists after HTTP method and normalized route comparison."
+      ],
+      "method_or_function": "getExpenses",
+      "normalized_template": "/api/users/current/tenant",
+      "normalized_url": "/api/users/current/tenant",
+      "previous_status": "NO_BACKEND_ROUTE",
+      "proof": null,
+      "public_status": "NO_BACKEND_ROUTE",
+      "query_components": [],
+      "raw_url_expression": "/api/users/current/tenant",
+      "resolution_strategy": "NO_COMPATIBLE_ENDPOINT",
+      "service": "DashboardService",
+      "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "source_range": {
+        "line_end": 45,
+        "line_start": 42
+      }
+    },
+    {
+      "base_url_source": "url",
+      "candidate_backend_endpoints": [],
+      "controller_or_component": null,
+      "current_relationship_reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+      "dynamic_segments": [
+        "year"
+      ],
+      "final_status": "NO_BACKEND_MATCH",
+      "framework": "AngularJS",
+      "frontend_call_id": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:48:GET:'/api/reports/expenses/' + year",
+      "http_method": "GET",
+      "limitations": [
+        "No compatible backend endpoint exists after HTTP method and normalized route comparison."
+      ],
+      "method_or_function": "getExpenses",
+      "normalized_template": "/api/reports/expenses/{PARAM}",
+      "normalized_url": "/api/reports/expenses/{PARAM}",
+      "previous_status": "DYNAMIC",
+      "proof": null,
+      "public_status": "NO_BACKEND_ROUTE",
+      "query_components": [],
+      "raw_url_expression": "'/api/reports/expenses/' + year",
+      "resolution_strategy": "NO_COMPATIBLE_ENDPOINT",
+      "service": "DashboardService",
+      "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "source_range": {
+        "line_end": 54,
+        "line_start": 48
+      }
+    },
+    {
+      "base_url_source": null,
+      "candidate_backend_endpoints": [],
+      "controller_or_component": null,
+      "current_relationship_reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+      "dynamic_segments": [],
+      "final_status": "NO_BACKEND_MATCH",
+      "framework": "AngularJS",
+      "frontend_call_id": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:66:GET:/api/users/current/tenant",
+      "http_method": "GET",
+      "limitations": [
+        "No compatible backend endpoint exists after HTTP method and normalized route comparison."
+      ],
+      "method_or_function": "getPatients",
+      "normalized_template": "/api/users/current/tenant",
+      "normalized_url": "/api/users/current/tenant",
+      "previous_status": "NO_BACKEND_ROUTE",
+      "proof": null,
+      "public_status": "NO_BACKEND_ROUTE",
+      "query_components": [],
+      "raw_url_expression": "/api/users/current/tenant",
+      "resolution_strategy": "NO_COMPATIBLE_ENDPOINT",
+      "service": "DashboardService",
+      "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "source_range": {
+        "line_end": 69,
+        "line_start": 66
+      }
+    },
+    {
+      "base_url_source": "url",
+      "candidate_backend_endpoints": [],
+      "controller_or_component": null,
+      "current_relationship_reason": "No compatible backend endpoint exists after HTTP method and normalized route comparison.",
+      "dynamic_segments": [
+        "year"
+      ],
+      "final_status": "NO_BACKEND_MATCH",
+      "framework": "AngularJS",
+      "frontend_call_id": "frontend-api-call:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js:72:GET:'/api/reports/patients/' + year",
+      "http_method": "GET",
+      "limitations": [
+        "No compatible backend endpoint exists after HTTP method and normalized route comparison."
+      ],
+      "method_or_function": "getPatients",
+      "normalized_template": "/api/reports/patients/{PARAM}",
+      "normalized_url": "/api/reports/patients/{PARAM}",
+      "previous_status": "DYNAMIC",
+      "proof": null,
+      "public_status": "NO_BACKEND_ROUTE",
+      "query_components": [],
+      "raw_url_expression": "'/api/reports/patients/' + year",
+      "resolution_strategy": "NO_COMPATIBLE_ENDPOINT",
+      "service": "DashboardService",
+      "source_file": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
+      "source_range": {
+        "line_end": 78,
+        "line_start": 72
+      }
+    }
+  ],
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "resolver_version": "2026-09-02",
+  "summary": {
+    "external": 0,
+    "final_proven": 0,
+    "new_exact_static_matches": 0,
+    "new_exact_template_matches": 0,
+    "new_unique_parameterized_matches": 0,
+    "no_backend_match": 6,
+    "previous_proven": 0,
+    "remaining_ambiguous": 0,
+    "remaining_dynamic": 0,
+    "total_frontend_calls": 6,
+    "unresolved": 0
+  }
+}
