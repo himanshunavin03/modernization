@@ -1,0 +1,1186 @@
+{
+  "acceptance_criteria": [
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-review-doctor-directory-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-doctor-directory-management-review-doctor-directory",
+      "api_contract_refs": [],
+      "api_mapping_status": [],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor"
+      ],
+      "assumptions": [],
+      "business_condition": "Navigate doctor directory",
+      "business_feature_evidence": [
+        "business-feature:feature-doctor-directory-management"
+      ],
+      "business_rule_refs": [
+        "NO_EVIDENCE_BACKED_BUSINESS_RULE"
+      ],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "NAVIGATION",
+      "dependency_refs": [
+        "Doctor UI depends on doctor API contract"
+      ],
+      "domain_concept_refs": [
+        "Doctor"
+      ],
+      "evidence_status": "PROVEN",
+      "feature_evidence": [
+        "feature-doctor-directory-management"
+      ],
+      "given": "the approved current-state context for navigate doctor directory is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor"
+      ],
+      "limitations": [],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: A doctor list experience is available.",
+      "open_questions": [],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 100,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js"
+        },
+        {
+          "line_end": 59,
+          "line_start": 10,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Model/Doctor.cs"
+        }
+      ],
+      "stakeholder_validation_required": false,
+      "story_evidence": [
+        "story-doctor-directory-management-review-doctor-directory"
+      ],
+      "story_id": "story-doctor-directory-management-review-doctor-directory",
+      "then": "The existing application supports: A doctor list experience is available.",
+      "title": "Review Doctor Directory Behavior",
+      "ui_surface_refs": [
+        "DoctorsController",
+        "doctors"
+      ],
+      "when": "access the existing doctor directory",
+      "workflow_refs": [
+        "Route doctors"
+      ]
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+      "acceptance_evidence_package_id": "acceptance-evidence:story-doctor-directory-management-view-doctor-details-in-tenant-context",
+      "api_contract_refs": [
+        {
+          "api_contract": "GET /api/users/current/tenant",
+          "backend_endpoint": "GET /api/users/current/tenant",
+          "frontend_source": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
+          "status": "PROVEN",
+          "workflow": "Doctors load current tenant"
+        }
+      ],
+      "api_mapping_status": [
+        "PROVEN"
+      ],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor"
+      ],
+      "assumptions": [],
+      "business_condition": "Access doctor detail with tenant context",
+      "business_feature_evidence": [
+        "business-feature:feature-doctor-directory-management"
+      ],
+      "business_rule_refs": [
+        "NO_EVIDENCE_BACKED_BUSINESS_RULE"
+      ],
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "criterion_type": "DATA_PRESENTATION",
+      "dependency_refs": [
+        "Doctor UI depends on doctor API contract"
+      ],
+      "domain_concept_refs": [
+        "Doctor"
+      ],
+      "evidence_status": "PROVEN",
+      "feature_evidence": [
+        "feature-doctor-directory-management"
+      ],
+      "given": "the approved current-state context for access doctor detail with tenant context is available",
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor"
+      ],
+      "limitations": [],
+      "modernization_preservation_required": true,
+      "observable_outcome": "The existing application supports: A doctor detail experience is available. Doctor functionality has current tenant context.",
+      "open_questions": [
+        "Q-DOC-001"
+      ],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 100,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js"
+        },
+        {
+          "line_end": 59,
+          "line_start": 10,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Model/Doctor.cs"
+        }
+      ],
+      "stakeholder_validation_required": true,
+      "story_evidence": [
+        "story-doctor-directory-management-view-doctor-details-in-tenant-context"
+      ],
+      "story_id": "story-doctor-directory-management-view-doctor-details-in-tenant-context",
+      "then": "The existing application supports: A doctor detail experience is available. Doctor functionality has current tenant context.",
+      "title": "View Doctor Details in Tenant Context Behavior",
+      "ui_surface_refs": [
+        "DoctorsController",
+        "doctor",
+        "doctorsService"
+      ],
+      "when": "access doctor detail information with current tenant context",
+      "workflow_refs": [
+        "Route doctor",
+        "Doctors load current tenant"
+      ]
+    }
+  ],
+  "acceptance_criteria_regenerated": false,
+  "actors": [
+    {
+      "name": "user of the existing application",
+      "specific_persona_status": "Not established by approved evidence"
+    }
+  ],
+  "architecture_inputs": {
+    "constraints": [
+      "Doctor list/detail behavior depends on a legacy AngularJS frontend and incompletely mapped doctor operations.",
+      "Only tenant-context integration is proven end to end for this Feature."
+    ],
+    "integrations": [
+      {
+        "api_contract": "GET /api/users/current/tenant",
+        "backend_endpoint": "GET /api/users/current/tenant",
+        "frontend_source": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
+        "review_note": "Established relationship must be preserved.",
+        "status": "PROVEN",
+        "workflow": "Doctors load current tenant"
+      }
+    ],
+    "legacy_surfaces": [
+      "DoctorsController",
+      "doctor",
+      "doctors",
+      "doctorsService"
+    ]
+  },
+  "business_objective": "Provide tenant-aware navigation and access to doctor information.",
+  "business_rules": [],
+  "business_value": [
+    {
+      "classification": "INFERRED_BUSINESS_VALUE",
+      "text": "The Feature appears to support information accessibility by organizing doctor navigation and doctor information in one functional area."
+    }
+  ],
+  "capability_api_contracts": [
+    {
+      "contract_id": "API-01",
+      "method": "DELETE",
+      "requirement_ids": [
+        "FR-05"
+      ],
+      "route": "/api/doctors/{id}",
+      "source_capability_ids": [
+        "capability-doctors-delete-2aa95f28df47"
+      ]
+    },
+    {
+      "contract_id": "API-02",
+      "method": "GET",
+      "requirement_ids": [
+        "FR-01"
+      ],
+      "route": "/api/doctors",
+      "source_capability_ids": [
+        "capability-doctors-list-8e359528dc06"
+      ]
+    },
+    {
+      "contract_id": "API-03",
+      "method": "GET",
+      "requirement_ids": [
+        "FR-02"
+      ],
+      "route": "/api/doctors/{id}",
+      "source_capability_ids": [
+        "capability-doctors-read-9d2f061a43ff"
+      ]
+    },
+    {
+      "contract_id": "API-04",
+      "method": "GET",
+      "requirement_ids": [
+        "FR-10"
+      ],
+      "route": "/api/users/current/tenant",
+      "source_capability_ids": [
+        "capability-clinics-read-098bbe600a00",
+        "capability-dashboard-read-8c9a45edb073",
+        "capability-doctors-read-440206d0d254",
+        "capability-patients-read-fee268471da8",
+        "capability-users-read-7142e0fdb55d"
+      ]
+    },
+    {
+      "contract_id": "API-05",
+      "method": "POST",
+      "requirement_ids": [
+        "FR-03"
+      ],
+      "route": "/api/doctors",
+      "source_capability_ids": [
+        "capability-doctors-create-3bf79f905f70"
+      ]
+    },
+    {
+      "contract_id": "API-06",
+      "method": "PUT",
+      "requirement_ids": [
+        "FR-04"
+      ],
+      "route": "/api/doctors",
+      "source_capability_ids": [
+        "capability-doctors-update-01a9514e9ad2"
+      ]
+    }
+  ],
+  "capability_dispositions": [
+    {
+      "capability_id": "capability-doctors-read-04313374f9e6",
+      "downstream_refs": [],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors/speciality/{speciality}",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetBySpecialityAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetBySpecialityAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetBySpecialityAsync:OrderBy"
+      ],
+      "feature_id": null,
+      "reason": "No UI-to-workflow evidence establishes a single owning Feature.",
+      "scope_status": "UNRESOLVED"
+    },
+    {
+      "capability_id": "capability-doctors-read-95411bfc5b43",
+      "downstream_refs": [],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors/appointments/days/{doctorId}",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetDaysWithAppoinmentsAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetDaysWithAppoinmentsAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetDaysWithAppoinmentsAsync:OrderBy"
+      ],
+      "feature_id": null,
+      "reason": "No UI-to-workflow evidence establishes a single owning Feature.",
+      "scope_status": "UNRESOLVED"
+    },
+    {
+      "capability_id": "capability-doctors-read-a106fba72ec3",
+      "downstream_refs": [],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors/availability/hours/{doctorId}"
+      ],
+      "feature_id": null,
+      "reason": "No UI-to-workflow evidence establishes a single owning Feature.",
+      "scope_status": "UNRESOLVED"
+    },
+    {
+      "capability_id": "capability-doctors-create-3bf79f905f70",
+      "downstream_refs": [
+        "FR-03",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:10:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:7:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:DoctorsService.add",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:POST /api/doctors",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.AddAsync:Add",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.AddAsync:SaveChangesAsync",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:POST /api/doctors"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-delete-2aa95f28df47",
+      "downstream_refs": [
+        "FR-05",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:77:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:32:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:6:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:DoctorsService.remove",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:DELETE /api/doctors/{id}",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.DeleteAsync:SaveChangesAsync",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:DELETE /api/doctors/{PARAM}"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-list-8e359528dc06",
+      "downstream_refs": [
+        "FR-01",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:43:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:DoctorsService.getList",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/doctors"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-navigate-112aba01bc1f",
+      "downstream_refs": [
+        "FR-09",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:7:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-navigate-472c10f6e1fd",
+      "downstream_refs": [
+        "FR-09",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:3:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-navigate-ecdc3c506da0",
+      "downstream_refs": [
+        "FR-09",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:31:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-navigate-f3cd83a2ae08",
+      "downstream_refs": [
+        "FR-09",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:13:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-page-6cd0c8021d52",
+      "downstream_refs": [
+        "FR-06",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:43:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-read-440206d0d254",
+      "downstream_refs": [
+        "FR-10",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:DoctorsService.getTenant",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/tenant"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-read-9d2f061a43ff",
+      "downstream_refs": [
+        "FR-02",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:DoctorsService.getDoctor",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors/{id}",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/doctors/{PARAM}"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-update-01a9514e9ad2",
+      "downstream_refs": [
+        "FR-04",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:10:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:7:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:DoctorsService.update",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:PUT /api/doctors",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.UpdateAsync:SaveChangesAsync",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.UpdateAsync:Update",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:PUT /api/doctors"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-upload-4740bad485ec",
+      "downstream_refs": [
+        "FR-07",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:56:upload"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-upload-6605f1033084",
+      "downstream_refs": [
+        "FR-07",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:21:upload"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-30e3b01c51a5",
+      "downstream_refs": [
+        "FR-08",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:38"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-741cc6b88166",
+      "downstream_refs": [
+        "FR-08",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:34"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-8a54f613e682",
+      "downstream_refs": [
+        "FR-08",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:42"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-a1a5296a791a",
+      "downstream_refs": [
+        "FR-08",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:50"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-c90d553a0e3a",
+      "downstream_refs": [
+        "FR-08",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:46"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-f54eac18bb4b",
+      "downstream_refs": [
+        "FR-08",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:30"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    }
+  ],
+  "current_experience": [
+    "AngularJS doctor list/detail routes use doctor controller and service surfaces."
+  ],
+  "data_dependencies": [
+    {
+      "description": "The doctor frontend retains an existing doctor API boundary.",
+      "name": "Doctor UI depends on doctor API contract"
+    }
+  ],
+  "definition_of_ready": [
+    "Business Feature reviewed",
+    "Stories reviewed",
+    "Acceptance Criteria reviewed",
+    "Open decisions resolved or explicitly accepted",
+    "Target-design path selected",
+    "Target Architecture approved",
+    "Required integration contracts confirmed"
+  ],
+  "dependencies": [
+    "Doctor UI depends on doctor API contract"
+  ],
+  "domain_concepts": [
+    {
+      "meaning": "Information representing a doctor in the application domain.",
+      "name": "Doctor",
+      "role": "Provides the domain information associated with doctor list/detail behavior."
+    }
+  ],
+  "downstream_status": "STALE_REGENERATION_REQUIRED",
+  "feature_id": "feature-doctor-directory-management",
+  "feature_name": "Doctor Directory Management",
+  "feature_overview": {
+    "current_context": "Existing application behavior represented by approved workflows and Stories.",
+    "description": "Provides navigation and tenant-aware access to doctor information.",
+    "modernization_relevance": "Migrate approved doctor list/detail frontend behavior while preserving the existing doctor and tenant API boundaries.",
+    "purpose": "Provide tenant-aware navigation and access to doctor information."
+  },
+  "functional_requirements": [
+    {
+      "api_dependencies": [
+        "GET /api/doctors"
+      ],
+      "description": "The existing application behavior requires users to review doctor directory.",
+      "id": "FR-01",
+      "source_capability_ids": [
+        "capability-doctors-list-8e359528dc06"
+      ],
+      "title": "Review Doctor Directory"
+    },
+    {
+      "api_dependencies": [
+        "GET /api/doctors/{id}"
+      ],
+      "description": "The existing application behavior requires users to view doctor details.",
+      "id": "FR-02",
+      "source_capability_ids": [
+        "capability-doctors-read-9d2f061a43ff"
+      ],
+      "title": "View Doctor Details"
+    },
+    {
+      "api_dependencies": [
+        "POST /api/doctors"
+      ],
+      "description": "The existing application behavior requires users to create doctor.",
+      "id": "FR-03",
+      "source_capability_ids": [
+        "capability-doctors-create-3bf79f905f70"
+      ],
+      "title": "Create Doctor"
+    },
+    {
+      "api_dependencies": [
+        "PUT /api/doctors"
+      ],
+      "description": "The existing application behavior requires users to update doctor.",
+      "id": "FR-04",
+      "source_capability_ids": [
+        "capability-doctors-update-01a9514e9ad2"
+      ],
+      "title": "Update Doctor"
+    },
+    {
+      "api_dependencies": [
+        "DELETE /api/doctors/{id}"
+      ],
+      "description": "The existing application behavior requires users to delete doctor.",
+      "id": "FR-05",
+      "source_capability_ids": [
+        "capability-doctors-delete-2aa95f28df47"
+      ],
+      "title": "Delete Doctor"
+    },
+    {
+      "api_dependencies": [],
+      "description": "The existing application behavior requires users to continue through doctor results.",
+      "id": "FR-06",
+      "source_capability_ids": [
+        "capability-doctors-page-6cd0c8021d52"
+      ],
+      "title": "Continue Through Doctor Results"
+    },
+    {
+      "api_dependencies": [],
+      "description": "The existing application behavior requires users to maintain doctor profile media.",
+      "id": "FR-07",
+      "source_capability_ids": [
+        "capability-doctors-upload-4740bad485ec",
+        "capability-doctors-upload-6605f1033084"
+      ],
+      "title": "Maintain Doctor Profile Media"
+    },
+    {
+      "api_dependencies": [],
+      "description": "The existing application behavior requires users to validate doctor input.",
+      "id": "FR-08",
+      "source_capability_ids": [
+        "capability-doctors-validate-30e3b01c51a5",
+        "capability-doctors-validate-741cc6b88166",
+        "capability-doctors-validate-8a54f613e682",
+        "capability-doctors-validate-a1a5296a791a",
+        "capability-doctors-validate-c90d553a0e3a",
+        "capability-doctors-validate-f54eac18bb4b"
+      ],
+      "title": "Validate Doctor Input"
+    },
+    {
+      "api_dependencies": [],
+      "description": "The existing application behavior requires users to navigate from the doctor experience.",
+      "id": "FR-09",
+      "source_capability_ids": [
+        "capability-doctors-navigate-112aba01bc1f",
+        "capability-doctors-navigate-472c10f6e1fd",
+        "capability-doctors-navigate-ecdc3c506da0",
+        "capability-doctors-navigate-f3cd83a2ae08"
+      ],
+      "title": "Navigate from the Doctor Experience"
+    },
+    {
+      "api_dependencies": [
+        "GET /api/users/current/tenant"
+      ],
+      "description": "The existing application behavior requires users to establish current tenant context.",
+      "id": "FR-10",
+      "source_capability_ids": [
+        "capability-doctors-read-440206d0d254"
+      ],
+      "title": "Establish Current Tenant Context"
+    }
+  ],
+  "information_filter": {
+    "architect_reviewable": [
+      "legacy technology",
+      "integrations",
+      "data dependencies",
+      "migration constraints",
+      "target-design status"
+    ],
+    "customer_reviewable": [
+      "behavior",
+      "objective",
+      "value",
+      "workflows",
+      "Stories",
+      "Acceptance Criteria",
+      "scope",
+      "decisions"
+    ],
+    "internal_only_excluded_from_markdown": [
+      "analyzer diagnostics",
+      "parser diagnostics",
+      "package hashes",
+      "internal confidence mechanics"
+    ]
+  },
+  "integrations": [
+    {
+      "api_contract": "GET /api/users/current/tenant",
+      "backend_endpoint": "GET /api/users/current/tenant",
+      "frontend_source": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
+      "review_note": "Established relationship must be preserved.",
+      "status": "PROVEN",
+      "workflow": "Doctors load current tenant"
+    }
+  ],
+  "legacy_mapping": {
+    "integration_contracts": [
+      {
+        "api_contract": "GET /api/users/current/tenant",
+        "backend_endpoint": "GET /api/users/current/tenant",
+        "frontend_source": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
+        "review_note": "Established relationship must be preserved.",
+        "status": "PROVEN",
+        "workflow": "Doctors load current tenant"
+      }
+    ],
+    "target_mapping_status": "Pending Target Design and Target Architecture",
+    "ui_surfaces": [
+      "DoctorsController",
+      "doctor",
+      "doctors",
+      "doctorsService"
+    ]
+  },
+  "modernization_requirements": [
+    "Preserve this approved business behavior during frontend modernization without changing backend contracts.",
+    "Preserve this approved business behavior during frontend modernization without changing backend contracts."
+  ],
+  "nfr_status": "Feature-specific non-functional requirements have not yet been approved.",
+  "open_decisions": [
+    {
+      "question": "Which doctor list and detail operations must be included when this Feature is decomposed into modernization Stories?",
+      "validation_role": "Product Owner / Business Analyst / Customer SME",
+      "why_it_matters": "The approved Feature proves navigation and tenant context but not every doctor operation mapping."
+    }
+  ],
+  "review_status": {
+    "Business Analyst": "Pending",
+    "Modernization Lead": "Pending",
+    "Product Owner": "Pending",
+    "QA Lead": "Pending",
+    "Solution Architect": "Pending"
+  },
+  "risks": [
+    "Incomplete operation mapping limits detailed behavior decomposition."
+  ],
+  "scope": {
+    "in_scope": [
+      "Approved doctor routes, doctor UI surfaces, Doctor domain concept, and proven tenant-context integration."
+    ],
+    "out_of_scope": [
+      "Backend rewrite, database migration, and doctor operations without approved end-to-end mapping."
+    ]
+  },
+  "security_context": "Feature-specific access and authorization requirements will be confirmed during architecture and stakeholder validation.",
+  "status": "FEATURE_SCOPE_READY_WITH_EXPLICIT_DISPOSITIONS",
+  "stories": [
+    {
+      "actor": "user of the existing application",
+      "actor_confidence": {
+        "level": "LOW",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "No approved Business Feature evidence identifies a named persona."
+      },
+      "api_contract_refs": [
+        {
+          "api_contract": "GET /api/users/current/tenant",
+          "backend_endpoint": "GET /api/users/current/tenant",
+          "frontend_source": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
+          "status": "PROVEN",
+          "workflow": "Doctors load current tenant"
+        }
+      ],
+      "api_mapping_status": [
+        "PROVEN"
+      ],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor"
+      ],
+      "assumptions": [],
+      "business_capability": "Manage doctors",
+      "business_feature_evidence": [
+        "business-feature:feature-doctor-directory-management"
+      ],
+      "business_goal": "Access doctor detail information with current tenant context",
+      "business_rule_refs": [
+        "NO_EVIDENCE_BACKED_BUSINESS_RULE"
+      ],
+      "business_value": "The Feature appears to support information accessibility by organizing doctor navigation and doctor information in one functional area.",
+      "business_value_status": "INFERRED_BUSINESS_VALUE",
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "current_state_behavior": {
+        "classification": "PROVEN",
+        "confidence": {
+          "level": "HIGH",
+          "provenance": [
+            "STRUCTURAL_ONLY"
+          ],
+          "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+        },
+        "evidence": [
+          {
+            "line_end": 100,
+            "line_start": 1,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js"
+          }
+        ],
+        "text": "The existing application supports: A doctor detail experience is available. Doctor functionality has current tenant context."
+      },
+      "dependency_refs": [
+        "Doctor UI depends on doctor API contract"
+      ],
+      "description": "Combines the approved doctor detail navigation and its proven tenant-context dependency as one coherent interaction.",
+      "domain_concept_refs": [
+        "Doctor"
+      ],
+      "feature_evidence": [
+        "feature-doctor-directory-management"
+      ],
+      "in_scope": [
+        "Approved workflows and existing frontend behavior represented by this Story boundary."
+      ],
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor"
+      ],
+      "limitations": [],
+      "modernization_relevance": {
+        "classification": "MODERNIZATION_CONCERN",
+        "confidence": {
+          "level": "HIGH",
+          "provenance": [
+            "STRUCTURAL_ONLY"
+          ],
+          "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+        },
+        "evidence": [
+          {
+            "line_end": 100,
+            "line_start": 1,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js"
+          }
+        ],
+        "text": "Preserve this approved business behavior during frontend modernization without changing backend contracts."
+      },
+      "open_questions": [
+        "Q-DOC-001"
+      ],
+      "out_of_scope": [
+        "Downstream refinement artifacts, target architecture, backend redesign, and unsupported future behavior."
+      ],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "parent_feature_name": "Doctor Directory Management",
+      "poc_relevance": "Not selected; this Story is outside the approved Dashboard POC.",
+      "priority_rationale": "Meaningful directory behavior with proven or bounded context evidence.",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 100,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js"
+        },
+        {
+          "line_end": 59,
+          "line_start": 10,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Model/Doctor.cs"
+        }
+      ],
+      "story_evidence_package_id": "story-evidence:feature-doctor-directory-management:access-doctor-detail-with-tenant-context",
+      "story_id": "story-doctor-directory-management-view-doctor-details-in-tenant-context",
+      "story_key_candidate": "STORY_DOCTOR_DIRECTORY_MANAGEMENT_VIEW_DOCTOR_DETAILS_IN_TENANT_CONTEXT",
+      "story_points": "UNESTIMATED",
+      "story_priority": "MEDIUM",
+      "story_statement": "As a user of the existing application, I want access doctor detail information with current tenant context, so that I can access the supported behavior in the existing experience.",
+      "title": "View Doctor Details in Tenant Context",
+      "ui_surface_refs": [
+        "DoctorsController",
+        "doctor",
+        "doctorsService"
+      ],
+      "workflow_boundary": "Access doctor detail with tenant context",
+      "workflow_boundary_rationale": "Groups detail navigation with its proven context dependency.",
+      "workflow_refs": [
+        "Route doctor",
+        "Doctors load current tenant"
+      ]
+    },
+    {
+      "actor": "user of the existing application",
+      "actor_confidence": {
+        "level": "LOW",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "No approved Business Feature evidence identifies a named persona."
+      },
+      "api_contract_refs": [],
+      "api_mapping_status": [],
+      "application_understanding_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor"
+      ],
+      "assumptions": [],
+      "business_capability": "Manage doctors",
+      "business_feature_evidence": [
+        "business-feature:feature-doctor-directory-management"
+      ],
+      "business_goal": "Access the existing doctor directory",
+      "business_rule_refs": [
+        "NO_EVIDENCE_BACKED_BUSINESS_RULE"
+      ],
+      "business_value": "The Feature appears to support information accessibility by organizing doctor navigation and doctor information in one functional area.",
+      "business_value_status": "INFERRED_BUSINESS_VALUE",
+      "confidence": {
+        "level": "HIGH",
+        "provenance": [
+          "STRUCTURAL_ONLY"
+        ],
+        "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+      },
+      "current_state_behavior": {
+        "classification": "PROVEN",
+        "confidence": {
+          "level": "HIGH",
+          "provenance": [
+            "STRUCTURAL_ONLY"
+          ],
+          "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+        },
+        "evidence": [
+          {
+            "line_end": 100,
+            "line_start": 1,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js"
+          }
+        ],
+        "text": "The existing application supports: A doctor list experience is available."
+      },
+      "dependency_refs": [
+        "Doctor UI depends on doctor API contract"
+      ],
+      "description": "Represents the approved doctor-directory navigation behavior.",
+      "domain_concept_refs": [
+        "Doctor"
+      ],
+      "feature_evidence": [
+        "feature-doctor-directory-management"
+      ],
+      "in_scope": [
+        "Approved workflows and existing frontend behavior represented by this Story boundary."
+      ],
+      "invest_assessment": {
+        "estimable_conceptually": true,
+        "independent_enough": true,
+        "issues": [],
+        "negotiable": true,
+        "small_and_coherent": true,
+        "testable_in_principle": true,
+        "valuable": true
+      },
+      "kg_evidence": [
+        "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+        "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor"
+      ],
+      "limitations": [],
+      "modernization_relevance": {
+        "classification": "MODERNIZATION_CONCERN",
+        "confidence": {
+          "level": "HIGH",
+          "provenance": [
+            "STRUCTURAL_ONLY"
+          ],
+          "rationale": "Approved workflow-boundary evidence supports this Story; inherited uncertainty is retained."
+        },
+        "evidence": [
+          {
+            "line_end": 100,
+            "line_start": 1,
+            "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+            "provenance": "STRUCTURAL_ONLY",
+            "source_path": "src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js"
+          }
+        ],
+        "text": "Preserve this approved business behavior during frontend modernization without changing backend contracts."
+      },
+      "open_questions": [],
+      "out_of_scope": [
+        "Downstream refinement artifacts, target architecture, backend redesign, and unsupported future behavior."
+      ],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "parent_feature_name": "Doctor Directory Management",
+      "poc_relevance": "Not selected; this Story is outside the approved Dashboard POC.",
+      "priority_rationale": "Meaningful directory behavior with proven or bounded context evidence.",
+      "provenance": "AGENT_REASONING",
+      "source_evidence": [
+        {
+          "line_end": 100,
+          "line_start": 1,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js"
+        },
+        {
+          "line_end": 59,
+          "line_start": 10,
+          "node_id": "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor",
+          "provenance": "STRUCTURAL_ONLY",
+          "source_path": "src/MyHealth.Model/Doctor.cs"
+        }
+      ],
+      "story_evidence_package_id": "story-evidence:feature-doctor-directory-management:navigate-doctor-directory",
+      "story_id": "story-doctor-directory-management-review-doctor-directory",
+      "story_key_candidate": "STORY_DOCTOR_DIRECTORY_MANAGEMENT_REVIEW_DOCTOR_DIRECTORY",
+      "story_points": "UNESTIMATED",
+      "story_priority": "MEDIUM",
+      "story_statement": "As a user of the existing application, I want access the existing doctor directory, so that I can access the supported behavior in the existing experience.",
+      "title": "Review Doctor Directory",
+      "ui_surface_refs": [
+        "DoctorsController",
+        "doctors"
+      ],
+      "workflow_boundary": "Navigate doctor directory",
+      "workflow_boundary_rationale": "List navigation is a distinct approved workflow.",
+      "workflow_refs": [
+        "Route doctors"
+      ]
+    }
+  ],
+  "stories_regenerated": false,
+  "target_design": {
+    "mapped_screens": [],
+    "mapped_stories": [],
+    "provider": null,
+    "status": "NOT_YET_ANALYZED",
+    "url": null
+  },
+  "traceability": {
+    "acceptance_criteria_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-112024-635713",
+    "application_understanding_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694",
+    "business_feature_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-145336-704667",
+    "feature_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-141302-518966",
+    "kg_refs": [
+      "legacy-dashboard-complete-application-demo-v1:AngularController:DoctorsController",
+      "legacy-dashboard-complete-application-demo-v1:DTO:global::MyHealth.Model.Doctor"
+    ],
+    "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-034128",
+    "source_refs": [
+      "src/MyHealth.Model/Doctor.cs",
+      "src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js"
+    ],
+    "story_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-105453-078418"
+  },
+  "workflows": [
+    {
+      "interaction": [
+        "Resolve the doctor route.",
+        "Present the doctor detail surface."
+      ],
+      "name": "Route doctor",
+      "outcome": "A doctor detail experience is available.",
+      "trigger": "Doctor detail navigation is initiated."
+    },
+    {
+      "interaction": [
+        "Resolve the doctors route.",
+        "Present the doctor list surface."
+      ],
+      "name": "Route doctors",
+      "outcome": "A doctor list experience is available.",
+      "trigger": "Doctor list navigation is initiated."
+    },
+    {
+      "interaction": [
+        "Request current tenant context.",
+        "Make tenant context available to doctor functionality."
+      ],
+      "name": "Doctors load current tenant",
+      "outcome": "Doctor functionality has current tenant context.",
+      "trigger": "Doctor functionality needs clinic context."
+    }
+  ]
+}

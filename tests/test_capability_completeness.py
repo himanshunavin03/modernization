@@ -123,6 +123,8 @@ def test_feature_scope_contract_derives_crud_requirements_without_downstream_sto
     assert validate_capability_coverage(refreshed["capabilities"], refreshed["dispositions"])["status"] == "PASS"
     markdown = render_feature_markdown(contract)
     assert "Create Order" in markdown
+    assert "## Dependencies and Clarifications" in markdown
+    assert "## Definition of Done" in markdown
     assert all(term not in markdown for term in ("Tree-sitter", "Roslyn", "source_path", "confidence"))
 
 

@@ -104,6 +104,10 @@ def render_feature_markdown(contract: dict) -> str:
     lines.extend([
         "", "## Scope Decisions", "",
         f"{unresolved_count} supporting or cross-workflow operation(s) remain explicitly unresolved for Feature ownership; none are silently discarded.", "",
+        "## Dependencies and Clarifications", "",
+        "The listed API requirements are dependencies of the supported behavior. Supporting operations outside this Feature require an explicit ownership decision before they are added.", "",
+        "## Definition of Done", "",
+        "The functional requirements and listed API contracts are preserved, validation behavior remains available, and each supporting operation has an explicit scope disposition.", "",
         "## Delivery Status", "",
         "Stories, Acceptance Criteria, technical tasks, and implementation require regeneration after this Feature scope is approved.", "",
     ])
