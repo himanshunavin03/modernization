@@ -1,0 +1,46 @@
+{
+  "design_mode": "NONE",
+  "design_provider": "NO_DESIGN",
+  "design_status": "NOT_PROVIDED",
+  "external_llm_calls": 0,
+  "final_status": "TECHNICAL_TASKS_READY",
+  "langchain_boundary": "RunnableLambda (offline deterministic technical task composition)",
+  "langchain_runnable_execution": true,
+  "langgraph_execution": true,
+  "nodes_executed": [
+    "load_approved_context",
+    "load_optional_design",
+    "resolve_design_conflicts",
+    "compose_technical_tasks",
+    "validate_technical_tasks",
+    "finalize_technical_tasks"
+  ],
+  "start_status": "STARTED",
+  "state_transitions": [
+    {
+      "from": "START",
+      "to": "load_approved_context"
+    },
+    {
+      "from": "load_approved_context",
+      "to": "load_optional_design"
+    },
+    {
+      "from": "load_optional_design",
+      "to": "resolve_design_conflicts"
+    },
+    {
+      "from": "resolve_design_conflicts",
+      "to": "compose_technical_tasks"
+    },
+    {
+      "from": "compose_technical_tasks",
+      "to": "validate_technical_tasks"
+    },
+    {
+      "from": "validate_technical_tasks",
+      "to": "finalize_technical_tasks"
+    }
+  ],
+  "workflow_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-074032-201270"
+}

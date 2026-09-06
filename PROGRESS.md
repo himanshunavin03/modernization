@@ -274,3 +274,9 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Replaced Feature-ID equality as the architecture prerequisite with a reusable lock-validating resolver: explicit Feature override first, canonical application selection second.
 - Added inheritance metadata to the Feature index and a `--prerequisite-only` technical-task check. Doctor Directory resolves application architecture while remaining `NOT_STARTED` with zero tasks.
 - Verification passed: focused architecture/command tests `18 passed`; complete regression `259 passed, 2 skipped`; Angular/Nx production build passed; protected architecture, requirements, source, tasks, and Dashboard paths remain unchanged.
+
+## Doctor Technical Tasks
+
+- `/generate-technical-tasks doctor-directory-management` completed under inherited application architecture.
+- Published 16 Doctor-specific tasks with 3 FRs, 2 Stories, 2 AC, and 3 approved APIs; task validation passed with zero blockers and no Dashboard/report-contract leakage.
+- Added per-Feature task/design pointers and generic Feature-relative composition/validation. Regression passed `260 passed, 2 skipped`; Angular/Nx Dashboard build passed.

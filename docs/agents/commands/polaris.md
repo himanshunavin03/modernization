@@ -29,6 +29,8 @@ polaris --repository-root . show-feature "Doctor Directory Management"
 
 Architecture resolution checks `artifacts/architecture/features/<feature-id>/latest` for an explicit locked override, then inherits the canonical locked application selection at `artifacts/architecture/latest`. A missing or invalid lock blocks with `/recommend-architecture`; normal Features do not require separate architecture recommendations.
 
+Generated technical-task plans are stored as immutable runs and under `artifacts/technical-tasks/features/<feature-id>/latest`. Feature lookup uses these per-Feature pointers so generating one plan does not hide another Feature's approved plan.
+
 ## Discover
 
 - `/list-features` rebuilds the deterministic `artifacts/commands/feature-index.json` and lists ID, name, status, Stories, AC, APIs, tasks, implementation, and tests.

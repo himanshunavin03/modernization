@@ -180,6 +180,7 @@ class CommandService:
             self.paths.specifications, design["provider"], design["mode"], design.get("reference"),
             Path(options.get("output", self.paths.artifacts / "technical-tasks")), self.paths.artifacts / "design",
         )
+        self.index.build()
         return CommandResult("generate-technical-tasks", "COMPLETE", {"path": str(result["path"]), "feature_id": feature["feature_id"]})
 
     def modernize_feature(self, *, argument: str, **options: Any) -> CommandResult:

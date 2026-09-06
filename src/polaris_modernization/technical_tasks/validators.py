@@ -6,12 +6,6 @@ import re
 from hashlib import sha256
 
 
-EXPECTED_APIS = {
-    ("GET", "/api/reports/expenses/{year}"),
-    ("GET", "/api/reports/patients/{year}"),
-    ("GET", "/api/reports/clinicsummary"),
-    ("GET", "/api/users/current/tenant"),
-}
 UNSELECTED_TECHNOLOGIES = ("NgRx", "Server-Side Rendering", "Hydration", "Microfrontends", "Module Federation")
 
 
@@ -30,8 +24,12 @@ def validate_tasks(context: dict, tasks: list[dict]) -> dict:
     valid_stories = {item["story_id"] for item in context["stories"]}
     valid_ac = {item["authoritative_ac_ref"] for item in context["acceptance_criteria"]}
     valid_apis = {item["api_id"] for item in context["api_contracts"]}
-    api_contracts = {(item["method"], item["endpoint"]) for item in context["api_contracts"]}
+    api_endpoints = {item["endpoint"] for item in context["api_contracts"]}
+    represented_apis = {ref for item in tasks for ref in item["api_refs"]}
     serialized_tasks = json.dumps(tasks)
+    selected_decisions = [item for item in selection["decisions"] if item["id"] in selected]
+    selected_categories = {item["category"] for item in selected_decisions}
+    selected_technologies = {item["technology"] for item in selected_decisions}
 
     cycle_count = 0
     visiting: set[str] = set()
@@ -58,7 +56,7 @@ def validate_tasks(context: dict, tasks: list[dict]) -> dict:
     checks = {
         "architecture_selection_locked": architecture["architecture_lock"]["status"] == "LOCKED" and architecture["architecture_lock"]["locked_after_validation"] is True,
         "architecture_selection_hash_valid": selection_hash(selection) == architecture["architecture_lock"]["selection_hash"],
-        "hero_feature_only": {item["feature_id"] for item in tasks} == {context["feature"]["feature_id"]},
+        "feature_scope_only": {item["feature_id"] for item in tasks} == {context["feature"]["feature_id"]},
         "task_ids_unique": len(task_ids) == len(known_tasks),
         "dependencies_exist": all(set(item["dependencies"]) <= known_tasks for item in tasks),
         "dependency_graph_acyclic": cycle_count == 0,
@@ -68,13 +66,13 @@ def validate_tasks(context: dict, tasks: list[dict]) -> dict:
         "story_refs_valid": all(set(item["story_refs"]) <= valid_stories for item in tasks),
         "acceptance_criteria_refs_valid": all(set(item["acceptance_criteria_refs"]) <= valid_ac for item in tasks),
         "api_refs_valid": all(set(item["api_refs"]) <= valid_apis for item in tasks),
-        "dashboard_apis_preserved": api_contracts == EXPECTED_APIS,
-        "no_invented_existing_api": endpoint_literals <= {endpoint for _, endpoint in EXPECTED_APIS},
+        "existing_api_contracts_preserved": represented_apis == valid_apis,
+        "no_invented_existing_api": endpoint_literals <= api_endpoints,
         "unselected_technology_absent": not any(name.lower() in serialized_tasks.lower() for name in UNSELECTED_TECHNOLOGIES),
-        "gateway_task_present": any(item["category"] == "GATEWAY" for item in tasks),
-        "bff_task_present": any(item["category"] == "BFF" for item in tasks),
-        "future_bff_contract_labeled": any("TARGET_CONTRACT_TO_BE_DESIGNED" in value for item in tasks if item["category"] in {"BFF", "INTEGRATION"} for value in item["implementation_requirements"]),
-        "playwright_task_present": any("ARCH-050" in item["architecture_decision_refs"] for item in tasks),
+        "gateway_task_present": "API Gateway" not in selected_categories or any(item["category"] == "GATEWAY" for item in tasks),
+        "bff_task_present": "Backend for Frontend" not in selected_categories or any(item["category"] == "BFF" for item in tasks),
+        "future_bff_contract_labeled": "Backend for Frontend" not in selected_categories or any("TARGET_CONTRACT_TO_BE_DESIGNED" in value for item in tasks if item["category"] in {"BFF", "INTEGRATION"} for value in item["implementation_requirements"]),
+        "playwright_task_present": "Playwright" not in selected_technologies or any(item["category"] == "TEST" and "Playwright" in item["title"] for item in tasks),
         "every_task_traceable": all(item["traceability"] and item["architecture_decision_refs"] for item in tasks),
         "design_conflicts_preserve_requirements": all(conflict["requirement_reference"] in valid_frs for conflict in context["design"].get("conflicts", [])),
     }

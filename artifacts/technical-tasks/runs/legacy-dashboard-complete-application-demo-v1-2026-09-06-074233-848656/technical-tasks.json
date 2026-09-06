@@ -1,0 +1,1404 @@
+{
+  "acceptance_criteria": [
+    {
+      "authoritative_ac_ref": "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+      "id": "AC-01",
+      "title": "View Doctor Details in Organization Context"
+    },
+    {
+      "authoritative_ac_ref": "ac-doctor-directory-management-review-doctor-directory-001",
+      "id": "AC-02",
+      "title": "Review Doctor Directory"
+    }
+  ],
+  "architecture_lock_status": "LOCKED",
+  "architecture_selection_hash": "0aa1b6f662bd9b41bd1a646a4c640ca8825bf8a5c0dd38383674e2a5cf46c3ed",
+  "architecture_selection_ref": "C:\\Users\\himan\\OneDrive\\Documents\\polaris-modernization-poc\\modernization\\modernization\\artifacts\\architecture\\latest\\architecture-selection.json",
+  "design": {
+    "assets": [],
+    "colors": [],
+    "component_instances": [],
+    "components": [],
+    "conflicts": [],
+    "controls": [],
+    "design_tokens": [],
+    "document_name": null,
+    "error_code": null,
+    "interactions": [],
+    "layouts": [],
+    "mode": "NONE",
+    "navigation_hints": [],
+    "pages": [],
+    "provider": "NO_DESIGN",
+    "requirement_links": [],
+    "responsive_hints": [],
+    "screens": [],
+    "source_reference": null,
+    "spacing": [],
+    "status": "NOT_PROVIDED",
+    "traceability": [],
+    "typography": [],
+    "unresolved_items": []
+  },
+  "existing_api_contracts": [
+    {
+      "api_id": "API-01",
+      "endpoint": "/api/users/current/tenant",
+      "method": "GET",
+      "path_parameters": [],
+      "purpose": "Retrieve the current organization identifier required by organization-specific functionality.",
+      "query_parameters": [],
+      "request_model": null,
+      "response_description": "Current organization identifier",
+      "response_model": "int",
+      "traceability": {
+        "source_interaction_ids": [
+          "API-DOCTOR_DIRECTORY_MANAGEMENT-001"
+        ]
+      }
+    },
+    {
+      "api_id": "API-02",
+      "endpoint": "/api/doctors/{id}",
+      "method": "GET",
+      "path_parameters": [
+        {
+          "description": "doctor identifier",
+          "location": "Path",
+          "name": "id"
+        }
+      ],
+      "purpose": "Retrieve doctor information using the doctor identifier.",
+      "query_parameters": [],
+      "request_model": null,
+      "response_description": "Doctor information",
+      "response_model": "Doctor",
+      "traceability": {
+        "source_interaction_ids": [
+          "API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-001"
+        ]
+      }
+    },
+    {
+      "api_id": "API-03",
+      "endpoint": "/api/doctors",
+      "method": "GET",
+      "path_parameters": [],
+      "purpose": "Retrieve collection of doctor records using the number of records per page and page count.",
+      "query_parameters": [
+        {
+          "description": "number of records per page",
+          "location": "Query",
+          "name": "pageSize (int)"
+        },
+        {
+          "description": "page count",
+          "location": "Query",
+          "name": "pageCount (int)"
+        }
+      ],
+      "request_model": null,
+      "response_description": "Collection of doctor records",
+      "response_model": "Doctor[]",
+      "traceability": {
+        "source_interaction_ids": [
+          "API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-002"
+        ]
+      }
+    }
+  ],
+  "feature_id": "feature-doctor-directory-management",
+  "feature_name": "Doctor Directory Management",
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "requirements": [
+    {
+      "id": "FR-01",
+      "requirement": "The user must be able to view doctor details.",
+      "title": "View Doctor Details"
+    },
+    {
+      "id": "FR-02",
+      "requirement": "The user must be able to review the doctor directory.",
+      "title": "Review Doctor Directory"
+    },
+    {
+      "id": "FR-03",
+      "requirement": "The application must retrieve the current organization identifier required by organization-specific functionality.",
+      "title": "Establish Organization Context"
+    }
+  ],
+  "status": "TECHNICAL_TASKS_READY",
+  "stories": [
+    {
+      "story_id": "US-01",
+      "summary": "View Doctor Details in Tenant Context"
+    },
+    {
+      "story_id": "US-02",
+      "summary": "Review Doctor Directory"
+    }
+  ],
+  "tasks": [
+    {
+      "acceptance_criteria_refs": [],
+      "adr_refs": [
+        "ADR-001",
+        "ADR-002",
+        "ADR-007",
+        "ADR-003",
+        "ADR-009"
+      ],
+      "api_refs": [],
+      "architecture_decision_refs": [
+        "ARCH-001",
+        "ARCH-002",
+        "ARCH-003",
+        "ARCH-004",
+        "ARCH-005",
+        "ARCH-006",
+        "ARCH-008",
+        "ARCH-009",
+        "ARCH-010",
+        "ARCH-017",
+        "ARCH-052"
+      ],
+      "blocking": false,
+      "category": "SCAFFOLD",
+      "deliverables": [
+        "Feature workspace foundation"
+      ],
+      "dependencies": [],
+      "description": "Create the selected frontend workspace foundation. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [],
+      "implementation_order": 1,
+      "implementation_requirements": [
+        "Configure the selected frontend platform and strict compiler settings.",
+        "Apply workspace boundary, build, and quality policies."
+      ],
+      "objective": "Create the selected frontend workspace foundation.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [],
+      "task_id": "TT-001",
+      "title": "Establish the delivery workspace for Doctor Directory Management",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "Architecture:ARCH-001",
+        "Architecture:ARCH-002",
+        "Architecture:ARCH-003",
+        "Architecture:ARCH-004",
+        "Architecture:ARCH-005",
+        "Architecture:ARCH-006",
+        "Architecture:ARCH-008",
+        "Architecture:ARCH-009",
+        "Architecture:ARCH-010",
+        "Architecture:ARCH-017",
+        "Architecture:ARCH-052",
+        "ADR:ADR-001",
+        "ADR:ADR-002",
+        "ADR:ADR-007",
+        "ADR:ADR-003",
+        "ADR:ADR-009"
+      ],
+      "validation_requirements": [
+        "Workspace build and quality commands pass."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [],
+      "adr_refs": [
+        "ADR-001",
+        "ADR-002",
+        "ADR-007"
+      ],
+      "api_refs": [],
+      "architecture_decision_refs": [
+        "ARCH-006",
+        "ARCH-008",
+        "ARCH-009",
+        "ARCH-010",
+        "ARCH-034"
+      ],
+      "blocking": false,
+      "category": "CONFIGURATION",
+      "deliverables": [
+        "Feature and data-access boundaries"
+      ],
+      "dependencies": [
+        "TT-001"
+      ],
+      "description": "Create enforceable ownership and dependency boundaries. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [],
+      "implementation_order": 2,
+      "implementation_requirements": [
+        "Create feature, data-access, and reusable UI boundaries.",
+        "Prevent presentation code from bypassing integration boundaries."
+      ],
+      "objective": "Create enforceable ownership and dependency boundaries.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [],
+      "task_id": "TT-002",
+      "title": "Define the Doctor Directory Management domain boundary",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "Architecture:ARCH-006",
+        "Architecture:ARCH-008",
+        "Architecture:ARCH-009",
+        "Architecture:ARCH-010",
+        "Architecture:ARCH-034",
+        "ADR:ADR-001",
+        "ADR:ADR-002",
+        "ADR:ADR-007"
+      ],
+      "validation_requirements": [
+        "Dependency validation passes."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [],
+      "adr_refs": [
+        "ADR-001",
+        "ADR-002",
+        "ADR-007",
+        "ADR-009"
+      ],
+      "api_refs": [],
+      "architecture_decision_refs": [
+        "ARCH-006",
+        "ARCH-008",
+        "ARCH-009",
+        "ARCH-010",
+        "ARCH-046",
+        "ARCH-048"
+      ],
+      "blocking": false,
+      "category": "DESIGN_SYSTEM",
+      "deliverables": [
+        "Accessible presentation primitives"
+      ],
+      "dependencies": [
+        "TT-001"
+      ],
+      "description": "Provide reusable presentation foundations without inventing behavior. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [],
+      "implementation_order": 3,
+      "implementation_requirements": [
+        "Use existing application UI evidence and accessible implementation defaults because customer design input is unavailable.",
+        "Apply normalized design evidence only when available."
+      ],
+      "objective": "Provide reusable presentation foundations without inventing behavior.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [],
+      "task_id": "TT-003",
+      "title": "Prepare accessible presentation primitives for Doctor Directory Management",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "Architecture:ARCH-006",
+        "Architecture:ARCH-008",
+        "Architecture:ARCH-009",
+        "Architecture:ARCH-010",
+        "Architecture:ARCH-046",
+        "Architecture:ARCH-048",
+        "ADR:ADR-001",
+        "ADR:ADR-002",
+        "ADR:ADR-007",
+        "ADR:ADR-009"
+      ],
+      "validation_requirements": [
+        "Presentation primitives meet keyboard, contrast, and responsive expectations."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "ac-doctor-directory-management-review-doctor-directory-001"
+      ],
+      "adr_refs": [
+        "ADR-001",
+        "ADR-002",
+        "ADR-007"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-006",
+        "ARCH-008",
+        "ARCH-009",
+        "ARCH-010",
+        "ARCH-037",
+        "ARCH-038"
+      ],
+      "blocking": false,
+      "category": "API",
+      "deliverables": [
+        "Typed API models and contract tests"
+      ],
+      "dependencies": [
+        "TT-002"
+      ],
+      "description": "Create typed client models while preserving backend semantics. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03"
+      ],
+      "implementation_order": 4,
+      "implementation_requirements": [
+        "Represent every approved method, route, parameter, and response contract exactly.",
+        "Keep transport logic outside presentation components."
+      ],
+      "objective": "Create typed client models while preserving backend semantics.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-004",
+      "title": "Model approved Doctor Directory Management API contracts",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "AC:ac-doctor-directory-management-review-doctor-directory-001",
+        "Architecture:ARCH-006",
+        "Architecture:ARCH-008",
+        "Architecture:ARCH-009",
+        "Architecture:ARCH-010",
+        "Architecture:ARCH-037",
+        "Architecture:ARCH-038",
+        "ADR:ADR-001",
+        "ADR:ADR-002",
+        "ADR:ADR-007",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03"
+      ],
+      "validation_requirements": [
+        "Contract tests cover every approved API without inventing endpoints."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "ac-doctor-directory-management-review-doctor-directory-001"
+      ],
+      "adr_refs": [
+        "ADR-007",
+        "ADR-008"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-039",
+        "ARCH-044",
+        "ARCH-051"
+      ],
+      "blocking": false,
+      "category": "GATEWAY",
+      "deliverables": [
+        "Gateway routing and policy plan"
+      ],
+      "dependencies": [
+        "TT-004"
+      ],
+      "description": "Apply the selected ingress architecture without changing business APIs. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03"
+      ],
+      "implementation_order": 5,
+      "implementation_requirements": [
+        "Preserve approved backend contracts through gateway routing.",
+        "Define authentication, correlation, and observability policy responsibilities."
+      ],
+      "objective": "Apply the selected ingress architecture without changing business APIs.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-005",
+      "title": "Plan gateway policies for Doctor Directory Management",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "AC:ac-doctor-directory-management-review-doctor-directory-001",
+        "Architecture:ARCH-039",
+        "Architecture:ARCH-044",
+        "Architecture:ARCH-051",
+        "ADR:ADR-007",
+        "ADR:ADR-008",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03"
+      ],
+      "validation_requirements": [
+        "Route review proves existing contracts remain unchanged."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "ac-doctor-directory-management-review-doctor-directory-001"
+      ],
+      "adr_refs": [
+        "ADR-007",
+        "ADR-008"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-041",
+        "ARCH-044",
+        "ARCH-051"
+      ],
+      "blocking": false,
+      "category": "BFF",
+      "deliverables": [
+        "BFF responsibility design"
+      ],
+      "dependencies": [
+        "TT-005"
+      ],
+      "description": "Plan frontend-specific orchestration without inventing business behavior. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03"
+      ],
+      "implementation_order": 6,
+      "implementation_requirements": [
+        "Label every future facade TARGET_CONTRACT_TO_BE_DESIGNED.",
+        "Trace justified orchestration to approved APIs and requirements."
+      ],
+      "objective": "Plan frontend-specific orchestration without inventing business behavior.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-006",
+      "title": "Design the future Doctor Directory Management BFF boundary",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "AC:ac-doctor-directory-management-review-doctor-directory-001",
+        "Architecture:ARCH-041",
+        "Architecture:ARCH-044",
+        "Architecture:ARCH-051",
+        "ADR:ADR-007",
+        "ADR:ADR-008",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03"
+      ],
+      "validation_requirements": [
+        "No future facade is represented as an existing API."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "ac-doctor-directory-management-review-doctor-directory-001"
+      ],
+      "adr_refs": [
+        "ADR-007"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-037",
+        "ARCH-038",
+        "ARCH-041"
+      ],
+      "blocking": false,
+      "category": "INTEGRATION",
+      "deliverables": [
+        "Typed integration ports"
+      ],
+      "dependencies": [
+        "TT-004",
+        "TT-006"
+      ],
+      "description": "Connect the Feature to selected target integration layers. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03"
+      ],
+      "implementation_order": 7,
+      "implementation_requirements": [
+        "Create typed integration ports for approved contracts.",
+        "Keep future facade contracts explicitly unapproved until designed."
+      ],
+      "objective": "Connect the Feature to selected target integration layers.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-007",
+      "title": "Define the Doctor Directory Management integration boundary",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "AC:ac-doctor-directory-management-review-doctor-directory-001",
+        "Architecture:ARCH-037",
+        "Architecture:ARCH-038",
+        "Architecture:ARCH-041",
+        "ADR:ADR-007",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03"
+      ],
+      "validation_requirements": [
+        "Feature code depends on typed integration ports."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "ac-doctor-directory-management-review-doctor-directory-001"
+      ],
+      "adr_refs": [
+        "ADR-005",
+        "ADR-008"
+      ],
+      "api_refs": [],
+      "architecture_decision_refs": [
+        "ARCH-024",
+        "ARCH-025",
+        "ARCH-026",
+        "ARCH-028"
+      ],
+      "blocking": false,
+      "category": "ROUTING",
+      "deliverables": [
+        "Feature route configuration"
+      ],
+      "dependencies": [
+        "TT-002"
+      ],
+      "description": "Expose approved Feature surfaces through selected routing patterns. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03"
+      ],
+      "implementation_order": 8,
+      "implementation_requirements": [
+        "Register lazy Feature routes and selected guard boundaries.",
+        "Do not invent identity-provider behavior."
+      ],
+      "objective": "Expose approved Feature surfaces through selected routing patterns.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-008",
+      "title": "Configure lazy routes for Doctor Directory Management",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "AC:ac-doctor-directory-management-review-doctor-directory-001",
+        "Architecture:ARCH-024",
+        "Architecture:ARCH-025",
+        "Architecture:ARCH-026",
+        "Architecture:ARCH-028",
+        "ADR:ADR-005",
+        "ADR:ADR-008"
+      ],
+      "validation_requirements": [
+        "Routes load lazily and preserve approved access behavior."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "ac-doctor-directory-management-review-doctor-directory-001"
+      ],
+      "adr_refs": [
+        "ADR-001",
+        "ADR-002"
+      ],
+      "api_refs": [],
+      "architecture_decision_refs": [
+        "ARCH-001",
+        "ARCH-002",
+        "ARCH-003",
+        "ARCH-004",
+        "ARCH-005",
+        "ARCH-034",
+        "ARCH-046"
+      ],
+      "blocking": false,
+      "category": "UI",
+      "deliverables": [
+        "Standalone Feature shell"
+      ],
+      "dependencies": [
+        "TT-003",
+        "TT-008"
+      ],
+      "description": "Create the Feature container and approved presentation regions. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03"
+      ],
+      "implementation_order": 9,
+      "implementation_requirements": [
+        "Use existing application UI evidence and accessible implementation defaults because customer design input is unavailable.",
+        "Render only behavior and information established by approved requirements."
+      ],
+      "objective": "Create the Feature container and approved presentation regions.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-009",
+      "title": "Implement the Doctor Directory Management feature shell",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "AC:ac-doctor-directory-management-review-doctor-directory-001",
+        "Architecture:ARCH-001",
+        "Architecture:ARCH-002",
+        "Architecture:ARCH-003",
+        "Architecture:ARCH-004",
+        "Architecture:ARCH-005",
+        "Architecture:ARCH-034",
+        "Architecture:ARCH-046",
+        "ADR:ADR-001",
+        "ADR:ADR-002"
+      ],
+      "validation_requirements": [
+        "The shell exposes all approved Feature workflows."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "ac-doctor-directory-management-review-doctor-directory-001"
+      ],
+      "adr_refs": [
+        "ADR-003",
+        "ADR-004"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-012",
+        "ARCH-013",
+        "ARCH-015",
+        "ARCH-016",
+        "ARCH-017",
+        "ARCH-021"
+      ],
+      "blocking": false,
+      "category": "STATE",
+      "deliverables": [
+        "Feature state and data orchestration"
+      ],
+      "dependencies": [
+        "TT-004",
+        "TT-007",
+        "TT-009"
+      ],
+      "description": "Separate synchronous UI state from asynchronous integration work. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03"
+      ],
+      "implementation_order": 10,
+      "implementation_requirements": [
+        "Use selected state primitives for local and derived UI state.",
+        "Use selected asynchronous composition for API work and cancellation."
+      ],
+      "objective": "Separate synchronous UI state from asynchronous integration work.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-010",
+      "title": "Implement Doctor Directory Management state and asynchronous flow",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "AC:ac-doctor-directory-management-review-doctor-directory-001",
+        "Architecture:ARCH-012",
+        "Architecture:ARCH-013",
+        "Architecture:ARCH-015",
+        "Architecture:ARCH-016",
+        "Architecture:ARCH-017",
+        "Architecture:ARCH-021",
+        "ADR:ADR-003",
+        "ADR:ADR-004",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03"
+      ],
+      "validation_requirements": [
+        "State and asynchronous behavior are independently testable."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "ac-doctor-directory-management-review-doctor-directory-001"
+      ],
+      "adr_refs": [
+        "ADR-005",
+        "ADR-008",
+        "ADR-007"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-024",
+        "ARCH-025",
+        "ARCH-026",
+        "ARCH-037",
+        "ARCH-038",
+        "ARCH-044"
+      ],
+      "blocking": false,
+      "category": "SECURITY_CONTEXT",
+      "deliverables": [
+        "Security context integration"
+      ],
+      "dependencies": [
+        "TT-005",
+        "TT-006",
+        "TT-010"
+      ],
+      "description": "Preserve approved access context through target integration boundaries. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03"
+      ],
+      "implementation_order": 11,
+      "implementation_requirements": [
+        "Propagate approved security, tenant, and correlation context.",
+        "Keep unresolved identity-provider choices explicit."
+      ],
+      "objective": "Preserve approved access context through target integration boundaries.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-011",
+      "title": "Apply security and tenant context to Doctor Directory Management",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "AC:ac-doctor-directory-management-review-doctor-directory-001",
+        "Architecture:ARCH-024",
+        "Architecture:ARCH-025",
+        "Architecture:ARCH-026",
+        "Architecture:ARCH-037",
+        "Architecture:ARCH-038",
+        "Architecture:ARCH-044",
+        "ADR:ADR-005",
+        "ADR:ADR-008",
+        "ADR:ADR-007",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03"
+      ],
+      "validation_requirements": [
+        "Tests prove context propagation without unsupported assumptions."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "ac-doctor-directory-management-review-doctor-directory-001"
+      ],
+      "adr_refs": [
+        "ADR-001",
+        "ADR-002"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-001",
+        "ARCH-002",
+        "ARCH-003",
+        "ARCH-004",
+        "ARCH-005",
+        "ARCH-034",
+        "ARCH-046"
+      ],
+      "blocking": false,
+      "category": "UI",
+      "deliverables": [
+        "Feature interaction components"
+      ],
+      "dependencies": [
+        "TT-010",
+        "TT-011"
+      ],
+      "description": "Connect approved workflows to Feature state and integrations. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03"
+      ],
+      "implementation_order": 12,
+      "implementation_requirements": [
+        "Implement approved interactions and observable outcomes.",
+        "Do not invent fields, validation rules, or business behavior."
+      ],
+      "objective": "Connect approved workflows to Feature state and integrations.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-012",
+      "title": "Implement approved Doctor Directory Management interactions",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "AC:ac-doctor-directory-management-review-doctor-directory-001",
+        "Architecture:ARCH-001",
+        "Architecture:ARCH-002",
+        "Architecture:ARCH-003",
+        "Architecture:ARCH-004",
+        "Architecture:ARCH-005",
+        "Architecture:ARCH-034",
+        "Architecture:ARCH-046",
+        "ADR:ADR-001",
+        "ADR:ADR-002",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03"
+      ],
+      "validation_requirements": [
+        "Every interaction traces to approved requirements and contracts."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "ac-doctor-directory-management-review-doctor-directory-001"
+      ],
+      "adr_refs": [
+        "ADR-002",
+        "ADR-009"
+      ],
+      "api_refs": [],
+      "architecture_decision_refs": [
+        "ARCH-046",
+        "ARCH-048"
+      ],
+      "blocking": false,
+      "category": "ACCESSIBILITY",
+      "deliverables": [
+        "Accessibility validation report"
+      ],
+      "dependencies": [
+        "TT-012"
+      ],
+      "description": "Apply selected accessibility and responsive standards. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03"
+      ],
+      "implementation_order": 13,
+      "implementation_requirements": [
+        "Verify semantics, keyboard operation, focus, labels, contrast, and responsive reflow."
+      ],
+      "objective": "Apply selected accessibility and responsive standards.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-013",
+      "title": "Validate accessible Doctor Directory Management behavior",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "AC:ac-doctor-directory-management-review-doctor-directory-001",
+        "Architecture:ARCH-046",
+        "Architecture:ARCH-048",
+        "ADR:ADR-002",
+        "ADR:ADR-009"
+      ],
+      "validation_requirements": [
+        "Automated and manual accessibility evidence is recorded."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "ac-doctor-directory-management-review-doctor-directory-001"
+      ],
+      "adr_refs": [
+        "ADR-007",
+        "ADR-008"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-039",
+        "ARCH-041",
+        "ARCH-051"
+      ],
+      "blocking": false,
+      "category": "OBSERVABILITY",
+      "deliverables": [
+        "Correlation and telemetry hooks"
+      ],
+      "dependencies": [
+        "TT-007",
+        "TT-010",
+        "TT-011"
+      ],
+      "description": "Make integration failures diagnosable without selecting a vendor. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03"
+      ],
+      "implementation_order": 14,
+      "implementation_requirements": [
+        "Propagate correlation context across selected integration layers.",
+        "Avoid recording sensitive business or tenant data."
+      ],
+      "objective": "Make integration failures diagnosable without selecting a vendor.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-014",
+      "title": "Add correlated telemetry for Doctor Directory Management",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "AC:ac-doctor-directory-management-review-doctor-directory-001",
+        "Architecture:ARCH-039",
+        "Architecture:ARCH-041",
+        "Architecture:ARCH-051",
+        "ADR:ADR-007",
+        "ADR:ADR-008",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03"
+      ],
+      "validation_requirements": [
+        "Telemetry and failure handling are covered by tests."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "ac-doctor-directory-management-review-doctor-directory-001"
+      ],
+      "adr_refs": [
+        "ADR-009"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-049",
+        "ARCH-050",
+        "ARCH-052"
+      ],
+      "blocking": false,
+      "category": "TEST",
+      "deliverables": [
+        "Unit and component tests"
+      ],
+      "dependencies": [
+        "TT-012",
+        "TT-013",
+        "TT-014"
+      ],
+      "description": "Verify Feature state, UI, routing, contracts, and accessibility. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03"
+      ],
+      "implementation_order": 15,
+      "implementation_requirements": [
+        "Cover approved synchronous, asynchronous, presentation, routing, and contract behavior."
+      ],
+      "objective": "Verify Feature state, UI, routing, contracts, and accessibility.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-015",
+      "title": "Implement unit and component coverage for Doctor Directory Management",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "AC:ac-doctor-directory-management-review-doctor-directory-001",
+        "Architecture:ARCH-049",
+        "Architecture:ARCH-050",
+        "Architecture:ARCH-052",
+        "ADR:ADR-009",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03"
+      ],
+      "validation_requirements": [
+        "Affected unit and component suites pass."
+      ]
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "ac-doctor-directory-management-review-doctor-directory-001"
+      ],
+      "adr_refs": [
+        "ADR-009"
+      ],
+      "api_refs": [
+        "API-01",
+        "API-02",
+        "API-03"
+      ],
+      "architecture_decision_refs": [
+        "ARCH-049",
+        "ARCH-050",
+        "ARCH-052"
+      ],
+      "blocking": false,
+      "category": "TEST",
+      "deliverables": [
+        "Playwright acceptance suite"
+      ],
+      "dependencies": [
+        "TT-015"
+      ],
+      "description": "Provide end-to-end evidence for approved acceptance criteria. This task consumes the locked architecture and makes no new architecture decision.",
+      "design_refs": [],
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        "FR-01",
+        "FR-02",
+        "FR-03"
+      ],
+      "implementation_order": 16,
+      "implementation_requirements": [
+        "Map each browser scenario to authoritative acceptance criteria.",
+        "Use controlled data without redefining unresolved behavior."
+      ],
+      "objective": "Provide end-to-end evidence for approved acceptance criteria.",
+      "open_questions": [],
+      "status": "PLANNED",
+      "story_refs": [
+        "US-01",
+        "US-02"
+      ],
+      "task_id": "TT-016",
+      "title": "Automate approved Doctor Directory Management flows with Playwright",
+      "traceability": [
+        "Feature:feature-doctor-directory-management",
+        "FR:FR-01",
+        "FR:FR-02",
+        "FR:FR-03",
+        "Story:US-01",
+        "Story:US-02",
+        "AC:ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+        "AC:ac-doctor-directory-management-review-doctor-directory-001",
+        "Architecture:ARCH-049",
+        "Architecture:ARCH-050",
+        "Architecture:ARCH-052",
+        "ADR:ADR-009",
+        "API:API-01",
+        "API:API-02",
+        "API:API-03"
+      ],
+      "validation_requirements": [
+        "Every approved criterion has executable traceability."
+      ]
+    }
+  ],
+  "traceability": {
+    "acceptance_criteria_refs": [
+      "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+      "ac-doctor-directory-management-review-doctor-directory-001"
+    ],
+    "adr_refs": [
+      "ADR-001",
+      "ADR-002",
+      "ADR-007",
+      "ADR-003",
+      "ADR-009",
+      "ADR-008",
+      "ADR-005",
+      "ADR-004"
+    ],
+    "api_refs": [
+      "API-01",
+      "API-02",
+      "API-03"
+    ],
+    "architecture_decision_refs": [
+      "ARCH-001",
+      "ARCH-002",
+      "ARCH-003",
+      "ARCH-004",
+      "ARCH-005",
+      "ARCH-006",
+      "ARCH-008",
+      "ARCH-009",
+      "ARCH-010",
+      "ARCH-017",
+      "ARCH-052",
+      "ARCH-034",
+      "ARCH-046",
+      "ARCH-048",
+      "ARCH-037",
+      "ARCH-038",
+      "ARCH-039",
+      "ARCH-044",
+      "ARCH-051",
+      "ARCH-041",
+      "ARCH-024",
+      "ARCH-025",
+      "ARCH-026",
+      "ARCH-028",
+      "ARCH-012",
+      "ARCH-013",
+      "ARCH-015",
+      "ARCH-016",
+      "ARCH-021",
+      "ARCH-049",
+      "ARCH-050"
+    ],
+    "design_refs": [],
+    "feature_refs": [
+      "feature-doctor-directory-management"
+    ],
+    "functional_requirement_refs": [
+      "FR-01",
+      "FR-02",
+      "FR-03"
+    ],
+    "story_refs": [
+      "US-01",
+      "US-02"
+    ]
+  },
+  "validation": {
+    "blockers": [],
+    "checks": {
+      "acceptance_criteria_refs_valid": true,
+      "api_refs_valid": true,
+      "architecture_selection_hash_valid": true,
+      "architecture_selection_locked": true,
+      "bff_task_present": true,
+      "dependencies_exist": true,
+      "dependency_graph_acyclic": true,
+      "design_conflicts_preserve_requirements": true,
+      "every_task_traceable": true,
+      "existing_api_contracts_preserved": true,
+      "feature_scope_only": true,
+      "future_bff_contract_labeled": true,
+      "gateway_task_present": true,
+      "implementation_order_valid": true,
+      "no_invented_existing_api": true,
+      "playwright_task_present": true,
+      "requirement_refs_valid": true,
+      "selected_architecture_only": true,
+      "story_refs_valid": true,
+      "task_ids_unique": true,
+      "unselected_technology_absent": true
+    },
+    "cycle_count": 0,
+    "status": "PASS"
+  },
+  "workflow": {
+    "design_mode": "NONE",
+    "design_provider": "NO_DESIGN",
+    "design_status": "NOT_PROVIDED",
+    "external_llm_calls": 0,
+    "final_status": "TECHNICAL_TASKS_READY",
+    "langchain_boundary": "RunnableLambda (offline deterministic technical task composition)",
+    "langchain_runnable_execution": true,
+    "langgraph_execution": true,
+    "nodes_executed": [
+      "load_approved_context",
+      "load_optional_design",
+      "resolve_design_conflicts",
+      "compose_technical_tasks",
+      "validate_technical_tasks",
+      "finalize_technical_tasks"
+    ],
+    "start_status": "STARTED",
+    "state_transitions": [
+      {
+        "from": "START",
+        "to": "load_approved_context"
+      },
+      {
+        "from": "load_approved_context",
+        "to": "load_optional_design"
+      },
+      {
+        "from": "load_optional_design",
+        "to": "resolve_design_conflicts"
+      },
+      {
+        "from": "resolve_design_conflicts",
+        "to": "compose_technical_tasks"
+      },
+      {
+        "from": "compose_technical_tasks",
+        "to": "validate_technical_tasks"
+      },
+      {
+        "from": "validate_technical_tasks",
+        "to": "finalize_technical_tasks"
+      }
+    ],
+    "workflow_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-074233-848656"
+  }
+}

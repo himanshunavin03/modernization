@@ -178,7 +178,7 @@ def generate_technical_tasks(project_id: str, feature_id: str, architecture_root
         "design_refs": list(dict.fromkeys(ref for item in state["tasks"] for ref in item["design_refs"])),
     }
     plan = TechnicalTaskPlan(
-        project_id=project_id, feature_id=feature_id,
+        project_id=project_id, feature_id=feature_id, feature_name=state["feature"]["feature_name"],
         architecture_selection_ref=str(architecture_root / "architecture-selection.json"),
         architecture_selection_hash=state["architecture"]["architecture_lock"]["selection_hash"],
         architecture_lock_status="LOCKED", design=state["design"], requirements=state["requirements"],
@@ -194,8 +194,11 @@ def generate_technical_tasks(project_id: str, feature_id: str, architecture_root
     (run / "technical-tasks.md").write_text(render_technical_tasks_markdown(plan), encoding="utf-8")
     (run / "technical-tasks.html").write_text(render_technical_tasks_html(plan), encoding="utf-8")
     latest = output_root / "latest"
-    shutil.rmtree(latest, ignore_errors=True)
-    shutil.copytree(run, latest)
+    if not latest.exists():
+        shutil.copytree(run, latest)
+    feature_latest = output_root / "features" / feature_id / "latest"
+    shutil.rmtree(feature_latest, ignore_errors=True)
+    shutil.copytree(run, feature_latest)
 
     design_run = design_output_root / "runs" / run_id
     design_run.mkdir(parents=True)
@@ -203,6 +206,9 @@ def generate_technical_tasks(project_id: str, feature_id: str, architecture_root
     (design_run / "design.md").write_text(render_design_markdown(state["design"]), encoding="utf-8")
     (design_run / "design.html").write_text(render_design_html(state["design"]), encoding="utf-8")
     design_latest = design_output_root / "latest"
-    shutil.rmtree(design_latest, ignore_errors=True)
-    shutil.copytree(design_run, design_latest)
+    if not design_latest.exists():
+        shutil.copytree(design_run, design_latest)
+    design_feature_latest = design_output_root / "features" / feature_id / "latest"
+    shutil.rmtree(design_feature_latest, ignore_errors=True)
+    shutil.copytree(design_run, design_feature_latest)
     return {"run_id": run_id, "path": run, "design_path": design_run, "state": state, "plan": plan, "workflow": workflow}

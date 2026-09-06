@@ -269,6 +269,8 @@ Polaris now exposes 19 canonical lifecycle commands through one metadata registr
 
 Feature planning resolves an explicit valid lock under `artifacts/architecture/features/<feature-id>/latest` first, then inherits the canonical application lock under `artifacts/architecture/latest`. Feature-index metadata distinguishes direct selection from effective availability and references the authoritative selection rather than copying application decisions into every Feature. Missing or invalid locks recommend `/recommend-architecture` without a Feature argument.
 
+Technical-task planning is now Feature-relative rather than hero-template-specific. Requirements, Stories, AC, APIs, design references, and selected architecture decisions are read from the active Feature context. New plans publish immutable runs and per-Feature `latest` pointers; the legacy global `latest` remains the backward-compatible approved Dashboard plan.
+
 ## Final Knowledge Graph Readiness
 
 Immutable run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128` is approved as `READY_WITH_EXPLAINED_LIMITATIONS`. Graph and evidence integrity pass at 2,384 files, 8,929 pipeline facts, 4,931 nodes, and 5,205 relationships. There are no duplicate IDs/relationships, broken endpoints, evidence gaps, invalid evidence paths/hashes/lines, or framework classification conflicts.

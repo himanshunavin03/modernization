@@ -21,6 +21,7 @@ ROOT = Path(__file__).parents[1]
 ARCHITECTURE = ROOT / "artifacts" / "architecture" / "latest"
 SPECIFICATIONS = ROOT / "artifacts" / "feature-specifications" / "latest"
 FEATURE_ID = "feature-operational-dashboard-insights"
+DOCTOR_FEATURE_ID = "feature-doctor-directory-management"
 PROJECT_ID = "legacy-dashboard-complete-application-demo-v1"
 EXPECTED_APIS = {
     ("GET", "/api/reports/expenses/{year}"),
@@ -147,6 +148,25 @@ def test_task_model_and_controlled_categories(tmp_path: Path) -> None:
     assert all(TechnicalTaskModel.model_validate(item) for item in plan["tasks"])
     assert {item["category"] for item in plan["tasks"]} <= {item.value for item in TechnicalTaskCategory}
     assert len(plan["tasks"]) == 16
+
+
+def test_non_hero_feature_plan_is_derived_from_its_own_contracts(tmp_path: Path) -> None:
+    result = generate_technical_tasks(
+        PROJECT_ID, DOCTOR_FEATURE_ID, ARCHITECTURE, SPECIFICATIONS,
+        "NONE", "NONE", None, tmp_path / "tasks", tmp_path / "design",
+    )
+    plan = result["plan"]
+    serialized_tasks = json.dumps(plan["tasks"])
+
+    assert plan["feature_name"] == "Doctor Directory Management"
+    assert len(plan["tasks"]) == 16
+    assert {item["story_id"] for item in plan["stories"]} == {"US-01", "US-02"}
+    assert {item["endpoint"] for item in plan["existing_api_contracts"]} == {
+        "/api/users/current/tenant", "/api/doctors/{id}", "/api/doctors",
+    }
+    assert plan["validation"]["status"] == "PASS"
+    assert "Operational Dashboard" not in serialized_tasks
+    assert "/api/reports" not in serialized_tasks
 
 
 def test_tasks_load_locked_selection_and_use_selected_decisions_only(tmp_path: Path) -> None:

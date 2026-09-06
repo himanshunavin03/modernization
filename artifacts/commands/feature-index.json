@@ -114,6 +114,7 @@
         "TT-015",
         "TT-016"
       ],
+      "technical_task_ref": "artifacts/technical-tasks/latest/technical-tasks.json",
       "test_paths": [
         "apps/healthclinic-web/src/app/app.routes.spec.ts",
         "libs/dashboard/ui/src/lib/year-navigator.component.spec.ts",
@@ -141,7 +142,7 @@
       "feature_id": "feature-doctor-directory-management",
       "implementation_paths": [],
       "modernization_operation": null,
-      "modernization_status": "NOT_STARTED",
+      "modernization_status": "READY",
       "name": "Doctor Directory Management",
       "slug": "doctor-directory-management",
       "spec_path": "artifacts/feature-specifications/latest/feature-doctor-directory-management.json",
@@ -149,7 +150,25 @@
         "story-doctor-directory-management-view-doctor-details-in-tenant-context",
         "story-doctor-directory-management-review-doctor-directory"
       ],
-      "technical_task_ids": [],
+      "technical_task_ids": [
+        "TT-001",
+        "TT-002",
+        "TT-003",
+        "TT-004",
+        "TT-005",
+        "TT-006",
+        "TT-007",
+        "TT-008",
+        "TT-009",
+        "TT-010",
+        "TT-011",
+        "TT-012",
+        "TT-013",
+        "TT-014",
+        "TT-015",
+        "TT-016"
+      ],
+      "technical_task_ref": "artifacts/technical-tasks/features/feature-doctor-directory-management/latest/technical-tasks.json",
       "test_paths": []
     },
     {
@@ -179,6 +198,7 @@
         "story-patient-directory-management-review-patient-directory"
       ],
       "technical_task_ids": [],
+      "technical_task_ref": null,
       "test_paths": []
     },
     {
@@ -208,6 +228,7 @@
         "story-clinic-appointment-experience-establish-clinic-context"
       ],
       "technical_task_ids": [],
+      "technical_task_ref": null,
       "test_paths": []
     },
     {
@@ -242,6 +263,7 @@
         "story-user-access-context-resolve-tenant-context-for-user-functions"
       ],
       "technical_task_ids": [],
+      "technical_task_ref": null,
       "test_paths": []
     }
   ],

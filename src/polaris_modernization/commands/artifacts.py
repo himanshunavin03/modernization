@@ -116,10 +116,48 @@ class ArchitectureSelectionResolver:
         )
 
 
+@dataclass(frozen=True)
+class TechnicalTaskResolution:
+    available: bool
+    plan_ref: str | None = None
+    root: Path | None = None
+    plan: dict[str, Any] | None = None
+
+
+class TechnicalTaskResolver:
+    """Locate the newest valid technical-task plan for one Feature."""
+
+    def __init__(self, paths: ArtifactPaths) -> None:
+        self.paths = paths
+
+    def resolve(self, feature_id: str) -> TechnicalTaskResolution:
+        task_root = self.paths.artifacts / "technical-tasks"
+        candidates = [
+            task_root / "features" / feature_id / "latest",
+            task_root / "latest",
+            *(reversed(sorted((task_root / "runs").glob("*"))) if (task_root / "runs").is_dir() else ()),
+        ]
+        seen: set[Path] = set()
+        for root in candidates:
+            if root in seen:
+                continue
+            seen.add(root)
+            plan = _read(root / "technical-tasks.json", {})
+            if plan.get("feature_id") == feature_id and plan.get("status") == "TECHNICAL_TASKS_READY":
+                return TechnicalTaskResolution(
+                    available=True,
+                    plan_ref=_relative(root / "technical-tasks.json", self.paths.repository_root),
+                    root=root,
+                    plan=plan,
+                )
+        return TechnicalTaskResolution(available=False)
+
+
 class FeatureIndex:
     def __init__(self, paths: ArtifactPaths) -> None:
         self.paths = paths
         self.architecture = ArchitectureSelectionResolver(paths)
+        self.technical_tasks = TechnicalTaskResolver(paths)
 
     def build(self, *, persist: bool = True) -> dict[str, Any]:
         source_path = self.paths.specifications / "feature-specification-index.json"
@@ -131,7 +169,6 @@ class FeatureIndex:
             item.get("feature_id"): item.get("contracts", [])
             for item in api_catalog.get("features", [])
         }
-        task_plan = _read(self.paths.artifacts / "technical-tasks" / "latest" / "technical-tasks.json", {})
         generation = _read(self.paths.artifacts / "modernization" / "latest" / "generation-manifest.json", {})
         generation_validation = _read(self.paths.artifacts / "modernization" / "latest" / "generation-validation.json", {})
         persisted = _read(self.paths.modernization_state, {"features": {}})
@@ -146,8 +183,10 @@ class FeatureIndex:
             stories = [item.get("story_id") for item in specification.get("stories", []) if item.get("story_id")]
             criteria = [item.get("acceptance_criterion_id") for item in specification.get("acceptance_criteria", []) if item.get("acceptance_criterion_id")]
             contracts = api_by_feature.get(feature_id, [])
-            task_ids = [item["task_id"] for item in task_plan.get("tasks", [])] if task_plan.get("feature_id") == feature_id else []
-            modernization_operation = task_plan.get("modernization_operation") if task_plan.get("feature_id") == feature_id else None
+            task_resolution = self.technical_tasks.resolve(feature_id)
+            task_plan = task_resolution.plan or {}
+            task_ids = [item["task_id"] for item in task_plan.get("tasks", [])]
+            modernization_operation = task_plan.get("modernization_operation")
             implementation_paths = generation.get("generated_files", []) if generation.get("feature_id") == feature_id else []
             test_paths = [item["file"] for item in generation.get("generated_tests", [])] if generation.get("feature_id") == feature_id else []
             if feature_id in persisted_features:
@@ -170,6 +209,7 @@ class FeatureIndex:
                 "acceptance_criteria_ids": criteria,
                 "api_contract_ids": [item["contract_id"] for item in contracts if item.get("contract_id")],
                 "technical_task_ids": task_ids,
+                "technical_task_ref": task_resolution.plan_ref,
                 "modernization_operation": modernization_operation,
                 "architecture_selected": directly_selected,
                 "architecture_available": architecture.available,
