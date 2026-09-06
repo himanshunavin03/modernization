@@ -187,6 +187,11 @@ class FeatureIndex:
             task_plan = task_resolution.plan or {}
             task_ids = [item["task_id"] for item in task_plan.get("tasks", [])]
             modernization_operation = task_plan.get("modernization_operation")
+            modernization_operation_id = (
+                modernization_operation.get("operation_id")
+                if isinstance(modernization_operation, dict)
+                else modernization_operation
+            )
             implementation_paths = generation.get("generated_files", []) if generation.get("feature_id") == feature_id else []
             test_paths = [item["file"] for item in generation.get("generated_tests", [])] if generation.get("feature_id") == feature_id else []
             if feature_id in persisted_features:
@@ -211,6 +216,7 @@ class FeatureIndex:
                 "technical_task_ids": task_ids,
                 "technical_task_ref": task_resolution.plan_ref,
                 "modernization_operation": modernization_operation,
+                "modernization_operation_id": modernization_operation_id,
                 "architecture_selected": directly_selected,
                 "architecture_available": architecture.available,
                 "architecture_source": architecture.source,

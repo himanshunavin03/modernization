@@ -30,6 +30,8 @@ def build_parser() -> argparse.ArgumentParser:
             child.add_argument("--static-only", action="store_true")
         if command.name == "generate-technical-tasks":
             child.add_argument("--prerequisite-only", action="store_true")
+        if command.name == "modernize-feature":
+            child.add_argument("--prerequisite-only", action="store_true")
     return parser
 
 

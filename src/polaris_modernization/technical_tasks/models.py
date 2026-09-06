@@ -56,6 +56,7 @@ class TechnicalTaskPlan(BaseModel):
     project_id: str
     feature_id: str
     feature_name: str | None = None
+    modernization_operation: dict | None = None
     status: Literal["TECHNICAL_TASKS_READY"] = "TECHNICAL_TASKS_READY"
     architecture_selection_ref: str
     architecture_selection_hash: str

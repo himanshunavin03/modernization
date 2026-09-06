@@ -7,6 +7,12 @@ from pathlib import Path
 import subprocess
 from typing import Any, Callable
 
+from polaris_modernization.modernization_operations import (
+    ModernizationContextBuilder,
+    ModernizationOperationRegistry,
+    default_operation_registry,
+)
+
 from .artifacts import (
     ArchitectureResolution,
     ArchitectureSelectionResolver,
@@ -29,6 +35,7 @@ class CommandService:
         *,
         registry: CommandRegistry | None = None,
         modernizers: dict[str, Callable[..., dict[str, Any]]] | None = None,
+        operation_registry: ModernizationOperationRegistry | None = None,
         process_runner: Callable[..., subprocess.CompletedProcess[str]] = subprocess.run,
     ) -> None:
         self.paths = ArtifactPaths(repository_root.resolve())
@@ -37,6 +44,8 @@ class CommandService:
         self.architecture = ArchitectureSelectionResolver(self.paths)
         self.state = ModernizationState(self.paths)
         self.modernizers = modernizers or {}
+        self.operation_registry = operation_registry or default_operation_registry()
+        self.modernization_context = ModernizationContextBuilder(self.paths)
         self.process_runner = process_runner
 
     def execute(self, command_name: str, argument: str | None = None, **options: Any) -> CommandResult:
@@ -191,14 +200,48 @@ class CommandService:
                 "Existing implementation detected; regeneration was skipped.", [f"/validate-feature {feature['slug']}", "/resume-modernization"],
             )
         self._validate_modernization_prerequisites(feature)
-        operation_name = feature.get("modernization_operation") or options.get("operation_name")
-        if not operation_name or operation_name not in self.modernizers:
+        operation_name = feature.get("modernization_operation_id") or options.get("operation_name")
+        if not operation_name:
             raise PrerequisiteError(
-                "No artifact-selected modernization operation is registered for this Feature.",
+                "No modernization operation is selected for this Feature.",
                 [f"/generate-technical-tasks {feature['slug']}"],
             )
+        if operation_name in self.modernizers:
+            if options.get("prerequisite_only"):
+                return CommandResult("modernize-feature", "READY", {"feature_id": feature["feature_id"], "operation_id": operation_name})
+            executor = self.modernizers[operation_name]
+            self.state.set(feature["feature_id"], "IN_PROGRESS", operation_name)
+            result = executor(feature=feature, service=self, **options)
+            self.state.set(feature["feature_id"], "IMPLEMENTED", operation_name, result)
+            self.index.build()
+            return CommandResult("modernize-feature", "IMPLEMENTED", {"feature_id": feature["feature_id"], "result": result})
+        if not self.operation_registry.contains(operation_name):
+            raise PrerequisiteError(
+                f"Modernization operation '{operation_name}' is not registered.",
+                ["/help-polaris"],
+            )
+        operation = self.operation_registry.get(operation_name)
+        context = self.modernization_context.build(self._project_id(), feature)
+        readiness = operation.validate(context)
+        if readiness.status != "READY":
+            raise PrerequisiteError(
+                f"Modernization operation prerequisites failed: {', '.join(readiness.blockers)}.",
+                [f"/show-feature {feature['slug']}", f"/show-traceability {feature['slug']}"],
+            )
+        if options.get("prerequisite_only"):
+            return CommandResult("modernize-feature", "READY", {
+                "feature_id": feature["feature_id"],
+                "operation_id": operation_name,
+                "target": readiness.target,
+                "technical_tasks": "READY",
+                "architecture": "READY",
+                "design_source": context.design_source,
+                "ui_evidence": context.ui_evidence,
+                "api_contract_count": len(context.api_contracts),
+                "modernized": False,
+            })
         self.state.set(feature["feature_id"], "IN_PROGRESS", operation_name)
-        result = self.modernizers[operation_name](feature=feature, service=self, **options)
+        result = operation.execute(context)
         self.state.set(feature["feature_id"], "IMPLEMENTED", operation_name, result)
         self.index.build()
         return CommandResult("modernize-feature", "IMPLEMENTED", {"feature_id": feature["feature_id"], "result": result})

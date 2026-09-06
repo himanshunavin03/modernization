@@ -271,6 +271,8 @@ Feature planning resolves an explicit valid lock under `artifacts/architecture/f
 
 Technical-task planning is now Feature-relative rather than hero-template-specific. Requirements, Stories, AC, APIs, design references, and selected architecture decisions are read from the active Feature context. New plans publish immutable runs and per-Feature `latest` pointers; the legacy global `latest` remains the backward-compatible approved Dashboard plan.
 
+The reusable modernization-operation layer registers `angular-feature-modernization` by target stack. Technical-task artifacts select the operation, and all adapters resolve the same core registry/context builder. Prerequisite-only checks validate tasks, architecture, APIs, UI evidence, design source, and state without generation. The Dashboard remains idempotently implemented; Doctor is ready but unmodified.
+
 ## Final Knowledge Graph Readiness
 
 Immutable run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128` is approved as `READY_WITH_EXPLAINED_LIMITATIONS`. Graph and evidence integrity pass at 2,384 files, 8,929 pipeline facts, 4,931 nodes, and 5,205 relationships. There are no duplicate IDs/relationships, broken endpoints, evidence gaps, invalid evidence paths/hashes/lines, or framework classification conflicts.

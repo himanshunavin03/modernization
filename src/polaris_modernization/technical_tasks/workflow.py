@@ -13,6 +13,7 @@ from polaris_modernization.design.conflicts import detect_design_conflicts
 from polaris_modernization.design.models import DesignMode
 from polaris_modernization.design.providers import FigmaDesignProvider, NoDesignProvider
 from polaris_modernization.design.renderers import render_design_html, render_design_markdown
+from polaris_modernization.modernization_operations.ids import ANGULAR_FEATURE_OPERATION_ID
 
 from .generator import technical_task_chain
 from .models import TechnicalTaskPlan
@@ -151,6 +152,18 @@ def _write_json(path: Path, value: object) -> None:
     path.write_text(json.dumps(value, indent=2, sort_keys=True), encoding="utf-8")
 
 
+def _modernization_operation(architecture: dict) -> dict:
+    selected_ids = set(architecture["selection"]["selected_decision_ids"])
+    selected = [item for item in architecture["selection"]["decisions"] if item["id"] in selected_ids]
+    if not any("angular" in item.get("technology", "").casefold() for item in selected):
+        raise TechnicalTaskWorkflowError("No supported modernization operation matches the selected target architecture.")
+    return {
+        "operation_id": ANGULAR_FEATURE_OPERATION_ID,
+        "target": "ANGULAR",
+        "selection_source": "LOCKED_ARCHITECTURE",
+    }
+
+
 def generate_technical_tasks(project_id: str, feature_id: str, architecture_root: Path, specification_root: Path, design_provider: str, design_mode: str, figma_url: str | None, output_root: Path, design_output_root: Path) -> dict:
     state = build_technical_task_graph().invoke({
         "project_id": project_id, "feature_id": feature_id, "architecture_root": str(architecture_root),
@@ -179,6 +192,7 @@ def generate_technical_tasks(project_id: str, feature_id: str, architecture_root
     }
     plan = TechnicalTaskPlan(
         project_id=project_id, feature_id=feature_id, feature_name=state["feature"]["feature_name"],
+        modernization_operation=_modernization_operation(state["architecture"]),
         architecture_selection_ref=str(architecture_root / "architecture-selection.json"),
         architecture_selection_hash=state["architecture"]["architecture_lock"]["selection_hash"],
         architecture_lock_status="LOCKED", design=state["design"], requirements=state["requirements"],

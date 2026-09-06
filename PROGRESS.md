@@ -280,3 +280,9 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - `/generate-technical-tasks doctor-directory-management` completed under inherited application architecture.
 - Published 16 Doctor-specific tasks with 3 FRs, 2 Stories, 2 AC, and 3 approved APIs; task validation passed with zero blockers and no Dashboard/report-contract leakage.
 - Added per-Feature task/design pointers and generic Feature-relative composition/validation. Regression passed `260 passed, 2 skipped`; Angular/Nx Dashboard build passed.
+
+## Reusable Modernization Operation
+
+- Added the core operation contract, target-stack registry, generic Angular Feature operation, and artifact-driven context builder.
+- Doctor planning now selects `angular-feature-modernization`; prerequisite-only execution returns `READY`, `DESIGN_SOURCE=EXISTING_APPLICATION_UI`, three API contracts, and artifact-resolved UI evidence while leaving implementation paths empty.
+- Focused operation/command/planning tests passed `68`; complete regression passed `270` with `2` skipped; the existing Angular Dashboard production build passed.

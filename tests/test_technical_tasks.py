@@ -159,6 +159,11 @@ def test_non_hero_feature_plan_is_derived_from_its_own_contracts(tmp_path: Path)
     serialized_tasks = json.dumps(plan["tasks"])
 
     assert plan["feature_name"] == "Doctor Directory Management"
+    assert plan["modernization_operation"] == {
+        "operation_id": "angular-feature-modernization",
+        "target": "ANGULAR",
+        "selection_source": "LOCKED_ARCHITECTURE",
+    }
     assert len(plan["tasks"]) == 16
     assert {item["story_id"] for item in plan["stories"]} == {"US-01", "US-02"}
     assert {item["endpoint"] for item in plan["existing_api_contracts"]} == {

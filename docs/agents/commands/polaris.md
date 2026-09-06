@@ -42,11 +42,14 @@ Unknown Features return `/list-features`. Ambiguous names return candidates and 
 ## Modernize
 
 - `/modernize-feature <feature>` validates the specification, AC, locked feature architecture, and feature-specific technical tasks before dispatching an artifact-selected engine operation. Existing implementations return `ALREADY_IMPLEMENTED` rather than being overwritten.
+- `/modernize-feature <feature> --prerequisite-only` resolves and validates the selected operation context without generating code or changing modernization state.
 - `/modernize-story <story-id>` resolves the owning Feature and uses the same operation.
 - `/start-modernization` selects the next artifact-ready Feature without bypassing task order.
 - `/resume-modernization` uses persisted state from `artifacts/commands/modernization-state.json`.
 
 A Feature with no registered deterministic generator is blocked honestly. Adding a new generator means registering an operation in the adapter and selecting it through generated planning metadata, not adding application-name branches.
+
+Technical-task planning selects `angular-feature-modernization` when the locked target architecture selects Angular. The core operation registry resolves that ID to `AngularFeatureModernizationOperation`, whose context is assembled from Feature specifications, Feature task plans, architecture inheritance, approved APIs, KG/source UI evidence, optional design configuration, and persisted state. Existing application UI is the default presentation source unless an explicit customer target design is configured.
 
 ## Validate
 
