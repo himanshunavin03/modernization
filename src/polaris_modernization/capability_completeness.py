@@ -35,6 +35,23 @@ class InteractionSemantics(BaseModel):
     source_evidence: list[CapabilityEvidence] = Field(default_factory=list)
 
 
+def _handler_semantics(handler: dict, forward: dict[str, list[tuple[str, str]]], nodes: dict[str, dict]) -> list[InteractionSemantics]:
+    """Translate handler-linked structural effects without using API or label heuristics."""
+    values: list[InteractionSemantics] = []
+    for edge_type, target in forward.get(handler["id"], []):
+        node = nodes[target]
+        props = node.get("properties", {})
+        if edge_type == "MUTATES_COLLECTION":
+            values.append(InteractionSemantics(interaction_type="ACTION", observable_result=f"collection {props.get('collection')} changes", source_evidence=_evidence(node, "FRONTEND")))
+        elif edge_type == "NAVIGATES":
+            values.append(InteractionSemantics(interaction_type="ACTION", observable_result=f"navigation changes to {props.get('target')}", source_evidence=_evidence(node, "FRONTEND")))
+        elif edge_type == "REQUIRES_CONFIRMATION":
+            values.append(InteractionSemantics(interaction_type="ACTION", observable_result="confirmation is requested before the related operation", source_evidence=_evidence(node, "FRONTEND")))
+        elif edge_type == "MUTATES":
+            values.append(InteractionSemantics(interaction_type="ACTION", state_change=str(props.get("target") or ""), source_evidence=_evidence(node, "FRONTEND")))
+    return values
+
+
 class SourceCapability(BaseModel):
     capability_id: str
     domain_context: str
@@ -177,6 +194,8 @@ def derive_source_capabilities(graph: dict) -> list[SourceCapability]:
             evidence = [item for node, stage in [*( (x, "UI") for x in ui_actions), *( (x, "FRONTEND") for x in domain_callers), *( (x, "BACKEND") for x in endpoints), *( (x, "PERSISTENCE") for x in persistence)] for item in _evidence(node, stage)]
             evidence.extend(api_evidence)
             interactions = [item for node in ui_actions if (item := _interaction(node))]
+            for handler in handlers:
+                interactions.extend(_handler_semantics(handler, forward, nodes))
             qualifiers = []
             if any(str(value).casefold() == "tenantid" for value in props.get("request_header_components", [])):
                 qualifiers.append("TENANT_SCOPED")
