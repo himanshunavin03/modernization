@@ -1,0 +1,10 @@
+{
+  "duplicate_stories": 0,
+  "fr_with_story_coverage": 10,
+  "fr_without_story_coverage": [],
+  "jira_story_quality": "PASS",
+  "orphan_stories": 0,
+  "total_approved_frs": 10,
+  "unsupported_story_behavior": 0,
+  "valid": true
+}

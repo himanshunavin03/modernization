@@ -143,7 +143,13 @@ class CommandService:
         result = validate_and_persist_features(source, output, Path(agent_result)) if agent_result else prepare_feature_generation(source, output)
         return CommandResult("generate-features", "PREPARED" if not agent_result else "COMPLETE", {"path": str(result["path"])})
 
-    def generate_stories(self, **options: Any) -> CommandResult:
+    def generate_stories(self, *, argument: str | None = None, **options: Any) -> CommandResult:
+        if argument:
+            from polaris_modernization.feature_targeted_generation import generate_targeted_stories, resolve_approved_feature
+            feature = self.index.resolve(argument)
+            context = resolve_approved_feature(self.paths.repository_root, feature)
+            result = generate_targeted_stories(context, self.paths.artifacts / "stories")
+            return CommandResult("generate-stories", "COMPLETE", {"feature_id": feature["feature_id"], "path": str(result["path"]), "run_id": result["run_id"]})
         from polaris_modernization.stories.workflow import prepare_story_generation, validate_and_persist_stories
 
         source = Path(options.get("business_feature_root", self.paths.artifacts / "business-features" / "latest"))
@@ -152,7 +158,14 @@ class CommandService:
         result = validate_and_persist_stories(source, output, Path(agent_result)) if agent_result else prepare_story_generation(source, output)
         return CommandResult("generate-stories", "PREPARED" if not agent_result else "COMPLETE", {"path": str(result["path"])})
 
-    def generate_acceptance_criteria(self, **options: Any) -> CommandResult:
+    def generate_acceptance_criteria(self, *, argument: str | None = None, **options: Any) -> CommandResult:
+        if argument:
+            from polaris_modernization.feature_targeted_generation import generate_targeted_acceptance_criteria, resolve_approved_feature
+            feature = self.index.resolve(argument)
+            context = resolve_approved_feature(self.paths.repository_root, feature)
+            story_root = self.paths.artifacts / "stories" / "features" / feature["feature_id"] / "latest"
+            result = generate_targeted_acceptance_criteria(context, story_root, self.paths.artifacts / "acceptance-criteria")
+            return CommandResult("generate-acceptance-criteria", "COMPLETE", {"feature_id": feature["feature_id"], "path": str(result["path"]), "run_id": result["run_id"]})
         from polaris_modernization.acceptance_criteria.workflow import prepare_acceptance_criteria, validate_and_persist_acceptance_criteria
 
         source = Path(options.get("story_root", self.paths.artifacts / "stories" / "latest"))

@@ -1,0 +1,8 @@
+{
+  "canonical_upstream_kg_run": "legacy-dashboard-complete-application-demo-v1-2026-09-06-102441",
+  "feature_contract": "artifacts\\feature-specifications\\latest\\feature-doctor-directory-management.json",
+  "feature_contract_hash": "327ac611e168938d9ae8abc6df99847570a6eb0ccb2b2108a360fbfb4581023a",
+  "feature_id": "feature-doctor-directory-management",
+  "feature_run": "capability-scope-2026-09-06-103209-160496",
+  "story_run": "feature-doctor-directory-management-2026-09-06-104354-427894"
+}

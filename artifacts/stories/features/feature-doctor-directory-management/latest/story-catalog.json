@@ -1,0 +1,240 @@
+{
+  "lineage": {
+    "canonical_upstream_kg_run": "legacy-dashboard-complete-application-demo-v1-2026-09-06-102441",
+    "feature_contract": "artifacts\\feature-specifications\\latest\\feature-doctor-directory-management.json",
+    "feature_contract_hash": "327ac611e168938d9ae8abc6df99847570a6eb0ccb2b2108a360fbfb4581023a",
+    "feature_id": "feature-doctor-directory-management",
+    "feature_run": "capability-scope-2026-09-06-103209-160496",
+    "story_run": "feature-doctor-directory-management-2026-09-06-104354-427894"
+  },
+  "readiness": "STORIES_READY",
+  "stories": [
+    {
+      "api_contracts": [
+        {
+          "contract_id": "API-02",
+          "method": "GET",
+          "route": "/api/doctors"
+        }
+      ],
+      "business_outcome": "The existing application behavior requires users to review doctor directory. This behavior also preserves the approved fixed ordering, the approved tenant context.",
+      "capability_qualifiers": [
+        "FIXED_ORDER",
+        "TENANT_SCOPED"
+      ],
+      "functional_requirement_ids": [
+        "FR-01"
+      ],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "source_capability_ids": [
+        "capability-doctors-list-8e359528dc06"
+      ],
+      "status": "CURRENT",
+      "story_id": "story-doctor-directory-management-review-doctor-directory",
+      "story_statement": "As a user of the existing application, I want to review doctor directory, so that I can use the approved doctor directory management behavior.",
+      "title": "Review Doctor Directory"
+    },
+    {
+      "api_contracts": [
+        {
+          "contract_id": "API-03",
+          "method": "GET",
+          "route": "/api/doctors/{id}"
+        }
+      ],
+      "business_outcome": "The existing application behavior requires users to view doctor details. This behavior also preserves the approved tenant context.",
+      "capability_qualifiers": [
+        "TENANT_SCOPED"
+      ],
+      "functional_requirement_ids": [
+        "FR-02"
+      ],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "source_capability_ids": [
+        "capability-doctors-read-9d2f061a43ff"
+      ],
+      "status": "CURRENT",
+      "story_id": "story-doctor-directory-management-view-doctor-details",
+      "story_statement": "As a user of the existing application, I want to view doctor details, so that I can use the approved doctor directory management behavior.",
+      "title": "View Doctor Details"
+    },
+    {
+      "api_contracts": [
+        {
+          "contract_id": "API-05",
+          "method": "POST",
+          "route": "/api/doctors"
+        }
+      ],
+      "business_outcome": "The existing application behavior requires users to create doctor. This behavior also preserves the approved tenant context.",
+      "capability_qualifiers": [
+        "TENANT_SCOPED"
+      ],
+      "functional_requirement_ids": [
+        "FR-03"
+      ],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "source_capability_ids": [
+        "capability-doctors-create-3bf79f905f70"
+      ],
+      "status": "CURRENT",
+      "story_id": "story-doctor-directory-management-create-doctor",
+      "story_statement": "As a user of the existing application, I want to create doctor, so that I can use the approved doctor directory management behavior.",
+      "title": "Create Doctor"
+    },
+    {
+      "api_contracts": [
+        {
+          "contract_id": "API-06",
+          "method": "PUT",
+          "route": "/api/doctors"
+        }
+      ],
+      "business_outcome": "The existing application behavior requires users to update doctor. This behavior also preserves the approved tenant context.",
+      "capability_qualifiers": [
+        "TENANT_SCOPED"
+      ],
+      "functional_requirement_ids": [
+        "FR-04"
+      ],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "source_capability_ids": [
+        "capability-doctors-update-01a9514e9ad2"
+      ],
+      "status": "CURRENT",
+      "story_id": "story-doctor-directory-management-update-doctor",
+      "story_statement": "As a user of the existing application, I want to update doctor, so that I can use the approved doctor directory management behavior.",
+      "title": "Update Doctor"
+    },
+    {
+      "api_contracts": [
+        {
+          "contract_id": "API-01",
+          "method": "DELETE",
+          "route": "/api/doctors/{id}"
+        }
+      ],
+      "business_outcome": "The existing application behavior requires users to delete doctor. This behavior also preserves the approved bulk operation behavior, the approved tenant context.",
+      "capability_qualifiers": [
+        "BULK",
+        "TENANT_SCOPED"
+      ],
+      "functional_requirement_ids": [
+        "FR-05"
+      ],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "source_capability_ids": [
+        "capability-doctors-delete-2aa95f28df47"
+      ],
+      "status": "CURRENT",
+      "story_id": "story-doctor-directory-management-delete-doctor",
+      "story_statement": "As a user of the existing application, I want to delete doctor, so that I can use the approved doctor directory management behavior.",
+      "title": "Delete Doctor"
+    },
+    {
+      "api_contracts": [],
+      "business_outcome": "The existing application behavior requires users to continue through doctor results.",
+      "capability_qualifiers": [],
+      "functional_requirement_ids": [
+        "FR-06"
+      ],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "source_capability_ids": [
+        "capability-doctors-page-6cd0c8021d52"
+      ],
+      "status": "CURRENT",
+      "story_id": "story-doctor-directory-management-continue-through-doctor-results",
+      "story_statement": "As a user of the existing application, I want to continue through doctor results, so that I can use the approved doctor directory management behavior.",
+      "title": "Continue Through Doctor Results"
+    },
+    {
+      "api_contracts": [],
+      "business_outcome": "The existing application behavior requires users to maintain doctor profile media.",
+      "capability_qualifiers": [],
+      "functional_requirement_ids": [
+        "FR-07"
+      ],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "source_capability_ids": [
+        "capability-doctors-upload-4740bad485ec",
+        "capability-doctors-upload-6605f1033084"
+      ],
+      "status": "CURRENT",
+      "story_id": "story-doctor-directory-management-maintain-doctor-profile-media",
+      "story_statement": "As a user of the existing application, I want to maintain doctor profile media, so that I can use the approved doctor directory management behavior.",
+      "title": "Maintain Doctor Profile Media"
+    },
+    {
+      "api_contracts": [],
+      "business_outcome": "The existing application behavior requires users to validate doctor input.",
+      "capability_qualifiers": [],
+      "functional_requirement_ids": [
+        "FR-08"
+      ],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "source_capability_ids": [
+        "capability-doctors-validate-30e3b01c51a5",
+        "capability-doctors-validate-741cc6b88166",
+        "capability-doctors-validate-8a54f613e682",
+        "capability-doctors-validate-a1a5296a791a",
+        "capability-doctors-validate-c90d553a0e3a",
+        "capability-doctors-validate-f54eac18bb4b"
+      ],
+      "status": "CURRENT",
+      "story_id": "story-doctor-directory-management-validate-doctor-input",
+      "story_statement": "As a user of the existing application, I want to validate doctor input, so that I can use the approved doctor directory management behavior.",
+      "title": "Validate Doctor Input"
+    },
+    {
+      "api_contracts": [],
+      "business_outcome": "The existing application behavior requires users to navigate from the doctor experience.",
+      "capability_qualifiers": [],
+      "functional_requirement_ids": [
+        "FR-09"
+      ],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "source_capability_ids": [
+        "capability-doctors-navigate-112aba01bc1f",
+        "capability-doctors-navigate-472c10f6e1fd",
+        "capability-doctors-navigate-ecdc3c506da0",
+        "capability-doctors-navigate-f3cd83a2ae08"
+      ],
+      "status": "CURRENT",
+      "story_id": "story-doctor-directory-management-navigate-from-the-doctor-experience",
+      "story_statement": "As a user of the existing application, I want to navigate from the doctor experience, so that I can use the approved doctor directory management behavior.",
+      "title": "Navigate from the Doctor Experience"
+    },
+    {
+      "api_contracts": [
+        {
+          "contract_id": "API-04",
+          "method": "GET",
+          "route": "/api/users/current/tenant"
+        }
+      ],
+      "business_outcome": "The existing application behavior requires users to establish current tenant context.",
+      "capability_qualifiers": [],
+      "functional_requirement_ids": [
+        "FR-10"
+      ],
+      "parent_feature_id": "feature-doctor-directory-management",
+      "source_capability_ids": [
+        "capability-doctors-read-440206d0d254"
+      ],
+      "status": "CURRENT",
+      "story_id": "story-doctor-directory-management-establish-current-tenant-context",
+      "story_statement": "As a user of the existing application, I want to establish current tenant context, so that I can use the approved doctor directory management behavior.",
+      "title": "Establish Current Tenant Context"
+    }
+  ],
+  "validation": {
+    "duplicate_stories": 0,
+    "fr_with_story_coverage": 10,
+    "fr_without_story_coverage": [],
+    "jira_story_quality": "PASS",
+    "orphan_stories": 0,
+    "total_approved_frs": 10,
+    "unsupported_story_behavior": 0,
+    "valid": true
+  }
+}

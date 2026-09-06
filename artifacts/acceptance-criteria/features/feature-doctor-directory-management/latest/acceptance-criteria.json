@@ -1,0 +1,247 @@
+{
+  "acceptance_criteria": [
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-review-doctor-directory-001",
+      "api_contracts": [
+        {
+          "contract_id": "API-02",
+          "method": "GET",
+          "route": "/api/doctors"
+        }
+      ],
+      "capability_qualifiers": [
+        "FIXED_ORDER",
+        "TENANT_SCOPED"
+      ],
+      "functional_requirement_ids": [
+        "FR-01"
+      ],
+      "given": "the approved feature behavior is available",
+      "source_capability_ids": [
+        "capability-doctors-list-8e359528dc06"
+      ],
+      "story_id": "story-doctor-directory-management-review-doctor-directory",
+      "testable": true,
+      "then": "The existing application behavior requires users to review doctor directory. This behavior also preserves the approved fixed ordering, the approved tenant context. The feature uses GET /api/doctors.",
+      "title": "Review Doctor Directory behavior",
+      "when": "the user performs review doctor directory"
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-view-doctor-details-001",
+      "api_contracts": [
+        {
+          "contract_id": "API-03",
+          "method": "GET",
+          "route": "/api/doctors/{id}"
+        }
+      ],
+      "capability_qualifiers": [
+        "TENANT_SCOPED"
+      ],
+      "functional_requirement_ids": [
+        "FR-02"
+      ],
+      "given": "the approved feature behavior is available",
+      "source_capability_ids": [
+        "capability-doctors-read-9d2f061a43ff"
+      ],
+      "story_id": "story-doctor-directory-management-view-doctor-details",
+      "testable": true,
+      "then": "The existing application behavior requires users to view doctor details. This behavior also preserves the approved tenant context. The feature uses GET /api/doctors/{id}.",
+      "title": "View Doctor Details behavior",
+      "when": "the user performs view doctor details"
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-create-doctor-001",
+      "api_contracts": [
+        {
+          "contract_id": "API-05",
+          "method": "POST",
+          "route": "/api/doctors"
+        }
+      ],
+      "capability_qualifiers": [
+        "TENANT_SCOPED"
+      ],
+      "functional_requirement_ids": [
+        "FR-03"
+      ],
+      "given": "the approved feature behavior is available",
+      "source_capability_ids": [
+        "capability-doctors-create-3bf79f905f70"
+      ],
+      "story_id": "story-doctor-directory-management-create-doctor",
+      "testable": true,
+      "then": "The existing application behavior requires users to create doctor. This behavior also preserves the approved tenant context. The feature uses POST /api/doctors.",
+      "title": "Create Doctor behavior",
+      "when": "the user performs create doctor"
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-update-doctor-001",
+      "api_contracts": [
+        {
+          "contract_id": "API-06",
+          "method": "PUT",
+          "route": "/api/doctors"
+        }
+      ],
+      "capability_qualifiers": [
+        "TENANT_SCOPED"
+      ],
+      "functional_requirement_ids": [
+        "FR-04"
+      ],
+      "given": "the approved feature behavior is available",
+      "source_capability_ids": [
+        "capability-doctors-update-01a9514e9ad2"
+      ],
+      "story_id": "story-doctor-directory-management-update-doctor",
+      "testable": true,
+      "then": "The existing application behavior requires users to update doctor. This behavior also preserves the approved tenant context. The feature uses PUT /api/doctors.",
+      "title": "Update Doctor behavior",
+      "when": "the user performs update doctor"
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-delete-doctor-001",
+      "api_contracts": [
+        {
+          "contract_id": "API-01",
+          "method": "DELETE",
+          "route": "/api/doctors/{id}"
+        }
+      ],
+      "capability_qualifiers": [
+        "BULK",
+        "TENANT_SCOPED"
+      ],
+      "functional_requirement_ids": [
+        "FR-05"
+      ],
+      "given": "the approved feature behavior is available",
+      "source_capability_ids": [
+        "capability-doctors-delete-2aa95f28df47"
+      ],
+      "story_id": "story-doctor-directory-management-delete-doctor",
+      "testable": true,
+      "then": "The existing application behavior requires users to delete doctor. This behavior also preserves the approved bulk operation behavior, the approved tenant context. The feature uses DELETE /api/doctors/{id}.",
+      "title": "Delete Doctor behavior",
+      "when": "the user performs delete doctor"
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-continue-through-doctor-results-001",
+      "api_contracts": [],
+      "capability_qualifiers": [],
+      "functional_requirement_ids": [
+        "FR-06"
+      ],
+      "given": "the approved feature behavior is available",
+      "source_capability_ids": [
+        "capability-doctors-page-6cd0c8021d52"
+      ],
+      "story_id": "story-doctor-directory-management-continue-through-doctor-results",
+      "testable": true,
+      "then": "The existing application behavior requires users to continue through doctor results.",
+      "title": "Continue Through Doctor Results behavior",
+      "when": "the user performs continue through doctor results"
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-maintain-doctor-profile-media-001",
+      "api_contracts": [],
+      "capability_qualifiers": [],
+      "functional_requirement_ids": [
+        "FR-07"
+      ],
+      "given": "the approved feature behavior is available",
+      "source_capability_ids": [
+        "capability-doctors-upload-4740bad485ec",
+        "capability-doctors-upload-6605f1033084"
+      ],
+      "story_id": "story-doctor-directory-management-maintain-doctor-profile-media",
+      "testable": true,
+      "then": "The existing application behavior requires users to maintain doctor profile media.",
+      "title": "Maintain Doctor Profile Media behavior",
+      "when": "the user performs maintain doctor profile media"
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-validate-doctor-input-001",
+      "api_contracts": [],
+      "capability_qualifiers": [],
+      "functional_requirement_ids": [
+        "FR-08"
+      ],
+      "given": "the approved feature behavior is available",
+      "source_capability_ids": [
+        "capability-doctors-validate-30e3b01c51a5",
+        "capability-doctors-validate-741cc6b88166",
+        "capability-doctors-validate-8a54f613e682",
+        "capability-doctors-validate-a1a5296a791a",
+        "capability-doctors-validate-c90d553a0e3a",
+        "capability-doctors-validate-f54eac18bb4b"
+      ],
+      "story_id": "story-doctor-directory-management-validate-doctor-input",
+      "testable": true,
+      "then": "The existing application behavior requires users to validate doctor input.",
+      "title": "Validate Doctor Input behavior",
+      "when": "the user performs validate doctor input"
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-navigate-from-the-doctor-experience-001",
+      "api_contracts": [],
+      "capability_qualifiers": [],
+      "functional_requirement_ids": [
+        "FR-09"
+      ],
+      "given": "the approved feature behavior is available",
+      "source_capability_ids": [
+        "capability-doctors-navigate-112aba01bc1f",
+        "capability-doctors-navigate-472c10f6e1fd",
+        "capability-doctors-navigate-ecdc3c506da0",
+        "capability-doctors-navigate-f3cd83a2ae08"
+      ],
+      "story_id": "story-doctor-directory-management-navigate-from-the-doctor-experience",
+      "testable": true,
+      "then": "The existing application behavior requires users to navigate from the doctor experience.",
+      "title": "Navigate from the Doctor Experience behavior",
+      "when": "the user performs navigate from the doctor experience"
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-establish-current-tenant-context-001",
+      "api_contracts": [
+        {
+          "contract_id": "API-04",
+          "method": "GET",
+          "route": "/api/users/current/tenant"
+        }
+      ],
+      "capability_qualifiers": [],
+      "functional_requirement_ids": [
+        "FR-10"
+      ],
+      "given": "the approved feature behavior is available",
+      "source_capability_ids": [
+        "capability-doctors-read-440206d0d254"
+      ],
+      "story_id": "story-doctor-directory-management-establish-current-tenant-context",
+      "testable": true,
+      "then": "The existing application behavior requires users to establish current tenant context. The feature uses GET /api/users/current/tenant.",
+      "title": "Establish Current Tenant Context behavior",
+      "when": "the user performs establish current tenant context"
+    }
+  ],
+  "lineage": {
+    "acceptance_criteria_run": "feature-doctor-directory-management-2026-09-06-104355-775746",
+    "canonical_upstream_kg_run": "legacy-dashboard-complete-application-demo-v1-2026-09-06-102441",
+    "feature_contract": "artifacts\\feature-specifications\\latest\\feature-doctor-directory-management.json",
+    "feature_contract_hash": "327ac611e168938d9ae8abc6df99847570a6eb0ccb2b2108a360fbfb4581023a",
+    "feature_id": "feature-doctor-directory-management",
+    "feature_run": "capability-scope-2026-09-06-103209-160496",
+    "story_run": "feature-doctor-directory-management-2026-09-06-104354-427894"
+  },
+  "readiness": "ACCEPTANCE_CRITERIA_READY",
+  "validation": {
+    "ac_testability_quality": "PASS",
+    "orphan_ac": [],
+    "stories_without_ac": [],
+    "valid": true
+  }
+}
