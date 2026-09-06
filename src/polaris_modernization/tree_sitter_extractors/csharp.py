@@ -26,6 +26,27 @@ def _named_child_count(node, field: str) -> int:
     return len(value.named_children) if value is not None else 0
 
 
+def _namespace(node, source: bytes) -> str | None:
+    current = node.parent
+    while current is not None:
+        if current.type in {"namespace_declaration", "file_scoped_namespace_declaration"}:
+            name = current.child_by_field_name("name")
+            return node_text(name, source) if name is not None else None
+        current = current.parent
+    return None
+
+
+def _method_signature(node, source: bytes) -> str:
+    type_parameters = node.child_by_field_name("type_parameters")
+    parameters = node.child_by_field_name("parameters")
+    syntax = "".join(
+        node_text(part, source)
+        for part in (type_parameters, parameters)
+        if part is not None
+    )
+    return re.sub(r"\s+", "", syntax)
+
+
 def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list[Fact]:
     source = path.read_bytes()
     root = parser_for(tree_sitter_c_sharp.language()).parse(source).root_node
@@ -35,11 +56,16 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
         class_name = _first_identifier(class_node, source)
         if not class_name:
             continue
+        namespace = _namespace(class_node, source)
+        container_identity = f"{namespace}.{class_name}" if namespace else class_name
         class_evidence = evidence(path, source_root, class_node, digest, project_id)
         # Syntax can prove a class declaration, but only controller naming or
         # Roslyn inheritance evidence can classify it as an MVC/API controller.
         is_controller = class_name.endswith("Controller")
-        facts.append(Fact("controller" if is_controller else "type", class_name, class_evidence))
+        facts.append(Fact("controller" if is_controller else "type", class_name, class_evidence, {
+            "container_identity": container_identity,
+            "namespace": namespace,
+        }))
         attributes = [node_text(node, source) for node in walk(class_node) if node.type == "attribute"]
         for attribute in attributes:
             if attribute == "Authorize":
@@ -51,7 +77,16 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
                 continue
             method_evidence = evidence(path, source_root, method_node, digest, project_id)
             arity = _named_child_count(method_node, "parameters")
-            facts.append(Fact("action" if is_controller else "method", method_name, method_evidence, {"controller": class_name, "arity": arity}))
+            structural_signature = _method_signature(method_node, source)
+            structural_identity = f"{container_identity}.{method_name}{structural_signature}@{path.relative_to(source_root).as_posix()}"
+            facts.append(Fact("action" if is_controller else "method", method_name, method_evidence, {
+                "controller": class_name,
+                "owner": class_name,
+                "container_identity": container_identity,
+                "arity": arity,
+                "structural_signature": structural_signature,
+                "structural_identity": structural_identity,
+            }))
             facts.append(Fact("backend_handler", f"{class_name}.{method_name}/{arity}", method_evidence, {
                 "owner": class_name, "function_name": method_name, "arity": arity,
                 "handler_kind": "CONTROLLER" if is_controller else "DOMAIN",

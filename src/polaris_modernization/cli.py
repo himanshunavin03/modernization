@@ -213,14 +213,36 @@ def merge_roslyn(graph: dict, facts: list[dict], project_id: str, out_of_scope_s
     def node(label: str, name: str, evidence: dict, properties: dict, *, merge_tree_sitter: bool = False) -> str:
         if merge_tree_sitter:
             for candidate in nodes.values():
-                if candidate["label"] == label and candidate["name"] == name and any(item.get("source_path") == evidence.get("source_path") for item in candidate["evidence"]):
-                    candidate["evidence"].append(evidence)
-                    return candidate["id"]
+                matching_evidence = [
+                    item for item in candidate["evidence"]
+                    if item.get("source_path") == evidence.get("source_path")
+                ]
+                if candidate["label"] != label or candidate["name"] != name or not matching_evidence:
+                    continue
+                if label == "Method" and not any(
+                    item.get("line_start") == evidence.get("line_start") for item in matching_evidence
+                ):
+                    continue
+                candidate["evidence"].append(evidence)
+                if label == "Method" and properties.get("identity"):
+                    candidate["properties"]["semantic_identity"] = properties["identity"]
+                    candidate["properties"]["semantic_resolution"] = (
+                        "PROVEN_EQUIVALENT"
+                        if evidence.get("resolution_status") == "proven"
+                        else "UNRESOLVED_STRUCTURAL_FALLBACK"
+                    )
+                return candidate["id"]
         identity = f"{project_id}:{label}:{properties.get('identity') or name}"
         item = nodes.get(identity)
         if item is None:
             item = {"id": identity, "project_id": project_id, "label": label, "name": name, "properties": properties, "evidence": []}
             nodes[identity] = item
+        elif properties.get("owner_identity"):
+            # Promote an invocation-created placeholder when its declaration
+            # arrives; declaration identity and evidence are authoritative.
+            item["label"] = label
+            item["name"] = name
+            item["properties"].update(properties)
         item["evidence"].append(evidence)
         return identity
 
@@ -237,14 +259,27 @@ def merge_roslyn(graph: dict, facts: list[dict], project_id: str, out_of_scope_s
         label = ROSLYN_LABELS.get(fact.get("kind"))
         evidence = fact.get("evidence", {})
         properties = fact.get("properties", {})
-        if fact.get("project_id") != project_id or evidence.get("resolution_status") != "proven":
+        if fact.get("project_id") != project_id:
+            continue
+        is_structural_method_fallback = (
+            fact.get("kind") == "method"
+            and evidence.get("resolution_status") != "proven"
+            and properties.get("identity")
+            and properties.get("owner_identity")
+        )
+        if evidence.get("resolution_status") != "proven" and not is_structural_method_fallback:
             if evidence.get("diagnostic"):
                 graph["warnings"].append({"source_path": evidence.get("source_path", ""), "message": evidence["diagnostic"]})
             continue
         if label:
             identity = str(properties.get("identity") or fact["name"])
             label = semantic_labels.get(identity, label)
-            semantic_nodes[identity] = node(label, fact["name"], evidence, properties, merge_tree_sitter=fact["kind"] in {"controller", "action"})
+            node_properties = properties
+            if is_structural_method_fallback:
+                node_properties = {**properties, "semantic_resolution": "UNRESOLVED_STRUCTURAL_FALLBACK"}
+            semantic_nodes[identity] = node(label, fact["name"], evidence, node_properties, merge_tree_sitter=fact["kind"] in {"controller", "action", "method"})
+            if is_structural_method_fallback and evidence.get("diagnostic"):
+                graph["warnings"].append({"source_path": evidence.get("source_path", ""), "message": evidence["diagnostic"]})
 
     def reference(label: str, identity: object, evidence: dict) -> str | None:
         if identity is None:
@@ -262,7 +297,13 @@ def merge_roslyn(graph: dict, facts: list[dict], project_id: str, out_of_scope_s
     for fact in facts:
         evidence = fact.get("evidence", {})
         properties = fact.get("properties", {})
-        if fact.get("project_id") != project_id or evidence.get("resolution_status") != "proven":
+        is_structural_method_fallback = (
+            fact.get("kind") == "method"
+            and evidence.get("resolution_status") != "proven"
+            and properties.get("identity")
+            and properties.get("owner_identity")
+        )
+        if fact.get("project_id") != project_id or (evidence.get("resolution_status") != "proven" and not is_structural_method_fallback):
             continue
         identity = str(properties.get("identity") or fact.get("name"))
         subject = semantic_nodes.get(identity)
@@ -274,6 +315,10 @@ def merge_roslyn(graph: dict, facts: list[dict], project_id: str, out_of_scope_s
                 edge("DECLARES", owner, subject, evidence)
             if returned:
                 edge("RETURNS_TYPE", subject, returned, evidence)
+        elif kind == "method" and subject:
+            owner = reference("Type", properties.get("owner_identity"), evidence)
+            if owner:
+                edge("DECLARES", owner, subject, evidence)
         elif kind == "endpoint" and subject:
             owner = reference("Action", properties.get("owner_identity"), evidence)
             if owner:

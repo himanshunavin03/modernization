@@ -52,8 +52,8 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
     nodes: dict[str, dict] = {}
     edges: dict[tuple[str, str, str], dict] = {}
 
-    def add_node(label: str, name: str, evidence: dict, properties: dict | None = None) -> str:
-        node_id = f"{project_id}:{label}:{name}"
+    def add_node(label: str, name: str, evidence: dict, properties: dict | None = None, identity: str | None = None) -> str:
+        node_id = f"{project_id}:{label}:{identity or name}"
         if node_id not in nodes:
             nodes[node_id] = {"id": node_id, "project_id": project_id, "label": label, "name": name, "properties": properties or {}, "evidence": []}
         nodes[node_id]["evidence"].append(evidence)
@@ -90,6 +90,8 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
     pending_ui_actions: list[tuple[str, Fact]] = []
     pending_invocations: list[tuple[str, Fact]] = []
     pending_backend_invocations: list[tuple[str, Fact]] = []
+    pending_methods: list[tuple[str, Fact]] = []
+    containers_by_file: dict[tuple[str, str], str] = {}
     owners_by_file: dict[str, list[str]] = defaultdict(list)
     warnings: list[dict] = []
     methods_by_route: dict[str, set[str]] = defaultdict(set)
@@ -118,7 +120,13 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
             route = str(fact.properties.get("normalized_route_template") or fact.properties.get("normalized_route") or fact.name).rstrip("/")
             if len(methods_by_route[route]) > 1:
                 node_name = f"{str(fact.properties.get('http_method') or 'GET').upper()} {route}"
-        node = add_node(label, node_name, evidence, fact.properties)
+        structural_identity = None
+        if fact.kind == "method":
+            structural_identity = str(fact.properties.get("structural_identity") or (
+                f"{fact.properties.get('owner') or fact.properties.get('controller') or 'unknown'}."
+                f"{fact.name}/{fact.properties.get('arity', 0)}@{evidence['source_path']}"
+            ))
+        node = add_node(label, node_name, evidence, fact.properties, structural_identity)
         add_edge("DECLARES", file_node, node, evidence)
         if fact.kind in {"razor_view", "layout", "partial_view", "script_asset", "style_asset", "client_component", "ui_control", "ui_action", "ui_validation", "ui_selection"}:
             add_edge("HOSTS", file_node, node, evidence)
@@ -126,8 +134,13 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
             add_edge("CONTAINS_CONTROL", file_node, node, evidence)
         if fact.kind == "controller":
             controllers[fact.name] = node
+            containers_by_file[(evidence["source_path"], str(fact.properties.get("container_identity") or fact.name))] = node
             if fact.name.endswith("Controller"):
                 controllers[fact.name.removesuffix("Controller")] = node
+        if fact.kind == "type":
+            containers_by_file[(evidence["source_path"], str(fact.properties.get("container_identity") or fact.name))] = node
+        if fact.kind == "method":
+            pending_methods.append((node, fact))
         if fact.kind == "angular_module":
             modules_by_file[evidence["source_path"]] = node
         if fact.kind == "razor_view":
@@ -185,7 +198,6 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
         target = next((item["id"] for item in functions if item["name"].casefold() == target_name.casefold()), None)
         if caller and target:
             add_edge("INVOKES", caller, target, invocation_fact.evidence.to_dict(), {"status": "PROVEN"})
-    actions_and_methods = [item for item in nodes.values() if item["label"] in {"Action", "Method"}]
     backend_handlers = [item for item in nodes.values() if item["label"] == "BackendHandler"]
     persistence_nodes = [item for item in nodes.values() if item["label"] == "PersistenceOperation"]
     for endpoint in (item for item in nodes.values() if item["label"] == "Endpoint"):
@@ -208,9 +220,17 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
             add_edge("PERFORMS", handler["id"], operation["id"], operation["evidence"][0], {"status": "PROVEN"})
 
     for action_node, action_fact in pending_actions:
-        controller = controllers.get(str(action_fact.properties.get("controller")))
+        controller = containers_by_file.get((action_fact.evidence.source_path, str(action_fact.properties.get("container_identity") or action_fact.properties.get("controller"))))
         if controller:
             add_edge("DECLARES", controller, action_node, action_fact.evidence.to_dict())
+    for method_node, method_fact in pending_methods:
+        owner = containers_by_file.get((method_fact.evidence.source_path, str(
+            method_fact.properties.get("container_identity")
+            or method_fact.properties.get("owner")
+            or method_fact.properties.get("controller")
+        )))
+        if owner:
+            add_edge("DECLARES", owner, method_node, method_fact.evidence.to_dict())
     for return_fact in pending_returns:
         action = next((item for item, fact in pending_actions if fact.name == return_fact.name and fact.properties.get("controller") == return_fact.properties.get("controller")), None)
         view_name = return_fact.properties.get("view_name")
