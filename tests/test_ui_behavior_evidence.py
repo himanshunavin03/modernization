@@ -34,3 +34,15 @@ def test_api_and_label_evidence_do_not_create_ui_results(tmp_path: Path) -> None
     script.write_text('function recordsService() { return $http({ method: "GET", url: "/api/records", params: { pageSize: 4 } }); }', encoding="utf-8")
     facts = javascript.extract(script, root, "hash", "fixture")
     assert not any(item.kind in {"collection_mutation", "navigation", "confirmation", "state_mutation"} for item in facts)
+
+
+def test_anonymous_callbacks_have_stable_enclosing_identity(tmp_path: Path) -> None:
+    root = tmp_path / "source"; root.mkdir()
+    script = root / "handlers.js"
+    script.write_text('function HandlerA() { ServiceA.run(() => HelperA()); ServiceA.run(() => HelperB()); }', encoding="utf-8")
+    first = javascript.extract(script, root, "hash", "fixture")
+    second = javascript.extract(script, root, "hash", "fixture")
+    callbacks = [item for item in first if item.kind == "frontend_function" and item.properties.get("anonymous")]
+    assert [item.name for item in callbacks] == [item.name for item in second if item.kind == "frontend_function" and item.properties.get("anonymous")]
+    assert len({item.name for item in callbacks}) == 2
+    assert {item.properties["enclosing_function"] for item in callbacks} == {"HandlerA"}

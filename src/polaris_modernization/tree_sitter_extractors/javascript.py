@@ -118,6 +118,7 @@ def _member_parts(node, source: bytes) -> tuple[str | None, str | None]:
 
 def _function_fact(path, source_root, source, digest, project_id, node, owner: str | None) -> Fact | None:
     name = None
+    enclosing_name = None
     if node.type in {"function_declaration", "method_definition"}:
         name_node = node.child_by_field_name("name") or node.child_by_field_name("property")
         name = node_text(name_node, source) if name_node else None
@@ -126,12 +127,15 @@ def _function_fact(path, source_root, source, digest, project_id, node, owner: s
         right = node.child_by_field_name("right")
         if left is not None and right is not None and right.type in {"function_expression", "arrow_function"}:
             name = node_text(left, source).split(".")[-1]
+    elif node.type in {"function_expression", "arrow_function"}:
+        enclosing_name = _enclosing_named_function(node.parent, source) or "module"
+        name = f"callback@{node.start_byte}:{node.end_byte}"
     if not name:
         return None
-    return Fact("frontend_function", _qualified_function(owner, name), evidence(path, source_root, node, digest, project_id), {
-        "function_name": name,
-        "owner": owner,
-    })
+    properties = {"function_name": name, "owner": owner}
+    if enclosing_name:
+        properties.update({"anonymous": True, "enclosing_function": enclosing_name})
+    return Fact("frontend_function", _qualified_function(owner, name), evidence(path, source_root, node, digest, project_id), properties)
 
 
 def _file_owner_name(root, source: bytes, suffix: str) -> str | None:
