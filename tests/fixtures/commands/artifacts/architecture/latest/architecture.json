@@ -1,5 +1,9 @@
 {
   "project_id": "synthetic-application",
   "selection": {"feature_id": "feature-inventory-review", "decisions": [{"id": "ARCH-001", "adr_ref": "ADR-001"}]},
-  "architecture_lock": {"status": "LOCKED"}
+  "architecture_lock": {
+    "status": "LOCKED",
+    "locked_after_validation": true,
+    "selection_hash": "4b1920f708f90599e5324b584fa2e1004049ca38e0d9fdbe0ac79b62cd733531"
+  }
 }

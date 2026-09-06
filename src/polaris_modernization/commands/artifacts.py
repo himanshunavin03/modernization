@@ -63,9 +63,63 @@ class ArtifactPaths:
         return self.command_root / "modernization-state.json"
 
 
+@dataclass(frozen=True)
+class ArchitectureResolution:
+    available: bool
+    source: str | None = None
+    selection_ref: str | None = None
+    override: bool = False
+    root: Path | None = None
+    selection: dict[str, Any] | None = None
+
+
+class ArchitectureSelectionResolver:
+    """Resolve an explicit Feature override before the application architecture."""
+
+    def __init__(self, paths: ArtifactPaths) -> None:
+        self.paths = paths
+
+    def resolve(self, feature_id: str) -> ArchitectureResolution:
+        feature_root = self.paths.artifacts / "architecture" / "features" / feature_id / "latest"
+        feature = self._locked(feature_root, expected_feature_id=feature_id)
+        if feature:
+            return self._resolution(feature_root, feature, "FEATURE", override=True)
+
+        application_root = self.paths.artifacts / "architecture" / "latest"
+        application = self._locked(application_root)
+        if application:
+            return self._resolution(application_root, application, "APPLICATION", override=False)
+        return ArchitectureResolution(available=False)
+
+    def _locked(self, root: Path, *, expected_feature_id: str | None = None) -> dict[str, Any] | None:
+        architecture = _read(root / "architecture.json", {})
+        selection = _read(root / "architecture-selection.json", {})
+        lock = architecture.get("architecture_lock", {})
+        if not architecture or architecture.get("selection") != selection:
+            return None
+        if expected_feature_id and selection.get("feature_id") != expected_feature_id:
+            return None
+        encoded = json.dumps(selection, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        valid_hash = sha256(encoded).hexdigest() == lock.get("selection_hash")
+        if lock.get("status") != "LOCKED" or lock.get("locked_after_validation") is not True or not valid_hash:
+            return None
+        return selection
+
+    def _resolution(self, root: Path, selection: dict[str, Any], source: str, *, override: bool) -> ArchitectureResolution:
+        return ArchitectureResolution(
+            available=True,
+            source=source,
+            selection_ref=_relative(root / "architecture-selection.json", self.paths.repository_root),
+            override=override,
+            root=root,
+            selection=selection,
+        )
+
+
 class FeatureIndex:
     def __init__(self, paths: ArtifactPaths) -> None:
         self.paths = paths
+        self.architecture = ArchitectureSelectionResolver(paths)
 
     def build(self, *, persist: bool = True) -> dict[str, Any]:
         source_path = self.paths.specifications / "feature-specification-index.json"
@@ -77,8 +131,6 @@ class FeatureIndex:
             item.get("feature_id"): item.get("contracts", [])
             for item in api_catalog.get("features", [])
         }
-        architecture = _read(self.paths.artifacts / "architecture" / "latest" / "architecture.json", {})
-        architecture_selection = architecture.get("selection", {})
         task_plan = _read(self.paths.artifacts / "technical-tasks" / "latest" / "technical-tasks.json", {})
         generation = _read(self.paths.artifacts / "modernization" / "latest" / "generation-manifest.json", {})
         generation_validation = _read(self.paths.artifacts / "modernization" / "latest" / "generation-validation.json", {})
@@ -106,11 +158,9 @@ class FeatureIndex:
                 status = "READY"
             else:
                 status = "NOT_STARTED"
-            architecture_selected = bool(
-                architecture_selection.get("feature_id") == feature_id
-                and architecture.get("architecture_lock", {}).get("status") == "LOCKED"
-            )
-            selected_decisions = architecture_selection.get("decisions", []) if architecture_selected else []
+            architecture = self.architecture.resolve(feature_id)
+            directly_selected = architecture.source == "FEATURE"
+            selected_decisions = architecture.selection.get("decisions", []) if directly_selected and architecture.selection else []
             rows.append({
                 "feature_id": feature_id,
                 "slug": feature_id.removeprefix("feature-"),
@@ -121,7 +171,11 @@ class FeatureIndex:
                 "api_contract_ids": [item["contract_id"] for item in contracts if item.get("contract_id")],
                 "technical_task_ids": task_ids,
                 "modernization_operation": modernization_operation,
-                "architecture_selected": architecture_selected,
+                "architecture_selected": directly_selected,
+                "architecture_available": architecture.available,
+                "architecture_source": architecture.source,
+                "architecture_selection_ref": architecture.selection_ref,
+                "architecture_override": architecture.override,
                 "architecture_decision_ids": [item["id"] for item in selected_decisions if item.get("id")],
                 "adr_ids": list(dict.fromkeys(item["adr_ref"] for item in selected_decisions if item.get("adr_ref"))),
                 "modernization_status": status,

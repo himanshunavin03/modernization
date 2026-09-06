@@ -25,7 +25,9 @@ polaris --repository-root . show-feature "Doctor Directory Management"
 - `/generate-stories` prepares or validates Jira-quality Stories.
 - `/generate-acceptance-criteria` prepares or validates immutable AC.
 - `/recommend-architecture [feature]` invokes the existing architecture workflow. With no argument it uses the artifact-selected Feature.
-- `/generate-technical-tasks [feature]` invokes architecture-driven planning after prerequisite validation.
+- `/generate-technical-tasks [feature]` invokes architecture-driven planning after prerequisite validation. `--prerequisite-only` verifies readiness without writing task artifacts.
+
+Architecture resolution checks `artifacts/architecture/features/<feature-id>/latest` for an explicit locked override, then inherits the canonical locked application selection at `artifacts/architecture/latest`. A missing or invalid lock blocks with `/recommend-architecture`; normal Features do not require separate architecture recommendations.
 
 ## Discover
 

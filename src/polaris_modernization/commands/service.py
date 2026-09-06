@@ -7,7 +7,14 @@ from pathlib import Path
 import subprocess
 from typing import Any, Callable
 
-from .artifacts import ArtifactPaths, FeatureIndex, ModernizationState, _read
+from .artifacts import (
+    ArchitectureResolution,
+    ArchitectureSelectionResolver,
+    ArtifactPaths,
+    FeatureIndex,
+    ModernizationState,
+    _read,
+)
 from .models import CommandResult, PrerequisiteError
 from .registry import CommandRegistry, default_registry
 
@@ -27,6 +34,7 @@ class CommandService:
         self.paths = ArtifactPaths(repository_root.resolve())
         self.registry = registry or default_registry()
         self.index = FeatureIndex(self.paths)
+        self.architecture = ArchitectureSelectionResolver(self.paths)
         self.state = ModernizationState(self.paths)
         self.modernizers = modernizers or {}
         self.process_runner = process_runner
@@ -56,6 +64,8 @@ class CommandService:
 
     def show_traceability(self, *, argument: str, **_: Any) -> CommandResult:
         feature = self.index.resolve(argument)
+        architecture = self.architecture.resolve(feature["feature_id"])
+        decisions = architecture.selection.get("decisions", []) if architecture.selection else []
         specification = _read(self.paths.repository_root / feature["spec_path"], {})
         functional_requirements = [
             {"acceptance_criterion_id": item.get("acceptance_criterion_id"), "requirement": item.get("requirement")}
@@ -67,8 +77,10 @@ class CommandService:
             "stories": feature["story_ids"],
             "acceptance_criteria": feature["acceptance_criteria_ids"],
             "api_contracts": feature["api_contract_ids"],
-            "architecture_decisions": feature["architecture_decision_ids"],
-            "adrs": feature["adr_ids"],
+            "architecture_decisions": [item["id"] for item in decisions if item.get("id")],
+            "adrs": list(dict.fromkeys(item["adr_ref"] for item in decisions if item.get("adr_ref"))),
+            "architecture_source": architecture.source,
+            "architecture_selection_ref": architecture.selection_ref,
             "technical_tasks": feature["technical_task_ids"],
             "generated_implementation": feature["implementation_paths"],
             "tests": feature["test_paths"],
@@ -154,11 +166,17 @@ class CommandService:
         feature = self._resolve_optional_feature(argument)
         if not feature["acceptance_criteria_ids"]:
             raise PrerequisiteError("Acceptance Criteria are missing.", ["/generate-acceptance-criteria"])
-        if not feature["architecture_selected"]:
-            raise PrerequisiteError("A locked architecture selection for this Feature is missing.", [f"/recommend-architecture {feature['slug']}"])
+        architecture = self._require_architecture(feature)
+        if options.get("prerequisite_only"):
+            return CommandResult("generate-technical-tasks", "READY", {
+                "feature_id": feature["feature_id"],
+                "architecture_source": architecture.source,
+                "architecture_selection_ref": architecture.selection_ref,
+                "architecture_override": architecture.override,
+            })
         design = _read(self.paths.command_root / "design-config.json", {"provider": "NONE", "mode": "NONE"})
         result = generate_technical_tasks(
-            self._project_id(), feature["feature_id"], self.paths.artifacts / "architecture" / "latest",
+            self._project_id(), feature["feature_id"], architecture.root,
             self.paths.specifications, design["provider"], design["mode"], design.get("reference"),
             Path(options.get("output", self.paths.artifacts / "technical-tasks")), self.paths.artifacts / "design",
         )
@@ -268,10 +286,15 @@ class CommandService:
             raise PrerequisiteError("Feature Specification is missing.", ["/generate-features"])
         if not feature["acceptance_criteria_ids"]:
             raise PrerequisiteError("Acceptance Criteria are missing.", ["/generate-acceptance-criteria"])
-        if not feature["architecture_selected"]:
-            raise PrerequisiteError("Locked architecture selection is missing.", [f"/recommend-architecture {feature['slug']}"])
+        self._require_architecture(feature)
         if not feature["technical_task_ids"]:
             raise PrerequisiteError("Feature-specific technical planning is missing.", [f"/generate-technical-tasks {feature['slug']}"])
+
+    def _require_architecture(self, feature: dict[str, Any]) -> ArchitectureResolution:
+        architecture = self.architecture.resolve(feature["feature_id"])
+        if not architecture.available:
+            raise PrerequisiteError("Locked architecture selection is missing.", ["/recommend-architecture"])
+        return architecture
 
     def _resolve_optional_feature(self, argument: str | None) -> dict[str, Any]:
         if argument:

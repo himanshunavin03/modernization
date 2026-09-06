@@ -265,6 +265,10 @@ The new forensic gate remains `NOT_READY`, not because either targeted defect re
 
 Polaris now exposes 19 canonical lifecycle commands through one metadata registry and `CommandService`. The `polaris` CLI, Codex adapter, and Copilot prompt delegate to that shared service; future MCP adapters can do the same. Feature resolution and lifecycle status come from persisted artifacts and `artifacts/commands/feature-index.json`, with explicit unknown and ambiguity failures. Generic production command code contains no HealthClinic-specific branch.
 
+## Architecture Inheritance
+
+Feature planning resolves an explicit valid lock under `artifacts/architecture/features/<feature-id>/latest` first, then inherits the canonical application lock under `artifacts/architecture/latest`. Feature-index metadata distinguishes direct selection from effective availability and references the authoritative selection rather than copying application decisions into every Feature. Missing or invalid locks recommend `/recommend-architecture` without a Feature argument.
+
 ## Final Knowledge Graph Readiness
 
 Immutable run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128` is approved as `READY_WITH_EXPLAINED_LIMITATIONS`. Graph and evidence integrity pass at 2,384 files, 8,929 pipeline facts, 4,931 nodes, and 5,205 relationships. There are no duplicate IDs/relationships, broken endpoints, evidence gaps, invalid evidence paths/hashes/lines, or framework classification conflicts.

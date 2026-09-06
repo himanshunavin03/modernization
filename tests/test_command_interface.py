@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from hashlib import sha256
 from pathlib import Path
 import shutil
 
@@ -8,7 +9,7 @@ import pytest
 
 from polaris_modernization.command_cli import build_parser, run
 from polaris_modernization.agent_commands import execute_polaris_command
-from polaris_modernization.commands.artifacts import ArtifactPaths, FeatureIndex, ModernizationState
+from polaris_modernization.commands.artifacts import ArchitectureSelectionResolver, ArtifactPaths, FeatureIndex, ModernizationState
 from polaris_modernization.commands.models import AmbiguousFeatureError, FeatureNotFoundError, PrerequisiteError
 from polaris_modernization.commands.registry import COMMANDS, default_registry
 from polaris_modernization.commands.service import CommandService
@@ -22,6 +23,21 @@ def repository(tmp_path: Path) -> Path:
     root = tmp_path / "repository"
     shutil.copytree(FIXTURE, root)
     return root
+
+
+def write_architecture(root: Path, feature_id: str, *, locked: bool = True) -> None:
+    selection = {"feature_id": feature_id, "decisions": [{"id": "ARCH-OVERRIDE", "adr_ref": "ADR-OVERRIDE"}]}
+    digest = sha256(json.dumps(selection, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
+    root.mkdir(parents=True, exist_ok=True)
+    (root / "architecture-selection.json").write_text(json.dumps(selection), encoding="utf-8")
+    (root / "architecture.json").write_text(json.dumps({
+        "selection": selection,
+        "architecture_lock": {
+            "status": "LOCKED" if locked else "NOT_LOCKED",
+            "locked_after_validation": locked,
+            "selection_hash": digest if locked else None,
+        },
+    }), encoding="utf-8")
 
 
 def test_registry_discovers_the_complete_canonical_catalog() -> None:
@@ -59,8 +75,16 @@ def test_feature_index_and_resolver_use_metadata(repository: Path) -> None:
     assert synthetic["modernization_status"] == "READY"
     assert synthetic["technical_task_ids"] == ["TT-001"]
     assert synthetic["modernization_operation"] == "synthetic-generator"
-    assert synthetic["architecture_decision_ids"] == ["ARCH-001"]
-    assert synthetic["adr_ids"] == ["ADR-001"]
+    assert synthetic["architecture_available"] is True
+    assert synthetic["architecture_source"] == "APPLICATION"
+    assert synthetic["architecture_override"] is False
+    assert synthetic["architecture_selected"] is False
+    assert synthetic["architecture_decision_ids"] == []
+    assert synthetic["adr_ids"] == []
+    assert doctor["architecture_available"] is True
+    assert doctor["architecture_source"] == "APPLICATION"
+    assert doctor["modernization_status"] == "NOT_STARTED"
+    assert doctor["technical_task_ids"] == []
     assert json.loads((repository / "artifacts/commands/feature-index.json").read_text(encoding="utf-8")) == index
 
 
@@ -78,11 +102,53 @@ def test_unknown_and_ambiguous_features_are_never_silently_selected(repository: 
         navigator.resolve("Shared Name", ambiguous)
 
 
-def test_prerequisite_validation_blocks_unplanned_feature(repository: Path) -> None:
+def test_modernization_prerequisite_inherits_application_architecture(repository: Path) -> None:
     service = CommandService(repository)
     with pytest.raises(PrerequisiteError) as error:
         service.execute("modernize-feature", "doctor-directory-management")
-    assert error.value.next_commands == ["/recommend-architecture doctor-directory-management"]
+    assert error.value.next_commands == ["/generate-technical-tasks doctor-directory-management"]
+
+
+def test_explicit_locked_feature_architecture_takes_precedence(repository: Path) -> None:
+    override = repository / "artifacts/architecture/features/feature-doctor-directory-management/latest"
+    write_architecture(override, "feature-doctor-directory-management")
+
+    result = ArchitectureSelectionResolver(ArtifactPaths(repository)).resolve("feature-doctor-directory-management")
+
+    assert result.available is True
+    assert result.source == "FEATURE"
+    assert result.override is True
+    assert result.selection_ref == "artifacts/architecture/features/feature-doctor-directory-management/latest/architecture-selection.json"
+
+
+def test_missing_architecture_blocks_with_application_level_recommendation(repository: Path) -> None:
+    shutil.rmtree(repository / "artifacts/architecture")
+
+    with pytest.raises(PrerequisiteError) as error:
+        CommandService(repository).execute("generate-technical-tasks", "inventory-review", prerequisite_only=True)
+
+    assert error.value.next_commands == ["/recommend-architecture"]
+
+
+def test_unlocked_application_architecture_is_not_available(repository: Path) -> None:
+    architecture_path = repository / "artifacts/architecture/latest/architecture.json"
+    architecture = json.loads(architecture_path.read_text(encoding="utf-8"))
+    architecture["architecture_lock"]["status"] = "NOT_LOCKED"
+    architecture_path.write_text(json.dumps(architecture), encoding="utf-8")
+
+    result = ArchitectureSelectionResolver(ArtifactPaths(repository)).resolve("feature-inventory-review")
+
+    assert result.available is False
+
+
+def test_doctor_task_prerequisites_are_ready_through_application_inheritance(repository: Path) -> None:
+    result = CommandService(repository).execute(
+        "generate-technical-tasks", "doctor-directory-management", prerequisite_only=True
+    )
+
+    assert result.status == "READY"
+    assert result.data["architecture_source"] == "APPLICATION"
+    assert result.data["architecture_override"] is False
 
 
 def test_modernization_state_is_persisted_and_rerun_is_idempotent(repository: Path) -> None:

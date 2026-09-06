@@ -268,3 +268,9 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Added a registry-driven 19-command lifecycle interface, artifact-derived Feature resolver/index, persisted modernization state, prerequisite gates, idempotent modernization behavior, and package-script validation.
 - Added the `polaris` CLI entry point, Codex delegation adapter, shared Copilot prompt, operator guide, prompt record, Doctor Directory fixture, synthetic non-HealthClinic fixture, and focused tests.
 - Verification passed: focused command tests `14 passed`; complete regression `255 passed, 2 skipped`; Angular/Nx production build passed with cache disabled; generic command production code has zero forbidden application-specific references.
+
+## Feature Architecture Inheritance
+
+- Replaced Feature-ID equality as the architecture prerequisite with a reusable lock-validating resolver: explicit Feature override first, canonical application selection second.
+- Added inheritance metadata to the Feature index and a `--prerequisite-only` technical-task check. Doctor Directory resolves application architecture while remaining `NOT_STARTED` with zero tasks.
+- Verification passed: focused architecture/command tests `18 passed`; complete regression `259 passed, 2 skipped`; Angular/Nx production build passed; protected architecture, requirements, source, tasks, and Dashboard paths remain unchanged.

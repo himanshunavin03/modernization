@@ -28,6 +28,8 @@ def build_parser() -> argparse.ArgumentParser:
             child.add_argument("--agent-result", type=Path)
         if command.name in {"validate-modernization", "validate-feature"}:
             child.add_argument("--static-only", action="store_true")
+        if command.name == "generate-technical-tasks":
+            child.add_argument("--prerequisite-only", action="store_true")
     return parser
 
 
