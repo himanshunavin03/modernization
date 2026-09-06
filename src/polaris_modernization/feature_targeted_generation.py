@@ -100,10 +100,12 @@ def _story_for_requirement(feature: dict, requirement: dict, apis: list[dict], c
     story_id = f"story-{feature['slug']}-{_slug(title)}"
     qualifiers = sorted({qualifier for capability in capabilities for qualifier in capability.get("qualifiers", [])})
     system_initiated = bool(requirement.get("system_initiated"))
+    actions = [item for item in requirement.get("interaction_semantics", []) if item.get("interaction_type") == "ACTION" and item.get("label")]
+    interaction_goal = f'select "{actions[0]["label"]}"' if actions else title.casefold()
     statement = (
         f"The system resolves the required context before dependent {feature['name'].casefold()} operations run."
         if system_initiated else
-        f"As a user, I want to use {title.casefold()}, so that I can complete the supported {feature['name'].casefold()} interaction."
+        f"As a user, I want to {interaction_goal}, so that I can complete the supported {feature['name'].casefold()} interaction."
     )
     return {
         "story_id": story_id,
@@ -177,7 +179,7 @@ def _validate_acceptance(context: dict, story_catalog: dict, criteria: list[dict
     covered = {item["story_id"] for item in criteria}
     orphan = [item["acceptance_criterion_id"] for item in criteria if item["story_id"] not in stories]
     placeholders = [item["acceptance_criterion_id"] for item in criteria if item["given"].casefold() in {"the approved feature behavior is available", "the feature is available"}]
-    non_observable = [item["acceptance_criterion_id"] for item in criteria if not item.get("then") or "preserves the resulting interaction" in item["then"].casefold()]
+    non_observable = [item["acceptance_criterion_id"] for item in criteria if not item.get("then") or item["then"] == "NOT_PROVEN"]
     tautological = [item["acceptance_criterion_id"] for item in criteria if item["when"].casefold().removeprefix("the user performs ") == item["title"].casefold().removesuffix(" behavior")]
     return {
         "valid": not (stories - covered or orphan or placeholders or non_observable or tautological), "stories_without_ac": sorted(stories - covered),
@@ -212,15 +214,16 @@ def _acceptance_semantics(story: dict) -> tuple[str, str, str]:
     action = next((item for item in interactions if item.get("interaction_type") == "ACTION" and item.get("label")), None)
     if action:
         label = action["label"]
+        result = action.get("observable_result") or "NOT_PROVEN"
         return (
             "the related feature surface is displayed",
             f'the user selects "{label}"',
-            f'the "{label}" interaction is available and responds to the selection',
+            result,
         )
     return (
         "the related feature surface is displayed",
         "the user performs the supported interaction",
-        "the supported interaction produces its defined feature result",
+        "NOT_PROVEN",
     )
 
 

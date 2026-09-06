@@ -22,8 +22,8 @@ def approved_context(tmp_path: Path) -> tuple[Path, dict]:
     contract = {
         "feature_id": "feature-alpha", "status": "FEATURE_SCOPE_READY",
         "functional_requirements": [
-            {"id": "FR-01", "title": "Review Alpha Directory", "description": "Users can review alpha records.", "source_capability_ids": ["cap-list"]},
-            {"id": "FR-02", "title": "Create Alpha", "description": "Users can create an alpha record.", "source_capability_ids": ["cap-create"]},
+            {"id": "FR-01", "title": "Review Alpha Directory", "description": "Users can review alpha records.", "source_capability_ids": ["cap-list"], "interaction_semantics": [{"interaction_type": "ACTION", "label": "Show records", "observable_result": "the record collection is displayed"}]},
+            {"id": "FR-02", "title": "Create Alpha", "description": "Users can create an alpha record.", "source_capability_ids": ["cap-create"], "interaction_semantics": [{"interaction_type": "ACTION", "label": "Add record", "observable_result": "the new record is displayed"}]},
         ],
         "capability_api_contracts": [
             {"contract_id": "API-01", "method": "GET", "route": "/api/alphas", "requirement_ids": ["FR-01"]},
@@ -82,7 +82,7 @@ def test_targeted_acceptance_criteria_are_observable_and_not_title_restatements(
     root, feature = approved_context(tmp_path)
     contract_path = root / feature["spec_path"]
     contract = json.loads(contract_path.read_text(encoding="utf-8"))
-    contract["functional_requirements"][0]["interaction_semantics"] = [{"interaction_type": "ACTION", "label": "Fetch next records"}]
+    contract["functional_requirements"][0]["interaction_semantics"] = [{"interaction_type": "ACTION", "label": "Fetch next records", "observable_result": "additional records are displayed"}]
     write_json(contract_path, contract)
     write_json(root / "artifacts/feature-specifications/runs/capability-scope-fixture/feature-alpha.json", contract)
     context = resolve_approved_feature(root, feature)
@@ -90,6 +90,6 @@ def test_targeted_acceptance_criteria_are_observable_and_not_title_restatements(
     criteria = generate_targeted_acceptance_criteria(context, stories["path"], root / "artifacts/acceptance-criteria")
     first = criteria["criteria"][0]
     assert first["when"] == 'the user selects "Fetch next records"'
-    assert first["then"] == 'the "Fetch next records" interaction is available and responds to the selection'
+    assert first["then"] == "additional records are displayed"
     assert criteria["validation"]["tautological_ac"] == []
     assert criteria["validation"]["non_observable_outcome"] == []

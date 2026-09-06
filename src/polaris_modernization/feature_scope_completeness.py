@@ -41,7 +41,10 @@ def _behavior_description(items: list[dict], title: str) -> str:
         return "The directory supports record selection and selection-state changes before related actions are used."
     if labels:
         quoted = ", ".join(f'"{label}"' for label in labels)
-        return f"The feature provides the {quoted} action{'s' if len(labels) > 1 else ''} and preserves the resulting interaction."
+        results = sorted({str(item["observable_result"]).strip() for item in interactions if item.get("observable_result")})
+        if results:
+            return f"A user can select {quoted}; {'. '.join(results)}."
+        return f"A user can select the {quoted} action{'s' if len(labels) > 1 else ''}."
     if any(item.get("operation_kind") == "READ" for item in items):
         return "The system resolves the required context before dependent feature operations run."
     return f"The feature preserves the supported {title.casefold()} interaction."
