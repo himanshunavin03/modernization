@@ -214,7 +214,8 @@ def _acceptance_semantics(story: dict) -> tuple[str, str, str]:
     action = next((item for item in interactions if item.get("interaction_type") == "ACTION" and item.get("label")), None)
     if action:
         label = action["label"]
-        result = action.get("observable_result") or "NOT_PROVEN"
+        results = [item["observable_result"] for item in interactions if item.get("handler_id") == action.get("handler_id") and item.get("observable_result")]
+        result = action.get("observable_result") or ("; ".join(dict.fromkeys(results)) if results else "NOT_PROVEN")
         return (
             "the related feature surface is displayed",
             f'the user selects "{label}"',

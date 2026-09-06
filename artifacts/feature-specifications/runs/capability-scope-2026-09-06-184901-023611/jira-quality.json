@@ -1,0 +1,2204 @@
+{
+  "features": [
+    {
+      "feature_id": "feature-operational-dashboard-insights",
+      "feature_name": "Operational Dashboard Insights",
+      "stories": [
+        {
+          "acceptance_criteria": [
+            {
+              "authoritative_ac_ref": "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+              "clarification_ids": [
+                "Q-02",
+                "Q-03"
+              ],
+              "clarification_required": true,
+              "given": [
+                "A reporting year has been selected."
+              ],
+              "id": "AC-01",
+              "quality": {
+                "checks": {
+                  "circular_result": false,
+                  "observable_result_present": true,
+                  "precondition_present": true,
+                  "trigger_present": true,
+                  "vague_result": false
+                },
+                "status": "PASS"
+              },
+              "then": [
+                "Expense summary information is retrieved for the selected reporting year.",
+                "Patient summary information is retrieved for the selected reporting year.",
+                "The retrieved information is associated with the current organization."
+              ],
+              "title": "Access Yearly Operational Reports",
+              "when": "The user views expense and patient information for a selected year."
+            }
+          ],
+          "actor": "application user",
+          "api_dependencies": [
+            {
+              "api_id": "API-01",
+              "endpoint": "/api/users/current/tenant",
+              "method": "GET",
+              "path_parameters": [],
+              "purpose": "Retrieve the current organization identifier required by organization-specific functionality.",
+              "query_parameters": [],
+              "request_model": null,
+              "response_description": "Current organization identifier",
+              "response_model": "int",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-OPERATIONAL_DASHBOARD_INSIGHTS-001"
+                ]
+              }
+            },
+            {
+              "api_id": "API-02",
+              "endpoint": "/api/reports/expenses/{year}",
+              "method": "GET",
+              "path_parameters": [
+                {
+                  "description": "selected reporting year",
+                  "location": "Path",
+                  "name": "year"
+                }
+              ],
+              "purpose": "Retrieve expense summary information for the selected reporting year.",
+              "query_parameters": [],
+              "request_model": null,
+              "response_description": "Expense summary information",
+              "response_model": "ExpensesSummary[]",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-OPERATIONAL_DASHBOARD_INSIGHTS-002"
+                ]
+              }
+            },
+            {
+              "api_id": "API-03",
+              "endpoint": "/api/reports/patients/{year}",
+              "method": "GET",
+              "path_parameters": [
+                {
+                  "description": "selected reporting year",
+                  "location": "Path",
+                  "name": "year"
+                }
+              ],
+              "purpose": "Retrieve patient summary information for the selected reporting year.",
+              "query_parameters": [],
+              "request_model": null,
+              "response_description": "Patient summary information",
+              "response_model": "PatientsSummary[]",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-OPERATIONAL_DASHBOARD_INSIGHTS-003"
+                ]
+              }
+            }
+          ],
+          "business_outcome": "I can review information for the required reporting period",
+          "business_rules": [],
+          "clarifications": [
+            {
+              "ac_id": "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+              "api_id": "API-02",
+              "id": "Q-02",
+              "owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
+              "question": "Which expense fields and metrics must be displayed for the selected reporting year?",
+              "required_before": "Development and QA completion",
+              "source_id": "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-002",
+              "source_ids": [
+                "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-002"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-operational-dashboard-insights-access-yearly-operational-reports"
+            },
+            {
+              "ac_id": "ac-operational-dashboard-insights-access-yearly-operational-reports-001",
+              "api_id": "API-03",
+              "id": "Q-03",
+              "owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
+              "question": "Which patient fields and metrics must be displayed for the selected reporting year?",
+              "required_before": "Development and QA completion",
+              "source_id": "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-002",
+              "source_ids": [
+                "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-002"
+              ],
+              "source_split_index": 2,
+              "story_id": "story-operational-dashboard-insights-access-yearly-operational-reports"
+            }
+          ],
+          "description": "As an application user, I want to view expense and patient information for a selected year, so that I can review information for the required reporting period.",
+          "feature_id": "feature-operational-dashboard-insights",
+          "functional_requirement_refs": [
+            {
+              "id": "FR-02",
+              "requirement": "The user must be able to view yearly expense information.",
+              "title": "View Yearly Expense Information"
+            },
+            {
+              "id": "FR-03",
+              "requirement": "The user must be able to view yearly patient information.",
+              "title": "View Yearly Patient Information"
+            },
+            {
+              "id": "FR-05",
+              "requirement": "The application must retrieve the current organization identifier required by organization-specific functionality.",
+              "title": "Establish Organization Context"
+            }
+          ],
+          "goal": "view expense and patient information for a selected year",
+          "preconditions": [
+            "A reporting year has been selected."
+          ],
+          "quality": {
+            "invest": {
+              "checks": {
+                "estimable": {
+                  "reason": "Implementation or QA details require clarification.",
+                  "status": "WARNING"
+                },
+                "independent": {
+                  "reason": "The Story has separable API-backed behavior.",
+                  "status": "WARNING"
+                },
+                "negotiable": {
+                  "reason": "The delivery representation preserves scope without prescribing implementation design.",
+                  "status": "PASS"
+                },
+                "small": {
+                  "reason": "A small optional split is recommended.",
+                  "status": "WARNING"
+                },
+                "testable": {
+                  "reason": "All human AC pass deterministic testability checks.",
+                  "status": "PASS"
+                },
+                "valuable": {
+                  "reason": "A supported outcome is present.",
+                  "status": "PASS"
+                }
+              },
+              "status": "WARNING"
+            },
+            "split_recommendation": {
+              "approval_required": "BA / PO approval",
+              "reason": "Separate backend contracts support independently testable behavior.",
+              "status": "SPLIT_RECOMMENDATION",
+              "suggested_summaries": [
+                "View Yearly Expense Information",
+                "View Yearly Patient Information"
+              ]
+            }
+          },
+          "readiness": {
+            "blocking_clarification_ids": [
+              "Q-02",
+              "Q-03"
+            ],
+            "checks": {
+              "acceptance_criteria_available": true,
+              "acceptance_criteria_testable": true,
+              "blocking_clarifications_identified": true,
+              "contradictions_absent": true,
+              "functional_behavior_available": true,
+              "required_api_known": true,
+              "required_api_parameters_known": true,
+              "required_business_rules_represented": true,
+              "story_goal_understandable": true,
+              "unsupported_invented_behavior_absent": true
+            },
+            "non_blocking_business_enrichment": false,
+            "status": "NEEDS_CLARIFICATION"
+          },
+          "story_id": "US-01",
+          "summary": "Access Yearly Operational Reports",
+          "traceability": {
+            "api_interaction_refs": [
+              "API-OPERATIONAL_DASHBOARD_INSIGHTS-001",
+              "API-OPERATIONAL_DASHBOARD_INSIGHTS-002",
+              "API-OPERATIONAL_DASHBOARD_INSIGHTS-003"
+            ],
+            "authoritative_ac_refs": [
+              "ac-operational-dashboard-insights-access-yearly-operational-reports-001"
+            ],
+            "authoritative_story_ref": "story-operational-dashboard-insights-access-yearly-operational-reports",
+            "functional_requirement_refs": [
+              "FR-02",
+              "FR-03",
+              "FR-05"
+            ]
+          }
+        },
+        {
+          "acceptance_criteria": [
+            {
+              "authoritative_ac_ref": "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+              "clarification_ids": [
+                "Q-05"
+              ],
+              "clarification_required": true,
+              "given": [
+                "The application can determine the current organization context."
+              ],
+              "id": "AC-02",
+              "quality": {
+                "checks": {
+                  "circular_result": false,
+                  "observable_result_present": true,
+                  "precondition_present": true,
+                  "trigger_present": true,
+                  "vague_result": false
+                },
+                "status": "PASS"
+              },
+              "then": [
+                "Clinic summary information is retrieved.",
+                "The retrieved information is associated with the current organization."
+              ],
+              "title": "View Organization-Specific Dashboard Summary",
+              "when": "The user views dashboard summary information for their organization."
+            },
+            {
+              "authoritative_ac_ref": "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002",
+              "clarification_ids": [],
+              "clarification_required": false,
+              "given": [
+                "The application can determine the current organization context."
+              ],
+              "id": "AC-03",
+              "quality": {
+                "checks": {
+                  "circular_result": false,
+                  "observable_result_present": true,
+                  "precondition_present": true,
+                  "trigger_present": true,
+                  "vague_result": false
+                },
+                "status": "PASS"
+              },
+              "then": [
+                "Clinic summary information is retrieved.",
+                "The retrieved information is associated with the current organization."
+              ],
+              "title": "View Organization-Specific Dashboard Summary Service Integration",
+              "when": "The application loads dashboard summary information for their organization."
+            }
+          ],
+          "actor": "application user",
+          "api_dependencies": [
+            {
+              "api_id": "API-01",
+              "endpoint": "/api/users/current/tenant",
+              "method": "GET",
+              "path_parameters": [],
+              "purpose": "Retrieve the current organization identifier required by organization-specific functionality.",
+              "query_parameters": [],
+              "request_model": null,
+              "response_description": "Current organization identifier",
+              "response_model": "int",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-OPERATIONAL_DASHBOARD_INSIGHTS-001"
+                ]
+              }
+            },
+            {
+              "api_id": "API-04",
+              "endpoint": "/api/reports/clinicsummary",
+              "method": "GET",
+              "path_parameters": [],
+              "purpose": "Retrieve clinic summary information for the corresponding feature function.",
+              "query_parameters": [],
+              "request_model": null,
+              "response_description": "Clinic summary information",
+              "response_model": "ClinicSummary",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-OPERATIONAL_DASHBOARD_INSIGHTS-004"
+                ]
+              }
+            }
+          ],
+          "business_outcome": "I can review information relevant to the organization I am working with",
+          "business_rules": [],
+          "clarifications": [
+            {
+              "ac_id": "ac-operational-dashboard-insights-open-operational-dashboard-001",
+              "api_id": "API-04",
+              "id": "Q-04",
+              "owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
+              "question": "Which clinic information must be displayed in the summary?",
+              "required_before": "Development and QA completion",
+              "source_id": "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-003",
+              "source_ids": [
+                "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-003"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-operational-dashboard-insights-open-operational-dashboard"
+            },
+            {
+              "ac_id": "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+              "api_id": null,
+              "id": "Q-05",
+              "owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
+              "question": "What information must be available when users access the operational dashboard experience?",
+              "required_before": "Development and QA completion",
+              "source_id": "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-004",
+              "source_ids": [
+                "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-004"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary"
+            }
+          ],
+          "description": "As an application user, I want to view dashboard summary information for my organization, so that I can review information relevant to the organization I am working with.",
+          "feature_id": "feature-operational-dashboard-insights",
+          "functional_requirement_refs": [
+            {
+              "id": "FR-04",
+              "requirement": "The user must be able to view clinic summary.",
+              "title": "View Clinic Summary"
+            },
+            {
+              "id": "FR-05",
+              "requirement": "The application must retrieve the current organization identifier required by organization-specific functionality.",
+              "title": "Establish Organization Context"
+            }
+          ],
+          "goal": "view dashboard summary information for my organization",
+          "preconditions": [
+            "The application can determine the current organization context."
+          ],
+          "quality": {
+            "invest": {
+              "checks": {
+                "estimable": {
+                  "reason": "Implementation or QA details require clarification.",
+                  "status": "WARNING"
+                },
+                "independent": {
+                  "reason": "No obvious delivery dependency was detected.",
+                  "status": "PASS"
+                },
+                "negotiable": {
+                  "reason": "The delivery representation preserves scope without prescribing implementation design.",
+                  "status": "PASS"
+                },
+                "small": {
+                  "reason": "No obvious size concern was detected.",
+                  "status": "PASS"
+                },
+                "testable": {
+                  "reason": "All human AC pass deterministic testability checks.",
+                  "status": "PASS"
+                },
+                "valuable": {
+                  "reason": "A supported outcome is present.",
+                  "status": "PASS"
+                }
+              },
+              "status": "WARNING"
+            },
+            "split_recommendation": null
+          },
+          "readiness": {
+            "blocking_clarification_ids": [
+              "Q-04",
+              "Q-05"
+            ],
+            "checks": {
+              "acceptance_criteria_available": true,
+              "acceptance_criteria_testable": true,
+              "blocking_clarifications_identified": true,
+              "contradictions_absent": true,
+              "functional_behavior_available": true,
+              "required_api_known": true,
+              "required_api_parameters_known": true,
+              "required_business_rules_represented": true,
+              "story_goal_understandable": true,
+              "unsupported_invented_behavior_absent": true
+            },
+            "non_blocking_business_enrichment": false,
+            "status": "NEEDS_CLARIFICATION"
+          },
+          "story_id": "US-02",
+          "summary": "View Tenant-Aware Dashboard Summary",
+          "traceability": {
+            "api_interaction_refs": [
+              "API-OPERATIONAL_DASHBOARD_INSIGHTS-001",
+              "API-OPERATIONAL_DASHBOARD_INSIGHTS-004"
+            ],
+            "authoritative_ac_refs": [
+              "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-001",
+              "ac-operational-dashboard-insights-view-tenant-aware-dashboard-summary-002"
+            ],
+            "authoritative_story_ref": "story-operational-dashboard-insights-view-tenant-aware-dashboard-summary",
+            "functional_requirement_refs": [
+              "FR-04",
+              "FR-05"
+            ]
+          }
+        },
+        {
+          "acceptance_criteria": [
+            {
+              "authoritative_ac_ref": "ac-operational-dashboard-insights-open-operational-dashboard-001",
+              "clarification_ids": [
+                "Q-04"
+              ],
+              "clarification_required": true,
+              "given": [
+                "Dashboard navigation is initiated."
+              ],
+              "id": "AC-04",
+              "quality": {
+                "checks": {
+                  "circular_result": false,
+                  "observable_result_present": true,
+                  "precondition_present": true,
+                  "trigger_present": true,
+                  "vague_result": false
+                },
+                "status": "PASS"
+              },
+              "then": [
+                "The operational dashboard experience is available to the user."
+              ],
+              "title": "Open Operational Dashboard",
+              "when": "The user requests access to the operational dashboard experience."
+            },
+            {
+              "authoritative_ac_ref": "ac-operational-dashboard-insights-open-operational-dashboard-002",
+              "clarification_ids": [],
+              "clarification_required": false,
+              "given": [
+                "Dashboard navigation is initiated."
+              ],
+              "id": "AC-05",
+              "quality": {
+                "checks": {
+                  "circular_result": false,
+                  "observable_result_present": true,
+                  "precondition_present": true,
+                  "trigger_present": true,
+                  "vague_result": false
+                },
+                "status": "PASS"
+              },
+              "then": [
+                "The operational dashboard experience is available to the user."
+              ],
+              "title": "Open Operational Dashboard Availability",
+              "when": "The user requests access to the operational dashboard experience."
+            }
+          ],
+          "actor": "application user",
+          "api_dependencies": [],
+          "business_outcome": null,
+          "business_rules": [],
+          "clarifications": [
+            {
+              "ac_id": null,
+              "api_id": null,
+              "id": "Q-01",
+              "owner": "Product Owner / Business Analyst / Customer SME",
+              "question": "What business outcome should Open Operational Dashboard support?",
+              "required_before": "Final stakeholder approval",
+              "source_id": "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-001",
+              "source_ids": [
+                "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-001"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-operational-dashboard-insights-open-operational-dashboard"
+            },
+            {
+              "ac_id": "ac-operational-dashboard-insights-open-operational-dashboard-001",
+              "api_id": "API-04",
+              "id": "Q-04",
+              "owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
+              "question": "Which clinic information must be displayed in the summary?",
+              "required_before": "Development and QA completion",
+              "source_id": "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-003",
+              "source_ids": [
+                "ENR-OPERATIONAL-DASHBOARD-INSIGHTS-003"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-operational-dashboard-insights-open-operational-dashboard"
+            }
+          ],
+          "description": "As an application user, I want to open the operational dashboard experience.",
+          "feature_id": "feature-operational-dashboard-insights",
+          "functional_requirement_refs": [
+            {
+              "id": "FR-01",
+              "requirement": "The user must be able to access the operational dashboard.",
+              "title": "Access Operational Dashboard"
+            }
+          ],
+          "goal": "open the operational dashboard experience",
+          "preconditions": [
+            "Dashboard navigation is initiated."
+          ],
+          "quality": {
+            "invest": {
+              "checks": {
+                "estimable": {
+                  "reason": "Implementation or QA details require clarification.",
+                  "status": "WARNING"
+                },
+                "independent": {
+                  "reason": "No obvious delivery dependency was detected.",
+                  "status": "PASS"
+                },
+                "negotiable": {
+                  "reason": "The delivery representation preserves scope without prescribing implementation design.",
+                  "status": "PASS"
+                },
+                "small": {
+                  "reason": "No obvious size concern was detected.",
+                  "status": "PASS"
+                },
+                "testable": {
+                  "reason": "All human AC pass deterministic testability checks.",
+                  "status": "PASS"
+                },
+                "valuable": {
+                  "reason": "Business outcome confirmation is nonblocking enrichment.",
+                  "status": "WARNING"
+                }
+              },
+              "status": "WARNING"
+            },
+            "split_recommendation": null
+          },
+          "readiness": {
+            "blocking_clarification_ids": [
+              "Q-04"
+            ],
+            "checks": {
+              "acceptance_criteria_available": true,
+              "acceptance_criteria_testable": true,
+              "blocking_clarifications_identified": true,
+              "contradictions_absent": true,
+              "functional_behavior_available": true,
+              "required_api_known": true,
+              "required_api_parameters_known": true,
+              "required_business_rules_represented": true,
+              "story_goal_understandable": true,
+              "unsupported_invented_behavior_absent": true
+            },
+            "non_blocking_business_enrichment": true,
+            "status": "NEEDS_CLARIFICATION"
+          },
+          "story_id": "US-03",
+          "summary": "Open Operational Dashboard",
+          "traceability": {
+            "api_interaction_refs": [],
+            "authoritative_ac_refs": [
+              "ac-operational-dashboard-insights-open-operational-dashboard-001",
+              "ac-operational-dashboard-insights-open-operational-dashboard-002"
+            ],
+            "authoritative_story_ref": "story-operational-dashboard-insights-open-operational-dashboard",
+            "functional_requirement_refs": [
+              "FR-01"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "feature_id": "feature-doctor-directory-management",
+      "feature_name": "Doctor Directory Management",
+      "stories": [
+        {
+          "acceptance_criteria": [
+            {
+              "authoritative_ac_ref": "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+              "clarification_ids": [
+                "Q-03"
+              ],
+              "clarification_required": true,
+              "given": [
+                "The required doctor identifier is available."
+              ],
+              "id": "AC-01",
+              "quality": {
+                "checks": {
+                  "circular_result": false,
+                  "observable_result_present": true,
+                  "precondition_present": true,
+                  "trigger_present": true,
+                  "vague_result": false
+                },
+                "status": "PASS"
+              },
+              "then": [
+                "Doctor information is retrieved.",
+                "The retrieved information is associated with the current organization."
+              ],
+              "title": "View Doctor Details in Organization Context",
+              "when": "The user views doctor detail information for their organization."
+            }
+          ],
+          "actor": "application user",
+          "api_dependencies": [
+            {
+              "api_id": "API-01",
+              "endpoint": "/api/users/current/tenant",
+              "method": "GET",
+              "path_parameters": [],
+              "purpose": "Retrieve the current organization identifier required by organization-specific functionality.",
+              "query_parameters": [],
+              "request_model": null,
+              "response_description": "Current organization identifier",
+              "response_model": "int",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-DOCTOR_DIRECTORY_MANAGEMENT-001"
+                ]
+              }
+            },
+            {
+              "api_id": "API-02",
+              "endpoint": "/api/doctors/{id}",
+              "method": "GET",
+              "path_parameters": [
+                {
+                  "description": "doctor identifier",
+                  "location": "Path",
+                  "name": "id"
+                }
+              ],
+              "purpose": "Retrieve doctor information using the doctor identifier.",
+              "query_parameters": [],
+              "request_model": null,
+              "response_description": "Doctor information",
+              "response_model": "Doctor",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-001"
+                ]
+              }
+            }
+          ],
+          "business_outcome": "I can review information relevant to the organization I am working with",
+          "business_rules": [],
+          "clarifications": [
+            {
+              "ac_id": "ac-doctor-directory-management-review-doctor-directory-001",
+              "api_id": "API-02",
+              "id": "Q-02",
+              "owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
+              "question": "Which doctor fields must be displayed in the detail view?",
+              "required_before": "Development and QA completion",
+              "source_id": "ENR-DOCTOR-DIRECTORY-MANAGEMENT-002",
+              "source_ids": [
+                "ENR-DOCTOR-DIRECTORY-MANAGEMENT-002"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-doctor-directory-management-review-doctor-directory"
+            },
+            {
+              "ac_id": "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+              "api_id": "API-03",
+              "id": "Q-03",
+              "owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
+              "question": "Which doctor fields must be displayed in the directory?",
+              "required_before": "Development and QA completion",
+              "source_id": "ENR-DOCTOR-DIRECTORY-MANAGEMENT-003",
+              "source_ids": [
+                "ENR-DOCTOR-DIRECTORY-MANAGEMENT-003"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-doctor-directory-management-view-doctor-details-in-tenant-context"
+            }
+          ],
+          "description": "As an application user, I want to view doctor detail information for my organization, so that I can review information relevant to the organization I am working with.",
+          "feature_id": "feature-doctor-directory-management",
+          "functional_requirement_refs": [
+            {
+              "id": "FR-01",
+              "requirement": "The user must be able to view doctor details.",
+              "title": "View Doctor Details"
+            },
+            {
+              "id": "FR-02",
+              "requirement": "The user must be able to review the doctor directory.",
+              "title": "Review Doctor Directory"
+            },
+            {
+              "id": "FR-03",
+              "requirement": "The application must retrieve the current organization identifier required by organization-specific functionality.",
+              "title": "Establish Organization Context"
+            }
+          ],
+          "goal": "view doctor detail information for my organization",
+          "preconditions": [
+            "The required doctor identifier is available."
+          ],
+          "quality": {
+            "invest": {
+              "checks": {
+                "estimable": {
+                  "reason": "Implementation or QA details require clarification.",
+                  "status": "WARNING"
+                },
+                "independent": {
+                  "reason": "No obvious delivery dependency was detected.",
+                  "status": "PASS"
+                },
+                "negotiable": {
+                  "reason": "The delivery representation preserves scope without prescribing implementation design.",
+                  "status": "PASS"
+                },
+                "small": {
+                  "reason": "No obvious size concern was detected.",
+                  "status": "PASS"
+                },
+                "testable": {
+                  "reason": "All human AC pass deterministic testability checks.",
+                  "status": "PASS"
+                },
+                "valuable": {
+                  "reason": "A supported outcome is present.",
+                  "status": "PASS"
+                }
+              },
+              "status": "WARNING"
+            },
+            "split_recommendation": null
+          },
+          "readiness": {
+            "blocking_clarification_ids": [
+              "Q-02",
+              "Q-03"
+            ],
+            "checks": {
+              "acceptance_criteria_available": true,
+              "acceptance_criteria_testable": true,
+              "blocking_clarifications_identified": true,
+              "contradictions_absent": true,
+              "functional_behavior_available": true,
+              "required_api_known": true,
+              "required_api_parameters_known": true,
+              "required_business_rules_represented": true,
+              "story_goal_understandable": true,
+              "unsupported_invented_behavior_absent": true
+            },
+            "non_blocking_business_enrichment": false,
+            "status": "NEEDS_CLARIFICATION"
+          },
+          "story_id": "US-01",
+          "summary": "View Doctor Details in Tenant Context",
+          "traceability": {
+            "api_interaction_refs": [
+              "API-DOCTOR_DIRECTORY_MANAGEMENT-001",
+              "API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-001"
+            ],
+            "authoritative_ac_refs": [
+              "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001"
+            ],
+            "authoritative_story_ref": "story-doctor-directory-management-view-doctor-details-in-tenant-context",
+            "functional_requirement_refs": [
+              "FR-01",
+              "FR-02",
+              "FR-03"
+            ]
+          }
+        },
+        {
+          "acceptance_criteria": [
+            {
+              "authoritative_ac_ref": "ac-doctor-directory-management-review-doctor-directory-001",
+              "clarification_ids": [
+                "Q-02"
+              ],
+              "clarification_required": true,
+              "given": [
+                "The required number of records per page and page count are available."
+              ],
+              "id": "AC-02",
+              "quality": {
+                "checks": {
+                  "circular_result": false,
+                  "observable_result_present": true,
+                  "precondition_present": true,
+                  "trigger_present": true,
+                  "vague_result": false
+                },
+                "status": "PASS"
+              },
+              "then": [
+                "Collection of doctor records is retrieved."
+              ],
+              "title": "Review Doctor Directory",
+              "when": "The user reviews the doctor directory."
+            }
+          ],
+          "actor": "application user",
+          "api_dependencies": [
+            {
+              "api_id": "API-03",
+              "endpoint": "/api/doctors",
+              "method": "GET",
+              "path_parameters": [],
+              "purpose": "Retrieve collection of doctor records using the number of records per page and page count.",
+              "query_parameters": [
+                {
+                  "description": "number of records per page",
+                  "location": "Query",
+                  "name": "pageSize (int)"
+                },
+                {
+                  "description": "page count",
+                  "location": "Query",
+                  "name": "pageCount (int)"
+                }
+              ],
+              "request_model": null,
+              "response_description": "Collection of doctor records",
+              "response_model": "Doctor[]",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-002"
+                ]
+              }
+            }
+          ],
+          "business_outcome": null,
+          "business_rules": [],
+          "clarifications": [
+            {
+              "ac_id": null,
+              "api_id": null,
+              "id": "Q-01",
+              "owner": "Product Owner / Business Analyst / Customer SME",
+              "question": "What business outcome should Review Doctor Directory support?",
+              "required_before": "Final stakeholder approval",
+              "source_id": "ENR-DOCTOR-DIRECTORY-MANAGEMENT-001",
+              "source_ids": [
+                "ENR-DOCTOR-DIRECTORY-MANAGEMENT-001"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-doctor-directory-management-review-doctor-directory"
+            },
+            {
+              "ac_id": "ac-doctor-directory-management-review-doctor-directory-001",
+              "api_id": "API-02",
+              "id": "Q-02",
+              "owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
+              "question": "Which doctor fields must be displayed in the detail view?",
+              "required_before": "Development and QA completion",
+              "source_id": "ENR-DOCTOR-DIRECTORY-MANAGEMENT-002",
+              "source_ids": [
+                "ENR-DOCTOR-DIRECTORY-MANAGEMENT-002"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-doctor-directory-management-review-doctor-directory"
+            },
+            {
+              "ac_id": "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
+              "api_id": "API-03",
+              "id": "Q-03",
+              "owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
+              "question": "Which doctor fields must be displayed in the directory?",
+              "required_before": "Development and QA completion",
+              "source_id": "ENR-DOCTOR-DIRECTORY-MANAGEMENT-003",
+              "source_ids": [
+                "ENR-DOCTOR-DIRECTORY-MANAGEMENT-003"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-doctor-directory-management-view-doctor-details-in-tenant-context"
+            }
+          ],
+          "description": "As an application user, I want to review the doctor directory.",
+          "feature_id": "feature-doctor-directory-management",
+          "functional_requirement_refs": [
+            {
+              "id": "FR-01",
+              "requirement": "The user must be able to view doctor details.",
+              "title": "View Doctor Details"
+            },
+            {
+              "id": "FR-02",
+              "requirement": "The user must be able to review the doctor directory.",
+              "title": "Review Doctor Directory"
+            }
+          ],
+          "goal": "review the doctor directory",
+          "preconditions": [
+            "The required number of records per page and page count are available."
+          ],
+          "quality": {
+            "invest": {
+              "checks": {
+                "estimable": {
+                  "reason": "Implementation or QA details require clarification.",
+                  "status": "WARNING"
+                },
+                "independent": {
+                  "reason": "No obvious delivery dependency was detected.",
+                  "status": "PASS"
+                },
+                "negotiable": {
+                  "reason": "The delivery representation preserves scope without prescribing implementation design.",
+                  "status": "PASS"
+                },
+                "small": {
+                  "reason": "No obvious size concern was detected.",
+                  "status": "PASS"
+                },
+                "testable": {
+                  "reason": "All human AC pass deterministic testability checks.",
+                  "status": "PASS"
+                },
+                "valuable": {
+                  "reason": "Business outcome confirmation is nonblocking enrichment.",
+                  "status": "WARNING"
+                }
+              },
+              "status": "WARNING"
+            },
+            "split_recommendation": null
+          },
+          "readiness": {
+            "blocking_clarification_ids": [
+              "Q-02",
+              "Q-03"
+            ],
+            "checks": {
+              "acceptance_criteria_available": true,
+              "acceptance_criteria_testable": true,
+              "blocking_clarifications_identified": true,
+              "contradictions_absent": true,
+              "functional_behavior_available": true,
+              "required_api_known": true,
+              "required_api_parameters_known": true,
+              "required_business_rules_represented": true,
+              "story_goal_understandable": true,
+              "unsupported_invented_behavior_absent": true
+            },
+            "non_blocking_business_enrichment": true,
+            "status": "NEEDS_CLARIFICATION"
+          },
+          "story_id": "US-02",
+          "summary": "Review Doctor Directory",
+          "traceability": {
+            "api_interaction_refs": [
+              "API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-002"
+            ],
+            "authoritative_ac_refs": [
+              "ac-doctor-directory-management-review-doctor-directory-001"
+            ],
+            "authoritative_story_ref": "story-doctor-directory-management-review-doctor-directory",
+            "functional_requirement_refs": [
+              "FR-01",
+              "FR-02"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "feature_id": "feature-patient-directory-management",
+      "feature_name": "Patient Directory Management",
+      "stories": [
+        {
+          "acceptance_criteria": [
+            {
+              "authoritative_ac_ref": "ac-patient-directory-management-establish-patient-tenant-context-001",
+              "clarification_ids": [],
+              "clarification_required": false,
+              "given": [
+                "The applicable functionality requires the current organization context."
+              ],
+              "id": "AC-01",
+              "quality": {
+                "checks": {
+                  "circular_result": false,
+                  "observable_result_present": true,
+                  "precondition_present": true,
+                  "trigger_present": true,
+                  "vague_result": false
+                },
+                "status": "PASS"
+              },
+              "then": [
+                "The current organization identifier is available to the applicable functionality."
+              ],
+              "title": "Establish Patient Organization Context",
+              "when": "The application resolves organization context for patient functionality."
+            }
+          ],
+          "actor": "application user",
+          "api_dependencies": [
+            {
+              "api_id": "API-01",
+              "endpoint": "/api/users/current/tenant",
+              "method": "GET",
+              "path_parameters": [],
+              "purpose": "Retrieve the current organization identifier required by organization-specific functionality.",
+              "query_parameters": [],
+              "request_model": null,
+              "response_description": "Current organization identifier",
+              "response_model": "int",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-PATIENT_DIRECTORY_MANAGEMENT-001"
+                ]
+              }
+            }
+          ],
+          "business_outcome": "the applicable functions use the required organization context",
+          "business_rules": [],
+          "clarifications": [],
+          "description": "As an application user, I want to make organization context available to patient functionality, so that the applicable functions use the required organization context.",
+          "feature_id": "feature-patient-directory-management",
+          "functional_requirement_refs": [
+            {
+              "id": "FR-02",
+              "requirement": "The application must retrieve the current organization identifier required by organization-specific functionality.",
+              "title": "Establish Organization Context"
+            }
+          ],
+          "goal": "make organization context available to patient functionality",
+          "preconditions": [
+            "The applicable functionality requires the current organization context."
+          ],
+          "quality": {
+            "invest": {
+              "checks": {
+                "estimable": {
+                  "reason": "No blocking estimation gap is identified.",
+                  "status": "PASS"
+                },
+                "independent": {
+                  "reason": "No obvious delivery dependency was detected.",
+                  "status": "PASS"
+                },
+                "negotiable": {
+                  "reason": "The delivery representation preserves scope without prescribing implementation design.",
+                  "status": "PASS"
+                },
+                "small": {
+                  "reason": "No obvious size concern was detected.",
+                  "status": "PASS"
+                },
+                "testable": {
+                  "reason": "All human AC pass deterministic testability checks.",
+                  "status": "PASS"
+                },
+                "valuable": {
+                  "reason": "A supported outcome is present.",
+                  "status": "PASS"
+                }
+              },
+              "status": "PASS"
+            },
+            "split_recommendation": null
+          },
+          "readiness": {
+            "blocking_clarification_ids": [],
+            "checks": {
+              "acceptance_criteria_available": true,
+              "acceptance_criteria_testable": true,
+              "blocking_clarifications_identified": true,
+              "contradictions_absent": true,
+              "functional_behavior_available": true,
+              "required_api_known": true,
+              "required_api_parameters_known": true,
+              "required_business_rules_represented": true,
+              "story_goal_understandable": true,
+              "unsupported_invented_behavior_absent": true
+            },
+            "non_blocking_business_enrichment": false,
+            "status": "READY"
+          },
+          "story_id": "US-01",
+          "summary": "Establish Patient Tenant Context",
+          "traceability": {
+            "api_interaction_refs": [
+              "API-PATIENT_DIRECTORY_MANAGEMENT-001"
+            ],
+            "authoritative_ac_refs": [
+              "ac-patient-directory-management-establish-patient-tenant-context-001"
+            ],
+            "authoritative_story_ref": "story-patient-directory-management-establish-patient-tenant-context",
+            "functional_requirement_refs": [
+              "FR-02"
+            ]
+          }
+        },
+        {
+          "acceptance_criteria": [
+            {
+              "authoritative_ac_ref": "ac-patient-directory-management-review-patient-directory-001",
+              "clarification_ids": [
+                "Q-02"
+              ],
+              "clarification_required": true,
+              "given": [
+                "The required number of records per page and page count are available."
+              ],
+              "id": "AC-02",
+              "quality": {
+                "checks": {
+                  "circular_result": false,
+                  "observable_result_present": true,
+                  "precondition_present": true,
+                  "trigger_present": true,
+                  "vague_result": false
+                },
+                "status": "PASS"
+              },
+              "then": [
+                "Collection of patient records is retrieved."
+              ],
+              "title": "Review Patient Directory",
+              "when": "The user reviews the patient directory."
+            }
+          ],
+          "actor": "application user",
+          "api_dependencies": [
+            {
+              "api_id": "API-02",
+              "endpoint": "/api/patients",
+              "method": "GET",
+              "path_parameters": [],
+              "purpose": "Retrieve collection of patient records using the number of records per page and page count.",
+              "query_parameters": [
+                {
+                  "description": "number of records per page",
+                  "location": "Query",
+                  "name": "pageSize (int)"
+                },
+                {
+                  "description": "page count",
+                  "location": "Query",
+                  "name": "pageCount (int)"
+                }
+              ],
+              "request_model": null,
+              "response_description": "Collection of patient records",
+              "response_model": "Patient[]",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-PATIENT_DIRECTORY_MANAGEMENT-DISCOVERED-001"
+                ]
+              }
+            }
+          ],
+          "business_outcome": null,
+          "business_rules": [],
+          "clarifications": [
+            {
+              "ac_id": null,
+              "api_id": null,
+              "id": "Q-01",
+              "owner": "Product Owner / Business Analyst / Customer SME",
+              "question": "What business outcome should Review Patient Directory support?",
+              "required_before": "Final stakeholder approval",
+              "source_id": "ENR-PATIENT-DIRECTORY-MANAGEMENT-001",
+              "source_ids": [
+                "ENR-PATIENT-DIRECTORY-MANAGEMENT-001"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-patient-directory-management-review-patient-directory"
+            },
+            {
+              "ac_id": "ac-patient-directory-management-review-patient-directory-001",
+              "api_id": "API-02",
+              "id": "Q-02",
+              "owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
+              "question": "Which patient fields must be displayed in the directory?",
+              "required_before": "Development and QA completion",
+              "source_id": "ENR-PATIENT-DIRECTORY-MANAGEMENT-002",
+              "source_ids": [
+                "ENR-PATIENT-DIRECTORY-MANAGEMENT-002"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-patient-directory-management-review-patient-directory"
+            }
+          ],
+          "description": "As an application user, I want to review the patient directory.",
+          "feature_id": "feature-patient-directory-management",
+          "functional_requirement_refs": [
+            {
+              "id": "FR-01",
+              "requirement": "The user must be able to review the patient directory.",
+              "title": "Review Patient Directory"
+            }
+          ],
+          "goal": "review the patient directory",
+          "preconditions": [
+            "The required number of records per page and page count are available."
+          ],
+          "quality": {
+            "invest": {
+              "checks": {
+                "estimable": {
+                  "reason": "Implementation or QA details require clarification.",
+                  "status": "WARNING"
+                },
+                "independent": {
+                  "reason": "No obvious delivery dependency was detected.",
+                  "status": "PASS"
+                },
+                "negotiable": {
+                  "reason": "The delivery representation preserves scope without prescribing implementation design.",
+                  "status": "PASS"
+                },
+                "small": {
+                  "reason": "No obvious size concern was detected.",
+                  "status": "PASS"
+                },
+                "testable": {
+                  "reason": "All human AC pass deterministic testability checks.",
+                  "status": "PASS"
+                },
+                "valuable": {
+                  "reason": "Business outcome confirmation is nonblocking enrichment.",
+                  "status": "WARNING"
+                }
+              },
+              "status": "WARNING"
+            },
+            "split_recommendation": null
+          },
+          "readiness": {
+            "blocking_clarification_ids": [
+              "Q-02"
+            ],
+            "checks": {
+              "acceptance_criteria_available": true,
+              "acceptance_criteria_testable": true,
+              "blocking_clarifications_identified": true,
+              "contradictions_absent": true,
+              "functional_behavior_available": true,
+              "required_api_known": true,
+              "required_api_parameters_known": true,
+              "required_business_rules_represented": true,
+              "story_goal_understandable": true,
+              "unsupported_invented_behavior_absent": true
+            },
+            "non_blocking_business_enrichment": true,
+            "status": "NEEDS_CLARIFICATION"
+          },
+          "story_id": "US-02",
+          "summary": "Review Patient Directory",
+          "traceability": {
+            "api_interaction_refs": [
+              "API-PATIENT_DIRECTORY_MANAGEMENT-DISCOVERED-001"
+            ],
+            "authoritative_ac_refs": [
+              "ac-patient-directory-management-review-patient-directory-001"
+            ],
+            "authoritative_story_ref": "story-patient-directory-management-review-patient-directory",
+            "functional_requirement_refs": [
+              "FR-01"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "feature_id": "feature-clinic-appointment-experience",
+      "feature_name": "Clinic Appointment Experience",
+      "stories": [
+        {
+          "acceptance_criteria": [
+            {
+              "authoritative_ac_ref": "ac-clinic-appointment-experience-access-clinic-information-001",
+              "clarification_ids": [
+                "Q-02",
+                "Q-03"
+              ],
+              "clarification_required": true,
+              "given": [
+                "The required organization identifier, number of records per page, and page count are available."
+              ],
+              "id": "AC-01",
+              "quality": {
+                "checks": {
+                  "circular_result": false,
+                  "observable_result_present": true,
+                  "precondition_present": true,
+                  "trigger_present": true,
+                  "vague_result": false
+                },
+                "status": "PASS"
+              },
+              "then": [
+                "Clinic information is retrieved.",
+                "Collection of clinic records is retrieved."
+              ],
+              "title": "Access Clinic Information",
+              "when": "The user views clinic information."
+            }
+          ],
+          "actor": "application user",
+          "api_dependencies": [
+            {
+              "api_id": "API-02",
+              "endpoint": "/api/tenants/{tenantId}",
+              "method": "GET",
+              "path_parameters": [
+                {
+                  "description": "organization identifier",
+                  "location": "Path",
+                  "name": "tenantId"
+                }
+              ],
+              "purpose": "Retrieve clinic information using the organization identifier.",
+              "query_parameters": [],
+              "request_model": null,
+              "response_description": "Clinic information",
+              "response_model": "Tenant",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-CLINIC_APPOINTMENT_EXPERIENCE-DISCOVERED-001"
+                ]
+              }
+            },
+            {
+              "api_id": "API-03",
+              "endpoint": "/api/tenants/list",
+              "method": "GET",
+              "path_parameters": [],
+              "purpose": "Retrieve collection of clinic records using the number of records per page and page count.",
+              "query_parameters": [
+                {
+                  "description": "number of records per page",
+                  "location": "Query",
+                  "name": "pageSize (int)"
+                },
+                {
+                  "description": "page count",
+                  "location": "Query",
+                  "name": "pageCount (int)"
+                }
+              ],
+              "request_model": null,
+              "response_description": "Collection of clinic records",
+              "response_model": "Tenant[]",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-CLINIC_APPOINTMENT_EXPERIENCE-DISCOVERED-002"
+                ]
+              }
+            }
+          ],
+          "business_outcome": null,
+          "business_rules": [],
+          "clarifications": [
+            {
+              "ac_id": null,
+              "api_id": null,
+              "id": "Q-01",
+              "owner": "Product Owner / Business Analyst / Customer SME",
+              "question": "What business outcome should Access Clinic Information support?",
+              "required_before": "Final stakeholder approval",
+              "source_id": "ENR-CLINIC-APPOINTMENT-EXPERIENCE-001",
+              "source_ids": [
+                "ENR-CLINIC-APPOINTMENT-EXPERIENCE-001"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-clinic-appointment-experience-access-clinic-information"
+            },
+            {
+              "ac_id": "ac-clinic-appointment-experience-access-clinic-information-001",
+              "api_id": "API-02",
+              "id": "Q-02",
+              "owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
+              "question": "Which clinic fields must be displayed in the detail view?",
+              "required_before": "Development and QA completion",
+              "source_id": "ENR-CLINIC-APPOINTMENT-EXPERIENCE-002",
+              "source_ids": [
+                "ENR-CLINIC-APPOINTMENT-EXPERIENCE-002"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-clinic-appointment-experience-access-clinic-information"
+            },
+            {
+              "ac_id": "ac-clinic-appointment-experience-access-clinic-information-001",
+              "api_id": "API-03",
+              "id": "Q-03",
+              "owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
+              "question": "Which clinic fields must be displayed in the directory?",
+              "required_before": "Development and QA completion",
+              "source_id": "ENR-CLINIC-APPOINTMENT-EXPERIENCE-002",
+              "source_ids": [
+                "ENR-CLINIC-APPOINTMENT-EXPERIENCE-002"
+              ],
+              "source_split_index": 2,
+              "story_id": "story-clinic-appointment-experience-access-clinic-information"
+            }
+          ],
+          "description": "As an application user, I want to view clinic information.",
+          "feature_id": "feature-clinic-appointment-experience",
+          "functional_requirement_refs": [
+            {
+              "id": "FR-01",
+              "requirement": "The user must be able to view clinic details.",
+              "title": "View Clinic Details"
+            },
+            {
+              "id": "FR-02",
+              "requirement": "The user must be able to review the clinic directory.",
+              "title": "Review Clinic Directory"
+            }
+          ],
+          "goal": "view clinic information",
+          "preconditions": [
+            "The required organization identifier, number of records per page, and page count are available."
+          ],
+          "quality": {
+            "invest": {
+              "checks": {
+                "estimable": {
+                  "reason": "Implementation or QA details require clarification.",
+                  "status": "WARNING"
+                },
+                "independent": {
+                  "reason": "The Story has separable API-backed behavior.",
+                  "status": "WARNING"
+                },
+                "negotiable": {
+                  "reason": "The delivery representation preserves scope without prescribing implementation design.",
+                  "status": "PASS"
+                },
+                "small": {
+                  "reason": "A small optional split is recommended.",
+                  "status": "WARNING"
+                },
+                "testable": {
+                  "reason": "All human AC pass deterministic testability checks.",
+                  "status": "PASS"
+                },
+                "valuable": {
+                  "reason": "Business outcome confirmation is nonblocking enrichment.",
+                  "status": "WARNING"
+                }
+              },
+              "status": "WARNING"
+            },
+            "split_recommendation": {
+              "approval_required": "BA / PO approval",
+              "reason": "Separate backend contracts support independently testable behavior.",
+              "status": "SPLIT_RECOMMENDATION",
+              "suggested_summaries": [
+                "View Clinic Details",
+                "Review Clinic Directory"
+              ]
+            }
+          },
+          "readiness": {
+            "blocking_clarification_ids": [
+              "Q-02",
+              "Q-03"
+            ],
+            "checks": {
+              "acceptance_criteria_available": true,
+              "acceptance_criteria_testable": true,
+              "blocking_clarifications_identified": true,
+              "contradictions_absent": true,
+              "functional_behavior_available": true,
+              "required_api_known": true,
+              "required_api_parameters_known": true,
+              "required_business_rules_represented": true,
+              "story_goal_understandable": true,
+              "unsupported_invented_behavior_absent": true
+            },
+            "non_blocking_business_enrichment": true,
+            "status": "NEEDS_CLARIFICATION"
+          },
+          "story_id": "US-01",
+          "summary": "Access Clinic Information",
+          "traceability": {
+            "api_interaction_refs": [
+              "API-CLINIC_APPOINTMENT_EXPERIENCE-DISCOVERED-001",
+              "API-CLINIC_APPOINTMENT_EXPERIENCE-DISCOVERED-002"
+            ],
+            "authoritative_ac_refs": [
+              "ac-clinic-appointment-experience-access-clinic-information-001"
+            ],
+            "authoritative_story_ref": "story-clinic-appointment-experience-access-clinic-information",
+            "functional_requirement_refs": [
+              "FR-01",
+              "FR-02"
+            ]
+          }
+        },
+        {
+          "acceptance_criteria": [
+            {
+              "authoritative_ac_ref": "ac-clinic-appointment-experience-establish-clinic-context-001",
+              "clarification_ids": [],
+              "clarification_required": false,
+              "given": [
+                "The applicable functionality requires the current organization context."
+              ],
+              "id": "AC-02",
+              "quality": {
+                "checks": {
+                  "circular_result": false,
+                  "observable_result_present": true,
+                  "precondition_present": true,
+                  "trigger_present": true,
+                  "vague_result": false
+                },
+                "status": "PASS"
+              },
+              "then": [
+                "The current organization identifier is available to the applicable functionality."
+              ],
+              "title": "Establish Clinic Context",
+              "when": "The application resolves organization context for clinic functionality."
+            }
+          ],
+          "actor": "application user",
+          "api_dependencies": [
+            {
+              "api_id": "API-01",
+              "endpoint": "/api/users/current/tenant",
+              "method": "GET",
+              "path_parameters": [],
+              "purpose": "Retrieve the current organization identifier required by organization-specific functionality.",
+              "query_parameters": [],
+              "request_model": null,
+              "response_description": "Current organization identifier",
+              "response_model": "int",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-CLINIC_APPOINTMENT_EXPERIENCE-001"
+                ]
+              }
+            }
+          ],
+          "business_outcome": "the applicable functions use the required organization context",
+          "business_rules": [],
+          "clarifications": [],
+          "description": "As an application user, I want to make organization context available to clinic functionality, so that the applicable functions use the required organization context.",
+          "feature_id": "feature-clinic-appointment-experience",
+          "functional_requirement_refs": [
+            {
+              "id": "FR-03",
+              "requirement": "The application must retrieve the current organization identifier required by organization-specific functionality.",
+              "title": "Establish Organization Context"
+            }
+          ],
+          "goal": "make organization context available to clinic functionality",
+          "preconditions": [
+            "The applicable functionality requires the current organization context."
+          ],
+          "quality": {
+            "invest": {
+              "checks": {
+                "estimable": {
+                  "reason": "No blocking estimation gap is identified.",
+                  "status": "PASS"
+                },
+                "independent": {
+                  "reason": "No obvious delivery dependency was detected.",
+                  "status": "PASS"
+                },
+                "negotiable": {
+                  "reason": "The delivery representation preserves scope without prescribing implementation design.",
+                  "status": "PASS"
+                },
+                "small": {
+                  "reason": "No obvious size concern was detected.",
+                  "status": "PASS"
+                },
+                "testable": {
+                  "reason": "All human AC pass deterministic testability checks.",
+                  "status": "PASS"
+                },
+                "valuable": {
+                  "reason": "A supported outcome is present.",
+                  "status": "PASS"
+                }
+              },
+              "status": "PASS"
+            },
+            "split_recommendation": null
+          },
+          "readiness": {
+            "blocking_clarification_ids": [],
+            "checks": {
+              "acceptance_criteria_available": true,
+              "acceptance_criteria_testable": true,
+              "blocking_clarifications_identified": true,
+              "contradictions_absent": true,
+              "functional_behavior_available": true,
+              "required_api_known": true,
+              "required_api_parameters_known": true,
+              "required_business_rules_represented": true,
+              "story_goal_understandable": true,
+              "unsupported_invented_behavior_absent": true
+            },
+            "non_blocking_business_enrichment": false,
+            "status": "READY"
+          },
+          "story_id": "US-02",
+          "summary": "Establish Clinic Context",
+          "traceability": {
+            "api_interaction_refs": [
+              "API-CLINIC_APPOINTMENT_EXPERIENCE-001"
+            ],
+            "authoritative_ac_refs": [
+              "ac-clinic-appointment-experience-establish-clinic-context-001"
+            ],
+            "authoritative_story_ref": "story-clinic-appointment-experience-establish-clinic-context",
+            "functional_requirement_refs": [
+              "FR-03"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "feature_id": "feature-user-access-context",
+      "feature_name": "User Access and Tenant Context",
+      "stories": [
+        {
+          "acceptance_criteria": [
+            {
+              "authoritative_ac_ref": "ac-user-access-context-access-user-management-views-001",
+              "clarification_ids": [
+                "Q-02",
+                "Q-03"
+              ],
+              "clarification_required": true,
+              "given": [
+                "The required username, number of records per page, and page count are available."
+              ],
+              "id": "AC-01",
+              "quality": {
+                "checks": {
+                  "circular_result": false,
+                  "observable_result_present": true,
+                  "precondition_present": true,
+                  "trigger_present": true,
+                  "vague_result": false
+                },
+                "status": "PASS"
+              },
+              "then": [
+                "Application user information is retrieved.",
+                "Collection of application user records is retrieved."
+              ],
+              "title": "Access User Management Views",
+              "when": "The user views user list and details."
+            }
+          ],
+          "actor": "application user",
+          "api_dependencies": [
+            {
+              "api_id": "API-04",
+              "endpoint": "/api/users/{username}",
+              "method": "GET",
+              "path_parameters": [
+                {
+                  "description": "username",
+                  "location": "Path",
+                  "name": "username"
+                }
+              ],
+              "purpose": "Retrieve application user information using the username.",
+              "query_parameters": [],
+              "request_model": null,
+              "response_description": "Application user information",
+              "response_model": "ApplicationUser",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-USER_ACCESS_CONTEXT-DISCOVERED-001"
+                ]
+              }
+            },
+            {
+              "api_id": "API-05",
+              "endpoint": "/api/users",
+              "method": "GET",
+              "path_parameters": [],
+              "purpose": "Retrieve collection of application user records using the number of records per page and page count.",
+              "query_parameters": [
+                {
+                  "description": "number of records per page",
+                  "location": "Query",
+                  "name": "pageSize (int)"
+                },
+                {
+                  "description": "page count",
+                  "location": "Query",
+                  "name": "pageCount (int)"
+                }
+              ],
+              "request_model": null,
+              "response_description": "Collection of application user records",
+              "response_model": "ApplicationUser[]",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-USER_ACCESS_CONTEXT-DISCOVERED-002"
+                ]
+              }
+            }
+          ],
+          "business_outcome": null,
+          "business_rules": [],
+          "clarifications": [
+            {
+              "ac_id": null,
+              "api_id": null,
+              "id": "Q-01",
+              "owner": "Product Owner / Business Analyst / Customer SME",
+              "question": "What business outcome should Access User Management Views support?",
+              "required_before": "Final stakeholder approval",
+              "source_id": "ENR-USER-ACCESS-CONTEXT-001",
+              "source_ids": [
+                "ENR-USER-ACCESS-CONTEXT-001"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-user-access-context-access-user-management-views"
+            },
+            {
+              "ac_id": "ac-user-access-context-access-user-management-views-001",
+              "api_id": "API-04",
+              "id": "Q-02",
+              "owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
+              "question": "Which application user fields must be displayed in the detail view?",
+              "required_before": "Development and QA completion",
+              "source_id": "ENR-USER-ACCESS-CONTEXT-002",
+              "source_ids": [
+                "ENR-USER-ACCESS-CONTEXT-002"
+              ],
+              "source_split_index": 1,
+              "story_id": "story-user-access-context-access-user-management-views"
+            },
+            {
+              "ac_id": "ac-user-access-context-access-user-management-views-001",
+              "api_id": "API-05",
+              "id": "Q-03",
+              "owner": "Product Owner / Business Analyst / Customer SME / QA Lead",
+              "question": "Which application user fields must be displayed in the directory?",
+              "required_before": "Development and QA completion",
+              "source_id": "ENR-USER-ACCESS-CONTEXT-002",
+              "source_ids": [
+                "ENR-USER-ACCESS-CONTEXT-002"
+              ],
+              "source_split_index": 2,
+              "story_id": "story-user-access-context-access-user-management-views"
+            }
+          ],
+          "description": "As an application user, I want to view user list and details.",
+          "feature_id": "feature-user-access-context",
+          "functional_requirement_refs": [
+            {
+              "id": "FR-01",
+              "requirement": "The user must be able to view application user details.",
+              "title": "View Application User Details"
+            },
+            {
+              "id": "FR-02",
+              "requirement": "The user must be able to review the application user directory.",
+              "title": "Review Application User Directory"
+            }
+          ],
+          "goal": "view user list and details",
+          "preconditions": [
+            "The required username, number of records per page, and page count are available."
+          ],
+          "quality": {
+            "invest": {
+              "checks": {
+                "estimable": {
+                  "reason": "Implementation or QA details require clarification.",
+                  "status": "WARNING"
+                },
+                "independent": {
+                  "reason": "The Story has separable API-backed behavior.",
+                  "status": "WARNING"
+                },
+                "negotiable": {
+                  "reason": "The delivery representation preserves scope without prescribing implementation design.",
+                  "status": "PASS"
+                },
+                "small": {
+                  "reason": "A small optional split is recommended.",
+                  "status": "WARNING"
+                },
+                "testable": {
+                  "reason": "All human AC pass deterministic testability checks.",
+                  "status": "PASS"
+                },
+                "valuable": {
+                  "reason": "Business outcome confirmation is nonblocking enrichment.",
+                  "status": "WARNING"
+                }
+              },
+              "status": "WARNING"
+            },
+            "split_recommendation": {
+              "approval_required": "BA / PO approval",
+              "reason": "Separate backend contracts support independently testable behavior.",
+              "status": "SPLIT_RECOMMENDATION",
+              "suggested_summaries": [
+                "View Application User Details",
+                "Review Application User Directory"
+              ]
+            }
+          },
+          "readiness": {
+            "blocking_clarification_ids": [
+              "Q-02",
+              "Q-03"
+            ],
+            "checks": {
+              "acceptance_criteria_available": true,
+              "acceptance_criteria_testable": true,
+              "blocking_clarifications_identified": true,
+              "contradictions_absent": true,
+              "functional_behavior_available": true,
+              "required_api_known": true,
+              "required_api_parameters_known": true,
+              "required_business_rules_represented": true,
+              "story_goal_understandable": true,
+              "unsupported_invented_behavior_absent": true
+            },
+            "non_blocking_business_enrichment": true,
+            "status": "NEEDS_CLARIFICATION"
+          },
+          "story_id": "US-01",
+          "summary": "Access User Management Views",
+          "traceability": {
+            "api_interaction_refs": [
+              "API-USER_ACCESS_CONTEXT-DISCOVERED-001",
+              "API-USER_ACCESS_CONTEXT-DISCOVERED-002"
+            ],
+            "authoritative_ac_refs": [
+              "ac-user-access-context-access-user-management-views-001"
+            ],
+            "authoritative_story_ref": "story-user-access-context-access-user-management-views",
+            "functional_requirement_refs": [
+              "FR-01",
+              "FR-02"
+            ]
+          }
+        },
+        {
+          "acceptance_criteria": [
+            {
+              "authoritative_ac_ref": "ac-user-access-context-resolve-current-user-and-claims-001",
+              "clarification_ids": [],
+              "clarification_required": false,
+              "given": [
+                "Shared header initialization requires current user identity."
+              ],
+              "id": "AC-02",
+              "quality": {
+                "checks": {
+                  "circular_result": false,
+                  "observable_result_present": true,
+                  "precondition_present": true,
+                  "trigger_present": true,
+                  "vague_result": false
+                },
+                "status": "PASS"
+              },
+              "then": [
+                "Current user identifier is available to the applicable application functions.",
+                "Current user claims are available to the applicable application functions."
+              ],
+              "title": "Resolve Current User and Claims",
+              "when": "The application resolves current user identity and claims for shared application behavior."
+            }
+          ],
+          "actor": "application user",
+          "api_dependencies": [
+            {
+              "api_id": "API-01",
+              "endpoint": "/api/users/current/user",
+              "method": "GET",
+              "path_parameters": [],
+              "purpose": "Retrieve current user identifier for shared application functions.",
+              "query_parameters": [],
+              "request_model": null,
+              "response_description": "Current user identifier",
+              "response_model": "string",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-USER_ACCESS_CONTEXT-001"
+                ]
+              }
+            },
+            {
+              "api_id": "API-02",
+              "endpoint": "/api/users/current/claims",
+              "method": "GET",
+              "path_parameters": [],
+              "purpose": "Retrieve current user claims for shared application functions.",
+              "query_parameters": [],
+              "request_model": null,
+              "response_description": "Current user claims",
+              "response_model": "JsonResult",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-USER_ACCESS_CONTEXT-002",
+                  "API-USER_ACCESS_CONTEXT-003"
+                ]
+              }
+            }
+          ],
+          "business_outcome": "shared application functions receive the required identity and claims context",
+          "business_rules": [],
+          "clarifications": [],
+          "description": "As an application user, I want to make current user identity and claims available to shared application behavior, so that shared application functions receive the required identity and claims context.",
+          "feature_id": "feature-user-access-context",
+          "functional_requirement_refs": [
+            {
+              "id": "FR-03",
+              "requirement": "The application must retrieve current user identifier for shared application functions.",
+              "title": "Resolve Current User Identity"
+            },
+            {
+              "id": "FR-04",
+              "requirement": "The application must retrieve current user claims for shared application functions.",
+              "title": "Resolve Current User Claims"
+            }
+          ],
+          "goal": "make current user identity and claims available to shared application behavior",
+          "preconditions": [
+            "Shared header initialization requires current user identity."
+          ],
+          "quality": {
+            "invest": {
+              "checks": {
+                "estimable": {
+                  "reason": "No blocking estimation gap is identified.",
+                  "status": "PASS"
+                },
+                "independent": {
+                  "reason": "No obvious delivery dependency was detected.",
+                  "status": "PASS"
+                },
+                "negotiable": {
+                  "reason": "The delivery representation preserves scope without prescribing implementation design.",
+                  "status": "PASS"
+                },
+                "small": {
+                  "reason": "No obvious size concern was detected.",
+                  "status": "PASS"
+                },
+                "testable": {
+                  "reason": "All human AC pass deterministic testability checks.",
+                  "status": "PASS"
+                },
+                "valuable": {
+                  "reason": "A supported outcome is present.",
+                  "status": "PASS"
+                }
+              },
+              "status": "PASS"
+            },
+            "split_recommendation": null
+          },
+          "readiness": {
+            "blocking_clarification_ids": [],
+            "checks": {
+              "acceptance_criteria_available": true,
+              "acceptance_criteria_testable": true,
+              "blocking_clarifications_identified": true,
+              "contradictions_absent": true,
+              "functional_behavior_available": true,
+              "required_api_known": true,
+              "required_api_parameters_known": true,
+              "required_business_rules_represented": true,
+              "story_goal_understandable": true,
+              "unsupported_invented_behavior_absent": true
+            },
+            "non_blocking_business_enrichment": false,
+            "status": "READY"
+          },
+          "story_id": "US-02",
+          "summary": "Resolve Current User and Claims",
+          "traceability": {
+            "api_interaction_refs": [
+              "API-USER_ACCESS_CONTEXT-001",
+              "API-USER_ACCESS_CONTEXT-002",
+              "API-USER_ACCESS_CONTEXT-003"
+            ],
+            "authoritative_ac_refs": [
+              "ac-user-access-context-resolve-current-user-and-claims-001"
+            ],
+            "authoritative_story_ref": "story-user-access-context-resolve-current-user-and-claims",
+            "functional_requirement_refs": [
+              "FR-03",
+              "FR-04"
+            ]
+          }
+        },
+        {
+          "acceptance_criteria": [
+            {
+              "authoritative_ac_ref": "ac-user-access-context-resolve-tenant-context-for-user-functions-001",
+              "clarification_ids": [],
+              "clarification_required": false,
+              "given": [
+                "The applicable functionality requires the current organization context."
+              ],
+              "id": "AC-03",
+              "quality": {
+                "checks": {
+                  "circular_result": false,
+                  "observable_result_present": true,
+                  "precondition_present": true,
+                  "trigger_present": true,
+                  "vague_result": false
+                },
+                "status": "PASS"
+              },
+              "then": [
+                "The current organization identifier is available to the applicable functionality."
+              ],
+              "title": "Resolve Organization Context for User Functions",
+              "when": "The application resolves organization context for user functionality."
+            }
+          ],
+          "actor": "application user",
+          "api_dependencies": [
+            {
+              "api_id": "API-03",
+              "endpoint": "/api/users/current/tenant",
+              "method": "GET",
+              "path_parameters": [],
+              "purpose": "Retrieve the current organization identifier required by organization-specific functionality.",
+              "query_parameters": [],
+              "request_model": null,
+              "response_description": "Current organization identifier",
+              "response_model": "int",
+              "traceability": {
+                "source_interaction_ids": [
+                  "API-USER_ACCESS_CONTEXT-004"
+                ]
+              }
+            }
+          ],
+          "business_outcome": "the applicable functions use the required organization context",
+          "business_rules": [
+            {
+              "id": "BR-01",
+              "rule": "Functionality that requires organization context must obtain it before continuing.",
+              "source_rule_id": "BR-USER-001"
+            }
+          ],
+          "clarifications": [],
+          "description": "As an application user, I want to make organization context available to user functionality, so that the applicable functions use the required organization context.",
+          "feature_id": "feature-user-access-context",
+          "functional_requirement_refs": [
+            {
+              "id": "FR-05",
+              "requirement": "The application must retrieve the current organization identifier required by organization-specific functionality.",
+              "title": "Establish Organization Context"
+            }
+          ],
+          "goal": "make organization context available to user functionality",
+          "preconditions": [
+            "The applicable functionality requires the current organization context."
+          ],
+          "quality": {
+            "invest": {
+              "checks": {
+                "estimable": {
+                  "reason": "No blocking estimation gap is identified.",
+                  "status": "PASS"
+                },
+                "independent": {
+                  "reason": "No obvious delivery dependency was detected.",
+                  "status": "PASS"
+                },
+                "negotiable": {
+                  "reason": "The delivery representation preserves scope without prescribing implementation design.",
+                  "status": "PASS"
+                },
+                "small": {
+                  "reason": "No obvious size concern was detected.",
+                  "status": "PASS"
+                },
+                "testable": {
+                  "reason": "All human AC pass deterministic testability checks.",
+                  "status": "PASS"
+                },
+                "valuable": {
+                  "reason": "A supported outcome is present.",
+                  "status": "PASS"
+                }
+              },
+              "status": "PASS"
+            },
+            "split_recommendation": null
+          },
+          "readiness": {
+            "blocking_clarification_ids": [],
+            "checks": {
+              "acceptance_criteria_available": true,
+              "acceptance_criteria_testable": true,
+              "blocking_clarifications_identified": true,
+              "contradictions_absent": true,
+              "functional_behavior_available": true,
+              "required_api_known": true,
+              "required_api_parameters_known": true,
+              "required_business_rules_represented": true,
+              "story_goal_understandable": true,
+              "unsupported_invented_behavior_absent": true
+            },
+            "non_blocking_business_enrichment": false,
+            "status": "READY"
+          },
+          "story_id": "US-03",
+          "summary": "Resolve Tenant Context for User Functions",
+          "traceability": {
+            "api_interaction_refs": [
+              "API-USER_ACCESS_CONTEXT-004"
+            ],
+            "authoritative_ac_refs": [
+              "ac-user-access-context-resolve-tenant-context-for-user-functions-001"
+            ],
+            "authoritative_story_ref": "story-user-access-context-resolve-tenant-context-for-user-functions",
+            "functional_requirement_refs": [
+              "FR-05"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "acceptance_criteria": {
+      "NEEDS_CLARIFICATION": 0,
+      "PASS": 14,
+      "WARNING": 0,
+      "total": 14
+    },
+    "api_dependencies": 17,
+    "circular_human_ac": 0,
+    "clarifications": 16,
+    "features": 5,
+    "functional_requirements": 18,
+    "invest": {
+      "NEEDS_REVIEW": 0,
+      "PASS": 4,
+      "WARNING": 8
+    },
+    "jira_story_models": 12,
+    "readiness": {
+      "BLOCKED": 0,
+      "NEEDS_CLARIFICATION": 8,
+      "READY": 4
+    },
+    "vague_human_ac": 0
+  }
+}

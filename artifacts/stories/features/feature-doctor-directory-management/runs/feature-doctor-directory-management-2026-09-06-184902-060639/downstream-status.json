@@ -1,0 +1,7 @@
+{
+  "acceptance_criteria": "STALE_REGENERATION_REQUIRED",
+  "angular": "STALE_REGENERATION_REQUIRED",
+  "playwright": "STALE_REGENERATION_REQUIRED",
+  "stories": "CURRENT",
+  "technical_tasks": "STALE_REGENERATION_REQUIRED"
+}

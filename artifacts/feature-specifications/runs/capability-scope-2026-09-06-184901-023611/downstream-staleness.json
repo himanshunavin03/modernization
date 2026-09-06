@@ -1,0 +1,11 @@
+{
+  "feature_id": "feature-doctor-directory-management",
+  "stale_artifacts": [
+    "STORIES",
+    "ACCEPTANCE_CRITERIA",
+    "TECHNICAL_TASKS",
+    "ANGULAR",
+    "PLAYWRIGHT"
+  ],
+  "status": "STALE_REGENERATION_REQUIRED"
+}

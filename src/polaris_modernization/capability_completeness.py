@@ -32,6 +32,7 @@ class InteractionSemantics(BaseModel):
     observable_result: str | None = None
     state_change: str | None = None
     system_initiated: bool = False
+    handler_id: str | None = None
     source_evidence: list[CapabilityEvidence] = Field(default_factory=list)
 
 
@@ -53,13 +54,13 @@ def _handler_semantics(handler: dict, forward: dict[str, list[tuple[str, str]]],
             }
             result = results.get(operation)
             if result:
-                values.append(InteractionSemantics(interaction_type="ACTION", observable_result=result, source_evidence=_evidence(node, "FRONTEND")))
+                values.append(InteractionSemantics(interaction_type="ACTION", observable_result=result, handler_id=handler["id"], source_evidence=_evidence(node, "FRONTEND")))
         elif edge_type == "NAVIGATES":
-            values.append(InteractionSemantics(interaction_type="ACTION", observable_result=f"the view changes to {props.get('target')}", source_evidence=_evidence(node, "FRONTEND")))
+            values.append(InteractionSemantics(interaction_type="ACTION", observable_result=f"the view changes to {props.get('target')}", handler_id=handler["id"], source_evidence=_evidence(node, "FRONTEND")))
         elif edge_type == "REQUIRES_CONFIRMATION":
-            values.append(InteractionSemantics(interaction_type="ACTION", observable_result="confirmation is requested before the guarded operation", source_evidence=_evidence(node, "FRONTEND")))
+            values.append(InteractionSemantics(interaction_type="ACTION", observable_result="confirmation is requested before the guarded operation", handler_id=handler["id"], source_evidence=_evidence(node, "FRONTEND")))
         elif edge_type == "MUTATES":
-            values.append(InteractionSemantics(interaction_type="ACTION", state_change=str(props.get("target") or ""), source_evidence=_evidence(node, "FRONTEND")))
+            values.append(InteractionSemantics(interaction_type="ACTION", state_change=str(props.get("target") or ""), handler_id=handler["id"], source_evidence=_evidence(node, "FRONTEND")))
     return values
 
 
@@ -125,27 +126,27 @@ def _evidence(node: dict, stage: str) -> list[CapabilityEvidence]:
     ) for item in node.get("evidence", [])]
 
 
-def _interaction(node: dict) -> InteractionSemantics | None:
+def _interaction(node: dict, handler_id: str | None = None) -> InteractionSemantics | None:
     """Retain UI-node semantics without deriving UX from an API operation."""
     props = node.get("properties", {})
     label = str(props.get("text") or "").strip() or None
     if node["label"] == "UIAction":
         return InteractionSemantics(
             interaction_type="ACTION", label=label, trigger=props.get("expression") or props.get("handler"),
-            source_evidence=_evidence(node, "UI"),
+            handler_id=handler_id, source_evidence=_evidence(node, "UI"),
         )
     if node["label"] == "UISelection":
         return InteractionSemantics(
             interaction_type="SELECTION", trigger=props.get("change"),
             state_change=f"selection model {props.get('model')}" if props.get("model") else None,
-            source_evidence=_evidence(node, "UI"),
+            handler_id=handler_id, source_evidence=_evidence(node, "UI"),
         )
     if node["label"] == "UIValidation":
         required = props.get("required")
         return InteractionSemantics(
             interaction_type="VALIDATION", trigger=props.get("model"),
             observable_result="required input" if required is True else None,
-            source_evidence=_evidence(node, "UI"),
+            handler_id=handler_id, source_evidence=_evidence(node, "UI"),
         )
     return None
 
@@ -204,7 +205,10 @@ def derive_source_capabilities(graph: dict) -> list[SourceCapability]:
             api_evidence = [item for item in _evidence(call, "API") if _domain(item.source_path, identity) == domain] or _evidence(call, "API")
             evidence = [item for node, stage in [*( (x, "UI") for x in ui_actions), *( (x, "FRONTEND") for x in domain_callers), *( (x, "BACKEND") for x in endpoints), *( (x, "PERSISTENCE") for x in persistence)] for item in _evidence(node, stage)]
             evidence.extend(api_evidence)
-            interactions = [item for node in ui_actions if (item := _interaction(node))]
+            interactions = []
+            for handler in handlers:
+                actions = [nodes[source] for edge, source in reverse.get(handler["id"], []) if edge == "TRIGGERS"]
+                interactions.extend(item for node in actions if (item := _interaction(node, handler["id"])))
             for handler in handlers:
                 interactions.extend(_handler_semantics(handler, forward, nodes))
             qualifiers = []
