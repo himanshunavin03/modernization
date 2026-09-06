@@ -1,0 +1,7 @@
+{
+  "project_id": "synthetic-application",
+  "feature_id": "feature-inventory-review",
+  "modernization_operation": "synthetic-generator",
+  "status": "TECHNICAL_TASKS_READY",
+  "tasks": [{"task_id": "TT-001"}]
+}

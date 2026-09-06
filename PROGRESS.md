@@ -262,3 +262,9 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Focused Polaris validation passed `40`; full regression passed `243` with `2` skipped. Source, approved architecture, technical tasks, API contracts, and Figma separation remain unchanged.
 - Runtime evidence is published in `artifacts/modernization/latest/pep-run.json`, `pep-run.md`, `runtime-validation.json`, traceability, and the customer modernization HTML.
 - Next action: authorize a bounded continuation to add the standard Angular `development` build configuration, rerun unit tests, then proceed to serve/browser/Playwright validation if green.
+
+## Reusable Polaris Command Interface
+
+- Added a registry-driven 19-command lifecycle interface, artifact-derived Feature resolver/index, persisted modernization state, prerequisite gates, idempotent modernization behavior, and package-script validation.
+- Added the `polaris` CLI entry point, Codex delegation adapter, shared Copilot prompt, operator guide, prompt record, Doctor Directory fixture, synthetic non-HealthClinic fixture, and focused tests.
+- Verification passed: focused command tests `14 passed`; complete regression `255 passed, 2 skipped`; Angular/Nx production build passed with cache disabled; generic command production code has zero forbidden application-specific references.

@@ -1,0 +1,7 @@
+{
+  "feature_specification_run_id": "fixture-run",
+  "features": [
+    {"feature_id": "feature-doctor-directory-management", "feature_name": "Doctor Directory Management"},
+    {"feature_id": "feature-inventory-review", "feature_name": "Inventory Review"}
+  ]
+}

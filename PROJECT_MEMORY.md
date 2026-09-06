@@ -261,6 +261,10 @@ The new immutable run `legacy-dashboard-complete-application-demo-v1-2026-09-01-
 
 The new forensic gate remains `NOT_READY`, not because either targeted defect remains, but because Roslyn still has two `UNKNOWN` unresolved invocations in the iOS client. Application Understanding remains `STALE`; do not begin Phase 2. Next action: `ADDITIONAL_DIAGNOSIS`. Recovery reading includes prompt 041 and `artifacts/knowledge-graph/latest/kg-readiness-analysis.md`.
 
+## Reusable Polaris Command Interface
+
+Polaris now exposes 19 canonical lifecycle commands through one metadata registry and `CommandService`. The `polaris` CLI, Codex adapter, and Copilot prompt delegate to that shared service; future MCP adapters can do the same. Feature resolution and lifecycle status come from persisted artifacts and `artifacts/commands/feature-index.json`, with explicit unknown and ambiguity failures. Generic production command code contains no HealthClinic-specific branch.
+
 ## Final Knowledge Graph Readiness
 
 Immutable run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128` is approved as `READY_WITH_EXPLAINED_LIMITATIONS`. Graph and evidence integrity pass at 2,384 files, 8,929 pipeline facts, 4,931 nodes, and 5,205 relationships. There are no duplicate IDs/relationships, broken endpoints, evidence gaps, invalid evidence paths/hashes/lines, or framework classification conflicts.

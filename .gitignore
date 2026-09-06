@@ -28,6 +28,8 @@ artifacts/*
 !artifacts/design/**
 !artifacts/modernization/
 !artifacts/modernization/**
+!artifacts/commands/
+!artifacts/commands/**
 source/*
 !source/.gitkeep
 !source/README.md

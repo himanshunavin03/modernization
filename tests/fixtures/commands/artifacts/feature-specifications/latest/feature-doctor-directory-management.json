@@ -1,0 +1,7 @@
+{
+  "feature_id": "feature-doctor-directory-management",
+  "feature_name": "Doctor Directory Management",
+  "stories": [{"story_id": "story-doctor-directory-management-review"}],
+  "acceptance_criteria": [{"acceptance_criterion_id": "ac-doctor-directory-management-review-001"}],
+  "functional_requirements": [{"acceptance_criterion_id": "ac-doctor-directory-management-review-001", "requirement": "Review directory records."}]
+}

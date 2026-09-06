@@ -1,0 +1,4 @@
+{
+  "feature_id": "feature-inventory-review",
+  "decisions": [{"id": "ARCH-001", "adr_ref": "ADR-001"}]
+}

@@ -1,0 +1,7 @@
+{
+  "feature_id": "feature-inventory-review",
+  "feature_name": "Inventory Review",
+  "stories": [{"story_id": "story-inventory-review-list"}],
+  "acceptance_criteria": [{"acceptance_criterion_id": "ac-inventory-review-list-001"}],
+  "functional_requirements": [{"acceptance_criterion_id": "ac-inventory-review-list-001", "requirement": "List inventory records."}]
+}

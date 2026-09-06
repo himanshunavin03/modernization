@@ -23,3 +23,16 @@ def create_knowledge_graph_command(
         root, project_id or project_id_for(root), profile, output,
         enable_roslyn=has_dotnet_projects, load_neo4j=load_neo4j,
     )
+
+
+def execute_polaris_command(
+    command: str,
+    argument: str | None = None,
+    *,
+    repository_root: Path = Path.cwd(),
+    **options: Any,
+) -> dict[str, Any]:
+    """Shared Codex/Copilot adapter; command definitions contain no engine logic."""
+    from polaris_modernization.commands import CommandService
+
+    return CommandService(repository_root).execute(command, argument, **options).to_dict()

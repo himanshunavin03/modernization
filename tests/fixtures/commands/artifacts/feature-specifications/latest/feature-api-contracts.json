@@ -1,0 +1,6 @@
+{
+  "features": [
+    {"feature_id": "feature-doctor-directory-management", "contracts": [{"contract_id": "API-DIRECTORY-001"}]},
+    {"feature_id": "feature-inventory-review", "contracts": [{"contract_id": "API-INVENTORY-001"}]}
+  ]
+}
