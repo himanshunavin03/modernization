@@ -1,0 +1,9 @@
+{
+  "evidence_package_manifest_hash": "ca9b7afaf982a13bf15e0a9cf320ef6bb2d833d317f14eae19e7181c324d1593",
+  "evidence_packages": 138,
+  "external_llm_calls": 0,
+  "kg_readiness_gate": "PASS",
+  "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-182227",
+  "next_step": "Active Codex or Copilot agent writes agent-reasoning.json, then invoke understand-application --agent-result.",
+  "project_id": "legacy-dashboard-complete-application-demo-v1"
+}

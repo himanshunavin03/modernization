@@ -1,0 +1,651 @@
+{
+  "$defs": {
+    "BusinessCapability": {
+      "properties": {
+        "confidence": {
+          "$ref": "#/$defs/ConfidenceAssessment"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "evidence_package_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Package Ids",
+          "type": "array"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "origin": {
+          "default": "DETERMINISTIC_FACT",
+          "enum": [
+            "DETERMINISTIC_FACT",
+            "AGENT_REASONING"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "related_items": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Items",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "evidence",
+        "confidence"
+      ],
+      "title": "BusinessCapability",
+      "type": "object"
+    },
+    "BusinessModule": {
+      "properties": {
+        "confidence": {
+          "$ref": "#/$defs/ConfidenceAssessment"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "evidence_package_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Package Ids",
+          "type": "array"
+        },
+        "module_type": {
+          "default": "FUNCTIONAL",
+          "enum": [
+            "FUNCTIONAL",
+            "ARCHITECTURAL",
+            "INTEGRATION"
+          ],
+          "title": "Module Type",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "origin": {
+          "default": "DETERMINISTIC_FACT",
+          "enum": [
+            "DETERMINISTIC_FACT",
+            "AGENT_REASONING"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "related_items": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Items",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "evidence",
+        "confidence"
+      ],
+      "title": "BusinessModule",
+      "type": "object"
+    },
+    "BusinessRule": {
+      "properties": {
+        "confidence": {
+          "$ref": "#/$defs/ConfidenceAssessment"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "evidence_package_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Package Ids",
+          "type": "array"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "origin": {
+          "default": "DETERMINISTIC_FACT",
+          "enum": [
+            "DETERMINISTIC_FACT",
+            "AGENT_REASONING"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "related_items": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Items",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "evidence",
+        "confidence"
+      ],
+      "title": "BusinessRule",
+      "type": "object"
+    },
+    "ConfidenceAssessment": {
+      "properties": {
+        "level": {
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW"
+          ],
+          "title": "Level",
+          "type": "string"
+        },
+        "provenance": {
+          "items": {
+            "enum": [
+              "COMPILER_PROVEN",
+              "PROJECT_PARTIAL",
+              "SYNTHETIC_FALLBACK",
+              "STRUCTURAL_ONLY"
+            ],
+            "type": "string"
+          },
+          "title": "Provenance",
+          "type": "array"
+        },
+        "rationale": {
+          "title": "Rationale",
+          "type": "string"
+        }
+      },
+      "required": [
+        "level",
+        "provenance",
+        "rationale"
+      ],
+      "title": "ConfidenceAssessment",
+      "type": "object"
+    },
+    "Dependency": {
+      "properties": {
+        "confidence": {
+          "$ref": "#/$defs/ConfidenceAssessment"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "evidence_package_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Package Ids",
+          "type": "array"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "origin": {
+          "default": "DETERMINISTIC_FACT",
+          "enum": [
+            "DETERMINISTIC_FACT",
+            "AGENT_REASONING"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "related_items": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Items",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "evidence",
+        "confidence"
+      ],
+      "title": "Dependency",
+      "type": "object"
+    },
+    "DomainConcept": {
+      "properties": {
+        "confidence": {
+          "$ref": "#/$defs/ConfidenceAssessment"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "evidence_package_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Package Ids",
+          "type": "array"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "origin": {
+          "default": "DETERMINISTIC_FACT",
+          "enum": [
+            "DETERMINISTIC_FACT",
+            "AGENT_REASONING"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "related_items": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Items",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "evidence",
+        "confidence"
+      ],
+      "title": "DomainConcept",
+      "type": "object"
+    },
+    "EvidenceReference": {
+      "properties": {
+        "line_end": {
+          "default": 0,
+          "title": "Line End",
+          "type": "integer"
+        },
+        "line_start": {
+          "default": 0,
+          "title": "Line Start",
+          "type": "integer"
+        },
+        "node_id": {
+          "title": "Node Id",
+          "type": "string"
+        },
+        "provenance": {
+          "enum": [
+            "COMPILER_PROVEN",
+            "PROJECT_PARTIAL",
+            "SYNTHETIC_FALLBACK",
+            "STRUCTURAL_ONLY"
+          ],
+          "title": "Provenance",
+          "type": "string"
+        },
+        "source_path": {
+          "title": "Source Path",
+          "type": "string"
+        }
+      },
+      "required": [
+        "node_id",
+        "source_path",
+        "provenance"
+      ],
+      "title": "EvidenceReference",
+      "type": "object"
+    },
+    "UISurface": {
+      "properties": {
+        "confidence": {
+          "$ref": "#/$defs/ConfidenceAssessment"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "evidence_package_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Package Ids",
+          "type": "array"
+        },
+        "kind": {
+          "title": "Kind",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "origin": {
+          "default": "DETERMINISTIC_FACT",
+          "enum": [
+            "DETERMINISTIC_FACT",
+            "AGENT_REASONING"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "related_items": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Items",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "evidence",
+        "confidence",
+        "kind"
+      ],
+      "title": "UISurface",
+      "type": "object"
+    },
+    "UserWorkflow": {
+      "properties": {
+        "backend_mapping": {
+          "enum": [
+            "PROVEN",
+            "UNRESOLVED",
+            "DYNAMIC",
+            "EXTERNAL",
+            "NOT_APPLICABLE"
+          ],
+          "title": "Backend Mapping",
+          "type": "string"
+        },
+        "confidence": {
+          "$ref": "#/$defs/ConfidenceAssessment"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/EvidenceReference"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "evidence_package_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Package Ids",
+          "type": "array"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "origin": {
+          "default": "DETERMINISTIC_FACT",
+          "enum": [
+            "DETERMINISTIC_FACT",
+            "AGENT_REASONING"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "related_items": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Items",
+          "type": "array"
+        },
+        "ui_surface": {
+          "title": "Ui Surface",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "evidence",
+        "confidence",
+        "ui_surface",
+        "backend_mapping"
+      ],
+      "title": "UserWorkflow",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Provider-neutral payload authored by the active Codex or Copilot chat agent.",
+  "properties": {
+    "angular_demo_capability": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/BusinessCapability"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "angular_demo_workflow": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/UserWorkflow"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "application_purpose": {
+      "$ref": "#/$defs/BusinessCapability"
+    },
+    "best_angular_demo_candidate": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Best Angular Demo Candidate"
+    },
+    "best_razor_demo_candidate": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Best Razor Demo Candidate"
+    },
+    "business_capabilities": {
+      "items": {
+        "$ref": "#/$defs/BusinessCapability"
+      },
+      "title": "Business Capabilities",
+      "type": "array"
+    },
+    "business_modules": {
+      "items": {
+        "$ref": "#/$defs/BusinessModule"
+      },
+      "title": "Business Modules",
+      "type": "array"
+    },
+    "business_rules": {
+      "items": {
+        "$ref": "#/$defs/BusinessRule"
+      },
+      "title": "Business Rules",
+      "type": "array"
+    },
+    "dependencies": {
+      "items": {
+        "$ref": "#/$defs/Dependency"
+      },
+      "title": "Dependencies",
+      "type": "array"
+    },
+    "domain_concepts": {
+      "items": {
+        "$ref": "#/$defs/DomainConcept"
+      },
+      "title": "Domain Concepts",
+      "type": "array"
+    },
+    "evidence_package_manifest_hash": {
+      "title": "Evidence Package Manifest Hash",
+      "type": "string"
+    },
+    "kg_run_id": {
+      "title": "Kg Run Id",
+      "type": "string"
+    },
+    "major_backend_areas": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Major Backend Areas",
+      "type": "array"
+    },
+    "major_user_facing_areas": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Major User Facing Areas",
+      "type": "array"
+    },
+    "primary_application_type": {
+      "title": "Primary Application Type",
+      "type": "string"
+    },
+    "razor_demo_capability": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/BusinessCapability"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "razor_demo_workflow": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/UserWorkflow"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "technical_composition": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Technical Composition",
+      "type": "array"
+    },
+    "ui_surfaces": {
+      "items": {
+        "$ref": "#/$defs/UISurface"
+      },
+      "title": "Ui Surfaces",
+      "type": "array"
+    },
+    "user_workflows": {
+      "items": {
+        "$ref": "#/$defs/UserWorkflow"
+      },
+      "title": "User Workflows",
+      "type": "array"
+    }
+  },
+  "required": [
+    "kg_run_id",
+    "evidence_package_manifest_hash",
+    "application_purpose",
+    "primary_application_type",
+    "technical_composition",
+    "major_user_facing_areas",
+    "major_backend_areas"
+  ],
+  "title": "AgentReasoningSubmission",
+  "type": "object"
+}
