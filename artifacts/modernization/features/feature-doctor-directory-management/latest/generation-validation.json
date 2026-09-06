@@ -1,0 +1,21 @@
+{
+  "feature_id": "feature-doctor-directory-management",
+  "status": "PASS",
+  "validations": [
+    {
+      "name": "build",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "test",
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "e2e",
+      "returncode": 0,
+      "status": "PASS"
+    }
+  ]
+}

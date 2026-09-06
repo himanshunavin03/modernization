@@ -1,0 +1,7 @@
+<section class="directory detail" aria-labelledby="detail-heading">
+  <a routerLink="../" class="back-link">&lsaquo; Back to doctors</a>
+  @if (store.errorMessage()) { <p class="error" role="alert">{{ store.errorMessage() }}</p> }
+  @if (store.selected(); as item) {
+    <article class="profile"><img [src]="pictureUrl(item)" alt="" class="portrait"><div class="profile-copy"><p class="eyebrow">Doctor profile</p><h1 id="detail-heading">{{ item.Name }}</h1><dl><div><dt>Name</dt><dd>{{ item.Name }}</dd></div><div><dt>Description</dt><dd>{{ item.Description }}</dd></div><div><dt>Address</dt><dd>{{ item.Address }}</dd></div><div><dt>Email</dt><dd>{{ item.Email }}</dd></div><div><dt>Phone</dt><dd>{{ item.Phone }}</dd></div><div><dt>Mobile</dt><dd>{{ item.Mobile }}</dd></div><div><dt>Patient Count</dt><dd>{{ item.PatientCount }}</dd></div><div><dt>Created At</dt><dd>{{ item.CreatedAt ?? '---' }}</dd></div></dl></div></article>
+  } @else if (store.loading()) { <p class="status" role="status">Loading details...</p> }
+</section>

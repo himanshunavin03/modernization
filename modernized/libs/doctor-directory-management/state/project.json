@@ -1,0 +1,11 @@
+{
+  "name": "doctor-directory-management-state",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/doctor-directory-management/state/src",
+  "projectType": "library",
+  "tags": [
+    "scope:doctor-directory-management",
+    "type:state"
+  ],
+  "targets": {}
+}

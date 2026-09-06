@@ -38,6 +38,7 @@ class ModernizationContextBuilder:
             raise PrerequisiteError("Existing UI evidence is missing for this Feature.", ["/understand-application"])
         design_source, design_input = self._design()
         return ModernizationFeatureContext(
+            repository_root=str(self.paths.repository_root),
             project_id=project_id,
             feature=feature,
             feature_specification=specification,

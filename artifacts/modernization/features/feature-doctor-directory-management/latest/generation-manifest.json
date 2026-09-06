@@ -1,0 +1,564 @@
+{
+  "architecture_selection_ref": "APPLICATION",
+  "feature_id": "feature-doctor-directory-management",
+  "generated_files": [
+    "libs/doctor-directory-management/data-access/project.json",
+    "libs/doctor-directory-management/data-access/src/index.ts",
+    "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+    "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+    "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+    "libs/doctor-directory-management/state/project.json",
+    "libs/doctor-directory-management/state/src/index.ts",
+    "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+    "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+    "libs/doctor-directory-management/feature/project.json",
+    "libs/doctor-directory-management/feature/src/index.ts",
+    "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+    "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+    "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+    "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+    "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+    "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+    "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+    "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+  ],
+  "generated_models": [
+    {
+      "file": "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+      "name": "Doctor"
+    }
+  ],
+  "generated_routes": [
+    {
+      "file": "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+      "path": "/doctors"
+    }
+  ],
+  "generated_services": [
+    {
+      "file": "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+      "name": "DoctorApiClient"
+    },
+    {
+      "file": "libs/doctor-directory-management/state/src/index.ts",
+      "name": "DoctorDirectoryStore"
+    }
+  ],
+  "generated_tests": [
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-review-doctor-directory-001",
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001"
+      ],
+      "file": "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts"
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-review-doctor-directory-001",
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001"
+      ],
+      "file": "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts"
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-review-doctor-directory-001",
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001"
+      ],
+      "file": "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts"
+    },
+    {
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-review-doctor-directory-001",
+        "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001"
+      ],
+      "file": "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+    }
+  ],
+  "generated_workspace": "modernized",
+  "generation_timestamp": "2026-09-06T08:17:33.892527+00:00",
+  "generator": {
+    "name": "Polaris artifact-driven Angular feature generator",
+    "version": "1.0"
+  },
+  "preserved_api_contracts": [
+    {
+      "api_id": "API-01",
+      "endpoint": "/api/users/current/tenant",
+      "method": "GET",
+      "path_parameters": [],
+      "purpose": "Retrieve the current organization identifier required by organization-specific functionality.",
+      "query_parameters": [],
+      "request_model": null,
+      "response_description": "Current organization identifier",
+      "response_model": "int",
+      "traceability": {
+        "source_interaction_ids": [
+          "API-DOCTOR_DIRECTORY_MANAGEMENT-001"
+        ]
+      }
+    },
+    {
+      "api_id": "API-02",
+      "endpoint": "/api/doctors/{id}",
+      "method": "GET",
+      "path_parameters": [
+        {
+          "description": "doctor identifier",
+          "location": "Path",
+          "name": "id"
+        }
+      ],
+      "purpose": "Retrieve doctor information using the doctor identifier.",
+      "query_parameters": [],
+      "request_model": null,
+      "response_description": "Doctor information",
+      "response_model": "Doctor",
+      "traceability": {
+        "source_interaction_ids": [
+          "API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-001"
+        ]
+      }
+    },
+    {
+      "api_id": "API-03",
+      "endpoint": "/api/doctors",
+      "method": "GET",
+      "path_parameters": [],
+      "purpose": "Retrieve collection of doctor records using the number of records per page and page count.",
+      "query_parameters": [
+        {
+          "description": "number of records per page",
+          "location": "Query",
+          "name": "pageSize (int)"
+        },
+        {
+          "description": "page count",
+          "location": "Query",
+          "name": "pageCount (int)"
+        }
+      ],
+      "request_model": null,
+      "response_description": "Collection of doctor records",
+      "response_model": "Doctor[]",
+      "traceability": {
+        "source_interaction_ids": [
+          "API-DOCTOR_DIRECTORY_MANAGEMENT-DISCOVERED-002"
+        ]
+      }
+    }
+  ],
+  "project_id": "legacy-dashboard-complete-application-demo-v1",
+  "schema_version": 1,
+  "source_ui_mode": "EXISTING_APPLICATION_UI",
+  "task_statuses": [
+    {
+      "detail": "Delivered by the artifact-driven Angular feature operation.",
+      "generated_file_refs": [
+        "libs/doctor-directory-management/data-access/project.json",
+        "libs/doctor-directory-management/data-access/src/index.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/project.json",
+        "libs/doctor-directory-management/state/src/index.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/project.json",
+        "libs/doctor-directory-management/feature/src/index.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-001"
+    },
+    {
+      "detail": "Delivered by the artifact-driven Angular feature operation.",
+      "generated_file_refs": [
+        "libs/doctor-directory-management/data-access/project.json",
+        "libs/doctor-directory-management/data-access/src/index.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/project.json",
+        "libs/doctor-directory-management/state/src/index.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/project.json",
+        "libs/doctor-directory-management/feature/src/index.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-002"
+    },
+    {
+      "detail": "Delivered by the artifact-driven Angular feature operation.",
+      "generated_file_refs": [
+        "libs/doctor-directory-management/data-access/project.json",
+        "libs/doctor-directory-management/data-access/src/index.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/project.json",
+        "libs/doctor-directory-management/state/src/index.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/project.json",
+        "libs/doctor-directory-management/feature/src/index.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-003"
+    },
+    {
+      "detail": "Delivered by the artifact-driven Angular feature operation.",
+      "generated_file_refs": [
+        "libs/doctor-directory-management/data-access/project.json",
+        "libs/doctor-directory-management/data-access/src/index.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/project.json",
+        "libs/doctor-directory-management/state/src/index.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/project.json",
+        "libs/doctor-directory-management/feature/src/index.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-004"
+    },
+    {
+      "detail": "Deployment architecture remains deferred.",
+      "generated_file_refs": [],
+      "status": "DEFERRED",
+      "task_id": "TT-005"
+    },
+    {
+      "detail": "Deployment architecture remains deferred.",
+      "generated_file_refs": [],
+      "status": "DEFERRED",
+      "task_id": "TT-006"
+    },
+    {
+      "detail": "Delivered by the artifact-driven Angular feature operation.",
+      "generated_file_refs": [
+        "libs/doctor-directory-management/data-access/project.json",
+        "libs/doctor-directory-management/data-access/src/index.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/project.json",
+        "libs/doctor-directory-management/state/src/index.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/project.json",
+        "libs/doctor-directory-management/feature/src/index.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-007"
+    },
+    {
+      "detail": "Delivered by the artifact-driven Angular feature operation.",
+      "generated_file_refs": [
+        "libs/doctor-directory-management/data-access/project.json",
+        "libs/doctor-directory-management/data-access/src/index.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/project.json",
+        "libs/doctor-directory-management/state/src/index.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/project.json",
+        "libs/doctor-directory-management/feature/src/index.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-008"
+    },
+    {
+      "detail": "Delivered by the artifact-driven Angular feature operation.",
+      "generated_file_refs": [
+        "libs/doctor-directory-management/data-access/project.json",
+        "libs/doctor-directory-management/data-access/src/index.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/project.json",
+        "libs/doctor-directory-management/state/src/index.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/project.json",
+        "libs/doctor-directory-management/feature/src/index.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-009"
+    },
+    {
+      "detail": "Delivered by the artifact-driven Angular feature operation.",
+      "generated_file_refs": [
+        "libs/doctor-directory-management/data-access/project.json",
+        "libs/doctor-directory-management/data-access/src/index.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/project.json",
+        "libs/doctor-directory-management/state/src/index.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/project.json",
+        "libs/doctor-directory-management/feature/src/index.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-010"
+    },
+    {
+      "detail": "Delivered by the artifact-driven Angular feature operation.",
+      "generated_file_refs": [
+        "libs/doctor-directory-management/data-access/project.json",
+        "libs/doctor-directory-management/data-access/src/index.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/project.json",
+        "libs/doctor-directory-management/state/src/index.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/project.json",
+        "libs/doctor-directory-management/feature/src/index.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-011"
+    },
+    {
+      "detail": "Delivered by the artifact-driven Angular feature operation.",
+      "generated_file_refs": [
+        "libs/doctor-directory-management/data-access/project.json",
+        "libs/doctor-directory-management/data-access/src/index.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/project.json",
+        "libs/doctor-directory-management/state/src/index.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/project.json",
+        "libs/doctor-directory-management/feature/src/index.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-012"
+    },
+    {
+      "detail": "Delivered by the artifact-driven Angular feature operation.",
+      "generated_file_refs": [
+        "libs/doctor-directory-management/data-access/project.json",
+        "libs/doctor-directory-management/data-access/src/index.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/project.json",
+        "libs/doctor-directory-management/state/src/index.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/project.json",
+        "libs/doctor-directory-management/feature/src/index.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-013"
+    },
+    {
+      "detail": "Delivered by the artifact-driven Angular feature operation.",
+      "generated_file_refs": [
+        "libs/doctor-directory-management/data-access/project.json",
+        "libs/doctor-directory-management/data-access/src/index.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/project.json",
+        "libs/doctor-directory-management/state/src/index.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/project.json",
+        "libs/doctor-directory-management/feature/src/index.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-014"
+    },
+    {
+      "detail": "Delivered by the artifact-driven Angular feature operation.",
+      "generated_file_refs": [
+        "libs/doctor-directory-management/data-access/project.json",
+        "libs/doctor-directory-management/data-access/src/index.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/project.json",
+        "libs/doctor-directory-management/state/src/index.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/project.json",
+        "libs/doctor-directory-management/feature/src/index.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-015"
+    },
+    {
+      "detail": "Delivered by the artifact-driven Angular feature operation.",
+      "generated_file_refs": [
+        "libs/doctor-directory-management/data-access/project.json",
+        "libs/doctor-directory-management/data-access/src/index.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/project.json",
+        "libs/doctor-directory-management/state/src/index.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/project.json",
+        "libs/doctor-directory-management/feature/src/index.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
+      "status": "IMPLEMENTED",
+      "task_id": "TT-016"
+    }
+  ],
+  "validation_commands": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "name": "build"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test",
+        "--",
+        "--watch=false"
+      ],
+      "name": "test"
+    },
+    {
+      "command": [
+        "npx",
+        "playwright",
+        "test",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts",
+        "--config",
+        "apps/healthclinic-web-e2e/playwright.config.ts",
+        "--reporter=line"
+      ],
+      "isolated_port_env": "PLAYWRIGHT_PORT",
+      "name": "e2e"
+    }
+  ]
+}

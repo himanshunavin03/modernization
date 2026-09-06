@@ -7,6 +7,7 @@ from typing import Any, Callable, Protocol
 
 @dataclass(frozen=True)
 class ModernizationFeatureContext:
+    repository_root: str
     project_id: str
     feature: dict[str, Any]
     feature_specification: dict[str, Any]

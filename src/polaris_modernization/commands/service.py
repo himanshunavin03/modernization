@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
+import shutil
+import socket
 import subprocess
 from typing import Any, Callable
 
@@ -273,7 +276,10 @@ class CommandService:
 
     def validate_feature(self, *, argument: str, static_only: bool = False, **_: Any) -> CommandResult:
         feature = self.index.resolve(argument)
-        generation = _read(self.paths.artifacts / "modernization" / "latest" / "generation-manifest.json", {})
+        generation = _read(
+            self.paths.artifacts / "modernization" / "features" / feature["feature_id"] / "latest" / "generation-manifest.json",
+            {},
+        ) or _read(self.paths.artifacts / "modernization" / "latest" / "generation-manifest.json", {})
         workspace = self.paths.repository_root / generation.get("generated_workspace", "modernized")
         missing = [path for path in [*feature["implementation_paths"], *feature["test_paths"]] if not (workspace / path).exists()]
         if not feature["implementation_paths"]:
@@ -283,17 +289,33 @@ class CommandService:
             return CommandResult("validate-feature", "BLOCKED", {"missing_paths": missing}, "Generated implementation files are missing.", [f"/modernize-feature {feature['slug']}"])
         if static_only:
             return CommandResult("validate-feature", "STATIC_VALIDATION_PASS", {"feature": feature})
-        package = _read(workspace / "package.json", {})
-        scripts = package.get("scripts", {})
         validations = []
-        for name in ("build", "test", "e2e"):
-            if name not in scripts:
-                validations.append({"name": name, "status": "NOT_CONFIGURED"})
-                continue
-            command = ["npm", "run", name]
-            if name == "test":
-                command.extend(["--", "--watch=false"])
-            completed = self.process_runner(command, cwd=workspace, capture_output=True, text=True, check=False)
+        commands = generation.get("validation_commands")
+        if not commands:
+            scripts = _read(workspace / "package.json", {}).get("scripts", {})
+            commands = [
+                {"name": name, "command": ["npm", "run", name] + (["--", "--watch=false"] if name == "test" else [])}
+                for name in ("build", "test", "e2e") if name in scripts
+            ]
+            validations.extend(
+                {"name": name, "status": "NOT_CONFIGURED"}
+                for name in ("build", "test", "e2e") if name not in scripts
+            )
+        for validation in commands:
+            name = validation["name"]
+            command = validation["command"]
+            if self.process_runner is subprocess.run:
+                executable = shutil.which(command[0])
+                if not executable:
+                    raise PrerequisiteError(f"Validation executable '{command[0]}' is not available.", [f"/validate-feature {feature['slug']}"])
+                command = [executable, *command[1:]]
+            environment = None
+            if validation.get("isolated_port_env"):
+                with socket.socket() as listener:
+                    listener.bind(("127.0.0.1", 0))
+                    port = listener.getsockname()[1]
+                environment = {**os.environ, validation["isolated_port_env"]: str(port)}
+            completed = self.process_runner(command, cwd=workspace, capture_output=True, text=True, check=False, env=environment)
             validations.append({"name": name, "status": "PASS" if completed.returncode == 0 else "FAIL", "returncode": completed.returncode})
             if completed.returncode != 0:
                 break
@@ -301,6 +323,12 @@ class CommandService:
         if passed:
             self.state.set(feature["feature_id"], "RUNTIME_VALIDATED", "validate-feature", {"validations": validations})
             self.index.build()
+        validation_root = self.paths.artifacts / "modernization" / "features" / feature["feature_id"] / "latest"
+        if validation_root.is_dir():
+            from .artifacts import _write_json_atomic
+            _write_json_atomic(validation_root / "generation-validation.json", {
+                "feature_id": feature["feature_id"], "status": "PASS" if passed else "FAIL", "validations": validations,
+            })
         return CommandResult(
             "validate-feature", "PASS" if passed else "BLOCKED", {"feature": feature, "validations": validations},
             "Configured build, unit, and browser validation completed." if passed else "A configured validation command failed.",

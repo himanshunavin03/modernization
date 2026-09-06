@@ -1,0 +1,16 @@
+<section class="directory" aria-labelledby="directory-heading">
+  <div class="title-row"><div><p class="eyebrow">Directory</p><h1 id="directory-heading">Doctors</h1></div></div>
+  @if (store.errorMessage()) { <p class="error" role="alert">{{ store.errorMessage() }}</p> }
+  @if (store.items(); as items) {
+    @if (items.length) {
+      <div class="data-grid" aria-label="Doctor directory">
+        <div class="grid-header" aria-hidden="true"><span class="visually-hidden">Photo</span><span>Name</span><span>Patient Count</span><span>Email</span><span>Speciality</span><span class="visually-hidden">Action</span></div>
+        @for (item of items; track item.DoctorId) {
+          <a class="grid-row" [routerLink]="[item.DoctorId]" aria-label="View {{ item.Name }}"><img [src]="pictureUrl(item)" alt="" class="avatar"><span data-label="Name">{{ item.Name }}</span><span data-label="Patient Count">{{ item.PatientCount }}</span><span data-label="Email">{{ item.Email }}</span><span data-label="Speciality">{{ item.Speciality }}</span><span class="view-link">View</span></a>
+        }
+      </div>
+    } @else if (!store.loading()) { <p class="empty">No data is available.</p> }
+  }
+  @if (store.loading()) { <p class="status" role="status">Loading directory...</p> }
+  @if (!store.noMoreData() && store.items()?.length) { <button class="load-more" type="button" (click)="store.loadNext()">Load more</button> }
+</section>

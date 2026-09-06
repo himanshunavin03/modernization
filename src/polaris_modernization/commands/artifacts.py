@@ -169,14 +169,18 @@ class FeatureIndex:
             item.get("feature_id"): item.get("contracts", [])
             for item in api_catalog.get("features", [])
         }
-        generation = _read(self.paths.artifacts / "modernization" / "latest" / "generation-manifest.json", {})
-        generation_validation = _read(self.paths.artifacts / "modernization" / "latest" / "generation-validation.json", {})
         persisted = _read(self.paths.modernization_state, {"features": {}})
         persisted_features = persisted.get("features", {})
         rows: list[dict[str, Any]] = []
         source_hashes: dict[str, str] = {}
         for summary in source["features"]:
             feature_id = summary["feature_id"]
+            feature_generation_root = self.paths.artifacts / "modernization" / "features" / feature_id / "latest"
+            generation = _read(feature_generation_root / "generation-manifest.json", {})
+            generation_validation = _read(feature_generation_root / "generation-validation.json", {})
+            if not generation:
+                generation = _read(self.paths.artifacts / "modernization" / "latest" / "generation-manifest.json", {})
+                generation_validation = _read(self.paths.artifacts / "modernization" / "latest" / "generation-validation.json", {})
             spec_path = self.paths.specifications / f"{feature_id}.json"
             specification = _read(spec_path, {})
             source_hashes[_relative(spec_path, self.paths.repository_root)] = sha256(spec_path.read_bytes()).hexdigest() if spec_path.is_file() else "MISSING"

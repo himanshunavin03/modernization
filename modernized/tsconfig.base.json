@@ -32,6 +32,15 @@
       ],
       "@healthclinic/core/platform": [
         "./libs/core/platform/src/index.ts"
+      ],
+      "@modernized/doctor-directory-management/feature": [
+        "./libs/doctor-directory-management/feature/src/index.ts"
+      ],
+      "@modernized/doctor-directory-management/data-access": [
+        "./libs/doctor-directory-management/data-access/src/index.ts"
+      ],
+      "@modernized/doctor-directory-management/state": [
+        "./libs/doctor-directory-management/state/src/index.ts"
       ]
     }
   },

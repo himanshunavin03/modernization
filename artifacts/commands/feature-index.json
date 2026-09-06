@@ -141,14 +141,34 @@
       "architecture_selection_ref": "artifacts/architecture/latest/architecture-selection.json",
       "architecture_source": "APPLICATION",
       "feature_id": "feature-doctor-directory-management",
-      "implementation_paths": [],
+      "implementation_paths": [
+        "libs/doctor-directory-management/data-access/project.json",
+        "libs/doctor-directory-management/data-access/src/index.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor.models.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts",
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/project.json",
+        "libs/doctor-directory-management/state/src/index.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/project.json",
+        "libs/doctor-directory-management/feature/src/index.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.routes.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.css",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
       "modernization_operation": {
         "operation_id": "angular-feature-modernization",
         "selection_source": "LOCKED_ARCHITECTURE",
         "target": "ANGULAR"
       },
       "modernization_operation_id": "angular-feature-modernization",
-      "modernization_status": "READY",
+      "modernization_status": "RUNTIME_VALIDATED",
       "name": "Doctor Directory Management",
       "slug": "doctor-directory-management",
       "spec_path": "artifacts/feature-specifications/latest/feature-doctor-directory-management.json",
@@ -175,7 +195,12 @@
         "TT-016"
       ],
       "technical_task_ref": "artifacts/technical-tasks/features/feature-doctor-directory-management/latest/technical-tasks.json",
-      "test_paths": []
+      "test_paths": [
+        "libs/doctor-directory-management/data-access/src/lib/doctor-api.client.spec.ts",
+        "libs/doctor-directory-management/state/src/lib/doctor-directory.store.spec.ts",
+        "libs/doctor-directory-management/feature/src/lib/doctor-directory.component.spec.ts",
+        "apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ]
     },
     {
       "acceptance_criteria_ids": [

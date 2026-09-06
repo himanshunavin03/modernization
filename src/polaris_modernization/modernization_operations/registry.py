@@ -6,6 +6,7 @@ from collections.abc import Iterable
 from polaris_modernization.commands.models import CommandError
 
 from .angular import AngularFeatureModernizationOperation
+from .angular_executor import execute_angular_feature
 from .models import ModernizationOperation
 
 
@@ -27,4 +28,4 @@ class ModernizationOperationRegistry:
 
 
 def default_operation_registry() -> ModernizationOperationRegistry:
-    return ModernizationOperationRegistry([AngularFeatureModernizationOperation()])
+    return ModernizationOperationRegistry([AngularFeatureModernizationOperation(execute_angular_feature)])
