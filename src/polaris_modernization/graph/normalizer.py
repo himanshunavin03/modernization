@@ -33,6 +33,9 @@ KIND_TO_LABEL = {
     "ui_selection": "UISelection",
     "ui_condition": "UICondition",
     "validation_condition": "ValidationCondition",
+    "directive_usage": "DirectiveUsage",
+    "directive_binding": "DirectiveBinding",
+    "template_binding": "TemplateBinding",
     "state_mutation": "StateMutation",
     "collection_mutation": "CollectionMutation",
     "navigation": "Navigation",
@@ -98,6 +101,10 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
     pending_invocations: list[tuple[str, Fact]] = []
     pending_backend_invocations: list[tuple[str, Fact]] = []
     pending_methods: list[tuple[str, Fact]] = []
+    pending_directive_usage: list[tuple[str, Fact]] = []
+    pending_directive_bindings: list[tuple[str, Fact]] = []
+    pending_template_bindings: list[tuple[str, Fact]] = []
+    pending_conditions: list[tuple[str, Fact]] = []
     containers_by_file: dict[tuple[str, str], str] = {}
     owners_by_file: dict[str, list[str]] = defaultdict(list)
     warnings: list[dict] = []
@@ -168,6 +175,14 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
             pending_ui_semantics.append((node, fact))
         if fact.kind == "frontend_invocation":
             pending_invocations.append((node, fact))
+        if fact.kind == "directive_usage":
+            pending_directive_usage.append((node, fact))
+        if fact.kind == "directive_binding":
+            pending_directive_bindings.append((node, fact))
+        if fact.kind == "template_binding":
+            pending_template_bindings.append((node, fact))
+        if fact.kind == "ui_condition":
+            pending_conditions.append((node, fact))
         if fact.kind == "backend_invocation":
             pending_backend_invocations.append((node, fact))
         if fact.kind == "api_call":
@@ -183,6 +198,15 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
                 warnings.append({"source_path": evidence["source_path"], "message": "API call owner was not uniquely proven; attached to File."})
 
     functions = [item for item in nodes.values() if item["label"] == "FrontendFunction"]
+    bound_states: dict[str, str] = {}
+    for binding_node, binding_fact in pending_template_bindings:
+        expression = str(binding_fact.properties.get("expression") or "")
+        if expression:
+            state = bound_states.get(expression)
+            if state is None:
+                state = add_node("BoundState", expression, binding_fact.evidence.to_dict(), {"expression": expression})
+                bound_states[expression] = state
+            add_edge("BINDS_STATE", binding_node, state, binding_fact.evidence.to_dict(), {"status": "PROVEN"})
     for callback in (item for item in functions if item["properties"].get("anonymous")):
         parent_name = _qualified_name(callback["properties"].get("owner"), callback["properties"].get("enclosing_function"))
         parent = next((item for item in functions if item["name"] == parent_name), None)
@@ -211,6 +235,13 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
         if function:
             edge_type = {"state_mutation": "MUTATES", "collection_mutation": "MUTATES_COLLECTION", "navigation": "NAVIGATES", "confirmation": "REQUIRES_CONFIRMATION"}[semantic_fact.kind]
             add_edge(edge_type, function["id"], semantic_node, semantic_fact.evidence.to_dict(), {"status": "PROVEN"})
+    for condition_node, condition_fact in pending_conditions:
+        expression = str(condition_fact.properties.get("condition") or "").lstrip("!")
+        if expression in bound_states:
+            add_edge("CONTROLS_RENDER", bound_states[expression], condition_node, condition_fact.evidence.to_dict(), {"status": "PROVEN"})
+        for binding_node, binding_fact in pending_template_bindings:
+            if binding_fact.properties.get("element_identity") == condition_fact.properties.get("element_identity"):
+                add_edge("CONTROLS_RENDER", condition_node, binding_node, condition_fact.evidence.to_dict(), {"status": "PROVEN"})
     for invocation_node, invocation_fact in pending_invocations:
         caller_name = _qualified_name(invocation_fact.properties.get("caller_owner"), invocation_fact.properties.get("caller"))
         target_name = _qualified_name(invocation_fact.properties.get("target_owner"), invocation_fact.properties.get("target_function"))
@@ -278,6 +309,35 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
         if isinstance(controller_name, str):
             controller_node = add_node("AngularController", controller_name, route_fact.evidence.to_dict())
             add_edge("DEPENDS_ON", route_node, controller_node, route_fact.evidence.to_dict())
+            constructor = next((item for item in functions if str(item["properties"].get("owner", "")).casefold() == controller_name.casefold() and item["properties"].get("function_name") in {"constructor", controller_name}), None)
+            if constructor:
+                add_edge("INITIALIZES_WITH", controller_node, constructor["id"], constructor["evidence"][0], {"status": "PROVEN"})
+        for navigation_node, navigation_fact in ((node, fact) for node, fact in pending_ui_semantics if fact.kind == "navigation"):
+            if navigation_fact.properties.get("target") == route_fact.name:
+                add_edge("NAVIGATES_TO", navigation_node, route_node, navigation_fact.evidence.to_dict(), {"status": "PROVEN"})
+
+    directives = [item for item in nodes.values() if item["label"] == "AngularDirective"]
+    for usage_node, usage_fact in pending_directive_usage:
+        attributes = usage_fact.properties.get("attributes", {})
+        for directive in directives:
+            if directive["name"] not in attributes:
+                continue
+            add_edge("USES_DIRECTIVE", usage_node, directive["id"], usage_fact.evidence.to_dict(), {"status": "PROVEN"})
+            factory = directive["properties"].get("factory")
+            for binding_node, binding_fact in pending_directive_bindings:
+                binding = binding_fact.properties.get("binding")
+                if factory == binding_fact.properties.get("directive_type") and binding in attributes:
+                    add_edge("BINDS_TO", usage_node, binding_node, usage_fact.evidence.to_dict(), {"status": "PROVEN", "expression": attributes[binding]})
+                    template = next((node for node, fact in pending_template_bindings if fact.properties.get("element_identity") == usage_fact.name and fact.properties.get("attribute") == binding), None)
+                    if template:
+                        add_edge("BINDS_TO", template, binding_node, usage_fact.evidence.to_dict(), {"status": "PROVEN"})
+                    expression = str(attributes[binding])
+                    if expression in bound_states:
+                        add_edge("BINDS_STATE", binding_node, bound_states[expression], usage_fact.evidence.to_dict(), {"status": "PROVEN"})
+                    for mutation_node, mutation_fact in pending_ui_semantics:
+                        target = str(mutation_fact.properties.get("target") or "")
+                        if mutation_fact.kind == "state_mutation" and mutation_fact.properties.get("container_type") == binding_fact.properties.get("directive_type") and target.rsplit(".", 1)[-1] == binding:
+                            add_edge("MUTATES_BINDING", mutation_node, binding_node, mutation_fact.evidence.to_dict(), {"status": "PROVEN"})
 
     endpoint_nodes = {node["name"]: node["id"] for node in nodes.values() if node["label"] == "Endpoint"}
     api_nodes = {node["name"]: node["id"] for node in nodes.values() if node["label"] == "ApiCall"}

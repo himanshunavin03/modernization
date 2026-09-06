@@ -61,6 +61,12 @@ def _handler(expression: str) -> str | None:
     return match.group(1) if match else None
 
 
+def _binding_name(value: str) -> str:
+    value = re.sub(r"^data-", "", value.casefold())
+    parts = value.split("-")
+    return parts[0] + "".join(part.title() for part in parts[1:])
+
+
 def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list[Fact]:
     source = path.read_bytes()
     root = parser_for(tree_sitter_html.language()).parse(source).root_node
@@ -84,6 +90,15 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
             facts.append(Fact("ui_control", tag_name, node_evidence))
         attribute_values = _attributes(node, source)
         attributes = set(attribute_values)
+        element_identity = f"{relative_path}:{node.start_point.row + 1}:{node.start_byte}"
+        facts.append(Fact("directive_usage", element_identity, node_evidence, {
+            "element": tag_name, "attributes": {_binding_name(key): value for key, value in attribute_values.items()},
+        }))
+        for attribute, expression in attribute_values.items():
+            if expression:
+                facts.append(Fact("template_binding", f"{element_identity}:{attribute}", node_evidence, {
+                    "element_identity": element_identity, "attribute": _binding_name(attribute), "expression": expression,
+                }))
         element_text = re.sub(r"<[^>]+>", " ", node_text(node, source))
         element_text = " ".join(element_text.split())
         for event in sorted(ACTION_ATTRIBUTES & attributes):
@@ -97,9 +112,9 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
             }))
         for attribute, visibility in (("ng-show", "SHOW"), ("ng-hide", "HIDE"), ("ng-if", "RENDER")):
             if attribute in attributes:
-                facts.append(Fact("ui_condition", f"{relative_path}:{node.start_point.row + 1}:{attribute}", node_evidence, {
+                facts.append(Fact("ui_condition", f"{element_identity}:{attribute}", node_evidence, {
                     "element": tag_name, "condition": attribute_values[attribute], "visibility": visibility,
-                    "text": element_text,
+                    "text": element_text, "element_identity": element_identity,
                 }))
         if "ng-disabled" in attributes:
             facts.append(Fact("validation_condition", f"{relative_path}:{node.start_point.row + 1}:ng-disabled", node_evidence, {

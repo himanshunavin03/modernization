@@ -41,7 +41,7 @@ def _object_values(node, source: bytes) -> dict[str, object]:
         key = pair.child_by_field_name("key")
         value = pair.child_by_field_name("value")
         if key is not None and value is not None:
-            values[node_text(key, source)] = value
+            values[unquote(node_text(key, source))] = value
     return values
 
 
@@ -185,6 +185,16 @@ def _file_owner_name(root, source: bytes, suffix: str) -> str | None:
     return None
 
 
+def _enclosing_class(node, source: bytes) -> str | None:
+    current = node.parent
+    while current is not None:
+        if current.type == "class_declaration":
+            name = current.child_by_field_name("name")
+            return node_text(name, source) if name is not None else None
+        current = current.parent
+    return None
+
+
 def _api_call_fact(
     path: Path,
     source_root: Path,
@@ -268,7 +278,14 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
                 facts.append(Fact("state_mutation", f"{file_controller or file_service or path.stem}.{mutation_owner or 'module'}:{target}.{property_name}", evidence(path, source_root, node, digest, project_id), {
                     "function_name": mutation_owner, "owner": file_controller or file_service,
                     "target": f"{target}.{property_name}", "expression": _literal_or_expression(right, source),
+                    "container_type": _enclosing_class(node, source),
                 }))
+                if property_name == "scope" and right.type == "object":
+                    for binding_name, binding_value in _object_values(right, source).items():
+                        facts.append(Fact("directive_binding", f"{_enclosing_class(node, source) or path.stem}:{binding_name}", evidence(path, source_root, node, digest, project_id), {
+                            "directive_type": _enclosing_class(node, source), "binding": binding_name,
+                            "mode": _literal_or_expression(binding_value, source),
+                        }))
 
         if node.type != "call_expression":
             continue
@@ -318,7 +335,8 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
                 "controller": "angular_controller",
                 "service": "angular_service",
             }[property_name]
-            facts.append(Fact(fact_kind, _literal_or_expression(arguments[0], source), node_evidence))
+            properties = {"factory": _literal_or_expression(arguments[1], source)} if property_name == "directive" and len(arguments) > 1 else {}
+            facts.append(Fact(fact_kind, _literal_or_expression(arguments[0], source), node_evidence, properties))
             if property_name == "directive" and "chart" in _literal_or_expression(arguments[0], source).lower():
                 facts.append(Fact("chart", _literal_or_expression(arguments[0], source), node_evidence))
         if property_name == "state" and len(arguments) >= 2:
