@@ -202,3 +202,22 @@ def test_graph_readiness_requires_valid_warning_free_deterministic_extraction():
     assert ready["readiness"] == "READY_WITH_EXPLAINED_LIMITATIONS"
     blocked = assess_graph_readiness({"valid": False}, {"scope": {"extraction_warning_count": 1}}, "run-2")
     assert blocked["readiness"] == "NOT_READY"
+
+
+def test_structural_collection_navigation_and_confirmation_results_are_specific():
+    graph = graph_with_crud()
+    handler = next(node for node in graph["nodes"] if node["label"] == "FrontendFunction" and node["properties"].get("function_name") == "load")
+    graph["nodes"].extend([
+        {"id": "fixture:CollectionMutation:1", "label": "CollectionMutation", "name": "append", "properties": {"operation": "push", "collection": "items"}, "evidence": [{"source_path": "records.js"}]},
+        {"id": "fixture:Navigation:1", "label": "Navigation", "name": "go", "properties": {"target": "records.detail"}, "evidence": [{"source_path": "records.js"}]},
+        {"id": "fixture:Confirmation:1", "label": "Confirmation", "name": "confirm", "properties": {}, "evidence": [{"source_path": "records.js"}]},
+    ])
+    graph["edges"].extend([
+        {"source": handler["id"], "target": "fixture:CollectionMutation:1", "type": "MUTATES_COLLECTION", "evidence": [{}]},
+        {"source": handler["id"], "target": "fixture:Navigation:1", "type": "NAVIGATES", "evidence": [{}]},
+        {"source": handler["id"], "target": "fixture:Confirmation:1", "type": "REQUIRES_CONFIRMATION", "evidence": [{}]},
+    ])
+    results = [item.observable_result for capability in derive_source_capabilities(graph) for item in capability.interaction_semantics]
+    assert "additional items are appended to items" in results
+    assert "the view changes to records.detail" in results
+    assert "confirmation is requested before the guarded operation" in results

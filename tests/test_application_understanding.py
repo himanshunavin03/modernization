@@ -14,6 +14,7 @@ from polaris_modernization.application_understanding.workflow import (
     validate_and_persist_application_understanding,
 )
 from polaris_modernization.knowledge_graph_agent import create_knowledge_graph
+from polaris_modernization.review_artifacts import publish_readiness_analysis, validate_archive_output
 
 
 def kg(tmp_path, ready=True):
@@ -74,6 +75,16 @@ def valid_submission(packages):
 def test_not_ready_kg_cannot_prepare(tmp_path):
     with pytest.raises(ValueError, match="not approved"):
         prepare_application_understanding(kg(tmp_path, False), tmp_path / "out")
+
+
+def test_readiness_publication_completes_the_approved_archive_contract(tmp_path):
+    root = kg(tmp_path)
+    (root / "kg-readiness-analysis.md").unlink()
+    (root / "review-metadata.json").write_text(json.dumps({"run_id": "fixture-run"}))
+    publish_readiness_analysis(root, "fixture-run")
+    assert load_approved_graph(root)["kg_run_id"] == "fixture-run"
+    report = validate_archive_output(root, enable_roslyn=False)
+    assert not ({"kg-readiness-analysis.json", "kg-readiness-analysis.md"} & set(report["missing_artifacts"]))
 
 
 def test_evidence_packages_are_deterministic_and_hash_stable(tmp_path):

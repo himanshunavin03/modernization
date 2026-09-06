@@ -42,11 +42,22 @@ def _handler_semantics(handler: dict, forward: dict[str, list[tuple[str, str]]],
         node = nodes[target]
         props = node.get("properties", {})
         if edge_type == "MUTATES_COLLECTION":
-            values.append(InteractionSemantics(interaction_type="ACTION", observable_result=f"collection {props.get('collection')} changes", source_evidence=_evidence(node, "FRONTEND")))
+            operation = str(props.get("operation") or "")
+            collection = str(props.get("collection") or "collection")
+            results = {
+                "push": f"additional items are appended to {collection}",
+                "unshift": f"additional items are prepended to {collection}",
+                "pop": f"the final item is removed from {collection}",
+                "shift": f"the first item is removed from {collection}",
+                "splice": f"{collection} is modified by the splice operation",
+            }
+            result = results.get(operation)
+            if result:
+                values.append(InteractionSemantics(interaction_type="ACTION", observable_result=result, source_evidence=_evidence(node, "FRONTEND")))
         elif edge_type == "NAVIGATES":
-            values.append(InteractionSemantics(interaction_type="ACTION", observable_result=f"navigation changes to {props.get('target')}", source_evidence=_evidence(node, "FRONTEND")))
+            values.append(InteractionSemantics(interaction_type="ACTION", observable_result=f"the view changes to {props.get('target')}", source_evidence=_evidence(node, "FRONTEND")))
         elif edge_type == "REQUIRES_CONFIRMATION":
-            values.append(InteractionSemantics(interaction_type="ACTION", observable_result="confirmation is requested before the related operation", source_evidence=_evidence(node, "FRONTEND")))
+            values.append(InteractionSemantics(interaction_type="ACTION", observable_result="confirmation is requested before the guarded operation", source_evidence=_evidence(node, "FRONTEND")))
         elif edge_type == "MUTATES":
             values.append(InteractionSemantics(interaction_type="ACTION", state_change=str(props.get("target") or ""), source_evidence=_evidence(node, "FRONTEND")))
     return values

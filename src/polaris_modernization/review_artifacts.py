@@ -10,6 +10,7 @@ import shutil
 from typing import Any
 
 from polaris_modernization.graph.writer import write_json
+from polaris_modernization.capability_completeness import assess_graph_readiness
 
 BASE_FILES = {
     "knowledge-graph.json", "facts.json", "source-inventory.json", "framework-detection.json",
@@ -19,6 +20,7 @@ BASE_FILES = {
     "api-relationship-resolution-summary.md",
 }
 ROSLYN_FILES = {"roslyn-semantic.json", "roslyn-semantic-all.json"}
+READINESS_FILES = {"kg-readiness-analysis.json", "kg-readiness-analysis.md"}
 SECRET_PATTERNS = (
     re.compile(r"(?i)[\"']?(?:password|passwd|secret|api[_-]?key|access[_-]?token)[\"']?\s*[:=]\s*['\"]?[^\s'\"]{8,}"),
     re.compile(r"(?i)(?:bolt|neo4j|postgres(?:ql)?|mongodb)://[^\s/@:]+:[^\s/@]+@"),
@@ -103,6 +105,31 @@ def validate_run_output(run_output: Path, *, enable_roslyn: bool) -> dict[str, A
     return report
 
 
+def publish_readiness_analysis(run_output: Path, run_id: str) -> dict[str, Any]:
+    """Publish the loader-required readiness record from immutable run metadata."""
+    validation = _read_json(run_output / "knowledge-graph-validation.json")
+    status = _read_json(run_output / "graph-run-status.json")
+    readiness = assess_graph_readiness(validation, status, run_id)
+    write_json(run_output / "kg-readiness-analysis.json", readiness)
+    lines = ["# Knowledge Graph Readiness", "", f"KG_READINESS_STATUS: {readiness['readiness']}", ""]
+    lines.extend(f"- {item}" for item in [*readiness["blockers"], *readiness["limitations"]])
+    if len(lines) == 4:
+        lines.append("- No readiness blockers or limitations were identified.")
+    (run_output / "kg-readiness-analysis.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return readiness
+
+
+def validate_archive_output(run_output: Path, *, enable_roslyn: bool) -> dict[str, Any]:
+    """Validate both raw graph output and the approved-archive contract."""
+    report = validate_run_output(run_output, enable_roslyn=enable_roslyn)
+    missing = sorted(name for name in READINESS_FILES if not (run_output / name).is_file())
+    report["expected_artifacts"] = sorted(set(report["expected_artifacts"]) | READINESS_FILES)
+    report["missing_artifacts"] = sorted(set(report["missing_artifacts"]) | set(missing))
+    report["valid"] = report["valid"] and not missing
+    write_json(run_output / "knowledge-graph-validation.json", report)
+    return report
+
+
 def preserve_completed_run(run_output: Path, project_id: str, *, enable_roslyn: bool, archive_root: Path) -> dict[str, Any]:
     """Copy validated raw output to Git-reviewable latest and immutable run paths."""
     report = validate_run_output(run_output, enable_roslyn=enable_roslyn)
@@ -125,6 +152,10 @@ def preserve_completed_run(run_output: Path, project_id: str, *, enable_roslyn: 
         "tree_sitter_completed": True, "roslyn_semantic_completed": enable_roslyn,
         "lsp_analysis_completed": False, "validation": report,
     }
+    write_json(destination / "review-metadata.json", metadata)
+    publish_readiness_analysis(destination, destination.name)
+    report = validate_archive_output(destination, enable_roslyn=enable_roslyn)
+    metadata["validation"] = report
     write_json(destination / "review-metadata.json", metadata)
     latest = archive_root / "latest"
     if latest.exists(): shutil.rmtree(latest)

@@ -10,6 +10,8 @@
     "framework-detection.json",
     "graph-run-status.json",
     "graph-run-summary.md",
+    "kg-readiness-analysis.json",
+    "kg-readiness-analysis.md",
     "knowledge-graph.json",
     "roslyn-semantic-all.json",
     "roslyn-semantic.json",
