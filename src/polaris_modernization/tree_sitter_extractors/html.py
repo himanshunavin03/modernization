@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 
 import tree_sitter_html
 
@@ -12,6 +13,7 @@ from polaris_modernization.tree_sitter_extractors.common import evidence, node_t
 
 HOST_ELEMENTS = {"header-bar", "left-menu"}
 CONTROL_ELEMENTS = {"ui-view", "toaster-container"}
+ACTION_ATTRIBUTES = {"ng-click", "ng-submit", "onclick"}
 
 
 def _tag_name(element, source: bytes) -> str | None:
@@ -39,6 +41,26 @@ def _attribute_names(element, source: bytes) -> set[str]:
     return names
 
 
+def _attributes(element, source: bytes) -> dict[str, str]:
+    values: dict[str, str] = {}
+    attribute_root = element
+    if element.type == "element":
+        attribute_root = next((child for child in element.children if child.type == "start_tag"), element)
+    for attribute in walk(attribute_root):
+        if attribute.type != "attribute":
+            continue
+        name = next((child for child in attribute.children if child.type == "attribute_name"), None)
+        value = next((child for child in attribute.children if child.type == "quoted_attribute_value"), None)
+        if name is not None:
+            values[node_text(name, source).lower()] = node_text(value, source).strip("\"'") if value else ""
+    return values
+
+
+def _handler(expression: str) -> str | None:
+    match = re.match(r"\s*(?:\$scope\.)?([A-Za-z_$][\w$]*)\s*\(", expression)
+    return match.group(1) if match else None
+
+
 def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list[Fact]:
     source = path.read_bytes()
     root = parser_for(tree_sitter_html.language()).parse(source).root_node
@@ -60,7 +82,40 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
             facts.append(Fact("client_component", tag_name, node_evidence))
         if tag_name in CONTROL_ELEMENTS:
             facts.append(Fact("ui_control", tag_name, node_evidence))
-        attributes = _attribute_names(node, source)
+        attribute_values = _attributes(node, source)
+        attributes = set(attribute_values)
+        element_text = re.sub(r"<[^>]+>", " ", node_text(node, source))
+        element_text = " ".join(element_text.split())
+        for event in sorted(ACTION_ATTRIBUTES & attributes):
+            expression = attribute_values[event]
+            facts.append(Fact("ui_action", f"{relative_path}:{node.start_point.row + 1}:{event}", node_evidence, {
+                "element": tag_name,
+                "event": event,
+                "expression": expression,
+                "handler": _handler(expression),
+                "text": element_text,
+            }))
+        if "required" in attributes or attribute_values.get("type", "").lower() == "email":
+            facts.append(Fact("ui_validation", f"{relative_path}:{node.start_point.row + 1}", node_evidence, {
+                "element": tag_name,
+                "required": "required" in attributes,
+                "input_type": attribute_values.get("type"),
+                "model": attribute_values.get("ng-model"),
+            }))
+        if tag_name == "input" and attribute_values.get("type", "").lower() == "file":
+            facts.append(Fact("ui_action", f"{relative_path}:{node.start_point.row + 1}:upload", node_evidence, {
+                "element": tag_name,
+                "event": "file-select",
+                "expression": attribute_values.get("on-read-file", ""),
+                "handler": _handler(attribute_values.get("on-read-file", "")),
+                "operation_hint": "UPLOAD",
+                "text": element_text,
+            }))
+        if tag_name == "input" and attribute_values.get("type", "").lower() == "checkbox":
+            facts.append(Fact("ui_selection", f"{relative_path}:{node.start_point.row + 1}", node_evidence, {
+                "model": attribute_values.get("ng-model"),
+                "change": attribute_values.get("ng-change"),
+            }))
         if "ui-view" in attributes:
             facts.append(Fact("ui_control", "ui-view", node_evidence))
         if "ng-class" in attributes and "overlay" in node_text(node, source):

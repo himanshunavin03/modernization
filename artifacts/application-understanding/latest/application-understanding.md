@@ -3,11 +3,12 @@
 - Status: `COMPLETE`
 - Readiness: `APPLICATION_UNDERSTANDING_READY_WITH_LIMITATIONS`
 - Project: `legacy-dashboard-complete-application-demo-v1`
-- KG run: `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`
+- KG run: `legacy-dashboard-complete-application-demo-v1-2026-09-06-092108`
 - Reasoning mode: `INTERACTIVE_AGENT_MODE`
-- Evidence packages: 139
+- Evidence packages: 138
 - Evidence manifest validation: `PASS`
 - Agent claims rejected: 0
+- Independently addressable source capabilities: 93
 
 ## Application Purpose
 
@@ -77,10 +78,10 @@ Healthcare operations application: A multi-surface application supporting dashbo
 ## API Mapping
 
 - Backend endpoints visible: `58`
-- Frontend API calls visible: `44`
-- Proven API mappings used: `10`
-- Unresolved structural calls retained: `32`
-- Dynamic API relationships retained: `22`
+- Frontend API calls visible: `33`
+- Proven API mappings used: `32`
+- Unresolved structural calls retained: `0`
+- Dynamic API relationships retained: `0`
 - External API relationships retained: `1`
 
 ## Demonstration Candidates
@@ -90,5 +91,5 @@ Healthcare operations application: A multi-surface application supporting dashbo
 
 ## Limitations
 
-- API evidence retains 32 unresolved structural calls, 22 dynamic URLs, 1 external API, and 1 call without a backend route.
+- API evidence retains 0 unresolved structural calls, 0 dynamic URLs, 1 external API, and 0 call without a backend route.
 - Roslyn and opaque-dependency limitations remain as approved by the KG readiness gate.

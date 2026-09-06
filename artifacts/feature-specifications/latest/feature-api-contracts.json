@@ -1074,68 +1074,74 @@
     {
       "contracts": [
         {
-          "backend": {
-            "action": "GetCurrentTenantAsync",
-            "controller": "UsersController",
-            "http_method": "GET",
-            "resolved_endpoint": "/api/users/current/tenant",
-            "route_template": "api/[controller]/current/tenant",
-            "source_reference": "src/MyHealth.API/Controllers/UsersController.cs"
-          },
-          "business_purpose": "Doctors load current tenant",
-          "classification": "SUPPORTING_SHARED_API",
-          "contract_id": "API-DOCTOR_DIRECTORY_MANAGEMENT-001",
-          "feature_id": "feature-doctor-directory-management",
-          "frontend": {
-            "api_expression": "/api/users/current/tenant",
-            "controller_or_component": null,
-            "method": "GET",
-            "service": null,
-            "source_reference": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
-            "surface": "src/MyHealth.Web/content/app/components/doctors",
-            "technology": "Legacy AngularJS 1.x"
-          },
-          "modernization": {
-            "clarification_required": false,
-            "preservation_required": true
-          },
-          "related_ac_ids": [
-            "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001"
+          "contract_id": "API-01",
+          "method": "DELETE",
+          "requirement_ids": [
+            "FR-05"
           ],
-          "related_behavior_ids": [
-            "VIEW_DOCTOR_DETAILS_IN_TENANT_CONTEXT"
+          "route": "/api/doctors/{id}",
+          "source_capability_ids": [
+            "capability-doctors-delete-2aa95f28df47"
+          ]
+        },
+        {
+          "contract_id": "API-02",
+          "method": "GET",
+          "requirement_ids": [
+            "FR-01"
           ],
-          "related_story_ids": [
-            "story-doctor-directory-management-view-doctor-details-in-tenant-context"
+          "route": "/api/doctors",
+          "source_capability_ids": [
+            "capability-doctors-list-8e359528dc06"
+          ]
+        },
+        {
+          "contract_id": "API-03",
+          "method": "GET",
+          "requirement_ids": [
+            "FR-02"
           ],
-          "relationship": {
-            "confidence_classification": "CONFIRMED",
-            "evidence": [
-              {
-                "confidence": 1.0,
-                "extraction_method": "tree-sitter",
-                "line_end": 19,
-                "line_start": 16,
-                "project_id": "legacy-dashboard-complete-application-demo-v1",
-                "source_hash": "b12c583956657df716c2bc34b6ecda4da2154e58e72389669a49a8a5d35e7843",
-                "source_path": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js"
-              }
-            ],
-            "status": "PROVEN"
-          },
-          "request": {
-            "body_fields": [],
-            "body_type": null,
-            "headers": [],
-            "path_parameters": [],
-            "query_parameters": []
-          },
-          "response": {
-            "collection_or_single": "single",
-            "known_status_behavior": [],
-            "response_fields": [],
-            "response_type": "Task<int?>"
-          }
+          "route": "/api/doctors/{id}",
+          "source_capability_ids": [
+            "capability-doctors-read-9d2f061a43ff"
+          ]
+        },
+        {
+          "contract_id": "API-04",
+          "method": "GET",
+          "requirement_ids": [
+            "FR-10"
+          ],
+          "route": "/api/users/current/tenant",
+          "source_capability_ids": [
+            "capability-clinics-read-098bbe600a00",
+            "capability-dashboard-read-8c9a45edb073",
+            "capability-doctors-read-440206d0d254",
+            "capability-patients-read-fee268471da8",
+            "capability-users-read-7142e0fdb55d"
+          ]
+        },
+        {
+          "contract_id": "API-05",
+          "method": "POST",
+          "requirement_ids": [
+            "FR-03"
+          ],
+          "route": "/api/doctors",
+          "source_capability_ids": [
+            "capability-doctors-create-3bf79f905f70"
+          ]
+        },
+        {
+          "contract_id": "API-06",
+          "method": "PUT",
+          "requirement_ids": [
+            "FR-04"
+          ],
+          "route": "/api/doctors",
+          "source_capability_ids": [
+            "capability-doctors-update-01a9514e9ad2"
+          ]
         }
       ],
       "feature_id": "feature-doctor-directory-management"

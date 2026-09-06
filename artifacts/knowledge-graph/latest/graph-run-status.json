@@ -1,21 +1,21 @@
 {
   "artifact_paths": {
-    "facts": "artifacts\\legacy-dashboard-complete-application-demo-v1\\facts.json",
-    "graph_run_status": "artifacts\\legacy-dashboard-complete-application-demo-v1\\graph-run-status.json",
-    "graph_run_summary": "artifacts\\legacy-dashboard-complete-application-demo-v1\\graph-run-summary.md",
-    "knowledge_graph": "artifacts\\legacy-dashboard-complete-application-demo-v1\\knowledge-graph.json",
-    "source_inventory": "artifacts\\legacy-dashboard-complete-application-demo-v1\\source-inventory.json"
+    "facts": "C:\\Users\\himan\\AppData\\Local\\Temp\\polaris-capability-release-1a461c0ce23341c5b2793847a5399717\\legacy-dashboard-complete-application-demo-v1\\facts.json",
+    "graph_run_status": "C:\\Users\\himan\\AppData\\Local\\Temp\\polaris-capability-release-1a461c0ce23341c5b2793847a5399717\\legacy-dashboard-complete-application-demo-v1\\graph-run-status.json",
+    "graph_run_summary": "C:\\Users\\himan\\AppData\\Local\\Temp\\polaris-capability-release-1a461c0ce23341c5b2793847a5399717\\legacy-dashboard-complete-application-demo-v1\\graph-run-summary.md",
+    "knowledge_graph": "C:\\Users\\himan\\AppData\\Local\\Temp\\polaris-capability-release-1a461c0ce23341c5b2793847a5399717\\legacy-dashboard-complete-application-demo-v1\\knowledge-graph.json",
+    "source_inventory": "C:\\Users\\himan\\AppData\\Local\\Temp\\polaris-capability-release-1a461c0ce23341c5b2793847a5399717\\legacy-dashboard-complete-application-demo-v1\\source-inventory.json"
   },
   "counts": {
-    "edge_count": 5208,
+    "edge_count": 10204,
     "extraction_warning_count": 0,
-    "fact_count": 8939,
+    "fact_count": 14383,
     "file_count": 2384,
-    "node_count": 4926,
+    "node_count": 6773,
     "review_warning_count": 4453,
     "warning_count": 4453
   },
-  "ended_at": "2026-09-02T05:06:20.818427Z",
+  "ended_at": "2026-09-06T09:21:04.829583Z",
   "neo4j": {
     "requested": false,
     "status": "skipped"
@@ -37,7 +37,7 @@
   "scope": {
     "coverage_status": "complete_with_opaque_dependencies",
     "extraction_warning_count": 0,
-    "opaque_dependency_count": 43,
+    "opaque_dependency_count": 44,
     "out_of_scope_file_count": 0,
     "review_warning_count": 4453,
     "scope_description": "Complete discovered application inventory and graph.",
@@ -74,5 +74,5 @@
       "status": "succeeded"
     }
   ],
-  "started_at": "2026-09-02T05:05:33.508401Z"
+  "started_at": "2026-09-06T09:20:23.752654Z"
 }

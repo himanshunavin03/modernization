@@ -1,0 +1,14 @@
+{
+  "application_understanding_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-092424-957063",
+  "feature_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-092505-109274",
+  "hash_validation": "PASS",
+  "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-092108",
+  "manifest_hash": "a041c4b5f68801c04d62825fc0782f833c2a6dc2841cbf097c9a803da6e9e183",
+  "packages": {
+    "business-feature:feature-clinic-appointment-experience": "724d951d5c65e5e8c8d97eb1d33c243fc1e168d90903ff2d59ac004692194133",
+    "business-feature:feature-doctor-directory-management": "b44e4a936edc08617e18f8ac1a31ef84396a44fbc01040b95d0e5ed0211b6cfe",
+    "business-feature:feature-operational-dashboard-insights": "35a3f8b94b787a6877c16715e2198bfc15c040ff8b786e0095ce4dfeae11483e",
+    "business-feature:feature-patient-directory-management": "cf6db6b621dd55a3d0cf04cad3aa05b27f2f7dd8d0095d6441824a9a75e5d835",
+    "business-feature:feature-user-access-context": "3257b1dca82a8bb6ba6afddb3c1a67c96678108dcf89c9bad6c61cc1c02f830f"
+  }
+}

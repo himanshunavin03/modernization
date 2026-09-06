@@ -3046,7 +3046,7 @@
       "candidate_backend_endpoints": [
         "backend-endpoint:src/MyHealth.API/Controllers/UsersController.cs:124:GET:/api/users/current/user"
       ],
-      "controller_or_component": null,
+      "controller_or_component": "headerController",
       "current_relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
       "dynamic_segments": [],
       "final_status": "PROVEN_EXACT_STATIC",
@@ -3088,7 +3088,7 @@
       "candidate_backend_endpoints": [
         "backend-endpoint:src/MyHealth.API/Controllers/UsersController.cs:133:GET:/api/users/current/claims"
       ],
-      "controller_or_component": null,
+      "controller_or_component": "headerController",
       "current_relationship_reason": "HTTP method and normalized route/template uniquely identify one backend endpoint.",
       "dynamic_segments": [],
       "final_status": "PROVEN_EXACT_STATIC",
@@ -3160,7 +3160,7 @@
       "query_components": [],
       "raw_url_expression": "/api/users/current/claims",
       "resolution_strategy": "EXACT_METHOD_ROUTE",
-      "service": null,
+      "service": "initialPageService",
       "source_file": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
       "source_range": {
         "line_end": 13,

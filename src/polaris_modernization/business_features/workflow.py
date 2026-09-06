@@ -93,6 +93,9 @@ def _api_paths(source: dict, approved: dict) -> list[dict]:
 
 def _validate_submission(submission: BusinessFeatureReasoningSubmission, approved: dict, packages: list) -> dict:
     catalog = approved["catalog"]
+    capability_coverage = catalog.get("capability_coverage", {})
+    if capability_coverage.get("status") == "FAIL" or capability_coverage.get("silently_dropped_capabilities"):
+        raise UnsupportedBusinessClaimsError("Upstream source capability coverage is incomplete.")
     _, manifest_hash = _manifest(packages)
     expected_lineage = (catalog["kg_run_id"], catalog["application_understanding_run_id"], approved["run_id"])
     if (submission.kg_run_id, submission.application_understanding_run_id, submission.feature_run_id) != expected_lineage:
@@ -174,6 +177,7 @@ def _validate_submission(submission: BusinessFeatureReasoningSubmission, approve
         "assumptions": sum(len(item.assumptions) for item in all_specs),
         "open_questions": sum(len(item.open_questions) for item in all_specs),
         "inferred_business_value_claims": sum(len(item.business_value) for item in all_specs),
+        "capability_completeness": capability_coverage.get("status", "NOT_AVAILABLE"),
     }
 
 
@@ -201,11 +205,13 @@ def validate_and_persist_business_features(feature_root: Path, output_root: Path
         feature_run_id=submission.feature_run_id, business_feature_run_id=run_id, readiness=readiness,
         business_features=submission.business_features, limitations=["Inherited unresolved/dynamic API and incomplete-workflow evidence remains explicit."],
         quality_review=quality, next_action="GENERATE_JIRA_STYLE_STORIES",
+        capability_coverage=approved["catalog"].get("capability_coverage", {}),
     )
     package_map, manifest_hash = _manifest(packages)
     _write_json(destination / "business-feature-catalog.json", catalog.model_dump(mode="json"))
     _write_json(destination / "business-feature-reasoning.json", submission.model_dump(mode="json"))
     _write_json(destination / "business-feature-validation.json", {"valid": True, **quality, "readiness": readiness})
+    _write_json(destination / "capability-coverage.json", approved["catalog"].get("capability_coverage", {}))
     _write_json(destination / "business-feature-evidence-manifest.json", {"kg_run_id": submission.kg_run_id, "application_understanding_run_id": submission.application_understanding_run_id, "feature_run_id": submission.feature_run_id, "manifest_hash": manifest_hash, "hash_validation": "PASS", "packages": package_map})
     _write_json(destination / "open-questions.json", {"questions": [{"feature_id": spec.feature_id, **question.model_dump(mode="json")} for spec in submission.business_features for question in spec.open_questions]})
     _write_json(destination / "provenance.json", {"kg_run_id": submission.kg_run_id, "application_understanding_run_id": submission.application_understanding_run_id, "feature_run_id": submission.feature_run_id, "business_feature_run_id": run_id})

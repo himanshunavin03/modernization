@@ -100,10 +100,10 @@ The endpoints refer to the current application user, but approved Feature eviden
 - DYNAMIC: 0
 - EXTERNAL: 0
 - NO_BACKEND_ROUTE: 0
-- `PROVEN`: `src/MyHealth.Web/content/app/components/users/services/usersService.js` -> `GET /api/users/current/tenant` -> `GET /api/users/current/tenant`
-- `PROVEN`: `src/MyHealth.Web/content/app/components/shared/controllers/headerController.js` -> `GET /api/users/current/user` -> `GET /api/users/current/user`
-- `PROVEN`: `src/MyHealth.Web/content/app/components/shared/controllers/headerController.js` -> `GET /api/users/current/claims` -> `GET /api/users/current/claims`
-- `PROVEN`: `src/MyHealth.Web/content/app/components/shared/services/initialPageService.js` -> `GET /api/users/current/claims` -> `GET /api/users/current/claims`
+- `PROVEN`: `src/MyHealth.Web/content/app/components/users/services/usersService.js` -> `/api/users/current/tenant` -> `GET /api/users/current/tenant`
+- `PROVEN`: `src/MyHealth.Web/content/app/components/shared/controllers/headerController.js` -> `/api/users/current/user` -> `GET /api/users/current/user`
+- `PROVEN`: `src/MyHealth.Web/content/app/components/shared/controllers/headerController.js` -> `/api/users/current/claims` -> `GET /api/users/current/claims`
+- `PROVEN`: `src/MyHealth.Web/content/app/components/shared/services/initialPageService.js` -> `/api/users/current/claims` -> `GET /api/users/current/claims`
 - Limitation: All approved API relationships are proven, but evidence does not define authorization semantics beyond observed claims loading.
 
 ## Current User Experience

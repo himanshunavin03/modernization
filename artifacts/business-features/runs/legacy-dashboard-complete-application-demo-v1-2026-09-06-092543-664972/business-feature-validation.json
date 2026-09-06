@@ -1,0 +1,18 @@
+{
+  "actors_identified": 0,
+  "assumptions": 0,
+  "business_feature_validation": "PASS",
+  "business_quality_validation": "PASS",
+  "business_rules_used": 1,
+  "capability_completeness": "PASS_WITH_EXCLUSION",
+  "dependencies_used": 5,
+  "domain_concepts_used": 6,
+  "feature_count_preserved": true,
+  "feature_ids_preserved": true,
+  "inferred_business_value_claims": 5,
+  "open_questions": 8,
+  "provenance_validation": "PASS",
+  "readiness": "BUSINESS_FEATURES_READY_WITH_LIMITATIONS",
+  "unsupported_business_claims_rejected": 0,
+  "valid": true
+}

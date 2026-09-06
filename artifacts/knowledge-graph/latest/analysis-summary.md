@@ -1,9 +1,9 @@
 # Dashboard Deterministic Extraction Summary
 
 - Inventory files: 2384
-- Deterministic facts: 1566
-- Graph nodes: 4926
-- Graph edges: 5208
+- Deterministic facts: 7010
+- Graph nodes: 6773
+- Graph edges: 10204
 - Extraction warnings: 0
 - Total graph warnings: 4453
 - Scope: Full application analysis

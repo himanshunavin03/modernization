@@ -10,6 +10,7 @@ import shutil
 
 from polaris_modernization.feature_generation.models import FeatureCatalog, FeatureReasoningSubmission
 from polaris_modernization.feature_generation.retrieval import COLLECTIONS, build_feature_evidence_packages, load_approved_application_understanding
+from polaris_modernization.capability_completeness import assign_feature_dispositions, validate_capability_coverage
 
 
 class UnsupportedFeatureClaimsError(ValueError):
@@ -135,6 +136,14 @@ def _validate_submission(submission: FeatureReasoningSubmission, approved: dict,
         raise UnsupportedFeatureClaimsError("POC selection changed the approved modernization candidates.")
     covered_capabilities = {name for feature in submission.features for name in feature.business_capabilities}
     covered_workflows = {name for feature in submission.features for name in feature.workflows}
+    source_capabilities = approved["understanding"].get("source_capabilities", [])
+    dispositions = [item for feature in submission.features for item in feature.capability_dispositions]
+    capability_coverage = validate_capability_coverage(source_capabilities, dispositions)
+    if capability_coverage["status"] == "FAIL":
+        raise UnsupportedFeatureClaimsError(
+            "Source capability completeness validation failed: "
+            + ", ".join(capability_coverage["silently_dropped_capabilities"] + capability_coverage["invalid_dispositions"])
+        )
     titles = [re.sub(r"\W+", " ", item.title.lower()).strip() for item in submission.features]
     technical_titles = [item.title for item in submission.features if re.search(r"\b(controller|service|endpoint|dto|class|file)\b", item.title, re.I)]
     return {
@@ -148,6 +157,7 @@ def _validate_submission(submission: FeatureReasoningSubmission, approved: dict,
         "uncovered_capabilities": sorted(set(maps["capability"]) - covered_capabilities),
         "workflows_covered": sorted(covered_workflows),
         "uncovered_workflows": sorted(set(maps["workflow"]) - covered_workflows),
+        "capability_coverage": capability_coverage,
     }
 
 
@@ -155,6 +165,13 @@ def validate_and_persist_features(application_understanding_root: Path, output_r
     approved = load_approved_application_understanding(application_understanding_root)
     packages = build_feature_evidence_packages(approved)
     submission = FeatureReasoningSubmission.model_validate_json(agent_result.read_text(encoding="utf-8"))
+    source_capabilities = approved["understanding"].get("source_capabilities", [])
+    if source_capabilities and not any(feature.capability_dispositions for feature in submission.features):
+        dispositions = assign_feature_dispositions(source_capabilities, [feature.model_dump(mode="json") for feature in submission.features])
+        by_feature = {feature.feature_id: feature for feature in submission.features}
+        for disposition in dispositions:
+            owner = disposition.feature_id if disposition.scope_status == "INCLUDED" else submission.features[0].feature_id
+            by_feature[owner].capability_dispositions.append(disposition)
     quality = _validate_submission(submission, approved, packages)
     has_limitations = any(feature.limitations or any(contract.status != "PROVEN" for contract in feature.api_contracts) for feature in submission.features)
     readiness = "FEATURES_READY_WITH_LIMITATIONS" if has_limitations or quality["uncovered_workflows"] else "FEATURES_READY"
@@ -170,6 +187,7 @@ def validate_and_persist_features(application_understanding_root: Path, output_r
         feature_run_id=run_id, readiness=readiness, features=submission.features,
         poc_selection=submission.poc_selection, quality_review=quality, limitations=limitations,
         next_action="GENERATE_STORIES" if readiness != "FEATURES_NOT_READY" else "CORRECT_FEATURE_EVIDENCE",
+        capability_coverage=quality["capability_coverage"],
     )
     package_manifest, manifest_hash = _manifest(packages)
     _write_json(destination / "feature-catalog.json", catalog.model_dump(mode="json"))
@@ -184,6 +202,7 @@ def validate_and_persist_features(application_understanding_root: Path, output_r
         "total_capabilities": len(approved["understanding"]["business_capabilities"]),
         "total_workflows": len(approved["understanding"]["user_workflows"]),
     })
+    _write_json(destination / "capability-coverage.json", quality["capability_coverage"])
     _write_json(destination / "poc-feature-selection.json", submission.poc_selection.model_dump(mode="json"))
     _write_json(destination / "provenance.json", {
         "kg_run_id": approved["kg_run_id"], "application_understanding_run_id": approved["run_id"],

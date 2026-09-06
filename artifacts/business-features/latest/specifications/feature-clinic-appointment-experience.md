@@ -74,7 +74,7 @@ NO_EVIDENCE_BACKED_BUSINESS_RULES_IDENTIFIED
 - DYNAMIC: 0
 - EXTERNAL: 0
 - NO_BACKEND_ROUTE: 0
-- `PROVEN`: `src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js` -> `GET /api/users/current/tenant` -> `GET /api/users/current/tenant`
+- `PROVEN`: `src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js` -> `/api/users/current/tenant` -> `GET /api/users/current/tenant`
 - Limitation: The proven relationship supplies tenant context; it does not prove an appointment transaction endpoint.
 
 ## Current User Experience

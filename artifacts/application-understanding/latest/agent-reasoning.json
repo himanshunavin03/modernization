@@ -38,9 +38,9 @@
     "description": "The dashboard client service calls the proven current-tenant endpoint before dashboard data flows.",
     "evidence": [
       {
-        "line_end": 18,
+        "line_end": 21,
         "line_start": 18,
-        "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/tenant",
+        "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/tenant",
         "provenance": "STRUCTURAL_ONLY",
         "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
       },
@@ -58,9 +58,7 @@
       "api:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
       "api:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
       "api:src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
-      "api:src/MyHealth.Web/content/app/components/users/services/usersService.js",
-      "backend:src/MyHealth.API/Controllers/UsersController.cs",
-      "domain:src/MyHealth.API/Controllers/UsersController.cs"
+      "api:src/MyHealth.Web/content/app/components/users/services/usersService.js"
     ],
     "name": "AngularJS dashboard resolves tenant context",
     "origin": "AGENT_REASONING",
@@ -189,6 +187,7 @@
       ],
       "evidence_package_ids": [
         "api:src/MyHealth.API/Controllers/ReportsController.cs",
+        "api:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
         "backend:src/MyHealth.API/Controllers/ReportsController.cs"
       ],
       "name": "Clinic summary reporting",
@@ -225,7 +224,7 @@
       "evidence_package_ids": [
         "angular:src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js",
         "api:src/MyHealth.API/Controllers/DoctorsController.cs",
-        "backend:src/MyHealth.API/Controllers/DoctorsController.cs"
+        "api:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js"
       ],
       "name": "Manage doctors",
       "origin": "AGENT_REASONING",
@@ -261,6 +260,7 @@
       "evidence_package_ids": [
         "angular:src/MyHealth.Web/content/app/components/patients/controllers/patientsController.js",
         "api:src/MyHealth.API/Controllers/PatientsController.cs",
+        "api:src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
         "backend:src/MyHealth.API/Controllers/PatientsController.cs"
       ],
       "name": "Manage patients",
@@ -344,9 +344,7 @@
         "api:src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
         "api:src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
         "api:src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
-        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js"
       ],
       "name": "Resolve current user context",
       "origin": "AGENT_REASONING",
@@ -385,6 +383,7 @@
       "evidence_package_ids": [
         "angular:src/MyHealth.Web/content/app/components/dashboard/controllers/dashboardController.js",
         "api:src/MyHealth.API/Controllers/ReportsController.cs",
+        "api:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
         "backend:src/MyHealth.API/Controllers/ReportsController.cs"
       ],
       "module_type": "FUNCTIONAL",
@@ -562,9 +561,7 @@
       ],
       "evidence_package_ids": [
         "angular:src/MyHealth.Web/content/app/components/users/controllers/usersController.js",
-        "api:src/MyHealth.API/Controllers/UsersController.cs",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "backend:src/MyHealth.API/Controllers/UsersController.cs"
       ],
       "module_type": "FUNCTIONAL",
       "name": "User access and tenant context",
@@ -587,9 +584,9 @@
       "description": "Header and initial-page client flows obtain claims from the current-claims endpoint.",
       "evidence": [
         {
-          "line_end": 10,
+          "line_end": 13,
           "line_start": 10,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/claims",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/claims",
           "provenance": "STRUCTURAL_ONLY",
           "source_path": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js"
         },
@@ -605,9 +602,7 @@
         "angular:src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
         "api:src/MyHealth.API/Controllers/UsersController.cs",
         "api:src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
-        "api:src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "api:src/MyHealth.Web/content/app/components/shared/services/initialPageService.js"
       ],
       "name": "Client initialization uses current authorization claims",
       "origin": "AGENT_REASONING",
@@ -626,9 +621,9 @@
       "description": "Clinic, dashboard, doctor, patient, and user services call the current-tenant endpoint before tenant-scoped operations.",
       "evidence": [
         {
-          "line_end": 18,
+          "line_end": 21,
           "line_start": 18,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/tenant",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/tenant",
           "provenance": "STRUCTURAL_ONLY",
           "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
         },
@@ -646,9 +641,7 @@
         "api:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
         "api:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
         "api:src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
-        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js"
       ],
       "name": "Tenant-scoped client flows resolve current tenant context",
       "origin": "AGENT_REASONING",
@@ -669,9 +662,9 @@
       "description": "Dashboard service uses the current-tenant endpoint.",
       "evidence": [
         {
-          "line_end": 18,
+          "line_end": 21,
           "line_start": 18,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/tenant",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/tenant",
           "provenance": "STRUCTURAL_ONLY",
           "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
         },
@@ -689,9 +682,7 @@
         "api:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
         "api:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
         "api:src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
-        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js"
       ],
       "name": "Dashboard depends on tenant context API",
       "origin": "AGENT_REASONING",
@@ -711,9 +702,9 @@
       "description": "Header controller uses current-user and claims endpoints.",
       "evidence": [
         {
-          "line_end": 24,
+          "line_end": 27,
           "line_start": 24,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/user",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/user",
           "provenance": "STRUCTURAL_ONLY",
           "source_path": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js"
         },
@@ -728,9 +719,7 @@
       "evidence_package_ids": [
         "angular:src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
         "api:src/MyHealth.API/Controllers/UsersController.cs",
-        "api:src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "api:src/MyHealth.Web/content/app/components/shared/controllers/headerController.js"
       ],
       "name": "Header depends on current-user API",
       "origin": "AGENT_REASONING",
@@ -975,8 +964,6 @@
         }
       ],
       "evidence_package_ids": [
-        "api:src/MyHealth.API/Controllers/UsersController.cs",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
         "domain:src/MyHealth.API/Controllers/UsersController.cs"
       ],
       "name": "Application user request",
@@ -1004,8 +991,6 @@
         }
       ],
       "evidence_package_ids": [
-        "api:src/MyHealth.API/Controllers/TenantsController.cs",
-        "backend:src/MyHealth.API/Controllers/TenantsController.cs",
         "domain:src/MyHealth.API/Controllers/TenantsController.cs"
       ],
       "name": "Tenant request",
@@ -1016,8 +1001,8 @@
       ]
     }
   ],
-  "evidence_package_manifest_hash": "6cb7ee92a2711a098fd5927f45be5147ba2dc5b2d89cef009c096b422f243f3b",
-  "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-034128",
+  "evidence_package_manifest_hash": "b1c21f654e5261141361508e11c193f857fa378303dc6b214cce0bc453c83fd3",
+  "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-092108",
   "major_backend_areas": [
     "HTTP API controllers and actions",
     "Domain and DTO models",
@@ -1071,9 +1056,9 @@
     "description": "The Dashboard Razor surface leads to a dashboard client flow that resolves tenant context.",
     "evidence": [
       {
-        "line_end": 18,
+        "line_end": 21,
         "line_start": 18,
-        "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/tenant",
+        "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/tenant",
         "provenance": "STRUCTURAL_ONLY",
         "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
       },
@@ -1091,9 +1076,7 @@
       "api:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
       "api:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
       "api:src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
-      "api:src/MyHealth.Web/content/app/components/users/services/usersService.js",
-      "backend:src/MyHealth.API/Controllers/UsersController.cs",
-      "domain:src/MyHealth.API/Controllers/UsersController.cs"
+      "api:src/MyHealth.Web/content/app/components/users/services/usersService.js"
     ],
     "name": "Razor dashboard hosts tenant-aware client flow",
     "origin": "AGENT_REASONING",
@@ -1123,9 +1106,9 @@
       "description": "The clinics service calls the proven current-tenant endpoint.",
       "evidence": [
         {
-          "line_end": 15,
+          "line_end": 18,
           "line_start": 15,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/tenant",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/tenant",
           "provenance": "STRUCTURAL_ONLY",
           "source_path": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js"
         },
@@ -1143,9 +1126,7 @@
         "api:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
         "api:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
         "api:src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
-        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js"
       ],
       "name": "Clinics load current tenant",
       "origin": "AGENT_REASONING",
@@ -1166,9 +1147,9 @@
       "description": "Dashboard summary flow resolves tenant context before report use.",
       "evidence": [
         {
-          "line_end": 18,
+          "line_end": 21,
           "line_start": 18,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/tenant",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/tenant",
           "provenance": "STRUCTURAL_ONLY",
           "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
         },
@@ -1186,9 +1167,7 @@
         "api:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
         "api:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
         "api:src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
-        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js"
       ],
       "name": "Dashboard summary loads current tenant",
       "origin": "AGENT_REASONING",
@@ -1209,9 +1188,9 @@
       "description": "Dashboard expenses flow resolves tenant context.",
       "evidence": [
         {
-          "line_end": 42,
+          "line_end": 45,
           "line_start": 42,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/tenant",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/tenant",
           "provenance": "STRUCTURAL_ONLY",
           "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
         },
@@ -1229,9 +1208,7 @@
         "api:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
         "api:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
         "api:src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
-        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js"
       ],
       "name": "Dashboard expenses load current tenant",
       "origin": "AGENT_REASONING",
@@ -1252,9 +1229,9 @@
       "description": "Dashboard patient report flow resolves tenant context.",
       "evidence": [
         {
-          "line_end": 66,
+          "line_end": 69,
           "line_start": 66,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/tenant",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/tenant",
           "provenance": "STRUCTURAL_ONLY",
           "source_path": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js"
         },
@@ -1272,9 +1249,7 @@
         "api:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
         "api:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
         "api:src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
-        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js"
       ],
       "name": "Dashboard patient report loads current tenant",
       "origin": "AGENT_REASONING",
@@ -1295,9 +1270,9 @@
       "description": "The doctors service calls the proven current-tenant endpoint.",
       "evidence": [
         {
-          "line_end": 16,
+          "line_end": 19,
           "line_start": 16,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/tenant",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/tenant",
           "provenance": "STRUCTURAL_ONLY",
           "source_path": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js"
         },
@@ -1315,9 +1290,7 @@
         "api:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
         "api:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
         "api:src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
-        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js"
       ],
       "name": "Doctors load current tenant",
       "origin": "AGENT_REASONING",
@@ -1338,9 +1311,9 @@
       "description": "The patients service calls the proven current-tenant endpoint.",
       "evidence": [
         {
-          "line_end": 12,
+          "line_end": 15,
           "line_start": 12,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/tenant",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/tenant",
           "provenance": "STRUCTURAL_ONLY",
           "source_path": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js"
         },
@@ -1358,9 +1331,7 @@
         "api:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
         "api:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
         "api:src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
-        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js"
       ],
       "name": "Patients load current tenant",
       "origin": "AGENT_REASONING",
@@ -1381,9 +1352,9 @@
       "description": "The users service calls the proven current-tenant endpoint.",
       "evidence": [
         {
-          "line_end": 15,
+          "line_end": 18,
           "line_start": 15,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/tenant",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/tenant",
           "provenance": "STRUCTURAL_ONLY",
           "source_path": "src/MyHealth.Web/content/app/components/users/services/usersService.js"
         },
@@ -1401,9 +1372,7 @@
         "api:src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
         "api:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
         "api:src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
-        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "api:src/MyHealth.Web/content/app/components/users/services/usersService.js"
       ],
       "name": "Users load current tenant",
       "origin": "AGENT_REASONING",
@@ -1424,9 +1393,9 @@
       "description": "The shared header calls the proven current-user endpoint.",
       "evidence": [
         {
-          "line_end": 24,
+          "line_end": 27,
           "line_start": 24,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/user",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/user",
           "provenance": "STRUCTURAL_ONLY",
           "source_path": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js"
         },
@@ -1441,9 +1410,7 @@
       "evidence_package_ids": [
         "angular:src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
         "api:src/MyHealth.API/Controllers/UsersController.cs",
-        "api:src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "api:src/MyHealth.Web/content/app/components/shared/controllers/headerController.js"
       ],
       "name": "Header loads current user",
       "origin": "AGENT_REASONING",
@@ -1464,9 +1431,9 @@
       "description": "The shared header calls the proven current-claims endpoint.",
       "evidence": [
         {
-          "line_end": 31,
+          "line_end": 34,
           "line_start": 31,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/claims",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/claims",
           "provenance": "STRUCTURAL_ONLY",
           "source_path": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js"
         },
@@ -1482,9 +1449,7 @@
         "angular:src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
         "api:src/MyHealth.API/Controllers/UsersController.cs",
         "api:src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
-        "api:src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "api:src/MyHealth.Web/content/app/components/shared/services/initialPageService.js"
       ],
       "name": "Header loads current claims",
       "origin": "AGENT_REASONING",
@@ -1505,9 +1470,9 @@
       "description": "Initial-page setup calls the proven current-claims endpoint.",
       "evidence": [
         {
-          "line_end": 10,
+          "line_end": 13,
           "line_start": 10,
-          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/users/current/claims",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/claims",
           "provenance": "STRUCTURAL_ONLY",
           "source_path": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js"
         },
@@ -1523,9 +1488,7 @@
         "angular:src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
         "api:src/MyHealth.API/Controllers/UsersController.cs",
         "api:src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
-        "api:src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
-        "backend:src/MyHealth.API/Controllers/UsersController.cs",
-        "domain:src/MyHealth.API/Controllers/UsersController.cs"
+        "api:src/MyHealth.Web/content/app/components/shared/services/initialPageService.js"
       ],
       "name": "Initial page loads current claims",
       "origin": "AGENT_REASONING",

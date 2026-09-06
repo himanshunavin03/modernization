@@ -171,6 +171,7 @@
       ]
     }
   ],
+  "acceptance_criteria_regenerated": false,
   "actors": [
     {
       "name": "user of the existing application",
@@ -207,6 +208,392 @@
       "text": "The Feature appears to support information accessibility by organizing doctor navigation and doctor information in one functional area."
     }
   ],
+  "capability_api_contracts": [
+    {
+      "contract_id": "API-01",
+      "method": "DELETE",
+      "requirement_ids": [
+        "FR-05"
+      ],
+      "route": "/api/doctors/{id}",
+      "source_capability_ids": [
+        "capability-doctors-delete-2aa95f28df47"
+      ]
+    },
+    {
+      "contract_id": "API-02",
+      "method": "GET",
+      "requirement_ids": [
+        "FR-01"
+      ],
+      "route": "/api/doctors",
+      "source_capability_ids": [
+        "capability-doctors-list-8e359528dc06"
+      ]
+    },
+    {
+      "contract_id": "API-03",
+      "method": "GET",
+      "requirement_ids": [
+        "FR-02"
+      ],
+      "route": "/api/doctors/{id}",
+      "source_capability_ids": [
+        "capability-doctors-read-9d2f061a43ff"
+      ]
+    },
+    {
+      "contract_id": "API-04",
+      "method": "GET",
+      "requirement_ids": [
+        "FR-10"
+      ],
+      "route": "/api/users/current/tenant",
+      "source_capability_ids": [
+        "capability-clinics-read-098bbe600a00",
+        "capability-dashboard-read-8c9a45edb073",
+        "capability-doctors-read-440206d0d254",
+        "capability-patients-read-fee268471da8",
+        "capability-users-read-7142e0fdb55d"
+      ]
+    },
+    {
+      "contract_id": "API-05",
+      "method": "POST",
+      "requirement_ids": [
+        "FR-03"
+      ],
+      "route": "/api/doctors",
+      "source_capability_ids": [
+        "capability-doctors-create-3bf79f905f70"
+      ]
+    },
+    {
+      "contract_id": "API-06",
+      "method": "PUT",
+      "requirement_ids": [
+        "FR-04"
+      ],
+      "route": "/api/doctors",
+      "source_capability_ids": [
+        "capability-doctors-update-01a9514e9ad2"
+      ]
+    }
+  ],
+  "capability_dispositions": [
+    {
+      "capability_id": "capability-doctors-read-04313374f9e6",
+      "downstream_refs": [],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors/speciality/{speciality}",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetBySpecialityAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetBySpecialityAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetBySpecialityAsync:OrderBy"
+      ],
+      "feature_id": null,
+      "reason": "No UI-to-workflow evidence establishes a single owning Feature.",
+      "scope_status": "UNRESOLVED"
+    },
+    {
+      "capability_id": "capability-doctors-read-95411bfc5b43",
+      "downstream_refs": [],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors/appointments/days/{doctorId}",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetDaysWithAppoinmentsAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetDaysWithAppoinmentsAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetDaysWithAppoinmentsAsync:OrderBy"
+      ],
+      "feature_id": null,
+      "reason": "No UI-to-workflow evidence establishes a single owning Feature.",
+      "scope_status": "UNRESOLVED"
+    },
+    {
+      "capability_id": "capability-doctors-read-a106fba72ec3",
+      "downstream_refs": [],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors/availability/hours/{doctorId}"
+      ],
+      "feature_id": null,
+      "reason": "No UI-to-workflow evidence establishes a single owning Feature.",
+      "scope_status": "UNRESOLVED"
+    },
+    {
+      "capability_id": "capability-doctors-create-3bf79f905f70",
+      "downstream_refs": [
+        "FR-03",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:10:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:7:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:DoctorsService.add",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:POST /api/doctors",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.AddAsync:Add",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.AddAsync:SaveChangesAsync",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:POST /api/doctors"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-delete-2aa95f28df47",
+      "downstream_refs": [
+        "FR-05",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:77:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:32:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:6:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:DoctorsService.remove",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:DELETE /api/doctors/{id}",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.DeleteAsync:SaveChangesAsync",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:DELETE /api/doctors/{PARAM}"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-list-8e359528dc06",
+      "downstream_refs": [
+        "FR-01",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:43:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:DoctorsService.getList",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/doctors"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-navigate-112aba01bc1f",
+      "downstream_refs": [
+        "FR-09",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:7:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-navigate-472c10f6e1fd",
+      "downstream_refs": [
+        "FR-09",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:3:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-navigate-ecdc3c506da0",
+      "downstream_refs": [
+        "FR-09",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:31:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-navigate-f3cd83a2ae08",
+      "downstream_refs": [
+        "FR-09",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:13:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-page-6cd0c8021d52",
+      "downstream_refs": [
+        "FR-06",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:43:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-read-440206d0d254",
+      "downstream_refs": [
+        "FR-10",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:DoctorsService.getTenant",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/tenant"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-read-9d2f061a43ff",
+      "downstream_refs": [
+        "FR-02",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:DoctorsService.getDoctor",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors/{id}",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/doctors/{PARAM}"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-update-01a9514e9ad2",
+      "downstream_refs": [
+        "FR-04",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:10:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:7:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:DoctorsService.update",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:PUT /api/doctors",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.UpdateAsync:SaveChangesAsync",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.UpdateAsync:Update",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:PUT /api/doctors"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-upload-4740bad485ec",
+      "downstream_refs": [
+        "FR-07",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:56:upload"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-upload-6605f1033084",
+      "downstream_refs": [
+        "FR-07",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:21:upload"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-30e3b01c51a5",
+      "downstream_refs": [
+        "FR-08",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:38"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-741cc6b88166",
+      "downstream_refs": [
+        "FR-08",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:34"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-8a54f613e682",
+      "downstream_refs": [
+        "FR-08",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:42"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-a1a5296a791a",
+      "downstream_refs": [
+        "FR-08",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:50"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-c90d553a0e3a",
+      "downstream_refs": [
+        "FR-08",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:46"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-f54eac18bb4b",
+      "downstream_refs": [
+        "FR-08",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:30"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    }
+  ],
   "current_experience": [
     "AngularJS doctor list/detail routes use doctor controller and service surfaces."
   ],
@@ -235,6 +622,7 @@
       "role": "Provides the domain information associated with doctor list/detail behavior."
     }
   ],
+  "downstream_status": "STALE_REGENERATION_REQUIRED",
   "feature_id": "feature-doctor-directory-management",
   "feature_name": "Doctor Directory Management",
   "feature_overview": {
@@ -245,12 +633,115 @@
   },
   "functional_requirements": [
     {
-      "acceptance_criterion_id": "ac-doctor-directory-management-review-doctor-directory-001",
-      "requirement": "The existing application supports: A doctor list experience is available."
+      "api_dependencies": [
+        "GET /api/doctors"
+      ],
+      "description": "The existing application behavior requires users to review doctor directory.",
+      "id": "FR-01",
+      "source_capability_ids": [
+        "capability-doctors-list-8e359528dc06"
+      ],
+      "title": "Review Doctor Directory"
     },
     {
-      "acceptance_criterion_id": "ac-doctor-directory-management-view-doctor-details-in-tenant-context-001",
-      "requirement": "The existing application supports: A doctor detail experience is available. Doctor functionality has current tenant context."
+      "api_dependencies": [
+        "GET /api/doctors/{id}"
+      ],
+      "description": "The existing application behavior requires users to view doctor details.",
+      "id": "FR-02",
+      "source_capability_ids": [
+        "capability-doctors-read-9d2f061a43ff"
+      ],
+      "title": "View Doctor Details"
+    },
+    {
+      "api_dependencies": [
+        "POST /api/doctors"
+      ],
+      "description": "The existing application behavior requires users to create doctor.",
+      "id": "FR-03",
+      "source_capability_ids": [
+        "capability-doctors-create-3bf79f905f70"
+      ],
+      "title": "Create Doctor"
+    },
+    {
+      "api_dependencies": [
+        "PUT /api/doctors"
+      ],
+      "description": "The existing application behavior requires users to update doctor.",
+      "id": "FR-04",
+      "source_capability_ids": [
+        "capability-doctors-update-01a9514e9ad2"
+      ],
+      "title": "Update Doctor"
+    },
+    {
+      "api_dependencies": [
+        "DELETE /api/doctors/{id}"
+      ],
+      "description": "The existing application behavior requires users to delete doctor.",
+      "id": "FR-05",
+      "source_capability_ids": [
+        "capability-doctors-delete-2aa95f28df47"
+      ],
+      "title": "Delete Doctor"
+    },
+    {
+      "api_dependencies": [],
+      "description": "The existing application behavior requires users to continue through doctor results.",
+      "id": "FR-06",
+      "source_capability_ids": [
+        "capability-doctors-page-6cd0c8021d52"
+      ],
+      "title": "Continue Through Doctor Results"
+    },
+    {
+      "api_dependencies": [],
+      "description": "The existing application behavior requires users to maintain doctor profile media.",
+      "id": "FR-07",
+      "source_capability_ids": [
+        "capability-doctors-upload-4740bad485ec",
+        "capability-doctors-upload-6605f1033084"
+      ],
+      "title": "Maintain Doctor Profile Media"
+    },
+    {
+      "api_dependencies": [],
+      "description": "The existing application behavior requires users to validate doctor input.",
+      "id": "FR-08",
+      "source_capability_ids": [
+        "capability-doctors-validate-30e3b01c51a5",
+        "capability-doctors-validate-741cc6b88166",
+        "capability-doctors-validate-8a54f613e682",
+        "capability-doctors-validate-a1a5296a791a",
+        "capability-doctors-validate-c90d553a0e3a",
+        "capability-doctors-validate-f54eac18bb4b"
+      ],
+      "title": "Validate Doctor Input"
+    },
+    {
+      "api_dependencies": [],
+      "description": "The existing application behavior requires users to navigate from the doctor experience.",
+      "id": "FR-09",
+      "source_capability_ids": [
+        "capability-doctors-navigate-112aba01bc1f",
+        "capability-doctors-navigate-472c10f6e1fd",
+        "capability-doctors-navigate-ecdc3c506da0",
+        "capability-doctors-navigate-f3cd83a2ae08"
+      ],
+      "title": "Navigate from the Doctor Experience"
+    },
+    {
+      "api_dependencies": [
+        "GET /api/users/current/tenant"
+      ],
+      "description": "The existing application behavior requires users to establish current tenant context.",
+      "id": "FR-10",
+      "source_capability_ids": [
+        "capability-doctors-read-440206d0d254"
+      ],
+      "title": "Establish Current Tenant Context"
     }
   ],
   "information_filter": {
@@ -338,6 +829,7 @@
     ]
   },
   "security_context": "Feature-specific access and authorization requirements will be confirmed during architecture and stakeholder validation.",
+  "status": "FEATURE_SCOPE_READY_WITH_EXPLICIT_DISPOSITIONS",
   "stories": [
     {
       "actor": "user of the existing application",
@@ -638,6 +1130,7 @@
       ]
     }
   ],
+  "stories_regenerated": false,
   "target_design": {
     "mapped_screens": [],
     "mapped_stories": [],

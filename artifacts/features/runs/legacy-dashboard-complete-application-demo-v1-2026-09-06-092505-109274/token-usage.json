@@ -1,0 +1,5 @@
+{
+  "external_llm_api_calls": 0,
+  "feature_evidence_packages": 6,
+  "reasoning_mode": "INTERACTIVE_AGENT_MODE"
+}

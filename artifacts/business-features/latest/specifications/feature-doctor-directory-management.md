@@ -74,7 +74,7 @@ NO_EVIDENCE_BACKED_BUSINESS_RULES_IDENTIFIED
 - DYNAMIC: 0
 - EXTERNAL: 0
 - NO_BACKEND_ROUTE: 0
-- `PROVEN`: `src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js` -> `GET /api/users/current/tenant` -> `GET /api/users/current/tenant`
+- `PROVEN`: `src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js` -> `/api/users/current/tenant` -> `GET /api/users/current/tenant`
 - Limitation: The tenant-context mapping is proven; other doctor operations mentioned by the upstream dependency are not represented as proven Feature API relationships.
 
 ## Current User Experience

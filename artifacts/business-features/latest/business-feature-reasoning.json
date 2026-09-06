@@ -1,5 +1,5 @@
 {
-  "application_understanding_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694",
+  "application_understanding_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-092424-957063",
   "business_features": [
     {
       "actor_evidence_limitation": "No approved Feature evidence identifies a named business actor or persona; the specification therefore uses application-trigger language rather than assuming a healthcare role.",
@@ -11,21 +11,21 @@
         "no_backend_route": 0,
         "paths": [
           {
-            "api_contract": "GET /api/users/current/tenant",
+            "api_contract": "/api/users/current/tenant",
             "backend_endpoint": "GET /api/users/current/tenant",
             "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
             "status": "PROVEN",
             "workflow": "Dashboard summary loads current tenant"
           },
           {
-            "api_contract": "GET /api/users/current/tenant",
+            "api_contract": "/api/users/current/tenant",
             "backend_endpoint": "GET /api/users/current/tenant",
             "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
             "status": "PROVEN",
             "workflow": "Dashboard expenses load current tenant"
           },
           {
-            "api_contract": "GET /api/users/current/tenant",
+            "api_contract": "/api/users/current/tenant",
             "backend_endpoint": "GET /api/users/current/tenant",
             "frontend_source": "src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js",
             "status": "PROVEN",
@@ -867,7 +867,7 @@
         "no_backend_route": 0,
         "paths": [
           {
-            "api_contract": "GET /api/users/current/tenant",
+            "api_contract": "/api/users/current/tenant",
             "backend_endpoint": "GET /api/users/current/tenant",
             "frontend_source": "src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js",
             "status": "PROVEN",
@@ -1384,7 +1384,7 @@
         "no_backend_route": 0,
         "paths": [
           {
-            "api_contract": "GET /api/users/current/tenant",
+            "api_contract": "/api/users/current/tenant",
             "backend_endpoint": "GET /api/users/current/tenant",
             "frontend_source": "src/MyHealth.Web/content/app/components/patients/services/patientsService.js",
             "status": "PROVEN",
@@ -1868,7 +1868,7 @@
         "no_backend_route": 0,
         "paths": [
           {
-            "api_contract": "GET /api/users/current/tenant",
+            "api_contract": "/api/users/current/tenant",
             "backend_endpoint": "GET /api/users/current/tenant",
             "frontend_source": "src/MyHealth.Web/content/app/components/clinics/services/clinicsService.js",
             "status": "PROVEN",
@@ -2424,28 +2424,28 @@
         "no_backend_route": 0,
         "paths": [
           {
-            "api_contract": "GET /api/users/current/tenant",
+            "api_contract": "/api/users/current/tenant",
             "backend_endpoint": "GET /api/users/current/tenant",
             "frontend_source": "src/MyHealth.Web/content/app/components/users/services/usersService.js",
             "status": "PROVEN",
             "workflow": "Users load current tenant"
           },
           {
-            "api_contract": "GET /api/users/current/user",
+            "api_contract": "/api/users/current/user",
             "backend_endpoint": "GET /api/users/current/user",
             "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
             "status": "PROVEN",
             "workflow": "Header loads current user"
           },
           {
-            "api_contract": "GET /api/users/current/claims",
+            "api_contract": "/api/users/current/claims",
             "backend_endpoint": "GET /api/users/current/claims",
             "frontend_source": "src/MyHealth.Web/content/app/components/shared/controllers/headerController.js",
             "status": "PROVEN",
             "workflow": "Header loads current claims"
           },
           {
-            "api_contract": "GET /api/users/current/claims",
+            "api_contract": "/api/users/current/claims",
             "backend_endpoint": "GET /api/users/current/claims",
             "frontend_source": "src/MyHealth.Web/content/app/components/shared/services/initialPageService.js",
             "status": "PROVEN",
@@ -3160,7 +3160,7 @@
       ]
     }
   ],
-  "evidence_package_manifest_hash": "d93c012b5729deda3eb481fbf7de75c209c9a4c6df08723550dc997429a5634f",
-  "feature_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-141302-518966",
-  "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-034128"
+  "evidence_package_manifest_hash": "a041c4b5f68801c04d62825fc0782f833c2a6dc2841cbf097c9a803da6e9e183",
+  "feature_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-092505-109274",
+  "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-092108"
 }

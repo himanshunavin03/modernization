@@ -108,9 +108,9 @@ NO_EVIDENCE_BACKED_BUSINESS_RULES_IDENTIFIED
 - DYNAMIC: 2
 - EXTERNAL: 0
 - NO_BACKEND_ROUTE: 0
-- `PROVEN`: `src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js` -> `GET /api/users/current/tenant` -> `GET /api/users/current/tenant`
-- `PROVEN`: `src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js` -> `GET /api/users/current/tenant` -> `GET /api/users/current/tenant`
-- `PROVEN`: `src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js` -> `GET /api/users/current/tenant` -> `GET /api/users/current/tenant`
+- `PROVEN`: `src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js` -> `/api/users/current/tenant` -> `GET /api/users/current/tenant`
+- `PROVEN`: `src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js` -> `/api/users/current/tenant` -> `GET /api/users/current/tenant`
+- `PROVEN`: `src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js` -> `/api/users/current/tenant` -> `GET /api/users/current/tenant`
 - `UNRESOLVED`: `src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js` -> `/api/reports/clinicsummary` -> `GET /api/reports/clinicsummary`
 - `DYNAMIC`: `src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js` -> `'/api/reports/expenses/' + year` -> `GET /api/reports/expenses/{year}`
 - `DYNAMIC`: `src/MyHealth.Web/content/app/components/dashboard/services/dashboardService.js` -> `'/api/reports/patients/' + year` -> `GET /api/reports/patients/{year}`

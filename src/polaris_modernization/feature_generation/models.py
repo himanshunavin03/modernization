@@ -6,6 +6,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 from polaris_modernization.application_understanding.models import ConfidenceAssessment, EvidenceReference
+from polaris_modernization.capability_completeness import CapabilityDisposition
 
 
 ApiMappingStatus = Literal["PROVEN", "UNRESOLVED", "DYNAMIC", "EXTERNAL", "NO_BACKEND_ROUTE", "NOT_APPLICABLE"]
@@ -57,6 +58,7 @@ class FeatureCandidate(BaseModel):
     modernization_priority: Literal["HIGH", "MEDIUM", "LOW"]
     modernization_rationale: str
     limitations: list[str] = Field(default_factory=list)
+    capability_dispositions: list[CapabilityDisposition] = Field(default_factory=list)
 
 
 class PocFeatureSelection(BaseModel):
@@ -88,3 +90,4 @@ class FeatureCatalog(BaseModel):
     quality_review: dict
     limitations: list[str]
     next_action: str
+    capability_coverage: dict = Field(default_factory=dict)

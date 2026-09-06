@@ -7,6 +7,10 @@ from collections import defaultdict
 from polaris_modernization.models import Fact
 
 
+def _qualified_name(owner: object, function: object) -> str:
+    return f"{owner}.{function}" if owner and function else str(function or "")
+
+
 KIND_TO_LABEL = {
     "razor_view": "RazorView",
     "layout": "Layout",
@@ -24,6 +28,14 @@ KIND_TO_LABEL = {
     "client_component": "ClientComponent",
     "chart": "Chart",
     "ui_control": "UIControl",
+    "ui_action": "UIAction",
+    "ui_validation": "UIValidation",
+    "ui_selection": "UISelection",
+    "frontend_function": "FrontendFunction",
+    "frontend_invocation": "FrontendInvocation",
+    "backend_invocation": "BackendInvocation",
+    "backend_handler": "BackendHandler",
+    "persistence_operation": "PersistenceOperation",
     "api_call": "ApiCall",
     "endpoint": "Endpoint",
     "view_model": "Type",
@@ -75,8 +87,16 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
     pending_actions: list[tuple[str, Fact]] = []
     pending_returns: list[Fact] = []
     pending_framework: list[Fact] = []
+    pending_ui_actions: list[tuple[str, Fact]] = []
+    pending_invocations: list[tuple[str, Fact]] = []
+    pending_backend_invocations: list[tuple[str, Fact]] = []
     owners_by_file: dict[str, list[str]] = defaultdict(list)
     warnings: list[dict] = []
+    methods_by_route: dict[str, set[str]] = defaultdict(set)
+    for fact in facts:
+        if fact.kind == "api_call":
+            route = str(fact.properties.get("normalized_route_template") or fact.properties.get("normalized_route") or fact.name).rstrip("/")
+            methods_by_route[route].add(str(fact.properties.get("http_method") or "GET").upper())
 
     for fact in facts:
         evidence = fact.evidence.to_dict()
@@ -93,11 +113,16 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
                 target = add_node("ExternalReference", fact.name, evidence)
                 add_edge("IMPORTS", file_node, target, evidence)
             continue
-        node = add_node(label, fact.name, evidence, fact.properties)
+        node_name = fact.name
+        if fact.kind == "api_call":
+            route = str(fact.properties.get("normalized_route_template") or fact.properties.get("normalized_route") or fact.name).rstrip("/")
+            if len(methods_by_route[route]) > 1:
+                node_name = f"{str(fact.properties.get('http_method') or 'GET').upper()} {route}"
+        node = add_node(label, node_name, evidence, fact.properties)
         add_edge("DECLARES", file_node, node, evidence)
-        if fact.kind in {"razor_view", "layout", "partial_view", "script_asset", "style_asset", "client_component", "ui_control"}:
+        if fact.kind in {"razor_view", "layout", "partial_view", "script_asset", "style_asset", "client_component", "ui_control", "ui_action", "ui_validation", "ui_selection"}:
             add_edge("HOSTS", file_node, node, evidence)
-        if fact.kind in {"client_component", "ui_control"}:
+        if fact.kind in {"client_component", "ui_control", "ui_action", "ui_validation", "ui_selection"}:
             add_edge("CONTAINS_CONTROL", file_node, node, evidence)
         if fact.kind == "controller":
             controllers[fact.name] = node
@@ -117,12 +142,70 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
             owners_by_file[evidence["source_path"]].append(node)
         if fact.kind == "route":
             pending_routes.append((node, fact))
+        if fact.kind == "ui_action":
+            pending_ui_actions.append((node, fact))
+        if fact.kind == "frontend_invocation":
+            pending_invocations.append((node, fact))
+        if fact.kind == "backend_invocation":
+            pending_backend_invocations.append((node, fact))
         if fact.kind == "api_call":
             owners = owners_by_file[evidence["source_path"]]
-            source = owners[0] if len(owners) == 1 else file_node
+            function_name = fact.properties.get("function_name")
+            qualified = _qualified_name(fact.properties.get("service"), function_name)
+            source = next((item["id"] for item in nodes.values() if item["label"] == "FrontendFunction" and item["name"] == qualified), None)
+            source = source or (owners[0] if len(owners) == 1 else file_node)
             add_edge("CALLS_API", source, node, evidence, {"ownership": "proven" if len(owners) == 1 else "unresolved"})
+            if len(owners) == 1 and owners[0] != source:
+                add_edge("CALLS_API", owners[0], node, evidence, {"ownership": "proven", "compatibility": "service-level"})
             if len(owners) != 1:
                 warnings.append({"source_path": evidence["source_path"], "message": "API call owner was not uniquely proven; attached to File."})
+
+    functions = [item for item in nodes.values() if item["label"] == "FrontendFunction"]
+    for action_node, action_fact in pending_ui_actions:
+        handler = action_fact.properties.get("handler")
+        candidates = [item for item in functions if item["properties"].get("function_name") == handler]
+        action_parts = action_fact.evidence.source_path.split("/")
+        domain = action_parts[action_parts.index("components") + 1] if "components" in action_parts and action_parts.index("components") + 1 < len(action_parts) else None
+        scoped = [item for item in candidates if domain and f"/{domain}/" in f"/{item['evidence'][0]['source_path']}/"]
+        routed_controllers = {
+            str(route_fact.properties.get("controller", "")).casefold()
+            for _, route_fact in pending_routes
+            if isinstance(route_fact.properties.get("template"), str)
+            and action_fact.evidence.source_path.endswith(str(route_fact.properties["template"]).lstrip("/"))
+        }
+        preferred = [item for item in scoped if str(item["properties"].get("owner", "")).casefold() in routed_controllers]
+        preferred = preferred or [item for item in scoped if "/controllers/" in f"/{item['evidence'][0]['source_path']}/" or str(item["properties"].get("owner", "")).lower().endswith("controller")]
+        resolved = preferred or scoped or candidates
+        if len(resolved) == 1:
+            add_edge("TRIGGERS", action_node, resolved[0]["id"], action_fact.evidence.to_dict(), {"status": "PROVEN"})
+    for _, invocation_fact in pending_invocations:
+        caller_name = _qualified_name(invocation_fact.properties.get("caller_owner"), invocation_fact.properties.get("caller"))
+        target_name = _qualified_name(invocation_fact.properties.get("target_owner"), invocation_fact.properties.get("target_function"))
+        caller = next((item["id"] for item in functions if item["name"] == caller_name), None)
+        target = next((item["id"] for item in functions if item["name"].casefold() == target_name.casefold()), None)
+        if caller and target:
+            add_edge("INVOKES", caller, target, invocation_fact.evidence.to_dict(), {"status": "PROVEN"})
+    actions_and_methods = [item for item in nodes.values() if item["label"] in {"Action", "Method"}]
+    backend_handlers = [item for item in nodes.values() if item["label"] == "BackendHandler"]
+    persistence_nodes = [item for item in nodes.values() if item["label"] == "PersistenceOperation"]
+    for endpoint in (item for item in nodes.values() if item["label"] == "Endpoint"):
+        arity = len(endpoint["properties"].get("parameters", []))
+        qualified = f"{_qualified_name(endpoint['properties'].get('controller'), endpoint['properties'].get('action'))}/{arity}"
+        action = next((item for item in backend_handlers if item["name"] == qualified), None)
+        if action:
+            add_edge("HANDLED_BY", endpoint["id"], action["id"], endpoint["evidence"][0], {"status": "PROVEN"})
+    for _, invocation_fact in pending_backend_invocations:
+        caller_name = f"{_qualified_name(invocation_fact.properties.get('caller_owner'), invocation_fact.properties.get('caller'))}/{invocation_fact.properties.get('caller_arity', 0)}"
+        caller = next((item for item in backend_handlers if item["name"] == caller_name), None)
+        hint = str(invocation_fact.properties.get("target_owner_hint", "")).casefold()
+        target = next((item for item in backend_handlers if item["properties"].get("function_name") == invocation_fact.properties.get("target_function") and item["properties"].get("arity") == invocation_fact.properties.get("target_arity") and hint in str(item["properties"].get("owner", "")).casefold()), None)
+        if caller and target:
+            add_edge("INVOKES", caller["id"], target["id"], invocation_fact.evidence.to_dict(), {"status": "PROVEN"})
+    for operation in persistence_nodes:
+        qualified = f"{_qualified_name(operation['properties'].get('repository'), operation['properties'].get('handler'))}/{operation['properties'].get('handler_arity', 0)}"
+        handler = next((item for item in backend_handlers if item["name"] == qualified), None)
+        if handler:
+            add_edge("PERFORMS", handler["id"], operation["id"], operation["evidence"][0], {"status": "PROVEN"})
 
     for action_node, action_fact in pending_actions:
         controller = controllers.get(str(action_fact.properties.get("controller")))
@@ -154,7 +237,10 @@ def normalize(project_id: str, inventory: list[dict], facts: list[Fact], metadat
     for fact in pending_framework:
         evidence = fact.evidence.to_dict()
         if fact.kind == "api_mapping":
-            call = api_nodes.get(fact.name)
+            proof = fact.properties.get("proof", {})
+            operation_route = str(proof.get("frontend_template") or proof.get("frontend_route") or fact.name).rstrip("/")
+            operation_name = f"{str(proof.get('frontend_http_method') or 'GET').upper()} {operation_route}"
+            call = api_nodes.get(operation_name) or api_nodes.get(fact.name)
             endpoint = endpoint_nodes.get(str(fact.properties.get("endpoint")))
             if call and endpoint and fact.properties.get("status") == "PROVEN":
                 add_edge("IMPLEMENTED_BY", call, endpoint, evidence, {

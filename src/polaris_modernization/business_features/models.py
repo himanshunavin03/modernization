@@ -177,3 +177,4 @@ class BusinessFeatureCatalog(BaseModel):
     limitations: list[str]
     quality_review: dict
     next_action: str
+    capability_coverage: dict = Field(default_factory=dict)

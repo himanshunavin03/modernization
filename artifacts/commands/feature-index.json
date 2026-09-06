@@ -132,7 +132,12 @@
       ],
       "adr_ids": [],
       "api_contract_ids": [
-        "API-DOCTOR_DIRECTORY_MANAGEMENT-001"
+        "API-01",
+        "API-02",
+        "API-03",
+        "API-04",
+        "API-05",
+        "API-06"
       ],
       "architecture_available": true,
       "architecture_decision_ids": [],
@@ -304,7 +309,7 @@
   "schema_version": 1,
   "source_hashes": {
     "artifacts/feature-specifications/latest/feature-clinic-appointment-experience.json": "5517c6f6fb7ba3022f30c5ef7fdf6ac24f15d8c6f62f1b3bc05654cd7112bebf",
-    "artifacts/feature-specifications/latest/feature-doctor-directory-management.json": "7113dc55c9ee993f900f83d6fc8bafe1cb84ad9cbeb38bc4449505cff84ce4a1",
+    "artifacts/feature-specifications/latest/feature-doctor-directory-management.json": "327ac611e168938d9ae8abc6df99847570a6eb0ccb2b2108a360fbfb4581023a",
     "artifacts/feature-specifications/latest/feature-operational-dashboard-insights.json": "3dba4b920c835cd516a1046d514f7eb9858558ec9c6eb7e092122009cf1d620f",
     "artifacts/feature-specifications/latest/feature-patient-directory-management.json": "6c7424babd440bfacdc8c479e08a658434f15aa04a2820da312c1e55a300ef71",
     "artifacts/feature-specifications/latest/feature-user-access-context.json": "8880cc74b199e4d751b261acf02209a0997b5232d448d8f0068bb43ab4eea42d"

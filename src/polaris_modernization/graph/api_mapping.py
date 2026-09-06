@@ -850,6 +850,7 @@ def map_api_calls(calls: list[dict], endpoints: list[dict]) -> list[dict]:
     mappings = []
     for mapping in resolved["mapping_facts"]:
         endpoint = next(item for item in endpoints if f"{item.get('verb', 'GET').upper()} {item['route']}" == mapping.properties["endpoint"])
-        call = next(item for item in calls if str(item["route"]) == mapping.name)
+        proof = mapping.properties["proof"]
+        call = next(item for item in calls if item.get("verb", "GET").upper() == proof["frontend_http_method"] and re.sub(r"\{[^}]+\}", "{PARAM}", normalize_route(str(item["route"]))) == proof["frontend_template"])
         mappings.append({"call": call, "endpoint": endpoint, "evidence": [call["evidence"], endpoint["evidence"]]})
     return mappings

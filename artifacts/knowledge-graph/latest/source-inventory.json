@@ -21462,7 +21462,7 @@
   "scope": {
     "coverage_status": "complete_with_opaque_dependencies",
     "extraction_warning_count": 0,
-    "opaque_dependency_count": 43,
+    "opaque_dependency_count": 44,
     "out_of_scope_file_count": 0,
     "review_warning_count": 4453,
     "scope_description": "Complete discovered application inventory and graph.",

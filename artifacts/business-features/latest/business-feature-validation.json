@@ -4,6 +4,7 @@
   "business_feature_validation": "PASS",
   "business_quality_validation": "PASS",
   "business_rules_used": 1,
+  "capability_completeness": "PASS_WITH_EXCLUSION",
   "dependencies_used": 5,
   "domain_concepts_used": 6,
   "feature_count_preserved": true,

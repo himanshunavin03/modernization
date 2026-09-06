@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 
 import tree_sitter_c_sharp
 
@@ -18,6 +19,11 @@ def _first_identifier(node, source: bytes) -> str | None:
         if child.type == "identifier":
             return node_text(child, source)
     return None
+
+
+def _named_child_count(node, field: str) -> int:
+    value = node.child_by_field_name(field)
+    return len(value.named_children) if value is not None else 0
 
 
 def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list[Fact]:
@@ -44,7 +50,31 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
             if not method_name:
                 continue
             method_evidence = evidence(path, source_root, method_node, digest, project_id)
-            facts.append(Fact("action" if is_controller else "method", method_name, method_evidence, {"controller": class_name}))
+            arity = _named_child_count(method_node, "parameters")
+            facts.append(Fact("action" if is_controller else "method", method_name, method_evidence, {"controller": class_name, "arity": arity}))
+            facts.append(Fact("backend_handler", f"{class_name}.{method_name}/{arity}", method_evidence, {
+                "owner": class_name, "function_name": method_name, "arity": arity,
+                "handler_kind": "CONTROLLER" if is_controller else "DOMAIN",
+            }))
+            for invocation in (node for node in walk(method_node) if node.type == "invocation_expression"):
+                function = invocation.child_by_field_name("function")
+                function_text = node_text(function, source) if function is not None else ""
+                match = re.fullmatch(r"([A-Za-z_][\w]*)\.([A-Za-z_][\w]*)", function_text)
+                if match and match.group(1).lstrip("_").lower().endswith(("repository", "service", "gateway", "context")):
+                    facts.append(Fact("backend_invocation", f"{class_name}.{method_name}->{function_text}", evidence(path, source_root, invocation, digest, project_id), {
+                        "caller_owner": class_name, "caller": method_name,
+                        "caller_arity": arity, "target_owner_hint": match.group(1).lstrip("_"),
+                        "target_function": match.group(2), "target_arity": _named_child_count(invocation, "arguments"),
+                    }))
+            if class_name.lower().endswith("repository") or "repositories" in path.as_posix().lower():
+                for invocation in (node for node in walk(method_node) if node.type == "invocation_expression"):
+                    text = node_text(invocation, source)
+                    operation = next((value for value in ("OrderBy", "OrderByDescending", "Skip", "Take", "Add", "Update", "Remove", "SaveChanges", "SaveChangesAsync") if f".{value}(" in text), None)
+                    if operation:
+                        facts.append(Fact("persistence_operation", f"{class_name}.{method_name}:{operation}", evidence(path, source_root, invocation, digest, project_id), {
+                            "repository": class_name, "handler": method_name, "handler_arity": arity, "operation": operation,
+                            "expression": text,
+                        }))
             for return_node in (node for node in walk(method_node) if node.type == "return_statement"):
                 invocation = next((node for node in walk(return_node) if node.type == "invocation_expression"), None)
                 if invocation is None or _first_identifier(invocation, source) != "View":

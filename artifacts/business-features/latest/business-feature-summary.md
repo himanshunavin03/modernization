@@ -1,7 +1,7 @@
 # Business Feature Catalog
 
 - Readiness: `BUSINESS_FEATURES_READY_WITH_LIMITATIONS`
-- Business Feature run: `legacy-dashboard-complete-application-demo-v1-2026-09-01-145336-704667`
+- Business Feature run: `legacy-dashboard-complete-application-demo-v1-2026-09-06-092543-664972`
 - Approved Features enriched: 5
 - Open questions: 8
 

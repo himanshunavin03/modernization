@@ -2,16 +2,16 @@
   "api_mapping_summary": {
     "ambiguous": 0,
     "backend_endpoints": 58,
-    "dynamic": 22,
+    "dynamic": 0,
     "external": 1,
-    "frontend_api_calls": 44,
-    "no_backend_route": 1,
-    "proven": 10,
-    "unresolved": 32
+    "frontend_api_calls": 33,
+    "no_backend_route": 0,
+    "proven": 32,
+    "unresolved": 0
   },
   "claim_validation": "PASS",
   "kg_readiness_gate": "PASS",
-  "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-034128",
+  "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-092108",
   "package_hash_validation": "PASS",
   "provenance_validation": "PASS",
   "unsupported_claims_rejected": 0,

@@ -1,9 +1,9 @@
 # Evidence-Backed Modernization Features
 
 - Readiness: `FEATURES_READY_WITH_LIMITATIONS`
-- KG run: `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128`
-- Application Understanding run: `legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694`
-- Feature run: `legacy-dashboard-complete-application-demo-v1-2026-09-01-141302-518966`
+- KG run: `legacy-dashboard-complete-application-demo-v1-2026-09-06-092108`
+- Application Understanding run: `legacy-dashboard-complete-application-demo-v1-2026-09-06-092424-957063`
+- Feature run: `legacy-dashboard-complete-application-demo-v1-2026-09-06-092505-109274`
 - Features: 5
 
 ## feature-operational-dashboard-insights: Operational Dashboard Insights

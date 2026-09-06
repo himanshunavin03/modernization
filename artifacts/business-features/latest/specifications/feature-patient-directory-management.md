@@ -66,7 +66,7 @@ NO_EVIDENCE_BACKED_BUSINESS_RULES_IDENTIFIED
 - DYNAMIC: 0
 - EXTERNAL: 0
 - NO_BACKEND_ROUTE: 0
-- `PROVEN`: `src/MyHealth.Web/content/app/components/patients/services/patientsService.js` -> `GET /api/users/current/tenant` -> `GET /api/users/current/tenant`
+- `PROVEN`: `src/MyHealth.Web/content/app/components/patients/services/patientsService.js` -> `/api/users/current/tenant` -> `GET /api/users/current/tenant`
 - Limitation: Tenant context is proven; other patient operations are not represented as proven Feature API relationships.
 
 ## Current User Experience

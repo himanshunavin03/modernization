@@ -95,8 +95,35 @@ def _enclosing_named_function(node, source: bytes) -> str | None:
             value = current.child_by_field_name("value")
             if name is not None and value is not None and value.type in {"function_expression", "arrow_function"}:
                 return node_text(name, source)
+        if current.type == "assignment_expression":
+            left = current.child_by_field_name("left")
+            right = current.child_by_field_name("right")
+            if left is not None and right is not None and right.type in {"function_expression", "arrow_function"}:
+                return node_text(left, source).split(".")[-1]
         current = current.parent
     return None
+
+
+def _qualified_function(owner: str | None, name: str) -> str:
+    return f"{owner}.{name}" if owner else name
+
+
+def _function_fact(path, source_root, source, digest, project_id, node, owner: str | None) -> Fact | None:
+    name = None
+    if node.type == "function_declaration":
+        name_node = node.child_by_field_name("name")
+        name = node_text(name_node, source) if name_node else None
+    elif node.type == "assignment_expression":
+        left = node.child_by_field_name("left")
+        right = node.child_by_field_name("right")
+        if left is not None and right is not None and right.type in {"function_expression", "arrow_function"}:
+            name = node_text(left, source).split(".")[-1]
+    if not name:
+        return None
+    return Fact("frontend_function", _qualified_function(owner, name), evidence(path, source_root, node, digest, project_id), {
+        "function_name": name,
+        "owner": owner,
+    })
 
 
 def _file_owner_name(root, source: bytes, suffix: str) -> str | None:
@@ -128,10 +155,12 @@ def _api_call_fact(
     file_service: str | None,
     file_controller: str | None,
     query_components: list[str] | None = None,
+    request_header_components: list[str] | None = None,
 ) -> Fact:
     node_evidence = evidence(path, source_root, node, digest, project_id)
     url_value = _resolve_expression(url_node, source, variables)
     query_components = query_components or []
+    request_header_components = request_header_components or []
     function_name = _enclosing_named_function(node, source)
     return Fact(
         "api_call",
@@ -147,6 +176,7 @@ def _api_call_fact(
             "controller_or_component": file_controller,
             "function_name": function_name,
             "query_components": query_components,
+            "request_header_components": request_header_components,
         },
     )
 
@@ -158,8 +188,16 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
     variables: dict[str, dict[str, str]] = {}
     file_service = _file_owner_name(root, source, "service")
     file_controller = _file_owner_name(root, source, "controller")
+    if file_service is None and "service" in path.stem.lower():
+        file_service = path.stem
+    if file_controller is None and "controller" in path.stem.lower():
+        file_controller = path.stem
 
     for node in walk(root):
+        function_fact = _function_fact(path, source_root, source, digest, project_id, node, file_controller or file_service)
+        if function_fact is not None:
+            facts.append(function_fact)
+
         if node.type == "variable_declarator":
             name = node.child_by_field_name("name")
             value = node.child_by_field_name("value")
@@ -183,6 +221,18 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
         node_evidence = evidence(path, source_root, node, digest, project_id)
         property_name = _call_property(node, source)
         arguments = _arguments(node)
+        function = node.child_by_field_name("function")
+        function_text = node_text(function, source) if function is not None else ""
+        if property_name and "." in function_text and not function_text.startswith(("$http.", "angular.")):
+            receiver = function_text.rsplit(".", 1)[0]
+            if receiver.lower().endswith(("service", "client", "gateway", "repository")):
+                caller = _enclosing_named_function(node, source)
+                facts.append(Fact("frontend_invocation", function_text, node_evidence, {
+                    "caller": caller,
+                    "caller_owner": file_controller or file_service,
+                    "target_owner": receiver,
+                    "target_function": property_name,
+                }))
         if _call_object(node, source, "angular.module") and arguments:
             facts.append(Fact("angular_module", _literal_or_expression(arguments[0], source), node_evidence))
         if property_name in {"directive", "controller", "service"} and arguments:
@@ -208,7 +258,8 @@ def extract(path: Path, source_root: Path, digest: str, project_id: str) -> list
             if "url" in values:
                 method = _literal_or_expression(values["method"], source).upper() if "method" in values else "GET"
                 query_components = _object_keys(values["params"], source) if "params" in values else []
-                facts.append(_api_call_fact(path, source_root, source, digest, project_id, node, method, values["url"], variables, file_service, file_controller, query_components))
+                request_headers = _object_keys(values["headers"], source) if "headers" in values else []
+                facts.append(_api_call_fact(path, source_root, source, digest, project_id, node, method, values["url"], variables, file_service, file_controller, query_components, request_headers))
         if property_name and property_name.lower() in HTTP_VERBS and _call_object(node, source, f"$http.{property_name}") and arguments:
             facts.append(
                 _api_call_fact(

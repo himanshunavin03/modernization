@@ -1,14 +1,14 @@
 {
-  "application_understanding_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-054440-719694",
-  "feature_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-141302-518966",
+  "application_understanding_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-092424-957063",
+  "feature_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-092505-109274",
   "hash_validation": "PASS",
-  "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-01-034128",
-  "manifest_hash": "d93c012b5729deda3eb481fbf7de75c209c9a4c6df08723550dc997429a5634f",
+  "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-092108",
+  "manifest_hash": "a041c4b5f68801c04d62825fc0782f833c2a6dc2841cbf097c9a803da6e9e183",
   "packages": {
-    "business-feature:feature-clinic-appointment-experience": "72bd6996fb0d962d84d659e2e731095e1af91325a318ef8dacab1939df02150d",
-    "business-feature:feature-doctor-directory-management": "88be27ed7505fd886c2dd1974c157dc89e3a0aaad7c972e1c18bfa91c18c1c77",
-    "business-feature:feature-operational-dashboard-insights": "3eaf9d307c2500e68c96d1a3d5f1c8297ad08ccb303d4199df5e1b642a6d3681",
-    "business-feature:feature-patient-directory-management": "2ae2b0ead62593b5f6d307f8a34d7306459a51957002b4e656e18979485203fb",
-    "business-feature:feature-user-access-context": "5cc1a6252056a4a46ecdeff152e3d6a00d12c04f493827d14d5332532ea62a46"
+    "business-feature:feature-clinic-appointment-experience": "724d951d5c65e5e8c8d97eb1d33c243fc1e168d90903ff2d59ac004692194133",
+    "business-feature:feature-doctor-directory-management": "b44e4a936edc08617e18f8ac1a31ef84396a44fbc01040b95d0e5ed0211b6cfe",
+    "business-feature:feature-operational-dashboard-insights": "35a3f8b94b787a6877c16715e2198bfc15c040ff8b786e0095ce4dfeae11483e",
+    "business-feature:feature-patient-directory-management": "cf6db6b621dd55a3d0cf04cad3aa05b27f2f7dd8d0095d6441824a9a75e5d835",
+    "business-feature:feature-user-access-context": "3257b1dca82a8bb6ba6afddb3c1a67c96678108dcf89c9bad6c61cc1c02f830f"
   }
 }

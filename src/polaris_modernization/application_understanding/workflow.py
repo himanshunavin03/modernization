@@ -15,6 +15,7 @@ from polaris_modernization.application_understanding.models import (
     Dependency, EvidenceBackedItem, EvidenceReference, UISurface, UserWorkflow,
 )
 from polaris_modernization.application_understanding.retrieval import build_evidence_packages, load_approved_graph
+from polaris_modernization.capability_completeness import derive_source_capabilities
 
 
 class UnsupportedAgentClaimsError(ValueError):
@@ -197,6 +198,7 @@ def validate_and_persist_application_understanding(kg_root: Path, output_root: P
     razor = next((node["name"] for node in graph["nodes"] if node["label"] == "RazorView" and "/Dashboard/" in node["name"]), None)
     angular = next((node["name"] for node in graph["nodes"] if node["label"] == "AngularController" and node["name"] == "DashboardController"), None)
     api_summary = _api_summary(prepared["approved"])
+    source_capabilities = derive_source_capabilities(graph)
     understanding = ApplicationUnderstanding(
         project_id=project_id, kg_run_id=prepared["approved"]["kg_run_id"], status="COMPLETE", application_purpose=submission.application_purpose.name,
         primary_application_type=submission.primary_application_type,
@@ -207,7 +209,8 @@ def validate_and_persist_application_understanding(kg_root: Path, output_root: P
         limitations=[f"API evidence retains {api_summary['unresolved']} unresolved structural calls, {api_summary['dynamic']} dynamic URLs, {api_summary['external']} external API, and {api_summary['no_backend_route']} call without a backend route.", "Roslyn and opaque-dependency limitations remain as approved by the KG readiness gate."],
         api_mapping_summary=api_summary, readiness="APPLICATION_UNDERSTANDING_READY_WITH_LIMITATIONS",
         business_modules=submission.business_modules, business_capabilities=submission.business_capabilities,
-        user_workflows=workflows + submission.user_workflows, business_rules=submission.business_rules,
+        user_workflows=workflows + submission.user_workflows, source_capabilities=source_capabilities,
+        business_rules=submission.business_rules,
         ui_surfaces=surfaces + submission.ui_surfaces, domain_concepts=submission.domain_concepts,
         dependencies=submission.dependencies, best_razor_demo_candidate=submission.best_razor_demo_candidate or razor,
         razor_demo_capability=submission.razor_demo_capability, razor_demo_workflow=submission.razor_demo_workflow,
@@ -218,6 +221,10 @@ def validate_and_persist_application_understanding(kg_root: Path, output_root: P
     run_id, destination = _timestamped_path(output_root / "runs", project_id)
     destination.mkdir(parents=True, exist_ok=False)
     _write_json(destination / "application-understanding.json", understanding.model_dump(mode="json"))
+    _write_json(destination / "source-capabilities.json", {
+        "project_id": project_id, "kg_run_id": prepared["approved"]["kg_run_id"],
+        "capabilities": [item.model_dump(mode="json") for item in source_capabilities],
+    })
     _write_json(destination / "agent-reasoning.json", submission.model_dump(mode="json"))
     _write_json(destination / "evidence-packages.json", [item.model_dump(mode="json") for item in prepared["packages"]])
     package_manifest, manifest_hash = _package_manifest(prepared["packages"])
@@ -238,6 +245,7 @@ def validate_and_persist_application_understanding(kg_root: Path, output_root: P
 - Evidence packages: {len(prepared['packages'])}
 - Evidence manifest validation: `PASS`
 - Agent claims rejected: {rejected}
+- Independently addressable source capabilities: {len(source_capabilities)}
 
 ## Application Purpose
 

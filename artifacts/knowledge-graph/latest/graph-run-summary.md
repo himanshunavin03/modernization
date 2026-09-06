@@ -3,8 +3,8 @@
 - Overall status: `succeeded`
 - Project ID: `legacy-dashboard-complete-application-demo-v1`
 - Source root: `C:\Users\himan\OneDrive\Documents\polaris-modernization-poc\modernization\modernization\source\HealthClinic.biz`
-- Started: `2026-09-02T05:05:33.508401Z`
-- Ended: `2026-09-02T05:06:20.818427Z`
+- Started: `2026-09-06T09:20:23.752654Z`
+- Ended: `2026-09-06T09:21:04.829583Z`
 - Neo4j Browser: http://localhost:7474
 
 ## Workflow Stages
@@ -18,9 +18,9 @@
 ## Results
 
 - Files: 2384
-- Facts: 8939
-- Nodes: 4926
-- Edges: 5208
+- Facts: 14383
+- Nodes: 6773
+- Edges: 10204
 - Warnings: 4453
 - Extraction warnings: 0
 - Scope: `Full application analysis`
@@ -30,11 +30,11 @@
 
 ## Artifacts
 
-- `knowledge_graph`: `artifacts\legacy-dashboard-complete-application-demo-v1\knowledge-graph.json`
-- `source_inventory`: `artifacts\legacy-dashboard-complete-application-demo-v1\source-inventory.json`
-- `facts`: `artifacts\legacy-dashboard-complete-application-demo-v1\facts.json`
-- `graph_run_status`: `artifacts\legacy-dashboard-complete-application-demo-v1\graph-run-status.json`
-- `graph_run_summary`: `artifacts\legacy-dashboard-complete-application-demo-v1\graph-run-summary.md`
+- `knowledge_graph`: `C:\Users\himan\AppData\Local\Temp\polaris-capability-release-1a461c0ce23341c5b2793847a5399717\legacy-dashboard-complete-application-demo-v1\knowledge-graph.json`
+- `source_inventory`: `C:\Users\himan\AppData\Local\Temp\polaris-capability-release-1a461c0ce23341c5b2793847a5399717\legacy-dashboard-complete-application-demo-v1\source-inventory.json`
+- `facts`: `C:\Users\himan\AppData\Local\Temp\polaris-capability-release-1a461c0ce23341c5b2793847a5399717\legacy-dashboard-complete-application-demo-v1\facts.json`
+- `graph_run_status`: `C:\Users\himan\AppData\Local\Temp\polaris-capability-release-1a461c0ce23341c5b2793847a5399717\legacy-dashboard-complete-application-demo-v1\graph-run-status.json`
+- `graph_run_summary`: `C:\Users\himan\AppData\Local\Temp\polaris-capability-release-1a461c0ce23341c5b2793847a5399717\legacy-dashboard-complete-application-demo-v1\graph-run-summary.md`
 
 ## Safe Next Actions
 

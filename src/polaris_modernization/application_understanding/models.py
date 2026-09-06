@@ -5,6 +5,8 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from polaris_modernization.capability_completeness import SourceCapability
+
 
 EvidenceProvenance = Literal["COMPILER_PROVEN", "PROJECT_PARTIAL", "SYNTHETIC_FALLBACK", "STRUCTURAL_ONLY"]
 InterpretationOrigin = Literal["DETERMINISTIC_FACT", "AGENT_REASONING"]
@@ -116,6 +118,7 @@ class ApplicationUnderstanding(BaseModel):
     business_modules: list[BusinessModule]
     business_capabilities: list[BusinessCapability]
     user_workflows: list[UserWorkflow]
+    source_capabilities: list[SourceCapability] = Field(default_factory=list)
     business_rules: list[BusinessRule]
     ui_surfaces: list[UISurface]
     domain_concepts: list[DomainConcept]
