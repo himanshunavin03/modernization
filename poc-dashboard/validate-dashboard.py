@@ -74,6 +74,7 @@ def main() -> int:
         "MODERN_DOCTORS_LINK": "http://localhost:4200/doctors",
         "MODERN_NEW_DOCTOR_LINK": "http://localhost:4200/doctors/new",
         "KNOWLEDGE_GRAPH_LINK": "http://127.0.0.1:5175/?token=polaris-layout-readonly",
+        "ARCHITECTURE_ARTIFACT_LINK": "../artifacts/architecture/latest/architecture.html",
         "FEATURE_SPEC_LINK": "./generated/feature-specification.html",
         "TECHNICAL_TASKS_LINK": "./generated/technical-tasks.html",
         "APPLICATION_UNDERSTANDING_LINK": "./generated/application-understanding.html",
@@ -98,6 +99,12 @@ def main() -> int:
 
     rendered_files = [DASHBOARD / "index.html", DASHBOARD / "styles.css", DASHBOARD / "app.js", *GENERATED.glob("*")]
     rendered_text = "\n".join(path.read_text(encoding="utf-8", errors="replace") for path in rendered_files)
+    index_text = (DASHBOARD / "index.html").read_text(encoding="utf-8")
+    registry_text = (DASHBOARD.parent / "src/polaris_modernization/commands/registry.py").read_text(encoding="utf-8")
+    canonical_commands = set(re.findall(r'CommandDefinition\("([a-z][a-z-]+)"', registry_text))
+    presented_commands = set(re.findall(r'<code[^>]*>/([a-z][a-z-]+)', index_text))
+    missing_commands = sorted(canonical_commands - presented_commands)
+    unsupported_commands = sorted(presented_commands - canonical_commands)
     local_path_patterns = [r"C:\\Users\\", r"C:/Users/", r"\\Users\\[A-Za-z0-9._-]+", r"/home/[A-Za-z0-9._-]+"]
     local_paths = sum(len(re.findall(pattern, rendered_text, flags=re.IGNORECASE)) for pattern in local_path_patterns)
     secret_patterns = [
@@ -116,9 +123,12 @@ def main() -> int:
     print(f"PLAYWRIGHT_REPORT_LINK={'PASS' if report.is_file() else 'NOT_CURRENTLY_GENERATED'}")
     print(f"STALE_PRESENTATION_DATA={stale}")
     print(f"UNSUPPORTED_PRESENTATION_CLAIMS={unsupported}")
+    print(f"CANONICAL_COMMANDS_PRESENTED={len(presented_commands)}")
+    print(f"MISSING_CANONICAL_COMMANDS={','.join(missing_commands) if missing_commands else '0'}")
+    print(f"UNSUPPORTED_COMMAND_NAMES={','.join(unsupported_commands) if unsupported_commands else '0'}")
     print(f"LOCAL_USER_PATHS_IN_PRESENTATION={local_paths}")
     print(f"SECRET_SCAN={'PASS' if secret_hits == 0 else 'FAIL'}")
-    return 0 if not broken and all(result == "PASS" for result in link_results.values()) and not stale and not unsupported and not local_paths and not secret_hits else 1
+    return 0 if not broken and all(result == "PASS" for result in link_results.values()) and not stale and not unsupported and not missing_commands and not unsupported_commands and not local_paths and not secret_hits else 1
 
 
 if __name__ == "__main__":

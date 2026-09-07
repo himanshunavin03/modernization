@@ -4,6 +4,7 @@ const demoConfig = Object.freeze({
   modernDoctors: 'http://localhost:4200/doctors',
   modernNewDoctor: 'http://localhost:4200/doctors/new',
   knowledgeGraph: 'http://127.0.0.1:5175/?token=polaris-layout-readonly',
+  architectureArtifact: '../artifacts/architecture/latest/architecture.html',
   featureSpec: './generated/feature-specification.html',
   technicalTasks: './generated/technical-tasks.html',
   applicationUnderstanding: './generated/application-understanding.html',

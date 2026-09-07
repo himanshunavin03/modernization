@@ -2,6 +2,10 @@
 
 This is a standalone, offline-friendly presentation surface. It reads approved Polaris artifacts only when the generated pages are refreshed; it does not alter the legacy or modern applications.
 
+The **Polaris Commands** section presents the exact canonical command workflow shared by Codex, Copilot, and the CLI. Command names are governed by `src/polaris_modernization/commands/registry.py`; the dashboard distinguishes the nine-command end-to-end customer path from supporting discovery, delivery-control, design, status, and whole-modernization validation commands.
+
+The **Angular 22** section presents the approved target architecture from `artifacts/architecture/latest/architecture.html`. It identifies Doctor Directory Management as the selected POC feature and makes clear that the feature inherits the canonical application architecture without a feature-specific override.
+
 ## Refresh presentation data and pages
 
 From the repository root:

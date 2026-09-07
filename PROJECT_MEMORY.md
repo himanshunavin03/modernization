@@ -1,5 +1,13 @@
 # Project Memory
 
+## Commands Associated With Existing Dashboard Steps (Prompt 083)
+
+The standalone `Polaris Commands` presentation section introduced by Prompt 082 was removed. All 19 canonical commands now appear directly inside the existing lifecycle element they enable: design and architecture commands inside the PLAN architecture node; graph and application-understanding commands inside the corresponding Knowledge Graph metrics/card; requirement generation and discovery commands inside the Feature/Story/AC/Task flow and Doctor Feature card; modernization commands inside the Angular delivery flow; validation commands inside the browser-validation flow; and status/help commands beside the final lifecycle outcome. No separate command-specific card or navigation step remains. Registry-parity validation reports 19 presented, zero missing, and zero unsupported names; Chromium responsive and accessibility validation pass.
+
+## Polaris Command Workflow Presentation Added (Prompt 082)
+
+The executive POC dashboard now includes a dedicated customer-facing `Polaris Commands` section between Architecture and Understanding. It explains how Codex, Copilot, and the Polaris CLI delegate to one canonical `CommandRegistry` and `CommandService`, then use versioned artifacts, persisted state, prerequisite enforcement, and deterministic validation gates to advance modernization. The primary journey presents the exact nine commands from `/create-knowledge-graph` through `/validate-feature <feature>`, while supporting groups expose all ten remaining Discover, delivery-control, design, status, and whole-modernization commands. Validation compares the presentation directly with `src/polaris_modernization/commands/registry.py`: all 19 canonical names are present, with zero missing or unsupported command names. Static and Chromium responsive/accessibility validation pass.
+
 ## Tokenized Knowledge Graph Dashboard Link Added (Prompt 081)
 
 The POC presentation Knowledge Graph section now exposes a prominent `Open interactive graph` action targeting `http://127.0.0.1:5175/?token=polaris-layout-readonly` in a new tab. The local Understand Anything viewer was restarted on port 5175 with that stable token because the prior process used a different unknown token and returned HTTP 403 for protected graph data. The tokenized graph endpoint now returns HTTP 200, and static plus Chromium dashboard validation pass, including responsive, accessibility, and exact graph-link checks.

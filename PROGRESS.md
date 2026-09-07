@@ -1,5 +1,22 @@
 # Progress
 
+## Contextual Polaris Commands In Dashboard (Prompt 083)
+
+- Removed the standalone `Commands` navigation item, presentation section, command-stage cards, supporting-command cards, and extra Demo Flow step.
+- Embedded each exact command within its associated existing dashboard element across Architecture, Knowledge Graph and Understanding, Requirements, Angular modernization, Validation, and Outcome.
+- Preserved all 19 canonical registry commands with zero missing and zero unsupported names; the validator checks contextual command markers against `src/polaris_modernization/commands/registry.py`.
+- Static validation passes with zero broken links, stale data, unsupported claims, local user paths, or secret hits. Chromium validation passes at desktop and laptop viewports for responsiveness, accessibility, graph linking, and the contextual 19-command inventory.
+- Visual inspection confirms commands read as supporting references within the established lifecycle rather than as a separate product area. No file under `source/` changed.
+
+## Polaris Command Workflow Dashboard Section (Prompt 082)
+
+- Added a new `Polaris Commands` presentation section and primary/demo-flow navigation entry showing how the custom solution moves from legacy evidence to validated modernization.
+- Presented the exact nine-command core journey: `/create-knowledge-graph`, `/understand-application`, `/generate-features`, `/generate-stories`, `/generate-acceptance-criteria`, `/recommend-architecture [feature]`, `/generate-technical-tasks [feature]`, `/modernize-feature <feature>`, and `/validate-feature <feature>`.
+- Presented the ten remaining canonical registry commands under Discover + Trace, Delivery Control, and Design + Assurance, covering all 19 commands without inventing `create-features` or another alias.
+- Added a customer-facing architecture view of Codex/Copilot/CLI adapters delegating to the shared command registry and service, versioned artifacts/persisted state, and deterministic validation gates.
+- Extended static validation to compare displayed command names with `src/polaris_modernization/commands/registry.py`. Result: 19 presented, 0 missing, 0 unsupported; all existing link, freshness, claim, local-path, and secret checks pass.
+- Chromium validation passes for all presentation pages at desktop and laptop sizes, including responsive, accessibility, tokenized Knowledge Graph, and Playwright report checks. Visual inspection of the new command section passed. No file under `source/` changed.
+
 ## Tokenized Knowledge Graph Dashboard Link (Prompt 081)
 
 - Added a visible `Open interactive graph` button to the Knowledge Graph section of the POC presentation. It opens `http://127.0.0.1:5175/?token=polaris-layout-readonly` in a new tab.

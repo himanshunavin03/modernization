@@ -20,6 +20,7 @@
     <nav class="primary-nav" aria-label="Presentation sections">
       <a href="#overview">Overview</a>
       <a href="#architecture">Architecture</a>
+      <a href="#commands">Commands</a>
       <a href="#understanding">Understanding</a>
       <a href="#requirements">Requirements</a>
       <a href="#angular">Angular 22</a>
@@ -121,10 +122,41 @@
       </div>
     </section>
 
+    <section class="section-commands" id="commands" data-section="Polaris Commands" aria-labelledby="commands-heading">
+      <div class="section-wrap">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">03 · Polaris command workflow</p><h2 id="commands-heading">One interface drives the journey.</h2></div>
+          <p>Customers use the same canonical commands through Codex, Copilot, or the Polaris CLI. A shared command registry and service enforce prerequisites, reuse approved artifacts, and persist progress between sessions.</p>
+        </div>
+
+        <div class="command-platform reveal" aria-label="Polaris custom solution architecture">
+          <article><span>ENTRY POINTS</span><strong>Codex · Copilot · CLI</strong><small>Thin adapters expose the same command names</small></article><b aria-hidden="true">→</b>
+          <article class="accent"><span>ORCHESTRATION</span><strong>Command Registry + CommandService</strong><small>One implementation path, prerequisite checks, safe reruns</small></article><b aria-hidden="true">→</b>
+          <article><span>SOURCE OF TRUTH</span><strong>Versioned artifacts + persisted state</strong><small>Evidence and delivery status survive chat sessions</small></article><b aria-hidden="true">→</b>
+          <article><span>CONTROL</span><strong>Deterministic validation gates</strong><small>Unsupported claims and incomplete prerequisites stay blocked</small></article>
+        </div>
+
+        <div class="command-journey reveal" aria-label="Core end-to-end Polaris command journey">
+          <article class="command-stage"><span>01 · UNDERSTAND</span><h3>Build trusted context</h3><code>/create-knowledge-graph</code><code>/understand-application</code><p>Parsers and semantic analysis establish source-backed application understanding.</p></article>
+          <article class="command-stage"><span>02 · DEFINE</span><h3>Approve delivery scope</h3><code>/generate-features</code><code>/generate-stories</code><code>/generate-acceptance-criteria</code><p>Evidence becomes business Features, Jira-quality Stories, and testable outcomes.</p></article>
+          <article class="command-stage"><span>03 · PLAN</span><h3>Lock the path forward</h3><code>/recommend-architecture [feature]</code><code>/generate-technical-tasks [feature]</code><p>Approved requirements drive architecture selection and an ordered implementation plan.</p></article>
+          <article class="command-stage"><span>04 · MODERNIZE</span><h3>Deliver one safe slice</h3><code>/modernize-feature &lt;feature&gt;</code><p>The registered engine assembles evidence, architecture, tasks, APIs, and UI guidance before generating code.</p></article>
+          <article class="command-stage"><span>05 · VALIDATE</span><h3>Prove the outcome</h3><code>/validate-feature &lt;feature&gt;</code><p>Implementation inventory, build, tests, and browser validation report a proven result.</p></article>
+        </div>
+
+        <div class="command-toolbox reveal">
+          <div><span>DISCOVER + TRACE</span><code>/list-features</code><code>/show-feature &lt;feature&gt;</code><code>/show-traceability &lt;feature&gt;</code></div>
+          <div><span>DELIVERY CONTROL</span><code>/modernize-story &lt;story-id&gt;</code><code>/start-modernization</code><code>/resume-modernization</code></div>
+          <div><span>DESIGN + ASSURANCE</span><code>/configure-design &lt;figma-url&gt;</code><code>/modernization-status</code><code>/validate-modernization</code><code>/help-polaris</code></div>
+        </div>
+        <p class="command-note reveal"><strong>Customer value:</strong> each command advances a governed lifecycle stage. It does not depend on chat memory, silently bypass missing inputs, or overwrite an implementation already detected.</p>
+      </div>
+    </section>
+
     <section class="section-light" id="understanding" data-section="Understanding" aria-labelledby="understanding-heading">
       <div class="section-wrap">
         <div class="section-heading reveal">
-          <div><p class="eyebrow">03 · Knowledge Graph + understanding</p><h2 id="understanding-heading">The semantic backbone.</h2></div>
+          <div><p class="eyebrow">04 · Knowledge Graph + understanding</p><h2 id="understanding-heading">The semantic backbone.</h2></div>
           <div class="section-summary"><p>The graph connects implementation evidence into a navigable source of truth, then supports a higher-level functional view of the application.</p><a class="button button-primary" data-link="knowledgeGraph">Open interactive graph <span aria-hidden="true">↗</span></a></div>
         </div>
         <div class="metric-grid reveal" aria-label="Current approved analysis metrics">
@@ -158,7 +190,7 @@
     <section class="section-mist" id="requirements" data-section="Requirements" aria-labelledby="requirements-heading">
       <div class="section-wrap">
         <div class="section-heading reveal">
-          <div><p class="eyebrow">04 · Requirements + traceability</p><h2 id="requirements-heading">Evidence becomes a delivery contract.</h2></div>
+          <div><p class="eyebrow">05 · Requirements + traceability</p><h2 id="requirements-heading">Evidence becomes a delivery contract.</h2></div>
           <p>Application understanding flows into approved requirements, testable outcomes, and architecture-guided technical tasks.</p>
         </div>
         <div class="requirements-flow reveal" aria-label="Requirements traceability flow">
@@ -190,37 +222,42 @@
       <div class="angular-grid-bg" aria-hidden="true"></div>
       <div class="section-wrap">
         <div class="section-heading inverse reveal">
-          <div><p class="eyebrow">05 · Target architecture</p><h2 id="angular-heading"><span>Angular 22</span>, architected for change.</h2></div>
-          <p>Modernization is more than translating AngularJS into new syntax. It reshapes state, component boundaries, routing, typing, data access, performance, and test strategy.</p>
+          <div><p class="eyebrow">06 · Approved target architecture</p><h2 id="angular-heading"><span>Angular 22</span> enterprise architecture.</h2></div>
+          <div class="section-summary"><p>The locked architecture selects an Nx modular application, governed integration, and explicit reactive boundaries while preserving existing business APIs.</p><a class="button button-primary" data-link="architectureArtifact">Open full architecture <span aria-hidden="true">↗</span></a></div>
         </div>
-        <div class="angular-layout">
-          <div class="angular-flow reveal" aria-label="Implemented Angular architecture flow">
-            <article><small>EXPERIENCE</small><strong>Browser</strong></article><i></i>
-            <article><small>APPLICATION</small><strong>Angular Shell</strong></article><i></i>
-            <article><small>ROUTING</small><strong>Lazy Feature Route</strong></article><i></i>
-            <article class="accent"><small>FEATURE</small><strong>Standalone Components</strong><em>Typed Reactive Forms</em></article><i></i>
-            <article class="accent"><small>STATE</small><strong>Signals + computed()</strong><em>OnPush rendering</em></article><i></i>
-            <article><small>INTEGRATION</small><strong>Data Access</strong><em>RxJS + HttpClient</em></article><i></i>
-            <article><small>CONTRACT</small><strong>Backend APIs</strong></article>
-          </div>
-          <div class="angular-capabilities reveal">
-            <article><span>01</span><h3>Standalone Components</h3><p>Direct feature composition with reduced module ceremony.</p></article>
-            <article><span>02</span><h3>Signals</h3><p>Synchronous feature and user-interface state ownership.</p></article>
-            <article><span>03</span><h3>computed()</h3><p>Derived state without duplicated synchronization logic.</p></article>
-            <article><span>04</span><h3>OnPush</h3><p>Predictable, efficient component rendering.</p></article>
-            <article><span>05</span><h3>Lazy Routing</h3><p>Feature loading and clear route isolation.</p></article>
-            <article><span>06</span><h3>Typed Reactive Forms</h3><p>Strong form-state and validation typing.</p></article>
-            <article><span>07</span><h3>RxJS + HttpClient</h3><p>Observable asynchronous integration boundaries.</p></article>
-            <article><span>08</span><h3>Strict TypeScript</h3><p>Compile-time protection across implementation layers.</p></article>
-            <article><span>09</span><h3>Modern Control Flow</h3><p>Type-aware <code>@if</code> and <code>@for</code> templates.</p></article>
-          </div>
+
+        <div class="architecture-proof reveal" aria-label="Approved architecture decision summary"><article><strong>52</strong><span>Decisions evaluated</span></article><article><strong>32</strong><span>Selected</span></article><article><strong>13</strong><span>Alternatives retained</span></article><article><strong>9</strong><span>Architecture decision records</span></article></div>
+
+        <div class="architecture-feature-context reveal" aria-label="Selected POC feature architecture context">
+          <div><span>SELECTED POC FEATURE</span><strong>Doctor Directory Management</strong><small>21 stories · 41 acceptance criteria · 16 delivery tasks</small></div>
+          <div><span>ARCHITECTURE APPLICATION</span><strong>Inherits the canonical application architecture</strong><small>Application-level source · no feature-specific override</small></div>
         </div>
+
+        <div class="target-topology reveal" aria-label="Selected target integration topology">
+          <article><small>EXPERIENCE</small><strong>Angular 22 application</strong><span>Nx · Standalone · Signals · RxJS · Router · Design system</span></article><i aria-hidden="true"></i>
+          <article class="target"><small>TARGET LAYER</small><strong>API Gateway</strong><span>Ingress · Policy · Routing · Rate limits · Correlation</span></article><i aria-hidden="true"></i>
+          <article class="target"><small>TARGET LAYER</small><strong>Backend for Frontend</strong><span>Orchestration · Aggregation · DTO isolation · Response shaping</span></article><i aria-hidden="true"></i>
+          <article class="existing"><small>PRESERVED</small><strong>Existing business APIs</strong><span>Current routes and backend behavior remain unchanged</span></article>
+        </div>
+
+        <div class="architecture-decisions-grid reveal">
+          <article><span>01 · FRONTEND</span><h3>Modern Angular foundation</h3><p>Angular 22, TypeScript, standalone components, functional APIs, and modern template control flow.</p></article>
+          <article><span>02 · WORKSPACE</span><h3>Governed Nx boundaries</h3><p>Nx monorepo with domain-oriented, shared design-system, and API data-access libraries.</p></article>
+          <article><span>03 · REACTIVITY</span><h3>Signals with RxJS</h3><p>Signals own synchronous and derived UI state; RxJS owns HTTP cancellation and asynchronous composition.</p></article>
+          <article><span>04 · RUNTIME</span><h3>Zoneless, with a verified fallback</h3><p>Zoneless Angular is selected after dependency compatibility checks; Zone.js remains the explicit fallback.</p></article>
+          <article><span>05 · ROUTING + RENDERING</span><h3>Lazy CSR application</h3><p>Angular Router, lazy Feature routes, functional guards, code splitting, and client-side rendering.</p></article>
+          <article><span>06 · INTEGRATION</span><h3>Typed request boundaries</h3><p>Typed HttpClient and functional interceptors propagate organization, correlation, and normalized errors.</p></article>
+          <article><span>07 · ENTERPRISE EDGE</span><h3>Gateway + BFF</h3><p>Provider-neutral policy and Angular-specific orchestration sit in front of preserved business APIs.</p></article>
+          <article><span>08 · QUALITY</span><h3>Accessible and observable delivery</h3><p>WCAG-oriented design, unit/component tests, Playwright, correlated telemetry, and Nx-aware CI gates.</p></article>
+        </div>
+
+        <div class="architecture-boundaries reveal"><div><span>SELECTED</span><strong>Angular 22 · Nx · Signals + RxJS · Zoneless · CSR · Gateway + BFF</strong></div><div><span>EXPLICIT LIMITS</span><strong>NgRx, microfrontends, and Module Federation are not selected · Authentication provider requires clarification</strong></div></div>
       </div>
     </section>
 
     <section class="section-light" id="live-demo" data-section="Live Demo" aria-labelledby="live-heading">
       <div class="section-wrap">
-        <div class="section-heading reveal"><div><p class="eyebrow">06 · Live modernization demo</p><h2 id="live-heading">Compare. Inspect. Explore.</h2></div><p>Move directly between the reference experience, the modern Angular implementation, and the delivery artifacts behind it.</p></div>
+        <div class="section-heading reveal"><div><p class="eyebrow">07 · Live modernization demo</p><h2 id="live-heading">Compare. Inspect. Explore.</h2></div><p>Move directly between the reference experience, the modern Angular implementation, and the delivery artifacts behind it.</p></div>
         <div class="comparison-grid">
           <article class="comparison-card legacy reveal"><div class="comparison-label"><span>REFERENCE</span><small>Legacy application</small></div><h3>Existing business experience</h3><p>.NET · Razor · AngularJS · C# · Web API</p><div class="window-preview legacy-window" aria-hidden="true"><div class="window-bar"><i></i><i></i><i></i></div><div class="legacy-ui"><span></span><div><b></b><b></b><b></b></div><section><em></em><em></em><em></em></section></div></div><a class="button button-dark" data-link="legacyApp">Open legacy UI <span>↗</span></a></article>
           <div class="preserved-bridge reveal"><span>PRESERVED</span><i></i><div><b>Business behavior</b><b>User workflows</b><b>Validation</b><b>Navigation</b><b>API contracts</b><b>UX intent</b></div><i></i></div>
@@ -238,6 +275,7 @@
             <a data-link="applicationUnderstanding"><span class="launch-icon">U</span><div><strong>App understanding</strong><small>Functional view</small></div><b>→</b></a>
             <a data-link="playwrightCoverage"><span class="launch-icon">V</span><div><strong>AC traceability</strong><small>Browser coverage</small></div><b>→</b></a>
             <a data-link="playwrightReport"><span class="launch-icon">P</span><div><strong>Playwright report</strong><small data-report-status>Execution evidence</small></div><b>↗</b></a>
+            <a data-link="architectureArtifact"><span class="launch-icon">R</span><div><strong>Target architecture</strong><small>Selected decisions and ADRs</small></div><b>→</b></a>
           </div>
         </div>
       </div>
@@ -245,7 +283,7 @@
 
     <section class="section-validation" id="validation" data-section="Validation" aria-labelledby="validation-heading">
       <div class="section-wrap">
-        <div class="section-heading inverse reveal"><div><p class="eyebrow">07 · Automated validation</p><h2 id="validation-heading">Requirements become browser evidence.</h2></div><p>Playwright exercises observable Angular behavior in a real browser and keeps acceptance criteria connected to named validation scenarios.</p></div>
+        <div class="section-heading inverse reveal"><div><p class="eyebrow">08 · Automated validation</p><h2 id="validation-heading">Requirements become browser evidence.</h2></div><p>Playwright exercises observable Angular behavior in a real browser and keeps acceptance criteria connected to named validation scenarios.</p></div>
         <div class="validation-flow reveal" aria-label="Playwright validation flow">
           <article><span>01</span><strong>Acceptance Criteria</strong></article><i></i><article><span>02</span><strong>Playwright Scenarios</strong></article><i></i><article><span>03</span><strong>Real Browser</strong></article><i></i><article><span>04</span><strong>Angular UI</strong></article><i></i><article><span>05</span><strong>Observable Result</strong></article><i></i><article><span>06</span><strong>Execution Report</strong></article>
         </div>
@@ -264,14 +302,14 @@
 
     <section class="section-outcome" id="outcome" data-section="Outcome" aria-labelledby="outcome-heading">
       <div class="section-wrap outcome-grid">
-        <div class="outcome-copy reveal"><p class="eyebrow">POC outcome</p><h2 id="outcome-heading">A reusable path from legacy complexity to validated modernization.</h2><p>The POC demonstrates how deterministic analysis, semantic modeling, evidence-driven understanding, architecture-guided delivery, and automated validation can operate as one traceable modernization lifecycle.</p><a class="button button-primary" href="#overview">Return to overview ↑</a></div>
+        <div class="outcome-copy reveal"><p class="eyebrow">09 · POC outcome</p><h2 id="outcome-heading">A reusable path from legacy complexity to validated modernization.</h2><p>The POC demonstrates how deterministic analysis, semantic modeling, evidence-driven understanding, architecture-guided delivery, and automated validation can operate as one traceable modernization lifecycle.</p><a class="button button-primary" href="#overview">Return to overview ↑</a></div>
         <div class="outcome-list reveal"><article><span>01</span><strong>Legacy application understanding</strong></article><article><span>02</span><strong>Deterministic evidence extraction</strong></article><article><span>03</span><strong>Cross-layer semantic modeling</strong></article><article><span>04</span><strong>Requirements + traceability</strong></article><article><span>05</span><strong>Architecture-driven modernization</strong></article><article><span>06</span><strong>Angular 22 implementation</strong></article><article><span>07</span><strong>Behavior + UX preservation</strong></article><article><span>08</span><strong>Browser-based validation</strong></article></div>
       </div>
     </section>
 
     <aside class="demo-agenda" aria-label="Demo flow">
-      <button type="button" class="agenda-toggle" aria-expanded="false"><span>Demo flow</span><b>09 steps</b></button>
-      <nav><a href="#live-demo">01 <span>Legacy Application</span></a><a href="#architecture">02 <span>Modernization Architecture</span></a><a href="#understanding">03 <span>Knowledge Graph</span></a><a data-link="applicationUnderstanding">04 <span>Application Understanding</span></a><a href="#requirements">05 <span>Feature / Stories / AC</span></a><a href="#angular">06 <span>Angular 22 Architecture</span></a><a href="#live-demo">07 <span>Legacy vs Modern UI</span></a><a href="#validation">08 <span>Playwright Validation</span></a><a href="#outcome">09 <span>POC Outcome</span></a></nav>
+      <button type="button" class="agenda-toggle" aria-expanded="false"><span>Demo flow</span><b>10 steps</b></button>
+      <nav><a href="#live-demo">01 <span>Legacy Application</span></a><a href="#architecture">02 <span>Modernization Architecture</span></a><a href="#commands">03 <span>Polaris Command Workflow</span></a><a href="#understanding">04 <span>Knowledge Graph</span></a><a data-link="applicationUnderstanding">05 <span>Application Understanding</span></a><a href="#requirements">06 <span>Feature / Stories / AC</span></a><a href="#angular">07 <span>Angular 22 Architecture</span></a><a href="#live-demo">08 <span>Legacy vs Modern UI</span></a><a href="#validation">09 <span>Playwright Validation</span></a><a href="#outcome">10 <span>POC Outcome</span></a></nav>
     </aside>
   </main>
 

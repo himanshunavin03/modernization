@@ -17,7 +17,7 @@ const viewports = [
 
 await fs.mkdir(new URL('./validation/', import.meta.url), { recursive: true });
 const browser = await chromium.launch({ headless: true });
-const results = { pages: {}, responsive: true, accessibility: true, graphLink: false, reportLink: false };
+const results = { pages: {}, responsive: true, accessibility: true, graphLink: false, reportLink: false, architectureLink: false };
 
 function luminance([red, green, blue]) {
   const values = [red, green, blue].map((value) => {
@@ -53,7 +53,7 @@ try {
       pageResult[viewportName] = !horizontalOverflow;
       results.pages[name] = pageResult;
       if (name === 'dashboard') {
-        for (const section of ['overview', 'architecture', 'understanding', 'requirements', 'angular', 'live-demo', 'validation', 'outcome']) {
+        for (const section of ['overview', 'architecture', 'commands', 'understanding', 'requirements', 'angular', 'live-demo', 'validation', 'outcome']) {
           if (!(await page.locator(`#${section}`).count())) throw new Error(`Dashboard section missing: ${section}`);
         }
         if (viewportName === 'desktop') {
@@ -75,7 +75,13 @@ try {
           results.reportLink = (await report.getAttribute('href'))?.includes('playwright-report/index.html') ?? false;
           const graph = page.locator('[data-link="knowledgeGraph"]').first();
           results.graphLink = (await graph.getAttribute('href')) === 'http://127.0.0.1:5175/?token=polaris-layout-readonly';
-          for (const section of ['architecture', 'understanding', 'requirements', 'angular', 'live-demo', 'validation', 'outcome']) {
+          const architecture = page.locator('[data-link="architectureArtifact"]').first();
+          results.architectureLink = (await architecture.getAttribute('href')) === '../artifacts/architecture/latest/architecture.html';
+          if ((await page.locator('#commands .command-stage code').count()) !== 9) throw new Error('Core Polaris command journey is incomplete');
+          if ((await page.locator('#angular .target-topology article').count()) !== 4) throw new Error('Angular target topology is incomplete');
+          if ((await page.locator('#angular .architecture-decisions-grid article').count()) !== 8) throw new Error('Angular architecture decisions are incomplete');
+          if (!(await page.locator('#angular').innerText()).includes('Doctor Directory Management')) throw new Error('Selected POC feature is missing from Angular architecture');
+          for (const section of ['architecture', 'commands', 'understanding', 'requirements', 'angular', 'live-demo', 'validation', 'outcome']) {
             await page.evaluate((identifier) => {
               const element = document.querySelector(`#${identifier}`);
               if (element) window.scrollTo({ top: element.offsetTop, left: 0, behavior: 'instant' });
@@ -106,3 +112,4 @@ console.log(`RESPONSIVE_CHECK=${results.responsive ? 'PASS' : 'FAIL'}`);
 console.log(`ACCESSIBILITY_CHECK=${results.accessibility ? 'PASS' : 'FAIL'}`);
 console.log(`KNOWLEDGE_GRAPH_RUNTIME_LINK=${results.graphLink ? 'PASS' : 'FAIL'}`);
 console.log(`PLAYWRIGHT_REPORT_RUNTIME_LINK=${results.reportLink ? 'PASS' : 'FAIL'}`);
+console.log(`ARCHITECTURE_ARTIFACT_RUNTIME_LINK=${results.architectureLink ? 'PASS' : 'FAIL'}`);
