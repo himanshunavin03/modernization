@@ -1,5 +1,14 @@
 # Progress
 
+## Doctor POC UI And E2E Freeze (Prompt 075)
+
+- Baseline passed at clean HEAD `66ecb11f9407653912f80a4c0ac0408661f2c1f8`. The legacy create/edit template, controller, form/input styles, assets, and authenticated running pages were inspected read-only.
+- Rebuilt only the shared Doctor detail template/styles plus the minimum DatePipe/registration-date component support. Create/edit now use the legacy toolbar hierarchy, full 1120px two-panel form, underlined fields, three-column contact row, file-driven photo panel, patient count, registration date, and edit-only record deletion while preserving typed Reactive Forms, Signals/effect state, OnPush, RxJS service boundaries, POST/PUT/DELETE, validation, and navigation.
+- Native Chrome visual validation at 1366x900 passed for legacy create, Angular create, legacy edit, and Angular edit. Legacy form geometry was x=123.828, width=1118.328, height=531.938 with 826.328/290 panels; Angular was x=123, width=1120, height=530 with 828/290 panels. Real edit data displayed Amanda Silver, photo, 87 patients, and Apr 12, 2015.
+- Implemented TT-016 in the existing Doctor Playwright suite and configured the existing HTML reporter with retry traces and failure screenshot/video retention. Final Doctor-only result: 9 discovered, 8 passed, 0 failed, 1 explicitly skipped Patient-dependency scenario. Real-backend scenarios: 1 passed. Mocked-backend scenarios: 7 passed.
+- Validated exact set equality between the frozen 41 AC, Playwright titles, and `docs/validation/doctor-playwright-coverage.json`: 39 PASS, 0 FAIL, 2 `BLOCKED_BY_PATIENT_FEATURE`, 0 unexplained. HTML report generated at ignored `modernized/apps/healthclinic-web-e2e/playwright-report/index.html`; final validation is `docs/validation/doctor-poc-final-validation.md`.
+- Final verification: backend HTTP 200 at 127.0.0.1:5000 (DNX PID 41300), Angular HTTP 200 at localhost:4200 (PID 14788), `npm run build` passed, and the focused Doctor/tenant command passed 13 tests across 5 files. Frozen source/upstream/task/Dashboard paths have no diff.
+
 ## Doctor List UI Fidelity Repair (Prompt 074)
 
 - Inspected the authoritative legacy Doctor list template plus `_grid.scss`, `_doctors.scss`, `_buttons.scss`, and icon definitions without modifying `source/`. Legacy structure is a toolbar with Select all/conditional Delete/New doctor, then one six-cell record per doctor using `15/20/10/25/15/15` widths, a 55px header, 100px rows, 60px portraits, right-side edit/delete icons, and centered Load more.

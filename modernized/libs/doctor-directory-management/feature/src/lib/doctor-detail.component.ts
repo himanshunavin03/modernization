@@ -1,10 +1,11 @@
+import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, effect, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { DoctorDirectoryStore, type Doctor } from '@modernized/doctor-directory-management/state';
 
 @Component({
-  selector: 'modernized-doctor-directory-management-detail', standalone: true, imports: [RouterLink, ReactiveFormsModule],
+  selector: 'modernized-doctor-directory-management-detail', standalone: true, imports: [RouterLink, ReactiveFormsModule, DatePipe],
   providers: [DoctorDirectoryStore], templateUrl: './doctor-detail.component.html',
   styleUrl: './doctor-directory.component.css', changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -15,6 +16,7 @@ export class DoctorDetailComponent {
   private readonly destroyRef = inject(DestroyRef);
   private readonly builder = inject(FormBuilder).nonNullable;
   protected readonly editMode = this.route.snapshot.paramMap.has('id');
+  protected readonly registrationDate = new Date();
   protected readonly fields = ['Name', 'Description', 'Address', 'Email', 'Phone', 'Mobile'] as const;
   protected readonly form = this.builder.group({
     Name: ['', Validators.required], Description: ['', Validators.required],
