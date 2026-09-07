@@ -1,5 +1,11 @@
 # Project Memory
 
+## Doctor List Legacy UI Fidelity Repair (Prompt 074)
+
+Prompt 074 repaired only the modern Doctor list structure and styling against the running legacy HealthClinic Doctor screen. The legacy and modern pages were authenticated and rendered at 1366x900 with native Chrome DevTools Protocol; Playwright was not run. The final Angular grid matches the legacy six-column proportions `15/20/10/25/15/15`, centered 1120px width, 55px header, 100px records, and 60px portraits. Four API-backed doctors rendered as exactly four rows, with header and body x-coordinates aligned for Name, Patients, Email, Speciality, and actions. Select all, conditional selected-delete, per-row selection/delete, edit navigation, New doctor, and Load more retain their existing Angular store/router bindings and accessible labels; visible per-record `Select <name>` rows were removed.
+
+Final `npm run build` passes. The configured focused Doctor/tenant Nx command passes 13 tests across 5 files. `source/`, KG, Application Understanding, Features, Stories, AC, technical tasks, Dashboard, and Playwright are unchanged. Angular PID 14788 remains on port 4200 and legacy DNX PID 41300 remains on port 5000.
+
 ## Doctor Patients Navigation Dependency Resolved (Prompt 073)
 
 Prompt 073 started from clean HEAD `05f7d148c744b0aab0520f1649b7aaa6e677d765`. Frozen KG `legacy-dashboard-complete-application-demo-v1-2026-09-06-203944` proves that the edit-only `Patients` button calls the intentionally misspelled legacy handler `nagivateToPatientList()`, which invokes `$state.transitionTo('patients')`. The configured legacy state URL is `/patients`; no navigation parameters or Doctor context are passed.

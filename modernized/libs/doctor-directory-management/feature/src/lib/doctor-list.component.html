@@ -1,19 +1,79 @@
 <section class="directory" aria-labelledby="directory-heading">
-  <div class="title-row"><div><p class="eyebrow">Directory</p><h1 id="directory-heading">Doctors</h1></div><a routerLink="new">New doctor</a></div>
-  @if (store.anySelected()) { <button type="button" [disabled]="store.saving()" (click)="removeSelected()">Delete</button> }
-  @if (store.errorMessage()) { <p class="error" role="alert">{{ store.errorMessage() }}</p> }
+  <h1 id="directory-heading" class="visually-hidden">Doctors</h1>
+
+  <label class="select-all">
+    <input
+      #allSelection
+      type="checkbox"
+      [checked]="store.allSelected()"
+      [disabled]="store.saving()"
+      (change)="store.selectAll(allSelection.checked)"
+    >
+    <span>Select all</span>
+  </label>
+  @if (store.anySelected()) {
+    <button class="toolbar-button delete-selected" type="button" [disabled]="store.saving()" (click)="removeSelected()">
+      <span class="button-icon" aria-hidden="true">&#x1F5D1;</span>
+      Delete
+    </button>
+  }
+  <a class="toolbar-button new-doctor" routerLink="new">
+    <span class="button-icon" aria-hidden="true">+</span>
+    New doctor
+  </a>
+
+  @if (store.errorMessage()) {
+    <p class="error" role="alert">{{ store.errorMessage() }}</p>
+  }
   @if (store.orderedItems(); as items) {
     @if (items.length) {
-      <label><input #allSelection type="checkbox" [checked]="store.allSelected()" [disabled]="store.saving()" (change)="store.selectAll(allSelection.checked)"> Select all displayed doctors</label>
-      <div class="data-grid" aria-label="Doctor directory">
-        <div class="grid-header" aria-hidden="true"><span class="visually-hidden">Photo</span><span>Name</span><span>Patient Count</span><span>Email</span><span>Speciality</span><span class="visually-hidden">Action</span></div>
-        @for (item of items; track item.DoctorId) {
-          <div class="record-selection"><label><input #recordSelection type="checkbox" [checked]="store.selectedIds().has(item.DoctorId)" [disabled]="store.saving()" (change)="store.selectRecord(item.DoctorId, recordSelection.checked)"> Select {{ item.Name }}</label><button type="button" [disabled]="store.saving()" (click)="remove([item.DoctorId])" aria-label="Delete {{ item.Name }}">Delete</button></div>
-          <a class="grid-row" [routerLink]="[item.DoctorId]" aria-label="View {{ item.Name }}"><img [src]="pictureUrl(item)" alt="" class="avatar"><span data-label="Name">{{ item.Name }}</span><span data-label="Patient Count">{{ item.PatientCount }}</span><span data-label="Email">{{ item.Email }}</span><span data-label="Speciality">{{ item.Speciality }}</span><span class="view-link">View</span></a>
-        }
+      <div class="data-grid" role="table" aria-label="Doctor directory">
+        <div class="grid-header" role="row">
+          <span role="columnheader"><span class="visually-hidden">Select and photo</span></span>
+          <span role="columnheader">Name</span>
+          <span role="columnheader">Patients</span>
+          <span role="columnheader">Email</span>
+          <span role="columnheader">Speciality</span>
+          <span role="columnheader"><span class="visually-hidden">Actions</span></span>
+        </div>
+        <div class="grid-body" role="rowgroup">
+          @for (item of items; track item.DoctorId) {
+            <div class="grid-row" role="row" [class.selected]="store.selectedIds().has(item.DoctorId)">
+              <div class="identity-cell" role="cell">
+                <input
+                  #recordSelection
+                  type="checkbox"
+                  [checked]="store.selectedIds().has(item.DoctorId)"
+                  [disabled]="store.saving()"
+                  (change)="store.selectRecord(item.DoctorId, recordSelection.checked)"
+                  aria-label="Select {{ item.Name }}"
+                >
+                <img [src]="pictureUrl(item)" alt="" class="avatar">
+              </div>
+              <a class="name-cell" role="cell" [routerLink]="[item.DoctorId]" aria-label="Edit {{ item.Name }}">{{ item.Name }}</a>
+              <span role="cell" data-label="Patients">{{ item.PatientCount || 0 }}</span>
+              <span role="cell" data-label="Email">{{ item.Email }}</span>
+              <span role="cell" data-label="Speciality">{{ item.Speciality }}</span>
+              <div class="row-actions" role="cell">
+                <a class="icon-action" [routerLink]="[item.DoctorId]" aria-label="Edit {{ item.Name }}">
+                  <span aria-hidden="true">&#x270E;</span>
+                </a>
+                <button class="icon-action" type="button" [disabled]="store.saving()" (click)="remove([item.DoctorId])" aria-label="Delete {{ item.Name }}">
+                  <span aria-hidden="true">&#x1F5D1;</span>
+                </button>
+              </div>
+            </div>
+          }
+        </div>
       </div>
-    } @else if (!store.loading()) { <p class="empty">NO DATA</p> }
+    } @else if (!store.loading()) {
+      <p class="empty">NO DATA</p>
+    }
   }
-  @if (store.loading()) { <p class="status" role="status">Loading directory...</p> }
-  @if (!store.noMoreData() && store.items()?.length) { <button class="load-more" type="button" [disabled]="store.loading() || store.saving()" (click)="store.loadNext()">Load more</button> }
+  @if (store.loading()) {
+    <p class="status" role="status">Loading directory...</p>
+  }
+  @if (!store.noMoreData() && store.items()?.length) {
+    <button class="load-more" type="button" [disabled]="store.loading() || store.saving()" (click)="store.loadNext()">Load more</button>
+  }
 </section>

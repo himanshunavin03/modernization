@@ -1,5 +1,12 @@
 # Progress
 
+## Doctor List UI Fidelity Repair (Prompt 074)
+
+- Inspected the authoritative legacy Doctor list template plus `_grid.scss`, `_doctors.scss`, `_buttons.scss`, and icon definitions without modifying `source/`. Legacy structure is a toolbar with Select all/conditional Delete/New doctor, then one six-cell record per doctor using `15/20/10/25/15/15` widths, a 55px header, 100px rows, 60px portraits, right-side edit/delete icons, and centered Load more.
+- Replaced the modern list's separate `.record-selection` block plus linked data row with one accessible repeated `role="row"` containing checkbox+portrait, name, patients, email, speciality, and edit/delete actions. Accessible per-record selection text is now `aria-label` only. Existing Signals/store calls, confirmation, router links, New doctor, and Load more behavior are unchanged.
+- Native Chrome rendering against the authenticated running applications (not Playwright) captured and visually inspected both screens at 1366x900. Legacy grid geometry was x=123.828, width=1118.328; Angular was x=123, width=1120. Both rendered four 100px rows with matching six-column boundaries and toolbar/load-more placement. All requested visual alignment gates pass.
+- Verification: final `npm run build` passed. `npx nx test healthclinic-web --watch=false --include='../../../libs/doctor-directory-management/**/*.spec.ts' --include='../../../libs/core/platform/src/lib/tenant-context*.spec.ts'` passed 13 tests across 5 files. Playwright was not executed or changed. Angular PID 14788 and legacy DNX PID 41300 remain running on ports 4200 and 5000 respectively.
+
 ## Doctor Patients Navigation Resolution (Prompt 073)
 
 - Baseline passed before edits: clean worktree at HEAD `05f7d148c744b0aab0520f1649b7aaa6e677d765`.
