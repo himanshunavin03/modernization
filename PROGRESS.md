@@ -1,5 +1,11 @@
 # Progress
 
+## Doctor Implementation Reconciliation Preflight (Prompt 071)
+
+- Baseline verified: HEAD `480c17fa4d5b9b29ad8c5a8ccada0e2279552d29`, clean worktree before work.
+- Completion gate conflict: frozen task TT-016 requires a Playwright acceptance suite and executable traceability for every approved criterion. Prompt 071 sections 28 and 30 prohibit creating or changing Playwright tests, while sections 24 and 32 require all 16 tasks implemented. The existing Doctor Playwright file has one list/detail scenario referencing two superseded criteria; it cannot meet TT-016 unchanged.
+- Exact next action: resolve whether TT-016 is deferred and excluded from this run's completion/commit gate, while retaining the frozen plan and the prohibition on Playwright changes/execution. No Angular or upstream artifact was changed; no build, tests or commit was performed in this preflight. The only changes are this blocker record and prompt 071.
+
 - Status: Enterprise Angular 22 architecture decision engine and customer showcase completed on Wednesday, September 2, 2026. The UNDERSTAND pillar remains frozen `FROZEN_READY_WITH_LIMITATIONS`.
 - Agent command: `/create-knowledge-graph` is documented at `docs/agents/commands/create-knowledge-graph.md` and delegates to the deterministic `agent-create-knowledge-graph` CLI adapter. It derives a safe project ID from the selected source root, enables project-aware Roslyn only when .NET project evidence exists, keeps Neo4j opt-in, and does not use an LLM.
 - Current step: Await explicit authorization for `FIGMA_ADAPTER_AND_TECHNICAL_TASK_GENERATION`; Figma, technical tasks, Gateway/BFF implementation, Nx scaffolding, and Angular generation have not started.
