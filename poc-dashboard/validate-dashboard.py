@@ -73,6 +73,7 @@ def main() -> int:
         "MODERN_APP_LINK": "http://localhost:4200/",
         "MODERN_DOCTORS_LINK": "http://localhost:4200/doctors",
         "MODERN_NEW_DOCTOR_LINK": "http://localhost:4200/doctors/new",
+        "KNOWLEDGE_GRAPH_LINK": "http://127.0.0.1:5175/?token=polaris-layout-readonly",
         "FEATURE_SPEC_LINK": "./generated/feature-specification.html",
         "TECHNICAL_TASKS_LINK": "./generated/technical-tasks.html",
         "APPLICATION_UNDERSTANDING_LINK": "./generated/application-understanding.html",

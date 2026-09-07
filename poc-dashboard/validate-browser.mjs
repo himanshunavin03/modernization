@@ -17,7 +17,7 @@ const viewports = [
 
 await fs.mkdir(new URL('./validation/', import.meta.url), { recursive: true });
 const browser = await chromium.launch({ headless: true });
-const results = { pages: {}, responsive: true, accessibility: true, reportLink: false };
+const results = { pages: {}, responsive: true, accessibility: true, graphLink: false, reportLink: false };
 
 function luminance([red, green, blue]) {
   const values = [red, green, blue].map((value) => {
@@ -73,6 +73,8 @@ try {
           if (samples.some(([foreground, background]) => contrast(rgb(foreground), rgb(background)) < 4.5)) results.accessibility = false;
           const report = page.locator('[data-link="playwrightReport"]').first();
           results.reportLink = (await report.getAttribute('href'))?.includes('playwright-report/index.html') ?? false;
+          const graph = page.locator('[data-link="knowledgeGraph"]').first();
+          results.graphLink = (await graph.getAttribute('href')) === 'http://127.0.0.1:5175/?token=polaris-layout-readonly';
           for (const section of ['architecture', 'understanding', 'requirements', 'angular', 'live-demo', 'validation', 'outcome']) {
             await page.evaluate((identifier) => {
               const element = document.querySelector(`#${identifier}`);
@@ -102,4 +104,5 @@ await fs.writeFile(new URL('./validation/browser-validation.json', import.meta.u
 console.log(`DASHBOARD_VISUAL_RUNTIME=${Object.values(results.pages).every((item) => item.desktop && item.laptop) ? 'PASS' : 'FAIL'}`);
 console.log(`RESPONSIVE_CHECK=${results.responsive ? 'PASS' : 'FAIL'}`);
 console.log(`ACCESSIBILITY_CHECK=${results.accessibility ? 'PASS' : 'FAIL'}`);
+console.log(`KNOWLEDGE_GRAPH_RUNTIME_LINK=${results.graphLink ? 'PASS' : 'FAIL'}`);
 console.log(`PLAYWRIGHT_REPORT_RUNTIME_LINK=${results.reportLink ? 'PASS' : 'FAIL'}`);

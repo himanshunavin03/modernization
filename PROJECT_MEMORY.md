@@ -1,5 +1,27 @@
 # Project Memory
 
+## Tokenized Knowledge Graph Dashboard Link Added (Prompt 081)
+
+The POC presentation Knowledge Graph section now exposes a prominent `Open interactive graph` action targeting `http://127.0.0.1:5175/?token=polaris-layout-readonly` in a new tab. The local Understand Anything viewer was restarted on port 5175 with that stable token because the prior process used a different unknown token and returned HTTP 403 for protected graph data. The tokenized graph endpoint now returns HTTP 200, and static plus Chromium dashboard validation pass, including responsive, accessibility, and exact graph-link checks.
+
+## Executive Modernization POC Dashboard Complete (Prompt 078)
+
+An isolated, offline-friendly executive presentation now exists under `poc-dashboard/` and is committed as `77da9e7`. It tells the `UNDERSTAND → MODEL → PLAN → MODERNIZE → VALIDATE` story with deterministic analysis, current Knowledge Graph metrics, requirements traceability, implemented Angular 22 architecture, live comparison/launch links, Playwright validation, Presentation Mode, and a compact Demo Flow agenda. The example Feature remains Doctor Directory Management without becoming the identity of the POC.
+
+The presentation generator reads approved artifacts without changing them and deterministically generates Feature Specification, Technical Tasks, Application Understanding, Playwright coverage, and dashboard data pages. Static gates and actual Chromium validation at 1920x1080 and 1366x768 all pass: visual quality, generated-page quality, accessibility/responsiveness, 0 broken links, 0 stale data, 0 unsupported checked claims, 0 local user paths, secret scan PASS, and existing product files changed 0. The portal is currently served at `http://localhost:8088/poc-dashboard/` by PID 33316.
+
+## Playwright Failure Causes Confirmed (Prompt 077)
+
+Only the Patient-feature Playwright scenario is intentionally skipped. Dashboard AC-02 and AC-03 failed because the Dashboard tests navigate in unauthenticated isolated browser contexts; `/api/users/current/tenant` redirects to login, the store enters its explicit error state, the clinic summary is not rendered, and `/api/reports/clinicsummary` is never requested. The AC-03 listener is additionally registered after navigation and is therefore timing-sensitive.
+
+Doctor FR-14 reached a working authenticated application state: the backend returned JSON and four real Doctor rows rendered. Its failure occurred only when Playwright/Chromium attempted `tenantResponse.json()` and could no longer retrieve the response body through the browser protocol. Since the same scenario passed during the prior focused run, this is classified as a non-intentional test/browser-protocol flake, not proof of an Angular or backend failure. Prompt 077 made no implementation changes.
+
+## Local Runtime And Full Playwright Result (Prompt 076)
+
+Prompt 076 started the existing legacy HealthClinic DNX/.NET backend and modern Angular application using the verified local runbook. Backend PID 28604 serves HTTP 200 on port 5000; Angular PID 15996 serves HTTP 200 on port 4200; the Angular expenses API proxy also returns HTTP 200. Both services remain running.
+
+The full Playwright suite discovered 14 tests: 10 passed, 3 failed, and 1 Patient-feature scenario was intentionally skipped. The failures were Dashboard AC-02 (missing `Clinic summary` accessible label), Dashboard AC-03 (timeout waiting for the clinic-summary API response), and Doctor FR-14 (Playwright could not retrieve the real tenant response body). This was a runtime-only task: no application/test code or `source/` content changed. The report remains at ignored `modernized/apps/healthclinic-web-e2e/playwright-report/index.html`.
+
 ## Doctor POC UI And E2E Freeze Complete (Prompt 075)
 
 Prompt 075 completed the Doctor create/edit visual fidelity repair and Playwright TT-016 without changing the frozen source, extraction, Facts, KG, Application Understanding, Feature, 21 FR, 21 Stories, 41 AC, Feature Specification, architecture, technical-task plan, or Dashboard. Native Chrome comparisons of the authenticated running legacy and Angular create/edit screens at 1366x900 prove the modern 1120px toolbar/form, fluid-left/290px-right panels, 530px height, underlined Name/Description/Address fields, three-column E-mail/Phone/Mobile row, profile media, patient count, and registration date match the legacy hierarchy. Create and edit continue sharing one Angular 22 typed Reactive Form; no Signal Forms migration occurred.

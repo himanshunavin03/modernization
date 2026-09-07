@@ -1,5 +1,36 @@
 # Progress
 
+## Tokenized Knowledge Graph Dashboard Link (Prompt 081)
+
+- Added a visible `Open interactive graph` button to the Knowledge Graph section of the POC presentation. It opens `http://127.0.0.1:5175/?token=polaris-layout-readonly` in a new tab.
+- Restarted only the local Understand Anything viewer on port 5175 with the documented stable token; PID 12700 now serves the complete-application visualization.
+- Verified the protected `knowledge-graph.json` endpoint returns HTTP 200 with the token and a 20,510,076-byte JSON payload.
+- Static validation passes with 0 broken internal links, current presentation data, supported claims, no local user paths, and secret scan PASS. Chromium validation passes at desktop and laptop sizes, including responsiveness, accessibility, and the exact tokenized Knowledge Graph link.
+- No file under `source/` was changed.
+
+## Executive Modernization POC Presentation Dashboard (Prompt 078)
+
+- Created the isolated static `poc-dashboard/` presentation portal and committed only that directory in commit `77da9e7` (`Add modernization POC presentation dashboard`). No existing product, modernization artifact, Angular, .NET, source, or Playwright file changed.
+- Added an offline executive dashboard, centralized launch configuration, Presentation Mode, Demo Flow navigation, responsive/accessibility styling, and presentation pages for the approved Feature Specification, Technical Tasks, Application Understanding, and Playwright AC traceability.
+- The repeatable standard-library generator reads approved artifacts and produced current metrics: 2,384 source files, 68,915 facts, 71,936 graph nodes, 113,562 relationships, 58 endpoints, 32 proven API mappings, 21 FR, 21 Stories, 41 AC, 6 API contracts, 16 tasks, and Playwright coverage of 39 PASS / 0 FAIL / 2 explicit dependency statuses.
+- Static validation passed: repeatable build, 0 broken internal links, all four runtime URLs, all generated-page links, existing Playwright report link, 0 stale presentation values, 0 unsupported checked claims, 0 local user paths in rendered presentation, and secret scan PASS.
+- Actual Chromium validation and visual inspection passed at 1920x1080 and 1366x768 for the dashboard and all generated pages. Keyboard focus, semantic headings/links/buttons, representative contrast, reduced-motion CSS, and horizontal overflow checks passed. Dashboard server PID 33316 remains available at `http://localhost:8088/poc-dashboard/`.
+
+## Playwright Failure Diagnosis (Prompt 077)
+
+- Diagnosis only; no application or Playwright implementation was changed. The Understand Anything graph was unavailable at `.ua/knowledge-graph.json`, so current source, Playwright error contexts, and backend logs were used directly.
+- Only the FR-10 Patient scenario is intentionally skipped: the separate modern Patient route/feature does not exist.
+- Dashboard AC-02 and AC-03 are genuine test failures caused by missing authentication setup in `dashboard.spec.ts`. Each Playwright test has an isolated browser context, and the Dashboard `beforeEach` only navigates to `/dashboard`. The tenant endpoint returned HTTP 302 to the login page, causing `DashboardStore` to publish its load-error state. Consequently no summary rendered and no clinic-summary request was made. AC-03 also installs its response listener after navigation, which is independently timing-sensitive.
+- Doctor FR-14 is not an intentional failure and does not show a failed application flow. The backend returned tenant and Doctor JSON successfully and the failure snapshot rendered four real Doctor rows. The assertion failed when Playwright/Chromium attempted to retrieve the already-observed tenant response body and returned `Network.getResponseBody: No data found for resource with given identifier`. This scenario passed in the prior focused run, so the observed failure is test/browser-protocol flakiness rather than evidence of a backend or Angular functional failure.
+
+## Local Angular, .NET, And Playwright Run (Prompt 076)
+
+- Started LocalDB and the verified disposable legacy HealthClinic DNX/.NET runtime without modifying `source/`. Backend PID 28604 is listening on `127.0.0.1:5000`; Angular PID 15996 is listening on `localhost:4200`.
+- Runtime verification passed: backend root HTTP 200, Angular root HTTP 200, direct backend expenses API HTTP 200, and Angular-proxied expenses API HTTP 200.
+- Ran the full configured Playwright suite with seeded credentials loaded only into the test process and removed afterward. Result: 14 discovered, 10 passed, 3 failed, and 1 explicitly skipped for the unavailable Patient feature.
+- Failures observed: Dashboard AC-02 could not find the `Clinic summary` accessible label; Dashboard AC-03 timed out waiting for `/api/reports/clinicsummary`; Doctor FR-14 received the tenant response but Playwright could not retrieve its response body (`Network.getResponseBody: No data found`). The HTML report and failure attachments were generated under ignored Playwright output paths.
+- Exact next action if a green suite is required: diagnose these three E2E failures against the generated report and traces, then rerun the affected specs. No application or test implementation was changed in this runtime-only task.
+
 ## Doctor POC UI And E2E Freeze (Prompt 075)
 
 - Baseline passed at clean HEAD `66ecb11f9407653912f80a4c0ac0408661f2c1f8`. The legacy create/edit template, controller, form/input styles, assets, and authenticated running pages were inspected read-only.

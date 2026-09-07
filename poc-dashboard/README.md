@@ -34,6 +34,7 @@ No package installation or internet connection is required.
 - Modern Angular application: `http://localhost:4200/`
 - Modern Doctor directory: `http://localhost:4200/doctors`
 - New Doctor workflow: `http://localhost:4200/doctors/new`
+- Interactive Knowledge Graph: `http://127.0.0.1:5175/?token=polaris-layout-readonly`
 
 The presentation remains available when these runtimes are offline.
 

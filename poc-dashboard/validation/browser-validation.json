@@ -23,5 +23,6 @@
   },
   "responsive": true,
   "accessibility": true,
+  "graphLink": true,
   "reportLink": true
 }

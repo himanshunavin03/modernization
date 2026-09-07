@@ -3,6 +3,7 @@ const demoConfig = Object.freeze({
   modernApp: 'http://localhost:4200/',
   modernDoctors: 'http://localhost:4200/doctors',
   modernNewDoctor: 'http://localhost:4200/doctors/new',
+  knowledgeGraph: 'http://127.0.0.1:5175/?token=polaris-layout-readonly',
   featureSpec: './generated/feature-specification.html',
   technicalTasks: './generated/technical-tasks.html',
   applicationUnderstanding: './generated/application-understanding.html',
@@ -10,7 +11,7 @@ const demoConfig = Object.freeze({
   playwrightReport: '../modernized/apps/healthclinic-web-e2e/playwright-report/index.html',
 });
 
-const isRuntimeLink = (key) => ['legacyApp', 'modernApp', 'modernDoctors', 'modernNewDoctor'].includes(key);
+const isRuntimeLink = (key) => ['legacyApp', 'modernApp', 'modernDoctors', 'modernNewDoctor', 'knowledgeGraph'].includes(key);
 
 function configureLinks() {
   document.querySelectorAll('[data-link]').forEach((link) => {

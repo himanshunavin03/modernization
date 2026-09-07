@@ -76,6 +76,7 @@ code { font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace; }
 .section-heading { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(20rem, .75fr); align-items: end; gap: clamp(2rem, 7vw, 8rem); margin-bottom: clamp(3rem, 5vw, 5rem); }
 .section-heading h2 { max-width: 860px; margin: 0; font-size: clamp(2.7rem, 4.5vw, 5.3rem); line-height: .99; letter-spacing: -.055em; }
 .section-heading > p { margin: 0; color: var(--muted); font-size: clamp(1rem, 1.25vw, 1.16rem); }
+.section-summary { display: flex; flex-direction: column; align-items: flex-start; gap: 1.15rem; }.section-summary p { margin: 0; color: var(--muted); font-size: clamp(1rem, 1.25vw, 1.16rem); }
 .section-heading.inverse > p { color: var(--muted-inverse); }
 
 .hero { position: relative; min-height: calc(100vh - 76px); overflow: hidden; background: radial-gradient(circle at 72% 37%, rgba(34, 160, 145, .15), transparent 27%), linear-gradient(135deg, #07121a 0%, #0b1c25 56%, #102a31 100%); }
