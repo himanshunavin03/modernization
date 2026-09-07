@@ -207,6 +207,7 @@ class CommandService:
             self._project_id(), feature["feature_id"], architecture.root,
             self.paths.specifications, design["provider"], design["mode"], design.get("reference"),
             Path(options.get("output", self.paths.artifacts / "technical-tasks")), self.paths.artifacts / "design",
+            repository_root=self.paths.repository_root, implementation_paths=feature.get("implementation_paths", []),
         )
         self.index.build()
         return CommandResult("generate-technical-tasks", "COMPLETE", {"path": str(result["path"]), "feature_id": feature["feature_id"]})

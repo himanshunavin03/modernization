@@ -165,11 +165,19 @@ def test_non_hero_feature_plan_is_derived_from_its_own_contracts(tmp_path: Path)
         "selection_source": "LOCKED_ARCHITECTURE",
     }
     assert len(plan["tasks"]) == 16
-    assert {item["story_id"] for item in plan["stories"]} == {"US-01", "US-02"}
-    assert {item["endpoint"] for item in plan["existing_api_contracts"]} == {
-        "/api/users/current/tenant", "/api/doctors/{id}", "/api/doctors",
+    assert len(plan["requirements"]) == 21
+    assert len(plan["stories"]) == 21
+    assert len(plan["acceptance_criteria"]) == 41
+    assert {(item["method"], item["endpoint"]) for item in plan["existing_api_contracts"]} == {
+        ("GET", "/api/users/current/tenant"), ("GET", "/api/doctors/{id}"),
+        ("GET", "/api/doctors"), ("POST", "/api/doctors"),
+        ("PUT", "/api/doctors"), ("DELETE", "/api/doctors/{id}"),
     }
     assert plan["validation"]["status"] == "PASS"
+    assert all(plan["lineage"]["checks"].values())
+    assert {item["implementation_status"] for item in plan["tasks"]} <= {
+        "IMPLEMENTED", "PARTIALLY_IMPLEMENTED", "NOT_IMPLEMENTED", "BLOCKED",
+    }
     assert "Operational Dashboard" not in serialized_tasks
     assert "/api/reports" not in serialized_tasks
 
@@ -270,3 +278,39 @@ def test_source_tree_is_not_a_generation_target(tmp_path: Path) -> None:
     run_plan(tmp_path)
     after = {path.relative_to(source): (path.stat().st_size, path.stat().st_mtime_ns) for path in source.rglob("*") if path.is_file()}
     assert after == before
+
+
+def test_current_doctor_traceability_and_test_plan_are_complete(tmp_path: Path) -> None:
+    plan = generate_technical_tasks(
+        PROJECT_ID, DOCTOR_FEATURE_ID, ARCHITECTURE, SPECIFICATIONS,
+        "NONE", "NONE", None, tmp_path / "tasks", tmp_path / "design",
+    )["plan"]
+    coverage = plan["validation"]["coverage"]
+    assert coverage["functional_requirements_without_task"] == []
+    assert coverage["stories_without_task"] == []
+    assert coverage["acceptance_criteria_without_task"] == []
+    assert coverage["apis_without_implementation_task"] == []
+    assert coverage["unsupported_api_refs"] == []
+    assert coverage["orphan_tasks"] == []
+    planned_ac = {ref for task in plan["tasks"] if task["category"] == "TEST" for ref in task["acceptance_criteria_refs"]}
+    assert planned_ac == {item["authoritative_ac_ref"] for item in plan["acceptance_criteria"]}
+
+
+def test_existing_angular_status_is_classified_from_current_files(tmp_path: Path) -> None:
+    plan = generate_technical_tasks(
+        PROJECT_ID, DOCTOR_FEATURE_ID, ARCHITECTURE, SPECIFICATIONS,
+        "NONE", "NONE", None, tmp_path / "tasks", tmp_path / "design",
+    )["plan"]
+    statuses = [task["implementation_status"] for task in plan["tasks"]]
+    assert statuses.count("IMPLEMENTED") == 4
+    assert statuses.count("PARTIALLY_IMPLEMENTED") == 10
+    assert statuses.count("NOT_IMPLEMENTED") == 2
+    assert statuses.count("BLOCKED") == 0
+    assert all(task["implementation_evidence"] for task in plan["tasks"] if task["implementation_status"] == "IMPLEMENTED")
+
+
+def test_technical_task_pipeline_has_no_application_specific_branch() -> None:
+    source = ROOT / "src/polaris_modernization/technical_tasks"
+    contents = "\n".join(path.read_text(encoding="utf-8") for path in source.rglob("*.py"))
+    prohibited = ("HealthClinic", "MyHealth", "Doctor Directory", "doctor-directory-management", "/api/doctors", "LOAD MORE")
+    assert not any(value in contents for value in prohibited)

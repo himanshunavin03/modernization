@@ -26,6 +26,12 @@ def validate_tasks(context: dict, tasks: list[dict]) -> dict:
     valid_apis = {item["api_id"] for item in context["api_contracts"]}
     api_endpoints = {item["endpoint"] for item in context["api_contracts"]}
     represented_apis = {ref for item in tasks for ref in item["api_refs"]}
+    represented_frs = {ref for item in tasks for ref in item["functional_requirement_refs"]}
+    represented_stories = {ref for item in tasks for ref in item["story_refs"]}
+    represented_ac = {ref for item in tasks for ref in item["acceptance_criteria_refs"]}
+    implementation_api_refs = {
+        ref for item in tasks if item["category"] in {"API", "INTEGRATION", "STATE", "UI"} for ref in item["api_refs"]
+    }
     serialized_tasks = json.dumps(tasks)
     selected_decisions = [item for item in selection["decisions"] if item["id"] in selected]
     selected_categories = {item["category"] for item in selected_decisions}
@@ -67,6 +73,10 @@ def validate_tasks(context: dict, tasks: list[dict]) -> dict:
         "acceptance_criteria_refs_valid": all(set(item["acceptance_criteria_refs"]) <= valid_ac for item in tasks),
         "api_refs_valid": all(set(item["api_refs"]) <= valid_apis for item in tasks),
         "existing_api_contracts_preserved": represented_apis == valid_apis,
+        "every_functional_requirement_has_task": represented_frs == valid_frs,
+        "every_story_has_task": represented_stories == valid_stories,
+        "every_acceptance_criterion_has_task": represented_ac == valid_ac,
+        "every_api_has_implementation_task": implementation_api_refs == valid_apis,
         "no_invented_existing_api": endpoint_literals <= api_endpoints,
         "unselected_technology_absent": not any(name.lower() in serialized_tasks.lower() for name in UNSELECTED_TECHNOLOGIES),
         "gateway_task_present": "API Gateway" not in selected_categories or any(item["category"] == "GATEWAY" for item in tasks),
@@ -75,6 +85,21 @@ def validate_tasks(context: dict, tasks: list[dict]) -> dict:
         "playwright_task_present": "Playwright" not in selected_technologies or any(item["category"] == "TEST" and "Playwright" in item["title"] for item in tasks),
         "every_task_traceable": all(item["traceability"] and item["architecture_decision_refs"] for item in tasks),
         "design_conflicts_preserve_requirements": all(conflict["requirement_reference"] in valid_frs for conflict in context["design"].get("conflicts", [])),
+        "acceptance_criteria_have_test_plan": all(
+            ref in {ac for item in tasks if item["category"] == "TEST" for ac in item["acceptance_criteria_refs"]}
+            for ref in valid_ac
+        ),
     }
     blockers = [name for name, passed in checks.items() if not passed]
-    return {"status": "PASS" if not blockers else "FAIL", "checks": checks, "blockers": blockers, "cycle_count": cycle_count}
+    return {
+        "status": "PASS" if not blockers else "FAIL", "checks": checks, "blockers": blockers,
+        "cycle_count": cycle_count,
+        "coverage": {
+            "functional_requirements_without_task": sorted(valid_frs - represented_frs),
+            "stories_without_task": sorted(valid_stories - represented_stories),
+            "acceptance_criteria_without_task": sorted(valid_ac - represented_ac),
+            "apis_without_implementation_task": sorted(valid_apis - implementation_api_refs),
+            "orphan_tasks": [item["task_id"] for item in tasks if not item["architecture_decision_refs"]],
+            "unsupported_api_refs": sorted(represented_apis - valid_apis),
+        },
+    }

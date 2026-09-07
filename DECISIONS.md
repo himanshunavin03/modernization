@@ -154,3 +154,7 @@
 ## Doctor Downstream Requirements Freeze
 
 Interaction identity and exact handler/callback guards are preserved from the approved KG through Feature, Story and AC contracts. API identity remains a dependency and cannot merge independent interactions. Recorded graph expressions may supply generic guard interpretation; this does not read source or regenerate Facts/KG. Targeted AC publication synchronizes the existing Jira-quality consolidated renderer, updates only the owning Feature index entry, and keeps machine-only scope/Story/AC archives. These boundaries prevent stale cross-run contracts, API-driven UX substitution, and duplicate primary human documents.
+
+## Doctor Technical Task Freeze
+
+Technical-task planning resolves the current approved per-Feature contract before the historical consolidated fallback and validates matching Feature, Story, AC and Feature Specification lineage. This prevents a current Feature index from being paired with stale requirement counts. Task-to-requirement composition uses generic effect categories and approved API ownership, while implementation status is derived read-only from registered implementation paths and generic Angular evidence patterns. Application names, routes and UX labels never select production behavior.

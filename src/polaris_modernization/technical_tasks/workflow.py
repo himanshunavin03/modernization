@@ -16,6 +16,8 @@ from polaris_modernization.design.renderers import render_design_html, render_de
 from polaris_modernization.modernization_operations.ids import ANGULAR_FEATURE_OPERATION_ID
 
 from .generator import technical_task_chain
+from .context import resolve_feature_context
+from .implementation_status import classify_tasks
 from .models import TechnicalTaskPlan
 from .renderers import render_technical_tasks_html, render_technical_tasks_markdown
 from .validators import selection_hash, validate_tasks
@@ -39,6 +41,7 @@ class TechnicalTaskState(TypedDict, total=False):
     stories: list[dict]
     acceptance_criteria: list[dict]
     api_contracts: list[dict]
+    lineage: dict
     design: dict
     tasks: list[dict]
     validation: dict
@@ -79,15 +82,8 @@ def _load_context(state: TechnicalTaskState) -> TechnicalTaskState:
         raise TechnicalTaskWorkflowError("Frozen architecture selection does not match architecture.json.")
     if lock.get("status") != "LOCKED" or lock.get("selection_hash") != selection_hash(selection):
         raise TechnicalTaskWorkflowError("Architecture selection is not validly locked.")
-    specification = _read(Path(state["specification_root"]) / "jira-quality.json")
-    feature = next((item for item in specification["features"] if item["feature_id"] == state["feature_id"]), None)
-    if not feature:
-        raise TechnicalTaskWorkflowError(f"Unknown approved Feature: {state['feature_id']}")
-    stories = feature["stories"]
-    requirements = list({item["id"]: item for story in stories for item in story["functional_requirement_refs"]}.values())
-    criteria = [item for story in stories for item in story["acceptance_criteria"]]
-    apis = list({item["api_id"]: item for story in stories for item in story["api_dependencies"]}.values())
-    return _advance(state, NODES[0], {"architecture": architecture, "feature": feature, "stories": stories, "requirements": requirements, "acceptance_criteria": criteria, "api_contracts": apis})
+    context = resolve_feature_context(Path(state["specification_root"]), state["feature_id"])
+    return _advance(state, NODES[0], {"architecture": architecture, **context})
 
 
 def _load_design(state: TechnicalTaskState) -> TechnicalTaskState:
@@ -164,13 +160,20 @@ def _modernization_operation(architecture: dict) -> dict:
     }
 
 
-def generate_technical_tasks(project_id: str, feature_id: str, architecture_root: Path, specification_root: Path, design_provider: str, design_mode: str, figma_url: str | None, output_root: Path, design_output_root: Path) -> dict:
+def generate_technical_tasks(project_id: str, feature_id: str, architecture_root: Path, specification_root: Path, design_provider: str, design_mode: str, figma_url: str | None, output_root: Path, design_output_root: Path, repository_root: Path | None = None, implementation_paths: list[str] | None = None) -> dict:
     state = build_technical_task_graph().invoke({
         "project_id": project_id, "feature_id": feature_id, "architecture_root": str(architecture_root),
         "specification_root": str(specification_root), "design_provider": design_provider,
         "design_mode": design_mode, "figma_url": figma_url, "nodes_executed": [],
         "state_transitions": [], "current_stage": "START", "status": "STARTED",
     })
+    repository_root = repository_root or specification_root.parents[2]
+    if implementation_paths is None:
+        index_path = repository_root / "artifacts" / "commands" / "feature-index.json"
+        index = _read(index_path) if index_path.is_file() else {"features": []}
+        indexed_feature = next((item for item in index["features"] if item["feature_id"] == feature_id), {})
+        implementation_paths = indexed_feature.get("implementation_paths", [])
+    state["tasks"] = classify_tasks(repository_root, implementation_paths, state["requirements"], state["tasks"])
     run_id = f"{project_id}-{datetime.now(timezone.utc).strftime('%Y-%m-%d-%H%M%S-%f')}"
     workflow = {
         "workflow_id": run_id, "nodes_executed": state["nodes_executed"],
@@ -199,7 +202,7 @@ def generate_technical_tasks(project_id: str, feature_id: str, architecture_root
         stories=[{"story_id": item["story_id"], "summary": item["summary"]} for item in state["stories"]],
         acceptance_criteria=[{"id": item["id"], "authoritative_ac_ref": item["authoritative_ac_ref"], "title": item["title"]} for item in state["acceptance_criteria"]],
         existing_api_contracts=state["api_contracts"], tasks=state["tasks"], validation=state["validation"],
-        traceability=traceability, workflow=workflow,
+        traceability=traceability, workflow=workflow, lineage=state["lineage"],
     ).model_dump(mode="json")
     run = output_root / "runs" / run_id
     run.mkdir(parents=True)

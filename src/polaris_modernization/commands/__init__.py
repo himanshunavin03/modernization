@@ -7,7 +7,14 @@ from .artifacts import (
     TechnicalTaskResolver,
 )
 from .registry import CommandRegistry, default_registry
-from .service import CommandService
+
+
+def __getattr__(name: str):
+    """Load the orchestration service lazily to avoid package import cycles."""
+    if name == "CommandService":
+        from .service import CommandService
+        return CommandService
+    raise AttributeError(name)
 
 __all__ = [
     "ArchitectureResolution",

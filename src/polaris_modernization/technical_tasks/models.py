@@ -45,6 +45,9 @@ class TechnicalTaskModel(BaseModel):
     validation_requirements: list[str]
     deliverables: list[str]
     status: Literal["PLANNED"] = "PLANNED"
+    implementation_status: Literal["IMPLEMENTED", "PARTIALLY_IMPLEMENTED", "NOT_IMPLEMENTED", "BLOCKED"] = "NOT_IMPLEMENTED"
+    implementation_evidence: list[str] = Field(default_factory=list)
+    implementation_assessment: str = "Implementation has not been assessed."
     implementation_order: int
     blocking: bool = False
     open_questions: list[str] = Field(default_factory=list)
@@ -70,3 +73,4 @@ class TechnicalTaskPlan(BaseModel):
     validation: dict
     traceability: dict
     workflow: dict
+    lineage: dict = Field(default_factory=dict)

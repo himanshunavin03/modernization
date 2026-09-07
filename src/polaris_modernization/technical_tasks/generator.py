@@ -26,6 +26,26 @@ def _compose(context: dict) -> list[dict]:
     story_refs = [item["story_id"] for item in context["stories"]]
     ac_refs = [item["authoritative_ac_ref"] for item in context["acceptance_criteria"]]
     api_refs = [item["api_id"] for item in context["api_contracts"]]
+    requirement_effects = {
+        item["id"]: {semantic.get("effect_kind") for semantic in item.get("interaction_semantics", [])}
+        for item in context["requirements"]
+    }
+    api_requirement_refs = set(ref for item in context["api_contracts"] for ref in item.get("requirement_ids", []))
+
+    def refs_for_effects(*effects: str) -> list[str]:
+        selected_effects = set(effects)
+        return [ref for ref in fr_refs if requirement_effects.get(ref, set()) & selected_effects]
+
+    def related_story_refs(requirement_refs: list[str]) -> list[str]:
+        wanted = set(requirement_refs)
+        return [item["story_id"] for item in context["stories"] if wanted & {
+            ref.get("id") if isinstance(ref, dict) else ref
+            for ref in item.get("functional_requirement_refs", item.get("functional_requirement_ids", []))
+        }]
+
+    def related_ac_refs(requirement_refs: list[str]) -> list[str]:
+        wanted = set(requirement_refs)
+        return [item["authoritative_ac_ref"] for item in context["acceptance_criteria"] if wanted & set(item.get("functional_requirement_ids", []))]
 
     selection = context["architecture"]
     selected_ids = set(selection["selected_decision_ids"])
@@ -60,10 +80,46 @@ def _compose(context: dict) -> list[dict]:
         category, title, objective, architecture_categories, dependencies, feature_trace, api_trace, requirements, validation, deliverables = template
         arch_refs = architecture_refs(*architecture_categories)
         adr_refs = list(dict.fromkeys(decisions[ref]["adr_ref"] for ref in arch_refs if decisions[ref].get("adr_ref")))
-        task_frs = fr_refs if feature_trace else []
-        task_stories = story_refs if feature_trace else []
-        task_ac = ac_refs if feature_trace else []
+        scoped_frs: list[str] | None = None
+        if order in {4, 5, 6, 7, 14}:
+            scoped_frs = [ref for ref in fr_refs if ref in api_requirement_refs]
+        elif order == 8:
+            scoped_frs = refs_for_effects("NAVIGATION", "DESTINATION_STATE")
+        elif order == 9:
+            scoped_frs = refs_for_effects("RENDER", "FIXED_ORDER", "ACTION_VISIBILITY", "MEDIA_RENDER")
+        elif order == 10:
+            scoped_frs = refs_for_effects("COLLECTION_APPEND", "COLLECTION_REMOVE", "SELECTION", "SYSTEM_CONTEXT")
+        elif order == 11:
+            scoped_frs = refs_for_effects("SYSTEM_CONTEXT")
+        elif order == 12:
+            scoped_frs = refs_for_effects("RECORD_CREATE", "RECORD_UPDATE", "VALIDATION", "VALIDATION_GATE", "CONFIRMATION", "MEDIA_BINDING", "SELECTION")
+        elif order in {13, 15, 16}:
+            scoped_frs = fr_refs
+        task_frs = (scoped_frs if scoped_frs is not None else fr_refs) if feature_trace else []
+        task_stories = related_story_refs(task_frs) if scoped_frs is not None else (story_refs if feature_trace else [])
+        task_ac = related_ac_refs(task_frs) if scoped_frs is not None else (ac_refs if feature_trace else [])
+        if task_frs and not task_ac:
+            task_ac = ac_refs
         task_apis = api_refs if api_trace else []
+        requirement_by_id = {item["id"]: item for item in context["requirements"]}
+        ac_by_ref = {item["authoritative_ac_ref"]: item for item in context["acceptance_criteria"]}
+        task_requirements = list(requirements)
+        if feature_trace:
+            task_requirements.extend(
+                f"Implement {ref}: {requirement_by_id[ref].get('description') or requirement_by_id[ref].get('requirement') or requirement_by_id[ref].get('title')}"
+                for ref in task_frs
+            )
+        if api_trace and category != "BFF":
+            task_requirements.extend(
+                f"Preserve {item['method']} {item['endpoint']} as an existing approved backend contract."
+                for item in context["api_contracts"]
+            )
+        task_validation = list(validation)
+        if category == "TEST":
+            task_validation.extend(
+                f"{ref}: Given {ac_by_ref[ref].get('given', 'the approved precondition')}; when {ac_by_ref[ref].get('when', 'the approved interaction occurs')}; then {ac_by_ref[ref].get('then', 'the approved outcome is observable')}."
+                for ref in task_ac
+            )
         task_design = design_refs if category in {"DESIGN_SYSTEM", "UI", "ACCESSIBILITY"} else []
         traceability = [
             f"Feature:{feature_id}",
@@ -78,10 +134,10 @@ def _compose(context: dict) -> list[dict]:
         tasks.append(TechnicalTaskModel(
             task_id=f"TT-{order:03d}", feature_id=feature_id, title=title, objective=objective,
             category=category, description=f"{objective} This task consumes the locked architecture and makes no new architecture decision.",
-            implementation_requirements=requirements, architecture_decision_refs=arch_refs, adr_refs=adr_refs,
+            implementation_requirements=task_requirements, architecture_decision_refs=arch_refs, adr_refs=adr_refs,
             functional_requirement_refs=task_frs, story_refs=task_stories,
             acceptance_criteria_refs=task_ac, api_refs=task_apis, design_refs=task_design,
-            dependencies=dependencies, validation_requirements=validation, deliverables=deliverables,
+            dependencies=dependencies, validation_requirements=task_validation, deliverables=deliverables,
             implementation_order=order, blocking=False, open_questions=[], traceability=traceability,
         ).model_dump(mode="json"))
     return tasks
