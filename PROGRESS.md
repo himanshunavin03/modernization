@@ -286,3 +286,10 @@ Read `PROJECT_MEMORY.md`, `PROGRESS.md`, `DECISIONS.md`, prompts 010 through 021
 - Added the core operation contract, target-stack registry, generic Angular Feature operation, and artifact-driven context builder.
 - Doctor planning now selects `angular-feature-modernization`; prerequisite-only execution returns `READY`, `DESIGN_SOURCE=EXISTING_APPLICATION_UI`, three API contracts, and artifact-resolved UI evidence while leaving implementation paths empty.
 - Focused operation/command/planning tests passed `68`; complete regression passed `270` with `2` skipped; the existing Angular Dashboard production build passed.
+
+
+## Final Doctor Requirements Freeze (Prompt 069)
+
+Frozen KG `legacy-dashboard-complete-application-demo-v1-2026-09-06-203944` passes the normal approved loader and is unchanged. AU `legacy-dashboard-complete-application-demo-v1-2026-09-07-002736-635673` retains 43 validated business interpretations plus generic interaction/callback, guard, route/model, media and render lineage. Doctor scope `capability-scope-2026-09-07-002844-038327` produces 21 FRs, 21 targeted Stories and 41 targeted AC across six API contracts. The primary artifact is `artifacts/feature-specifications/latest/feature-doctor-directory-management.md`; separate current Story/AC Markdown is retired.
+
+All 41 propagated behaviors are covered, with no unsupported effects/APIs, orphans or stale Doctor references. The 62-test selection and final 23-test affected-component rerun passed (63 distinct tests). See `docs/validation/doctor-requirements-freeze.json` for exact run IDs and gates. Source/extraction/Facts/KG/readiness, architecture/tasks, Angular/Playwright and Dashboard artifacts remain unchanged. Requirements are frozen; stop after the authorized single commit.

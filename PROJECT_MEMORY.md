@@ -280,3 +280,10 @@ Immutable run `legacy-dashboard-complete-application-demo-v1-2026-09-01-034128` 
 Roslyn has 4,344 unresolved occurrences, all deterministically classified: 3,701 compilation errors, 534 project-load failures, 107 overload-resolution limitations, two inaccessible calls, and zero unknowns. The two converter calls in `HomeView.cs` remain unresolved at confidence zero with candidate evidence and no guessed `INVOKES` edges. Framework/API evidence remains stable at 58 endpoints, 44 frontend calls, and 10 proven mappings. The complete suite collected 90 tests: 88 passed and 2 skipped.
 
 Application Understanding remains `STALE` because its prior complete output predates the approved KG. The next action is `RERUN_UNDERSTAND_APPLICATION`; do not generate features, stories, architecture, or Angular work before that rerun is explicitly requested. Recovery reading includes prompts through 043 and `artifacts/knowledge-graph/latest/kg-readiness-analysis.md`.
+
+
+## Final Doctor Requirements Freeze (Prompt 069)
+
+Frozen KG `legacy-dashboard-complete-application-demo-v1-2026-09-06-203944` passes the normal approved loader and is unchanged. AU `legacy-dashboard-complete-application-demo-v1-2026-09-07-002736-635673` retains 43 validated business interpretations plus generic interaction/callback, guard, route/model, media and render lineage. Doctor scope `capability-scope-2026-09-07-002844-038327` produces 21 FRs, 21 targeted Stories and 41 targeted AC across six API contracts. The primary artifact is `artifacts/feature-specifications/latest/feature-doctor-directory-management.md`; separate current Story/AC Markdown is retired.
+
+All 41 propagated behaviors are covered, with no unsupported effects/APIs, orphans or stale Doctor references. The 62-test selection and final 23-test affected-component rerun passed (63 distinct tests). See `docs/validation/doctor-requirements-freeze.json` for exact run IDs and gates. Source/extraction/Facts/KG/readiness, architecture/tasks, Angular/Playwright and Dashboard artifacts remain unchanged. Requirements are frozen; stop after the authorized single commit.

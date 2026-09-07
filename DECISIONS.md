@@ -149,3 +149,8 @@
 | Technical-task composition and validation use the active Feature contract. | FR, Story, AC, API, design, and architecture references must come from artifacts rather than a hero-specific template or fixed endpoint allowlist. |
 | Modernization operations are selected by planning metadata and resolved through a target-stack registry. | Feature/application names never select executable behavior; Codex, Copilot, CLI, and future MCP adapters share the same operation and context contracts. |
 | Existing application UI is the default modernization design source. | Only explicitly configured customer target design may replace presentation guidance; missing design never authorizes invented UI or behavior. |
+
+
+## Doctor Downstream Requirements Freeze
+
+Interaction identity and exact handler/callback guards are preserved from the approved KG through Feature, Story and AC contracts. API identity remains a dependency and cannot merge independent interactions. Recorded graph expressions may supply generic guard interpretation; this does not read source or regenerate Facts/KG. Targeted AC publication synchronizes the existing Jira-quality consolidated renderer, updates only the owning Feature index entry, and keeps machine-only scope/Story/AC archives. These boundaries prevent stale cross-run contracts, API-driven UX substitution, and duplicate primary human documents.

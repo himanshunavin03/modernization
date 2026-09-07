@@ -165,7 +165,10 @@ class CommandService:
             context = resolve_approved_feature(self.paths.repository_root, feature)
             story_root = self.paths.artifacts / "stories" / "features" / feature["feature_id"] / "latest"
             result = generate_targeted_acceptance_criteria(context, story_root, self.paths.artifacts / "acceptance-criteria")
-            return CommandResult("generate-acceptance-criteria", "COMPLETE", {"feature_id": feature["feature_id"], "path": str(result["path"]), "run_id": result["run_id"]})
+            from polaris_modernization.feature_specifications.workflow import synchronize_targeted_feature_specification
+            specification = synchronize_targeted_feature_specification(context, story_root, result["path"], self.paths.specifications.parent)
+            self.index.build()
+            return CommandResult("generate-acceptance-criteria", "COMPLETE", {"feature_id": feature["feature_id"], "path": str(result["path"]), "run_id": result["run_id"], "specification_run": specification["run_id"]})
         from polaris_modernization.acceptance_criteria.workflow import prepare_acceptance_criteria, validate_and_persist_acceptance_criteria
 
         source = Path(options.get("story_root", self.paths.artifacts / "stories" / "latest"))

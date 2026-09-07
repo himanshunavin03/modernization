@@ -131,7 +131,7 @@ def build_jira_delivery(model: dict, presentation: dict) -> dict:
         source_id = human["source_story_id"]
         apis = [api for api in presentation["api_requirements"] if source_id in api.get("delivery_story_ids", [])]
         api_ids = {api["id"] for api in apis}
-        story_requirements = [item for item in requirements if source_id in item["source_story_ids"] or api_ids.intersection(item["api_ids"])]
+        story_requirements = [item for item in requirements if source_id in item["source_story_ids"]]
         story_clarifications = [item for item in clarifications if item.get("story_id") == source_id or item.get("api_id") in api_ids]
         blocking = [item for item in story_clarifications if item["required_before"] == "Development and QA completion"]
         rules = [item for item in presentation["business_rules"] if any(api["kind"] == "context" for api in apis) and "organization context" in item["rule"].lower()]

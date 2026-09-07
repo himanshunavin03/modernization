@@ -1,32 +1,754 @@
 {
-  "lineage": {
-    "application_understanding_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-07-002736-635673",
-    "canonical_upstream_kg_run": "legacy-dashboard-complete-application-demo-v1-2026-09-06-203944",
-    "feature_contract": "artifacts\\feature-specifications\\latest\\feature-doctor-directory-management.json",
-    "feature_contract_hash": "cf6840c0b504cd8db16f06fa8c3f30cff3895422fc115477cef70f41a3a37e39",
-    "feature_id": "feature-doctor-directory-management",
-    "feature_run": "capability-scope-2026-09-07-002844-038327",
-    "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-203944",
-    "story_run": "feature-doctor-directory-management-2026-09-07-002845-557189"
-  },
-  "readiness": "STORIES_READY",
-  "stories": [
+  "acceptance_criteria_regenerated": false,
+  "capability_api_contracts": [
     {
-      "api_contracts": [
+      "contract_id": "API-01",
+      "metadata": [
         {
-          "contract_id": "API-05",
-          "method": "POST",
-          "route": "/api/doctors"
+          "action": "DeleteAsync",
+          "controller": "DoctorsController",
+          "controller_route_template": "api/[controller]",
+          "framework": "ASP.NET",
+          "http_method": "DELETE",
+          "method_route_template": "{id}",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:DELETE /api/doctors/{id}",
+          "normalized_route": "/api/doctors/{id}",
+          "parameters": [
+            "id"
+          ],
+          "path_parameters": [
+            "id"
+          ],
+          "provenance": "FRAMEWORK_PROVEN",
+          "query_parameters": [],
+          "request_fields": [],
+          "request_type": null,
+          "response_fields": [],
+          "response_type": "Task",
+          "route_template": "api/[controller]/{id}",
+          "route_token_resolution": {
+            "controller": "doctors"
+          }
         }
       ],
-      "business_outcome": "The \"Add\" action is disabled while the form is invalid. The \"Add\" action is displayed when edit mode is inactive. The doctors view opens when the operation completes successfully. The new record is saved when the operation completes successfully. This behavior also preserves the approved tenant context.",
-      "capability_qualifiers": [
-        "TENANT_SCOPED"
+      "method": "DELETE",
+      "requirement_ids": [
+        "FR-02",
+        "FR-03",
+        "FR-04"
       ],
-      "functional_requirement_ids": [
+      "route": "/api/doctors/{id}",
+      "source_capability_ids": [
+        "capability-doctors-delete-2aa95f28df47"
+      ]
+    },
+    {
+      "contract_id": "API-02",
+      "metadata": [
+        {
+          "action": "GetAsync",
+          "controller": "DoctorsController",
+          "controller_route_template": "api/[controller]",
+          "framework": "ASP.NET",
+          "http_method": "GET",
+          "method_route_template": "",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors",
+          "normalized_route": "/api/doctors",
+          "parameters": [
+            "pageSize",
+            "pageCount"
+          ],
+          "path_parameters": [],
+          "provenance": "FRAMEWORK_PROVEN",
+          "query_parameters": [
+            {
+              "name": "pageSize",
+              "type": "int"
+            },
+            {
+              "name": "pageCount",
+              "type": "int"
+            }
+          ],
+          "request_fields": [],
+          "request_type": null,
+          "response_fields": [],
+          "response_type": "Task<IEnumerable<Doctor>>",
+          "route_template": "api/[controller]",
+          "route_token_resolution": {
+            "controller": "doctors"
+          }
+        }
+      ],
+      "method": "GET",
+      "requirement_ids": [
+        "FR-05",
+        "FR-06"
+      ],
+      "route": "/api/doctors",
+      "source_capability_ids": [
+        "capability-doctors-list-8e359528dc06"
+      ]
+    },
+    {
+      "contract_id": "API-03",
+      "metadata": [
+        {
+          "action": "GetAsync",
+          "controller": "DoctorsController",
+          "controller_route_template": "api/[controller]",
+          "framework": "ASP.NET",
+          "http_method": "GET",
+          "method_route_template": "{id}",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors/{id}",
+          "normalized_route": "/api/doctors/{id}",
+          "parameters": [
+            "id"
+          ],
+          "path_parameters": [
+            "id"
+          ],
+          "provenance": "FRAMEWORK_PROVEN",
+          "query_parameters": [],
+          "request_fields": [],
+          "request_type": null,
+          "response_fields": [],
+          "response_type": "Task<Doctor>",
+          "route_template": "api/[controller]/{id}",
+          "route_token_resolution": {
+            "controller": "doctors"
+          }
+        }
+      ],
+      "method": "GET",
+      "requirement_ids": [
+        "FR-09"
+      ],
+      "route": "/api/doctors/{id}",
+      "source_capability_ids": [
+        "capability-doctors-read-9d2f061a43ff"
+      ]
+    },
+    {
+      "contract_id": "API-04",
+      "metadata": [
+        {
+          "action": "GetCurrentTenantAsync",
+          "controller": "UsersController",
+          "controller_route_template": "api/[controller]",
+          "framework": "ASP.NET",
+          "http_method": "GET",
+          "method_route_template": "current/tenant",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "normalized_route": "/api/users/current/tenant",
+          "parameters": [],
+          "path_parameters": [],
+          "provenance": "FRAMEWORK_PROVEN",
+          "query_parameters": [],
+          "request_fields": [],
+          "request_type": null,
+          "response_fields": [],
+          "response_type": "Task<int?>",
+          "route_template": "api/[controller]/current/tenant",
+          "route_token_resolution": {
+            "controller": "users"
+          }
+        },
+        {
+          "action": "GetCurrentTenantAsync",
+          "controller": "UsersController",
+          "controller_route_template": "api/[controller]",
+          "framework": "ASP.NET",
+          "http_method": "GET",
+          "method_route_template": "current/tenant",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "normalized_route": "/api/users/current/tenant",
+          "parameters": [],
+          "path_parameters": [],
+          "provenance": "FRAMEWORK_PROVEN",
+          "query_parameters": [],
+          "request_fields": [],
+          "request_type": null,
+          "response_fields": [],
+          "response_type": "Task<int?>",
+          "route_template": "api/[controller]/current/tenant",
+          "route_token_resolution": {
+            "controller": "users"
+          }
+        },
+        {
+          "action": "GetCurrentTenantAsync",
+          "controller": "UsersController",
+          "controller_route_template": "api/[controller]",
+          "framework": "ASP.NET",
+          "http_method": "GET",
+          "method_route_template": "current/tenant",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "normalized_route": "/api/users/current/tenant",
+          "parameters": [],
+          "path_parameters": [],
+          "provenance": "FRAMEWORK_PROVEN",
+          "query_parameters": [],
+          "request_fields": [],
+          "request_type": null,
+          "response_fields": [],
+          "response_type": "Task<int?>",
+          "route_template": "api/[controller]/current/tenant",
+          "route_token_resolution": {
+            "controller": "users"
+          }
+        },
+        {
+          "action": "GetCurrentTenantAsync",
+          "controller": "UsersController",
+          "controller_route_template": "api/[controller]",
+          "framework": "ASP.NET",
+          "http_method": "GET",
+          "method_route_template": "current/tenant",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "normalized_route": "/api/users/current/tenant",
+          "parameters": [],
+          "path_parameters": [],
+          "provenance": "FRAMEWORK_PROVEN",
+          "query_parameters": [],
+          "request_fields": [],
+          "request_type": null,
+          "response_fields": [],
+          "response_type": "Task<int?>",
+          "route_template": "api/[controller]/current/tenant",
+          "route_token_resolution": {
+            "controller": "users"
+          }
+        },
+        {
+          "action": "GetCurrentTenantAsync",
+          "controller": "UsersController",
+          "controller_route_template": "api/[controller]",
+          "framework": "ASP.NET",
+          "http_method": "GET",
+          "method_route_template": "current/tenant",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+          "normalized_route": "/api/users/current/tenant",
+          "parameters": [],
+          "path_parameters": [],
+          "provenance": "FRAMEWORK_PROVEN",
+          "query_parameters": [],
+          "request_fields": [],
+          "request_type": null,
+          "response_fields": [],
+          "response_type": "Task<int?>",
+          "route_template": "api/[controller]/current/tenant",
+          "route_token_resolution": {
+            "controller": "users"
+          }
+        }
+      ],
+      "method": "GET",
+      "requirement_ids": [
+        "FR-14"
+      ],
+      "route": "/api/users/current/tenant",
+      "source_capability_ids": [
+        "capability-clinics-read-098bbe600a00",
+        "capability-dashboard-read-8c9a45edb073",
+        "capability-doctors-read-440206d0d254",
+        "capability-patients-read-fee268471da8",
+        "capability-users-read-7142e0fdb55d"
+      ]
+    },
+    {
+      "contract_id": "API-05",
+      "metadata": [
+        {
+          "action": "AddAsync",
+          "controller": "DoctorsController",
+          "controller_route_template": "api/[controller]",
+          "framework": "ASP.NET",
+          "http_method": "POST",
+          "method_route_template": "",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:POST /api/doctors",
+          "normalized_route": "/api/doctors",
+          "parameters": [
+            "doctor"
+          ],
+          "path_parameters": [],
+          "provenance": "FRAMEWORK_PROVEN",
+          "query_parameters": [],
+          "request_fields": [],
+          "request_type": "Doctor",
+          "response_fields": [],
+          "response_type": "Task<int>",
+          "route_template": "api/[controller]",
+          "route_token_resolution": {
+            "controller": "doctors"
+          }
+        }
+      ],
+      "method": "POST",
+      "requirement_ids": [
         "FR-01"
       ],
-      "goal": "select \"Add\"",
+      "route": "/api/doctors",
+      "source_capability_ids": [
+        "capability-doctors-create-3bf79f905f70"
+      ]
+    },
+    {
+      "contract_id": "API-06",
+      "metadata": [
+        {
+          "action": "UpdateAsync",
+          "controller": "DoctorsController",
+          "controller_route_template": "api/[controller]",
+          "framework": "ASP.NET",
+          "http_method": "PUT",
+          "method_route_template": "",
+          "node_id": "legacy-dashboard-complete-application-demo-v1:Endpoint:PUT /api/doctors",
+          "normalized_route": "/api/doctors",
+          "parameters": [
+            "doctor"
+          ],
+          "path_parameters": [],
+          "provenance": "FRAMEWORK_PROVEN",
+          "query_parameters": [],
+          "request_fields": [],
+          "request_type": "Doctor",
+          "response_fields": [],
+          "response_type": "Task",
+          "route_template": "api/[controller]",
+          "route_token_resolution": {
+            "controller": "doctors"
+          }
+        }
+      ],
+      "method": "PUT",
+      "requirement_ids": [
+        "FR-12"
+      ],
+      "route": "/api/doctors",
+      "source_capability_ids": [
+        "capability-doctors-update-01a9514e9ad2"
+      ]
+    }
+  ],
+  "capability_dispositions": [
+    {
+      "capability_id": "capability-doctors-create-3bf79f905f70",
+      "downstream_refs": [
+        "FR-01",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:10:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:7:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js:DoctorsService.add",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:POST /api/doctors",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.AddAsync:Add",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.AddAsync:SaveChangesAsync",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:POST /api/doctors"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-delete-2aa95f28df47",
+      "downstream_refs": [
+        "FR-02",
+        "FR-03",
+        "FR-04",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:77:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:32:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:6:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js:DoctorsService.remove",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:DELETE /api/doctors/{id}",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.DeleteAsync:SaveChangesAsync",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:DELETE /api/doctors/{PARAM}"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-list-8e359528dc06",
+      "downstream_refs": [
+        "FR-05",
+        "FR-06",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:43:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js:DoctorsService.getList",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/doctors"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-navigate-112aba01bc1f",
+      "downstream_refs": [
+        "FR-07",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:7:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-navigate-472c10f6e1fd",
+      "downstream_refs": [
+        "FR-08",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:3:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-navigate-ecdc3c506da0",
+      "downstream_refs": [
+        "FR-09",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:31:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-navigate-f3cd83a2ae08",
+      "downstream_refs": [
+        "FR-10",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:13:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-other-0c69e71d0979",
+      "downstream_refs": [
+        "FR-11",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UISelection:src/MyHealth.Web/content/app/components/doctors/views/main.html:3"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-other-60b3c124b876",
+      "downstream_refs": [
+        "FR-12",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:10:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-other-6218aaa9d1f8",
+      "downstream_refs": [
+        "FR-05",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:43:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-other-676ab9565ad8",
+      "downstream_refs": [
+        "FR-01",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:7:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-other-82764eab2ec7",
+      "downstream_refs": [
+        "FR-13",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UISelection:src/MyHealth.Web/content/app/components/doctors/views/main.html:22"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-other-9ebac3e25e35",
+      "downstream_refs": [
+        "FR-03",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:32:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-other-b01a879553da",
+      "downstream_refs": [
+        "FR-04",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:77:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-other-c8baace68b5f",
+      "downstream_refs": [
+        "FR-02",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/main.html:6:ng-click"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-read-04313374f9e6",
+      "downstream_refs": [],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors/speciality/{speciality}",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetBySpecialityAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetBySpecialityAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetBySpecialityAsync:OrderBy"
+      ],
+      "feature_id": null,
+      "reason": "No UI-to-workflow evidence establishes a single owning Feature.",
+      "scope_status": "UNRESOLVED"
+    },
+    {
+      "capability_id": "capability-doctors-read-440206d0d254",
+      "downstream_refs": [
+        "FR-14",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js:DoctorsService.getTenant",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/users/current/tenant",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:/api/users/current/tenant"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-read-95411bfc5b43",
+      "downstream_refs": [],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors/appointments/days/{doctorId}",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetDaysWithAppoinmentsAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetDaysWithAppoinmentsAsync:OrderBy",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.GetDaysWithAppoinmentsAsync:OrderBy"
+      ],
+      "feature_id": null,
+      "reason": "No UI-to-workflow evidence establishes a single owning Feature.",
+      "scope_status": "UNRESOLVED"
+    },
+    {
+      "capability_id": "capability-doctors-read-9d2f061a43ff",
+      "downstream_refs": [
+        "FR-09",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js:DoctorsService.getDoctor",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors/{id}",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:GET /api/doctors/{PARAM}"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-read-a106fba72ec3",
+      "downstream_refs": [],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:GET /api/doctors/availability/hours/{doctorId}"
+      ],
+      "feature_id": null,
+      "reason": "No UI-to-workflow evidence establishes a single owning Feature.",
+      "scope_status": "UNRESOLVED"
+    },
+    {
+      "capability_id": "capability-doctors-update-01a9514e9ad2",
+      "downstream_refs": [
+        "FR-12",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:10:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:7:ng-click",
+        "legacy-dashboard-complete-application-demo-v1:FrontendFunction:src/MyHealth.Web/content/app/components/doctors/services/doctorsService.js:DoctorsService.update",
+        "legacy-dashboard-complete-application-demo-v1:Endpoint:PUT /api/doctors",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.UpdateAsync:SaveChangesAsync",
+        "legacy-dashboard-complete-application-demo-v1:PersistenceOperation:DoctorsRepository.UpdateAsync:Update",
+        "legacy-dashboard-complete-application-demo-v1:ApiCall:PUT /api/doctors"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-upload-4740bad485ec",
+      "downstream_refs": [
+        "FR-15",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:56:upload"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-upload-6605f1033084",
+      "downstream_refs": [
+        "FR-15",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIAction:src/MyHealth.Web/content/app/components/doctors/views/detail.html:21:upload"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-30e3b01c51a5",
+      "downstream_refs": [
+        "FR-16",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:38"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-741cc6b88166",
+      "downstream_refs": [
+        "FR-17",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:34"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-8a54f613e682",
+      "downstream_refs": [
+        "FR-18",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:42"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-a1a5296a791a",
+      "downstream_refs": [
+        "FR-19",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:50"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-c90d553a0e3a",
+      "downstream_refs": [
+        "FR-20",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:46"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    },
+    {
+      "capability_id": "capability-doctors-validate-f54eac18bb4b",
+      "downstream_refs": [
+        "FR-21",
+        "feature:feature-doctor-directory-management"
+      ],
+      "evidence_refs": [
+        "legacy-dashboard-complete-application-demo-v1:UIValidation:src/MyHealth.Web/content/app/components/doctors/views/detail.html:30"
+      ],
+      "feature_id": "feature-doctor-directory-management",
+      "reason": null,
+      "scope_status": "INCLUDED"
+    }
+  ],
+  "downstream_status": "STALE_REGENERATION_REQUIRED",
+  "feature_id": "feature-doctor-directory-management",
+  "feature_name": "Doctor Directory Management",
+  "functional_requirements": [
+    {
+      "api_dependencies": [
+        "POST /api/doctors"
+      ],
+      "description": "The \"Add\" action is disabled while the form is invalid. The \"Add\" action is displayed when edit mode is inactive. The doctors view opens when the operation completes successfully. The new record is saved when the operation completes successfully.",
+      "id": "FR-01",
       "interaction_id": "interaction-2af8514b67cfd6a5a582",
       "interaction_semantics": [
         {
@@ -200,38 +922,19 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "the doctors view opens",
-        "the new record is saved"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-create-3bf79f905f70",
         "capability-doctors-other-676ab9565ad8"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-01-add-doctor",
-      "story_statement": "As an application user, I want to select \"Add\", so that the doctors view opens; the new record is saved.",
       "system_initiated": false,
       "title": "Add Doctor"
     },
     {
-      "api_contracts": [
-        {
-          "contract_id": "API-01",
-          "method": "DELETE",
-          "route": "/api/doctors/{id}"
-        }
+      "api_dependencies": [
+        "DELETE /api/doctors/{id}"
       ],
-      "business_outcome": "Confirmation is requested before the guarded action proceeds. The \"Delete\" action is displayed when at least one record is selected. The affected doctors are removed from the displayed collection when the operation completes successfully. This behavior also preserves the approved bulk operation behavior, the approved tenant context.",
-      "capability_qualifiers": [
-        "BULK",
-        "TENANT_SCOPED"
-      ],
-      "functional_requirement_ids": [
-        "FR-02"
-      ],
-      "goal": "select \"Delete\"",
+      "description": "Confirmation is requested before the guarded action proceeds. The \"Delete\" action is displayed when at least one record is selected. The affected doctors are removed from the displayed collection when the operation completes successfully.",
+      "id": "FR-02",
       "interaction_id": "interaction-4c1c693c3c5de5de9e99",
       "interaction_semantics": [
         {
@@ -364,38 +1067,19 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "confirmation is requested before the guarded action proceeds",
-        "the affected doctors are removed from the displayed collection"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-delete-2aa95f28df47",
         "capability-doctors-other-c8baace68b5f"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-02-delete-selected-doctor-records",
-      "story_statement": "As an application user, I want to select \"Delete\", so that confirmation is requested before the guarded action proceeds; the affected doctors are removed from the displayed collection.",
       "system_initiated": false,
       "title": "Delete selected Doctor records"
     },
     {
-      "api_contracts": [
-        {
-          "contract_id": "API-01",
-          "method": "DELETE",
-          "route": "/api/doctors/{id}"
-        }
+      "api_dependencies": [
+        "DELETE /api/doctors/{id}"
       ],
-      "business_outcome": "Confirmation is requested before the guarded action proceeds. The affected doctors are removed from the displayed collection when the operation completes successfully. This behavior also preserves the approved bulk operation behavior, the approved tenant context.",
-      "capability_qualifiers": [
-        "BULK",
-        "TENANT_SCOPED"
-      ],
-      "functional_requirement_ids": [
-        "FR-03"
-      ],
-      "goal": "delete an individual doctor",
+      "description": "Confirmation is requested before the guarded action proceeds. The affected doctors are removed from the displayed collection when the operation completes successfully.",
+      "id": "FR-03",
       "interaction_id": "interaction-8bd7aff6dd15656ddf99",
       "interaction_semantics": [
         {
@@ -493,38 +1177,19 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "confirmation is requested before the guarded action proceeds",
-        "the affected doctors are removed from the displayed collection"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-delete-2aa95f28df47",
         "capability-doctors-other-9ebac3e25e35"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-03-delete-an-individual-doctor",
-      "story_statement": "As an application user, I want to delete an individual doctor, so that confirmation is requested before the guarded action proceeds; the affected doctors are removed from the displayed collection.",
       "system_initiated": false,
       "title": "Delete an individual Doctor"
     },
     {
-      "api_contracts": [
-        {
-          "contract_id": "API-01",
-          "method": "DELETE",
-          "route": "/api/doctors/{id}"
-        }
+      "api_dependencies": [
+        "DELETE /api/doctors/{id}"
       ],
-      "business_outcome": "Confirmation is requested before the guarded action proceeds. The doctors view opens when the operation completes successfully. This behavior also preserves the approved bulk operation behavior, the approved tenant context.",
-      "capability_qualifiers": [
-        "BULK",
-        "TENANT_SCOPED"
-      ],
-      "functional_requirement_ids": [
-        "FR-04"
-      ],
-      "goal": "select \"Delete this doctor\"",
+      "description": "Confirmation is requested before the guarded action proceeds. The doctors view opens when the operation completes successfully.",
+      "id": "FR-04",
       "interaction_id": "interaction-d1bf4176e7270efa91ba",
       "interaction_semantics": [
         {
@@ -618,38 +1283,19 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "confirmation is requested before the guarded action proceeds",
-        "the doctors view opens"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-delete-2aa95f28df47",
         "capability-doctors-other-b01a879553da"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-04-delete-this-doctor",
-      "story_statement": "As an application user, I want to select \"Delete this doctor\", so that confirmation is requested before the guarded action proceeds; the doctors view opens.",
       "system_initiated": false,
       "title": "Delete this doctor"
     },
     {
-      "api_contracts": [
-        {
-          "contract_id": "API-02",
-          "method": "GET",
-          "route": "/api/doctors"
-        }
+      "api_dependencies": [
+        "GET /api/doctors"
       ],
-      "business_outcome": "Additional doctors are appended after the displayed records when the operation completes successfully. Records retain fixed name ordering (ascending) when the operation completes successfully. The \"LOAD MORE\" action is hidden when the returned batch contains fewer records than the requested batch size. The \"NO DATA\" message is displayed when the doctors collection is empty. This behavior also preserves the approved fixed ordering, the approved tenant context.",
-      "capability_qualifiers": [
-        "FIXED_ORDER",
-        "TENANT_SCOPED"
-      ],
-      "functional_requirement_ids": [
-        "FR-05"
-      ],
-      "goal": "select \"LOAD MORE\"",
+      "description": "Additional doctors are appended after the displayed records when the operation completes successfully. Records retain fixed name ordering (ascending) when the operation completes successfully. The \"LOAD MORE\" action is hidden when the returned batch contains fewer records than the requested batch size. The \"NO DATA\" message is displayed when the doctors collection is empty.",
+      "id": "FR-05",
       "interaction_id": "interaction-6e4fd7a2b8f00646b086",
       "interaction_semantics": [
         {
@@ -870,37 +1516,19 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "additional doctors are appended after the displayed records"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-list-8e359528dc06",
         "capability-doctors-other-6218aaa9d1f8"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-05-load-more",
-      "story_statement": "As an application user, I want to select \"LOAD MORE\", so that additional doctors are appended after the displayed records.",
       "system_initiated": false,
       "title": "Load more"
     },
     {
-      "api_contracts": [
-        {
-          "contract_id": "API-02",
-          "method": "GET",
-          "route": "/api/doctors"
-        }
+      "api_dependencies": [
+        "GET /api/doctors"
       ],
-      "business_outcome": "Additional doctors are appended after the displayed records when the operation completes successfully. Records retain fixed name ordering (ascending) when the operation completes successfully. The \"LOAD MORE\" action is hidden when the returned batch contains fewer records than the requested batch size. The \"NO DATA\" message is displayed when the doctors collection is empty. This behavior also preserves the approved fixed ordering, the approved tenant context.",
-      "capability_qualifiers": [
-        "FIXED_ORDER",
-        "TENANT_SCOPED"
-      ],
-      "functional_requirement_ids": [
-        "FR-06"
-      ],
-      "goal": "directory presentation",
+      "description": "Additional doctors are appended after the displayed records when the operation completes successfully. Records retain fixed name ordering (ascending) when the operation completes successfully. The \"LOAD MORE\" action is hidden when the returned batch contains fewer records than the requested batch size. The \"NO DATA\" message is displayed when the doctors collection is empty.",
+      "id": "FR-06",
       "interaction_id": "interaction-initialize-legacy-dashboard-complete-application-demo-v1:FrontendFunction:src/MyHealth.Web/content/app/components/doctors/controllers/doctorsController.js:doctorsController.getList",
       "interaction_semantics": [
         {
@@ -1129,27 +1757,16 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "additional doctors are appended after the displayed records"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-list-8e359528dc06"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-06-directory-presentation",
-      "story_statement": "The system performs directory presentation: additional doctors are appended after the displayed records.",
       "system_initiated": true,
       "title": "Directory presentation"
     },
     {
-      "api_contracts": [],
-      "business_outcome": "The doctor view opens.",
-      "capability_qualifiers": [],
-      "functional_requirement_ids": [
-        "FR-07"
-      ],
-      "goal": "select \"New doctor\"",
+      "api_dependencies": [],
+      "description": "The doctor view opens.",
+      "id": "FR-07",
       "interaction_id": "interaction-4e8acf20d25b163824e3",
       "interaction_semantics": [
         {
@@ -1200,27 +1817,16 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "the doctor view opens"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-navigate-112aba01bc1f"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-07-new-doctor",
-      "story_statement": "As an application user, I want to select \"New doctor\", so that the doctor view opens.",
       "system_initiated": false,
       "title": "New doctor"
     },
     {
-      "api_contracts": [],
-      "business_outcome": "The doctors view opens.",
-      "capability_qualifiers": [],
-      "functional_requirement_ids": [
-        "FR-08"
-      ],
-      "goal": "select \"Back to doctors\"",
+      "api_dependencies": [],
+      "description": "The doctors view opens.",
+      "id": "FR-08",
       "interaction_id": "interaction-d67e1f19625b17f92dcc",
       "interaction_semantics": [
         {
@@ -1264,35 +1870,18 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "the doctors view opens"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-navigate-472c10f6e1fd"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-08-back-to-doctors",
-      "story_statement": "As an application user, I want to select \"Back to doctors\", so that the doctors view opens.",
       "system_initiated": false,
       "title": "Back to doctors"
     },
     {
-      "api_contracts": [
-        {
-          "contract_id": "API-03",
-          "method": "GET",
-          "route": "/api/doctors/{id}"
-        }
+      "api_dependencies": [
+        "GET /api/doctors/{id}"
       ],
-      "business_outcome": "The doctor view opens. The returned doctor details populate the form. This behavior also preserves the approved tenant context.",
-      "capability_qualifiers": [
-        "TENANT_SCOPED"
-      ],
-      "functional_requirement_ids": [
-        "FR-09"
-      ],
-      "goal": "open doctor details",
+      "description": "The doctor view opens. The returned doctor details populate the form.",
+      "id": "FR-09",
       "interaction_id": "interaction-740c7f7276110d251675",
       "interaction_semantics": [
         {
@@ -1389,29 +1978,17 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "the doctor view opens",
-        "the returned doctor details populate the form"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-navigate-ecdc3c506da0",
         "capability-doctors-read-9d2f061a43ff"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-09-open-doctor-details",
-      "story_statement": "As an application user, I want to open doctor details, so that the doctor view opens; the returned doctor details populate the form.",
       "system_initiated": false,
       "title": "Open doctor details"
     },
     {
-      "api_contracts": [],
-      "business_outcome": "The \"Patients\" action is displayed when edit mode is active. The patients view opens.",
-      "capability_qualifiers": [],
-      "functional_requirement_ids": [
-        "FR-10"
-      ],
-      "goal": "select \"Patients\"",
+      "api_dependencies": [],
+      "description": "The \"Patients\" action is displayed when edit mode is active. The patients view opens.",
+      "id": "FR-10",
       "interaction_id": "interaction-16f26e11b0b4d0de2872",
       "interaction_semantics": [
         {
@@ -1487,27 +2064,16 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "the patients view opens"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-navigate-f3cd83a2ae08"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-10-patients",
-      "story_statement": "As an application user, I want to select \"Patients\", so that the patients view opens.",
       "system_initiated": false,
       "title": "Patients"
     },
     {
-      "api_contracts": [],
-      "business_outcome": "All displayed record checkboxes reflect the select-all state.",
-      "capability_qualifiers": [],
-      "functional_requirement_ids": [
-        "FR-11"
-      ],
-      "goal": "change all displayed record selections",
+      "api_dependencies": [],
+      "description": "All displayed record checkboxes reflect the select-all state.",
+      "id": "FR-11",
       "interaction_id": "interaction-capability-doctors-other-0c69e71d0979",
       "interaction_semantics": [
         {
@@ -1542,35 +2108,18 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "all displayed record checkboxes reflect the select-all state"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-other-0c69e71d0979"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-11-change-all-displayed-record-selections",
-      "story_statement": "As an application user, I want to change all displayed record selections, so that all displayed record checkboxes reflect the select-all state.",
       "system_initiated": false,
       "title": "Change all displayed record selections"
     },
     {
-      "api_contracts": [
-        {
-          "contract_id": "API-06",
-          "method": "PUT",
-          "route": "/api/doctors"
-        }
+      "api_dependencies": [
+        "PUT /api/doctors"
       ],
-      "business_outcome": "The \"Save\" action is disabled while the form is invalid. The \"Save\" action is displayed when edit mode is active. The changes to the selected record are saved when the operation completes successfully. The doctors view opens when the operation completes successfully. This behavior also preserves the approved tenant context.",
-      "capability_qualifiers": [
-        "TENANT_SCOPED"
-      ],
-      "functional_requirement_ids": [
-        "FR-12"
-      ],
-      "goal": "select \"Save\"",
+      "description": "The \"Save\" action is disabled while the form is invalid. The \"Save\" action is displayed when edit mode is active. The changes to the selected record are saved when the operation completes successfully. The doctors view opens when the operation completes successfully.",
+      "id": "FR-12",
       "interaction_id": "interaction-511b39673d9019249ca4",
       "interaction_semantics": [
         {
@@ -1744,29 +2293,17 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "the doctors view opens",
-        "the changes to the selected record are saved"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-other-60b3c124b876",
         "capability-doctors-update-01a9514e9ad2"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-12-save-doctor",
-      "story_statement": "As an application user, I want to select \"Save\", so that the doctors view opens; the changes to the selected record are saved.",
       "system_initiated": false,
       "title": "Save Doctor"
     },
     {
-      "api_contracts": [],
-      "business_outcome": "The chosen record reflects its checkbox selection state.",
-      "capability_qualifiers": [],
-      "functional_requirement_ids": [
-        "FR-13"
-      ],
-      "goal": "change an individual record selection",
+      "api_dependencies": [],
+      "description": "The chosen record reflects its checkbox selection state.",
+      "id": "FR-13",
       "interaction_id": "interaction-capability-doctors-other-82764eab2ec7",
       "interaction_semantics": [
         {
@@ -1801,33 +2338,18 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "the chosen record reflects its checkbox selection state"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-other-82764eab2ec7"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-13-change-an-individual-record-selection",
-      "story_statement": "As an application user, I want to change an individual record selection, so that the chosen record reflects its checkbox selection state.",
       "system_initiated": false,
       "title": "Change an individual record selection"
     },
     {
-      "api_contracts": [
-        {
-          "contract_id": "API-04",
-          "method": "GET",
-          "route": "/api/users/current/tenant"
-        }
+      "api_dependencies": [
+        "GET /api/users/current/tenant"
       ],
-      "business_outcome": "The tenant context is obtained automatically before the dependent request runs.",
-      "capability_qualifiers": [],
-      "functional_requirement_ids": [
-        "FR-14"
-      ],
-      "goal": "automatic tenant context",
+      "description": "The tenant context is obtained automatically before the dependent request runs.",
+      "id": "FR-14",
       "interaction_id": "interaction-capability-doctors-read-440206d0d254",
       "interaction_semantics": [
         {
@@ -1883,27 +2405,16 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "the tenant context is obtained automatically before the dependent request runs"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-read-440206d0d254"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-14-automatic-tenant-context",
-      "story_statement": "The system performs automatic tenant context: the tenant context is obtained automatically before the dependent request runs.",
       "system_initiated": true,
       "title": "Automatic tenant context"
     },
     {
-      "api_contracts": [],
-      "business_outcome": "The \"Add a profile photo\" prompt is shown when no file content is set. The doctor picture preview is displayed when file content is set. The selected file content updates the doctor picture.",
-      "capability_qualifiers": [],
-      "functional_requirement_ids": [
-        "FR-15"
-      ],
-      "goal": "select a profile file",
+      "api_dependencies": [],
+      "description": "The \"Add a profile photo\" prompt is shown when no file content is set. The doctor picture preview is displayed when file content is set. The selected file content updates the doctor picture.",
+      "id": "FR-15",
       "interaction_id": "interaction-c5b40a26ddb17cba470c",
       "interaction_semantics": [
         {
@@ -2415,28 +2926,17 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "the selected file content updates the doctor picture"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-upload-4740bad485ec",
         "capability-doctors-upload-6605f1033084"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-15-maintain-doctor-profile-media",
-      "story_statement": "As an application user, I want to select a profile file, so that the selected file content updates the doctor picture.",
       "system_initiated": false,
       "title": "Maintain Doctor Profile Media"
     },
     {
-      "api_contracts": [],
-      "business_outcome": "Doctor address remains invalid until a value is provided.",
-      "capability_qualifiers": [],
-      "functional_requirement_ids": [
-        "FR-16"
-      ],
-      "goal": "complete the doctor address input",
+      "api_dependencies": [],
+      "description": "Doctor address remains invalid until a value is provided.",
+      "id": "FR-16",
       "interaction_id": "interaction-capability-doctors-validate-30e3b01c51a5",
       "interaction_semantics": [
         {
@@ -2471,27 +2971,16 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "missing required input is identified before the form can be submitted"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-validate-30e3b01c51a5"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-16-validate-doctor-address",
-      "story_statement": "As an application user, I want to complete the doctor address input, so that missing required input is identified before the form can be submitted.",
       "system_initiated": false,
       "title": "Validate Doctor Address"
     },
     {
-      "api_contracts": [],
-      "business_outcome": "Doctor description remains invalid until a value is provided.",
-      "capability_qualifiers": [],
-      "functional_requirement_ids": [
-        "FR-17"
-      ],
-      "goal": "complete the doctor description input",
+      "api_dependencies": [],
+      "description": "Doctor description remains invalid until a value is provided.",
+      "id": "FR-17",
       "interaction_id": "interaction-capability-doctors-validate-741cc6b88166",
       "interaction_semantics": [
         {
@@ -2526,27 +3015,16 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "missing required input is identified before the form can be submitted"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-validate-741cc6b88166"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-17-validate-doctor-description",
-      "story_statement": "As an application user, I want to complete the doctor description input, so that missing required input is identified before the form can be submitted.",
       "system_initiated": false,
       "title": "Validate Doctor Description"
     },
     {
-      "api_contracts": [],
-      "business_outcome": "Doctor email remains invalid until a value is provided.",
-      "capability_qualifiers": [],
-      "functional_requirement_ids": [
-        "FR-18"
-      ],
-      "goal": "complete the doctor email input",
+      "api_dependencies": [],
+      "description": "Doctor email remains invalid until a value is provided.",
+      "id": "FR-18",
       "interaction_id": "interaction-capability-doctors-validate-8a54f613e682",
       "interaction_semantics": [
         {
@@ -2581,27 +3059,16 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "missing required input is identified before the form can be submitted"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-validate-8a54f613e682"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-18-validate-doctor-email",
-      "story_statement": "As an application user, I want to complete the doctor email input, so that missing required input is identified before the form can be submitted.",
       "system_initiated": false,
       "title": "Validate Doctor Email"
     },
     {
-      "api_contracts": [],
-      "business_outcome": "Doctor mobile remains invalid until a value is provided.",
-      "capability_qualifiers": [],
-      "functional_requirement_ids": [
-        "FR-19"
-      ],
-      "goal": "complete the doctor mobile input",
+      "api_dependencies": [],
+      "description": "Doctor mobile remains invalid until a value is provided.",
+      "id": "FR-19",
       "interaction_id": "interaction-capability-doctors-validate-a1a5296a791a",
       "interaction_semantics": [
         {
@@ -2636,27 +3103,16 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "missing required input is identified before the form can be submitted"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-validate-a1a5296a791a"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-19-validate-doctor-mobile",
-      "story_statement": "As an application user, I want to complete the doctor mobile input, so that missing required input is identified before the form can be submitted.",
       "system_initiated": false,
       "title": "Validate Doctor Mobile"
     },
     {
-      "api_contracts": [],
-      "business_outcome": "Doctor phone remains invalid until a value is provided.",
-      "capability_qualifiers": [],
-      "functional_requirement_ids": [
-        "FR-20"
-      ],
-      "goal": "complete the doctor phone input",
+      "api_dependencies": [],
+      "description": "Doctor phone remains invalid until a value is provided.",
+      "id": "FR-20",
       "interaction_id": "interaction-capability-doctors-validate-c90d553a0e3a",
       "interaction_semantics": [
         {
@@ -2691,27 +3147,16 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "missing required input is identified before the form can be submitted"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-validate-c90d553a0e3a"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-20-validate-doctor-phone",
-      "story_statement": "As an application user, I want to complete the doctor phone input, so that missing required input is identified before the form can be submitted.",
       "system_initiated": false,
       "title": "Validate Doctor Phone"
     },
     {
-      "api_contracts": [],
-      "business_outcome": "Doctor name remains invalid until a value is provided.",
-      "capability_qualifiers": [],
-      "functional_requirement_ids": [
-        "FR-21"
-      ],
-      "goal": "complete the doctor name input",
+      "api_dependencies": [],
+      "description": "Doctor name remains invalid until a value is provided.",
+      "id": "FR-21",
       "interaction_id": "interaction-capability-doctors-validate-f54eac18bb4b",
       "interaction_semantics": [
         {
@@ -2746,28 +3191,17 @@
           "unresolved_reason": null
         }
       ],
-      "observable_outcomes": [
-        "missing required input is identified before the form can be submitted"
-      ],
-      "parent_feature_id": "feature-doctor-directory-management",
       "source_capability_ids": [
         "capability-doctors-validate-f54eac18bb4b"
       ],
-      "status": "CURRENT",
-      "story_id": "story-doctor-directory-management-fr-21-validate-doctor-name",
-      "story_statement": "As an application user, I want to complete the doctor name input, so that missing required input is identified before the form can be submitted.",
       "system_initiated": false,
       "title": "Validate Doctor Name"
     }
   ],
-  "validation": {
-    "duplicate_stories": 0,
-    "fr_with_story_coverage": 21,
-    "fr_without_story_coverage": [],
-    "jira_story_quality": "PASS",
-    "orphan_stories": 0,
-    "total_approved_frs": 21,
-    "unsupported_story_behavior": 0,
-    "valid": true
+  "status": "FEATURE_SCOPE_READY_WITH_EXPLICIT_DISPOSITIONS",
+  "stories_regenerated": false,
+  "upstream_lineage": {
+    "application_understanding_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-07-002736-635673",
+    "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-203944"
   }
 }

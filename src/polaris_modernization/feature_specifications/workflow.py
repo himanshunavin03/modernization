@@ -17,6 +17,64 @@ def _write(path: Path, value: object) -> None:
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
+def synchronize_targeted_feature_specification(context: dict, story_root: Path, acceptance_root: Path, output_root: Path) -> dict:
+    """Consolidate one current Feature through the existing human/Jira renderer."""
+    from hashlib import sha256
+    from polaris_modernization.feature_specifications.human_presentation import build_targeted_human_presentation, render_human_markdown, audit_human_markdown
+    stories=_read(story_root/'story-catalog.json')
+    acceptance=_read(acceptance_root/'acceptance-criteria.json')
+    expected=context['feature_contract_hash']
+    for document in (stories,acceptance):
+        if document['lineage']['feature_contract_hash']!=expected or document['lineage']['canonical_upstream_kg_run']!=context['canonical_kg_run']:
+            raise ValueError('Cannot synchronize stale requirements artifacts.')
+    if acceptance['lineage']['story_run']!=stories['lineage']['story_run']:
+        raise ValueError('Acceptance Criteria do not belong to the supplied Story run.')
+    current_fields=('feature_id','feature_name','status','functional_requirements','capability_api_contracts','capability_dispositions','upstream_lineage')
+    contract={**{k:v for k,v in context['contract'].items() if k in current_fields}, 'stories':stories['stories'], 'acceptance_criteria':acceptance['acceptance_criteria'],
+        'stories_regenerated':True,'acceptance_criteria_regenerated':True,'downstream_status':'REQUIREMENTS_CURRENT',
+        'generation_lineage':acceptance['lineage']}
+    # Historical workflow/traceability summaries must not masquerade as current
+    # requirements. Retain the immutable historical file, replace these views.
+    contract['traceability']=acceptance['lineage']
+    contract['workflows']=[{'interaction_id':r.get('interaction_id'),'requirement_id':r['id']} for r in contract['functional_requirements']]
+    presentation=build_targeted_human_presentation(contract,stories,acceptance)
+    contract['scope']=presentation['scope']
+    contract['business_rules']=presentation['business_rules']
+    contract['definition_of_ready']=presentation['definition_of_ready']
+    markdown=render_human_markdown(presentation)
+    cleanliness=audit_human_markdown(markdown)
+    if any(cleanliness.values()):
+        raise ValueError(f'Human specification contains internal or unclear terminology: {cleanliness}')
+    if any(ac['quality']['status']!='PASS' for s in presentation['jira_stories'] for ac in s['acceptance_criteria']):
+        raise ValueError('Jira Acceptance Criteria quality failed.')
+    run_id='requirements-freeze-'+datetime.now().strftime('%Y-%m-%d-%H%M%S-%f')
+    destination=output_root/'runs'/run_id
+    destination.mkdir(parents=True,exist_ok=False)
+    feature_id=contract['feature_id']
+    _write(destination/f'{feature_id}.json',contract)
+    _write(destination/'human-presentation.json',presentation)
+    (destination/f'{feature_id}.md').write_text(markdown,encoding='utf-8')
+    validation={'valid':True,'feature_id':feature_id,'lineage':acceptance['lineage'],'human_cleanliness':cleanliness,
+        'feature_spec_synchronized':True,'markdown_sha256':sha256(markdown.encode()).hexdigest()}
+    _write(destination/'requirements-validation.json',validation)
+    latest=output_root/'latest'
+    for name in (f'{feature_id}.json',f'{feature_id}.md'):
+        shutil.copyfile(destination/name,latest/name)
+    _write(latest/f'{feature_id}-validation.json',validation)
+    index_path=latest/'feature-specification-index.json'
+    if index_path.is_file():
+        index=_read(index_path)
+        for entry in index['features']:
+            if entry['feature_id']==feature_id:
+                entry.update({'stories':len(stories['stories']),'acceptance_criteria':len(acceptance['acceptance_criteria']),
+                    'business_purpose':presentation['overview']['objective'],'requirements_run_id':run_id,
+                    'upstream_lineage':contract.get('upstream_lineage',{})})
+        _write(index_path,index)
+    _write(latest/'downstream-staleness.json',{'feature_id':feature_id,'status':'REQUIREMENTS_CURRENT',
+        'stories':'CURRENT','acceptance_criteria':'CURRENT','stale_artifacts':['TECHNICAL_TASKS','ANGULAR','PLAYWRIGHT']})
+    return {'run_id':run_id,'path':destination,'contract':contract,'presentation':presentation,'validation':validation}
+
+
 def _lineage(business: dict, stories: dict, acceptance: dict, roots: tuple[Path, Path, Path]) -> dict:
     result = {key: acceptance[key] for key in ("kg_run_id", "application_understanding_run_id", "feature_run_id", "business_feature_run_id", "story_run_id")}
     result["acceptance_criteria_run_id"] = acceptance["acceptance_criteria_run_id"]

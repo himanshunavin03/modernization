@@ -479,16 +479,22 @@ def render_human_markdown(presentation: dict) -> str:
     for requirement in presentation["functional_requirements"]:
         lines += [f"### {requirement['id']} - {requirement['title']}", "", "#### Requirement", "", requirement["requirement"], "", "#### Functional Flow", "", *[f"{number}. {step}" for number, step in enumerate(requirement["functional_steps"], 1)], ""]
         if requirement["api_ids"]:
-            api = api_by_id[requirement["api_ids"][0]]
-            lines += ["#### API Integration", "", f"- **Method:** `{api['method']}`", f"- **Endpoint:** `{api['endpoint']}`"]
-            lines += [f"- **Input:** `{item['name']}` - {item['description']} ({item['location'].lower()} parameter)" for item in api["inputs"]]
-            lines += [f"- **Purpose:** {api['purpose']}", f"- **Response:** {api['description']}.", ""]
+            lines += ["#### API Integration", ""]
+            for api_id in requirement['api_ids']:
+                api=api_by_id[api_id]
+                lines += [f"- **Method:** `{api['method']}`", f"- **Endpoint:** `{api['endpoint']}`"]
+                lines += [f"- **Input:** `{item['name']}` - {item['description']} ({item['location'].lower()} parameter)" for item in api["inputs"]]
+                lines += [f"- **Purpose:** {api['purpose']}", f"- **Response:** {api['description']}.", ""]
         if requirement["clarification_ids"]:
             lines += ["#### Clarification Required", "", *[f"- **{qid}:** {questions_by_id[qid]['question']}" for qid in requirement["clarification_ids"]], ""]
     lines += ["## 3. User Stories", ""]
     for story in presentation["jira_stories"]:
-        lines += [f"### {story['story_id']} - {story['summary']}", "", "#### Story", "", "As an application user,", "", f"I want to {story['goal']}{',' if story['business_outcome'] else '.'}"]
-        lines += (["", f"so that {story['business_outcome']}.", ""] if story["business_outcome"] else ["", "**Business Outcome:** Requires confirmation from Product Owner / Business SME.", ""])
+        lines += [f"### {story['story_id']} - {story['summary']}", "", "#### Story", ""]
+        if story.get('system_initiated'):
+            lines += [story['description'], '']
+        else:
+            lines += ["As an application user,", "", f"I want to {story['goal']}{',' if story['business_outcome'] else '.'}"]
+            lines += (["", f"so that {story['business_outcome']}.", ""] if story["business_outcome"] else ["", "**Business Outcome:** Requires confirmation from Product Owner / Business SME.", ""])
         lines += ["#### Functional Requirements", "", *[f"- **{item['id']}:** {item['requirement']}" for item in story["functional_requirement_refs"]], ""]
         if story["business_rules"]:
             lines += ["#### Business Rules", "", *[f"- **{item['id']}:** {item['rule']}" for item in story["business_rules"]], ""]
@@ -530,6 +536,9 @@ def render_human_markdown(presentation: dict) -> str:
     if presentation["clarifications"]:
         lines += [f"## {section}. Clarifications Required", "", "| ID | Question | Owner | Required Before |", "| --- | --- | --- | --- |", *[f"| {x['id']} | {x['question']} | {x['owner']} | {x['required_before']} |" for x in presentation["clarifications"]], ""]
         section += 1
+    if presentation.get('definition_of_ready'):
+        lines += [f"## {section}. Definition of Ready", "", *[f"- [ ] {item}" for item in presentation['definition_of_ready']], '']
+        section += 1
     lines += [f"## {section}. Definition of Done", "", *[f"- [ ] Implementation is complete for {item['title']}." for item in presentation["functional_requirements"]]]
     if presentation["api_requirements"]:
         lines += ["- [ ] All specified backend APIs are integrated."]
@@ -543,12 +552,79 @@ def render_human_markdown(presentation: dict) -> str:
     return "\n".join(lines)
 
 
+def build_targeted_human_presentation(contract: dict, story_catalog: dict, acceptance: dict) -> dict:
+    """Adapt current interaction contracts to the established Jira renderer.
+
+    Requirements retain their FR identity; API dependencies do not create or
+    replace UX requirements. No historical Story or AC is consulted.
+    """
+    from polaris_modernization.feature_specifications.jira_delivery import build_jira_delivery
+    source_stories=story_catalog['stories']; source_criteria=acceptance['acceptance_criteria']
+    requirements=[]; apis=[]; stories=[]; criteria=[]
+    for api in contract.get('capability_api_contracts',[]):
+        linked=[s['story_id'] for s in source_stories if set(s['functional_requirement_ids']) & set(api['requirement_ids'])]
+        requirements_by_id={r['id']:r for r in contract['functional_requirements']}
+        system=all(requirements_by_id[r].get('system_initiated') for r in api['requirement_ids'])
+        metadata=api.get('metadata',[])
+        raw_response=next((m.get('response_type') or m.get('return_type') for m in metadata if m.get('response_type') or m.get('return_type')),None)
+        response,collection=_unwrap_response(raw_response)
+        if response in {'Task','ValueTask'}:response=None
+        request=next((m.get('request_type') for m in metadata if m.get('request_type')),None)
+        inputs=[{'name':p,'location':'Path','description':'Identifier of the selected record'} for p in _path_parameters(api['route'])]
+        query_parameters={}
+        for item in metadata:
+            for parameter in item.get('query_parameters',[]):
+                name=parameter.get('name') if isinstance(parameter,dict) else str(parameter)
+                data_type=parameter.get('type') if isinstance(parameter,dict) else None
+                if name:
+                    query_parameters[name]={'name':name,'location':'Query','description':f'Request parameter ({data_type})' if data_type else 'Request parameter'}
+        inputs.extend(query_parameters[name] for name in sorted(query_parameters))
+        apis.append({'id':api['contract_id'],'title':f"Dependency for {', '.join(api['requirement_ids'])}",
+            'method':api['method'],'endpoint':api['route'],'purpose':f"Supports {', '.join(api['requirement_ids'])}; the functional behavior is defined in those requirements.",
+            'description':('Collection of '+response+' records') if response and collection else str(response or 'Completion response without a documented payload'), 'model':response,'request_type':request,
+            'inputs':inputs,'used_by':api['requirement_ids'],'response_fields':[], 'kind':'context' if system else 'operation',
+            'collection':collection,'delivery_story_ids':linked,'source_interaction_ids':api['source_capability_ids']})
+    for r in contract['functional_requirements']:
+        linked=[s['story_id'] for s in source_stories if r['id'] in s['functional_requirement_ids']]
+        from polaris_modernization.application_understanding.interactions import describe_semantic
+        phase={'ACTION_VISIBILITY':0,'VALIDATION_GATE':0,'CONFIRMATION':1,'RECORD_CREATE':2,'RECORD_UPDATE':2,'COLLECTION_APPEND':2,'FIXED_ORDER':3,'NAVIGATION':4,'DESTINATION_STATE':5,'RENDER':6}
+        semantics=sorted(r.get('interaction_semantics',[]),key=lambda s:phase.get(s.get('effect_kind'),2))
+        requirements.append({'id':r['id'],'title':r['title'],'requirement':_sentence(r['description']),
+            'functional_steps':list(dict.fromkeys(describe_semantic(s) for s in semantics if s.get('observable_result'))),
+            'api_ids':[a['contract_id'] for a in contract.get('capability_api_contracts',[]) if r['id'] in a['requirement_ids']],
+            'clarification_ids':[],'source_story_ids':linked})
+    for number,s in enumerate(source_stories,1):
+        stories.append({'id':f'US-{number:02d}','title':s['title'],'goal':s['goal'],
+            'outcome':'; '.join(s.get('observable_outcomes',[])) or None,'source_story_id':s['story_id']})
+    for number,ac in enumerate(source_criteria,1):
+        criteria.append({'id':f'AC-{number:02d}','title':ac['then'][:1].upper()+ac['then'][1:],
+            'given':[_plain(ac['given'])],'when':_plain(ac['when']),'expected_results':[_plain(ac['then'])],
+            'source_story_id':ac['story_id'],'source_ac_id':ac['acceptance_criterion_id']})
+    result={
+        'feature':{'name':contract['feature_name'],'source_feature_id':contract['feature_id']},
+        'overview':{'objective':f"Deliver {contract['feature_name'].lower()} with the interactions specified below.",
+            'capabilities':[r['title'] for r in requirements], 'business_value':'Stakeholder business priorities and rationale require Product Owner confirmation.'},
+        'scope':{'in_scope':[r['title'] for r in requirements], 'out_of_scope':['Operations without a defined interaction in this specification.']},
+        'functional_requirements':requirements,'stories':stories,'acceptance_criteria':criteria,'api_requirements':apis,
+        'business_rules':[], 'clarifications':[],
+        'definition_of_ready':['Scope and interaction outcomes are reviewed.','Required API contracts and inputs are confirmed.','Acceptance Criteria are understood by development and QA.']}
+    rules={s['observable_result'] for r in contract['functional_requirements'] for s in r.get('interaction_semantics',[]) if s.get('effect_kind') in {'FIXED_ORDER','VALIDATION','CONFIRMATION','SYSTEM_CONTEXT'}}
+    result['business_rules']=[{'id':f'BR-{i:02d}','rule':_sentence(rule)} for i,rule in enumerate(sorted(rules),1)]
+    jira=build_jira_delivery({'feature_id':contract['feature_id'],'requirements':source_stories},result)
+    for item,source in zip(jira['stories'],source_stories,strict=True):
+        item['system_initiated']=source.get('system_initiated',False)
+        if item['system_initiated']:
+            item['actor']='system';item['description']=source['story_statement']
+    result['jira_stories']=jira['stories']
+    return result
+
+
 def audit_human_markdown(markdown: str) -> dict[str, int]:
     lowered = f" {markdown.lower()} "
     result = {name: sum(lowered.count(term) for term in terms) for name, terms in FORBIDDEN_TERMS.items()}
     result["source_paths"] = len(re.findall(r"\b(?:src|source)/[^\s`)]+", markdown, re.I))
     result["source_line_references"] = len(re.findall(r"(?:\bline\s+\d+|:[Ll]\d+\b)", markdown))
-    result["semantically_circular_stories"] = len(re.findall(r"I want to ([^\n]+).*?so that (?:I can )?\1|so that [^.]+ remains (?:available|associated|visible)", markdown, re.I | re.S))
+    result["semantically_circular_stories"] = len(re.findall(r"I want to ([^\n,]+),?\s+so that (?:I can )?\1(?:[.,\s]|$)|so that [^.\n]+ remains (?:available|associated|visible)", markdown, re.I))
     result["vague_human_ac"] = sum(lowered.count(term) for term in ("behavior remains available", "feature works correctly", "information is supported", "functionality is maintained", "requirements are preserved", "feature behavior is ready", "feature is implemented"))
     result["generic_clarification_questions"] = sum(lowered.count(term) for term in ("which information must be considered mandatory", "what contract detail is required", "what details are required"))
     result["backend_task_wrappers_as_primary_response"] = len(re.findall(r"\| Response \| `?(?:Task|ValueTask)<", markdown))

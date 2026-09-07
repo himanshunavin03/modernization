@@ -33,6 +33,17 @@ class InteractionSemantics(BaseModel):
     state_change: str | None = None
     system_initiated: bool = False
     handler_id: str | None = None
+    interaction_id: str | None = None
+    lineage_node_ids: list[str] = Field(default_factory=list)
+    effect_id: str | None = None
+    effect_kind: str | None = None
+    navigation_target: str | None = None
+    condition: str | None = None
+    condition_description: str | None = None
+    context: str | None = None
+    system_event: str | None = None
+    api_node_ids: list[str] = Field(default_factory=list)
+    unresolved_reason: str | None = None
     source_evidence: list[CapabilityEvidence] = Field(default_factory=list)
 
 
@@ -72,6 +83,7 @@ class SourceCapability(BaseModel):
     qualifiers: list[str] = Field(default_factory=list)
     source_evidence: list[CapabilityEvidence]
     interaction_semantics: list[InteractionSemantics] = Field(default_factory=list)
+    api_metadata: list[dict] = Field(default_factory=list)
     facts_status: Literal["PRESENT", "PARTIAL"] = "PRESENT"
     kg_status: Literal["PRESENT", "PARTIAL"] = "PRESENT"
     confidence: Literal["PROVEN", "PARTIAL"]
@@ -312,7 +324,8 @@ def derive_source_capabilities(graph: dict) -> list[SourceCapability]:
             operation_identity=identity, qualifiers=["FIXED_ORDER"], source_evidence=_evidence(node, "PERSISTENCE"),
             facts_status="PRESENT", kg_status="PARTIAL", confidence="PROVEN",
         )
-    return sorted(results.values(), key=lambda item: item.capability_id)
+    from polaris_modernization.application_understanding.interactions import propagate_interactions
+    return propagate_interactions(graph, sorted(results.values(), key=lambda item: item.capability_id))
 
 
 def validate_capability_coverage(capabilities: list[SourceCapability | dict], dispositions: list[CapabilityDisposition | dict]) -> dict:

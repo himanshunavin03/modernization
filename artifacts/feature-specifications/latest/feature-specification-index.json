@@ -12,14 +12,19 @@
       "target_design": "Not Yet Analyzed"
     },
     {
-      "acceptance_criteria": 2,
+      "acceptance_criteria": 41,
       "architecture": "Pending",
-      "business_purpose": "Provide tenant-aware navigation and access to doctor information.",
+      "business_purpose": "Deliver doctor directory management with the interactions specified below.",
       "feature_id": "feature-doctor-directory-management",
       "feature_name": "Doctor Directory Management",
       "modernization": "Not Started",
-      "stories": 2,
-      "target_design": "Not Yet Analyzed"
+      "requirements_run_id": "requirements-freeze-2026-09-06-183248-264294",
+      "stories": 21,
+      "target_design": "Not Yet Analyzed",
+      "upstream_lineage": {
+        "application_understanding_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-07-002736-635673",
+        "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-203944"
+      }
     },
     {
       "acceptance_criteria": 2,

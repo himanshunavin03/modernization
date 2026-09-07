@@ -14,6 +14,8 @@ from polaris_modernization.capability_completeness import validate_capability_co
 
 def _requirement_key(capability: dict) -> str:
     kind = capability["operation_kind"]
+    if capability.get("interaction_semantics") and all(s.get("system_initiated") for s in capability["interaction_semantics"]):
+        return "SYSTEM"
     if kind == "READ" and not capability.get("interaction_semantics"):
         return "SYSTEM"
     return {"READ": "DETAIL"}.get(kind, kind)
@@ -35,8 +37,12 @@ def _behavior_description(items: list[dict], title: str) -> str:
     interactions = [semantic for item in items for semantic in item.get("interaction_semantics", [])]
     labels = sorted({str(item["label"]).strip() for item in interactions if item.get("label")})
     kinds = {item.get("interaction_type") for item in interactions}
+    from polaris_modernization.application_understanding.interactions import describe_semantic
+    results = sorted({describe_semantic(item) for item in interactions if item.get("observable_result")})
+    if results:
+        return " ".join(results)
     if "VALIDATION" in kinds:
-        return "The form prevents its related action until the required inputs are provided."
+        return "The form requires the specified input."
     if "SELECTION" in kinds:
         return "The directory supports record selection and selection-state changes before related actions are used."
     if labels:
@@ -68,25 +74,52 @@ def build_feature_scope_contract(feature_id: str, feature_name: str, coverage: d
     grouped: dict[str, list[dict]] = {}
     for disposition in included:
         capability = capabilities[disposition["capability_id"]]
-        grouped.setdefault(_requirement_key(capability), []).append(capability)
+        interactions = capability.get("interaction_semantics", [])
+        identities = sorted({s["interaction_id"] for s in interactions if s.get("interaction_id")})
+        if identities:
+            for identity in identities:
+                subset = {**capability, "interaction_semantics": [s for s in interactions if s.get("interaction_id") == identity]}
+                grouped.setdefault(identity, []).append(subset)
+        else:
+            grouped.setdefault(_requirement_key(capability), []).append(capability)
     entity = re.sub(r"\s+(Directory|Management|Experience|Context).*$", "", feature_name).strip() or "Feature"
     requirements = []
     requirement_by_capability = {}
     for index, (key, items) in enumerate(sorted(grouped.items(), key=lambda item: (list(("LIST", "DETAIL", "CREATE", "UPDATE", "DELETE", "PAGE", "UPLOAD", "VALIDATE", "NAVIGATE", "TENANT_CONTEXT", "OTHER")).index(item[0]) if item[0] in ("LIST", "DETAIL", "CREATE", "UPDATE", "DELETE", "PAGE", "UPLOAD", "VALIDATE", "NAVIGATE", "TENANT_CONTEXT", "OTHER") else 99)), 1):
         requirement_id = f"FR-{index:02d}"
-        title = _title(key, entity)
+        semantics = list({json.dumps(s,sort_keys=True):s for item in items for s in item.get("interaction_semantics", [])}.values())
+        operation_key = _requirement_key(items[0])
+        labels = sorted({s['label'] for s in semantics if s.get('label')})
+        title = labels[0].capitalize() if len(labels)==1 else _title(operation_key, entity)
+        effect_kinds={s.get('effect_kind') for s in semantics}
+        if labels and any(item['operation_kind'] in {'CREATE','UPDATE','DELETE'} for item in items) and len(labels[0].split())==1:
+            title=f'{labels[0].capitalize()} {entity}'
+        if 'COLLECTION_REMOVE' in effect_kinds:
+            arguments={s.get('trigger') for s in semantics if s.get('trigger')}
+            selected=any(re.search(r'\(\s*\)\s*$',a) for a in arguments)
+            title=f'Delete selected {entity} records' if selected else f'Delete an individual {entity}'
+        if effect_kinds=={'VALIDATION'}:
+            title='Validate '+str(semantics[0].get('state_change') or 'required input').title()
+        elif effect_kinds=={'SELECTION'}:
+            title='Change '+str(semantics[0].get('state_change') or 'record selection').removeprefix('selection model ').replace('.', ' ')
+        elif not labels and 'NAVIGATION' in effect_kinds:
+            targets=sorted({s['navigation_target'] for s in semantics if s.get('navigation_target')})
+            title='Open '+', '.join(targets)+' details'
+        elif 'MEDIA_BINDING' in effect_kinds:
+            title=_title('UPLOAD',entity)
         api_dependencies = sorted({identity for item in items for identity in [_api_identity(item)] if identity})
         requirement = {
             "id": requirement_id, "title": title,
             "description": _behavior_description(items, title),
-            "source_capability_ids": sorted(item["capability_id"] for item in items),
-            "interaction_semantics": [semantic for item in items for semantic in item.get("interaction_semantics", [])],
-            "system_initiated": key == "SYSTEM",
+            "source_capability_ids": sorted({item["capability_id"] for item in items}),
+            "interaction_semantics": semantics,
+            "interaction_id": key if key.startswith("interaction-") else None,
+            "system_initiated": operation_key == "SYSTEM",
             "api_dependencies": api_dependencies,
         }
         requirements.append(requirement)
         for item in items:
-            requirement_by_capability[item["capability_id"]] = requirement_id
+            requirement_by_capability.setdefault(item["capability_id"], []).append(requirement_id)
     api_contracts = []
     for identity in sorted({value for item in requirements for value in item["api_dependencies"]}):
         method, route = identity.split(" ", 1)
@@ -94,12 +127,13 @@ def build_feature_scope_contract(feature_id: str, feature_name: str, coverage: d
             "contract_id": f"API-{len(api_contracts) + 1:02d}", "method": method, "route": route,
             "requirement_ids": sorted(item["id"] for item in requirements if identity in item["api_dependencies"]),
             "source_capability_ids": sorted(item["capability_id"] for item in capabilities.values() if _api_identity(item) == identity),
+            "metadata": [m for item in capabilities.values() if _api_identity(item) == identity for m in item.get('api_metadata',[])],
         })
     refreshed = deepcopy(coverage)
     for disposition in refreshed["dispositions"]:
-        requirement_id = requirement_by_capability.get(disposition["capability_id"])
-        if requirement_id:
-            disposition["downstream_refs"] = sorted(set([*disposition.get("downstream_refs", []), requirement_id]))
+        requirement_ids = requirement_by_capability.get(disposition["capability_id"])
+        if requirement_ids:
+            disposition["downstream_refs"] = sorted(set([r for r in disposition.get("downstream_refs", []) if not r.startswith("FR-")] + requirement_ids))
     entity_tokens = {entity.casefold(), entity.casefold() + "s"}
     unresolved = [item for item in refreshed["dispositions"] if item["scope_status"] != "INCLUDED" and capabilities[item["capability_id"]]["domain_context"] in entity_tokens]
     contract = {
@@ -140,8 +174,8 @@ def publish_feature_scope_refresh(source_root: Path, output_root: Path, feature_
     contract, refreshed_coverage = build_feature_scope_contract(feature_id, existing["feature_name"], coverage)
     run_id = f"capability-scope-{datetime.now(timezone.utc).strftime('%Y-%m-%d-%H%M%S-%f')}"
     destination = output_root / "runs" / run_id
-    shutil.copytree(source_root, destination)
-    refreshed_specification = deepcopy(existing)
+    destination.mkdir(parents=True, exist_ok=False)
+    refreshed_specification = {'feature_id':feature_id,'feature_name':existing['feature_name']}
     refreshed_specification.update({
         "status": contract["status"],
         "functional_requirements": contract["functional_requirements"],
@@ -150,20 +184,21 @@ def publish_feature_scope_refresh(source_root: Path, output_root: Path, feature_
         "downstream_status": contract["downstream_status"],
         "stories_regenerated": False,
         "acceptance_criteria_regenerated": False,
+        "upstream_lineage": coverage.get("upstream_lineage", {}),
     })
     (destination / f"{feature_id}.json").write_text(json.dumps(refreshed_specification, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    (destination / f"{feature_id}.md").write_text(render_feature_markdown(contract), encoding="utf-8")
     (destination / "capability-coverage.json").write_text(json.dumps(refreshed_coverage, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     (destination / "downstream-staleness.json").write_text(json.dumps({
         "feature_id": feature_id, "status": "STALE_REGENERATION_REQUIRED",
         "stale_artifacts": ["STORIES", "ACCEPTANCE_CRITERIA", "TECHNICAL_TASKS", "ANGULAR", "PLAYWRIGHT"],
     }, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     api_path = destination / "feature-api-contracts.json"
-    api_document = json.loads(api_path.read_text(encoding="utf-8"))
+    api_document = json.loads((source_root / 'feature-api-contracts.json').read_text(encoding="utf-8"))
     feature_api = next(item for item in api_document["features"] if item["feature_id"] == feature_id)
     feature_api["contracts"] = contract["api_contracts"]
     api_path.write_text(json.dumps(api_document, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     latest = output_root / "latest"
-    shutil.rmtree(latest)
-    shutil.copytree(destination, latest)
+    latest.mkdir(parents=True,exist_ok=True)
+    for artifact in destination.iterdir():
+        shutil.copyfile(artifact,latest/artifact.name)
     return {"run_id": run_id, "path": destination, "contract": contract, "coverage": refreshed_coverage}

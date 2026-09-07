@@ -1,0 +1,6 @@
+{
+  "active_agent": "EXTERNAL_TO_POLARIS",
+  "evidence_packages_created": 138,
+  "external_llm_api_calls": 0,
+  "reasoning_mode": "INTERACTIVE_AGENT_MODE"
+}

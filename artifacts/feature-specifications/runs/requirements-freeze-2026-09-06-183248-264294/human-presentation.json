@@ -1,0 +1,4284 @@
+{
+  "acceptance_criteria": [
+    {
+      "expected_results": [
+        "the doctors view opens"
+      ],
+      "given": [
+        "the doctor view is displayed after the user selects \"Add\""
+      ],
+      "id": "AC-01",
+      "source_ac_id": "ac-doctor-directory-management-fr-01-add-doctor-001",
+      "source_story_id": "story-doctor-directory-management-fr-01-add-doctor",
+      "title": "The doctors view opens",
+      "when": "the operation completes successfully"
+    },
+    {
+      "expected_results": [
+        "the \"Add\" action is displayed"
+      ],
+      "given": [
+        "edit mode is inactive"
+      ],
+      "id": "AC-02",
+      "source_ac_id": "ac-doctor-directory-management-fr-01-add-doctor-002",
+      "source_story_id": "story-doctor-directory-management-fr-01-add-doctor",
+      "title": "The \"Add\" action is displayed",
+      "when": "the view evaluates which actions to display"
+    },
+    {
+      "expected_results": [
+        "the \"Add\" action is disabled while the form is invalid"
+      ],
+      "given": [
+        "the doctor view is displayed"
+      ],
+      "id": "AC-03",
+      "source_ac_id": "ac-doctor-directory-management-fr-01-add-doctor-003",
+      "source_story_id": "story-doctor-directory-management-fr-01-add-doctor",
+      "title": "The \"Add\" action is disabled while the form is invalid",
+      "when": "the form contains incomplete or invalid input"
+    },
+    {
+      "expected_results": [
+        "the new record is saved"
+      ],
+      "given": [
+        "the doctor view is displayed after the user selects \"Add\""
+      ],
+      "id": "AC-04",
+      "source_ac_id": "ac-doctor-directory-management-fr-01-add-doctor-004",
+      "source_story_id": "story-doctor-directory-management-fr-01-add-doctor",
+      "title": "The new record is saved",
+      "when": "the operation completes successfully"
+    },
+    {
+      "expected_results": [
+        "confirmation is requested before the guarded action proceeds"
+      ],
+      "given": [
+        "the doctors view is displayed"
+      ],
+      "id": "AC-05",
+      "source_ac_id": "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-001",
+      "source_story_id": "story-doctor-directory-management-fr-02-delete-selected-doctor-records",
+      "title": "Confirmation is requested before the guarded action proceeds",
+      "when": "the user selects \"Delete\""
+    },
+    {
+      "expected_results": [
+        "the affected doctors are removed from the displayed collection"
+      ],
+      "given": [
+        "the doctors view is displayed after the user selects \"Delete\" and the user has confirmed the action"
+      ],
+      "id": "AC-06",
+      "source_ac_id": "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-002",
+      "source_story_id": "story-doctor-directory-management-fr-02-delete-selected-doctor-records",
+      "title": "The affected doctors are removed from the displayed collection",
+      "when": "the operation completes successfully"
+    },
+    {
+      "expected_results": [
+        "the \"Delete\" action is displayed"
+      ],
+      "given": [
+        "at least one record is selected"
+      ],
+      "id": "AC-07",
+      "source_ac_id": "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-003",
+      "source_story_id": "story-doctor-directory-management-fr-02-delete-selected-doctor-records",
+      "title": "The \"Delete\" action is displayed",
+      "when": "the view evaluates which actions to display"
+    },
+    {
+      "expected_results": [
+        "confirmation is requested before the guarded action proceeds"
+      ],
+      "given": [
+        "the doctors view is displayed"
+      ],
+      "id": "AC-08",
+      "source_ac_id": "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-001",
+      "source_story_id": "story-doctor-directory-management-fr-03-delete-an-individual-doctor",
+      "title": "Confirmation is requested before the guarded action proceeds",
+      "when": "the user selects the record's delete control"
+    },
+    {
+      "expected_results": [
+        "the affected doctors are removed from the displayed collection"
+      ],
+      "given": [
+        "the doctors view is displayed and the user has confirmed the action"
+      ],
+      "id": "AC-09",
+      "source_ac_id": "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-002",
+      "source_story_id": "story-doctor-directory-management-fr-03-delete-an-individual-doctor",
+      "title": "The affected doctors are removed from the displayed collection",
+      "when": "the operation completes successfully"
+    },
+    {
+      "expected_results": [
+        "confirmation is requested before the guarded action proceeds"
+      ],
+      "given": [
+        "the doctor view is displayed"
+      ],
+      "id": "AC-10",
+      "source_ac_id": "ac-doctor-directory-management-fr-04-delete-this-doctor-001",
+      "source_story_id": "story-doctor-directory-management-fr-04-delete-this-doctor",
+      "title": "Confirmation is requested before the guarded action proceeds",
+      "when": "the user selects \"Delete this doctor\""
+    },
+    {
+      "expected_results": [
+        "the doctors view opens"
+      ],
+      "given": [
+        "the doctor view is displayed after the user selects \"Delete this doctor\" and the user has confirmed the action"
+      ],
+      "id": "AC-11",
+      "source_ac_id": "ac-doctor-directory-management-fr-04-delete-this-doctor-002",
+      "source_story_id": "story-doctor-directory-management-fr-04-delete-this-doctor",
+      "title": "The doctors view opens",
+      "when": "the operation completes successfully"
+    },
+    {
+      "expected_results": [
+        "additional doctors are appended after the displayed records"
+      ],
+      "given": [
+        "the doctors view is displayed after the user selects \"LOAD MORE\""
+      ],
+      "id": "AC-12",
+      "source_ac_id": "ac-doctor-directory-management-fr-05-load-more-001",
+      "source_story_id": "story-doctor-directory-management-fr-05-load-more",
+      "title": "Additional doctors are appended after the displayed records",
+      "when": "the operation completes successfully"
+    },
+    {
+      "expected_results": [
+        "the \"NO DATA\" message is displayed"
+      ],
+      "given": [
+        "the doctors view is displayed after the user selects \"LOAD MORE\""
+      ],
+      "id": "AC-13",
+      "source_ac_id": "ac-doctor-directory-management-fr-05-load-more-002",
+      "source_story_id": "story-doctor-directory-management-fr-05-load-more",
+      "title": "The \"NO DATA\" message is displayed",
+      "when": "the doctors collection is empty"
+    },
+    {
+      "expected_results": [
+        "the \"LOAD MORE\" action is hidden"
+      ],
+      "given": [
+        "the doctors view is displayed after the user selects \"LOAD MORE\""
+      ],
+      "id": "AC-14",
+      "source_ac_id": "ac-doctor-directory-management-fr-05-load-more-003",
+      "source_story_id": "story-doctor-directory-management-fr-05-load-more",
+      "title": "The \"LOAD MORE\" action is hidden",
+      "when": "the returned batch contains fewer records than the requested batch size"
+    },
+    {
+      "expected_results": [
+        "records retain fixed name ordering (ascending)"
+      ],
+      "given": [
+        "the doctors view is displayed after the user selects \"LOAD MORE\""
+      ],
+      "id": "AC-15",
+      "source_ac_id": "ac-doctor-directory-management-fr-05-load-more-004",
+      "source_story_id": "story-doctor-directory-management-fr-05-load-more",
+      "title": "Records retain fixed name ordering (ascending)",
+      "when": "the operation completes successfully"
+    },
+    {
+      "expected_results": [
+        "additional doctors are appended after the displayed records"
+      ],
+      "given": [
+        "the directory view is opening"
+      ],
+      "id": "AC-16",
+      "source_ac_id": "ac-doctor-directory-management-fr-06-directory-presentation-001",
+      "source_story_id": "story-doctor-directory-management-fr-06-directory-presentation",
+      "title": "Additional doctors are appended after the displayed records",
+      "when": "the operation completes successfully"
+    },
+    {
+      "expected_results": [
+        "the \"NO DATA\" message is displayed"
+      ],
+      "given": [
+        "the directory view is opening"
+      ],
+      "id": "AC-17",
+      "source_ac_id": "ac-doctor-directory-management-fr-06-directory-presentation-002",
+      "source_story_id": "story-doctor-directory-management-fr-06-directory-presentation",
+      "title": "The \"NO DATA\" message is displayed",
+      "when": "the doctors collection is empty"
+    },
+    {
+      "expected_results": [
+        "the \"LOAD MORE\" action is hidden"
+      ],
+      "given": [
+        "the directory view is opening"
+      ],
+      "id": "AC-18",
+      "source_ac_id": "ac-doctor-directory-management-fr-06-directory-presentation-003",
+      "source_story_id": "story-doctor-directory-management-fr-06-directory-presentation",
+      "title": "The \"LOAD MORE\" action is hidden",
+      "when": "the returned batch contains fewer records than the requested batch size"
+    },
+    {
+      "expected_results": [
+        "records retain fixed name ordering (ascending)"
+      ],
+      "given": [
+        "the directory view is opening"
+      ],
+      "id": "AC-19",
+      "source_ac_id": "ac-doctor-directory-management-fr-06-directory-presentation-004",
+      "source_story_id": "story-doctor-directory-management-fr-06-directory-presentation",
+      "title": "Records retain fixed name ordering (ascending)",
+      "when": "the operation completes successfully"
+    },
+    {
+      "expected_results": [
+        "the doctor view opens"
+      ],
+      "given": [
+        "the doctors view is displayed"
+      ],
+      "id": "AC-20",
+      "source_ac_id": "ac-doctor-directory-management-fr-07-new-doctor-001",
+      "source_story_id": "story-doctor-directory-management-fr-07-new-doctor",
+      "title": "The doctor view opens",
+      "when": "the user selects \"New doctor\""
+    },
+    {
+      "expected_results": [
+        "the doctors view opens"
+      ],
+      "given": [
+        "the doctor view is displayed"
+      ],
+      "id": "AC-21",
+      "source_ac_id": "ac-doctor-directory-management-fr-08-back-to-doctors-001",
+      "source_story_id": "story-doctor-directory-management-fr-08-back-to-doctors",
+      "title": "The doctors view opens",
+      "when": "the user selects \"Back to doctors\""
+    },
+    {
+      "expected_results": [
+        "the doctor view opens"
+      ],
+      "given": [
+        "the doctors view is displayed"
+      ],
+      "id": "AC-22",
+      "source_ac_id": "ac-doctor-directory-management-fr-09-open-doctor-details-001",
+      "source_story_id": "story-doctor-directory-management-fr-09-open-doctor-details",
+      "title": "The doctor view opens",
+      "when": "the user selects the record's detail control"
+    },
+    {
+      "expected_results": [
+        "the returned doctor details populate the form"
+      ],
+      "given": [
+        "the doctors view is displayed"
+      ],
+      "id": "AC-23",
+      "source_ac_id": "ac-doctor-directory-management-fr-09-open-doctor-details-002",
+      "source_story_id": "story-doctor-directory-management-fr-09-open-doctor-details",
+      "title": "The returned doctor details populate the form",
+      "when": "the user selects the record's detail control"
+    },
+    {
+      "expected_results": [
+        "the patients view opens"
+      ],
+      "given": [
+        "the doctor view is displayed"
+      ],
+      "id": "AC-24",
+      "source_ac_id": "ac-doctor-directory-management-fr-10-patients-001",
+      "source_story_id": "story-doctor-directory-management-fr-10-patients",
+      "title": "The patients view opens",
+      "when": "the user selects \"Patients\""
+    },
+    {
+      "expected_results": [
+        "the \"Patients\" action is displayed"
+      ],
+      "given": [
+        "edit mode is active"
+      ],
+      "id": "AC-25",
+      "source_ac_id": "ac-doctor-directory-management-fr-10-patients-002",
+      "source_story_id": "story-doctor-directory-management-fr-10-patients",
+      "title": "The \"Patients\" action is displayed",
+      "when": "the view evaluates which actions to display"
+    },
+    {
+      "expected_results": [
+        "all displayed record checkboxes reflect the select-all state"
+      ],
+      "given": [
+        "the directory displays selectable records"
+      ],
+      "id": "AC-26",
+      "source_ac_id": "ac-doctor-directory-management-fr-11-change-all-displayed-record-selections-001",
+      "source_story_id": "story-doctor-directory-management-fr-11-change-all-displayed-record-selections",
+      "title": "All displayed record checkboxes reflect the select-all state",
+      "when": "the user toggles the select-all checkbox"
+    },
+    {
+      "expected_results": [
+        "the doctors view opens"
+      ],
+      "given": [
+        "the doctor view is displayed after the user selects \"Save\""
+      ],
+      "id": "AC-27",
+      "source_ac_id": "ac-doctor-directory-management-fr-12-save-doctor-001",
+      "source_story_id": "story-doctor-directory-management-fr-12-save-doctor",
+      "title": "The doctors view opens",
+      "when": "the operation completes successfully"
+    },
+    {
+      "expected_results": [
+        "the \"Save\" action is displayed"
+      ],
+      "given": [
+        "edit mode is active"
+      ],
+      "id": "AC-28",
+      "source_ac_id": "ac-doctor-directory-management-fr-12-save-doctor-002",
+      "source_story_id": "story-doctor-directory-management-fr-12-save-doctor",
+      "title": "The \"Save\" action is displayed",
+      "when": "the view evaluates which actions to display"
+    },
+    {
+      "expected_results": [
+        "the \"Save\" action is disabled while the form is invalid"
+      ],
+      "given": [
+        "the doctor view is displayed"
+      ],
+      "id": "AC-29",
+      "source_ac_id": "ac-doctor-directory-management-fr-12-save-doctor-003",
+      "source_story_id": "story-doctor-directory-management-fr-12-save-doctor",
+      "title": "The \"Save\" action is disabled while the form is invalid",
+      "when": "the form contains incomplete or invalid input"
+    },
+    {
+      "expected_results": [
+        "the changes to the selected record are saved"
+      ],
+      "given": [
+        "the doctor view is displayed after the user selects \"Save\""
+      ],
+      "id": "AC-30",
+      "source_ac_id": "ac-doctor-directory-management-fr-12-save-doctor-004",
+      "source_story_id": "story-doctor-directory-management-fr-12-save-doctor",
+      "title": "The changes to the selected record are saved",
+      "when": "the operation completes successfully"
+    },
+    {
+      "expected_results": [
+        "the chosen record reflects its checkbox selection state"
+      ],
+      "given": [
+        "the directory displays selectable records"
+      ],
+      "id": "AC-31",
+      "source_ac_id": "ac-doctor-directory-management-fr-13-change-an-individual-record-selection-001",
+      "source_story_id": "story-doctor-directory-management-fr-13-change-an-individual-record-selection",
+      "title": "The chosen record reflects its checkbox selection state",
+      "when": "the user toggles a record checkbox"
+    },
+    {
+      "expected_results": [
+        "the organization context is obtained automatically before the dependent request runs"
+      ],
+      "given": [
+        "a dependent operation is requested"
+      ],
+      "id": "AC-32",
+      "source_ac_id": "ac-doctor-directory-management-fr-14-automatic-tenant-context-001",
+      "source_story_id": "story-doctor-directory-management-fr-14-automatic-tenant-context",
+      "title": "The tenant context is obtained automatically before the dependent request runs",
+      "when": "dependent operation initialization"
+    },
+    {
+      "expected_results": [
+        "the selected file content updates the doctor picture"
+      ],
+      "given": [
+        "the doctor view is displayed with its file input"
+      ],
+      "id": "AC-33",
+      "source_ac_id": "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-001",
+      "source_story_id": "story-doctor-directory-management-fr-15-maintain-doctor-profile-media",
+      "title": "The selected file content updates the doctor picture",
+      "when": "the selected file finishes reading"
+    },
+    {
+      "expected_results": [
+        "the \"Add a profile photo\" prompt is shown when no file content is set"
+      ],
+      "given": [
+        "the doctor view is displayed with its file input"
+      ],
+      "id": "AC-34",
+      "source_ac_id": "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-002",
+      "source_story_id": "story-doctor-directory-management-fr-15-maintain-doctor-profile-media",
+      "title": "The \"Add a profile photo\" prompt is shown when no file content is set",
+      "when": "the profile file value changes"
+    },
+    {
+      "expected_results": [
+        "the doctor picture preview is displayed when file content is set"
+      ],
+      "given": [
+        "the doctor view is displayed with its file input"
+      ],
+      "id": "AC-35",
+      "source_ac_id": "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-003",
+      "source_story_id": "story-doctor-directory-management-fr-15-maintain-doctor-profile-media",
+      "title": "The doctor picture preview is displayed when file content is set",
+      "when": "the profile file value changes"
+    },
+    {
+      "expected_results": [
+        "doctor address remains invalid until a value is provided"
+      ],
+      "given": [
+        "the doctor view is displayed"
+      ],
+      "id": "AC-36",
+      "source_ac_id": "ac-doctor-directory-management-fr-16-validate-doctor-address-001",
+      "source_story_id": "story-doctor-directory-management-fr-16-validate-doctor-address",
+      "title": "Doctor address remains invalid until a value is provided",
+      "when": "the user leaves doctor address empty"
+    },
+    {
+      "expected_results": [
+        "doctor description remains invalid until a value is provided"
+      ],
+      "given": [
+        "the doctor view is displayed"
+      ],
+      "id": "AC-37",
+      "source_ac_id": "ac-doctor-directory-management-fr-17-validate-doctor-description-001",
+      "source_story_id": "story-doctor-directory-management-fr-17-validate-doctor-description",
+      "title": "Doctor description remains invalid until a value is provided",
+      "when": "the user leaves doctor description empty"
+    },
+    {
+      "expected_results": [
+        "doctor email remains invalid until a value is provided"
+      ],
+      "given": [
+        "the doctor view is displayed"
+      ],
+      "id": "AC-38",
+      "source_ac_id": "ac-doctor-directory-management-fr-18-validate-doctor-email-001",
+      "source_story_id": "story-doctor-directory-management-fr-18-validate-doctor-email",
+      "title": "Doctor email remains invalid until a value is provided",
+      "when": "the user leaves doctor email empty"
+    },
+    {
+      "expected_results": [
+        "doctor mobile remains invalid until a value is provided"
+      ],
+      "given": [
+        "the doctor view is displayed"
+      ],
+      "id": "AC-39",
+      "source_ac_id": "ac-doctor-directory-management-fr-19-validate-doctor-mobile-001",
+      "source_story_id": "story-doctor-directory-management-fr-19-validate-doctor-mobile",
+      "title": "Doctor mobile remains invalid until a value is provided",
+      "when": "the user leaves doctor mobile empty"
+    },
+    {
+      "expected_results": [
+        "doctor phone remains invalid until a value is provided"
+      ],
+      "given": [
+        "the doctor view is displayed"
+      ],
+      "id": "AC-40",
+      "source_ac_id": "ac-doctor-directory-management-fr-20-validate-doctor-phone-001",
+      "source_story_id": "story-doctor-directory-management-fr-20-validate-doctor-phone",
+      "title": "Doctor phone remains invalid until a value is provided",
+      "when": "the user leaves doctor phone empty"
+    },
+    {
+      "expected_results": [
+        "doctor name remains invalid until a value is provided"
+      ],
+      "given": [
+        "the doctor view is displayed"
+      ],
+      "id": "AC-41",
+      "source_ac_id": "ac-doctor-directory-management-fr-21-validate-doctor-name-001",
+      "source_story_id": "story-doctor-directory-management-fr-21-validate-doctor-name",
+      "title": "Doctor name remains invalid until a value is provided",
+      "when": "the user leaves doctor name empty"
+    }
+  ],
+  "api_requirements": [
+    {
+      "collection": false,
+      "delivery_story_ids": [
+        "story-doctor-directory-management-fr-02-delete-selected-doctor-records",
+        "story-doctor-directory-management-fr-03-delete-an-individual-doctor",
+        "story-doctor-directory-management-fr-04-delete-this-doctor"
+      ],
+      "description": "Completion response without a documented payload",
+      "endpoint": "/api/doctors/{id}",
+      "id": "API-01",
+      "inputs": [
+        {
+          "description": "Identifier of the selected record",
+          "location": "Path",
+          "name": "id"
+        }
+      ],
+      "kind": "operation",
+      "method": "DELETE",
+      "model": null,
+      "purpose": "Supports FR-02, FR-03, FR-04; the functional behavior is defined in those requirements.",
+      "request_type": null,
+      "response_fields": [],
+      "source_interaction_ids": [
+        "capability-doctors-delete-2aa95f28df47"
+      ],
+      "title": "Dependency for FR-02, FR-03, FR-04",
+      "used_by": [
+        "FR-02",
+        "FR-03",
+        "FR-04"
+      ]
+    },
+    {
+      "collection": true,
+      "delivery_story_ids": [
+        "story-doctor-directory-management-fr-05-load-more",
+        "story-doctor-directory-management-fr-06-directory-presentation"
+      ],
+      "description": "Collection of Doctor records",
+      "endpoint": "/api/doctors",
+      "id": "API-02",
+      "inputs": [
+        {
+          "description": "Request parameter (int)",
+          "location": "Query",
+          "name": "pageCount"
+        },
+        {
+          "description": "Request parameter (int)",
+          "location": "Query",
+          "name": "pageSize"
+        }
+      ],
+      "kind": "operation",
+      "method": "GET",
+      "model": "Doctor",
+      "purpose": "Supports FR-05, FR-06; the functional behavior is defined in those requirements.",
+      "request_type": null,
+      "response_fields": [],
+      "source_interaction_ids": [
+        "capability-doctors-list-8e359528dc06"
+      ],
+      "title": "Dependency for FR-05, FR-06",
+      "used_by": [
+        "FR-05",
+        "FR-06"
+      ]
+    },
+    {
+      "collection": false,
+      "delivery_story_ids": [
+        "story-doctor-directory-management-fr-09-open-doctor-details"
+      ],
+      "description": "Doctor",
+      "endpoint": "/api/doctors/{id}",
+      "id": "API-03",
+      "inputs": [
+        {
+          "description": "Identifier of the selected record",
+          "location": "Path",
+          "name": "id"
+        }
+      ],
+      "kind": "operation",
+      "method": "GET",
+      "model": "Doctor",
+      "purpose": "Supports FR-09; the functional behavior is defined in those requirements.",
+      "request_type": null,
+      "response_fields": [],
+      "source_interaction_ids": [
+        "capability-doctors-read-9d2f061a43ff"
+      ],
+      "title": "Dependency for FR-09",
+      "used_by": [
+        "FR-09"
+      ]
+    },
+    {
+      "collection": false,
+      "delivery_story_ids": [
+        "story-doctor-directory-management-fr-14-automatic-tenant-context"
+      ],
+      "description": "int",
+      "endpoint": "/api/users/current/tenant",
+      "id": "API-04",
+      "inputs": [],
+      "kind": "context",
+      "method": "GET",
+      "model": "int",
+      "purpose": "Supports FR-14; the functional behavior is defined in those requirements.",
+      "request_type": null,
+      "response_fields": [],
+      "source_interaction_ids": [
+        "capability-clinics-read-098bbe600a00",
+        "capability-dashboard-read-8c9a45edb073",
+        "capability-doctors-read-440206d0d254",
+        "capability-patients-read-fee268471da8",
+        "capability-users-read-7142e0fdb55d"
+      ],
+      "title": "Dependency for FR-14",
+      "used_by": [
+        "FR-14"
+      ]
+    },
+    {
+      "collection": false,
+      "delivery_story_ids": [
+        "story-doctor-directory-management-fr-01-add-doctor"
+      ],
+      "description": "int",
+      "endpoint": "/api/doctors",
+      "id": "API-05",
+      "inputs": [],
+      "kind": "operation",
+      "method": "POST",
+      "model": "int",
+      "purpose": "Supports FR-01; the functional behavior is defined in those requirements.",
+      "request_type": "Doctor",
+      "response_fields": [],
+      "source_interaction_ids": [
+        "capability-doctors-create-3bf79f905f70"
+      ],
+      "title": "Dependency for FR-01",
+      "used_by": [
+        "FR-01"
+      ]
+    },
+    {
+      "collection": false,
+      "delivery_story_ids": [
+        "story-doctor-directory-management-fr-12-save-doctor"
+      ],
+      "description": "Completion response without a documented payload",
+      "endpoint": "/api/doctors",
+      "id": "API-06",
+      "inputs": [],
+      "kind": "operation",
+      "method": "PUT",
+      "model": null,
+      "purpose": "Supports FR-12; the functional behavior is defined in those requirements.",
+      "request_type": "Doctor",
+      "response_fields": [],
+      "source_interaction_ids": [
+        "capability-doctors-update-01a9514e9ad2"
+      ],
+      "title": "Dependency for FR-12",
+      "used_by": [
+        "FR-12"
+      ]
+    }
+  ],
+  "business_rules": [
+    {
+      "id": "BR-01",
+      "rule": "Confirmation is requested before the guarded action proceeds."
+    },
+    {
+      "id": "BR-02",
+      "rule": "Doctor address remains invalid until a value is provided."
+    },
+    {
+      "id": "BR-03",
+      "rule": "Doctor description remains invalid until a value is provided."
+    },
+    {
+      "id": "BR-04",
+      "rule": "Doctor email remains invalid until a value is provided."
+    },
+    {
+      "id": "BR-05",
+      "rule": "Doctor mobile remains invalid until a value is provided."
+    },
+    {
+      "id": "BR-06",
+      "rule": "Doctor name remains invalid until a value is provided."
+    },
+    {
+      "id": "BR-07",
+      "rule": "Doctor phone remains invalid until a value is provided."
+    },
+    {
+      "id": "BR-08",
+      "rule": "Records retain fixed name ordering (ascending)."
+    },
+    {
+      "id": "BR-09",
+      "rule": "The organization context is obtained automatically before the dependent request runs."
+    }
+  ],
+  "clarifications": [],
+  "definition_of_ready": [
+    "Scope and interaction outcomes are reviewed.",
+    "Required API contracts and inputs are confirmed.",
+    "Acceptance Criteria are understood by development and QA."
+  ],
+  "feature": {
+    "name": "Doctor Directory Management",
+    "source_feature_id": "feature-doctor-directory-management"
+  },
+  "functional_requirements": [
+    {
+      "api_ids": [
+        "API-05"
+      ],
+      "clarification_ids": [],
+      "functional_steps": [
+        "The \"Add\" action is displayed when edit mode is inactive.",
+        "The \"Add\" action is disabled while the form is invalid.",
+        "The new record is saved when the operation completes successfully.",
+        "The doctors view opens when the operation completes successfully."
+      ],
+      "id": "FR-01",
+      "requirement": "The \"Add\" action is disabled while the form is invalid. The \"Add\" action is displayed when edit mode is inactive. The doctors view opens when the operation completes successfully. The new record is saved when the operation completes successfully.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-01-add-doctor"
+      ],
+      "title": "Add Doctor"
+    },
+    {
+      "api_ids": [
+        "API-01"
+      ],
+      "clarification_ids": [],
+      "functional_steps": [
+        "The \"Delete\" action is displayed when at least one record is selected.",
+        "Confirmation is requested before the guarded action proceeds.",
+        "The affected doctors are removed from the displayed collection when the operation completes successfully."
+      ],
+      "id": "FR-02",
+      "requirement": "Confirmation is requested before the guarded action proceeds. The \"Delete\" action is displayed when at least one record is selected. The affected doctors are removed from the displayed collection when the operation completes successfully.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-02-delete-selected-doctor-records"
+      ],
+      "title": "Delete selected Doctor records"
+    },
+    {
+      "api_ids": [
+        "API-01"
+      ],
+      "clarification_ids": [],
+      "functional_steps": [
+        "Confirmation is requested before the guarded action proceeds.",
+        "The affected doctors are removed from the displayed collection when the operation completes successfully."
+      ],
+      "id": "FR-03",
+      "requirement": "Confirmation is requested before the guarded action proceeds. The affected doctors are removed from the displayed collection when the operation completes successfully.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-03-delete-an-individual-doctor"
+      ],
+      "title": "Delete an individual Doctor"
+    },
+    {
+      "api_ids": [
+        "API-01"
+      ],
+      "clarification_ids": [],
+      "functional_steps": [
+        "Confirmation is requested before the guarded action proceeds.",
+        "The doctors view opens when the operation completes successfully."
+      ],
+      "id": "FR-04",
+      "requirement": "Confirmation is requested before the guarded action proceeds. The doctors view opens when the operation completes successfully.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-04-delete-this-doctor"
+      ],
+      "title": "Delete this doctor"
+    },
+    {
+      "api_ids": [
+        "API-02"
+      ],
+      "clarification_ids": [],
+      "functional_steps": [
+        "Additional doctors are appended after the displayed records when the operation completes successfully.",
+        "Records retain fixed name ordering (ascending) when the operation completes successfully.",
+        "The \"NO DATA\" message is displayed when the doctors collection is empty.",
+        "The \"LOAD MORE\" action is hidden when the returned batch contains fewer records than the requested batch size."
+      ],
+      "id": "FR-05",
+      "requirement": "Additional doctors are appended after the displayed records when the operation completes successfully. Records retain fixed name ordering (ascending) when the operation completes successfully. The \"LOAD MORE\" action is hidden when the returned batch contains fewer records than the requested batch size. The \"NO DATA\" message is displayed when the doctors collection is empty.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-05-load-more"
+      ],
+      "title": "Load more"
+    },
+    {
+      "api_ids": [
+        "API-02"
+      ],
+      "clarification_ids": [],
+      "functional_steps": [
+        "Additional doctors are appended after the displayed records when the operation completes successfully.",
+        "Records retain fixed name ordering (ascending) when the operation completes successfully.",
+        "The \"NO DATA\" message is displayed when the doctors collection is empty.",
+        "The \"LOAD MORE\" action is hidden when the returned batch contains fewer records than the requested batch size."
+      ],
+      "id": "FR-06",
+      "requirement": "Additional doctors are appended after the displayed records when the operation completes successfully. Records retain fixed name ordering (ascending) when the operation completes successfully. The \"LOAD MORE\" action is hidden when the returned batch contains fewer records than the requested batch size. The \"NO DATA\" message is displayed when the doctors collection is empty.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-06-directory-presentation"
+      ],
+      "title": "Directory presentation"
+    },
+    {
+      "api_ids": [],
+      "clarification_ids": [],
+      "functional_steps": [
+        "The doctor view opens."
+      ],
+      "id": "FR-07",
+      "requirement": "The doctor view opens.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-07-new-doctor"
+      ],
+      "title": "New doctor"
+    },
+    {
+      "api_ids": [],
+      "clarification_ids": [],
+      "functional_steps": [
+        "The doctors view opens."
+      ],
+      "id": "FR-08",
+      "requirement": "The doctors view opens.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-08-back-to-doctors"
+      ],
+      "title": "Back to doctors"
+    },
+    {
+      "api_ids": [
+        "API-03"
+      ],
+      "clarification_ids": [],
+      "functional_steps": [
+        "The doctor view opens.",
+        "The returned doctor details populate the form."
+      ],
+      "id": "FR-09",
+      "requirement": "The doctor view opens. The returned doctor details populate the form.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-09-open-doctor-details"
+      ],
+      "title": "Open doctor details"
+    },
+    {
+      "api_ids": [],
+      "clarification_ids": [],
+      "functional_steps": [
+        "The \"Patients\" action is displayed when edit mode is active.",
+        "The patients view opens."
+      ],
+      "id": "FR-10",
+      "requirement": "The \"Patients\" action is displayed when edit mode is active. The patients view opens.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-10-patients"
+      ],
+      "title": "Patients"
+    },
+    {
+      "api_ids": [],
+      "clarification_ids": [],
+      "functional_steps": [
+        "All displayed record checkboxes reflect the select-all state."
+      ],
+      "id": "FR-11",
+      "requirement": "All displayed record checkboxes reflect the select-all state.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-11-change-all-displayed-record-selections"
+      ],
+      "title": "Change all displayed record selections"
+    },
+    {
+      "api_ids": [
+        "API-06"
+      ],
+      "clarification_ids": [],
+      "functional_steps": [
+        "The \"Save\" action is displayed when edit mode is active.",
+        "The \"Save\" action is disabled while the form is invalid.",
+        "The changes to the selected record are saved when the operation completes successfully.",
+        "The doctors view opens when the operation completes successfully."
+      ],
+      "id": "FR-12",
+      "requirement": "The \"Save\" action is disabled while the form is invalid. The \"Save\" action is displayed when edit mode is active. The changes to the selected record are saved when the operation completes successfully. The doctors view opens when the operation completes successfully.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-12-save-doctor"
+      ],
+      "title": "Save Doctor"
+    },
+    {
+      "api_ids": [],
+      "clarification_ids": [],
+      "functional_steps": [
+        "The chosen record reflects its checkbox selection state."
+      ],
+      "id": "FR-13",
+      "requirement": "The chosen record reflects its checkbox selection state.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-13-change-an-individual-record-selection"
+      ],
+      "title": "Change an individual record selection"
+    },
+    {
+      "api_ids": [
+        "API-04"
+      ],
+      "clarification_ids": [],
+      "functional_steps": [
+        "The tenant context is obtained automatically before the dependent request runs."
+      ],
+      "id": "FR-14",
+      "requirement": "The organization context is obtained automatically before the dependent request runs.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-14-automatic-tenant-context"
+      ],
+      "title": "Automatic tenant context"
+    },
+    {
+      "api_ids": [],
+      "clarification_ids": [],
+      "functional_steps": [
+        "The selected file content updates the doctor picture.",
+        "The \"Add a profile photo\" prompt is shown when no file content is set.",
+        "The doctor picture preview is displayed when file content is set."
+      ],
+      "id": "FR-15",
+      "requirement": "The \"Add a profile photo\" prompt is shown when no file content is set. The doctor picture preview is displayed when file content is set. The selected file content updates the doctor picture.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-15-maintain-doctor-profile-media"
+      ],
+      "title": "Maintain Doctor Profile Media"
+    },
+    {
+      "api_ids": [],
+      "clarification_ids": [],
+      "functional_steps": [
+        "Doctor address remains invalid until a value is provided."
+      ],
+      "id": "FR-16",
+      "requirement": "Doctor address remains invalid until a value is provided.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-16-validate-doctor-address"
+      ],
+      "title": "Validate Doctor Address"
+    },
+    {
+      "api_ids": [],
+      "clarification_ids": [],
+      "functional_steps": [
+        "Doctor description remains invalid until a value is provided."
+      ],
+      "id": "FR-17",
+      "requirement": "Doctor description remains invalid until a value is provided.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-17-validate-doctor-description"
+      ],
+      "title": "Validate Doctor Description"
+    },
+    {
+      "api_ids": [],
+      "clarification_ids": [],
+      "functional_steps": [
+        "Doctor email remains invalid until a value is provided."
+      ],
+      "id": "FR-18",
+      "requirement": "Doctor email remains invalid until a value is provided.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-18-validate-doctor-email"
+      ],
+      "title": "Validate Doctor Email"
+    },
+    {
+      "api_ids": [],
+      "clarification_ids": [],
+      "functional_steps": [
+        "Doctor mobile remains invalid until a value is provided."
+      ],
+      "id": "FR-19",
+      "requirement": "Doctor mobile remains invalid until a value is provided.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-19-validate-doctor-mobile"
+      ],
+      "title": "Validate Doctor Mobile"
+    },
+    {
+      "api_ids": [],
+      "clarification_ids": [],
+      "functional_steps": [
+        "Doctor phone remains invalid until a value is provided."
+      ],
+      "id": "FR-20",
+      "requirement": "Doctor phone remains invalid until a value is provided.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-20-validate-doctor-phone"
+      ],
+      "title": "Validate Doctor Phone"
+    },
+    {
+      "api_ids": [],
+      "clarification_ids": [],
+      "functional_steps": [
+        "Doctor name remains invalid until a value is provided."
+      ],
+      "id": "FR-21",
+      "requirement": "Doctor name remains invalid until a value is provided.",
+      "source_story_ids": [
+        "story-doctor-directory-management-fr-21-validate-doctor-name"
+      ],
+      "title": "Validate Doctor Name"
+    }
+  ],
+  "jira_stories": [
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-01-add-doctor-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed after the user selects \"Add\""
+          ],
+          "id": "AC-01",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the doctors view opens"
+          ],
+          "title": "The doctors view opens",
+          "when": "the operation completes successfully"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-01-add-doctor-002",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "edit mode is inactive"
+          ],
+          "id": "AC-02",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the \"Add\" action is displayed"
+          ],
+          "title": "The \"Add\" action is displayed",
+          "when": "the view evaluates which actions to display"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-01-add-doctor-003",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed"
+          ],
+          "id": "AC-03",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the \"Add\" action is disabled while the form is invalid"
+          ],
+          "title": "The \"Add\" action is disabled while the form is invalid",
+          "when": "the form contains incomplete or invalid input"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-01-add-doctor-004",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed after the user selects \"Add\""
+          ],
+          "id": "AC-04",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the new record is saved"
+          ],
+          "title": "The new record is saved",
+          "when": "the operation completes successfully"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [
+        {
+          "api_id": "API-05",
+          "endpoint": "/api/doctors",
+          "method": "POST",
+          "path_parameters": [],
+          "purpose": "Supports FR-01; the functional behavior is defined in those requirements.",
+          "query_parameters": [],
+          "request_model": "Doctor",
+          "response_description": "int",
+          "response_model": "int",
+          "traceability": {
+            "source_interaction_ids": [
+              "capability-doctors-create-3bf79f905f70"
+            ]
+          }
+        }
+      ],
+      "business_outcome": "the doctors view opens; the new record is saved",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to select \"Add\", so that the doctors view opens; the new record is saved.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-01",
+          "requirement": "The \"Add\" action is disabled while the form is invalid. The \"Add\" action is displayed when edit mode is inactive. The doctors view opens when the operation completes successfully. The new record is saved when the operation completes successfully.",
+          "title": "Add Doctor"
+        }
+      ],
+      "goal": "select \"Add\"",
+      "preconditions": [
+        "the doctor view is displayed after the user selects \"Add\"",
+        "edit mode is inactive",
+        "the doctor view is displayed"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-01",
+      "summary": "Add Doctor",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [
+          "capability-doctors-create-3bf79f905f70"
+        ],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-01-add-doctor-001",
+          "ac-doctor-directory-management-fr-01-add-doctor-002",
+          "ac-doctor-directory-management-fr-01-add-doctor-003",
+          "ac-doctor-directory-management-fr-01-add-doctor-004"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-01-add-doctor",
+        "functional_requirement_refs": [
+          "FR-01"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctors view is displayed"
+          ],
+          "id": "AC-05",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "confirmation is requested before the guarded action proceeds"
+          ],
+          "title": "Confirmation is requested before the guarded action proceeds",
+          "when": "the user selects \"Delete\""
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-002",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctors view is displayed after the user selects \"Delete\" and the user has confirmed the action"
+          ],
+          "id": "AC-06",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the affected doctors are removed from the displayed collection"
+          ],
+          "title": "The affected doctors are removed from the displayed collection",
+          "when": "the operation completes successfully"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-003",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "at least one record is selected"
+          ],
+          "id": "AC-07",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the \"Delete\" action is displayed"
+          ],
+          "title": "The \"Delete\" action is displayed",
+          "when": "the view evaluates which actions to display"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [
+        {
+          "api_id": "API-01",
+          "endpoint": "/api/doctors/{id}",
+          "method": "DELETE",
+          "path_parameters": [
+            {
+              "description": "Identifier of the selected record",
+              "location": "Path",
+              "name": "id"
+            }
+          ],
+          "purpose": "Supports FR-02, FR-03, FR-04; the functional behavior is defined in those requirements.",
+          "query_parameters": [],
+          "request_model": null,
+          "response_description": "Completion response without a documented payload",
+          "response_model": null,
+          "traceability": {
+            "source_interaction_ids": [
+              "capability-doctors-delete-2aa95f28df47"
+            ]
+          }
+        }
+      ],
+      "business_outcome": "confirmation is requested before the guarded action proceeds; the affected doctors are removed from the displayed collection",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to select \"Delete\", so that confirmation is requested before the guarded action proceeds; the affected doctors are removed from the displayed collection.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-02",
+          "requirement": "Confirmation is requested before the guarded action proceeds. The \"Delete\" action is displayed when at least one record is selected. The affected doctors are removed from the displayed collection when the operation completes successfully.",
+          "title": "Delete selected Doctor records"
+        }
+      ],
+      "goal": "select \"Delete\"",
+      "preconditions": [
+        "the doctors view is displayed",
+        "the doctors view is displayed after the user selects \"Delete\" and the user has confirmed the action",
+        "at least one record is selected"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-02",
+      "summary": "Delete selected Doctor records",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [
+          "capability-doctors-delete-2aa95f28df47"
+        ],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-001",
+          "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-002",
+          "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-003"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-02-delete-selected-doctor-records",
+        "functional_requirement_refs": [
+          "FR-02"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctors view is displayed"
+          ],
+          "id": "AC-08",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "confirmation is requested before the guarded action proceeds"
+          ],
+          "title": "Confirmation is requested before the guarded action proceeds",
+          "when": "the user selects the record's delete control"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-002",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctors view is displayed and the user has confirmed the action"
+          ],
+          "id": "AC-09",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the affected doctors are removed from the displayed collection"
+          ],
+          "title": "The affected doctors are removed from the displayed collection",
+          "when": "the operation completes successfully"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [
+        {
+          "api_id": "API-01",
+          "endpoint": "/api/doctors/{id}",
+          "method": "DELETE",
+          "path_parameters": [
+            {
+              "description": "Identifier of the selected record",
+              "location": "Path",
+              "name": "id"
+            }
+          ],
+          "purpose": "Supports FR-02, FR-03, FR-04; the functional behavior is defined in those requirements.",
+          "query_parameters": [],
+          "request_model": null,
+          "response_description": "Completion response without a documented payload",
+          "response_model": null,
+          "traceability": {
+            "source_interaction_ids": [
+              "capability-doctors-delete-2aa95f28df47"
+            ]
+          }
+        }
+      ],
+      "business_outcome": "confirmation is requested before the guarded action proceeds; the affected doctors are removed from the displayed collection",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to delete an individual doctor, so that confirmation is requested before the guarded action proceeds; the affected doctors are removed from the displayed collection.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-03",
+          "requirement": "Confirmation is requested before the guarded action proceeds. The affected doctors are removed from the displayed collection when the operation completes successfully.",
+          "title": "Delete an individual Doctor"
+        }
+      ],
+      "goal": "delete an individual doctor",
+      "preconditions": [
+        "the doctors view is displayed",
+        "the doctors view is displayed and the user has confirmed the action"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-03",
+      "summary": "Delete an individual Doctor",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [
+          "capability-doctors-delete-2aa95f28df47"
+        ],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-001",
+          "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-002"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-03-delete-an-individual-doctor",
+        "functional_requirement_refs": [
+          "FR-03"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-04-delete-this-doctor-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed"
+          ],
+          "id": "AC-10",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "confirmation is requested before the guarded action proceeds"
+          ],
+          "title": "Confirmation is requested before the guarded action proceeds",
+          "when": "the user selects \"Delete this doctor\""
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-04-delete-this-doctor-002",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed after the user selects \"Delete this doctor\" and the user has confirmed the action"
+          ],
+          "id": "AC-11",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the doctors view opens"
+          ],
+          "title": "The doctors view opens",
+          "when": "the operation completes successfully"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [
+        {
+          "api_id": "API-01",
+          "endpoint": "/api/doctors/{id}",
+          "method": "DELETE",
+          "path_parameters": [
+            {
+              "description": "Identifier of the selected record",
+              "location": "Path",
+              "name": "id"
+            }
+          ],
+          "purpose": "Supports FR-02, FR-03, FR-04; the functional behavior is defined in those requirements.",
+          "query_parameters": [],
+          "request_model": null,
+          "response_description": "Completion response without a documented payload",
+          "response_model": null,
+          "traceability": {
+            "source_interaction_ids": [
+              "capability-doctors-delete-2aa95f28df47"
+            ]
+          }
+        }
+      ],
+      "business_outcome": "confirmation is requested before the guarded action proceeds; the doctors view opens",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to select \"Delete this doctor\", so that confirmation is requested before the guarded action proceeds; the doctors view opens.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-04",
+          "requirement": "Confirmation is requested before the guarded action proceeds. The doctors view opens when the operation completes successfully.",
+          "title": "Delete this doctor"
+        }
+      ],
+      "goal": "select \"Delete this doctor\"",
+      "preconditions": [
+        "the doctor view is displayed",
+        "the doctor view is displayed after the user selects \"Delete this doctor\" and the user has confirmed the action"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-04",
+      "summary": "Delete this doctor",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [
+          "capability-doctors-delete-2aa95f28df47"
+        ],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-04-delete-this-doctor-001",
+          "ac-doctor-directory-management-fr-04-delete-this-doctor-002"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-04-delete-this-doctor",
+        "functional_requirement_refs": [
+          "FR-04"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-05-load-more-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctors view is displayed after the user selects \"LOAD MORE\""
+          ],
+          "id": "AC-12",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "additional doctors are appended after the displayed records"
+          ],
+          "title": "Additional doctors are appended after the displayed records",
+          "when": "the operation completes successfully"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-05-load-more-002",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctors view is displayed after the user selects \"LOAD MORE\""
+          ],
+          "id": "AC-13",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the \"NO DATA\" message is displayed"
+          ],
+          "title": "The \"NO DATA\" message is displayed",
+          "when": "the doctors collection is empty"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-05-load-more-003",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctors view is displayed after the user selects \"LOAD MORE\""
+          ],
+          "id": "AC-14",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the \"LOAD MORE\" action is hidden"
+          ],
+          "title": "The \"LOAD MORE\" action is hidden",
+          "when": "the returned batch contains fewer records than the requested batch size"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-05-load-more-004",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctors view is displayed after the user selects \"LOAD MORE\""
+          ],
+          "id": "AC-15",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "records retain fixed name ordering (ascending)"
+          ],
+          "title": "Records retain fixed name ordering (ascending)",
+          "when": "the operation completes successfully"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [
+        {
+          "api_id": "API-02",
+          "endpoint": "/api/doctors",
+          "method": "GET",
+          "path_parameters": [],
+          "purpose": "Supports FR-05, FR-06; the functional behavior is defined in those requirements.",
+          "query_parameters": [
+            {
+              "description": "Request parameter (int)",
+              "location": "Query",
+              "name": "pageCount"
+            },
+            {
+              "description": "Request parameter (int)",
+              "location": "Query",
+              "name": "pageSize"
+            }
+          ],
+          "request_model": null,
+          "response_description": "Collection of Doctor records",
+          "response_model": "Doctor[]",
+          "traceability": {
+            "source_interaction_ids": [
+              "capability-doctors-list-8e359528dc06"
+            ]
+          }
+        }
+      ],
+      "business_outcome": "additional doctors are appended after the displayed records",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to select \"LOAD MORE\", so that additional doctors are appended after the displayed records.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-05",
+          "requirement": "Additional doctors are appended after the displayed records when the operation completes successfully. Records retain fixed name ordering (ascending) when the operation completes successfully. The \"LOAD MORE\" action is hidden when the returned batch contains fewer records than the requested batch size. The \"NO DATA\" message is displayed when the doctors collection is empty.",
+          "title": "Load more"
+        }
+      ],
+      "goal": "select \"LOAD MORE\"",
+      "preconditions": [
+        "the doctors view is displayed after the user selects \"LOAD MORE\""
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-05",
+      "summary": "Load more",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [
+          "capability-doctors-list-8e359528dc06"
+        ],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-05-load-more-001",
+          "ac-doctor-directory-management-fr-05-load-more-002",
+          "ac-doctor-directory-management-fr-05-load-more-003",
+          "ac-doctor-directory-management-fr-05-load-more-004"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-05-load-more",
+        "functional_requirement_refs": [
+          "FR-05"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-06-directory-presentation-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the directory view is opening"
+          ],
+          "id": "AC-16",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "additional doctors are appended after the displayed records"
+          ],
+          "title": "Additional doctors are appended after the displayed records",
+          "when": "the operation completes successfully"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-06-directory-presentation-002",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the directory view is opening"
+          ],
+          "id": "AC-17",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the \"NO DATA\" message is displayed"
+          ],
+          "title": "The \"NO DATA\" message is displayed",
+          "when": "the doctors collection is empty"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-06-directory-presentation-003",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the directory view is opening"
+          ],
+          "id": "AC-18",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the \"LOAD MORE\" action is hidden"
+          ],
+          "title": "The \"LOAD MORE\" action is hidden",
+          "when": "the returned batch contains fewer records than the requested batch size"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-06-directory-presentation-004",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the directory view is opening"
+          ],
+          "id": "AC-19",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "records retain fixed name ordering (ascending)"
+          ],
+          "title": "Records retain fixed name ordering (ascending)",
+          "when": "the operation completes successfully"
+        }
+      ],
+      "actor": "system",
+      "api_dependencies": [
+        {
+          "api_id": "API-02",
+          "endpoint": "/api/doctors",
+          "method": "GET",
+          "path_parameters": [],
+          "purpose": "Supports FR-05, FR-06; the functional behavior is defined in those requirements.",
+          "query_parameters": [
+            {
+              "description": "Request parameter (int)",
+              "location": "Query",
+              "name": "pageCount"
+            },
+            {
+              "description": "Request parameter (int)",
+              "location": "Query",
+              "name": "pageSize"
+            }
+          ],
+          "request_model": null,
+          "response_description": "Collection of Doctor records",
+          "response_model": "Doctor[]",
+          "traceability": {
+            "source_interaction_ids": [
+              "capability-doctors-list-8e359528dc06"
+            ]
+          }
+        }
+      ],
+      "business_outcome": "additional doctors are appended after the displayed records",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "The system performs directory presentation: additional doctors are appended after the displayed records.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-06",
+          "requirement": "Additional doctors are appended after the displayed records when the operation completes successfully. Records retain fixed name ordering (ascending) when the operation completes successfully. The \"LOAD MORE\" action is hidden when the returned batch contains fewer records than the requested batch size. The \"NO DATA\" message is displayed when the doctors collection is empty.",
+          "title": "Directory presentation"
+        }
+      ],
+      "goal": "directory presentation",
+      "preconditions": [
+        "the directory view is opening"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-06",
+      "summary": "Directory presentation",
+      "system_initiated": true,
+      "traceability": {
+        "api_interaction_refs": [
+          "capability-doctors-list-8e359528dc06"
+        ],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-06-directory-presentation-001",
+          "ac-doctor-directory-management-fr-06-directory-presentation-002",
+          "ac-doctor-directory-management-fr-06-directory-presentation-003",
+          "ac-doctor-directory-management-fr-06-directory-presentation-004"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-06-directory-presentation",
+        "functional_requirement_refs": [
+          "FR-06"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-07-new-doctor-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctors view is displayed"
+          ],
+          "id": "AC-20",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the doctor view opens"
+          ],
+          "title": "The doctor view opens",
+          "when": "the user selects \"New doctor\""
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [],
+      "business_outcome": "the doctor view opens",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to select \"New doctor\", so that the doctor view opens.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-07",
+          "requirement": "The doctor view opens.",
+          "title": "New doctor"
+        }
+      ],
+      "goal": "select \"New doctor\"",
+      "preconditions": [
+        "the doctors view is displayed"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-07",
+      "summary": "New doctor",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-07-new-doctor-001"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-07-new-doctor",
+        "functional_requirement_refs": [
+          "FR-07"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-08-back-to-doctors-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed"
+          ],
+          "id": "AC-21",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the doctors view opens"
+          ],
+          "title": "The doctors view opens",
+          "when": "the user selects \"Back to doctors\""
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [],
+      "business_outcome": "the doctors view opens",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to select \"Back to doctors\", so that the doctors view opens.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-08",
+          "requirement": "The doctors view opens.",
+          "title": "Back to doctors"
+        }
+      ],
+      "goal": "select \"Back to doctors\"",
+      "preconditions": [
+        "the doctor view is displayed"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-08",
+      "summary": "Back to doctors",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-08-back-to-doctors-001"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-08-back-to-doctors",
+        "functional_requirement_refs": [
+          "FR-08"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-09-open-doctor-details-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctors view is displayed"
+          ],
+          "id": "AC-22",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the doctor view opens"
+          ],
+          "title": "The doctor view opens",
+          "when": "the user selects the record's detail control"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-09-open-doctor-details-002",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctors view is displayed"
+          ],
+          "id": "AC-23",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the returned doctor details populate the form"
+          ],
+          "title": "The returned doctor details populate the form",
+          "when": "the user selects the record's detail control"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [
+        {
+          "api_id": "API-03",
+          "endpoint": "/api/doctors/{id}",
+          "method": "GET",
+          "path_parameters": [
+            {
+              "description": "Identifier of the selected record",
+              "location": "Path",
+              "name": "id"
+            }
+          ],
+          "purpose": "Supports FR-09; the functional behavior is defined in those requirements.",
+          "query_parameters": [],
+          "request_model": null,
+          "response_description": "Doctor",
+          "response_model": "Doctor",
+          "traceability": {
+            "source_interaction_ids": [
+              "capability-doctors-read-9d2f061a43ff"
+            ]
+          }
+        }
+      ],
+      "business_outcome": "the doctor view opens; the returned doctor details populate the form",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to open doctor details, so that the doctor view opens; the returned doctor details populate the form.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-09",
+          "requirement": "The doctor view opens. The returned doctor details populate the form.",
+          "title": "Open doctor details"
+        }
+      ],
+      "goal": "open doctor details",
+      "preconditions": [
+        "the doctors view is displayed"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-09",
+      "summary": "Open doctor details",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [
+          "capability-doctors-read-9d2f061a43ff"
+        ],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-09-open-doctor-details-001",
+          "ac-doctor-directory-management-fr-09-open-doctor-details-002"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-09-open-doctor-details",
+        "functional_requirement_refs": [
+          "FR-09"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-10-patients-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed"
+          ],
+          "id": "AC-24",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the patients view opens"
+          ],
+          "title": "The patients view opens",
+          "when": "the user selects \"Patients\""
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-10-patients-002",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "edit mode is active"
+          ],
+          "id": "AC-25",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the \"Patients\" action is displayed"
+          ],
+          "title": "The \"Patients\" action is displayed",
+          "when": "the view evaluates which actions to display"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [],
+      "business_outcome": "the patients view opens",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to select \"Patients\", so that the patients view opens.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-10",
+          "requirement": "The \"Patients\" action is displayed when edit mode is active. The patients view opens.",
+          "title": "Patients"
+        }
+      ],
+      "goal": "select \"Patients\"",
+      "preconditions": [
+        "the doctor view is displayed",
+        "edit mode is active"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-10",
+      "summary": "Patients",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-10-patients-001",
+          "ac-doctor-directory-management-fr-10-patients-002"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-10-patients",
+        "functional_requirement_refs": [
+          "FR-10"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-11-change-all-displayed-record-selections-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the directory displays selectable records"
+          ],
+          "id": "AC-26",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "all displayed record checkboxes reflect the select-all state"
+          ],
+          "title": "All displayed record checkboxes reflect the select-all state",
+          "when": "the user toggles the select-all checkbox"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [],
+      "business_outcome": "all displayed record checkboxes reflect the select-all state",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to change all displayed record selections, so that all displayed record checkboxes reflect the select-all state.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-11",
+          "requirement": "All displayed record checkboxes reflect the select-all state.",
+          "title": "Change all displayed record selections"
+        }
+      ],
+      "goal": "change all displayed record selections",
+      "preconditions": [
+        "the directory displays selectable records"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-11",
+      "summary": "Change all displayed record selections",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-11-change-all-displayed-record-selections-001"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-11-change-all-displayed-record-selections",
+        "functional_requirement_refs": [
+          "FR-11"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-12-save-doctor-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed after the user selects \"Save\""
+          ],
+          "id": "AC-27",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the doctors view opens"
+          ],
+          "title": "The doctors view opens",
+          "when": "the operation completes successfully"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-12-save-doctor-002",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "edit mode is active"
+          ],
+          "id": "AC-28",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the \"Save\" action is displayed"
+          ],
+          "title": "The \"Save\" action is displayed",
+          "when": "the view evaluates which actions to display"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-12-save-doctor-003",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed"
+          ],
+          "id": "AC-29",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the \"Save\" action is disabled while the form is invalid"
+          ],
+          "title": "The \"Save\" action is disabled while the form is invalid",
+          "when": "the form contains incomplete or invalid input"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-12-save-doctor-004",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed after the user selects \"Save\""
+          ],
+          "id": "AC-30",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the changes to the selected record are saved"
+          ],
+          "title": "The changes to the selected record are saved",
+          "when": "the operation completes successfully"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [
+        {
+          "api_id": "API-06",
+          "endpoint": "/api/doctors",
+          "method": "PUT",
+          "path_parameters": [],
+          "purpose": "Supports FR-12; the functional behavior is defined in those requirements.",
+          "query_parameters": [],
+          "request_model": "Doctor",
+          "response_description": "Completion response without a documented payload",
+          "response_model": null,
+          "traceability": {
+            "source_interaction_ids": [
+              "capability-doctors-update-01a9514e9ad2"
+            ]
+          }
+        }
+      ],
+      "business_outcome": "the doctors view opens; the changes to the selected record are saved",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to select \"Save\", so that the doctors view opens; the changes to the selected record are saved.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-12",
+          "requirement": "The \"Save\" action is disabled while the form is invalid. The \"Save\" action is displayed when edit mode is active. The changes to the selected record are saved when the operation completes successfully. The doctors view opens when the operation completes successfully.",
+          "title": "Save Doctor"
+        }
+      ],
+      "goal": "select \"Save\"",
+      "preconditions": [
+        "the doctor view is displayed after the user selects \"Save\"",
+        "edit mode is active",
+        "the doctor view is displayed"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-12",
+      "summary": "Save Doctor",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [
+          "capability-doctors-update-01a9514e9ad2"
+        ],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-12-save-doctor-001",
+          "ac-doctor-directory-management-fr-12-save-doctor-002",
+          "ac-doctor-directory-management-fr-12-save-doctor-003",
+          "ac-doctor-directory-management-fr-12-save-doctor-004"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-12-save-doctor",
+        "functional_requirement_refs": [
+          "FR-12"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-13-change-an-individual-record-selection-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the directory displays selectable records"
+          ],
+          "id": "AC-31",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the chosen record reflects its checkbox selection state"
+          ],
+          "title": "The chosen record reflects its checkbox selection state",
+          "when": "the user toggles a record checkbox"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [],
+      "business_outcome": "the chosen record reflects its checkbox selection state",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to change an individual record selection, so that the chosen record reflects its checkbox selection state.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-13",
+          "requirement": "The chosen record reflects its checkbox selection state.",
+          "title": "Change an individual record selection"
+        }
+      ],
+      "goal": "change an individual record selection",
+      "preconditions": [
+        "the directory displays selectable records"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-13",
+      "summary": "Change an individual record selection",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-13-change-an-individual-record-selection-001"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-13-change-an-individual-record-selection",
+        "functional_requirement_refs": [
+          "FR-13"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-14-automatic-tenant-context-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "a dependent operation is requested"
+          ],
+          "id": "AC-32",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the organization context is obtained automatically before the dependent request runs"
+          ],
+          "title": "The tenant context is obtained automatically before the dependent request runs",
+          "when": "dependent operation initialization"
+        }
+      ],
+      "actor": "system",
+      "api_dependencies": [
+        {
+          "api_id": "API-04",
+          "endpoint": "/api/users/current/tenant",
+          "method": "GET",
+          "path_parameters": [],
+          "purpose": "Supports FR-14; the functional behavior is defined in those requirements.",
+          "query_parameters": [],
+          "request_model": null,
+          "response_description": "int",
+          "response_model": "int",
+          "traceability": {
+            "source_interaction_ids": [
+              "capability-clinics-read-098bbe600a00",
+              "capability-dashboard-read-8c9a45edb073",
+              "capability-doctors-read-440206d0d254",
+              "capability-patients-read-fee268471da8",
+              "capability-users-read-7142e0fdb55d"
+            ]
+          }
+        }
+      ],
+      "business_outcome": "the tenant context is obtained automatically before the dependent request runs",
+      "business_rules": [
+        {
+          "id": "BR-09",
+          "rule": "The organization context is obtained automatically before the dependent request runs."
+        }
+      ],
+      "clarifications": [],
+      "description": "The system performs automatic tenant context: the tenant context is obtained automatically before the dependent request runs.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-14",
+          "requirement": "The organization context is obtained automatically before the dependent request runs.",
+          "title": "Automatic tenant context"
+        }
+      ],
+      "goal": "automatic tenant context",
+      "preconditions": [
+        "a dependent operation is requested"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-14",
+      "summary": "Automatic tenant context",
+      "system_initiated": true,
+      "traceability": {
+        "api_interaction_refs": [
+          "capability-clinics-read-098bbe600a00",
+          "capability-dashboard-read-8c9a45edb073",
+          "capability-doctors-read-440206d0d254",
+          "capability-patients-read-fee268471da8",
+          "capability-users-read-7142e0fdb55d"
+        ],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-14-automatic-tenant-context-001"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-14-automatic-tenant-context",
+        "functional_requirement_refs": [
+          "FR-14"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed with its file input"
+          ],
+          "id": "AC-33",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the selected file content updates the doctor picture"
+          ],
+          "title": "The selected file content updates the doctor picture",
+          "when": "the selected file finishes reading"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-002",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed with its file input"
+          ],
+          "id": "AC-34",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the \"Add a profile photo\" prompt is shown when no file content is set"
+          ],
+          "title": "The \"Add a profile photo\" prompt is shown when no file content is set",
+          "when": "the profile file value changes"
+        },
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-003",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed with its file input"
+          ],
+          "id": "AC-35",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "the doctor picture preview is displayed when file content is set"
+          ],
+          "title": "The doctor picture preview is displayed when file content is set",
+          "when": "the profile file value changes"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [],
+      "business_outcome": "the selected file content updates the doctor picture",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to select a profile file, so that the selected file content updates the doctor picture.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-15",
+          "requirement": "The \"Add a profile photo\" prompt is shown when no file content is set. The doctor picture preview is displayed when file content is set. The selected file content updates the doctor picture.",
+          "title": "Maintain Doctor Profile Media"
+        }
+      ],
+      "goal": "select a profile file",
+      "preconditions": [
+        "the doctor view is displayed with its file input"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-15",
+      "summary": "Maintain Doctor Profile Media",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-001",
+          "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-002",
+          "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-003"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-15-maintain-doctor-profile-media",
+        "functional_requirement_refs": [
+          "FR-15"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-16-validate-doctor-address-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed"
+          ],
+          "id": "AC-36",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "doctor address remains invalid until a value is provided"
+          ],
+          "title": "Doctor address remains invalid until a value is provided",
+          "when": "the user leaves doctor address empty"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [],
+      "business_outcome": "missing required input is identified before the form can be submitted",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to complete the doctor address input, so that missing required input is identified before the form can be submitted.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-16",
+          "requirement": "Doctor address remains invalid until a value is provided.",
+          "title": "Validate Doctor Address"
+        }
+      ],
+      "goal": "complete the doctor address input",
+      "preconditions": [
+        "the doctor view is displayed"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-16",
+      "summary": "Validate Doctor Address",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-16-validate-doctor-address-001"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-16-validate-doctor-address",
+        "functional_requirement_refs": [
+          "FR-16"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-17-validate-doctor-description-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed"
+          ],
+          "id": "AC-37",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "doctor description remains invalid until a value is provided"
+          ],
+          "title": "Doctor description remains invalid until a value is provided",
+          "when": "the user leaves doctor description empty"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [],
+      "business_outcome": "missing required input is identified before the form can be submitted",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to complete the doctor description input, so that missing required input is identified before the form can be submitted.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-17",
+          "requirement": "Doctor description remains invalid until a value is provided.",
+          "title": "Validate Doctor Description"
+        }
+      ],
+      "goal": "complete the doctor description input",
+      "preconditions": [
+        "the doctor view is displayed"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-17",
+      "summary": "Validate Doctor Description",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-17-validate-doctor-description-001"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-17-validate-doctor-description",
+        "functional_requirement_refs": [
+          "FR-17"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-18-validate-doctor-email-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed"
+          ],
+          "id": "AC-38",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "doctor email remains invalid until a value is provided"
+          ],
+          "title": "Doctor email remains invalid until a value is provided",
+          "when": "the user leaves doctor email empty"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [],
+      "business_outcome": "missing required input is identified before the form can be submitted",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to complete the doctor email input, so that missing required input is identified before the form can be submitted.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-18",
+          "requirement": "Doctor email remains invalid until a value is provided.",
+          "title": "Validate Doctor Email"
+        }
+      ],
+      "goal": "complete the doctor email input",
+      "preconditions": [
+        "the doctor view is displayed"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-18",
+      "summary": "Validate Doctor Email",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-18-validate-doctor-email-001"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-18-validate-doctor-email",
+        "functional_requirement_refs": [
+          "FR-18"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-19-validate-doctor-mobile-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed"
+          ],
+          "id": "AC-39",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "doctor mobile remains invalid until a value is provided"
+          ],
+          "title": "Doctor mobile remains invalid until a value is provided",
+          "when": "the user leaves doctor mobile empty"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [],
+      "business_outcome": "missing required input is identified before the form can be submitted",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to complete the doctor mobile input, so that missing required input is identified before the form can be submitted.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-19",
+          "requirement": "Doctor mobile remains invalid until a value is provided.",
+          "title": "Validate Doctor Mobile"
+        }
+      ],
+      "goal": "complete the doctor mobile input",
+      "preconditions": [
+        "the doctor view is displayed"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-19",
+      "summary": "Validate Doctor Mobile",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-19-validate-doctor-mobile-001"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-19-validate-doctor-mobile",
+        "functional_requirement_refs": [
+          "FR-19"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-20-validate-doctor-phone-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed"
+          ],
+          "id": "AC-40",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "doctor phone remains invalid until a value is provided"
+          ],
+          "title": "Doctor phone remains invalid until a value is provided",
+          "when": "the user leaves doctor phone empty"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [],
+      "business_outcome": "missing required input is identified before the form can be submitted",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to complete the doctor phone input, so that missing required input is identified before the form can be submitted.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-20",
+          "requirement": "Doctor phone remains invalid until a value is provided.",
+          "title": "Validate Doctor Phone"
+        }
+      ],
+      "goal": "complete the doctor phone input",
+      "preconditions": [
+        "the doctor view is displayed"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-20",
+      "summary": "Validate Doctor Phone",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-20-validate-doctor-phone-001"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-20-validate-doctor-phone",
+        "functional_requirement_refs": [
+          "FR-20"
+        ]
+      }
+    },
+    {
+      "acceptance_criteria": [
+        {
+          "authoritative_ac_ref": "ac-doctor-directory-management-fr-21-validate-doctor-name-001",
+          "clarification_ids": [],
+          "clarification_required": false,
+          "given": [
+            "the doctor view is displayed"
+          ],
+          "id": "AC-41",
+          "quality": {
+            "checks": {
+              "circular_result": false,
+              "observable_result_present": true,
+              "precondition_present": true,
+              "trigger_present": true,
+              "vague_result": false
+            },
+            "status": "PASS"
+          },
+          "then": [
+            "doctor name remains invalid until a value is provided"
+          ],
+          "title": "Doctor name remains invalid until a value is provided",
+          "when": "the user leaves doctor name empty"
+        }
+      ],
+      "actor": "application user",
+      "api_dependencies": [],
+      "business_outcome": "missing required input is identified before the form can be submitted",
+      "business_rules": [],
+      "clarifications": [],
+      "description": "As an application user, I want to complete the doctor name input, so that missing required input is identified before the form can be submitted.",
+      "feature_id": "feature-doctor-directory-management",
+      "functional_requirement_refs": [
+        {
+          "id": "FR-21",
+          "requirement": "Doctor name remains invalid until a value is provided.",
+          "title": "Validate Doctor Name"
+        }
+      ],
+      "goal": "complete the doctor name input",
+      "preconditions": [
+        "the doctor view is displayed"
+      ],
+      "quality": {
+        "invest": {
+          "checks": {
+            "estimable": {
+              "reason": "No blocking estimation gap is identified.",
+              "status": "PASS"
+            },
+            "independent": {
+              "reason": "No obvious delivery dependency was detected.",
+              "status": "PASS"
+            },
+            "negotiable": {
+              "reason": "The delivery representation preserves scope without prescribing implementation design.",
+              "status": "PASS"
+            },
+            "small": {
+              "reason": "No obvious size concern was detected.",
+              "status": "PASS"
+            },
+            "testable": {
+              "reason": "All human AC pass deterministic testability checks.",
+              "status": "PASS"
+            },
+            "valuable": {
+              "reason": "A supported outcome is present.",
+              "status": "PASS"
+            }
+          },
+          "status": "PASS"
+        },
+        "split_recommendation": null
+      },
+      "readiness": {
+        "blocking_clarification_ids": [],
+        "checks": {
+          "acceptance_criteria_available": true,
+          "acceptance_criteria_testable": true,
+          "blocking_clarifications_identified": true,
+          "contradictions_absent": true,
+          "functional_behavior_available": true,
+          "required_api_known": true,
+          "required_api_parameters_known": true,
+          "required_business_rules_represented": true,
+          "story_goal_understandable": true,
+          "unsupported_invented_behavior_absent": true
+        },
+        "non_blocking_business_enrichment": false,
+        "status": "READY"
+      },
+      "story_id": "US-21",
+      "summary": "Validate Doctor Name",
+      "system_initiated": false,
+      "traceability": {
+        "api_interaction_refs": [],
+        "authoritative_ac_refs": [
+          "ac-doctor-directory-management-fr-21-validate-doctor-name-001"
+        ],
+        "authoritative_story_ref": "story-doctor-directory-management-fr-21-validate-doctor-name",
+        "functional_requirement_refs": [
+          "FR-21"
+        ]
+      }
+    }
+  ],
+  "overview": {
+    "business_value": "Stakeholder business priorities and rationale require Product Owner confirmation.",
+    "capabilities": [
+      "Add Doctor",
+      "Delete selected Doctor records",
+      "Delete an individual Doctor",
+      "Delete this doctor",
+      "Load more",
+      "Directory presentation",
+      "New doctor",
+      "Back to doctors",
+      "Open doctor details",
+      "Patients",
+      "Change all displayed record selections",
+      "Save Doctor",
+      "Change an individual record selection",
+      "Automatic tenant context",
+      "Maintain Doctor Profile Media",
+      "Validate Doctor Address",
+      "Validate Doctor Description",
+      "Validate Doctor Email",
+      "Validate Doctor Mobile",
+      "Validate Doctor Phone",
+      "Validate Doctor Name"
+    ],
+    "objective": "Deliver doctor directory management with the interactions specified below."
+  },
+  "scope": {
+    "in_scope": [
+      "Add Doctor",
+      "Delete selected Doctor records",
+      "Delete an individual Doctor",
+      "Delete this doctor",
+      "Load more",
+      "Directory presentation",
+      "New doctor",
+      "Back to doctors",
+      "Open doctor details",
+      "Patients",
+      "Change all displayed record selections",
+      "Save Doctor",
+      "Change an individual record selection",
+      "Automatic tenant context",
+      "Maintain Doctor Profile Media",
+      "Validate Doctor Address",
+      "Validate Doctor Description",
+      "Validate Doctor Email",
+      "Validate Doctor Mobile",
+      "Validate Doctor Phone",
+      "Validate Doctor Name"
+    ],
+    "out_of_scope": [
+      "Operations without a defined interaction in this specification."
+    ]
+  },
+  "stories": [
+    {
+      "goal": "select \"Add\"",
+      "id": "US-01",
+      "outcome": "the doctors view opens; the new record is saved",
+      "source_story_id": "story-doctor-directory-management-fr-01-add-doctor",
+      "title": "Add Doctor"
+    },
+    {
+      "goal": "select \"Delete\"",
+      "id": "US-02",
+      "outcome": "confirmation is requested before the guarded action proceeds; the affected doctors are removed from the displayed collection",
+      "source_story_id": "story-doctor-directory-management-fr-02-delete-selected-doctor-records",
+      "title": "Delete selected Doctor records"
+    },
+    {
+      "goal": "delete an individual doctor",
+      "id": "US-03",
+      "outcome": "confirmation is requested before the guarded action proceeds; the affected doctors are removed from the displayed collection",
+      "source_story_id": "story-doctor-directory-management-fr-03-delete-an-individual-doctor",
+      "title": "Delete an individual Doctor"
+    },
+    {
+      "goal": "select \"Delete this doctor\"",
+      "id": "US-04",
+      "outcome": "confirmation is requested before the guarded action proceeds; the doctors view opens",
+      "source_story_id": "story-doctor-directory-management-fr-04-delete-this-doctor",
+      "title": "Delete this doctor"
+    },
+    {
+      "goal": "select \"LOAD MORE\"",
+      "id": "US-05",
+      "outcome": "additional doctors are appended after the displayed records",
+      "source_story_id": "story-doctor-directory-management-fr-05-load-more",
+      "title": "Load more"
+    },
+    {
+      "goal": "directory presentation",
+      "id": "US-06",
+      "outcome": "additional doctors are appended after the displayed records",
+      "source_story_id": "story-doctor-directory-management-fr-06-directory-presentation",
+      "title": "Directory presentation"
+    },
+    {
+      "goal": "select \"New doctor\"",
+      "id": "US-07",
+      "outcome": "the doctor view opens",
+      "source_story_id": "story-doctor-directory-management-fr-07-new-doctor",
+      "title": "New doctor"
+    },
+    {
+      "goal": "select \"Back to doctors\"",
+      "id": "US-08",
+      "outcome": "the doctors view opens",
+      "source_story_id": "story-doctor-directory-management-fr-08-back-to-doctors",
+      "title": "Back to doctors"
+    },
+    {
+      "goal": "open doctor details",
+      "id": "US-09",
+      "outcome": "the doctor view opens; the returned doctor details populate the form",
+      "source_story_id": "story-doctor-directory-management-fr-09-open-doctor-details",
+      "title": "Open doctor details"
+    },
+    {
+      "goal": "select \"Patients\"",
+      "id": "US-10",
+      "outcome": "the patients view opens",
+      "source_story_id": "story-doctor-directory-management-fr-10-patients",
+      "title": "Patients"
+    },
+    {
+      "goal": "change all displayed record selections",
+      "id": "US-11",
+      "outcome": "all displayed record checkboxes reflect the select-all state",
+      "source_story_id": "story-doctor-directory-management-fr-11-change-all-displayed-record-selections",
+      "title": "Change all displayed record selections"
+    },
+    {
+      "goal": "select \"Save\"",
+      "id": "US-12",
+      "outcome": "the doctors view opens; the changes to the selected record are saved",
+      "source_story_id": "story-doctor-directory-management-fr-12-save-doctor",
+      "title": "Save Doctor"
+    },
+    {
+      "goal": "change an individual record selection",
+      "id": "US-13",
+      "outcome": "the chosen record reflects its checkbox selection state",
+      "source_story_id": "story-doctor-directory-management-fr-13-change-an-individual-record-selection",
+      "title": "Change an individual record selection"
+    },
+    {
+      "goal": "automatic tenant context",
+      "id": "US-14",
+      "outcome": "the tenant context is obtained automatically before the dependent request runs",
+      "source_story_id": "story-doctor-directory-management-fr-14-automatic-tenant-context",
+      "title": "Automatic tenant context"
+    },
+    {
+      "goal": "select a profile file",
+      "id": "US-15",
+      "outcome": "the selected file content updates the doctor picture",
+      "source_story_id": "story-doctor-directory-management-fr-15-maintain-doctor-profile-media",
+      "title": "Maintain Doctor Profile Media"
+    },
+    {
+      "goal": "complete the doctor address input",
+      "id": "US-16",
+      "outcome": "missing required input is identified before the form can be submitted",
+      "source_story_id": "story-doctor-directory-management-fr-16-validate-doctor-address",
+      "title": "Validate Doctor Address"
+    },
+    {
+      "goal": "complete the doctor description input",
+      "id": "US-17",
+      "outcome": "missing required input is identified before the form can be submitted",
+      "source_story_id": "story-doctor-directory-management-fr-17-validate-doctor-description",
+      "title": "Validate Doctor Description"
+    },
+    {
+      "goal": "complete the doctor email input",
+      "id": "US-18",
+      "outcome": "missing required input is identified before the form can be submitted",
+      "source_story_id": "story-doctor-directory-management-fr-18-validate-doctor-email",
+      "title": "Validate Doctor Email"
+    },
+    {
+      "goal": "complete the doctor mobile input",
+      "id": "US-19",
+      "outcome": "missing required input is identified before the form can be submitted",
+      "source_story_id": "story-doctor-directory-management-fr-19-validate-doctor-mobile",
+      "title": "Validate Doctor Mobile"
+    },
+    {
+      "goal": "complete the doctor phone input",
+      "id": "US-20",
+      "outcome": "missing required input is identified before the form can be submitted",
+      "source_story_id": "story-doctor-directory-management-fr-20-validate-doctor-phone",
+      "title": "Validate Doctor Phone"
+    },
+    {
+      "goal": "complete the doctor name input",
+      "id": "US-21",
+      "outcome": "missing required input is identified before the form can be submitted",
+      "source_story_id": "story-doctor-directory-management-fr-21-validate-doctor-name",
+      "title": "Validate Doctor Name"
+    }
+  ]
+}

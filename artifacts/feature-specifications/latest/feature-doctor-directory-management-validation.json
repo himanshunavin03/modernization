@@ -1,0 +1,31 @@
+{
+  "feature_id": "feature-doctor-directory-management",
+  "feature_spec_synchronized": true,
+  "human_cleanliness": {
+    "analyzer_terms": 0,
+    "backend_task_wrappers_as_primary_response": 0,
+    "evidence_jargon": 0,
+    "generic_clarification_questions": 0,
+    "kg_terms": 0,
+    "legacy_implementation_language": 0,
+    "polaris_terms": 0,
+    "resolver_terms": 0,
+    "semantically_circular_stories": 0,
+    "source_line_references": 0,
+    "source_paths": 0,
+    "vague_human_ac": 0
+  },
+  "lineage": {
+    "acceptance_criteria_run": "feature-doctor-directory-management-2026-09-07-002847-045928",
+    "application_understanding_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-07-002736-635673",
+    "canonical_upstream_kg_run": "legacy-dashboard-complete-application-demo-v1-2026-09-06-203944",
+    "feature_contract": "artifacts\\feature-specifications\\latest\\feature-doctor-directory-management.json",
+    "feature_contract_hash": "cf6840c0b504cd8db16f06fa8c3f30cff3895422fc115477cef70f41a3a37e39",
+    "feature_id": "feature-doctor-directory-management",
+    "feature_run": "capability-scope-2026-09-07-002844-038327",
+    "kg_run_id": "legacy-dashboard-complete-application-demo-v1-2026-09-06-203944",
+    "story_run": "feature-doctor-directory-management-2026-09-07-002845-557189"
+  },
+  "markdown_sha256": "b112585472089bebc58dc28b6cac15c5a823d068f4270d637fa3baec458c3d5a",
+  "valid": true
+}
