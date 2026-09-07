@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Executive presentation for the Polaris evidence-driven application modernization proof of concept.">
+  <meta name="color-scheme" content="dark">
+  <title>Application Modernization POC</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="#overview" aria-label="Application Modernization POC home">
+      <span class="brand-mark" aria-hidden="true">P</span>
+      <span>POLARIS <small>MODERNIZATION</small></span>
+    </a>
+    <nav class="primary-nav" aria-label="Presentation sections">
+      <a href="#overview">Overview</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#understanding">Understanding</a>
+      <a href="#requirements">Requirements</a>
+      <a href="#angular">Angular 22</a>
+      <a href="#live-demo">Live Demo</a>
+      <a href="#validation">Validation</a>
+      <a href="#outcome">Outcome</a>
+    </nav>
+    <button class="presentation-toggle" type="button" aria-pressed="false" title="Increase spacing and typography for presenting">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4h16v12H4zM9 20h6M12 16v4"/></svg>
+      <span>Present</span>
+    </button>
+  </header>
+
+  <main id="main-content">
+    <section class="hero section-dark" id="overview" data-section="Overview">
+      <div class="hero-orbit orbit-one" aria-hidden="true"></div>
+      <div class="hero-orbit orbit-two" aria-hidden="true"></div>
+      <div class="section-wrap hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> Enterprise proof of concept</p>
+          <h1>Application<br><span>Modernization</span> POC</h1>
+          <p class="hero-lede">Evidence-driven modernization from legacy source code to modern architecture, implementation, and automated validation.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#architecture">Explore the architecture <span aria-hidden="true">→</span></a>
+            <a class="button button-quiet" href="#live-demo">Open launch center</a>
+          </div>
+        </div>
+        <aside class="hero-panel reveal" aria-label="Modernization lifecycle">
+          <div class="panel-label"><span>POC LIFECYCLE</span><span class="live-indicator">EVIDENCE-BACKED</span></div>
+          <div class="lifecycle lifecycle-hero">
+            <article><span>01</span><strong>UNDERSTAND</strong><small>Source behavior</small></article>
+            <i aria-hidden="true"></i>
+            <article><span>02</span><strong>MODEL</strong><small>Semantic graph</small></article>
+            <i aria-hidden="true"></i>
+            <article><span>03</span><strong>PLAN</strong><small>Requirements + architecture</small></article>
+            <i aria-hidden="true"></i>
+            <article><span>04</span><strong>MODERNIZE</strong><small>Angular 22</small></article>
+            <i aria-hidden="true"></i>
+            <article><span>05</span><strong>VALIDATE</strong><small>Browser evidence</small></article>
+          </div>
+          <p class="panel-note">A repeatable delivery lifecycle—not a one-off user-interface rewrite.</p>
+        </aside>
+      </div>
+      <div class="section-wrap hero-foot">
+        <div><span>ANALYSIS</span><strong>Deterministic first</strong></div>
+        <div><span>TRACEABILITY</span><strong>Source to validation</strong></div>
+        <div><span>TARGET</span><strong>Angular 22</strong></div>
+      </div>
+    </section>
+
+    <section class="section-light overview-section" aria-labelledby="challenge-heading">
+      <div class="section-wrap">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">01 · The modernization challenge</p><h2 id="challenge-heading">Understand before you transform.</h2></div>
+          <p>Legacy behavior is distributed across interfaces, controllers, services, APIs, domain logic, navigation, validation, data access, and framework configuration. Polaris makes those relationships visible before modernization begins.</p>
+        </div>
+        <div class="value-grid">
+          <article class="value-card reveal"><span class="card-index">01</span><div class="line-icon" aria-hidden="true">⌁</div><h3>Understand</h3><p>Deterministic analysis builds a structured view of legacy application behavior.</p></article>
+          <article class="value-card reveal"><span class="card-index">02</span><div class="line-icon" aria-hidden="true">◇</div><h3>Trace</h3><p>Knowledge Graph relationships connect evidence across UI, services, APIs, and application layers.</p></article>
+          <article class="value-card reveal"><span class="card-index">03</span><div class="line-icon" aria-hidden="true">↗</div><h3>Modernize</h3><p>Architecture and technical tasks guide the transition while preserving approved behavior.</p></article>
+          <article class="value-card reveal"><span class="card-index">04</span><div class="line-icon" aria-hidden="true">✓</div><h3>Validate</h3><p>Acceptance criteria remain traceable to observable browser-driven validation.</p></article>
+        </div>
+        <div class="reference-strip reveal">
+          <div><p class="eyebrow">Reference application</p><h3>A representative legacy technology landscape</h3><p>.NET, C#, Razor, Web APIs, AngularJS, domain models, and data layers create a credible cross-layer modernization scenario.</p></div>
+          <div class="technology-tags" aria-label="Reference technologies"><span>.NET</span><span>C#</span><span>Razor</span><span>AngularJS</span><span>Web API</span><span>Domain + Data</span></div>
+          <div class="reference-actions"><a class="button button-dark" data-link="legacyApp">Open legacy application</a><a class="button button-outline-dark" data-link="modernApp">Open modern Angular</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-ink architecture-section" id="architecture" data-section="Architecture" aria-labelledby="architecture-heading">
+      <div class="section-wrap">
+        <div class="section-heading inverse reveal">
+          <div><p class="eyebrow">02 · Modernization architecture</p><h2 id="architecture-heading">A continuous evidence chain.</h2></div>
+          <p>The architecture separates deterministic source understanding from higher-level reasoning, planning, delivery, and observable validation.</p>
+        </div>
+        <div class="architecture-stage reveal" aria-label="End-to-end modernization architecture">
+          <div class="architecture-track">
+            <article class="architecture-node source"><span>INPUT</span><strong>Legacy Source</strong><small>.NET · C# · Razor · AngularJS</small></article>
+            <div class="architecture-arrow" aria-hidden="true"><i></i></div>
+            <article class="architecture-node analysis"><span>ANALYZE</span><strong>Deterministic Analysis</strong><small>Tree-sitter · Roslyn · Semantic analyzers</small></article>
+            <div class="architecture-arrow" aria-hidden="true"><i></i></div>
+            <article class="architecture-node graph"><span>MODEL</span><strong>Facts + Knowledge Graph</strong><small>Source-backed semantic relationships</small></article>
+            <div class="architecture-arrow" aria-hidden="true"><i></i></div>
+            <article class="architecture-node plan"><span>PLAN</span><strong>Understanding + Requirements</strong><small>Features · Stories · AC · Architecture</small></article>
+            <div class="architecture-arrow" aria-hidden="true"><i></i></div>
+            <article class="architecture-node build"><span>DELIVER</span><strong>Angular 22 + Playwright</strong><small>Modern implementation · Browser validation</small></article>
+          </div>
+          <div class="architecture-principle"><span>ARCHITECTURAL PRINCIPLE</span><p><strong>Deterministic source understanding first.</strong> Evidence-backed reasoning and architecture build on a structured foundation—not on source-to-application guessing.</p></div>
+        </div>
+        <div class="analysis-flow reveal">
+          <article><span>SOURCE</span><strong>Legacy application</strong></article><b aria-hidden="true">→</b>
+          <article><span>ANALYZE</span><strong>Parsers + semantics</strong></article><b aria-hidden="true">→</b>
+          <article><span>GROUND</span><strong>Source-backed facts</strong></article><b aria-hidden="true">→</b>
+          <article><span>CONNECT</span><strong>Knowledge Graph</strong></article><b aria-hidden="true">→</b>
+          <article><span>INTERPRET</span><strong>Application understanding</strong></article>
+        </div>
+        <div class="benefit-row reveal"><span>Repeatable analysis</span><span>Source traceability</span><span>Cross-layer understanding</span><span>Reduced reliance on guessing</span><span>Reusable pipeline</span></div>
+      </div>
+    </section>
+
+    <section class="section-light" id="understanding" data-section="Understanding" aria-labelledby="understanding-heading">
+      <div class="section-wrap">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">03 · Knowledge Graph + understanding</p><h2 id="understanding-heading">The semantic backbone.</h2></div>
+          <p>The graph connects implementation evidence into a navigable source of truth, then supports a higher-level functional view of the application.</p>
+        </div>
+        <div class="metric-grid reveal" aria-label="Current approved analysis metrics">
+          <article><span class="metric-number" data-metric="sourceFiles">2,384</span><strong>Source files analyzed</strong><small>Complete application inventory</small></article>
+          <article><span class="metric-number" data-metric="graphNodes">71,936</span><strong>Knowledge Graph nodes</strong><small>Structured application concepts</small></article>
+          <article><span class="metric-number" data-metric="relationships">113,562</span><strong>Graph relationships</strong><small>Cross-layer semantic links</small></article>
+          <article><span class="metric-number" data-metric="backendEndpoints">58</span><strong>Backend endpoints</strong><small>Discovered API surface</small></article>
+        </div>
+        <div class="graph-story-grid">
+          <article class="graph-card reveal">
+            <div class="graph-visual" aria-label="Illustrative connected graph concepts">
+              <svg viewBox="0 0 620 360" role="img" aria-label="Knowledge Graph connects files, methods, UI, APIs, navigation, and validation">
+                <g class="edges"><path d="M96 78L282 64L455 95L515 237L309 286L116 244L96 78M282 64L309 286M96 78L515 237M116 244L455 95"/></g>
+                <g class="nodes"><circle cx="96" cy="78" r="34"/><circle cx="282" cy="64" r="43"/><circle cx="455" cy="95" r="36"/><circle cx="515" cy="237" r="42"/><circle cx="309" cy="286" r="48"/><circle cx="116" cy="244" r="38"/></g>
+                <g class="labels"><text x="96" y="82">UI</text><text x="282" y="68">METHODS</text><text x="455" y="99">APIs</text><text x="515" y="241">STATE</text><text x="309" y="290">ENDPOINTS</text><text x="116" y="248">FILES</text></g>
+              </svg>
+              <div class="graph-callout"><strong data-metric="facts">68,915</strong><span>source-backed facts</span></div>
+              <div class="graph-callout secondary"><strong data-metric="provenApiMappings">32</strong><span>proven API mappings</span></div>
+            </div>
+          </article>
+          <article class="understanding-card reveal">
+            <p class="eyebrow">From structure to meaning</p><h3>Application Understanding</h3>
+            <div class="vertical-flow"><span>Knowledge Graph</span><i></i><span>Application Understanding</span><i></i><span>Business / Functional View</span></div>
+            <div class="concept-tags"><span>Modules</span><span>Capabilities</span><span>Workflows</span><span>UI Surfaces</span><span>Domain Concepts</span><span>Dependencies</span><span>API Relationships</span></div>
+            <a class="text-link" data-link="applicationUnderstanding">Open Application Understanding <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-mist" id="requirements" data-section="Requirements" aria-labelledby="requirements-heading">
+      <div class="section-wrap">
+        <div class="section-heading reveal">
+          <div><p class="eyebrow">04 · Requirements + traceability</p><h2 id="requirements-heading">Evidence becomes a delivery contract.</h2></div>
+          <p>Application understanding flows into approved requirements, testable outcomes, and architecture-guided technical tasks.</p>
+        </div>
+        <div class="requirements-flow reveal" aria-label="Requirements traceability flow">
+          <article><span>01</span><strong>Application Understanding</strong><small>Functional view</small></article><i></i>
+          <article><span>02</span><strong>Feature</strong><small>Bounded outcome</small></article><i></i>
+          <article><span>03</span><strong><b data-metric="functionalRequirements">21</b> Functional Requirements</strong><small>Approved behavior</small></article><i></i>
+          <article><span>04</span><strong><b data-metric="stories">21</b> Jira Stories</strong><small>Delivery intent</small></article><i></i>
+          <article><span>05</span><strong><b data-metric="acceptanceCriteria">41</b> Acceptance Criteria</strong><small>Observable outcomes</small></article><i></i>
+          <article><span>06</span><strong><b data-metric="technicalTasks">16</b> Technical Tasks</strong><small>Implementation plan</small></article>
+        </div>
+        <div class="requirements-lower">
+          <article class="demo-feature-card reveal">
+            <div><p class="eyebrow">Example modernized feature</p><h3>Doctor Directory Management</h3><p>A concrete demonstration of source-backed behavior moving through requirements, architecture, implementation, and browser validation.</p></div>
+            <div class="capability-list"><span>Directory</span><span>Load More</span><span>Create</span><span>Edit</span><span>Delete</span><span>Validation</span><span>Profile Media</span><span>Navigation</span></div>
+            <div class="card-actions"><a class="button button-primary" data-link="featureSpec">View feature spec</a><a class="button button-quiet" data-link="technicalTasks">View technical tasks</a><a class="text-link" data-link="playwrightCoverage">View test traceability ↗</a></div>
+          </article>
+          <aside class="requirements-stats reveal">
+            <div><strong data-metric="functionalRequirements">21</strong><span>Functional requirements</span></div>
+            <div><strong data-metric="stories">21</strong><span>Jira stories</span></div>
+            <div><strong data-metric="acceptanceCriteria">41</strong><span>Acceptance criteria</span></div>
+            <div><strong data-metric="apiContracts">6</strong><span>API contracts</span></div>
+            <div><strong data-metric="technicalTasks">16</strong><span>Technical tasks</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-angular" id="angular" data-section="Angular 22" aria-labelledby="angular-heading">
+      <div class="angular-grid-bg" aria-hidden="true"></div>
+      <div class="section-wrap">
+        <div class="section-heading inverse reveal">
+          <div><p class="eyebrow">05 · Target architecture</p><h2 id="angular-heading"><span>Angular 22</span>, architected for change.</h2></div>
+          <p>Modernization is more than translating AngularJS into new syntax. It reshapes state, component boundaries, routing, typing, data access, performance, and test strategy.</p>
+        </div>
+        <div class="angular-layout">
+          <div class="angular-flow reveal" aria-label="Implemented Angular architecture flow">
+            <article><small>EXPERIENCE</small><strong>Browser</strong></article><i></i>
+            <article><small>APPLICATION</small><strong>Angular Shell</strong></article><i></i>
+            <article><small>ROUTING</small><strong>Lazy Feature Route</strong></article><i></i>
+            <article class="accent"><small>FEATURE</small><strong>Standalone Components</strong><em>Typed Reactive Forms</em></article><i></i>
+            <article class="accent"><small>STATE</small><strong>Signals + computed()</strong><em>OnPush rendering</em></article><i></i>
+            <article><small>INTEGRATION</small><strong>Data Access</strong><em>RxJS + HttpClient</em></article><i></i>
+            <article><small>CONTRACT</small><strong>Backend APIs</strong></article>
+          </div>
+          <div class="angular-capabilities reveal">
+            <article><span>01</span><h3>Standalone Components</h3><p>Direct feature composition with reduced module ceremony.</p></article>
+            <article><span>02</span><h3>Signals</h3><p>Synchronous feature and user-interface state ownership.</p></article>
+            <article><span>03</span><h3>computed()</h3><p>Derived state without duplicated synchronization logic.</p></article>
+            <article><span>04</span><h3>OnPush</h3><p>Predictable, efficient component rendering.</p></article>
+            <article><span>05</span><h3>Lazy Routing</h3><p>Feature loading and clear route isolation.</p></article>
+            <article><span>06</span><h3>Typed Reactive Forms</h3><p>Strong form-state and validation typing.</p></article>
+            <article><span>07</span><h3>RxJS + HttpClient</h3><p>Observable asynchronous integration boundaries.</p></article>
+            <article><span>08</span><h3>Strict TypeScript</h3><p>Compile-time protection across implementation layers.</p></article>
+            <article><span>09</span><h3>Modern Control Flow</h3><p>Type-aware <code>@if</code> and <code>@for</code> templates.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-light" id="live-demo" data-section="Live Demo" aria-labelledby="live-heading">
+      <div class="section-wrap">
+        <div class="section-heading reveal"><div><p class="eyebrow">06 · Live modernization demo</p><h2 id="live-heading">Compare. Inspect. Explore.</h2></div><p>Move directly between the reference experience, the modern Angular implementation, and the delivery artifacts behind it.</p></div>
+        <div class="comparison-grid">
+          <article class="comparison-card legacy reveal"><div class="comparison-label"><span>REFERENCE</span><small>Legacy application</small></div><h3>Existing business experience</h3><p>.NET · Razor · AngularJS · C# · Web API</p><div class="window-preview legacy-window" aria-hidden="true"><div class="window-bar"><i></i><i></i><i></i></div><div class="legacy-ui"><span></span><div><b></b><b></b><b></b></div><section><em></em><em></em><em></em></section></div></div><a class="button button-dark" data-link="legacyApp">Open legacy UI <span>↗</span></a></article>
+          <div class="preserved-bridge reveal"><span>PRESERVED</span><i></i><div><b>Business behavior</b><b>User workflows</b><b>Validation</b><b>Navigation</b><b>API contracts</b><b>UX intent</b></div><i></i></div>
+          <article class="comparison-card modern reveal"><div class="comparison-label"><span>MODERNIZED</span><small>Angular 22</small></div><h3>Modern application architecture</h3><p>Standalone · Signals · Typed forms · Playwright</p><div class="window-preview modern-window" aria-hidden="true"><div class="window-bar"><i></i><i></i><i></i></div><div class="modern-ui"><aside></aside><div><b></b><section><em></em><em></em><em></em><em></em></section></div></div></div><a class="button button-primary" data-link="modernApp">Open modern UI <span>↗</span></a></article>
+        </div>
+        <div class="launch-center reveal">
+          <div class="launch-heading"><p class="eyebrow">Launch center</p><h3>Everything for the live demonstration</h3></div>
+          <div class="launch-grid">
+            <a data-link="legacyApp"><span class="launch-icon">L</span><div><strong>Legacy application</strong><small>Reference experience</small></div><b>↗</b></a>
+            <a data-link="modernApp"><span class="launch-icon">A</span><div><strong>Modern Angular</strong><small>Angular 22 application</small></div><b>↗</b></a>
+            <a data-link="modernDoctors"><span class="launch-icon">D</span><div><strong>Doctor directory</strong><small>Modernized feature</small></div><b>↗</b></a>
+            <a data-link="modernNewDoctor"><span class="launch-icon">+</span><div><strong>New doctor</strong><small>Typed form workflow</small></div><b>↗</b></a>
+            <a data-link="featureSpec"><span class="launch-icon">F</span><div><strong>Feature specification</strong><small>Requirements contract</small></div><b>→</b></a>
+            <a data-link="technicalTasks"><span class="launch-icon">T</span><div><strong>Technical tasks</strong><small>Delivery plan</small></div><b>→</b></a>
+            <a data-link="applicationUnderstanding"><span class="launch-icon">U</span><div><strong>App understanding</strong><small>Functional view</small></div><b>→</b></a>
+            <a data-link="playwrightCoverage"><span class="launch-icon">V</span><div><strong>AC traceability</strong><small>Browser coverage</small></div><b>→</b></a>
+            <a data-link="playwrightReport"><span class="launch-icon">P</span><div><strong>Playwright report</strong><small data-report-status>Execution evidence</small></div><b>↗</b></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-validation" id="validation" data-section="Validation" aria-labelledby="validation-heading">
+      <div class="section-wrap">
+        <div class="section-heading inverse reveal"><div><p class="eyebrow">07 · Automated validation</p><h2 id="validation-heading">Requirements become browser evidence.</h2></div><p>Playwright exercises observable Angular behavior in a real browser and keeps acceptance criteria connected to named validation scenarios.</p></div>
+        <div class="validation-flow reveal" aria-label="Playwright validation flow">
+          <article><span>01</span><strong>Acceptance Criteria</strong></article><i></i><article><span>02</span><strong>Playwright Scenarios</strong></article><i></i><article><span>03</span><strong>Real Browser</strong></article><i></i><article><span>04</span><strong>Angular UI</strong></article><i></i><article><span>05</span><strong>Observable Result</strong></article><i></i><article><span>06</span><strong>Execution Report</strong></article>
+        </div>
+        <div class="validation-content">
+          <div class="validation-metrics reveal">
+            <article><strong data-coverage="ac_total">41</strong><span>Total acceptance criteria</span></article>
+            <article class="success"><strong data-coverage="ac_passed">39</strong><span>Validated</span></article>
+            <article><strong data-coverage="ac_failed">0</strong><span>Failed</span></article>
+            <article><strong data-coverage="ac_blocked_by_patient_feature">2</strong><span>Explicit dependency status</span></article>
+          </div>
+          <article class="validation-message reveal"><span class="validation-check">✓</span><div><p class="eyebrow">End-to-end traceability</p><h3>From source evidence to validated implementation</h3><p>Every approved Doctor Directory acceptance criterion has an explicit Playwright traceability outcome.</p><div class="card-actions"><a class="button button-primary" data-link="playwrightCoverage">Open AC traceability</a><a class="button button-quiet" data-link="playwrightReport">Open Playwright report</a></div></div></article>
+        </div>
+        <div class="trace-chain reveal" aria-label="End-to-end traceability chain"><span>Legacy Source</span><b>→</b><span>Knowledge Graph</span><b>→</b><span>Understanding</span><b>→</b><span>Requirement</span><b>→</b><span>Story</span><b>→</b><span>AC</span><b>→</b><span>Task</span><b>→</b><span>Angular</span><b>→</b><span>Playwright</span></div>
+      </div>
+    </section>
+
+    <section class="section-outcome" id="outcome" data-section="Outcome" aria-labelledby="outcome-heading">
+      <div class="section-wrap outcome-grid">
+        <div class="outcome-copy reveal"><p class="eyebrow">POC outcome</p><h2 id="outcome-heading">A reusable path from legacy complexity to validated modernization.</h2><p>The POC demonstrates how deterministic analysis, semantic modeling, evidence-driven understanding, architecture-guided delivery, and automated validation can operate as one traceable modernization lifecycle.</p><a class="button button-primary" href="#overview">Return to overview ↑</a></div>
+        <div class="outcome-list reveal"><article><span>01</span><strong>Legacy application understanding</strong></article><article><span>02</span><strong>Deterministic evidence extraction</strong></article><article><span>03</span><strong>Cross-layer semantic modeling</strong></article><article><span>04</span><strong>Requirements + traceability</strong></article><article><span>05</span><strong>Architecture-driven modernization</strong></article><article><span>06</span><strong>Angular 22 implementation</strong></article><article><span>07</span><strong>Behavior + UX preservation</strong></article><article><span>08</span><strong>Browser-based validation</strong></article></div>
+      </div>
+    </section>
+
+    <aside class="demo-agenda" aria-label="Demo flow">
+      <button type="button" class="agenda-toggle" aria-expanded="false"><span>Demo flow</span><b>09 steps</b></button>
+      <nav><a href="#live-demo">01 <span>Legacy Application</span></a><a href="#architecture">02 <span>Modernization Architecture</span></a><a href="#understanding">03 <span>Knowledge Graph</span></a><a data-link="applicationUnderstanding">04 <span>Application Understanding</span></a><a href="#requirements">05 <span>Feature / Stories / AC</span></a><a href="#angular">06 <span>Angular 22 Architecture</span></a><a href="#live-demo">07 <span>Legacy vs Modern UI</span></a><a href="#validation">08 <span>Playwright Validation</span></a><a href="#outcome">09 <span>POC Outcome</span></a></nav>
+    </aside>
+  </main>
+
+  <footer class="site-footer"><div><span class="brand-mark" aria-hidden="true">P</span><p><strong>Polaris Application Modernization POC</strong><small>Understand · Model · Plan · Modernize · Validate</small></p></div><a href="#overview">Back to top ↑</a></footer>
+
+  <div class="section-controls" aria-label="Presentation navigation"><button type="button" data-direction="previous" aria-label="Previous presentation section">←</button><span data-section-label>Overview</span><button type="button" data-direction="next" aria-label="Next presentation section">→</button></div>
+  <noscript><div class="noscript">JavaScript enriches live links and metrics. The presentation content remains available without it.</div></noscript>
+</body>
+</html>

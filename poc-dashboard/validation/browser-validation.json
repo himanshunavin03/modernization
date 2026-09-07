@@ -1,0 +1,27 @@
+{
+  "pages": {
+    "dashboard": {
+      "desktop": true,
+      "laptop": true
+    },
+    "feature-specification": {
+      "desktop": true,
+      "laptop": true
+    },
+    "technical-tasks": {
+      "desktop": true,
+      "laptop": true
+    },
+    "application-understanding": {
+      "desktop": true,
+      "laptop": true
+    },
+    "playwright-coverage": {
+      "desktop": true,
+      "laptop": true
+    }
+  },
+  "responsive": true,
+  "accessibility": true,
+  "reportLink": true
+}

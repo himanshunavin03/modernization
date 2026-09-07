@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Doctor Directory Management · Application Modernization POC</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="artifact-page">
+  <a class="skip-link" href="#artifact-content">Skip to content</a>
+  <header class="artifact-topbar">
+    <a class="brand" href="../index.html" aria-label="Back to POC dashboard"><span class="brand-mark">P</span><span>POLARIS <small>MODERNIZATION</small></span></a>
+    <a class="button button-quiet" href="../index.html">← Back to POC Dashboard</a>
+  </header>
+  <main id="artifact-content">
+    <section class="artifact-hero">
+      <p class="eyebrow">Example Modernized Feature · Approved Specification</p>
+      <h1>Doctor Directory Management</h1>
+      <p>An evidence-backed delivery contract connecting functional requirements, stories, acceptance criteria, APIs, and readiness expectations.</p>
+    </section>
+    <div class="artifact-layout">
+      <aside class="artifact-nav" aria-label="Page sections"><strong>On this page</strong><a href="#1-feature-overview">1. Feature Overview</a><a href="#2-functional-requirements">2. Functional Requirements</a><a href="#3-user-stories">3. User Stories</a><a href="#4-acceptance-criteria">4. Acceptance Criteria</a><a href="#5-api-requirements">5. API Requirements</a><a href="#6-business-rules">6. Business Rules</a><a href="#7-development-requirements">7. Development Requirements</a><a href="#8-definition-of-ready">8. Definition of Ready</a><a href="#9-definition-of-done">9. Definition of Done</a><a href="#10-review-and-approval">10. Review and Approval</a></aside>
+      <article class="artifact-document"><h1 id="doctor-directory-management">Doctor Directory Management</h1>
+<h2 id="1-feature-overview">1. Feature Overview</h2>
+<h3 id="objective">Objective</h3>
+<p>Deliver doctor directory management with the interactions specified below.</p>
+<h3 id="feature-capabilities">Feature Capabilities</h3>
+<ul>
+<li>Add Doctor</li>
+<li>Delete selected Doctor records</li>
+<li>Delete an individual Doctor</li>
+<li>Delete this doctor</li>
+<li>Load more</li>
+<li>Directory presentation</li>
+<li>New doctor</li>
+<li>Back to doctors</li>
+<li>Open doctor details</li>
+<li>Patients</li>
+<li>Change all displayed record selections</li>
+<li>Save Doctor</li>
+<li>Change an individual record selection</li>
+<li>Automatic tenant context</li>
+<li>Maintain Doctor Profile Media</li>
+<li>Validate Doctor Address</li>
+<li>Validate Doctor Description</li>
+<li>Validate Doctor Email</li>
+<li>Validate Doctor Mobile</li>
+<li>Validate Doctor Phone</li>
+<li>Validate Doctor Name</li>
+</ul>
+<h3 id="business-value">Business Value</h3>
+<p>Stakeholder business priorities and rationale require Product Owner confirmation.</p>
+<h3 id="scope">Scope</h3>
+<p><strong>In Scope</strong></p>
+<ul>
+<li>Add Doctor</li>
+<li>Delete selected Doctor records</li>
+<li>Delete an individual Doctor</li>
+<li>Delete this doctor</li>
+<li>Load more</li>
+<li>Directory presentation</li>
+<li>New doctor</li>
+<li>Back to doctors</li>
+<li>Open doctor details</li>
+<li>Patients</li>
+<li>Change all displayed record selections</li>
+<li>Save Doctor</li>
+<li>Change an individual record selection</li>
+<li>Automatic tenant context</li>
+<li>Maintain Doctor Profile Media</li>
+<li>Validate Doctor Address</li>
+<li>Validate Doctor Description</li>
+<li>Validate Doctor Email</li>
+<li>Validate Doctor Mobile</li>
+<li>Validate Doctor Phone</li>
+<li>Validate Doctor Name</li>
+</ul>
+<p><strong>Out of Scope</strong></p>
+<ul>
+<li>Operations without a defined interaction in this specification.</li>
+</ul>
+<h2 id="2-functional-requirements">2. Functional Requirements</h2>
+<h3 id="fr-01-add-doctor">FR-01 - Add Doctor</h3>
+<h4 id="requirement">Requirement</h4>
+<p>The &quot;Add&quot; action is disabled while the form is invalid. The &quot;Add&quot; action is displayed when edit mode is inactive. The doctors view opens when the operation completes successfully. The new record is saved when the operation completes successfully.</p>
+<h4 id="functional-flow">Functional Flow</h4>
+<ol>
+<li>The &quot;Add&quot; action is displayed when edit mode is inactive.</li>
+<li>The &quot;Add&quot; action is disabled while the form is invalid.</li>
+<li>The new record is saved when the operation completes successfully.</li>
+<li>The doctors view opens when the operation completes successfully.</li>
+</ol>
+<h4 id="api-integration">API Integration</h4>
+<ul>
+<li><strong>Method:</strong> <code>POST</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors</code></li>
+<li><strong>Purpose:</strong> Supports FR-01; the functional behavior is defined in those requirements.</li>
+<li><strong>Response:</strong> int.</li>
+</ul>
+<h3 id="fr-02-delete-selected-doctor-records">FR-02 - Delete selected Doctor records</h3>
+<h4 id="requirement-2">Requirement</h4>
+<p>Confirmation is requested before the guarded action proceeds. The &quot;Delete&quot; action is displayed when at least one record is selected. The affected doctors are removed from the displayed collection when the operation completes successfully.</p>
+<h4 id="functional-flow-2">Functional Flow</h4>
+<ol>
+<li>The &quot;Delete&quot; action is displayed when at least one record is selected.</li>
+<li>Confirmation is requested before the guarded action proceeds.</li>
+<li>The affected doctors are removed from the displayed collection when the operation completes successfully.</li>
+</ol>
+<h4 id="api-integration-2">API Integration</h4>
+<ul>
+<li><strong>Method:</strong> <code>DELETE</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors/{id}</code></li>
+<li><strong>Input:</strong> <code>id</code> - Identifier of the selected record (path parameter)</li>
+<li><strong>Purpose:</strong> Supports FR-02, FR-03, FR-04; the functional behavior is defined in those requirements.</li>
+<li><strong>Response:</strong> Completion response without a documented payload.</li>
+</ul>
+<h3 id="fr-03-delete-an-individual-doctor">FR-03 - Delete an individual Doctor</h3>
+<h4 id="requirement-3">Requirement</h4>
+<p>Confirmation is requested before the guarded action proceeds. The affected doctors are removed from the displayed collection when the operation completes successfully.</p>
+<h4 id="functional-flow-3">Functional Flow</h4>
+<ol>
+<li>Confirmation is requested before the guarded action proceeds.</li>
+<li>The affected doctors are removed from the displayed collection when the operation completes successfully.</li>
+</ol>
+<h4 id="api-integration-3">API Integration</h4>
+<ul>
+<li><strong>Method:</strong> <code>DELETE</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors/{id}</code></li>
+<li><strong>Input:</strong> <code>id</code> - Identifier of the selected record (path parameter)</li>
+<li><strong>Purpose:</strong> Supports FR-02, FR-03, FR-04; the functional behavior is defined in those requirements.</li>
+<li><strong>Response:</strong> Completion response without a documented payload.</li>
+</ul>
+<h3 id="fr-04-delete-this-doctor">FR-04 - Delete this doctor</h3>
+<h4 id="requirement-4">Requirement</h4>
+<p>Confirmation is requested before the guarded action proceeds. The doctors view opens when the operation completes successfully.</p>
+<h4 id="functional-flow-4">Functional Flow</h4>
+<ol>
+<li>Confirmation is requested before the guarded action proceeds.</li>
+<li>The doctors view opens when the operation completes successfully.</li>
+</ol>
+<h4 id="api-integration-4">API Integration</h4>
+<ul>
+<li><strong>Method:</strong> <code>DELETE</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors/{id}</code></li>
+<li><strong>Input:</strong> <code>id</code> - Identifier of the selected record (path parameter)</li>
+<li><strong>Purpose:</strong> Supports FR-02, FR-03, FR-04; the functional behavior is defined in those requirements.</li>
+<li><strong>Response:</strong> Completion response without a documented payload.</li>
+</ul>
+<h3 id="fr-05-load-more">FR-05 - Load more</h3>
+<h4 id="requirement-5">Requirement</h4>
+<p>Additional doctors are appended after the displayed records when the operation completes successfully. Records retain fixed name ordering (ascending) when the operation completes successfully. The &quot;LOAD MORE&quot; action is hidden when the returned batch contains fewer records than the requested batch size. The &quot;NO DATA&quot; message is displayed when the doctors collection is empty.</p>
+<h4 id="functional-flow-5">Functional Flow</h4>
+<ol>
+<li>Additional doctors are appended after the displayed records when the operation completes successfully.</li>
+<li>Records retain fixed name ordering (ascending) when the operation completes successfully.</li>
+<li>The &quot;NO DATA&quot; message is displayed when the doctors collection is empty.</li>
+<li>The &quot;LOAD MORE&quot; action is hidden when the returned batch contains fewer records than the requested batch size.</li>
+</ol>
+<h4 id="api-integration-5">API Integration</h4>
+<ul>
+<li><strong>Method:</strong> <code>GET</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors</code></li>
+<li><strong>Input:</strong> <code>pageCount</code> - Request parameter (int) (query parameter)</li>
+<li><strong>Input:</strong> <code>pageSize</code> - Request parameter (int) (query parameter)</li>
+<li><strong>Purpose:</strong> Supports FR-05, FR-06; the functional behavior is defined in those requirements.</li>
+<li><strong>Response:</strong> Collection of Doctor records.</li>
+</ul>
+<h3 id="fr-06-directory-presentation">FR-06 - Directory presentation</h3>
+<h4 id="requirement-6">Requirement</h4>
+<p>Additional doctors are appended after the displayed records when the operation completes successfully. Records retain fixed name ordering (ascending) when the operation completes successfully. The &quot;LOAD MORE&quot; action is hidden when the returned batch contains fewer records than the requested batch size. The &quot;NO DATA&quot; message is displayed when the doctors collection is empty.</p>
+<h4 id="functional-flow-6">Functional Flow</h4>
+<ol>
+<li>Additional doctors are appended after the displayed records when the operation completes successfully.</li>
+<li>Records retain fixed name ordering (ascending) when the operation completes successfully.</li>
+<li>The &quot;NO DATA&quot; message is displayed when the doctors collection is empty.</li>
+<li>The &quot;LOAD MORE&quot; action is hidden when the returned batch contains fewer records than the requested batch size.</li>
+</ol>
+<h4 id="api-integration-6">API Integration</h4>
+<ul>
+<li><strong>Method:</strong> <code>GET</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors</code></li>
+<li><strong>Input:</strong> <code>pageCount</code> - Request parameter (int) (query parameter)</li>
+<li><strong>Input:</strong> <code>pageSize</code> - Request parameter (int) (query parameter)</li>
+<li><strong>Purpose:</strong> Supports FR-05, FR-06; the functional behavior is defined in those requirements.</li>
+<li><strong>Response:</strong> Collection of Doctor records.</li>
+</ul>
+<h3 id="fr-07-new-doctor">FR-07 - New doctor</h3>
+<h4 id="requirement-7">Requirement</h4>
+<p>The doctor view opens.</p>
+<h4 id="functional-flow-7">Functional Flow</h4>
+<ol>
+<li>The doctor view opens.</li>
+</ol>
+<h3 id="fr-08-back-to-doctors">FR-08 - Back to doctors</h3>
+<h4 id="requirement-8">Requirement</h4>
+<p>The doctors view opens.</p>
+<h4 id="functional-flow-8">Functional Flow</h4>
+<ol>
+<li>The doctors view opens.</li>
+</ol>
+<h3 id="fr-09-open-doctor-details">FR-09 - Open doctor details</h3>
+<h4 id="requirement-9">Requirement</h4>
+<p>The doctor view opens. The returned doctor details populate the form.</p>
+<h4 id="functional-flow-9">Functional Flow</h4>
+<ol>
+<li>The doctor view opens.</li>
+<li>The returned doctor details populate the form.</li>
+</ol>
+<h4 id="api-integration-7">API Integration</h4>
+<ul>
+<li><strong>Method:</strong> <code>GET</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors/{id}</code></li>
+<li><strong>Input:</strong> <code>id</code> - Identifier of the selected record (path parameter)</li>
+<li><strong>Purpose:</strong> Supports FR-09; the functional behavior is defined in those requirements.</li>
+<li><strong>Response:</strong> Doctor.</li>
+</ul>
+<h3 id="fr-10-patients">FR-10 - Patients</h3>
+<h4 id="requirement-10">Requirement</h4>
+<p>The &quot;Patients&quot; action is displayed when edit mode is active. The patients view opens.</p>
+<h4 id="functional-flow-10">Functional Flow</h4>
+<ol>
+<li>The &quot;Patients&quot; action is displayed when edit mode is active.</li>
+<li>The patients view opens.</li>
+</ol>
+<h3 id="fr-11-change-all-displayed-record-selections">FR-11 - Change all displayed record selections</h3>
+<h4 id="requirement-11">Requirement</h4>
+<p>All displayed record checkboxes reflect the select-all state.</p>
+<h4 id="functional-flow-11">Functional Flow</h4>
+<ol>
+<li>All displayed record checkboxes reflect the select-all state.</li>
+</ol>
+<h3 id="fr-12-save-doctor">FR-12 - Save Doctor</h3>
+<h4 id="requirement-12">Requirement</h4>
+<p>The &quot;Save&quot; action is disabled while the form is invalid. The &quot;Save&quot; action is displayed when edit mode is active. The changes to the selected record are saved when the operation completes successfully. The doctors view opens when the operation completes successfully.</p>
+<h4 id="functional-flow-12">Functional Flow</h4>
+<ol>
+<li>The &quot;Save&quot; action is displayed when edit mode is active.</li>
+<li>The &quot;Save&quot; action is disabled while the form is invalid.</li>
+<li>The changes to the selected record are saved when the operation completes successfully.</li>
+<li>The doctors view opens when the operation completes successfully.</li>
+</ol>
+<h4 id="api-integration-8">API Integration</h4>
+<ul>
+<li><strong>Method:</strong> <code>PUT</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors</code></li>
+<li><strong>Purpose:</strong> Supports FR-12; the functional behavior is defined in those requirements.</li>
+<li><strong>Response:</strong> Completion response without a documented payload.</li>
+</ul>
+<h3 id="fr-13-change-an-individual-record-selection">FR-13 - Change an individual record selection</h3>
+<h4 id="requirement-13">Requirement</h4>
+<p>The chosen record reflects its checkbox selection state.</p>
+<h4 id="functional-flow-13">Functional Flow</h4>
+<ol>
+<li>The chosen record reflects its checkbox selection state.</li>
+</ol>
+<h3 id="fr-14-automatic-tenant-context">FR-14 - Automatic tenant context</h3>
+<h4 id="requirement-14">Requirement</h4>
+<p>The organization context is obtained automatically before the dependent request runs.</p>
+<h4 id="functional-flow-14">Functional Flow</h4>
+<ol>
+<li>The tenant context is obtained automatically before the dependent request runs.</li>
+</ol>
+<h4 id="api-integration-9">API Integration</h4>
+<ul>
+<li><strong>Method:</strong> <code>GET</code></li>
+<li><strong>Endpoint:</strong> <code>/api/users/current/tenant</code></li>
+<li><strong>Purpose:</strong> Supports FR-14; the functional behavior is defined in those requirements.</li>
+<li><strong>Response:</strong> int.</li>
+</ul>
+<h3 id="fr-15-maintain-doctor-profile-media">FR-15 - Maintain Doctor Profile Media</h3>
+<h4 id="requirement-15">Requirement</h4>
+<p>The &quot;Add a profile photo&quot; prompt is shown when no file content is set. The doctor picture preview is displayed when file content is set. The selected file content updates the doctor picture.</p>
+<h4 id="functional-flow-15">Functional Flow</h4>
+<ol>
+<li>The selected file content updates the doctor picture.</li>
+<li>The &quot;Add a profile photo&quot; prompt is shown when no file content is set.</li>
+<li>The doctor picture preview is displayed when file content is set.</li>
+</ol>
+<h3 id="fr-16-validate-doctor-address">FR-16 - Validate Doctor Address</h3>
+<h4 id="requirement-16">Requirement</h4>
+<p>Doctor address remains invalid until a value is provided.</p>
+<h4 id="functional-flow-16">Functional Flow</h4>
+<ol>
+<li>Doctor address remains invalid until a value is provided.</li>
+</ol>
+<h3 id="fr-17-validate-doctor-description">FR-17 - Validate Doctor Description</h3>
+<h4 id="requirement-17">Requirement</h4>
+<p>Doctor description remains invalid until a value is provided.</p>
+<h4 id="functional-flow-17">Functional Flow</h4>
+<ol>
+<li>Doctor description remains invalid until a value is provided.</li>
+</ol>
+<h3 id="fr-18-validate-doctor-email">FR-18 - Validate Doctor Email</h3>
+<h4 id="requirement-18">Requirement</h4>
+<p>Doctor email remains invalid until a value is provided.</p>
+<h4 id="functional-flow-18">Functional Flow</h4>
+<ol>
+<li>Doctor email remains invalid until a value is provided.</li>
+</ol>
+<h3 id="fr-19-validate-doctor-mobile">FR-19 - Validate Doctor Mobile</h3>
+<h4 id="requirement-19">Requirement</h4>
+<p>Doctor mobile remains invalid until a value is provided.</p>
+<h4 id="functional-flow-19">Functional Flow</h4>
+<ol>
+<li>Doctor mobile remains invalid until a value is provided.</li>
+</ol>
+<h3 id="fr-20-validate-doctor-phone">FR-20 - Validate Doctor Phone</h3>
+<h4 id="requirement-20">Requirement</h4>
+<p>Doctor phone remains invalid until a value is provided.</p>
+<h4 id="functional-flow-20">Functional Flow</h4>
+<ol>
+<li>Doctor phone remains invalid until a value is provided.</li>
+</ol>
+<h3 id="fr-21-validate-doctor-name">FR-21 - Validate Doctor Name</h3>
+<h4 id="requirement-21">Requirement</h4>
+<p>Doctor name remains invalid until a value is provided.</p>
+<h4 id="functional-flow-21">Functional Flow</h4>
+<ol>
+<li>Doctor name remains invalid until a value is provided.</li>
+</ol>
+<h2 id="3-user-stories">3. User Stories</h2>
+<h3 id="us-01-add-doctor">US-01 - Add Doctor</h3>
+<h4 id="story">Story</h4>
+<p>As an application user,</p>
+<p>I want to select &quot;Add&quot;,</p>
+<p>so that the doctors view opens; the new record is saved.</p>
+<h4 id="functional-requirements">Functional Requirements</h4>
+<ul>
+<li><strong>FR-01:</strong> The &quot;Add&quot; action is disabled while the form is invalid. The &quot;Add&quot; action is displayed when edit mode is inactive. The doctors view opens when the operation completes successfully. The new record is saved when the operation completes successfully.</li>
+</ul>
+<h4 id="api-integration-10">API Integration</h4>
+<ul>
+<li><strong>Purpose:</strong> Supports FR-01; the functional behavior is defined in those requirements.</li>
+<li><strong>Method:</strong> <code>POST</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors</code></li>
+<li><strong>Response:</strong> int.</li>
+<li><strong>Response Model:</strong> <code>int</code></li>
+</ul>
+<h4 id="acceptance-criteria">Acceptance Criteria</h4>
+<p>##### AC-01 - The doctors view opens</p>
+<p><strong>Given</strong> the doctor view is displayed after the user selects &quot;Add&quot;</p>
+<p><strong>When</strong> the operation completes successfully</p>
+<p><strong>Then</strong> the doctors view opens</p>
+<p>##### AC-02 - The &quot;Add&quot; action is displayed</p>
+<p><strong>Given</strong> edit mode is inactive</p>
+<p><strong>When</strong> the view evaluates which actions to display</p>
+<p><strong>Then</strong> the &quot;Add&quot; action is displayed</p>
+<p>##### AC-03 - The &quot;Add&quot; action is disabled while the form is invalid</p>
+<p><strong>Given</strong> the doctor view is displayed</p>
+<p><strong>When</strong> the form contains incomplete or invalid input</p>
+<p><strong>Then</strong> the &quot;Add&quot; action is disabled while the form is invalid</p>
+<p>##### AC-04 - The new record is saved</p>
+<p><strong>Given</strong> the doctor view is displayed after the user selects &quot;Add&quot;</p>
+<p><strong>When</strong> the operation completes successfully</p>
+<p><strong>Then</strong> the new record is saved</p>
+<h4 id="story-readiness">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-02-delete-selected-doctor-records">US-02 - Delete selected Doctor records</h3>
+<h4 id="story-2">Story</h4>
+<p>As an application user,</p>
+<p>I want to select &quot;Delete&quot;,</p>
+<p>so that confirmation is requested before the guarded action proceeds; the affected doctors are removed from the displayed collection.</p>
+<h4 id="functional-requirements-2">Functional Requirements</h4>
+<ul>
+<li><strong>FR-02:</strong> Confirmation is requested before the guarded action proceeds. The &quot;Delete&quot; action is displayed when at least one record is selected. The affected doctors are removed from the displayed collection when the operation completes successfully.</li>
+</ul>
+<h4 id="api-integration-11">API Integration</h4>
+<ul>
+<li><strong>Purpose:</strong> Supports FR-02, FR-03, FR-04; the functional behavior is defined in those requirements.</li>
+<li><strong>Method:</strong> <code>DELETE</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors/{id}</code></li>
+<li><strong>Input:</strong> <code>id</code> - Identifier of the selected record (path parameter)</li>
+<li><strong>Response:</strong> Completion response without a documented payload.</li>
+</ul>
+<h4 id="acceptance-criteria-2">Acceptance Criteria</h4>
+<p>##### AC-05 - Confirmation is requested before the guarded action proceeds</p>
+<p><strong>Given</strong> the doctors view is displayed</p>
+<p><strong>When</strong> the user selects &quot;Delete&quot;</p>
+<p><strong>Then</strong> confirmation is requested before the guarded action proceeds</p>
+<p>##### AC-06 - The affected doctors are removed from the displayed collection</p>
+<p><strong>Given</strong> the doctors view is displayed after the user selects &quot;Delete&quot; and the user has confirmed the action</p>
+<p><strong>When</strong> the operation completes successfully</p>
+<p><strong>Then</strong> the affected doctors are removed from the displayed collection</p>
+<p>##### AC-07 - The &quot;Delete&quot; action is displayed</p>
+<p><strong>Given</strong> at least one record is selected</p>
+<p><strong>When</strong> the view evaluates which actions to display</p>
+<p><strong>Then</strong> the &quot;Delete&quot; action is displayed</p>
+<h4 id="story-readiness-2">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-03-delete-an-individual-doctor">US-03 - Delete an individual Doctor</h3>
+<h4 id="story-3">Story</h4>
+<p>As an application user,</p>
+<p>I want to delete an individual doctor,</p>
+<p>so that confirmation is requested before the guarded action proceeds; the affected doctors are removed from the displayed collection.</p>
+<h4 id="functional-requirements-3">Functional Requirements</h4>
+<ul>
+<li><strong>FR-03:</strong> Confirmation is requested before the guarded action proceeds. The affected doctors are removed from the displayed collection when the operation completes successfully.</li>
+</ul>
+<h4 id="api-integration-12">API Integration</h4>
+<ul>
+<li><strong>Purpose:</strong> Supports FR-02, FR-03, FR-04; the functional behavior is defined in those requirements.</li>
+<li><strong>Method:</strong> <code>DELETE</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors/{id}</code></li>
+<li><strong>Input:</strong> <code>id</code> - Identifier of the selected record (path parameter)</li>
+<li><strong>Response:</strong> Completion response without a documented payload.</li>
+</ul>
+<h4 id="acceptance-criteria-3">Acceptance Criteria</h4>
+<p>##### AC-08 - Confirmation is requested before the guarded action proceeds</p>
+<p><strong>Given</strong> the doctors view is displayed</p>
+<p><strong>When</strong> the user selects the record&#x27;s delete control</p>
+<p><strong>Then</strong> confirmation is requested before the guarded action proceeds</p>
+<p>##### AC-09 - The affected doctors are removed from the displayed collection</p>
+<p><strong>Given</strong> the doctors view is displayed and the user has confirmed the action</p>
+<p><strong>When</strong> the operation completes successfully</p>
+<p><strong>Then</strong> the affected doctors are removed from the displayed collection</p>
+<h4 id="story-readiness-3">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-04-delete-this-doctor">US-04 - Delete this doctor</h3>
+<h4 id="story-4">Story</h4>
+<p>As an application user,</p>
+<p>I want to select &quot;Delete this doctor&quot;,</p>
+<p>so that confirmation is requested before the guarded action proceeds; the doctors view opens.</p>
+<h4 id="functional-requirements-4">Functional Requirements</h4>
+<ul>
+<li><strong>FR-04:</strong> Confirmation is requested before the guarded action proceeds. The doctors view opens when the operation completes successfully.</li>
+</ul>
+<h4 id="api-integration-13">API Integration</h4>
+<ul>
+<li><strong>Purpose:</strong> Supports FR-02, FR-03, FR-04; the functional behavior is defined in those requirements.</li>
+<li><strong>Method:</strong> <code>DELETE</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors/{id}</code></li>
+<li><strong>Input:</strong> <code>id</code> - Identifier of the selected record (path parameter)</li>
+<li><strong>Response:</strong> Completion response without a documented payload.</li>
+</ul>
+<h4 id="acceptance-criteria-4">Acceptance Criteria</h4>
+<p>##### AC-10 - Confirmation is requested before the guarded action proceeds</p>
+<p><strong>Given</strong> the doctor view is displayed</p>
+<p><strong>When</strong> the user selects &quot;Delete this doctor&quot;</p>
+<p><strong>Then</strong> confirmation is requested before the guarded action proceeds</p>
+<p>##### AC-11 - The doctors view opens</p>
+<p><strong>Given</strong> the doctor view is displayed after the user selects &quot;Delete this doctor&quot; and the user has confirmed the action</p>
+<p><strong>When</strong> the operation completes successfully</p>
+<p><strong>Then</strong> the doctors view opens</p>
+<h4 id="story-readiness-4">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-05-load-more">US-05 - Load more</h3>
+<h4 id="story-5">Story</h4>
+<p>As an application user,</p>
+<p>I want to select &quot;LOAD MORE&quot;,</p>
+<p>so that additional doctors are appended after the displayed records.</p>
+<h4 id="functional-requirements-5">Functional Requirements</h4>
+<ul>
+<li><strong>FR-05:</strong> Additional doctors are appended after the displayed records when the operation completes successfully. Records retain fixed name ordering (ascending) when the operation completes successfully. The &quot;LOAD MORE&quot; action is hidden when the returned batch contains fewer records than the requested batch size. The &quot;NO DATA&quot; message is displayed when the doctors collection is empty.</li>
+</ul>
+<h4 id="api-integration-14">API Integration</h4>
+<ul>
+<li><strong>Purpose:</strong> Supports FR-05, FR-06; the functional behavior is defined in those requirements.</li>
+<li><strong>Method:</strong> <code>GET</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors</code></li>
+<li><strong>Input:</strong> <code>pageCount</code> - Request parameter (int) (query parameter)</li>
+<li><strong>Input:</strong> <code>pageSize</code> - Request parameter (int) (query parameter)</li>
+<li><strong>Response:</strong> Collection of Doctor records.</li>
+<li><strong>Response Model:</strong> <code>Doctor[]</code></li>
+</ul>
+<h4 id="acceptance-criteria-5">Acceptance Criteria</h4>
+<p>##### AC-12 - Additional doctors are appended after the displayed records</p>
+<p><strong>Given</strong> the doctors view is displayed after the user selects &quot;LOAD MORE&quot;</p>
+<p><strong>When</strong> the operation completes successfully</p>
+<p><strong>Then</strong> additional doctors are appended after the displayed records</p>
+<p>##### AC-13 - The &quot;NO DATA&quot; message is displayed</p>
+<p><strong>Given</strong> the doctors view is displayed after the user selects &quot;LOAD MORE&quot;</p>
+<p><strong>When</strong> the doctors collection is empty</p>
+<p><strong>Then</strong> the &quot;NO DATA&quot; message is displayed</p>
+<p>##### AC-14 - The &quot;LOAD MORE&quot; action is hidden</p>
+<p><strong>Given</strong> the doctors view is displayed after the user selects &quot;LOAD MORE&quot;</p>
+<p><strong>When</strong> the returned batch contains fewer records than the requested batch size</p>
+<p><strong>Then</strong> the &quot;LOAD MORE&quot; action is hidden</p>
+<p>##### AC-15 - Records retain fixed name ordering (ascending)</p>
+<p><strong>Given</strong> the doctors view is displayed after the user selects &quot;LOAD MORE&quot;</p>
+<p><strong>When</strong> the operation completes successfully</p>
+<p><strong>Then</strong> records retain fixed name ordering (ascending)</p>
+<h4 id="story-readiness-5">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-06-directory-presentation">US-06 - Directory presentation</h3>
+<h4 id="story-6">Story</h4>
+<p>The system performs directory presentation: additional doctors are appended after the displayed records.</p>
+<h4 id="functional-requirements-6">Functional Requirements</h4>
+<ul>
+<li><strong>FR-06:</strong> Additional doctors are appended after the displayed records when the operation completes successfully. Records retain fixed name ordering (ascending) when the operation completes successfully. The &quot;LOAD MORE&quot; action is hidden when the returned batch contains fewer records than the requested batch size. The &quot;NO DATA&quot; message is displayed when the doctors collection is empty.</li>
+</ul>
+<h4 id="api-integration-15">API Integration</h4>
+<ul>
+<li><strong>Purpose:</strong> Supports FR-05, FR-06; the functional behavior is defined in those requirements.</li>
+<li><strong>Method:</strong> <code>GET</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors</code></li>
+<li><strong>Input:</strong> <code>pageCount</code> - Request parameter (int) (query parameter)</li>
+<li><strong>Input:</strong> <code>pageSize</code> - Request parameter (int) (query parameter)</li>
+<li><strong>Response:</strong> Collection of Doctor records.</li>
+<li><strong>Response Model:</strong> <code>Doctor[]</code></li>
+</ul>
+<h4 id="acceptance-criteria-6">Acceptance Criteria</h4>
+<p>##### AC-16 - Additional doctors are appended after the displayed records</p>
+<p><strong>Given</strong> the directory view is opening</p>
+<p><strong>When</strong> the operation completes successfully</p>
+<p><strong>Then</strong> additional doctors are appended after the displayed records</p>
+<p>##### AC-17 - The &quot;NO DATA&quot; message is displayed</p>
+<p><strong>Given</strong> the directory view is opening</p>
+<p><strong>When</strong> the doctors collection is empty</p>
+<p><strong>Then</strong> the &quot;NO DATA&quot; message is displayed</p>
+<p>##### AC-18 - The &quot;LOAD MORE&quot; action is hidden</p>
+<p><strong>Given</strong> the directory view is opening</p>
+<p><strong>When</strong> the returned batch contains fewer records than the requested batch size</p>
+<p><strong>Then</strong> the &quot;LOAD MORE&quot; action is hidden</p>
+<p>##### AC-19 - Records retain fixed name ordering (ascending)</p>
+<p><strong>Given</strong> the directory view is opening</p>
+<p><strong>When</strong> the operation completes successfully</p>
+<p><strong>Then</strong> records retain fixed name ordering (ascending)</p>
+<h4 id="story-readiness-6">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-07-new-doctor">US-07 - New doctor</h3>
+<h4 id="story-7">Story</h4>
+<p>As an application user,</p>
+<p>I want to select &quot;New doctor&quot;,</p>
+<p>so that the doctor view opens.</p>
+<h4 id="functional-requirements-7">Functional Requirements</h4>
+<ul>
+<li><strong>FR-07:</strong> The doctor view opens.</li>
+</ul>
+<h4 id="acceptance-criteria-7">Acceptance Criteria</h4>
+<p>##### AC-20 - The doctor view opens</p>
+<p><strong>Given</strong> the doctors view is displayed</p>
+<p><strong>When</strong> the user selects &quot;New doctor&quot;</p>
+<p><strong>Then</strong> the doctor view opens</p>
+<h4 id="story-readiness-7">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-08-back-to-doctors">US-08 - Back to doctors</h3>
+<h4 id="story-8">Story</h4>
+<p>As an application user,</p>
+<p>I want to select &quot;Back to doctors&quot;,</p>
+<p>so that the doctors view opens.</p>
+<h4 id="functional-requirements-8">Functional Requirements</h4>
+<ul>
+<li><strong>FR-08:</strong> The doctors view opens.</li>
+</ul>
+<h4 id="acceptance-criteria-8">Acceptance Criteria</h4>
+<p>##### AC-21 - The doctors view opens</p>
+<p><strong>Given</strong> the doctor view is displayed</p>
+<p><strong>When</strong> the user selects &quot;Back to doctors&quot;</p>
+<p><strong>Then</strong> the doctors view opens</p>
+<h4 id="story-readiness-8">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-09-open-doctor-details">US-09 - Open doctor details</h3>
+<h4 id="story-9">Story</h4>
+<p>As an application user,</p>
+<p>I want to open doctor details,</p>
+<p>so that the doctor view opens; the returned doctor details populate the form.</p>
+<h4 id="functional-requirements-9">Functional Requirements</h4>
+<ul>
+<li><strong>FR-09:</strong> The doctor view opens. The returned doctor details populate the form.</li>
+</ul>
+<h4 id="api-integration-16">API Integration</h4>
+<ul>
+<li><strong>Purpose:</strong> Supports FR-09; the functional behavior is defined in those requirements.</li>
+<li><strong>Method:</strong> <code>GET</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors/{id}</code></li>
+<li><strong>Input:</strong> <code>id</code> - Identifier of the selected record (path parameter)</li>
+<li><strong>Response:</strong> Doctor.</li>
+<li><strong>Response Model:</strong> <code>Doctor</code></li>
+</ul>
+<h4 id="acceptance-criteria-9">Acceptance Criteria</h4>
+<p>##### AC-22 - The doctor view opens</p>
+<p><strong>Given</strong> the doctors view is displayed</p>
+<p><strong>When</strong> the user selects the record&#x27;s detail control</p>
+<p><strong>Then</strong> the doctor view opens</p>
+<p>##### AC-23 - The returned doctor details populate the form</p>
+<p><strong>Given</strong> the doctors view is displayed</p>
+<p><strong>When</strong> the user selects the record&#x27;s detail control</p>
+<p><strong>Then</strong> the returned doctor details populate the form</p>
+<h4 id="story-readiness-9">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-10-patients">US-10 - Patients</h3>
+<h4 id="story-10">Story</h4>
+<p>As an application user,</p>
+<p>I want to select &quot;Patients&quot;,</p>
+<p>so that the patients view opens.</p>
+<h4 id="functional-requirements-10">Functional Requirements</h4>
+<ul>
+<li><strong>FR-10:</strong> The &quot;Patients&quot; action is displayed when edit mode is active. The patients view opens.</li>
+</ul>
+<h4 id="acceptance-criteria-10">Acceptance Criteria</h4>
+<p>##### AC-24 - The patients view opens</p>
+<p><strong>Given</strong> the doctor view is displayed</p>
+<p><strong>When</strong> the user selects &quot;Patients&quot;</p>
+<p><strong>Then</strong> the patients view opens</p>
+<p>##### AC-25 - The &quot;Patients&quot; action is displayed</p>
+<p><strong>Given</strong> edit mode is active</p>
+<p><strong>When</strong> the view evaluates which actions to display</p>
+<p><strong>Then</strong> the &quot;Patients&quot; action is displayed</p>
+<h4 id="story-readiness-10">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-11-change-all-displayed-record-selections">US-11 - Change all displayed record selections</h3>
+<h4 id="story-11">Story</h4>
+<p>As an application user,</p>
+<p>I want to change all displayed record selections,</p>
+<p>so that all displayed record checkboxes reflect the select-all state.</p>
+<h4 id="functional-requirements-11">Functional Requirements</h4>
+<ul>
+<li><strong>FR-11:</strong> All displayed record checkboxes reflect the select-all state.</li>
+</ul>
+<h4 id="acceptance-criteria-11">Acceptance Criteria</h4>
+<p>##### AC-26 - All displayed record checkboxes reflect the select-all state</p>
+<p><strong>Given</strong> the directory displays selectable records</p>
+<p><strong>When</strong> the user toggles the select-all checkbox</p>
+<p><strong>Then</strong> all displayed record checkboxes reflect the select-all state</p>
+<h4 id="story-readiness-11">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-12-save-doctor">US-12 - Save Doctor</h3>
+<h4 id="story-12">Story</h4>
+<p>As an application user,</p>
+<p>I want to select &quot;Save&quot;,</p>
+<p>so that the doctors view opens; the changes to the selected record are saved.</p>
+<h4 id="functional-requirements-12">Functional Requirements</h4>
+<ul>
+<li><strong>FR-12:</strong> The &quot;Save&quot; action is disabled while the form is invalid. The &quot;Save&quot; action is displayed when edit mode is active. The changes to the selected record are saved when the operation completes successfully. The doctors view opens when the operation completes successfully.</li>
+</ul>
+<h4 id="api-integration-17">API Integration</h4>
+<ul>
+<li><strong>Purpose:</strong> Supports FR-12; the functional behavior is defined in those requirements.</li>
+<li><strong>Method:</strong> <code>PUT</code></li>
+<li><strong>Endpoint:</strong> <code>/api/doctors</code></li>
+<li><strong>Response:</strong> Completion response without a documented payload.</li>
+</ul>
+<h4 id="acceptance-criteria-12">Acceptance Criteria</h4>
+<p>##### AC-27 - The doctors view opens</p>
+<p><strong>Given</strong> the doctor view is displayed after the user selects &quot;Save&quot;</p>
+<p><strong>When</strong> the operation completes successfully</p>
+<p><strong>Then</strong> the doctors view opens</p>
+<p>##### AC-28 - The &quot;Save&quot; action is displayed</p>
+<p><strong>Given</strong> edit mode is active</p>
+<p><strong>When</strong> the view evaluates which actions to display</p>
+<p><strong>Then</strong> the &quot;Save&quot; action is displayed</p>
+<p>##### AC-29 - The &quot;Save&quot; action is disabled while the form is invalid</p>
+<p><strong>Given</strong> the doctor view is displayed</p>
+<p><strong>When</strong> the form contains incomplete or invalid input</p>
+<p><strong>Then</strong> the &quot;Save&quot; action is disabled while the form is invalid</p>
+<p>##### AC-30 - The changes to the selected record are saved</p>
+<p><strong>Given</strong> the doctor view is displayed after the user selects &quot;Save&quot;</p>
+<p><strong>When</strong> the operation completes successfully</p>
+<p><strong>Then</strong> the changes to the selected record are saved</p>
+<h4 id="story-readiness-12">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-13-change-an-individual-record-selection">US-13 - Change an individual record selection</h3>
+<h4 id="story-13">Story</h4>
+<p>As an application user,</p>
+<p>I want to change an individual record selection,</p>
+<p>so that the chosen record reflects its checkbox selection state.</p>
+<h4 id="functional-requirements-13">Functional Requirements</h4>
+<ul>
+<li><strong>FR-13:</strong> The chosen record reflects its checkbox selection state.</li>
+</ul>
+<h4 id="acceptance-criteria-13">Acceptance Criteria</h4>
+<p>##### AC-31 - The chosen record reflects its checkbox selection state</p>
+<p><strong>Given</strong> the directory displays selectable records</p>
+<p><strong>When</strong> the user toggles a record checkbox</p>
+<p><strong>Then</strong> the chosen record reflects its checkbox selection state</p>
+<h4 id="story-readiness-13">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-14-automatic-tenant-context">US-14 - Automatic tenant context</h3>
+<h4 id="story-14">Story</h4>
+<p>The system performs automatic tenant context: the tenant context is obtained automatically before the dependent request runs.</p>
+<h4 id="functional-requirements-14">Functional Requirements</h4>
+<ul>
+<li><strong>FR-14:</strong> The organization context is obtained automatically before the dependent request runs.</li>
+</ul>
+<h4 id="business-rules">Business Rules</h4>
+<ul>
+<li><strong>BR-09:</strong> The organization context is obtained automatically before the dependent request runs.</li>
+</ul>
+<h4 id="api-integration-18">API Integration</h4>
+<ul>
+<li><strong>Purpose:</strong> Supports FR-14; the functional behavior is defined in those requirements.</li>
+<li><strong>Method:</strong> <code>GET</code></li>
+<li><strong>Endpoint:</strong> <code>/api/users/current/tenant</code></li>
+<li><strong>Response:</strong> int.</li>
+<li><strong>Response Model:</strong> <code>int</code></li>
+</ul>
+<h4 id="acceptance-criteria-14">Acceptance Criteria</h4>
+<p>##### AC-32 - The tenant context is obtained automatically before the dependent request runs</p>
+<p><strong>Given</strong> a dependent operation is requested</p>
+<p><strong>When</strong> dependent operation initialization</p>
+<p><strong>Then</strong> the organization context is obtained automatically before the dependent request runs</p>
+<h4 id="story-readiness-14">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-15-maintain-doctor-profile-media">US-15 - Maintain Doctor Profile Media</h3>
+<h4 id="story-15">Story</h4>
+<p>As an application user,</p>
+<p>I want to select a profile file,</p>
+<p>so that the selected file content updates the doctor picture.</p>
+<h4 id="functional-requirements-15">Functional Requirements</h4>
+<ul>
+<li><strong>FR-15:</strong> The &quot;Add a profile photo&quot; prompt is shown when no file content is set. The doctor picture preview is displayed when file content is set. The selected file content updates the doctor picture.</li>
+</ul>
+<h4 id="acceptance-criteria-15">Acceptance Criteria</h4>
+<p>##### AC-33 - The selected file content updates the doctor picture</p>
+<p><strong>Given</strong> the doctor view is displayed with its file input</p>
+<p><strong>When</strong> the selected file finishes reading</p>
+<p><strong>Then</strong> the selected file content updates the doctor picture</p>
+<p>##### AC-34 - The &quot;Add a profile photo&quot; prompt is shown when no file content is set</p>
+<p><strong>Given</strong> the doctor view is displayed with its file input</p>
+<p><strong>When</strong> the profile file value changes</p>
+<p><strong>Then</strong> the &quot;Add a profile photo&quot; prompt is shown when no file content is set</p>
+<p>##### AC-35 - The doctor picture preview is displayed when file content is set</p>
+<p><strong>Given</strong> the doctor view is displayed with its file input</p>
+<p><strong>When</strong> the profile file value changes</p>
+<p><strong>Then</strong> the doctor picture preview is displayed when file content is set</p>
+<h4 id="story-readiness-15">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-16-validate-doctor-address">US-16 - Validate Doctor Address</h3>
+<h4 id="story-16">Story</h4>
+<p>As an application user,</p>
+<p>I want to complete the doctor address input,</p>
+<p>so that missing required input is identified before the form can be submitted.</p>
+<h4 id="functional-requirements-16">Functional Requirements</h4>
+<ul>
+<li><strong>FR-16:</strong> Doctor address remains invalid until a value is provided.</li>
+</ul>
+<h4 id="acceptance-criteria-16">Acceptance Criteria</h4>
+<p>##### AC-36 - Doctor address remains invalid until a value is provided</p>
+<p><strong>Given</strong> the doctor view is displayed</p>
+<p><strong>When</strong> the user leaves doctor address empty</p>
+<p><strong>Then</strong> doctor address remains invalid until a value is provided</p>
+<h4 id="story-readiness-16">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-17-validate-doctor-description">US-17 - Validate Doctor Description</h3>
+<h4 id="story-17">Story</h4>
+<p>As an application user,</p>
+<p>I want to complete the doctor description input,</p>
+<p>so that missing required input is identified before the form can be submitted.</p>
+<h4 id="functional-requirements-17">Functional Requirements</h4>
+<ul>
+<li><strong>FR-17:</strong> Doctor description remains invalid until a value is provided.</li>
+</ul>
+<h4 id="acceptance-criteria-17">Acceptance Criteria</h4>
+<p>##### AC-37 - Doctor description remains invalid until a value is provided</p>
+<p><strong>Given</strong> the doctor view is displayed</p>
+<p><strong>When</strong> the user leaves doctor description empty</p>
+<p><strong>Then</strong> doctor description remains invalid until a value is provided</p>
+<h4 id="story-readiness-17">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-18-validate-doctor-email">US-18 - Validate Doctor Email</h3>
+<h4 id="story-18">Story</h4>
+<p>As an application user,</p>
+<p>I want to complete the doctor email input,</p>
+<p>so that missing required input is identified before the form can be submitted.</p>
+<h4 id="functional-requirements-18">Functional Requirements</h4>
+<ul>
+<li><strong>FR-18:</strong> Doctor email remains invalid until a value is provided.</li>
+</ul>
+<h4 id="acceptance-criteria-18">Acceptance Criteria</h4>
+<p>##### AC-38 - Doctor email remains invalid until a value is provided</p>
+<p><strong>Given</strong> the doctor view is displayed</p>
+<p><strong>When</strong> the user leaves doctor email empty</p>
+<p><strong>Then</strong> doctor email remains invalid until a value is provided</p>
+<h4 id="story-readiness-18">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-19-validate-doctor-mobile">US-19 - Validate Doctor Mobile</h3>
+<h4 id="story-19">Story</h4>
+<p>As an application user,</p>
+<p>I want to complete the doctor mobile input,</p>
+<p>so that missing required input is identified before the form can be submitted.</p>
+<h4 id="functional-requirements-19">Functional Requirements</h4>
+<ul>
+<li><strong>FR-19:</strong> Doctor mobile remains invalid until a value is provided.</li>
+</ul>
+<h4 id="acceptance-criteria-19">Acceptance Criteria</h4>
+<p>##### AC-39 - Doctor mobile remains invalid until a value is provided</p>
+<p><strong>Given</strong> the doctor view is displayed</p>
+<p><strong>When</strong> the user leaves doctor mobile empty</p>
+<p><strong>Then</strong> doctor mobile remains invalid until a value is provided</p>
+<h4 id="story-readiness-19">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-20-validate-doctor-phone">US-20 - Validate Doctor Phone</h3>
+<h4 id="story-20">Story</h4>
+<p>As an application user,</p>
+<p>I want to complete the doctor phone input,</p>
+<p>so that missing required input is identified before the form can be submitted.</p>
+<h4 id="functional-requirements-20">Functional Requirements</h4>
+<ul>
+<li><strong>FR-20:</strong> Doctor phone remains invalid until a value is provided.</li>
+</ul>
+<h4 id="acceptance-criteria-20">Acceptance Criteria</h4>
+<p>##### AC-40 - Doctor phone remains invalid until a value is provided</p>
+<p><strong>Given</strong> the doctor view is displayed</p>
+<p><strong>When</strong> the user leaves doctor phone empty</p>
+<p><strong>Then</strong> doctor phone remains invalid until a value is provided</p>
+<h4 id="story-readiness-20">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h3 id="us-21-validate-doctor-name">US-21 - Validate Doctor Name</h3>
+<h4 id="story-21">Story</h4>
+<p>As an application user,</p>
+<p>I want to complete the doctor name input,</p>
+<p>so that missing required input is identified before the form can be submitted.</p>
+<h4 id="functional-requirements-21">Functional Requirements</h4>
+<ul>
+<li><strong>FR-21:</strong> Doctor name remains invalid until a value is provided.</li>
+</ul>
+<h4 id="acceptance-criteria-21">Acceptance Criteria</h4>
+<p>##### AC-41 - Doctor name remains invalid until a value is provided</p>
+<p><strong>Given</strong> the doctor view is displayed</p>
+<p><strong>When</strong> the user leaves doctor name empty</p>
+<p><strong>Then</strong> doctor name remains invalid until a value is provided</p>
+<h4 id="story-readiness-21">Story Readiness</h4>
+<p><strong>READY</strong></p>
+<h2 id="4-acceptance-criteria">4. Acceptance Criteria</h2>
+<p>The authoritative Acceptance Criteria are realized in their owning Stories above.</p>
+<div class="table-shell"><table><thead><tr><th>ID</th><th>Story</th><th>Criterion</th></tr></thead><tbody><tr><td>AC-01</td><td>US-01</td><td>The doctors view opens</td></tr><tr><td>AC-02</td><td>US-01</td><td>The &quot;Add&quot; action is displayed</td></tr><tr><td>AC-03</td><td>US-01</td><td>The &quot;Add&quot; action is disabled while the form is invalid</td></tr><tr><td>AC-04</td><td>US-01</td><td>The new record is saved</td></tr><tr><td>AC-05</td><td>US-02</td><td>Confirmation is requested before the guarded action proceeds</td></tr><tr><td>AC-06</td><td>US-02</td><td>The affected doctors are removed from the displayed collection</td></tr><tr><td>AC-07</td><td>US-02</td><td>The &quot;Delete&quot; action is displayed</td></tr><tr><td>AC-08</td><td>US-03</td><td>Confirmation is requested before the guarded action proceeds</td></tr><tr><td>AC-09</td><td>US-03</td><td>The affected doctors are removed from the displayed collection</td></tr><tr><td>AC-10</td><td>US-04</td><td>Confirmation is requested before the guarded action proceeds</td></tr><tr><td>AC-11</td><td>US-04</td><td>The doctors view opens</td></tr><tr><td>AC-12</td><td>US-05</td><td>Additional doctors are appended after the displayed records</td></tr><tr><td>AC-13</td><td>US-05</td><td>The &quot;NO DATA&quot; message is displayed</td></tr><tr><td>AC-14</td><td>US-05</td><td>The &quot;LOAD MORE&quot; action is hidden</td></tr><tr><td>AC-15</td><td>US-05</td><td>Records retain fixed name ordering (ascending)</td></tr><tr><td>AC-16</td><td>US-06</td><td>Additional doctors are appended after the displayed records</td></tr><tr><td>AC-17</td><td>US-06</td><td>The &quot;NO DATA&quot; message is displayed</td></tr><tr><td>AC-18</td><td>US-06</td><td>The &quot;LOAD MORE&quot; action is hidden</td></tr><tr><td>AC-19</td><td>US-06</td><td>Records retain fixed name ordering (ascending)</td></tr><tr><td>AC-20</td><td>US-07</td><td>The doctor view opens</td></tr><tr><td>AC-21</td><td>US-08</td><td>The doctors view opens</td></tr><tr><td>AC-22</td><td>US-09</td><td>The doctor view opens</td></tr><tr><td>AC-23</td><td>US-09</td><td>The returned doctor details populate the form</td></tr><tr><td>AC-24</td><td>US-10</td><td>The patients view opens</td></tr><tr><td>AC-25</td><td>US-10</td><td>The &quot;Patients&quot; action is displayed</td></tr><tr><td>AC-26</td><td>US-11</td><td>All displayed record checkboxes reflect the select-all state</td></tr><tr><td>AC-27</td><td>US-12</td><td>The doctors view opens</td></tr><tr><td>AC-28</td><td>US-12</td><td>The &quot;Save&quot; action is displayed</td></tr><tr><td>AC-29</td><td>US-12</td><td>The &quot;Save&quot; action is disabled while the form is invalid</td></tr><tr><td>AC-30</td><td>US-12</td><td>The changes to the selected record are saved</td></tr><tr><td>AC-31</td><td>US-13</td><td>The chosen record reflects its checkbox selection state</td></tr><tr><td>AC-32</td><td>US-14</td><td>The tenant context is obtained automatically before the dependent request runs</td></tr><tr><td>AC-33</td><td>US-15</td><td>The selected file content updates the doctor picture</td></tr><tr><td>AC-34</td><td>US-15</td><td>The &quot;Add a profile photo&quot; prompt is shown when no file content is set</td></tr><tr><td>AC-35</td><td>US-15</td><td>The doctor picture preview is displayed when file content is set</td></tr><tr><td>AC-36</td><td>US-16</td><td>Doctor address remains invalid until a value is provided</td></tr><tr><td>AC-37</td><td>US-17</td><td>Doctor description remains invalid until a value is provided</td></tr><tr><td>AC-38</td><td>US-18</td><td>Doctor email remains invalid until a value is provided</td></tr><tr><td>AC-39</td><td>US-19</td><td>Doctor mobile remains invalid until a value is provided</td></tr><tr><td>AC-40</td><td>US-20</td><td>Doctor phone remains invalid until a value is provided</td></tr><tr><td>AC-41</td><td>US-21</td><td>Doctor name remains invalid until a value is provided</td></tr></tbody></table></div>
+<h2 id="5-api-requirements">5. API Requirements</h2>
+<h3 id="api-01-dependency-for-fr-02-fr-03-fr-04">API-01 - Dependency for FR-02, FR-03, FR-04</h3>
+<div class="table-shell"><table><thead><tr><th>Property</th><th>Details</th></tr></thead><tbody><tr><td>Method</td><td><code>DELETE</code></td></tr><tr><td>Endpoint</td><td><code>/api/doctors/{id}</code></td></tr><tr><td>Input</td><td><code>id</code> - Identifier of the selected record (path)</td></tr><tr><td>Purpose</td><td>Supports FR-02, FR-03, FR-04; the functional behavior is defined in those requirements.</td></tr><tr><td>Response</td><td>Completion response without a documented payload</td></tr><tr><td>Response Model</td><td><code>Not specified</code></td></tr><tr><td>Used By</td><td>FR-02, FR-03, FR-04</td></tr></tbody></table></div>
+<h3 id="api-02-dependency-for-fr-05-fr-06">API-02 - Dependency for FR-05, FR-06</h3>
+<div class="table-shell"><table><thead><tr><th>Property</th><th>Details</th></tr></thead><tbody><tr><td>Method</td><td><code>GET</code></td></tr><tr><td>Endpoint</td><td><code>/api/doctors</code></td></tr><tr><td>Input</td><td><code>pageCount</code> - Request parameter (int) (query); <code>pageSize</code> - Request parameter (int) (query)</td></tr><tr><td>Purpose</td><td>Supports FR-05, FR-06; the functional behavior is defined in those requirements.</td></tr><tr><td>Response</td><td>Collection of Doctor records</td></tr><tr><td>Response Model</td><td><code>Doctor</code></td></tr><tr><td>Used By</td><td>FR-05, FR-06</td></tr></tbody></table></div>
+<h3 id="api-03-dependency-for-fr-09">API-03 - Dependency for FR-09</h3>
+<div class="table-shell"><table><thead><tr><th>Property</th><th>Details</th></tr></thead><tbody><tr><td>Method</td><td><code>GET</code></td></tr><tr><td>Endpoint</td><td><code>/api/doctors/{id}</code></td></tr><tr><td>Input</td><td><code>id</code> - Identifier of the selected record (path)</td></tr><tr><td>Purpose</td><td>Supports FR-09; the functional behavior is defined in those requirements.</td></tr><tr><td>Response</td><td>Doctor</td></tr><tr><td>Response Model</td><td><code>Doctor</code></td></tr><tr><td>Used By</td><td>FR-09</td></tr></tbody></table></div>
+<h3 id="api-04-dependency-for-fr-14">API-04 - Dependency for FR-14</h3>
+<div class="table-shell"><table><thead><tr><th>Property</th><th>Details</th></tr></thead><tbody><tr><td>Method</td><td><code>GET</code></td></tr><tr><td>Endpoint</td><td><code>/api/users/current/tenant</code></td></tr><tr><td>Input</td><td>None</td></tr><tr><td>Purpose</td><td>Supports FR-14; the functional behavior is defined in those requirements.</td></tr><tr><td>Response</td><td>int</td></tr><tr><td>Response Model</td><td><code>int</code></td></tr><tr><td>Used By</td><td>FR-14</td></tr></tbody></table></div>
+<h3 id="api-05-dependency-for-fr-01">API-05 - Dependency for FR-01</h3>
+<div class="table-shell"><table><thead><tr><th>Property</th><th>Details</th></tr></thead><tbody><tr><td>Method</td><td><code>POST</code></td></tr><tr><td>Endpoint</td><td><code>/api/doctors</code></td></tr><tr><td>Input</td><td>Request body: <code>Doctor</code></td></tr><tr><td>Purpose</td><td>Supports FR-01; the functional behavior is defined in those requirements.</td></tr><tr><td>Response</td><td>int</td></tr><tr><td>Response Model</td><td><code>int</code></td></tr><tr><td>Used By</td><td>FR-01</td></tr></tbody></table></div>
+<h3 id="api-06-dependency-for-fr-12">API-06 - Dependency for FR-12</h3>
+<div class="table-shell"><table><thead><tr><th>Property</th><th>Details</th></tr></thead><tbody><tr><td>Method</td><td><code>PUT</code></td></tr><tr><td>Endpoint</td><td><code>/api/doctors</code></td></tr><tr><td>Input</td><td>Request body: <code>Doctor</code></td></tr><tr><td>Purpose</td><td>Supports FR-12; the functional behavior is defined in those requirements.</td></tr><tr><td>Response</td><td>Completion response without a documented payload</td></tr><tr><td>Response Model</td><td><code>Not specified</code></td></tr><tr><td>Used By</td><td>FR-12</td></tr></tbody></table></div>
+<h2 id="6-business-rules">6. Business Rules</h2>
+<h3 id="br-01">BR-01</h3>
+<p>Confirmation is requested before the guarded action proceeds.</p>
+<h3 id="br-02">BR-02</h3>
+<p>Doctor address remains invalid until a value is provided.</p>
+<h3 id="br-03">BR-03</h3>
+<p>Doctor description remains invalid until a value is provided.</p>
+<h3 id="br-04">BR-04</h3>
+<p>Doctor email remains invalid until a value is provided.</p>
+<h3 id="br-05">BR-05</h3>
+<p>Doctor mobile remains invalid until a value is provided.</p>
+<h3 id="br-06">BR-06</h3>
+<p>Doctor name remains invalid until a value is provided.</p>
+<h3 id="br-07">BR-07</h3>
+<p>Doctor phone remains invalid until a value is provided.</p>
+<h3 id="br-08">BR-08</h3>
+<p>Records retain fixed name ordering (ascending).</p>
+<h3 id="br-09">BR-09</h3>
+<p>The organization context is obtained automatically before the dependent request runs.</p>
+<h2 id="7-development-requirements">7. Development Requirements</h2>
+<ul>
+<li>Implement the functionality defined by this Feature.</li>
+<li>Integrate with the specified backend APIs.</li>
+<li>Supply every documented API parameter.</li>
+<li>Use each API result for the corresponding functionality.</li>
+<li>Maintain required user and organization context.</li>
+<li>Satisfy all authoritative Acceptance Criteria.</li>
+</ul>
+<h2 id="8-definition-of-ready">8. Definition of Ready</h2>
+<ul>
+<li>[ ] Scope and interaction outcomes are reviewed.</li>
+<li>[ ] Required API contracts and inputs are confirmed.</li>
+<li>[ ] Acceptance Criteria are understood by development and QA.</li>
+</ul>
+<h2 id="9-definition-of-done">9. Definition of Done</h2>
+<ul>
+<li>[ ] Implementation is complete for Add Doctor.</li>
+<li>[ ] Implementation is complete for Delete selected Doctor records.</li>
+<li>[ ] Implementation is complete for Delete an individual Doctor.</li>
+<li>[ ] Implementation is complete for Delete this doctor.</li>
+<li>[ ] Implementation is complete for Load more.</li>
+<li>[ ] Implementation is complete for Directory presentation.</li>
+<li>[ ] Implementation is complete for New doctor.</li>
+<li>[ ] Implementation is complete for Back to doctors.</li>
+<li>[ ] Implementation is complete for Open doctor details.</li>
+<li>[ ] Implementation is complete for Patients.</li>
+<li>[ ] Implementation is complete for Change all displayed record selections.</li>
+<li>[ ] Implementation is complete for Save Doctor.</li>
+<li>[ ] Implementation is complete for Change an individual record selection.</li>
+<li>[ ] Implementation is complete for Automatic tenant context.</li>
+<li>[ ] Implementation is complete for Maintain Doctor Profile Media.</li>
+<li>[ ] Implementation is complete for Validate Doctor Address.</li>
+<li>[ ] Implementation is complete for Validate Doctor Description.</li>
+<li>[ ] Implementation is complete for Validate Doctor Email.</li>
+<li>[ ] Implementation is complete for Validate Doctor Mobile.</li>
+<li>[ ] Implementation is complete for Validate Doctor Phone.</li>
+<li>[ ] Implementation is complete for Validate Doctor Name.</li>
+<li>[ ] All specified backend APIs are integrated.</li>
+<li>[ ] Required API parameters are supplied as documented.</li>
+<li>[ ] All documented business rules are satisfied.</li>
+<li>[ ] All authoritative Acceptance Criteria pass.</li>
+<li>[ ] Blocking business clarifications are resolved.</li>
+<li>[ ] QA validation is complete.</li>
+</ul>
+<h2 id="10-review-and-approval">10. Review and Approval</h2>
+<div class="table-shell"><table><thead><tr><th>Role</th><th>Review Responsibility</th><th>Status</th></tr></thead><tbody><tr><td>Product Owner</td><td>Objective, business value, scope, and priorities</td><td>Pending</td></tr><tr><td>Business Analyst</td><td>Functional requirements, rules, Stories, and clarifications</td><td>Pending</td></tr><tr><td>Solution Architect</td><td>API contracts, inputs, responses, and integration boundaries</td><td>Pending</td></tr><tr><td>Development Lead</td><td>Implementation clarity and delivery feasibility</td><td>Pending</td></tr><tr><td>QA Lead</td><td>Acceptance Criteria and validation coverage</td><td>Pending</td></tr><tr><td>Customer SME</td><td>Business terminology and unresolved decisions</td><td>Pending</td></tr></tbody></table></div></article>
+    </div>
+  </main>
+  <footer class="site-footer"><p>Polaris Application Modernization POC</p><a href="../index.html">Return to presentation</a></footer>
+</body>
+</html>

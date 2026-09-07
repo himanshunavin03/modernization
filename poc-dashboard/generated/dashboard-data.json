@@ -1,0 +1,75 @@
+{
+  "angularCapabilities": [
+    "Angular 22",
+    "Standalone Components",
+    "Signals",
+    "computed()",
+    "OnPush",
+    "Lazy Feature Routing",
+    "Modern @if / @for",
+    "Strict TypeScript",
+    "Typed Reactive Forms",
+    "RxJS + HttpClient"
+  ],
+  "applicationUnderstanding": {
+    "capabilities": 6,
+    "domainConcepts": 6,
+    "modules": 6,
+    "uiSurfaces": 94,
+    "workflows": 30
+  },
+  "metrics": {
+    "acceptanceCriteria": 41,
+    "apiContracts": 6,
+    "backendEndpoints": 58,
+    "facts": 68915,
+    "functionalRequirements": 21,
+    "graphNodes": 71936,
+    "provenApiMappings": 32,
+    "relationships": 113562,
+    "sourceFiles": 2384,
+    "stories": 21,
+    "technicalTasks": 16
+  },
+  "playwright": {
+    "ac_blocked_by_patient_feature": 2,
+    "ac_failed": 0,
+    "ac_passed": 39,
+    "ac_total": 41,
+    "ac_unexplained": 0,
+    "ac_with_test_traceability": 41
+  },
+  "presentation": {
+    "story": [
+      "UNDERSTAND",
+      "MODEL",
+      "PLAN",
+      "MODERNIZE",
+      "VALIDATE"
+    ],
+    "title": "Application Modernization POC"
+  },
+  "referenceApplication": {
+    "classification": "Hybrid server-rendered and client-side healthcare web application with supporting APIs and mobile clients",
+    "frameworks": [
+      "ASP.NET MVC/Razor",
+      ".NET API",
+      "AngularJS",
+      "TypeScript"
+    ]
+  },
+  "sources": {
+    "application_understanding_json": "artifacts/application-understanding/latest/application-understanding.json",
+    "application_understanding_markdown": "artifacts/application-understanding/latest/application-understanding.md",
+    "architecture": "artifacts/architecture/latest/architecture-selection.json",
+    "facts": "artifacts/knowledge-graph/latest/facts.json",
+    "feature_specification_json": "artifacts/feature-specifications/latest/feature-doctor-directory-management.json",
+    "feature_specification_markdown": "artifacts/feature-specifications/latest/feature-doctor-directory-management.md",
+    "framework_detection": "artifacts/knowledge-graph/latest/framework-detection.json",
+    "knowledge_graph": "artifacts/knowledge-graph/latest/knowledge-graph.json",
+    "playwright_coverage": "docs/validation/doctor-playwright-coverage.json",
+    "source_inventory": "artifacts/knowledge-graph/latest/source-inventory.json",
+    "technical_tasks_json": "artifacts/technical-tasks/features/feature-doctor-directory-management/latest/technical-tasks.json",
+    "technical_tasks_markdown": "artifacts/technical-tasks/features/feature-doctor-directory-management/latest/technical-tasks.md"
+  }
+}

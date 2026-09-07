@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Application Understanding · Application Modernization POC</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="artifact-page">
+  <a class="skip-link" href="#artifact-content">Skip to content</a>
+  <header class="artifact-topbar">
+    <a class="brand" href="../index.html" aria-label="Back to POC dashboard"><span class="brand-mark">P</span><span>POLARIS <small>MODERNIZATION</small></span></a>
+    <a class="button button-quiet" href="../index.html">← Back to POC Dashboard</a>
+  </header>
+  <main id="artifact-content">
+    <section class="artifact-hero">
+      <p class="eyebrow">Knowledge Graph → Business / Functional View</p>
+      <h1>Application Understanding</h1>
+      <p>Structured source evidence is synthesized into modules, capabilities, workflows, domain concepts, and cross-layer relationships.</p>
+    </section>
+    <div class="artifact-layout">
+      <aside class="artifact-nav" aria-label="Page sections"><strong>On this page</strong><a href="#purpose">Purpose</a><a href="#modules">Modules</a><a href="#capabilities">Capabilities</a><a href="#workflows">Workflows</a><a href="#concepts">Domain Concepts</a><a href="#dependencies">Dependencies</a><a href="#api">API Relationships</a></aside>
+      <article class="artifact-document">
+      <section><h2 id="purpose">Purpose</h2><p>Healthcare operations application</p>
+      <div class="mini-metrics"><div><strong>71,936</strong><span>Graph nodes</span></div><div><strong>113,562</strong><span>Relationships</span></div><div><strong>32</strong><span>Proven API mappings</span></div></div></section>
+      <section><h2 id="modules">Business Modules</h2><div class="insight-grid"><article class="insight-card"><h3>Dashboard and reporting</h3><p>Dashboard UI and report API surfaces for clinic summaries, expenses, and patient statistics.</p></article><article class="insight-card"><h3>Clinic management</h3><p>Clinic list and detail client surfaces with tenant API interactions.</p></article><article class="insight-card"><h3>Doctor management</h3><p>Doctor list/detail UI and doctor API operations.</p></article><article class="insight-card"><h3>Patient management</h3><p>Patient list/detail UI and patient API operations.</p></article><article class="insight-card"><h3>Appointment management</h3><p>Razor appointment surface and clinic appointment API operations.</p></article><article class="insight-card"><h3>User access and tenant context</h3><p>User administration plus current-user, claims, and tenant context used by client flows.</p></article></div></section>
+      <section><h2 id="capabilities">Capabilities</h2><div class="insight-grid"><article class="insight-card"><h3>Dashboard visualization</h3><p>Present dashboard information through the Razor host and AngularJS dashboard controller.</p></article><article class="insight-card"><h3>Clinic summary reporting</h3><p>Request clinic summary, yearly expenses, and yearly patient report data.</p></article><article class="insight-card"><h3>Manage doctors</h3><p>List, retrieve, add, update, and delete doctors through exposed UI/API surfaces.</p></article><article class="insight-card"><h3>Manage patients</h3><p>List, retrieve, search, and delete patients through exposed UI/API surfaces.</p></article><article class="insight-card"><h3>Manage clinic appointments</h3><p>Retrieve upcoming appointments and add clinic appointments.</p></article><article class="insight-card"><h3>Resolve current user context</h3><p>Load current user identity, authorization claims, and tenant context for client flows.</p></article></div></section>
+      <section><h2 id="workflows">Representative Workflows</h2><div class="insight-grid"><article class="insight-card"><h3>Route app</h3><p>Evidence-backed application concept.</p></article><article class="insight-card"><h3>Route error</h3><p>Evidence-backed application concept.</p></article><article class="insight-card"><h3>Route calendar</h3><p>Evidence-backed application concept.</p></article><article class="insight-card"><h3>Route calendar.daily</h3><p>Evidence-backed application concept.</p></article><article class="insight-card"><h3>Route calendar.monthly</h3><p>Evidence-backed application concept.</p></article><article class="insight-card"><h3>Route error</h3><p>Evidence-backed application concept.</p></article><article class="insight-card"><h3>Route clinic</h3><p>Evidence-backed application concept.</p></article><article class="insight-card"><h3>Route clinics</h3><p>Evidence-backed application concept.</p></article><article class="insight-card"><h3>Route dailyReport</h3><p>Evidence-backed application concept.</p></article><article class="insight-card"><h3>Route dashboard</h3><p>Evidence-backed application concept.</p></article><article class="insight-card"><h3>Route default</h3><p>Evidence-backed application concept.</p></article><article class="insight-card"><h3>Route doctor</h3><p>Evidence-backed application concept.</p></article></div></section>
+      <section><h2 id="concepts">Domain Concepts</h2><div class="insight-grid"><article class="insight-card"><h3>Patient</h3><p>A patient domain type used by application surfaces.</p></article><article class="insight-card"><h3>Doctor</h3><p>A doctor DTO/domain type used by doctor operations.</p></article><article class="insight-card"><h3>Clinic appointment</h3><p>A clinic appointment DTO/domain type.</p></article><article class="insight-card"><h3>Home appointment</h3><p>A home appointment DTO/domain type.</p></article><article class="insight-card"><h3>Application user request</h3><p>A request DTO for adding an application user.</p></article><article class="insight-card"><h3>Tenant request</h3><p>A request DTO for tenant operations.</p></article></div></section>
+      <section><h2 id="dependencies">Cross-Layer Dependencies</h2><div class="insight-grid"><article class="insight-card"><h3>Dashboard depends on tenant context API</h3><p>Dashboard service uses the current-tenant endpoint.</p></article><article class="insight-card"><h3>Header depends on current-user API</h3><p>Header controller uses current-user and claims endpoints.</p></article><article class="insight-card"><h3>Dashboard depends on reports API contract</h3><p>Dashboard service calls clinic-summary and year-dependent report endpoints through proven frontend-to-backend relationships.</p></article><article class="insight-card"><h3>Doctor UI depends on doctor API contract</h3><p>Doctor UI and service operations use linked doctor endpoints; automatic tenant context remains a separate prerequisite.</p></article><article class="insight-card"><h3>Patient UI depends on patient API contract</h3><p>Patient UI and service operations use linked patient endpoints; automatic tenant context remains a separate prerequisite.</p></article></div></section>
+      <section><h2 id="api">API Relationships</h2><p>The approved understanding connects 33 frontend API calls with 32 proven mappings across 58 discovered backend endpoints.</p></section>
+    </article>
+    </div>
+  </main>
+  <footer class="site-footer"><p>Polaris Application Modernization POC</p><a href="../index.html">Return to presentation</a></footer>
+</body>
+</html>
