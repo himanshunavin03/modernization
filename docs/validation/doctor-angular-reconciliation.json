@@ -1,6 +1,6 @@
 {
-  "BASE_COMMIT": "480c17fa4d5b9b29ad8c5a8ccada0e2279552d29",
-  "EXECUTION_HEAD": "b8e2ddb1224695acc998e72abbc8d0a0120849e0",
+  "BASE_COMMIT": "05f7d148c744b0aab0520f1649b7aaa6e677d765",
+  "EXECUTION_HEAD": "05f7d148c744b0aab0520f1649b7aaa6e677d765",
   "TECHNICAL_TASK_RUN_USED": "legacy-dashboard-complete-application-demo-v1-2026-09-07-054315-967074",
   "TECHNICAL_TASK_LINEAGE": "PASS",
   "FR_COUNT": 21,
@@ -8,24 +8,60 @@
   "AC_COUNT": 41,
   "API_CONTRACT_COUNT": 6,
   "NON_PLAYWRIGHT_TASK_COUNT": 15,
-  "NON_PLAYWRIGHT_IMPLEMENTED_TASKS": 11,
-  "NON_PLAYWRIGHT_PARTIAL_TASKS": 4,
+  "NON_PLAYWRIGHT_IMPLEMENTED_TASKS": 12,
+  "NON_PLAYWRIGHT_PARTIAL_TASKS": 0,
   "NON_PLAYWRIGHT_NOT_IMPLEMENTED_TASKS": 0,
-  "NON_PLAYWRIGHT_BLOCKED_TASKS": 0,
+  "NON_PLAYWRIGHT_BLOCKED_TASKS": 3,
   "PLAYWRIGHT_TASK_COUNT": 1,
   "TT016_STATUS": "DEFERRED_TO_PLAYWRIGHT_STAGE",
-  "OVERALL_IMPLEMENTED_TASKS": 11,
+  "OVERALL_IMPLEMENTED_TASKS": 12,
+  "OVERALL_BLOCKED_TASKS": 3,
   "OVERALL_DEFERRED_TASKS": 1,
-  "TASKS_IMPLEMENTED_THIS_RUN": 2,
-  "TASKS_COMPLETED_FROM_PARTIAL": 5,
-  "TASKS_PRESERVED_WITHOUT_CHANGE": 4,
+  "TASKS_IMPLEMENTED_THIS_RUN": 0,
+  "TASKS_RECLASSIFIED_THIS_RUN": 1,
+  "TASKS_COMPLETED_FROM_PARTIAL": 6,
+  "TASKS_PRESERVED_WITHOUT_CHANGE": 11,
   "AC_FUNCTIONALLY_IMPLEMENTED": 39,
   "AC_FUNCTIONALLY_PARTIAL": 0,
-  "AC_FUNCTIONALLY_MISSING": 2,
+  "AC_FUNCTIONALLY_MISSING": 0,
+  "AC_BLOCKED_BY_CROSS_FEATURE_DEPENDENCY": 2,
+  "AC_BLOCKED_IDS": [
+    "ac-doctor-directory-management-fr-10-patients-001",
+    "ac-doctor-directory-management-fr-10-patients-002"
+  ],
   "AC_WITH_EXISTING_PLAYWRIGHT_COVERAGE": 1,
   "AC_WITHOUT_PLAYWRIGHT_COVERAGE": 40,
   "PLAYWRIGHT_COVERAGE_BASIS": "Static semantic match only: existing list-to-detail scenario supports the detail navigation outcome. No current AC IDs in the old suite; not executed.",
-  "PLAYWRIGHT_GENERATION_READINESS": "BLOCKED",
+  "PLAYWRIGHT_GENERATION_READINESS": "BLOCKED_BY_PATIENT_FEATURE",
+  "PATIENTS_ACTION": "Patients button displayed only when editMode is active",
+  "PATIENTS_HANDLER": "nagivateToPatientList()",
+  "LEGACY_NAVIGATION_TARGET": "AngularJS state patients (configured URL /patients)",
+  "LEGACY_NAVIGATION_PARAMETERS": "NONE",
+  "DOCTOR_CONTEXT_PASSED": "NONE",
+  "PATIENTS_NAVIGATION_EVIDENCE": "PASS",
+  "MODERN_PATIENT_FEATURE_EXISTS": "NO",
+  "MODERN_PATIENT_ROUTE_EXISTS": "NO",
+  "MODERN_PATIENT_ROUTE": null,
+  "MODERN_PATIENT_ROUTE_PARAMETERS": "NONE",
+  "PATIENT_DIRECTORY_FEATURE_EXISTS": "YES",
+  "FR10_CROSS_FEATURE_DEPENDENCY": "YES",
+  "PATIENT_NAVIGATION_RESOLUTION": "PATIENT_FEATURE_IMPLEMENTATION_DEPENDENCY",
+  "FR10_STATUS": "BLOCKED_BY_PATIENT_FEATURE",
+  "ANGULAR_VERSION": "22.1.4",
+  "STANDALONE_COMPONENTS": "YES",
+  "LAZY_FEATURE_ROUTING": "YES",
+  "SIGNALS_USED": "YES",
+  "COMPUTED_USED": "YES",
+  "RXJS_HTTP_BOUNDARY": "PASS",
+  "FORM_TECHNOLOGY": "Typed Reactive Forms",
+  "ONPUSH_OR_APPROVED_CHANGE_DETECTION": "PASS: ChangeDetectionStrategy.OnPush",
+  "STRICT_TYPING": "PASS",
+  "MODERN_TEMPLATE_CONTROL_FLOW": "YES: @if and @for",
+  "SIGNAL_ARCHITECTURE": "PASS",
+  "SIGNAL_FORMS_AVAILABLE": "YES: @angular/forms/signals is exported by installed @angular/forms 22.1.4",
+  "SIGNAL_FORMS_CURRENTLY_USED": "NO",
+  "SIGNAL_FORMS_MIGRATION_RECOMMENDED_FOR_POC": "NO",
+  "CURRENT_FORM_ARCHITECTURE": "PASS",
   "DOCTOR_FORM_TECHNOLOGY": "Typed Reactive Forms, Angular 22.1.4; required-only validators",
   "SIGNAL_USAGE": "APPROPRIATE",
   "ANGULAR_ARCHITECTURE_FIDELITY": "PASS",
@@ -40,9 +76,10 @@
   "PRODUCTION_MOCK_DATA": 0,
   "ACCESSIBILITY_CHECK": "PASS (static and DOM checks on changed controls; browser accessibility review not performed)",
   "ANGULAR_CODE_QUALITY": "PASS (strict build, typed APIs and forms; no unsafe HTML or credentials introduced)",
-  "ANGULAR_BUILD": "PASS: npm run build, final CSS included",
+  "ANGULAR_BUILD": "PASS: npx nx build healthclinic-web --skip-nx-cache",
   "ANGULAR_FOCUSED_TESTS": "PASS: 13 tests across 5 files",
   "SOURCE_CHANGED": "NO",
+  "SOURCE_HASH_VALIDATION": "PASS: all 2,384 frozen inventory files match their recorded SHA-256 hashes",
   "EXTRACTION_CHANGED": "NO",
   "FACTS_CHANGED": "NO",
   "KG_CHANGED": "NO",
@@ -53,13 +90,14 @@
   "FEATURE_SPEC_CHANGED": "NO",
   "ARCHITECTURE_CHANGED": "NO",
   "TECHNICAL_TASK_PLAN_CHANGED": "NO",
-  "DOCTOR_ANGULAR_CHANGED": "YES",
+  "DOCTOR_ANGULAR_CHANGED": "NO",
+  "CHANGED_ANGULAR_FILES": [],
   "DASHBOARD_CHANGED": "NO",
   "PLAYWRIGHT_CHANGED": "NO",
   "APPLICATION_SPECIFIC_PRODUCTION_BRANCHES": 0,
-  "BLOCKER": "FR-10 requires the Patients action in edit mode and navigation to the patients view. The current app has no Patients destination; no URL/configuration or permission to implement the separate Patient feature has been provided.",
+  "BLOCKER": "Frozen evidence proves that FR-10 navigates without parameters from Doctor detail to the legacy patients state. Patient Directory Management is an approved separate Feature, but the modern application has no Patient feature library, feature shell, route, or cross-feature route contract. Implementing /patients now would invent a route or placeholder outside this run.",
   "COMMIT_SHA": null,
-  "WORKTREE_STATUS": "UNCOMMITTED_IMPLEMENTATION_PENDING_PATIENTS_DESTINATION",
+  "WORKTREE_STATUS": "DOCUMENTATION_ONLY_UNCOMMITTED; DOCTOR_ANGULAR_BASELINE_ALREADY_COMMITTED_AT_05f7d14",
   "tasks": [
     {
       "task_id": "TT-001",
@@ -277,7 +315,7 @@
         "ac-doctor-directory-management-fr-12-save-doctor-003",
         "ac-doctor-directory-management-fr-12-save-doctor-004"
       ],
-      "status": "PARTIALLY_IMPLEMENTED",
+      "status": "BLOCKED_BY_PATIENT_FEATURE",
       "implementation_paths": [
         "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
         "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
@@ -286,7 +324,7 @@
         "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
         "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
       ],
-      "validation": "Patients action/destination remains missing. Build and focused tests pass for implemented Doctor behavior."
+      "validation": "All Doctor-owned routing behavior is implemented. FR-10 cannot be completed until the separate Patient Directory Feature provides a real modern route contract. Build and focused tests pass for implemented Doctor behavior."
     },
     {
       "task_id": "TT-009",
@@ -316,7 +354,7 @@
         "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-002",
         "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-003"
       ],
-      "status": "PARTIALLY_IMPLEMENTED",
+      "status": "BLOCKED_BY_PATIENT_FEATURE",
       "implementation_paths": [
         "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
         "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
@@ -325,7 +363,7 @@
         "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
         "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
       ],
-      "validation": "Patients action/destination remains missing. Build and focused tests pass for implemented Doctor behavior."
+      "validation": "All Doctor-owned shell behavior is implemented. FR-10 cannot be completed until the separate Patient Directory Feature provides a real modern destination. Build and focused tests pass for implemented Doctor behavior."
     },
     {
       "task_id": "TT-010",
@@ -404,7 +442,7 @@
         "ac-doctor-directory-management-fr-20-validate-doctor-phone-001",
         "ac-doctor-directory-management-fr-21-validate-doctor-name-001"
       ],
-      "status": "PARTIALLY_IMPLEMENTED",
+      "status": "IMPLEMENTED",
       "implementation_paths": [
         "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
         "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
@@ -413,7 +451,7 @@
         "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
         "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
       ],
-      "validation": "Patients action/destination remains missing. Build and focused tests pass for implemented Doctor behavior."
+      "validation": "All 14 linked functional requirements and their interactions are implemented and covered by the focused component, state, and API tests. TT-012 has no FR-10 dependency."
     },
     {
       "task_id": "TT-013",
@@ -557,7 +595,7 @@
         "ac-doctor-directory-management-fr-20-validate-doctor-phone-001",
         "ac-doctor-directory-management-fr-21-validate-doctor-name-001"
       ],
-      "status": "PARTIALLY_IMPLEMENTED",
+      "status": "BLOCKED_BY_PATIENT_FEATURE",
       "implementation_paths": [
         "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
         "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
@@ -566,7 +604,7 @@
         "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
         "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
       ],
-      "validation": "Patients action/destination remains missing. Build and focused tests pass for implemented Doctor behavior."
+      "validation": "Focused Doctor tests pass for all implemented behavior. The two FR-10 criteria cannot receive valid unit/component route coverage until the separate Patient Directory Feature supplies a modern route contract."
     },
     {
       "task_id": "TT-016",
@@ -962,9 +1000,9 @@
         "FR-10"
       ],
       "then": "the patients view opens",
-      "status": "NOT_IMPLEMENTED",
+      "status": "BLOCKED_BY_CROSS_FEATURE_DEPENDENCY",
       "implementation_paths": [],
-      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+      "validation": "Frozen evidence proves navigation to the legacy patients state with no parameters. No modern Patient route or routable feature-shell contract exists; an arbitrary route or placeholder is forbidden."
     },
     {
       "acceptance_criterion_id": "ac-doctor-directory-management-fr-10-patients-002",
@@ -972,9 +1010,9 @@
         "FR-10"
       ],
       "then": "the \"Patients\" action is displayed",
-      "status": "NOT_IMPLEMENTED",
+      "status": "BLOCKED_BY_CROSS_FEATURE_DEPENDENCY",
       "implementation_paths": [],
-      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+      "validation": "The action is approved only as navigation to the separate Patient Directory destination. Rendering it without a real routable destination would expose a non-functional control and would not satisfy the criterion."
     },
     {
       "acceptance_criterion_id": "ac-doctor-directory-management-fr-11-change-all-displayed-record-selections-001",

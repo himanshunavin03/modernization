@@ -1,5 +1,13 @@
 # Project Memory
 
+## Doctor Patients Navigation Dependency Resolved (Prompt 073)
+
+Prompt 073 started from clean HEAD `05f7d148c744b0aab0520f1649b7aaa6e677d765`. Frozen KG `legacy-dashboard-complete-application-demo-v1-2026-09-06-203944` proves that the edit-only `Patients` button calls the intentionally misspelled legacy handler `nagivateToPatientList()`, which invokes `$state.transitionTo('patients')`. The configured legacy state URL is `/patients`; no navigation parameters or Doctor context are passed.
+
+Patient Directory Management exists as a separate approved Feature, but the modern Angular application contains no Patient library, feature shell, route, or cross-feature route contract. FR-10 is therefore `BLOCKED_BY_PATIENT_FEATURE`; do not invent `/patients`, expose a dead button, or build a placeholder. The two exact blocked AC are `ac-doctor-directory-management-fr-10-patients-001` and `ac-doctor-directory-management-fr-10-patients-002`. TT-008, TT-009, and TT-015 are blocked by that dependency; TT-012 was corrected to implemented because it has no FR-10 reference. Current non-Playwright status is 12 implemented, 0 partial, 0 not implemented, and 3 blocked; TT-016 remains deferred.
+
+Angular 22.1.4 architecture audit passes: standalone components, lazy Doctor routing, Signals/computed synchronous state, RxJS HTTP/tenant boundaries, typed Reactive Forms, OnPush, strict typing, and modern template control flow. Installed `@angular/forms` exports Signal Forms, but the Doctor form does not use them and migration is not recommended before functional/E2E freeze. `npm run build` passes and the focused Doctor/tenant selection passes 13 tests across 5 files. No Angular, source, frozen artifact, Dashboard, or Playwright file changed in Prompt 073. No new commit is warranted because the valid Doctor Angular implementation is already committed at the base and the full freeze gate is blocked.
+
 ## Doctor Angular Reconciliation In Progress (Prompt 072)
 
 Prompt 072 explicitly defers TT-016 to the Playwright stage and authorizes the remaining 15 tasks. Starting HEAD b8e2ddb contains only the prior preflight notes beyond 480c17f. Existing Doctor components/client/state were extended with typed Reactive Forms (Angular forms 22.1.4), POST/PUT/DELETE, required-only validation, selection, confirmed deletion, fixed-name ordering and profile preview. Final npm build passes; focused Doctor and tenant unit tests pass 13 tests across 5 files. Frozen upstream artifacts, Technical Tasks, Dashboard and Playwright remain unchanged.

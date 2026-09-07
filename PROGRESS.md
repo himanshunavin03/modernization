@@ -1,5 +1,16 @@
 # Progress
 
+## Doctor Patients Navigation Resolution (Prompt 073)
+
+- Baseline passed before edits: clean worktree at HEAD `05f7d148c744b0aab0520f1649b7aaa6e677d765`.
+- Frozen evidence trace passed. Doctor detail lines 13–15 expose the edit-only `Patients` action and `nagivateToPatientList()` handler. The approved KG links that handler to `$state.transitionTo('patients')`, then to the configured `patients` state at `/patients`. The invocation passes no parameters and no Doctor context.
+- Modern route inspection found only lazy `dashboard` and `doctors` application routes and no Patient library, shell, component, route, or navigation contract. The separate approved `feature-patient-directory-management` exists in Feature artifacts. FR-10 is a cross-feature dependency classified `PATIENT_FEATURE_IMPLEMENTATION_DEPENDENCY`; no route, placeholder UI, dead action, or Patient API was created.
+- Re-evaluation corrects TT-012 from partial to implemented because its frozen requirements do not include FR-10. TT-008, TT-009, and TT-015 explicitly include FR-10 and are blocked by the separate Patient Feature. Current non-Playwright result: 12 implemented, 0 partial, 0 not implemented, 3 blocked. TT-016 remains `DEFERRED_TO_PLAYWRIGHT_STAGE`.
+- Functional result: 39 AC implemented, 0 partial, 0 missing, and 2 blocked by cross-feature dependency: `ac-doctor-directory-management-fr-10-patients-001` and `ac-doctor-directory-management-fr-10-patients-002`. Playwright generation readiness remains blocked by the Patient Feature; Playwright was neither changed nor run.
+- Architecture and fidelity audits pass for Angular 22.1.4 standalone components, lazy Doctor routing, Signals and computed state, RxJS HTTP boundaries, typed Reactive Forms, OnPush, strict templates/types, modern `@if`/`@for`, Load More continuation, confirmed deletion, profile media, required-only validation, tenant context, and the six approved APIs. Signal Forms are present in the installed package but are not used or recommended for migration before freeze.
+- Verification: `npm run build` passed; the focused Doctor/tenant command passed 13 tests across 5 files. No Angular file changed in this prompt. Source, extraction, Facts, KG, Application Understanding, Feature, Stories, AC, Feature Specification, architecture, technical-task plan, Dashboard, and Playwright remain unchanged.
+- Exact next action: modernize Patient Directory Management far enough to publish a real architecture-valid route/feature-shell contract, then integrate the Doctor Patients action and cover the two blocked AC. No commit was created because the valid Doctor Angular implementation is already in base commit `05f7d14` and the full freeze gate is not met.
+
 ## Doctor Angular Reconciliation Continuation (Prompt 072)
 
 - TT-016 is explicitly deferred by the user; the frozen plan remains unchanged. Execution HEAD b8e2ddb commits the earlier preflight only; the original frozen code/artifacts remain at 480c17f.
