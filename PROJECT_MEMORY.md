@@ -1,5 +1,11 @@
 # Project Memory
 
+## Doctor Angular Reconciliation In Progress (Prompt 072)
+
+Prompt 072 explicitly defers TT-016 to the Playwright stage and authorizes the remaining 15 tasks. Starting HEAD b8e2ddb contains only the prior preflight notes beyond 480c17f. Existing Doctor components/client/state were extended with typed Reactive Forms (Angular forms 22.1.4), POST/PUT/DELETE, required-only validation, selection, confirmed deletion, fixed-name ordering and profile preview. Final npm build passes; focused Doctor and tenant unit tests pass 13 tests across 5 files. Frozen upstream artifacts, Technical Tasks, Dashboard and Playwright remain unchanged.
+
+Work is uncommitted: FR-10 still needs the existing Patients view destination. No Patients route or feature exists in the Angular app. Requested the existing URL; do not invent a Patient implementation or placeholder, mark all AC complete, or commit until this dependency is resolved and validated. See docs/validation/doctor-angular-reconciliation.json and doctor-angular-gap-plan.md. Current assessment is 11 non-Playwright tasks implemented, 4 partial, TT-016 deferred; 39 AC supported and 2 missing for Patients.
+
 - Project name: Polaris Modernization POC
 - Objective: Customized AI-driven modernization solution for Polaris-style .NET/C# applications into Angular 22.
 - Reference source: `source/HealthClinic.biz`

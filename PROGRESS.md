@@ -1,5 +1,13 @@
 # Progress
 
+## Doctor Angular Reconciliation Continuation (Prompt 072)
+
+- TT-016 is explicitly deferred by the user; the frozen plan remains unchanged. Execution HEAD b8e2ddb commits the earlier preflight only; the original frozen code/artifacts remain at 480c17f.
+- Added the missing Doctor form, create/update APIs and success continuation, per-ID confirmed deletion, checkbox state, media reading/preview, and computed name ordering. Preserved existing list/detail reads, Load More transport/append/termination, tenant service and library structure. Gateway/BFF responsibility deliverables are documented without claiming deployed infrastructure.
+- Verification: final `npm run build` passes. `npx nx test healthclinic-web --watch=false --include='../../../libs/doctor-directory-management/**/*.spec.ts' --include='../../../libs/core/platform/src/lib/tenant-context*.spec.ts'` passes 13 tests across 5 files. Two earlier include-pattern attempts found no tests; corrected patterns are relative to app sourceRoot. Playwright was not changed or executed.
+- Blocker: FR-10 / the two Patients AC require a Patients action in edit mode and an actual destination. There is no Patient route/feature in the current Angular application. The requested existing destination is pending; no destination has been invented. Exact next action: obtain the existing patient-view URL (or explicit authority for the missing destination), wire and test the action, then re-evaluate task/AC completion before the one authorized commit.
+- Current result: 11 non-Playwright tasks implemented, 4 partial, TT-016 deferred; 39 AC supported, 2 missing. No commit. Frozen upstream/architecture/task artifacts, generic engine, Dashboard and Playwright remain unchanged. Implementation and tests are preserved in the working tree.
+
 ## Doctor Implementation Reconciliation Preflight (Prompt 071)
 
 - Baseline verified: HEAD `480c17fa4d5b9b29ad8c5a8ccada0e2279552d29`, clean worktree before work.

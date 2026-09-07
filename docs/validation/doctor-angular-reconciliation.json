@@ -1,0 +1,1209 @@
+{
+  "BASE_COMMIT": "480c17fa4d5b9b29ad8c5a8ccada0e2279552d29",
+  "EXECUTION_HEAD": "b8e2ddb1224695acc998e72abbc8d0a0120849e0",
+  "TECHNICAL_TASK_RUN_USED": "legacy-dashboard-complete-application-demo-v1-2026-09-07-054315-967074",
+  "TECHNICAL_TASK_LINEAGE": "PASS",
+  "FR_COUNT": 21,
+  "STORY_COUNT": 21,
+  "AC_COUNT": 41,
+  "API_CONTRACT_COUNT": 6,
+  "NON_PLAYWRIGHT_TASK_COUNT": 15,
+  "NON_PLAYWRIGHT_IMPLEMENTED_TASKS": 11,
+  "NON_PLAYWRIGHT_PARTIAL_TASKS": 4,
+  "NON_PLAYWRIGHT_NOT_IMPLEMENTED_TASKS": 0,
+  "NON_PLAYWRIGHT_BLOCKED_TASKS": 0,
+  "PLAYWRIGHT_TASK_COUNT": 1,
+  "TT016_STATUS": "DEFERRED_TO_PLAYWRIGHT_STAGE",
+  "OVERALL_IMPLEMENTED_TASKS": 11,
+  "OVERALL_DEFERRED_TASKS": 1,
+  "TASKS_IMPLEMENTED_THIS_RUN": 2,
+  "TASKS_COMPLETED_FROM_PARTIAL": 5,
+  "TASKS_PRESERVED_WITHOUT_CHANGE": 4,
+  "AC_FUNCTIONALLY_IMPLEMENTED": 39,
+  "AC_FUNCTIONALLY_PARTIAL": 0,
+  "AC_FUNCTIONALLY_MISSING": 2,
+  "AC_WITH_EXISTING_PLAYWRIGHT_COVERAGE": 1,
+  "AC_WITHOUT_PLAYWRIGHT_COVERAGE": 40,
+  "PLAYWRIGHT_COVERAGE_BASIS": "Static semantic match only: existing list-to-detail scenario supports the detail navigation outcome. No current AC IDs in the old suite; not executed.",
+  "PLAYWRIGHT_GENERATION_READINESS": "BLOCKED",
+  "DOCTOR_FORM_TECHNOLOGY": "Typed Reactive Forms, Angular 22.1.4; required-only validators",
+  "SIGNAL_USAGE": "APPROPRIATE",
+  "ANGULAR_ARCHITECTURE_FIDELITY": "PASS",
+  "FORM_ARCHITECTURE_FIDELITY": "PASS",
+  "CONTINUATION_UX_FIDELITY": "PASS",
+  "DELETE_UX_FIDELITY": "PASS",
+  "PROFILE_MEDIA_FIDELITY": "PASS",
+  "FORM_VALIDATION_COVERAGE": "PASS",
+  "TENANT_CONTEXT_FIDELITY": "PASS",
+  "API_CONTRACT_IMPLEMENTATION": "PASS",
+  "UNSUPPORTED_API_USAGE": 0,
+  "PRODUCTION_MOCK_DATA": 0,
+  "ACCESSIBILITY_CHECK": "PASS (static and DOM checks on changed controls; browser accessibility review not performed)",
+  "ANGULAR_CODE_QUALITY": "PASS (strict build, typed APIs and forms; no unsafe HTML or credentials introduced)",
+  "ANGULAR_BUILD": "PASS: npm run build, final CSS included",
+  "ANGULAR_FOCUSED_TESTS": "PASS: 13 tests across 5 files",
+  "SOURCE_CHANGED": "NO",
+  "EXTRACTION_CHANGED": "NO",
+  "FACTS_CHANGED": "NO",
+  "KG_CHANGED": "NO",
+  "APPLICATION_UNDERSTANDING_CHANGED": "NO",
+  "FEATURE_CHANGED": "NO",
+  "STORIES_CHANGED": "NO",
+  "AC_CHANGED": "NO",
+  "FEATURE_SPEC_CHANGED": "NO",
+  "ARCHITECTURE_CHANGED": "NO",
+  "TECHNICAL_TASK_PLAN_CHANGED": "NO",
+  "DOCTOR_ANGULAR_CHANGED": "YES",
+  "DASHBOARD_CHANGED": "NO",
+  "PLAYWRIGHT_CHANGED": "NO",
+  "APPLICATION_SPECIFIC_PRODUCTION_BRANCHES": 0,
+  "BLOCKER": "FR-10 requires the Patients action in edit mode and navigation to the patients view. The current app has no Patients destination; no URL/configuration or permission to implement the separate Patient feature has been provided.",
+  "COMMIT_SHA": null,
+  "WORKTREE_STATUS": "UNCOMMITTED_IMPLEMENTATION_PENDING_PATIENTS_DESTINATION",
+  "tasks": [
+    {
+      "task_id": "TT-001",
+      "acceptance_criteria_refs": [],
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static deliverable review plus successful Angular build and focused tests; no deployed gateway/BFF claim."
+    },
+    {
+      "task_id": "TT-002",
+      "acceptance_criteria_refs": [],
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static deliverable review plus successful Angular build and focused tests; no deployed gateway/BFF claim."
+    },
+    {
+      "task_id": "TT-003",
+      "acceptance_criteria_refs": [],
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static deliverable review plus successful Angular build and focused tests; no deployed gateway/BFF claim."
+    },
+    {
+      "task_id": "TT-004",
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-fr-01-add-doctor-001",
+        "ac-doctor-directory-management-fr-01-add-doctor-002",
+        "ac-doctor-directory-management-fr-01-add-doctor-003",
+        "ac-doctor-directory-management-fr-01-add-doctor-004",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-001",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-002",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-003",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-001",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-002",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-001",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-002",
+        "ac-doctor-directory-management-fr-05-load-more-001",
+        "ac-doctor-directory-management-fr-05-load-more-002",
+        "ac-doctor-directory-management-fr-05-load-more-003",
+        "ac-doctor-directory-management-fr-05-load-more-004",
+        "ac-doctor-directory-management-fr-06-directory-presentation-001",
+        "ac-doctor-directory-management-fr-06-directory-presentation-002",
+        "ac-doctor-directory-management-fr-06-directory-presentation-003",
+        "ac-doctor-directory-management-fr-06-directory-presentation-004",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-001",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-001",
+        "ac-doctor-directory-management-fr-12-save-doctor-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-003",
+        "ac-doctor-directory-management-fr-12-save-doctor-004",
+        "ac-doctor-directory-management-fr-14-automatic-tenant-context-001"
+      ],
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static deliverable review plus successful Angular build and focused tests; no deployed gateway/BFF claim."
+    },
+    {
+      "task_id": "TT-005",
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-fr-01-add-doctor-001",
+        "ac-doctor-directory-management-fr-01-add-doctor-002",
+        "ac-doctor-directory-management-fr-01-add-doctor-003",
+        "ac-doctor-directory-management-fr-01-add-doctor-004",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-001",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-002",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-003",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-001",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-002",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-001",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-002",
+        "ac-doctor-directory-management-fr-05-load-more-001",
+        "ac-doctor-directory-management-fr-05-load-more-002",
+        "ac-doctor-directory-management-fr-05-load-more-003",
+        "ac-doctor-directory-management-fr-05-load-more-004",
+        "ac-doctor-directory-management-fr-06-directory-presentation-001",
+        "ac-doctor-directory-management-fr-06-directory-presentation-002",
+        "ac-doctor-directory-management-fr-06-directory-presentation-003",
+        "ac-doctor-directory-management-fr-06-directory-presentation-004",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-001",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-001",
+        "ac-doctor-directory-management-fr-12-save-doctor-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-003",
+        "ac-doctor-directory-management-fr-12-save-doctor-004",
+        "ac-doctor-directory-management-fr-14-automatic-tenant-context-001"
+      ],
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "docs/validation/doctor-integration-reconciliation.md"
+      ],
+      "validation": "Static deliverable review plus successful Angular build and focused tests; no deployed gateway/BFF claim."
+    },
+    {
+      "task_id": "TT-006",
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-fr-01-add-doctor-001",
+        "ac-doctor-directory-management-fr-01-add-doctor-002",
+        "ac-doctor-directory-management-fr-01-add-doctor-003",
+        "ac-doctor-directory-management-fr-01-add-doctor-004",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-001",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-002",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-003",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-001",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-002",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-001",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-002",
+        "ac-doctor-directory-management-fr-05-load-more-001",
+        "ac-doctor-directory-management-fr-05-load-more-002",
+        "ac-doctor-directory-management-fr-05-load-more-003",
+        "ac-doctor-directory-management-fr-05-load-more-004",
+        "ac-doctor-directory-management-fr-06-directory-presentation-001",
+        "ac-doctor-directory-management-fr-06-directory-presentation-002",
+        "ac-doctor-directory-management-fr-06-directory-presentation-003",
+        "ac-doctor-directory-management-fr-06-directory-presentation-004",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-001",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-001",
+        "ac-doctor-directory-management-fr-12-save-doctor-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-003",
+        "ac-doctor-directory-management-fr-12-save-doctor-004",
+        "ac-doctor-directory-management-fr-14-automatic-tenant-context-001"
+      ],
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "docs/validation/doctor-integration-reconciliation.md"
+      ],
+      "validation": "Static deliverable review plus successful Angular build and focused tests; no deployed gateway/BFF claim."
+    },
+    {
+      "task_id": "TT-007",
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-fr-01-add-doctor-001",
+        "ac-doctor-directory-management-fr-01-add-doctor-002",
+        "ac-doctor-directory-management-fr-01-add-doctor-003",
+        "ac-doctor-directory-management-fr-01-add-doctor-004",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-001",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-002",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-003",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-001",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-002",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-001",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-002",
+        "ac-doctor-directory-management-fr-05-load-more-001",
+        "ac-doctor-directory-management-fr-05-load-more-002",
+        "ac-doctor-directory-management-fr-05-load-more-003",
+        "ac-doctor-directory-management-fr-05-load-more-004",
+        "ac-doctor-directory-management-fr-06-directory-presentation-001",
+        "ac-doctor-directory-management-fr-06-directory-presentation-002",
+        "ac-doctor-directory-management-fr-06-directory-presentation-003",
+        "ac-doctor-directory-management-fr-06-directory-presentation-004",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-001",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-001",
+        "ac-doctor-directory-management-fr-12-save-doctor-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-003",
+        "ac-doctor-directory-management-fr-12-save-doctor-004",
+        "ac-doctor-directory-management-fr-14-automatic-tenant-context-001"
+      ],
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static deliverable review plus successful Angular build and focused tests; no deployed gateway/BFF claim."
+    },
+    {
+      "task_id": "TT-008",
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-fr-01-add-doctor-001",
+        "ac-doctor-directory-management-fr-01-add-doctor-002",
+        "ac-doctor-directory-management-fr-01-add-doctor-003",
+        "ac-doctor-directory-management-fr-01-add-doctor-004",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-001",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-002",
+        "ac-doctor-directory-management-fr-07-new-doctor-001",
+        "ac-doctor-directory-management-fr-08-back-to-doctors-001",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-001",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-002",
+        "ac-doctor-directory-management-fr-10-patients-001",
+        "ac-doctor-directory-management-fr-10-patients-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-001",
+        "ac-doctor-directory-management-fr-12-save-doctor-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-003",
+        "ac-doctor-directory-management-fr-12-save-doctor-004"
+      ],
+      "status": "PARTIALLY_IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Patients action/destination remains missing. Build and focused tests pass for implemented Doctor behavior."
+    },
+    {
+      "task_id": "TT-009",
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-fr-01-add-doctor-001",
+        "ac-doctor-directory-management-fr-01-add-doctor-002",
+        "ac-doctor-directory-management-fr-01-add-doctor-003",
+        "ac-doctor-directory-management-fr-01-add-doctor-004",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-001",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-002",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-003",
+        "ac-doctor-directory-management-fr-05-load-more-001",
+        "ac-doctor-directory-management-fr-05-load-more-002",
+        "ac-doctor-directory-management-fr-05-load-more-003",
+        "ac-doctor-directory-management-fr-05-load-more-004",
+        "ac-doctor-directory-management-fr-06-directory-presentation-001",
+        "ac-doctor-directory-management-fr-06-directory-presentation-002",
+        "ac-doctor-directory-management-fr-06-directory-presentation-003",
+        "ac-doctor-directory-management-fr-06-directory-presentation-004",
+        "ac-doctor-directory-management-fr-10-patients-001",
+        "ac-doctor-directory-management-fr-10-patients-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-001",
+        "ac-doctor-directory-management-fr-12-save-doctor-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-003",
+        "ac-doctor-directory-management-fr-12-save-doctor-004",
+        "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-001",
+        "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-002",
+        "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-003"
+      ],
+      "status": "PARTIALLY_IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Patients action/destination remains missing. Build and focused tests pass for implemented Doctor behavior."
+    },
+    {
+      "task_id": "TT-010",
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-001",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-002",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-003",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-001",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-002",
+        "ac-doctor-directory-management-fr-05-load-more-001",
+        "ac-doctor-directory-management-fr-05-load-more-002",
+        "ac-doctor-directory-management-fr-05-load-more-003",
+        "ac-doctor-directory-management-fr-05-load-more-004",
+        "ac-doctor-directory-management-fr-06-directory-presentation-001",
+        "ac-doctor-directory-management-fr-06-directory-presentation-002",
+        "ac-doctor-directory-management-fr-06-directory-presentation-003",
+        "ac-doctor-directory-management-fr-06-directory-presentation-004",
+        "ac-doctor-directory-management-fr-11-change-all-displayed-record-selections-001",
+        "ac-doctor-directory-management-fr-13-change-an-individual-record-selection-001",
+        "ac-doctor-directory-management-fr-14-automatic-tenant-context-001"
+      ],
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static deliverable review plus successful Angular build and focused tests; no deployed gateway/BFF claim."
+    },
+    {
+      "task_id": "TT-011",
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-fr-14-automatic-tenant-context-001"
+      ],
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static deliverable review plus successful Angular build and focused tests; no deployed gateway/BFF claim."
+    },
+    {
+      "task_id": "TT-012",
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-fr-01-add-doctor-001",
+        "ac-doctor-directory-management-fr-01-add-doctor-002",
+        "ac-doctor-directory-management-fr-01-add-doctor-003",
+        "ac-doctor-directory-management-fr-01-add-doctor-004",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-001",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-002",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-003",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-001",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-002",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-001",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-002",
+        "ac-doctor-directory-management-fr-11-change-all-displayed-record-selections-001",
+        "ac-doctor-directory-management-fr-12-save-doctor-001",
+        "ac-doctor-directory-management-fr-12-save-doctor-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-003",
+        "ac-doctor-directory-management-fr-12-save-doctor-004",
+        "ac-doctor-directory-management-fr-13-change-an-individual-record-selection-001",
+        "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-001",
+        "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-002",
+        "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-003",
+        "ac-doctor-directory-management-fr-16-validate-doctor-address-001",
+        "ac-doctor-directory-management-fr-17-validate-doctor-description-001",
+        "ac-doctor-directory-management-fr-18-validate-doctor-email-001",
+        "ac-doctor-directory-management-fr-19-validate-doctor-mobile-001",
+        "ac-doctor-directory-management-fr-20-validate-doctor-phone-001",
+        "ac-doctor-directory-management-fr-21-validate-doctor-name-001"
+      ],
+      "status": "PARTIALLY_IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Patients action/destination remains missing. Build and focused tests pass for implemented Doctor behavior."
+    },
+    {
+      "task_id": "TT-013",
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-fr-01-add-doctor-001",
+        "ac-doctor-directory-management-fr-01-add-doctor-002",
+        "ac-doctor-directory-management-fr-01-add-doctor-003",
+        "ac-doctor-directory-management-fr-01-add-doctor-004",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-001",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-002",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-003",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-001",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-002",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-001",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-002",
+        "ac-doctor-directory-management-fr-05-load-more-001",
+        "ac-doctor-directory-management-fr-05-load-more-002",
+        "ac-doctor-directory-management-fr-05-load-more-003",
+        "ac-doctor-directory-management-fr-05-load-more-004",
+        "ac-doctor-directory-management-fr-06-directory-presentation-001",
+        "ac-doctor-directory-management-fr-06-directory-presentation-002",
+        "ac-doctor-directory-management-fr-06-directory-presentation-003",
+        "ac-doctor-directory-management-fr-06-directory-presentation-004",
+        "ac-doctor-directory-management-fr-07-new-doctor-001",
+        "ac-doctor-directory-management-fr-08-back-to-doctors-001",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-001",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-002",
+        "ac-doctor-directory-management-fr-10-patients-001",
+        "ac-doctor-directory-management-fr-10-patients-002",
+        "ac-doctor-directory-management-fr-11-change-all-displayed-record-selections-001",
+        "ac-doctor-directory-management-fr-12-save-doctor-001",
+        "ac-doctor-directory-management-fr-12-save-doctor-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-003",
+        "ac-doctor-directory-management-fr-12-save-doctor-004",
+        "ac-doctor-directory-management-fr-13-change-an-individual-record-selection-001",
+        "ac-doctor-directory-management-fr-14-automatic-tenant-context-001",
+        "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-001",
+        "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-002",
+        "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-003",
+        "ac-doctor-directory-management-fr-16-validate-doctor-address-001",
+        "ac-doctor-directory-management-fr-17-validate-doctor-description-001",
+        "ac-doctor-directory-management-fr-18-validate-doctor-email-001",
+        "ac-doctor-directory-management-fr-19-validate-doctor-mobile-001",
+        "ac-doctor-directory-management-fr-20-validate-doctor-phone-001",
+        "ac-doctor-directory-management-fr-21-validate-doctor-name-001"
+      ],
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static deliverable review plus successful Angular build and focused tests; no deployed gateway/BFF claim."
+    },
+    {
+      "task_id": "TT-014",
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-fr-01-add-doctor-001",
+        "ac-doctor-directory-management-fr-01-add-doctor-002",
+        "ac-doctor-directory-management-fr-01-add-doctor-003",
+        "ac-doctor-directory-management-fr-01-add-doctor-004",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-001",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-002",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-003",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-001",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-002",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-001",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-002",
+        "ac-doctor-directory-management-fr-05-load-more-001",
+        "ac-doctor-directory-management-fr-05-load-more-002",
+        "ac-doctor-directory-management-fr-05-load-more-003",
+        "ac-doctor-directory-management-fr-05-load-more-004",
+        "ac-doctor-directory-management-fr-06-directory-presentation-001",
+        "ac-doctor-directory-management-fr-06-directory-presentation-002",
+        "ac-doctor-directory-management-fr-06-directory-presentation-003",
+        "ac-doctor-directory-management-fr-06-directory-presentation-004",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-001",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-001",
+        "ac-doctor-directory-management-fr-12-save-doctor-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-003",
+        "ac-doctor-directory-management-fr-12-save-doctor-004",
+        "ac-doctor-directory-management-fr-14-automatic-tenant-context-001"
+      ],
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static deliverable review plus successful Angular build and focused tests; no deployed gateway/BFF claim."
+    },
+    {
+      "task_id": "TT-015",
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-fr-01-add-doctor-001",
+        "ac-doctor-directory-management-fr-01-add-doctor-002",
+        "ac-doctor-directory-management-fr-01-add-doctor-003",
+        "ac-doctor-directory-management-fr-01-add-doctor-004",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-001",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-002",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-003",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-001",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-002",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-001",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-002",
+        "ac-doctor-directory-management-fr-05-load-more-001",
+        "ac-doctor-directory-management-fr-05-load-more-002",
+        "ac-doctor-directory-management-fr-05-load-more-003",
+        "ac-doctor-directory-management-fr-05-load-more-004",
+        "ac-doctor-directory-management-fr-06-directory-presentation-001",
+        "ac-doctor-directory-management-fr-06-directory-presentation-002",
+        "ac-doctor-directory-management-fr-06-directory-presentation-003",
+        "ac-doctor-directory-management-fr-06-directory-presentation-004",
+        "ac-doctor-directory-management-fr-07-new-doctor-001",
+        "ac-doctor-directory-management-fr-08-back-to-doctors-001",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-001",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-002",
+        "ac-doctor-directory-management-fr-10-patients-001",
+        "ac-doctor-directory-management-fr-10-patients-002",
+        "ac-doctor-directory-management-fr-11-change-all-displayed-record-selections-001",
+        "ac-doctor-directory-management-fr-12-save-doctor-001",
+        "ac-doctor-directory-management-fr-12-save-doctor-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-003",
+        "ac-doctor-directory-management-fr-12-save-doctor-004",
+        "ac-doctor-directory-management-fr-13-change-an-individual-record-selection-001",
+        "ac-doctor-directory-management-fr-14-automatic-tenant-context-001",
+        "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-001",
+        "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-002",
+        "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-003",
+        "ac-doctor-directory-management-fr-16-validate-doctor-address-001",
+        "ac-doctor-directory-management-fr-17-validate-doctor-description-001",
+        "ac-doctor-directory-management-fr-18-validate-doctor-email-001",
+        "ac-doctor-directory-management-fr-19-validate-doctor-mobile-001",
+        "ac-doctor-directory-management-fr-20-validate-doctor-phone-001",
+        "ac-doctor-directory-management-fr-21-validate-doctor-name-001"
+      ],
+      "status": "PARTIALLY_IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Patients action/destination remains missing. Build and focused tests pass for implemented Doctor behavior."
+    },
+    {
+      "task_id": "TT-016",
+      "acceptance_criteria_refs": [
+        "ac-doctor-directory-management-fr-01-add-doctor-001",
+        "ac-doctor-directory-management-fr-01-add-doctor-002",
+        "ac-doctor-directory-management-fr-01-add-doctor-003",
+        "ac-doctor-directory-management-fr-01-add-doctor-004",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-001",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-002",
+        "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-003",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-001",
+        "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-002",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-001",
+        "ac-doctor-directory-management-fr-04-delete-this-doctor-002",
+        "ac-doctor-directory-management-fr-05-load-more-001",
+        "ac-doctor-directory-management-fr-05-load-more-002",
+        "ac-doctor-directory-management-fr-05-load-more-003",
+        "ac-doctor-directory-management-fr-05-load-more-004",
+        "ac-doctor-directory-management-fr-06-directory-presentation-001",
+        "ac-doctor-directory-management-fr-06-directory-presentation-002",
+        "ac-doctor-directory-management-fr-06-directory-presentation-003",
+        "ac-doctor-directory-management-fr-06-directory-presentation-004",
+        "ac-doctor-directory-management-fr-07-new-doctor-001",
+        "ac-doctor-directory-management-fr-08-back-to-doctors-001",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-001",
+        "ac-doctor-directory-management-fr-09-open-doctor-details-002",
+        "ac-doctor-directory-management-fr-10-patients-001",
+        "ac-doctor-directory-management-fr-10-patients-002",
+        "ac-doctor-directory-management-fr-11-change-all-displayed-record-selections-001",
+        "ac-doctor-directory-management-fr-12-save-doctor-001",
+        "ac-doctor-directory-management-fr-12-save-doctor-002",
+        "ac-doctor-directory-management-fr-12-save-doctor-003",
+        "ac-doctor-directory-management-fr-12-save-doctor-004",
+        "ac-doctor-directory-management-fr-13-change-an-individual-record-selection-001",
+        "ac-doctor-directory-management-fr-14-automatic-tenant-context-001",
+        "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-001",
+        "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-002",
+        "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-003",
+        "ac-doctor-directory-management-fr-16-validate-doctor-address-001",
+        "ac-doctor-directory-management-fr-17-validate-doctor-description-001",
+        "ac-doctor-directory-management-fr-18-validate-doctor-email-001",
+        "ac-doctor-directory-management-fr-19-validate-doctor-mobile-001",
+        "ac-doctor-directory-management-fr-20-validate-doctor-phone-001",
+        "ac-doctor-directory-management-fr-21-validate-doctor-name-001"
+      ],
+      "status": "DEFERRED_TO_PLAYWRIGHT_STAGE",
+      "implementation_paths": [
+        "modernized/apps/healthclinic-web-e2e/src/doctor-directory-management.spec.ts"
+      ],
+      "validation": "Not changed or executed"
+    }
+  ],
+  "acceptance_criteria": [
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-01-add-doctor-001",
+      "functional_requirement_ids": [
+        "FR-01"
+      ],
+      "then": "the doctors view opens",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-01-add-doctor-002",
+      "functional_requirement_ids": [
+        "FR-01"
+      ],
+      "then": "the \"Add\" action is displayed",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-01-add-doctor-003",
+      "functional_requirement_ids": [
+        "FR-01"
+      ],
+      "then": "the \"Add\" action is disabled while the form is invalid",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-01-add-doctor-004",
+      "functional_requirement_ids": [
+        "FR-01"
+      ],
+      "then": "the new record is saved",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-001",
+      "functional_requirement_ids": [
+        "FR-02"
+      ],
+      "then": "confirmation is requested before the guarded action proceeds",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-002",
+      "functional_requirement_ids": [
+        "FR-02"
+      ],
+      "then": "the affected doctors are removed from the displayed collection",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-02-delete-selected-doctor-records-003",
+      "functional_requirement_ids": [
+        "FR-02"
+      ],
+      "then": "the \"Delete\" action is displayed",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-001",
+      "functional_requirement_ids": [
+        "FR-03"
+      ],
+      "then": "confirmation is requested before the guarded action proceeds",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-03-delete-an-individual-doctor-002",
+      "functional_requirement_ids": [
+        "FR-03"
+      ],
+      "then": "the affected doctors are removed from the displayed collection",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-04-delete-this-doctor-001",
+      "functional_requirement_ids": [
+        "FR-04"
+      ],
+      "then": "confirmation is requested before the guarded action proceeds",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-04-delete-this-doctor-002",
+      "functional_requirement_ids": [
+        "FR-04"
+      ],
+      "then": "the doctors view opens",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-05-load-more-001",
+      "functional_requirement_ids": [
+        "FR-05"
+      ],
+      "then": "additional doctors are appended after the displayed records",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-05-load-more-002",
+      "functional_requirement_ids": [
+        "FR-05"
+      ],
+      "then": "the \"NO DATA\" message is displayed",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-05-load-more-003",
+      "functional_requirement_ids": [
+        "FR-05"
+      ],
+      "then": "the \"LOAD MORE\" action is hidden",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-05-load-more-004",
+      "functional_requirement_ids": [
+        "FR-05"
+      ],
+      "then": "records retain fixed name ordering (ascending)",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-06-directory-presentation-001",
+      "functional_requirement_ids": [
+        "FR-06"
+      ],
+      "then": "additional doctors are appended after the displayed records",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-06-directory-presentation-002",
+      "functional_requirement_ids": [
+        "FR-06"
+      ],
+      "then": "the \"NO DATA\" message is displayed",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-06-directory-presentation-003",
+      "functional_requirement_ids": [
+        "FR-06"
+      ],
+      "then": "the \"LOAD MORE\" action is hidden",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-06-directory-presentation-004",
+      "functional_requirement_ids": [
+        "FR-06"
+      ],
+      "then": "records retain fixed name ordering (ascending)",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-07-new-doctor-001",
+      "functional_requirement_ids": [
+        "FR-07"
+      ],
+      "then": "the doctor view opens",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-08-back-to-doctors-001",
+      "functional_requirement_ids": [
+        "FR-08"
+      ],
+      "then": "the doctors view opens",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-09-open-doctor-details-001",
+      "functional_requirement_ids": [
+        "FR-09"
+      ],
+      "then": "the doctor view opens",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-09-open-doctor-details-002",
+      "functional_requirement_ids": [
+        "FR-09"
+      ],
+      "then": "the returned doctor details populate the form",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-10-patients-001",
+      "functional_requirement_ids": [
+        "FR-10"
+      ],
+      "then": "the patients view opens",
+      "status": "NOT_IMPLEMENTED",
+      "implementation_paths": [],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-10-patients-002",
+      "functional_requirement_ids": [
+        "FR-10"
+      ],
+      "then": "the \"Patients\" action is displayed",
+      "status": "NOT_IMPLEMENTED",
+      "implementation_paths": [],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-11-change-all-displayed-record-selections-001",
+      "functional_requirement_ids": [
+        "FR-11"
+      ],
+      "then": "all displayed record checkboxes reflect the select-all state",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-12-save-doctor-001",
+      "functional_requirement_ids": [
+        "FR-12"
+      ],
+      "then": "the doctors view opens",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-12-save-doctor-002",
+      "functional_requirement_ids": [
+        "FR-12"
+      ],
+      "then": "the \"Save\" action is displayed",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-12-save-doctor-003",
+      "functional_requirement_ids": [
+        "FR-12"
+      ],
+      "then": "the \"Save\" action is disabled while the form is invalid",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-12-save-doctor-004",
+      "functional_requirement_ids": [
+        "FR-12"
+      ],
+      "then": "the changes to the selected record are saved",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-13-change-an-individual-record-selection-001",
+      "functional_requirement_ids": [
+        "FR-13"
+      ],
+      "then": "the chosen record reflects its checkbox selection state",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-list.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-14-automatic-tenant-context-001",
+      "functional_requirement_ids": [
+        "FR-14"
+      ],
+      "then": "the tenant context is obtained automatically before the dependent request runs",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts",
+        "modernized/libs/doctor-directory-management/data-access/src/lib/doctor-api.client.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-001",
+      "functional_requirement_ids": [
+        "FR-15"
+      ],
+      "then": "the selected file content updates the doctor picture",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-002",
+      "functional_requirement_ids": [
+        "FR-15"
+      ],
+      "then": "the \"Add a profile photo\" prompt is shown when no file content is set",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-15-maintain-doctor-profile-media-003",
+      "functional_requirement_ids": [
+        "FR-15"
+      ],
+      "then": "the doctor picture preview is displayed when file content is set",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-16-validate-doctor-address-001",
+      "functional_requirement_ids": [
+        "FR-16"
+      ],
+      "then": "doctor address remains invalid until a value is provided",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-17-validate-doctor-description-001",
+      "functional_requirement_ids": [
+        "FR-17"
+      ],
+      "then": "doctor description remains invalid until a value is provided",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-18-validate-doctor-email-001",
+      "functional_requirement_ids": [
+        "FR-18"
+      ],
+      "then": "doctor email remains invalid until a value is provided",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-19-validate-doctor-mobile-001",
+      "functional_requirement_ids": [
+        "FR-19"
+      ],
+      "then": "doctor mobile remains invalid until a value is provided",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-20-validate-doctor-phone-001",
+      "functional_requirement_ids": [
+        "FR-20"
+      ],
+      "then": "doctor phone remains invalid until a value is provided",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    },
+    {
+      "acceptance_criterion_id": "ac-doctor-directory-management-fr-21-validate-doctor-name-001",
+      "functional_requirement_ids": [
+        "FR-21"
+      ],
+      "then": "doctor name remains invalid until a value is provided",
+      "status": "IMPLEMENTED",
+      "implementation_paths": [
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.ts",
+        "modernized/libs/doctor-directory-management/feature/src/lib/doctor-detail.component.html",
+        "modernized/libs/doctor-directory-management/state/src/lib/doctor-directory.store.ts"
+      ],
+      "validation": "Static behavior inspection; focused component/service/state tests exercise representative outcomes. No live-backend or browser validation performed."
+    }
+  ]
+}

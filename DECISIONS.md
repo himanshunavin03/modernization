@@ -1,5 +1,7 @@
 # Decisions
 
+Doctor reconciliation uses Angular 22.1.4 typed Reactive Forms for the six required profile fields, with no extra business validators. The prior Doctor view had no form, and the matching forms package supports this bounded change without changing the frozen architecture. Signals/computed retain synchronous state and RxJS retains transport. TT-016 remains deferred under prompt 072; its frozen task is not edited. The unimplemented Patient destination remains an explicit integration dependency instead of an invented screen or endpoint.
+
 | Decision | Reason |
 | --- | --- |
 | The solution is customized for Polaris-style enterprise applications, not a generic conversion tool. | The POC is intended to preserve enterprise-specific architecture and modernization policy. |

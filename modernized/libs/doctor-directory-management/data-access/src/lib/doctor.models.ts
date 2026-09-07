@@ -1,3 +1,5 @@
+export type DoctorInput = Pick<Doctor, 'Name' | 'Address' | 'Description' | 'Phone' | 'Mobile' | 'Email' | 'Picture'> & Partial<Doctor>;
+
 export interface Doctor {
   DoctorId: number;
   Name: string;

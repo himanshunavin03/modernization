@@ -1,2 +1,2 @@
 export { DoctorApiClient } from './lib/doctor-api.client';
-export type { Doctor } from './lib/doctor.models';
+export type { Doctor, DoctorInput } from './lib/doctor.models';
