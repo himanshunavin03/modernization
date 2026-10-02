@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const base = 'http://localhost:8088/poc-dashboard';
 const pages = [
-  ['dashboard', `${base}/`, 'Application Modernization POC'],
+  ['dashboard', `${base}/`, 'Application Modernization'],
   ['feature-specification', `${base}/generated/feature-specification.html`, 'Doctor Directory Management'],
   ['technical-tasks', `${base}/generated/technical-tasks.html`, 'Technical Delivery Plan'],
   ['application-understanding', `${base}/generated/application-understanding.html`, 'Application Understanding'],
@@ -80,7 +80,7 @@ try {
           if ((await page.locator('#commands .command-stage code').count()) !== 9) throw new Error('Core Polaris command journey is incomplete');
           if ((await page.locator('#angular .target-topology article').count()) !== 4) throw new Error('Angular target topology is incomplete');
           if ((await page.locator('#angular .architecture-decisions-grid article').count()) !== 8) throw new Error('Angular architecture decisions are incomplete');
-          if (!(await page.locator('#angular').innerText()).includes('Doctor Directory Management')) throw new Error('Selected POC feature is missing from Angular architecture');
+          if (!(await page.locator('#angular').innerText()).includes('Doctor Directory Management')) throw new Error('Selected feature is missing from Angular architecture');
           for (const section of ['architecture', 'commands', 'understanding', 'requirements', 'angular', 'live-demo', 'validation', 'outcome']) {
             await page.evaluate((identifier) => {
               const element = document.querySelector(`#${identifier}`);

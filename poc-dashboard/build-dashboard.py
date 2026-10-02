@@ -179,14 +179,14 @@ def page_shell(title: str, eyebrow: str, intro: str, body: str, nav: str = "") -
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>{html.escape(title)} · Application Modernization POC</title>
+  <title>{html.escape(title)} · Application Modernization</title>
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body class="artifact-page">
   <a class="skip-link" href="#artifact-content">Skip to content</a>
   <header class="artifact-topbar">
-    <a class="brand" href="../index.html" aria-label="Back to POC dashboard"><span class="brand-mark">P</span><span>POLARIS <small>MODERNIZATION</small></span></a>
-    <a class="button button-quiet" href="../index.html">← Back to POC Dashboard</a>
+    <a class="brand" href="../index.html" aria-label="Back to modernization dashboard"><span class="brand-mark">P</span><span>POLARIS <small>MODERNIZATION</small></span></a>
+    <a class="button button-quiet" href="../index.html">← Back to Modernization Dashboard</a>
   </header>
   <main id="artifact-content">
     <section class="artifact-hero">
@@ -199,7 +199,7 @@ def page_shell(title: str, eyebrow: str, intro: str, body: str, nav: str = "") -
       <article class="artifact-document">{body}</article>
     </div>
   </main>
-  <footer class="site-footer"><p>Polaris Application Modernization POC</p><a href="../index.html">Return to presentation</a></footer>
+  <footer class="site-footer"><p>Polaris Application Modernization</p><a href="../index.html">Return to presentation</a></footer>
 </body>
 </html>
 """
@@ -239,7 +239,7 @@ def build_dashboard_data() -> dict[str, Any]:
     }
     return {
         "presentation": {
-            "title": "Application Modernization POC",
+            "title": "Application Modernization",
             "story": ["UNDERSTAND", "MODEL", "PLAN", "MODERNIZE", "VALIDATE"],
         },
         "metrics": metrics,

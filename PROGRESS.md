@@ -1,5 +1,20 @@
 # Progress
 
+## Customer-Visible POC Branding Removed (Prompt 087)
+
+- Replaced all customer-visible `POC` and `proof of concept` headings/labels in the main presentation, generated presentation pages, dashboard metadata, browser checks, and graph-viewer project title with neutral modernization language.
+- Regenerated all presentation pages and the viewer export. Active presentation and graph content contains no visible `POC` text; the internal `poc-dashboard` path remains unchanged for link compatibility.
+- Static presentation validation passes with zero broken links, stale data, unsupported claims, local user paths, missing commands, or unsupported commands. Viewer-export tests pass: 6 passed.
+- Chromium runtime validation passes for visual rendering, responsiveness, accessibility, graph linking, Playwright report linking, and architecture-artifact linking.
+- Servers are healthy: legacy port 5000, Angular port 4200, graph viewer port 5175 (PID 19716), and presentation port 8088 (PID 91712).
+
+## Runtime Servers Started (Prompt 086)
+
+- Started the isolated legacy DNX backend on port 5000, the existing Angular/Nx application on port 4200, and the pinned read-only Understand Anything viewer on port 5175.
+- Verified HTTP 200 for both application roots, the Angular expenses API proxy, the tokenized graph UI, and the token-protected graph JSON.
+- Runtime listener PIDs are 139728 (DNX), 8892 (Angular Node), and 47668 (viewer Node). Logs are under the temporary local directory `%TEMP%\polaris-runtime-086`.
+- No application code, configuration, `source/` input, canonical graph, or generated artifact was changed. Existing unrelated working-tree changes were left untouched.
+
 ## Contextual Polaris Commands In Dashboard (Prompt 083)
 
 - Removed the standalone `Commands` navigation item, presentation section, command-stage cards, supporting-command cards, and extra Demo Flow step.

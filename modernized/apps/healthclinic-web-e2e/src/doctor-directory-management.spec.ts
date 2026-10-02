@@ -57,9 +57,21 @@ test('ac-doctor-directory-management-fr-14-automatic-tenant-context-001: reads t
     page.goto('http://localhost:4200/doctors'),
   ]);
   expect(tenantResponse.status()).toBe(200);
-  expect(await tenantResponse.json()).toBe(1);
+  expect(tenantResponse.request().method()).toBe('GET');
   expect(doctorsResponse.status()).toBe(200);
   expect(doctorsResponse.request().headers()['tenantid']).toBe('1');
+  await expect(page.locator('.grid-row')).not.toHaveCount(0);
+
+  await page.getByRole('link', { name: /^Edit / }).first().click();
+  await expect(page.locator('#Name')).toBeVisible();
+  const [returningTenantResponse, returningDoctorsResponse] = await Promise.all([
+    page.waitForResponse((response) => response.url().includes('/api/users/current/tenant')),
+    page.waitForResponse((response) => response.url().includes('/api/doctors?')),
+    page.getByRole('link', { name: 'Back to doctors' }).click(),
+  ]);
+  expect(returningTenantResponse.status()).toBe(200);
+  expect(returningDoctorsResponse.status()).toBe(200);
+  expect(returningDoctorsResponse.request().headers()['tenantid']).toBe('1');
   await expect(page.locator('.grid-row')).not.toHaveCount(0);
 });
 

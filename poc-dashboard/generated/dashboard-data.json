@@ -47,7 +47,7 @@
       "MODERNIZE",
       "VALIDATE"
     ],
-    "title": "Application Modernization POC"
+    "title": "Application Modernization"
   },
   "referenceApplication": {
     "classification": "Hybrid server-rendered and client-side healthcare web application with supporting APIs and mobile clients",

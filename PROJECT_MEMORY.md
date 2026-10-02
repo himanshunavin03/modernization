@@ -1,5 +1,13 @@
 # Project Memory
 
+## Customer-Visible POC Branding Removed (Prompt 087)
+
+The executive presentation and read-only knowledge graph viewer now use neutral modernization branding without customer-visible `POC` or `proof of concept` text. The presentation title is `Application Modernization`, feature labels use `Selected Feature`, lifecycle/outcome labels use modernization language, generated artifact pages use `Polaris Application Modernization`, and the graph viewer title is `Legacy Application Modernization`. Static validation, the focused viewer-export tests (6 passed), and actual Chromium responsive/accessibility/runtime validation pass. The presentation is served at `http://localhost:8088/poc-dashboard/`; the unchanged internal directory/URL slug remains for compatibility. The tokenized graph viewer is served at `http://127.0.0.1:5175/?token=polaris-layout-readonly`.
+
+## Local Applications And Knowledge Graph UI Running (Prompt 086)
+
+The existing legacy HealthClinic DNX application, modern Angular application, and read-only Understand Anything viewer were started without changing application code, configuration, source inputs, or canonical graph artifacts. Verified runtime endpoints return HTTP 200 at `http://localhost:5000/`, `http://localhost:4200/`, the Angular expenses API proxy, `http://127.0.0.1:5175/?token=polaris-layout-readonly`, and the token-protected `knowledge-graph.json`. Current listener PIDs are DNX 139728 on port 5000, Angular Node 8892 on port 4200, and viewer Node 47668 on port 5175.
+
 ## Commands Associated With Existing Dashboard Steps (Prompt 083)
 
 The standalone `Polaris Commands` presentation section introduced by Prompt 082 was removed. All 19 canonical commands now appear directly inside the existing lifecycle element they enable: design and architecture commands inside the PLAN architecture node; graph and application-understanding commands inside the corresponding Knowledge Graph metrics/card; requirement generation and discovery commands inside the Feature/Story/AC/Task flow and Doctor Feature card; modernization commands inside the Angular delivery flow; validation commands inside the browser-validation flow; and status/help commands beside the final lifecycle outcome. No separate command-specific card or navigation step remains. Registry-parity validation reports 19 presented, zero missing, and zero unsupported names; Chromium responsive and accessibility validation pass.

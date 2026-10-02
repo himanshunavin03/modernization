@@ -30,7 +30,7 @@ def test_export_preserves_canonical_counts_and_evidence(tmp_path):
     assert "review only" in result["nodes"][0]["summary"]
     assert "relationship:CALLS_API" in result["nodes"][0]["tags"]
     assert result["visualizationMetadata"]["canonical_counts"] == {"nodes": 1, "edges": 1, "warnings": 1}
-    assert result["project"]["name"] == "Legacy Dashboard POC"
+    assert result["project"]["name"] == "Legacy Application Modernization"
     assert "Polaris" not in json.dumps(result) and "HealthClinic" not in json.dumps(result)
     assert all(not tag.startswith("polaris-") for tag in result["nodes"][0]["tags"])
     assert result["layers"]

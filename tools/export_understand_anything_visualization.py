@@ -211,7 +211,7 @@ def export(graph: dict, output_root: Path, project_id: str = PROJECT_ID) -> Path
         "version": "1.0.0",
         "kind": "codebase",
         "project": {
-            "name": "Legacy Dashboard POC",
+            "name": "Legacy Application Modernization",
             "description": DISCLAIMER,
             "languages": ["C#", "Razor", "JavaScript"],
             "frameworks": ["Legacy ASP.NET MVC/Razor UI", "Legacy AngularJS 1.x client-side code", "Target Angular 22 application"],

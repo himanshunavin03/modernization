@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HealthClinic Angular 22 — Code Flow and File Guide</title>
+  <style>
+    :root{--ink:#10232c;--ink2:#173842;--paper:#f4f7f5;--card:#fff;--muted:#586b72;--line:#d8e2df;--teal:#10aa94;--teal2:#dff7f1;--pink:#e31967;--amber:#a36400;--amberbg:#fff4d6;--radius:18px;--shadow:0 18px 55px rgba(16,35,44,.09)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:92px}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:#087b6c}code{padding:.14em .38em;color:#096c60;background:#e8f4f1;border-radius:5px;font: .9em ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}h1,h2,h3{line-height:1.15;letter-spacing:-.035em}h2{margin:0 0 1.4rem;font-size:clamp(2rem,4vw,3.3rem)}h3{margin:.2rem 0 .55rem;font-size:1.16rem}p{margin:.4rem 0 1rem}.wrap{width:min(1280px,calc(100% - 36px));margin:auto}.topbar{position:sticky;top:0;z-index:20;color:#fff;background:rgba(10,27,35,.96);border-bottom:1px solid #31505a;backdrop-filter:blur(12px)}.topbar .wrap{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}.brand{font-weight:850;letter-spacing:.04em}.brand small{display:block;color:#9fb5ba;font-size:.65rem;letter-spacing:.13em;text-transform:uppercase}.topbar nav{display:flex;gap:1rem;overflow:auto}.topbar a{color:#c5d2d5;text-decoration:none;white-space:nowrap;font-size:.78rem;font-weight:700}.hero{padding:clamp(4rem,9vw,8rem) 0;color:#fff;background:radial-gradient(circle at 83% 18%,rgba(16,170,148,.25),transparent 28%),linear-gradient(140deg,#091820,#12333c)}.eyebrow{color:#19ceb5;font-size:.7rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase}.hero h1{max-width:1050px;margin:.8rem 0 1.4rem;font-size:clamp(3rem,7vw,7rem);line-height:.93}.hero .lead{max-width:830px;color:#bfd0d3;font-size:1.12rem}.facts{margin-top:2.4rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;overflow:hidden;border:1px solid #31505a;border-radius:14px;background:#31505a}.facts div{padding:1.2rem;background:#102a33}.facts strong,.facts span{display:block}.facts strong{color:#36dbc3;font-size:1.4rem}.facts span{color:#b9cacc;font-size:.72rem}.notice{margin-top:1.2rem;padding:1rem 1.2rem;color:#324b52;background:#e8f5f1;border-left:4px solid var(--teal);border-radius:8px}main section{padding:clamp(4rem,7vw,7rem) 0;border-bottom:1px solid var(--line)}.intro{max-width:850px;color:var(--muted);font-size:1.05rem}.flow{margin-top:2rem;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.8rem}.flow article{position:relative;min-height:150px;padding:1.2rem;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}.flow article:not(:last-child)::after{content:'→';position:absolute;right:-.75rem;top:45%;z-index:2;color:var(--teal);font-weight:900}.flow span,.card-label{color:var(--teal);font-size:.63rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase}.flow strong{display:block;margin:.7rem 0 .35rem}.flow small{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.card{padding:1.5rem;background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}.card p,.card li{color:var(--muted)}.card ul{margin:.8rem 0 0;padding-left:1.2rem}.layer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}.layer{padding:1.6rem;background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}.layer header{display:flex;justify-content:space-between;gap:1rem}.layer header span{color:var(--teal);font-weight:850}.layer .purpose{color:var(--muted)}.example{margin-top:1rem;padding:1rem;color:#dff8f3;background:var(--ink);border-radius:10px;font: .8rem/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;overflow:auto}.journey{display:grid;gap:1rem}.journey article{display:grid;grid-template-columns:62px 1fr;gap:1.2rem;padding:1.4rem;background:#fff;border:1px solid var(--line);border-radius:14px}.step{width:52px;height:52px;display:grid;place-items:center;color:#fff;background:var(--ink2);border-radius:50%;font-weight:850}.journey p{color:var(--muted)}.table-shell{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:14px}.file-table{width:100%;border-collapse:collapse;font-size:.84rem}.file-table th{position:sticky;top:0;padding:.8rem 1rem;color:#fff;background:var(--ink2);text-align:left;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase}.file-table td{padding:.85rem 1rem;border-bottom:1px solid var(--line);vertical-align:top}.file-table tr:last-child td{border:0}.file-table td:first-child{min-width:315px;color:#075f54;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.file-table td:nth-child(2){min-width:235px;font-weight:750}.file-table td:last-child{min-width:330px;color:var(--muted)}.callout-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.callout{padding:1.5rem;border-radius:14px}.implemented{background:var(--teal2);border:1px solid #a8dfd4}.limits{background:var(--amberbg);border:1px solid #ead39a}.callout h3{margin-top:0}.callout li{margin:.45rem 0}.legend{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.6rem}.pill{padding:.35rem .65rem;border-radius:999px;background:#e5edeb;font-size:.7rem;font-weight:800}.footer{padding:2.5rem 0;color:#b7c8cb;background:#0a1b23}.footer strong{color:#fff}.footer p{margin:.3rem 0}.muted{color:var(--muted)}
+    @media(max-width:1050px){.flow{grid-template-columns:repeat(3,1fr)}.flow article::after{display:none}.grid{grid-template-columns:1fr 1fr}.facts{grid-template-columns:1fr 1fr}}
+    @media(max-width:720px){.topbar nav{display:none}.flow,.grid,.layer-grid,.callout-grid{grid-template-columns:1fr}.journey article{grid-template-columns:1fr}.facts{grid-template-columns:1fr}.hero h1{font-size:3.2rem}.file-table td:first-child{min-width:250px}}
+    @media print{.topbar{position:static}.hero{padding:3rem 0}main section{padding:3rem 0}.card,.layer,.flow article,.journey article{box-shadow:none}.topbar nav{display:none}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap"><div class="brand">HEALTHCLINIC · ANGULAR 22<small>Code flow and file guide</small></div><nav aria-label="Guide sections"><a href="#overview">Overview</a><a href="#runtime">Runtime flow</a><a href="#layers">Layers</a><a href="#files">File map</a><a href="#patterns">Angular benefits</a><a href="#limits">Boundaries</a></nav></div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Technical explanation · plain-language examples</p>
+      <h1>How the modernized Angular application works.</h1>
+      <p class="lead">This guide explains why each important file exists, how information moves from the browser to the legacy APIs and back, and what each Angular 22 and Nx pattern solves. It covers the application shell, Dashboard, Doctor Directory Management, shared platform services, unit tests, and Playwright.</p>
+      <div class="facts"><div><strong>Angular 22.1.4</strong><span>Standalone application foundation</span></div><div><strong>Nx 23.2</strong><span>Application and library boundaries</span></div><div><strong>Signals + RxJS</strong><span>UI state and asynchronous work</span></div><div><strong>Feature lazy loading</strong><span>Dashboard and Doctors split at runtime</span></div></div>
+    </div>
+  </div>
+
+  <main>
+    <section id="overview"><div class="wrap">
+      <p class="eyebrow">01 · Mental model</p><h2>One shell, independent business features.</h2>
+      <p class="intro">The code is organized by responsibility rather than placing every class in one application folder. The application owns startup and navigation. Each business feature owns its screens and state. Data-access libraries own backend contracts. Core platform code owns concerns shared across features.</p>
+      <div class="flow" aria-label="High-level application flow">
+        <article><span>01</span><strong>Browser</strong><small>Requests the Angular application and chooses a route.</small></article>
+        <article><span>02</span><strong>App shell</strong><small>Starts Angular and renders navigation plus a router outlet.</small></article>
+        <article><span>03</span><strong>Lazy feature</strong><small>Downloads Dashboard or Doctor code only when its route is opened.</small></article>
+        <article><span>04</span><strong>Feature store</strong><small>Coordinates loading, selection, errors, forms, and UI state.</small></article>
+        <article><span>05</span><strong>API client</strong><small>Builds typed HTTP requests using preserved legacy routes.</small></article>
+        <article><span>06</span><strong>Legacy API</strong><small>Returns tenant-specific business data without backend replacement.</small></article>
+      </div>
+      <div class="notice"><strong>Simple analogy:</strong> the application shell is a shopping mall, routes are signs, lazy features are stores opened only when visited, stores manage their own activity, and API clients are the controlled delivery doors to backend services.</div>
+    </div></section>
+
+    <section id="runtime"><div class="wrap">
+      <p class="eyebrow">02 · Runtime walkthrough</p><h2>What happens from startup to screen.</h2>
+      <div class="journey">
+        <article><div class="step">1</div><div><h3>Angular starts</h3><p><code>src/main.ts</code> calls <code>bootstrapApplication(AppComponent, appConfig)</code>. This is the modern standalone bootstrap style: no root NgModule is required.</p><div class="example">Browser → main.ts → AppComponent → app.config.ts</div></div></article>
+        <article><div class="step">2</div><div><h3>Global providers are registered</h3><p><code>app.config.ts</code> registers the router, typed HTTP support, three functional interceptors, and runtime configuration. Central registration prevents every feature from configuring these concerns differently.</p><div class="example">HTTP request → correlation ID → optional TenantId → error reporting → backend</div></div></article>
+        <article><div class="step">3</div><div><h3>The private shell stays stable</h3><p><code>PrivateShellComponent</code> renders the header, responsive menu, navigation, footer, and inner <code>&lt;router-outlet&gt;</code>. Its menu state is a Signal. Feature screens appear inside it without recreating the shell.</p></div></article>
+        <article><div class="step">4</div><div><h3>The requested feature loads lazily</h3><p><code>app.routes.ts</code> uses dynamic <code>loadChildren</code> imports for both <code>/dashboard</code> and <code>/doctors</code>. The compiled application contains separate Dashboard and Doctor chunks, reducing initial feature code.</p><div class="example">/dashboard → import Dashboard routes
+/doctors   → import Doctor Directory routes</div></div></article>
+        <article><div class="step">5</div><div><h3>The feature component creates a local store</h3><p>Dashboard and Doctor components declare their stores in <code>providers</code>. Each routed screen gets state with a lifecycle tied to that component, avoiding accidental stale state shared across unrelated visits.</p></div></article>
+        <article><div class="step">6</div><div><h3>Tenant context is resolved once per active subscriber group</h3><p><code>TenantContextService</code> calls <code>/api/users/current/tenant</code>, validates the returned integer, and shares the latest value. Feature stores wait for that value before business API calls.</p></div></article>
+        <article><div class="step">7</div><div><h3>The typed client preserves API contracts</h3><p><code>DashboardApiClient</code> and <code>DoctorApiClient</code> own URLs, HTTP verbs, query parameters, request bodies, and response types. Components never construct backend requests directly.</p></div></article>
+        <article><div class="step">8</div><div><h3>Signals update the template</h3><p>Stores expose Signals such as <code>items</code>, <code>loading</code>, <code>errorMessage</code>, and computed values. Templates use Angular control flow such as <code>@if</code> and <code>@for</code>. <code>OnPush</code> keeps rendering predictable.</p></div></article>
+      </div>
+    </div></section>
+
+    <section id="feature-flows"><div class="wrap">
+      <p class="eyebrow">03 · Business flows</p><h2>How each implemented feature works.</h2>
+      <div class="grid">
+        <article class="card"><span class="card-label">Dashboard</span><h3>Summary and reports</h3><p>The Dashboard store combines tenant context with three API requests. Independent year Signals trigger report reloads through RxJS <code>switchMap</code>, which replaces obsolete requests when the selected year changes.</p><div class="example">year Signal → Observable → tenant → API client → response → Signal → chart</div></article>
+        <article class="card"><span class="card-label">Doctor list</span><h3>Load, order, select, delete</h3><p>The list component asks its store for the first page. The store requests four records, appends later pages, computes alphabetic display order, tracks selected IDs, and retains records that fail deletion.</p><div class="example">Load more → pageCount → GET /api/doctors → append → computed sort</div></article>
+        <article class="card"><span class="card-label">Doctor create</span><h3>Validated typed form</h3><p>The detail component uses one non-nullable Reactive Form. Six required controls gate the Add button. A selected image is converted to Base64 and sent inside the preserved Doctor request rather than inventing an upload endpoint.</p><div class="example">form valid → store.save → tenant → POST /api/doctors → navigate to /doctors</div></article>
+        <article class="card"><span class="card-label">Doctor edit</span><h3>Load, patch, save</h3><p>The <code>:id</code> route selects edit mode. The store loads the record; an Angular <code>effect</code> patches the form and preview; successful submission uses PUT and returns to the directory.</p><div class="example">/doctors/3 → GET /api/doctors/3 → form.patchValue → PUT /api/doctors</div></article>
+        <article class="card"><span class="card-label">Cross-cutting HTTP</span><h3>Consistent request policy</h3><p>The correlation interceptor identifies requests, the tenant interceptor adds <code>TenantId</code> only when requested through HTTP context, and the error interceptor reports failures before stores convert them into user messages.</p></article>
+        <article class="card"><span class="card-label">Validation</span><h3>Three confidence levels</h3><p>Component tests verify rendering and interaction, store tests verify state transitions, API-client tests verify HTTP contracts, and Playwright verifies observable browser workflows.</p></article>
+      </div>
+    </div></section>
+
+    <section id="layers"><div class="wrap">
+      <p class="eyebrow">04 · Architectural layers</p><h2>Why the code is separated this way.</h2>
+      <div class="layer-grid">
+        <article class="layer"><header><h3>Application layer</h3><span>apps/healthclinic-web</span></header><p class="purpose">Owns startup, global configuration, shell layout, top-level routing, assets, build, and development proxy.</p><p><strong>Solves:</strong> one composition point without mixing business-feature logic into bootstrap code.</p></article>
+        <article class="layer"><header><h3>Feature layer</h3><span>libs/*/feature</span></header><p class="purpose">Owns routed pages, templates, user interaction, and feature route declarations.</p><p><strong>Solves:</strong> business screens can evolve and lazy-load independently.</p></article>
+        <article class="layer"><header><h3>State layer</h3><span>libs/*/state</span></header><p class="purpose">Owns Signals, computed values, request orchestration, loading/error status, pagination, and mutation coordination.</p><p><strong>Solves:</strong> templates remain presentation-focused and API timing remains testable.</p></article>
+        <article class="layer"><header><h3>Data-access layer</h3><span>libs/*/data-access</span></header><p class="purpose">Owns TypeScript models and typed HttpClient calls to preserved backend contracts.</p><p><strong>Solves:</strong> route strings and payload shapes have one controlled owner.</p></article>
+        <article class="layer"><header><h3>UI layer</h3><span>libs/dashboard/ui</span></header><p class="purpose">Owns reusable presentation components with typed Signal inputs and outputs.</p><p><strong>Solves:</strong> repeated visual behavior is reusable without acquiring business/API responsibilities.</p></article>
+        <article class="layer"><header><h3>Core platform layer</h3><span>libs/core/platform</span></header><p class="purpose">Owns runtime settings, tenant context, interceptors, route-policy extension points, and logging.</p><p><strong>Solves:</strong> cross-feature infrastructure is implemented once and injected consistently.</p></article>
+      </div>
+    </div></section>
+
+    <section id="files"><div class="wrap">
+      <p class="eyebrow">05 · File-by-file map</p><h2>Why each file or file group exists.</h2>
+      <div class="table-shell"><table class="file-table"><thead><tr><th>File</th><th>Why it exists</th><th>Problem and benefit</th></tr></thead><tbody>
+        <tr><td>package.json / package-lock.json</td><td>Workspace dependencies and scripts</td><td>Locks Angular 22.1.4, Nx, RxJS, Vitest, and Playwright versions so installs and commands are repeatable.</td></tr>
+        <tr><td>nx.json</td><td>Nx task policy</td><td>Defines cached build/test inputs and excludes specs from production builds, reducing repeated work.</td></tr>
+        <tr><td>tsconfig.base.json</td><td>Shared strict TypeScript policy and aliases</td><td>Enforces compile-time safety and gives libraries stable public import names instead of fragile relative paths.</td></tr>
+        <tr><td>eslint.config.mjs</td><td>Static code-quality configuration</td><td>Provides consistent lint rules across the workspace.</td></tr>
+        <tr><td>apps/healthclinic-web/project.json</td><td>Application build/serve/test targets</td><td>Tells Nx how to build Angular, copy public assets, proxy APIs, and run unit tests.</td></tr>
+        <tr><td>src/index.html</td><td>Browser host document</td><td>Provides the DOM element where Angular mounts and basic browser metadata.</td></tr>
+        <tr><td>src/main.ts</td><td>Executable entry point</td><td>Bootstraps the standalone root component with its global configuration.</td></tr>
+        <tr><td>app/app.component.ts</td><td>Minimal root component</td><td>Keeps the root neutral; routing decides which application screen appears.</td></tr>
+        <tr><td>app/app.config.ts</td><td>Global dependency configuration</td><td>Registers router, HttpClient, functional interceptors, and runtime settings in one auditable place.</td></tr>
+        <tr><td>app/app.routes.ts</td><td>Top-level navigation and lazy boundaries</td><td>Maps URLs to the stable shell and dynamically imports Dashboard/Doctor feature routes.</td></tr>
+        <tr><td>app/app.routes.spec.ts</td><td>Routing architecture test</td><td>Protects the Dashboard lazy-loading contract; Doctor lazy loading exists but lacks an equivalent explicit assertion.</td></tr>
+        <tr><td>app/private-shell.component.ts</td><td>Shell behavior</td><td>Owns only menu state and composes router directives using a standalone OnPush component.</td></tr>
+        <tr><td>app/private-shell.component.html</td><td>Persistent application frame</td><td>Provides header, accessible menu, feature navigation, route outlet, and footer shared by all pages.</td></tr>
+        <tr><td>app/private-shell.component.css</td><td>Shell-specific responsive styling</td><td>Prevents shell styles from leaking into business features and adapts navigation/footer for smaller screens.</td></tr>
+        <tr><td>src/styles.css</td><td>Global visual baseline</td><td>Defines fonts, box sizing, body defaults, and a reusable visually-hidden accessibility utility.</td></tr>
+        <tr><td>public/runtime-config.js</td><td>Deployment-time configuration hook</td><td>Allows API settings to be supplied without rebuilding Angular.</td></tr>
+        <tr><td>proxy.conf.mjs</td><td>Local legacy-API bridge</td><td>Forwards <code>/api</code> calls to the existing .NET server during development and removes unsafe transport headers.</td></tr>
+        <tr><td>public/assets/**</td><td>Preserved visual assets</td><td>Retains approved logos, summary backgrounds, and arrows without embedding binary content in components.</td></tr>
+
+        <tr><td>libs/core/platform/project.json</td><td>Nx platform-library identity</td><td>Marks shared infrastructure as <code>scope:core</code>/<code>type:platform</code> for architectural governance.</td></tr>
+        <tr><td>libs/core/platform/src/index.ts</td><td>Public library API</td><td>Controls what consumers can import and hides internal paths.</td></tr>
+        <tr><td>runtime-config.ts</td><td>Typed configuration token/provider</td><td>Uses dependency injection instead of importing mutable global configuration throughout the code.</td></tr>
+        <tr><td>tenant-context.service.ts</td><td>Authenticated tenant resolver</td><td>Validates tenant identity and shares one replayed result across dependent requests.</td></tr>
+        <tr><td>tenant-context.interceptor.ts</td><td>Explicit tenant-header policy</td><td>Adds the configured tenant header only to requests marked with <code>withTenantContext</code>.</td></tr>
+        <tr><td>correlation.interceptor.ts</td><td>Request correlation</td><td>Adds a unique identifier so frontend and backend telemetry can follow one request.</td></tr>
+        <tr><td>error.interceptor.ts</td><td>Central HTTP error observation</td><td>Reports technical failure context, then rethrows so feature stores retain business-specific handling.</td></tr>
+        <tr><td>frontend-logger.service.ts</td><td>Logging abstraction</td><td>Creates a replaceable boundary; currently delegates structured events to the console.</td></tr>
+        <tr><td>dashboard-route.guard.ts</td><td>Authorization extension point</td><td>Keeps route policy replaceable, but currently returns <code>true</code>; real identity/authorization is not implemented.</td></tr>
+        <tr><td>*.service.spec.ts</td><td>Platform contract tests</td><td>Proves configuration and tenant-resolution behavior without a live backend.</td></tr>
+
+        <tr><td>libs/dashboard/feature/dashboard.routes.ts</td><td>Dashboard feature route</td><td>Lets the application lazy-load a route array without importing its component eagerly.</td></tr>
+        <tr><td>dashboard-feature.component.ts</td><td>Dashboard screen composition</td><td>Creates the local store and derives chart series without owning HTTP details.</td></tr>
+        <tr><td>dashboard-feature.component.html</td><td>Dashboard presentation</td><td>Uses accessible regions plus <code>@if</code> control flow for loading, errors, empty results, cards, and charts.</td></tr>
+        <tr><td>dashboard-feature.component.css</td><td>Dashboard layout styling</td><td>Keeps responsive screen layout local to the feature.</td></tr>
+        <tr><td>libs/dashboard/state/dashboard.store.ts</td><td>Dashboard state orchestration</td><td>Bridges Signals and RxJS, cancels obsolete year requests, and exposes consistent loading/error state.</td></tr>
+        <tr><td>libs/dashboard/data-access/dashboard.models.ts</td><td>Backend response types</td><td>Makes clinic, expense, and patient response shapes visible to TypeScript.</td></tr>
+        <tr><td>dashboard-api.client.ts</td><td>Dashboard HTTP gateway</td><td>Preserves the three legacy reporting URLs and tenant context behind typed methods.</td></tr>
+        <tr><td>dashboard-chart.component.ts</td><td>Reusable accessible chart</td><td>Converts numeric series into SVG line/bar graphics and provides a textual accessible label.</td></tr>
+        <tr><td>summary-card.component.ts</td><td>Reusable KPI card</td><td>Uses required typed inputs so a caller cannot omit essential card values.</td></tr>
+        <tr><td>year-navigator.component.ts</td><td>Reusable year control</td><td>Uses Signal inputs/outputs and disables future-year navigation consistently.</td></tr>
+
+        <tr><td>libs/doctor-directory-management/feature/doctor-directory.routes.ts</td><td>Doctor child routes</td><td>Maps list, new, and edit URLs. The whole feature is lazy, but these components load together inside one Doctor chunk.</td></tr>
+        <tr><td>doctor-list.component.ts</td><td>Directory interaction adapter</td><td>Starts loading, delegates state changes, confirms deletion, and creates safe image URLs without owning request logic.</td></tr>
+        <tr><td>doctor-list.component.html</td><td>Accessible directory view</td><td>Renders selection, paging, responsive data rows, navigation, empty/loading/error states, and named controls.</td></tr>
+        <tr><td>doctor-detail.component.ts</td><td>Create/edit controller</td><td>Shares one typed Reactive Form, validates route IDs, synchronizes loaded records, reads profile images, and navigates only after success.</td></tr>
+        <tr><td>doctor-detail.component.html</td><td>Create/edit form</td><td>Associates labels and errors, gates submit, presents photo/patient/registration context, and separates edit-only deletion.</td></tr>
+        <tr><td>doctor-directory.component.css</td><td>Doctor list/detail visual system</td><td>Preserves the approved legacy hierarchy while making both screens responsive.</td></tr>
+        <tr><td>libs/doctor-directory-management/state/doctor-directory.store.ts</td><td>Doctor workflow state</td><td>Owns pagination, ordering, selection, CRUD orchestration, concurrency guards, cleanup, and recoverable errors.</td></tr>
+        <tr><td>libs/doctor-directory-management/data-access/doctor.models.ts</td><td>Doctor contract types</td><td>Describes preserved backend records and narrows writable input fields.</td></tr>
+        <tr><td>doctor-api.client.ts</td><td>Doctor HTTP gateway</td><td>Centralizes GET/POST/PUT/DELETE, paging parameters, tenant payload/header rules, and typed responses.</td></tr>
+        <tr><td>feature/state/data-access index.ts files</td><td>Library public APIs</td><td>Keep cross-library imports intentional and reduce coupling to internal folder structure.</td></tr>
+        <tr><td>feature/state/data-access project.json files</td><td>Nx project metadata</td><td>Give each responsibility an independent project identity and tags for future dependency rules and affected tasks.</td></tr>
+        <tr><td>*.component.spec.ts</td><td>Component behavior tests</td><td>Verify visible content, form rules, navigation, confirmation, paging controls, and media preview.</td></tr>
+        <tr><td>*.store.spec.ts</td><td>State-machine tests</td><td>Verify ordering, request timing, selection, success/failure paths, and preserved records without rendering a browser.</td></tr>
+        <tr><td>*.client.spec.ts</td><td>HTTP contract tests</td><td>Verify exact methods, URLs, parameters, headers, and payloads without calling the real server.</td></tr>
+
+        <tr><td>apps/healthclinic-web-e2e/project.json</td><td>Nx E2E project</td><td>Declares that browser tests depend on the Angular application and exposes an Nx test target.</td></tr>
+        <tr><td>playwright.config.ts</td><td>Browser-test runtime policy</td><td>Starts/reuses Angular, selects Chromium, and captures traces/screenshots/video when failures occur.</td></tr>
+        <tr><td>dashboard.spec.ts</td><td>Dashboard acceptance scenarios</td><td>Checks routes, report controls, summary visibility, and a real observable API request.</td></tr>
+        <tr><td>doctor-directory-management.spec.ts</td><td>Doctor acceptance scenarios</td><td>Checks tenant integration, pagination, navigation, selection, CRUD, validation, images, and explicit Patient-feature blocking.</td></tr>
+        <tr><td>tsconfig.app.json / tsconfig.spec.json</td><td>Compilation scopes</td><td>Separate production source inputs from test globals and test-only files.</td></tr>
+      </tbody></table></div>
+    </div></section>
+
+    <section id="patterns"><div class="wrap">
+      <p class="eyebrow">06 · Angular choices and benefits</p><h2>What each Angular pattern solves.</h2>
+      <div class="grid">
+        <article class="card"><span class="card-label">Standalone components</span><h3>Less module ceremony</h3><p>Each component declares exactly what it imports. Features become easier to lazy-load, test, and move.</p></article>
+        <article class="card"><span class="card-label">Signals</span><h3>Clear synchronous UI state</h3><p>A value such as <code>loading()</code> is readable directly in the template and updates consumers when changed.</p></article>
+        <article class="card"><span class="card-label">computed()</span><h3>No duplicated derived state</h3><p>Alphabetic doctors and chart series are recalculated from source Signals, preventing manual synchronization bugs.</p></article>
+        <article class="card"><span class="card-label">RxJS</span><h3>Controlled asynchronous work</h3><p><code>switchMap</code>, <code>concatMap</code>, <code>finalize</code>, and cancellation/cleanup handle HTTP workflows that are more complex than a single value.</p></article>
+        <article class="card"><span class="card-label">Reactive Forms</span><h3>Explicit validation model</h3><p>The Doctor form has typed controls and validators in TypeScript, making submit rules inspectable and testable.</p></article>
+        <article class="card"><span class="card-label">Functional APIs</span><h3>Small composable infrastructure</h3><p>Functional interceptors and guards avoid unnecessary classes while still using dependency injection.</p></article>
+        <article class="card"><span class="card-label">OnPush</span><h3>Predictable rendering</h3><p>Components update from explicit reactive inputs and state rather than broad incidental change checks.</p></article>
+        <article class="card"><span class="card-label">Modern control flow</span><h3>Readable templates</h3><p><code>@if</code> and <code>@for</code> make conditional and repeated UI structure direct and type-aware.</p></article>
+        <article class="card"><span class="card-label">Lazy routes</span><h3>Feature code on demand</h3><p>Dashboard and Doctor implementation bundles are fetched when users navigate to them rather than being part of one feature-heavy initial bundle.</p></article>
+        <article class="card"><span class="card-label">Typed HttpClient</span><h3>Visible integration contracts</h3><p>Methods state expected request and response shapes, while dedicated tests protect route and header compatibility.</p></article>
+        <article class="card"><span class="card-label">Dependency injection</span><h3>Replaceable dependencies</h3><p>Components receive stores and stores receive clients/services, enabling focused tests with controlled substitutes.</p></article>
+        <article class="card"><span class="card-label">Nx libraries</span><h3>Scalable ownership boundaries</h3><p>Feature, state, data-access, UI, and platform concerns can be governed and tested as separate projects.</p></article>
+      </div>
+    </div></section>
+
+    <section id="limits"><div class="wrap">
+      <p class="eyebrow">07 · Honest implementation boundary</p><h2>What exists now—and what does not.</h2>
+      <div class="callout-grid">
+        <div class="callout implemented"><h3>Implemented in the reviewed code</h3><ul><li>Angular 22.1.4 standalone bootstrap and components</li><li>Nx application plus feature/state/data-access/UI/platform libraries</li><li>Feature-level lazy loading for Dashboard and Doctors</li><li>Signals, computed state, and RxJS interoperability</li><li>Typed HttpClient clients and functional interceptors</li><li>Tenant-aware preserved legacy API calls</li><li>Doctor typed Reactive Form and CRUD workflows</li><li>OnPush rendering and modern template control flow</li><li>Unit/component/API contract tests and Playwright E2E</li><li>Responsive and accessibility-oriented markup</li></ul></div>
+        <div class="callout limits"><h3>Not implemented in this code</h3><ul><li>No Gateway or Backend-for-Frontend implementation; development currently proxies directly to the legacy API</li><li>No selected real identity/authorization provider; the route guard currently allows navigation</li><li>No Patient feature or <code>/patients</code> route; its Doctor scenario remains explicitly skipped</li><li>No per-page <code>loadComponent</code> split inside the Doctor feature</li><li>No Angular <code>@defer</code> blocks or router preloading strategy</li><li>No NgRx, microfrontends, or Module Federation</li><li>No Signal Forms migration; Doctor uses stable typed Reactive Forms</li><li>No separate file-upload endpoint; pictures use the preserved Base64 field</li></ul></div>
+      </div>
+      <div class="notice"><strong>Important distinction:</strong> Nx project separation improves ownership, test scope, and dependency governance, but it does not automatically create browser lazy loading. The dynamic <code>import()</code> expressions in <code>app.routes.ts</code> create the actual runtime chunks.</div>
+    </div></section>
+
+    <section id="tour"><div class="wrap">
+      <p class="eyebrow">08 · Recommended explanation order</p><h2>A ten-minute walkthrough for the team.</h2>
+      <div class="journey">
+        <article><div class="step">1</div><div><h3>Start with the six-box flow</h3><p>Explain shell → lazy feature → store → API client → legacy API. This gives everyone a shared map before file details.</p></div></article>
+        <article><div class="step">2</div><div><h3>Show <code>app.routes.ts</code></h3><p>Use Dashboard and Doctors to demonstrate real feature-level lazy loading and why the shell remains small and stable.</p></div></article>
+        <article><div class="step">3</div><div><h3>Follow one Doctor request</h3><p>Trace <code>DoctorListComponent → DoctorDirectoryStore → TenantContextService → DoctorApiClient → interceptor → /api/doctors</code>.</p></div></article>
+        <article><div class="step">4</div><div><h3>Show why tests exist beside each layer</h3><p>Client tests protect backend compatibility, store tests protect state behavior, component tests protect UI rules, and Playwright protects customer-visible workflows.</p></div></article>
+        <article><div class="step">5</div><div><h3>Close with the boundary list</h3><p>Separate delivered capabilities from future architecture so the audience understands both the value and the remaining work.</p></div></article>
+      </div>
+      <div class="legend"><span class="pill">Start: main.ts</span><span class="pill">Composition: app.config.ts</span><span class="pill">Navigation: app.routes.ts</span><span class="pill">UI: feature components</span><span class="pill">Behavior: stores</span><span class="pill">Integration: API clients</span><span class="pill">Policy: core/platform</span><span class="pill">Proof: specs + Playwright</span></div>
+    </div></section>
+  </main>
+
+  <footer class="footer"><div class="wrap"><strong>HealthClinic Angular 22 code-flow guide</strong><p>Prepared from a direct read-only review of the current <code>modernized/</code> source tree. No existing application file was modified.</p><p>Requested deliverable: one self-contained HTML explanation suitable for technical and mixed audiences.</p></div></footer>
+</body>
+</html>
